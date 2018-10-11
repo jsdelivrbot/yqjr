@@ -1,0 +1,241 @@
+<style lang="less">
+    @import '../../../styles/common.less';
+</style>
+<template>
+    <div>
+        <Form ref="formValidate" :rules="ruleValidate" :model="formValidate" :label-width="100">
+            <Card>
+                <p slot="title">
+                    <Icon type="search"></Icon>
+                    主信息
+                </p>
+                <Row>
+                    <Col span="8" offset="2">
+                        <FormItem label="指标类型:" prop="typecode">
+                            <Select v-model="formValidate.typecode" style="width:200px">
+                                <Option v-for="item in iTypesO" :value="item.code" :key="item.value">{{ item.name}}</Option>
+                            </Select>
+                        </FormItem>
+                    </Col>
+                    <Col span="8" offset="2">
+                        <FormItem label="指标代码:" prop="indicatorcode">
+                            <Input  placeholder="请输入指标代码" v-model="formValidate.indicatorcode" style="width:200px" ></Input>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span="8" offset="2" >
+                        <FormItem label="指标对象:" pop="indicatortarget">
+                            <Input  placeholder="请输入指标对象" v-model="formValidate.indicatortarget" style="width:200px" ></Input>
+                        </FormItem>
+                    </Col>
+                    <Col span="8" offset="2" >
+                        <FormItem label="指标名称:"  pop="indicatorname">
+                            <Input  placeholder="请输入指标名称" v-model="formValidate.indicatorname" style="width:200px" ></Input>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span="8" offset="2" >
+                        <FormItem label="指标主题:" pop="indicatorcaption">
+                            <Input  placeholder="请输入指标主题" v-model="formValidate.indicatorcaption" style="width:200px" ></Input>
+                        </FormItem>
+                    </Col>
+                    <Col span="8" offset="2" >
+                        <FormItem label="指标小类:" pop="indicatorgroup">
+                            <Input  placeholder="请输入指标小类" v-model="formValidate.indicatorgroup" style="width:200px" ></Input>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span="8" offset="2" >
+                        <FormItem label="指标说明:" pop="indicatordesc">
+                            <Input  placeholder="请输入指标说明" v-model="formValidate.indicatordesc" style="width:200px" ></Input>
+                        </FormItem>
+                    </Col>
+                    <Col span="8" offset="2" >
+                        <FormItem label="是否预警:" prop="alertflag">
+                            <Select v-model="formValidate.alertflag" style="width:200px">
+                                <Option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.label }}</Option>
+                            </Select>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span="8" offset="2" >
+                        <FormItem label="是否启用:" prop="enabledflag">
+                            <Select v-model="formValidate.enabledflag" style="width:200px">
+                                <Option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.label }}</Option>
+                            </Select>
+                        </FormItem>
+                    </Col>
+                    <Col span="8" offset="2" >
+                        <FormItem label="显示顺序:" pop="displayorder">
+                            <Input  placeholder="请输入显示顺序" v-model="formValidate.displayorder" style="width:200px" ></Input>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span="8" offset="2" >
+                        <FormItem label="上级指标:" pop="parentindicatorcode">
+                            <Input  placeholder="请输入上级指标" v-model="formValidate.parentindicatorcode" style="width:200px" ></Input>
+                        </FormItem>
+                    </Col>
+                    <Col span="8" offset="2" >
+                        <FormItem label="归属公司:" prop="comcode">
+                            <Select v-model="formValidate.comcode" style="width:200px">
+                                <Option v-for="item in cityList2" :value="item.label" :key="item.value">{{ item.label }}</Option>
+                            </Select>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span="12" offset="2" >
+                        <FormItem label="备注:" pop="remark">
+                            <Input  placeholder="请输入备注" v-model="formValidate.remark" style="width:200px" ></Input>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span="12" offset="2" >
+                        <FormItem label="公式:" pop="calformula">
+                            <Input  placeholder="请输入公式" v-model="formValidate.calformula" style="width:200px" ></Input>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span="4" offset="9">
+                        <Button type="primary" icon="checkmark" @click="subTeamAddToRev('formValidate')" :loading="loading">添加</Button>
+                    </Col>
+                    <Col span="4" >
+                        <Button type="primary" icon="reply" @click.prevent="pageBack">返回</Button>
+                    </Col>
+                </Row>
+            </Card>
+        </Form>
+    </div>
+</template>
+<script>
+    import { mapActions, mapState } from 'vuex';
+    import {resetWorkHeight, getUserCookie} from '@/libs/util.js';
+    export default{
+        name: 'indicatorAdd',
+        data () {
+            return {
+                cityList: [{
+                    value: '1',
+                    label: '是'
+                },
+                {
+                    value: '0',
+                    label: '否'
+                }],
+                cityList1: [{
+                    value: '1',
+                    label: '1'
+                },
+                {
+                    value: '0',
+                    label: '0'
+                }],
+                cityList2: [{
+                    value: '1',
+                    label: '一汽金融公司'
+                },
+                {
+                    value: '0',
+                    label: '一汽财务公司'
+                }],
+                ruleValidate: {
+                    teamName: [
+                        { required: true, message: '请输入团队名称!', trigger: 'blur' }
+                    ],
+                    name: [
+                        { required: true, message: '请输入指标类型名称!', trigger: 'blur' }
+                    ],
+                    remark: [
+                        { required: true, message: '请输入备注信息!', trigger: 'blur' }
+                    ]
+                },
+                pinpai: [],
+                file: null,
+                loadingStatus: false,
+                formValidate: {
+                    typecode: '',
+                    indicatorcode: '',
+                    indicatortarget: '',
+                    indicatorname: '',
+                    indicatorcaption: '',
+                    indicatorgroup: '',
+                    indicatordesc: '',
+                    alertflag: '',
+                    enabledflag: '',
+                    displayorder: '',
+                    parentindicatorcode: '',
+                    comcode: '',
+                    remark: '',
+                    calformula: ''
+                }
+            };
+        },
+        computed: {
+            ...mapState({
+                loading: ({indicatorAdd}) => indicatorAdd.loading,
+                isSuccess: ({indicatorAdd}) => indicatorAdd.isSuccess,
+                teamData: ({indicatorAdd}) => indicatorAdd.teamAddData,
+                iTypesO: ({indicatorAdd}) => indicatorAdd.itypes
+            })
+        },
+        methods: {
+            init () {
+                const user = getUserCookie();
+                this.formValidate.areaName = user.areaName;
+                this.formValidate.areaCode = user.areaCode;
+                this.formValidate.company = user.comCode;
+                this.searchITy();
+            },
+            searchITy () {
+                this.handleITy().then(res => {
+                    resetWorkHeight();
+                    this.$Message.info('查询成功!');
+                });
+            },
+            ...mapActions([
+                'handleTeamAddToRev', 'handleITy'
+            ]),
+            subTeamAddToRev (name) {
+                this.$refs[name].validate((valid) => {
+                    if (valid) {
+                        console.log(this.formValidate);// 此数据提交
+                        this.handleTeamAddToRev(this.formValidate).then(res => {
+                            if (this.isSuccess) {
+                                this.$Modal.success({
+                                    title: '提交成功',
+                                    content: this.teamData,
+                                    onOk: () => {
+                                        this.$router.push({name: 'indicatorList'});
+                                    }
+                                });
+                            } else {
+                                this.$Modal.error({
+                                    title: '提示',
+                                    content: this.teamData
+                                });
+                            }
+                            resetWorkHeight();
+                        });
+                    } else {
+                        this.$Message.error('验证错误!');
+                    }
+                });
+            },
+            pageBack () {
+                this.$router.push({name: 'indicatorList'});
+            }
+        },
+        mounted () {
+            this.init();
+        }
+
+    };
+</script>

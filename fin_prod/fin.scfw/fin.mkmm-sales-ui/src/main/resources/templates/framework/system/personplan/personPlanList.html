@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta http-equiv="Expires" content="0">
+<meta http-equiv="Cache-Control" content="no-cache">
+<meta http-equiv="Cache-Control" content="no-store">
+<meta HTTP-EQUIV="Pragma" CONTENT="no-cache">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+<script src="/mkmm/ui/js/include/head.js"></script>
+<title>一汽金融开发平台</title>
+    <style>
+        #myTab li {
+        float: left;
+        width: 10%;
+        margin: 0px 0px;
+        text-align: center;
+        font-size: 16px;
+        }
+    </style>
+</head>
+<body class="no-skin">
+	<div class="page-content" id="mainContent">
+		<div class="widget-box transparent ui-sortable-handle collapsed"
+			id="widget-box-search">
+			<div class="widget-header">
+				<h3 class="widget-title smaller lighter">&nbsp;查询</h3>
+				<div class="widget-toolbar no-border">
+					<a href="#" data-action="collapse"> <i class="ace-icon fa fa-chevron-down">
+						<span style="font-family: '微软雅黑'; font-size: 14px;">&nbsp;打开</span></i>
+					</a>
+				</div>
+			</div>
+			<div class="widget-body">
+				<div class="widget-main padding-6 no-padding-left no-padding-right">
+					<div class="space-6"></div>
+					<form id="searchForm" modelAttribute="userCondition" method="post" class="form-horizontal">
+					
+						<!--<div class="row">-->
+							<!--<div class="form-group-2">-->
+								<!--<label class="col-sm-2 control-label no-padding-right">序列：</label>-->
+								<!--<div class="col-sm-3">-->
+									<!--<input name="id"  maxlength="50" class="form-control required" />-->
+								<!--</div>-->
+							<!--</div>-->
+							<!--<div class="form-group-2">-->
+								<!--<label class="col-sm-2 control-label no-padding-right">人员编号：</label>-->
+								<!--<div class="col-sm-3">-->
+									<!--<input name="personCode"  maxlength="50" class="form-control required" />-->
+								<!--</div>-->
+							<!--</div>-->
+						<!--</div>-->
+						<div class="space-4"></div>
+						<div class="row">
+
+                            <div class="form-group-2">
+                                <label class="col-sm-2 control-label no-padding-right">年度<span style="color:red;">*</span>：</label>
+                                <div class="col-sm-3">
+                                    <input name="year" id="year" maxlength="50" class="form-control required yearpicker" />
+                                </div>
+                            </div>
+                            <div class="form-group-2">
+                                <div class="col-sm-3" >
+                                    <input name="brands" id="brands" value="621" type="hidden"/>
+                                </div>
+                            </div>
+						</div>
+						<div class="space-4"></div>
+					<div class="space-4"></div>
+						<div class="row">
+							<div class="col-sm-4">
+								<div class="dataTables_paginate paging_simple_numbers">
+									<ul class="pagination">
+										<li>
+											<button id="searchBtn" onclick="searchDataOverWrite('personPlanTable')" type="button" class="btn btn-primary">
+												<span class="ace-icon fa fa-search icon-on-right bigger-110"></span>
+												查询
+											</button>
+										</li>
+										<li>
+											<button id="resetBtn" type="reset" class="btn btn-primary">
+												<span class="ace-icon fa fa-refresh icon-on-right bigger-110"></span>
+												重 置
+											</button>
+										</li>
+
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="hr hr-dotted"></div>
+					</form>
+				</div>
+			</div>
+			<div class="btn-group">
+                <button type="button" class="btn btn-white btn-sm btn-primary" onclick="explorePlan()">年计划导出</button>
+			</div>
+            <ul class="nav nav-tabs" id="myTab">
+                <li class="active"><a href="#home" onclick="queryBrands(621)">大众</a></li>
+                <li><a href="#home" onclick="queryBrands(622)">奥迪</a></li>
+                <li><a href="#home" onclick="queryBrands(623)">丰田</a></li>
+                <li><a href="#home" onclick="queryBrands(624)">马自达</a></li>
+                <li><a href="#home" onclick="queryBrands(625)">解放</a></li>
+                <li><a href="#home" onclick="queryBrands(626)">夏利</a></li>
+                <li><a href="#home" onclick="queryBrands(629)">红旗</a></li>
+                <li><a href="#home" onclick="queryBrands(3401)">一汽吉林</a></li>
+                <li><a href="#home" onclick="queryBrands(3461)">海马</a></li>
+                <li><a href="#home" onclick="queryBrands(11453)">奔腾</a></li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane active" id="home">
+                    <table id="personPlanTable" ></table>
+                    <!--<div id="pager"></div>-->
+                </div>
+            </div>
+		</div>
+        <div class="form-group-2">
+            <div class="col-sm-3" >
+                <input name="queryYear" id="queryYear" value="" type="hidden"/>
+            </div>
+        </div>
+	</div>
+</body>
+<script src="/mkmm/ui/js/personplan/personPlanCommon.js"></script>
+<script src="/mkmm/ui/js/personplan/personPlanList.js"></script>
+</html>

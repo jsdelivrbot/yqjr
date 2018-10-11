@@ -1,0 +1,173 @@
+<style lang="less">
+    @import '../../../styles/common.less';
+</style>
+<template>
+    <div>
+        <Form :label-width="100">
+            <Card>
+                <p slot="title">
+                    <Icon type="search"></Icon>
+                    团队基本信息
+                </p>
+                <Row>
+                    <Col span="8" offset="2">
+                        <FormItem label="区域名称：" >
+                            <Input v-model="teamMainQueryHisResult.areaName" disabled ></Input>
+                        </FormItem>
+                    </Col>
+                    <Col span="8" offset="2">
+                        <FormItem label="区域代码：" >
+                            <Input v-model="teamMainQueryHisResult.areaCode" disabled ></Input>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span="8" offset="2">
+                        <FormItem label="团队名称：" >
+                            <Input v-model="teamMainQueryHisResult.teamName"  disabled ></Input>
+                        </FormItem>
+                    </Col>
+                    <Col span="8" offset="2">
+                        <FormItem label="团队代码：" >
+                            <Input v-model="teamMainQueryHisResult.teamCode" disabled ></Input>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span="8" offset="2">
+                        <FormItem label="团队等级：" >
+                            <Select v-model="teamMainQueryHisResult.teamLevel" style="width:100%" disabled>
+                                <Option v-for="item in teamLevelList" :value="item.value" :key="item.value">{{ item.label }}</Option>
+                            </Select>
+                        </FormItem>
+                    </Col>
+                    <Col span="8" offset="2">
+                        <FormItem label="团队类别：" >
+                            <Select v-model="teamMainQueryHisResult.teamType" style="width:100%" disabled>
+                                <Option v-for="item in teamTypeList" :value="item.value" :key="item.value">{{ item.label }}</Option>
+                            </Select>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span="8" offset="2">
+                        <FormItem label="团队状态：" >
+                            <Select v-model="teamMainQueryHisResult.teamStatus" style="width:100%" disabled>
+                                <Option v-for="item in teamStatusList" :value="item.value" :key="item.value">{{ item.label }}</Option>
+                            </Select>
+                        </FormItem>
+                    </Col>
+                    <Col span="8" offset="2">
+                        <FormItem label="团队电话：" >
+                            <Input v-model="teamMainQueryHisResult.teamPhone" disabled ></Input>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span="8" offset="2">
+                        <FormItem label="邮编：" >
+                            <Input v-model="teamMainQueryHisResult.teamZip" disabled ></Input>
+                        </FormItem>
+                    </Col>
+                    <Col span="8" offset="2">
+                        <FormItem label="传真：" >
+                            <Input v-model="teamMainQueryHisResult.teamFax" disabled ></Input>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span="8" offset="2">
+                        <FormItem label="生效时间：" >
+                            <Input v-model="teamMainQueryHisResult.startTime" disabled ></Input>
+                        </FormItem>
+                    </Col>
+                    <Col span="8" offset="2">
+                        <FormItem label="创建时间：" >
+                            <Input v-model="teamMainQueryHisResult.createTime" disabled ></Input>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span="18" offset="2">
+                        <FormItem label="团队地址：" >
+                            <Input v-model="teamMainQueryHisResult.teamAddress" disabled ></Input>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span="18" offset="2">
+                        <FormItem label="备注：">
+                            <Input v-model="teamMainQueryHisResult.remark" type="textarea" disabled style="width: 100%" :rows="4" :autosize="{minRows: 2,maxRows: 6}"></Input>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span="4" offset="9">
+                        <Button type="primary" icon="reply" @click.prevent="pageBack">返回</Button>
+                    </Col>
+                </Row>
+            </Card>
+        </Form>
+    </div>
+</template>
+<script>
+import { mapActions, mapState } from 'vuex';
+import {resetWorkHeight} from '@/libs/util.js';
+export default{
+    name: 'teamView',
+    data () {
+        return {
+            teamLevelList: [{
+                value: '01',
+                label: '一级'
+            }, {
+                value: '02',
+                label: '二级'
+            }, {
+                value: '03',
+                label: '三级'
+            }],
+            teamTypeList: [{
+                value: '01',
+                label: '普通'
+            }],
+            teamStatusList: [{
+                value: '1',
+                label: '有效'
+            }, {
+                value: '0',
+                label: '无效'
+            }]
+        };
+    },
+    computed: {
+        ...mapState({
+            loading: ({teamMainTabList}) => teamMainTabList.loading,
+            teamMainQueryHisResult: ({teamMainTabList}) => teamMainTabList.teamMainQueryHisResult
+        })
+    },
+    methods: {
+        ...mapActions([
+            'handleTeamMainQueryHisByid'
+        ]),
+        init () {
+            this.queryTeamHisById(this.$route.query.id);
+            // console.log(this.$route.query.id)
+            resetWorkHeight();
+        },
+        queryTeamHisById (id) {
+            this.handleTeamMainQueryHisByid(id).then(res => {});
+        },
+        pageBack () {
+            let routerParam = {id: this.$route.query.ID, teamCode: this.$route.query.teamCode, tabName: 'name3'};
+            this.$router.push({
+                name: 'teamMainQueryTabList',
+                query: routerParam
+            });
+        }
+    },
+    mounted () {
+        this.init();
+    }
+};
+</script>

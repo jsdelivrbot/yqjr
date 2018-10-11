@@ -1,0 +1,202 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.yqjr</groupId>
+  <artifactId>fin.scfw</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <name>finscfw</name>
+  
+  
+  <properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version>
+		<maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
+		<maven-antrun-plugin.version>1.8</maven-antrun-plugin.version>
+		<buildnumber-maven-plugin.version>1.4</buildnumber-maven-plugin.version>
+		<spring-boot-maven-plugin.version>2.0.0.M7</spring-boot-maven-plugin.version>
+		<svnkit.version>1.9.0</svnkit.version>
+		<redisson.version>3.5.5</redisson.version>
+		<jjwt.version>0.9.0</jjwt.version>
+		<springfox-swagger-ui.version>2.7.0</springfox-swagger-ui.version>
+		<springfox-swagger2.version>2.7.0</springfox-swagger2.version>
+		<nekohtml.version>1.9.22</nekohtml.version>
+		<mybatis.version>3.4.5</mybatis.version>
+		<mybatis-spring.version>1.3.1</mybatis-spring.version>
+		<mapper.version>3.3.6</mapper.version>
+		<strman.version>0.4.0</strman.version>
+		<joda.version>2.9.9</joda.version>
+		<pagehelper.version>4.1.1</pagehelper.version>
+		<hibernate-validator.version>5.4.1.Final</hibernate-validator.version>
+		<commons-lang3.version>3.4</commons-lang3.version>
+		<commons-io.version>2.5</commons-io.version>
+		<commons-beanutils.version>1.9.3</commons-beanutils.version>
+		<activiti-spring-boot-starter-basic.version>5.22.0</activiti-spring-boot-starter-basic.version>
+		<druid.version>1.1.6</druid.version>
+		<spring-boot-admin.version>1.5.6</spring-boot-admin.version>
+		<fin.scfw-common.version>0.0.1-SNAPSHOT</fin.scfw-common.version>
+		<fin.scfw-meta-model.version>0.0.1-SNAPSHOT</fin.scfw-meta-model.version>
+		<scfw-common-activiti.version>1.0.0-SNAPSHOT</scfw-common-activiti.version>
+	    <fin.scfw-isomer-model.version>0.0.1-SNAPSHOT</fin.scfw-isomer-model.version>
+
+  </properties>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven-compiler-plugin.version}</version>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>${spring-boot-maven-plugin.version}</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>buildnumber-maven-plugin</artifactId>
+				<version>${buildnumber-maven-plugin.version}</version>
+				<configuration>
+					<timestampFormat>yyyy-MM-dd HH:mm:ss</timestampFormat>
+					<timezone>GMT+8</timezone>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>create-timestamp</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<archive>
+						<manifestEntries>
+							<Build-Timestamp>${timestamp}</Build-Timestamp>
+						</manifestEntries>
+					</archive>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.5.9.RELEASE</version>
+	</parent>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>Edgware.RELEASE</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<repositories>
+		<repository>
+			<id>spring-snapshots</id>
+			<name>Spring Snapshots</name>
+			<url>https://repo.spring.io/snapshot</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>spring-milestones</id>
+			<name>Spring Milestones</name>
+			<url>https://repo.spring.io/milestone</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>apache-maven-https</id>
+			<name>Apache Maven Https</name>
+			<url>https://repo.maven.apache.org/maven2/</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>yqjr-public</id>
+			<name>Yqjr Public</name>
+			<url>http://10.21.111.31:8081/nexus/content/groups/public/</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>spring-snapshots</id>
+			<name>Spring Snapshots</name>
+			<url>https://repo.spring.io/snapshot</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</pluginRepository>
+		<pluginRepository>
+			<id>spring-milestones</id>
+			<name>Spring Milestones</name>
+			<url>https://repo.spring.io/milestone</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</pluginRepository>
+	</pluginRepositories>
+
+	<distributionManagement>
+		<repository>
+			<id>nexus-releases</id>
+			<name>Nexus Release Repository</name>
+			<url>http://10.21.111.31:8081/nexus/content/repositories/releases/</url>
+		</repository>
+		<snapshotRepository>
+			<id>nexus-snapshots</id>
+			<name>Nexus Snapshot Repository</name>
+			<url>http://10.21.111.31:8081/nexus/content/repositories/snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
+  
+	<modules>
+		<module>fin.scfw-zuul</module>
+		<module>fin.scfw-eureka</module>
+		<!--<module>fin.scfw-admin</module>-->
+		<module>fin.scfw-config</module>
+		<module>fin.scfw-auth</module>
+		<module>fin.scfw-common</module>
+		<module>fin.scfw-meta</module>
+		<module>fin.scfw-isomer</module>
+		<module>fin.scfw-isomer-model</module>
+		<!--<module>fin.mkmm-demo</module>-->
+		<module>fin.scfw-meta-model</module>
+		<module>fin.mkmm-sales</module>
+		<module>fin.mkmm-sales-model</module>
+		<module>fin.scfw-meta-ui</module>
+		<module>fin.mkmm-sales-ui</module>
+		<module>fin.risk-stat</module>
+		<module>fin.risk-stat-model</module>
+
+	</modules>
+</project>

@@ -1,0 +1,33 @@
+server:
+  port: 50001
+  tomcat:
+    max-threads: 128
+    min-spare-threads: 64
+  error:
+    include-stacktrace: always
+spring:
+  application:
+    name: fin-scfw-zuul
+  http:
+    multipart:
+      max-request-size: 100MB
+      enabled: true
+      max-file-size: 10MB
+  cloud:
+    config:
+      name: config
+      discovery:
+        enabled: true
+        service-id: fin-scfw-config
+  thymeleaf:
+    mode: LEGACYHTML5
+    cache: false
+eureka:
+  instance:
+    lease-expiration-duration-in-seconds: 15
+    lease-renewal-interval-in-seconds: 5
+  client:
+    initial-instance-info-replication-interval-seconds: 5
+    registry-fetch-interval-seconds: 5
+    serviceUrl:
+      defaultZone: http://localhost:50101/eureka

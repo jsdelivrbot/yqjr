@@ -1,0 +1,54 @@
+{
+  "hints": [],
+  "groups": [
+    {
+      "sourceType": "com.yqjr.scfw.common.jwt.JwtConfig",
+      "name": "jwt",
+      "type": "com.yqjr.scfw.common.jwt.JwtConfig"
+    }
+  ],
+  "properties": [
+    {
+      "sourceType": "com.yqjr.scfw.common.jwt.JwtConfig",
+      "defaultValue": "HS512",
+      "name": "jwt.algorithm",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.yqjr.scfw.common.jwt.JwtConfig",
+      "defaultValue": 240,
+      "name": "jwt.expiration-time",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "com.yqjr.scfw.common.jwt.JwtConfig",
+      "defaultValue": "Bearer",
+      "name": "jwt.head-prefix",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.yqjr.scfw.common.jwt.JwtConfig",
+      "defaultValue": "X-Authorization",
+      "name": "jwt.header",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.yqjr.scfw.common.jwt.JwtConfig",
+      "defaultValue": "http:\/\/yqjr.com",
+      "name": "jwt.issuer",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.yqjr.scfw.common.jwt.JwtConfig",
+      "defaultValue": 240,
+      "name": "jwt.refresh-expiration-time",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "com.yqjr.scfw.common.jwt.JwtConfig",
+      "defaultValue": "xm8EV6Hy5RMFK4EEACIDAwQus",
+      "name": "jwt.signing-key",
+      "type": "java.lang.String"
+    }
+  ]
+}

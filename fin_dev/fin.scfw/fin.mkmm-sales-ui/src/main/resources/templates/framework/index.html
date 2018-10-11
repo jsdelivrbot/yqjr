@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta http-equiv="Expires" content="0">
+<meta http-equiv="Cache-Control" content="no-cache">
+<meta http-equiv="Cache-Control" content="no-store">
+<meta HTTP-EQUIV="Pragma" CONTENT="no-cache">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+<script src="/mkmm/ui/js/include/head.js"></script>
+<script src="/mkmm/ui/js/upload/base-modal.js"></script>
+<script src="/mkmm/ui/js/include/attach.js"></script>
+<meta charset="UTF-8">
+<title>一汽金融开发平台</title>
+</head>
+<body class="no-skin">
+	<div id="navbar" class="navbar navbar-default          ace-save-state">
+		<div class="navbar-container ace-save-state" id="navbar-container">
+			<button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler" data-target="#sidebar">
+				<span class="sr-only">Toggle sidebar</span>
+
+				<span class="icon-bar"></span>
+
+				<span class="icon-bar"></span>
+
+				<span class="icon-bar"></span>
+			</button>
+
+			<div class="navbar-header pull-left">
+				<a href="#" class="navbar-brand">
+					<img src="/mkmm/ui/images/logo_yqjr.png">
+					<small>
+					</small>
+				</a>
+			</div>
+			<nav role="navigation" class="navbar-menu pull-left collapse navbar-collapse">
+				<ul class="nav navbar-nav">
+					<!-- <li>
+						<a href="#" onclick="showMenuById('menuTree_eip')">
+							企业门户
+						</a>
+					</li>
+					<li id="menuTree_ibmp_li">
+						<a href="#" onclick="showMenuById('menuTree_ibmp')">
+							综合柜面
+						</a>
+					</li>
+					<li id="menuTree_cdm_li">
+						<a href="#" onclick="showMenuById('menuTree_cdm')">
+							综合票据
+						</a>
+					</li>
+					<li id="menuTree_ebank_li">
+						<a href="#" onclick="showMenuById('menuTree_ebank')">
+							网银后台
+						</a>
+					</li> -->
+				</ul>
+			</nav>
+			<div class="navbar-buttons navbar-header pull-right" role="navigation">
+				<ul class="nav ace-nav">
+					<!-- <li class="light-blue" id="taskDropdown">
+					<a data-toggle="dropdown" class="dropdown-toggle" href="#">
+						<i class="ace-icon fa fa-tasks"></i>
+						待办
+						<span class="badge badge-info">0</span>
+					</a>
+				</li>
+					<li class="light-blue" id="notifyDropdown">
+						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
+							<i class="ace-icon fa fa-bell"></i>
+							公告
+							<span class="badge badge-info">0</span>
+						</a>
+						<ul class="dropdown-menu-right dropdown-navbar dropdown-menu dropdown-caret dropdown-close">
+							<li class="dropdown-header">
+
+							</li>
+							<li class="dropdown-content">
+								<ul class="dropdown-menu dropdown-navbar" id="notifyUl">
+								</ul>
+							</li>
+							<li class="dropdown-footer">
+								<a href="${ctx}/msg/notify/self" target="mainFrame">
+									查看所有公告信息
+									<i class="ace-icon fa fa-arrow-right"></i>
+								</a>
+							</li>
+						</ul>
+					</li>
+					<li class="light-blue" id="messageDropdown">
+						<a data-toggle="dropdown" class="dropdown-toggle" href="#">
+							<i class="ace-icon fa fa-envelope"></i>
+							消息
+							<span class="badge badge-info">0</span>
+						</a>
+						<ul class="dropdown-menu-right dropdown-navbar dropdown-menu dropdown-caret dropdown-close">
+							<li class="dropdown-header">
+							</li>
+							<li class="dropdown-content">
+								<ul class="dropdown-menu dropdown-navbar" id="messageUl">
+								</ul>
+							</li>
+							<li class="dropdown-footer">
+								<a href="${ctx}/msg/message/self" target="mainFrame">
+									查看所有消息
+									<i class="ace-icon fa fa-arrow-right"></i>
+								</a>
+							</li>
+						</ul>
+					</li> -->
+					<li class="light-blue">
+						<a data-toggle="dropdown" href="#" class="dropdown-toggle" id="loginUser">
+							<i class="ace-icon fa fa-user"></i>
+							<i class="ace-icon fa fa-caret-down"></i>
+						</a>
+
+						<ul id="topUL" class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+							<li>
+								<a href="#" id="today">
+									<i class="ace-icon fa fa-clock-o"></i>
+								</a>
+							</li>
+
+							<li class="divider"></li>
+
+                            <li>
+                                <a id="person" target="mainFrame">
+                                    <i class="ace-icon fa fa-cog"></i>
+                                    个人信息
+                                </a>
+                            </li>
+
+							<li>
+								<a id="mpwd" target="mainFrame">
+									<i class="ace-icon fa fa-user"></i>
+									修改密码
+								</a>
+							</li>
+
+							<!--<li>
+								<a href="/ui/user/myMenu" target="mainFrame">
+									<i class="ace-icon fa fa-star"></i>
+									常用菜单
+								</a>
+							</li>-->
+
+							<li class="divider"></li>
+
+							<li>
+								<a href="#" onclick="logout()">
+									<i class="ace-icon fa fa-power-off"></i>
+									退出登录
+								</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="main-container ace-save-state" id="main-container">
+		<script type="text/javascript">
+            try {
+                ace.settings.loadState('main-container')
+            } catch (e) {
+            }
+		</script>
+		<div id="sidebar" class="sidebar responsive ace-save-state">
+			<script type="text/javascript">
+                try {
+                    ace.settings.loadState('sidebar')
+                } catch (e) {
+                }
+			</script>
+			<div class="sidebar-shortcuts" id="sidebar-shortcuts">
+				<div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
+					<!-- <button class="btn btn-warning" onclick="showMenuById('menuTree')">
+                        <i class="ace-icon fa fa-bars"></i> 所有菜单
+                    </button> -->
+					<button class="btn btn-info">
+						<i class="ace-icon fa fa-cog"></i> 预留功能
+					</button>
+					<button class="btn btn-success">
+						<i class="ace-icon fa fa-star"></i> 预留功能
+					</button>
+					<!-- <div class="nav-search" id="nav-search">
+                        <span class="input-icon">
+                            <input type="text" placeholder="快捷交易码" class="nav-search-input" id="tradeCode"  name="tradeCode" autocomplete="off" />
+                            <i class="ace-icon fa fa-search nav-search-icon"></i>
+                        </span>
+                    </div> -->
+				</div>
+				<div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
+					<span class="btn btn-info"></span> <span class="btn btn-success"></span>
+				</div>
+			</div>
+			<ul class="nav nav-list" id="framework_menu_tree">
+				<!--菜单暂时写死            begin-->
+				<li>
+					<a href="#" menu-name= "销售团队管理" class="dropdown-toggle">
+						<i class="menu-icon fa fa-desktop"></i>
+						<span class="menu-text">销售团队管理</span>
+						<b class="arrow fa fa-angle-down"></b>
+
+					</a>
+					<b class="arrow"></b>
+					<ul class="submenu">
+						<li>
+							<a data-url="" menu-name= "销售团队维护" href="http://localhost:50001/mkmm/ui/teamMain/list">
+								<i class="menu-icon"></i>销售团队维护</a>
+							<b class="arrow"></b>
+						</li>
+						<li>
+							<a data-url="" menu-name= "重大事项维护" href="http://localhost:50001/mkmm/ui/eventTeam/list">
+								<i class="menu-icon"></i>重大事项维护</a>
+							<b class="arrow"></b>
+						</li>
+						<li>
+							<a data-url="" menu-name= "综合信息查询" href="http://localhost:50001/mkmm/ui/teamMain/queryList">
+								<i class="menu-icon"></i>综合信息查询</a>
+							<b class="arrow"></b>
+						</li>
+						<li>
+							<a data-url="" menu-name= "预算任务与计划跟踪" href="http://localhost:50001/mkmm/ui/teamSale/list">
+								<i class="menu-icon"></i>预算任务与计划跟踪</a>
+							<b class="arrow"></b>
+						</li>
+						<!--<li>-->
+							<!--<a data-url="" menu-name= "团队异动" href="http://baidu.com">-->
+								<!--<i class="menu-icon"></i>团队异动</a>-->
+							<!--<b class="arrow"></b>-->
+						<!--</li>-->
+						<li>
+							<a data-url="" menu-name= "团队审核" href="http://localhost:50001/mkmm/ui/teamReview/list">
+								<i class="menu-icon"></i>团队审核</a>
+							<b class="arrow"></b>
+						</li>
+                        <li>
+							<a data-url="" menu-name= "团队审核进度处理" href="http://localhost:50001/mkmm/ui/teamReview/queryList">
+								<i class="menu-icon"></i>团队审核进度处理</a>
+							<b class="arrow"></b>
+						</li>
+					</ul>
+				</li>
+
+				<li>
+					<a href="#" menu-name= "销售人员管理" class="dropdown-toggle">
+						<i class="menu-icon fa fa-desktop"></i>
+						<span class="menu-text">销售人员管理</span>
+						<b class="arrow fa fa-angle-down"></b>
+
+					</a>
+					<b class="arrow"></b>
+					<ul class="submenu">
+						<li>
+							<a data-url="" menu-name= "人员维护" href="http://localhost:50001/mkmm/ui/personMain/list">
+								<i class="menu-icon"></i>人员维护</a>
+							<b class="arrow"></b>
+						</li>
+						<li>
+							<a data-url="" menu-name= "综合查询与管理" href="http://localhost:50001/mkmm/ui/personMain/attach">
+								<i class="menu-icon"></i>综合查询与管理</a>
+							<b class="arrow"></b>
+						</li>
+						<li>
+							<a data-url="" menu-name= "预算任务及计划跟踪" href="http://localhost:50001/mkmm/ui/personSale/list">
+								<i class="menu-icon"></i>预算任务及计划跟踪</a>
+							<b class="arrow"></b>
+						</li>
+							<li>
+							<a data-url="" menu-name= "人员重大事件" href="http://localhost:50001/mkmm/ui/eventPerson/list">
+								<i class="menu-icon"></i>人员重大事件</a>
+							<b class="arrow"></b>
+						</li>
+						<li>
+							<a data-url="" menu-name= "人员审核" href="http://localhost:50001/mkmm/ui/personMainReview/list">
+								<i class="menu-icon"></i>人员审核</a>
+							<b class="arrow"></b>
+						</li>
+						<li>
+							<a data-url="" menu-name= "人员审核进度处理" href="http://localhost:50001/mkmm/ui/personMainReview/processlist">
+								<i class="menu-icon"></i>人员审核进度处理</a>
+							<b class="arrow"></b>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a href="#" menu-name= "销售计划管理" class="dropdown-toggle">
+						<i class="menu-icon fa fa-desktop"></i>
+						<span class="menu-text">销售计划管理</span>
+						<b class="arrow fa fa-angle-down"></b>
+
+					</a>
+					<b class="arrow"></b>
+					<ul class="submenu">
+						<li>
+							<a data-url="" menu-name= "计划查询" href="http://localhost:50001/mkmm/ui/personPlan/list">
+								<i class="menu-icon"></i>计划查询</a>
+							<b class="arrow"></b>
+						</li>
+						<li>
+							<a data-url="" menu-name= "计划上传" href="http://localhost:50001/mkmm/ui/personPlan/form">
+								<i class="menu-icon"></i>计划上传</a>
+							<b class="arrow"></b>
+						</li>
+                        <li>
+							<a data-url="" menu-name= "计划跟踪" href="http://localhost:50001/mkmm/ui/planTrack/list">
+								<i class="menu-icon"></i>计划跟踪</a>
+							<b class="arrow"></b>
+						</li>
+
+					</ul>
+				</li>
+				<li>
+					<a href="#" menu-name= "促销活动管理" class="dropdown-toggle">
+						<i class="menu-icon fa fa-desktop"></i>
+						<span class="menu-text">促销活动管理</span>
+						<b class="arrow fa fa-angle-down"></b>
+
+					</a>
+					<b class="arrow"></b>
+					<ul class="submenu">
+						<li>
+							<a data-url="" menu-name= "活动制定" href="http://localhost:50001/mkmm/ui/activeMain/list">
+								<i class="menu-icon"></i>活动制定</a>
+							<b class="arrow"></b>
+						</li>
+						<li>
+							<a data-url="" menu-name= "综合查询" href="http://localhost:50001/mkmm/ui/activeActivityAttach/list">
+								<i class="menu-icon"></i>综合查询</a>
+							<b class="arrow"></b>
+						</li>
+						<li>
+							<a data-url="" menu-name= "业务明细查询" href="http://localhost:50001/mkmm/ui/activeMatchDetail/list">
+								<i class="menu-icon"></i>业务明细查询</a>
+							<b class="arrow"></b>
+						</li>
+						<li>
+							<a data-url="" menu-name= "活动审核" href="http://localhost:50001/mkmm/ui/activeMainReview/list">
+								<i class="menu-icon"></i>活动审核</a>
+							<b class="arrow"></b>
+						</li>
+						<li>
+							<a data-url="" menu-name= "活动审核进度处理" href="http://localhost:50001/mkmm/ui/activeMainReview/processlist">
+								<i class="menu-icon"></i>活动审核进度处理</a>
+							<b class="arrow"></b>
+						</li>
+
+					</ul>
+				</li>
+				<li>
+					<a href="#" menu-name= "费用管理" class="dropdown-toggle">
+						<i class="menu-icon fa fa-desktop"></i>
+						<span class="menu-text">费用管理</span>
+						<b class="arrow fa fa-angle-down"></b>
+
+					</a>
+					<b class="arrow"></b>
+					<ul class="submenu">
+						<li>
+							<a data-url="" menu-name= "费用结算" href="http://localhost:50001/mkmm/ui/activeMatchMain/list">
+								<i class="menu-icon"></i>费用结算</a>
+							<b class="arrow"></b>
+						</li>
+						<li>
+							<a data-url="" menu-name= "费用动支审核" href="http://localhost:50001/mkmm/ui/feeMainReview/list">
+								<i class="menu-icon"></i>费用动支审核</a>
+							<b class="arrow"></b>
+						</li>
+						<li>
+							<a data-url="" menu-name= "费用动支审核进度处理" href="http://localhost:50001/mkmm/ui/feeMainReview/queryList">
+								<i class="menu-icon"></i>费用动支审核进度处理</a>
+							<b class="arrow"></b>
+						</li>
+					</ul>
+				</li>
+
+
+				<!--菜单暂时写死            end-->
+			</ul>
+			<div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
+				<i id="sidebar-toggle-icon"
+				   class="ace-icon fa fa-angle-double-left ace-save-state"
+				   data-icon1="ace-icon fa fa-angle-double-left"
+				   data-icon2="ace-icon fa fa-angle-double-right"></i>
+			</div>
+			<script type="text/javascript">
+
+                jQuery(function($) {
+                    //$("#framework_menu_tree").frameworkMenu({url : "/base/menu/allShow"});
+                    $(".nav-list a").click(function() {
+                        var url = $(this).attr("href");
+                        var menuName = $(this).attr("menu-name");
+                        var isMini =  $(this).attr("isMini");
+                        var menuId = $(this).attr("menuId");
+                        //异步加载
+                        if (url != '#') {
+                            //iframe
+                            //window.open(url, "mainFrame");
+                            //var $overlay = $('<div class="ajax-loading-overlay"><i class="ajax-loading-icon fa fa-spin fa-spinner fa-2x orange"></i></div>');
+                            if(url.indexOf("?") >= 0 ){
+                                url = url + "&portalTime=" + new Date().getTime();
+                            }else{
+                                url = url + "?portalTime=" + new Date().getTime();
+                            }
+                            $("#loading").show();
+                            $("#mainFrame").attr("src",url);
+                            $("#helpButton").attr("menuId",menuId);
+                            //$("#mainFrame").hide();
+                            //配置显示迷你菜单时，自动切换
+                            if(isMini == "1"){
+                                if(!$("#sidebar").hasClass("menu-min")){
+                                    $("#sidebar-toggle-icon").click();
+                                }
+                            }else{
+                                if($("#sidebar").hasClass("menu-min")){
+                                    $("#sidebar-toggle-icon").click();
+                                }
+                            }
+
+                            //设置面包屑
+                            $("#breadCrumb").html("");
+                            $(this).parents().each(function(obj) {
+                                if ($(this).get(0).tagName == "LI") {
+                                    $("#breadCrumb").prepend("<li>"+ $(this).children().attr("menu-name")+"</li>");
+                                }
+                            });
+                            $("#breadCrumb").prepend("<li><i class=\"ace-icon fa fa-home home-icon\"></i> <a href=\"/ui/comm/index\">首页</a></li>");
+                            var $overlay = $('<div class="ajax-loading-overlay"><i class="ajax-loading-icon fa fa-spin fa-spinner fa-2x orange"></i></div>');
+                            //清楚menuTree选中样式
+                            $(".nav-list li").each(function(index) {
+                                if ($(this).hasClass("open")) {
+                                    $(this).removeClass("open");
+                                }
+                                if ($(this).hasClass("active")) {
+                                    $(this).removeClass("active");
+                                }
+                            });
+                            //收起所有打开的ul下的li标签
+                            $(".nav-list ul").each(function(index) {
+                                $(this).css("display", "none");
+                            });
+                            //选中的li添加样式
+                            var $li = $(this).parent();
+                            $li.addClass("active");
+                            $(this).parents().each(function(obj) {
+                                if ($(this).eq(0).tagName = "UL") {
+                                    //打开当前ul下的li标签
+                                    $(this).css("display","block");
+                                }
+                                if ($(this).eq(0).tagName == "LI") {
+                                    $(this).addClass("active").addClass("open");
+                                }
+                            });
+                            return false;
+                        };
+                    });
+
+                });
+			</script>
+		</div>
+
+		<div class="main-content">
+			<div class="main-content-inner">
+				<div class="breadcrumbs ace-save-state" id="breadcrumbs">
+					<ul class="breadcrumb" id="breadCrumb">
+						<li>
+							<i class="ace-icon fa fa-home home-icon"></i>
+							<a href="${path}">首页</a>
+						</li>
+					</ul>
+					<div class="nav-search pull-right" id="nav-search">
+						<form class="form-search" id="searchTradeForm">
+								<span class="input-icon">
+									<input type="text" placeholder="快捷交易码" class="nav-search-input" id="tradeCode"  name="tradeCode" autocomplete="off"/>
+									<input type="hidden" name="tradeCode1">
+									<input type="hidden" name="tradeCode2">
+									<i class="ace-icon fa fa-keyboard-o nav-search-icon"></i>
+								</span>
+						</form>
+					</div>
+				</div>
+				<div id="loading">
+					<div class="ajax-loading-overlay">
+						<div style="margin-top: 15%;" class="center"><i class="ace-icon fa fa-spinner fa-spin orange" style="font-size: 575% "></i></div>
+					</div>
+				</div>
+				<iframe id="mainFrame" name="mainFrame" onreadystatechange='stateChangeIE(this)'  onload='stateChangeFirefox(this)' scrolling="no" frameborder="no" width="100%" height="1000" ></iframe>
+			</div>
+		</div>
+		<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+			<i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+		</a>
+	</div>
+	<script type="text/javascript">
+		/** 用户数据没有 先注释
+        $(function() {
+            $("#loading").hide();
+            $.ajax('/base/user/getUser', {
+                method: 'get',
+                dataType: 'json',
+                success: function(obj) {
+                    var html="";
+                    var result = obj.result;
+                    html+='<i class="ace-icon fa fa-user"></i>您好，'+result.loginName+'<i class="ace-icon fa fa-caret-down"></i>';
+                    $("#loginUser").html(html);
+
+                    function p(s) {
+                        return s < 10 ? '0' + s: s;
+                    }
+                    var myDate = new Date();
+                    var year=myDate.getFullYear();
+                    var month=myDate.getMonth()+1;
+                    var date=myDate.getDate();
+                    var now=year+'-'+p(month)+"-"+p(date);
+                    var dateHtml="";
+                    dateHtml+='<i class="ace-icon fa fa-clock-o"></i>'+now;
+                    $("#today").html(dateHtml);
+                    $("#mpwd").attr("href","/ui/user/modifyPwd?loginName="+result.loginName);
+                    $("#person").attr("href","/ui/user/info?loginName="+result.loginName+"&id="+result.id);
+                }
+            });
+        });
+		 **/
+        function logout() {
+//            $.ajax('/auth/logout', {
+//                method: 'post',
+//                dataType: 'json',
+//                success: function() {
+//                    window.location.href = '/ui/comm/login';
+//                }
+//            });
+        }
+	</script>
+</body>
+</html>

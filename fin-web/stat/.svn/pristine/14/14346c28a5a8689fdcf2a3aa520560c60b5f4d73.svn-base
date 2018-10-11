@@ -1,0 +1,109 @@
+<style lang="less">
+    @import '../../../styles/common.less';
+</style>
+<template>
+    <div>
+        <Form :label-width="100">
+            <Card>
+                <p slot="title">
+                    <Icon type="search"></Icon>
+                    团队基本信息
+                </p>
+                <Row>
+                    <Col span="8" offset="2">
+                        <FormItem label="指标代码:" prop="indicators.indicatorcode">
+                            <!--<Input   v-model="teamEventViewData.indicatorcode" style="width:200px" disabled></Input>-->
+                            <Input   v-model="teamEventViewData.indicators.indicatorcode" style="width:200px" disabled></Input>
+                        </FormItem>
+                    </Col>
+                    <Col span="8" offset="2">
+                        <FormItem label="指标名称:"  prop="indicators.indicatorname">
+                            <!--<Input  v-model="teamEventViewData.indicatorname" style="width:200px" disabled></Input>-->
+                            <Input  v-model="teamEventViewData.indicators.indicatorname" style="width:200px" disabled></Input>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span="8" offset="2">
+                        <FormItem label="上限:" prop="topvalue">
+                            <Input  v-model="teamEventViewData.topvalue" style="width:200px" disabled></Input>
+                        </FormItem>
+                    </Col>
+                    <Col span="8" offset="2">
+                        <FormItem label="下限:" prop="lowervalue">
+                            <Input   v-model="teamEventViewData.lowervalue" style="width:200px" disabled></Input>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span="8" offset="2">
+                        <FormItem label="区域范围:" prop="areatype">
+                            <Input   v-model="teamEventViewData.areatype" style="width:200px" disabled></Input>
+                        </FormItem>
+                    </Col>
+                    <Col span="8" offset="2">
+                        <FormItem label="区域:" prop="areacode">
+                            <Input   v-model="teamEventViewData.areacode" style="width:200px" disabled></Input>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span="8" offset="2">
+                        <FormItem label="维度类别:"  prop="dimtype">
+                            <Input   v-model="teamEventViewData.dimtype" style="width:200px" disabled></Input>
+                        </FormItem>
+                    </Col>
+                    <Col span="8" offset="2">
+                        <FormItem label="维度代码:" prop="dimcode">
+                            <Input   v-model="teamEventViewData.dimcode" style="width:200px" disabled></Input>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span="4" offset="9">
+                        <Button type="primary" icon="reply" @click.prevent="pageBack">返回</Button>
+                    </Col>
+                </Row>
+            </Card>
+        </Form>
+    </div>
+</template>
+<script>
+    import { mapActions, mapState } from 'vuex';
+    import {resetWorkHeight} from '@/libs/util.js';
+    export default{
+        name: 'indicatorRangesView',
+        data () {
+            return {
+            };
+        },
+        computed: {
+            ...mapState({
+                loading: ({indicatorRangesView}) => indicatorRangesView.loading,
+                teamEventViewData: ({indicatorRangesView}) => indicatorRangesView.teamEventViewData
+            })
+        },
+        methods: {
+            ...mapActions([
+                'handelQueryTeamEventById2'
+            ]),
+            init () {
+                this.queryTeamEventById(this.$route.query.id);
+                console.log(this.$route.query.id);
+                resetWorkHeight();
+            },
+            queryTeamEventById (id) {
+                this.handelQueryTeamEventById2(id);
+                console.log(this.teamEventViewData);
+            },
+            pageBack () {
+                this.$router.push({name: 'indicatorRangesList'});
+            }
+        },
+        mounted () {
+            this.init();
+        }
+    };
+</script>
+
+

@@ -1,0 +1,211 @@
+<style lang="less">
+    @import '../../../styles/common.less';
+</style>
+<template>
+    <div>
+        <Form ref="teData" :rules="ruleValidate" :model="teData"  :label-width="100">
+            <Card>
+                <p slot="title">
+                    <Icon type="search"></Icon>
+                    指标基本信息
+                </p>
+                <Row>
+                    <Col span="8" offset="2" >
+                        <FormItem label="指标名称:"  prop="indicators.indicatorname">
+                            <Input  v-model="teData.indicators.indicatorname" style="width:200px" disabled></Input>
+                        </FormItem>
+                    </Col>
+                    <Col span="8" offset="2">
+                        <FormItem label="指标代码:" prop="indicators.indicatorcode">
+                            <Input   v-model="teData.indicators.indicatorcode" style="width:200px" disabled></Input>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span="8" offset="2" >
+                        <FormItem label="上限:" prop="topvalue">
+                            <Input  v-model="teData.topvalue" style="width:200px" ></Input>
+                        </FormItem>
+                    </Col>
+                    <Col span="8" offset="2" >
+                        <FormItem label="下限:" prop="lowervalue">
+                            <Input   v-model="teData.lowervalue" style="width:200px" ></Input>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span="8" offset="2">
+                        <FormItem label="信号灯:" prop="signallamp">
+                            <Select v-model="teData.signallamp" style="width:200px">
+                                <Option v-for="item in cityList3" :value="item.value" :key="item.value" >
+                                    {{ item.label}}
+                                </Option>
+                            </Select>
+                        </FormItem>
+                    </Col>
+                    <Col span="8" offset="2">
+                        <FormItem label="区域范围:" prop="areatype">
+                            <Select v-model="teData.areatype" style="width:200px">
+                                <Option v-for="item in hData.AreaType" :value="item.areatype" :key="item.value">{{ item.areatype
+                                    }}
+                                </Option>
+                            </Select>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span="8" offset="2">
+                        <FormItem label="区域:" prop="areacode">
+                            <Select v-model="teData.areacode" style="width:200px">
+                                <Option v-for="item in hData.AreaCode" :value="item.areacode" :key="item.value">{{ item.areacode
+                                    }}
+                                </Option>
+                            </Select>
+                        </FormItem>
+                    </Col>
+                    <Col span="8" offset="2">
+                        <FormItem label="维度类别:" prop="dimtype">
+                            <Select v-model="teData.dimtype" style="width:200px">
+                                <Option v-for="item in hData.DimType" :value="item.dimtype" :key="item.value">{{ item.dimtype
+                                    }}
+                                </Option>
+                            </Select>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span="8" offset="2">
+                        <FormItem label="维度代码:" prop="dimcode">
+                            <Select v-model="teData.dimcode" style="width:200px">
+                                <Option v-for="item in hData.DimCode" :value="item.dimcode" :key="item.value">{{ item.dimcode
+                                    }}
+                                </Option>
+                            </Select>
+                        </FormItem>
+                    </Col>
+                    <Col span="8" offset="2">
+                        <FormItem label="备注:" prop="remark">
+                            <Input placeholder="请输入备注" v-model="teData.remark" style="width:200px"></Input>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span="4" offset="9">
+                        <Button type="warning" icon="checkmark" @click="EditSubToRev('teData')" :loading="loading">修改</Button>
+                    </Col>
+                    <Col span="4" >
+                        <Button type="primary" icon="reply" @click.prevent="pageBack">返回</Button>
+                    </Col>
+                </Row>
+            </Card>
+        </Form>
+    </div>
+</template>
+<script>
+    import { mapActions, mapState } from 'vuex';
+    import {resetWorkHeight, getUserCookie, formatDate} from '@/libs/util.js';
+    export default{
+        name: 'indicatorRangesEdit',
+        data () {
+            const validatePatmentEndCheck = (rule, value, callback) => {
+                if (value.length > 265) {
+                    callback(new Error('事项内容最大长度265!'));
+                }
+                callback();
+            };
+            return {
+                ruleValidate: {
+                    code: [
+                        { required: true, message: '请输入指标类型代码!', trigger: 'blur' }
+                    ],
+                    name: [
+                        { required: true, message: '请输入指标类型名称!', trigger: 'blur' }
+                    ],
+                    remark: [
+                        { required: true, message: '请输入备注!', trigger: 'blur' },
+                        { validator: validatePatmentEndCheck }
+                    ]
+                },
+                cityList3: [{
+                    value: '0',
+                    label: '绿'
+                },
+                {
+                    value: '1',
+                    label: '黄'
+                },
+                {
+                    value: '2',
+                    label: '红'
+                }
+                ]
+            };
+        },
+        computed: {
+            ...mapState({
+                loading: ({indicatorRangesEdit}) => indicatorRangesEdit.loading,
+                hData: ({indicatorRangesEdit}) => indicatorRangesEdit.hData,
+                teData: ({indicatorRangesEdit}) => indicatorRangesEdit.teData,
+                isSuccess: ({indicatorRangesEdit}) => indicatorRangesEdit.isSuccess,
+                teamMsg: ({indicatorRangesEdit}) => indicatorRangesEdit.teamMsg
+            })
+        },
+        methods: {
+            ...mapActions([
+                'handelQueryEventById',
+                'handleEditS',
+                'handelFive'
+            ]),
+            queryTeamEventById2 () {
+                this.handelFive().then(res => {});
+                console.log(this.hData);
+            },
+            init () {
+                this.queryTeamEventEditById(this.$route.query.id);
+                this.queryTeamEventById2();
+                resetWorkHeight();
+            },
+            queryTeamEventEditById (id) {
+                this.handelQueryEventById(id).then(res => {
+                });
+            },
+            EditSubToRev (name) { // 提交审核
+                this.$refs[name].validate((valid) => {
+                    if (valid) {
+                        const user = getUserCookie();
+                        this.teData.createName = user.name;
+                        this.teData.modifier = user.id;
+                        this.teData.modifyTime = formatDate(new Date(), 'yyyy-MM-dd');
+                        console.log(this.teData);// 此数据提交
+                        this.handleEditS(this.teData).then(res => {
+                            if (this.isSuccess) {
+                                this.$Modal.success({
+                                    title: '修改',
+                                    content: this.teamMsg,
+                                    onOk: () => {
+                                        this.$router.push({name: 'indicatorRangesList'});
+                                    }
+                                });
+                            } else {
+                                this.$Modal.error({
+                                    title: '提示',
+                                    content: this.teamMsg
+                                });
+                            }
+                        });
+                    } else {
+                        this.$Message.error('验证错误!');
+                    }
+                });
+            },
+            pageBack () {
+                this.$router.push({name: 'indicatorRangesList'});
+            }
+        },
+        mounted () {
+            this.init();
+        }
+    };
+</script>
+
+

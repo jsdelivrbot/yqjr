@@ -1,0 +1,10 @@
+management:
+  security:
+    enabled: false
+    
+spring:
+  zipkin:
+    base-url: http://localhost:50121
+  sleuth:
+    sampler:
+      percentage: 1.0

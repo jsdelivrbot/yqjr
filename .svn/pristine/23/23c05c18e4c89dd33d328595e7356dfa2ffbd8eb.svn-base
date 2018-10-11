@@ -1,0 +1,142 @@
+<style lang="less">
+    @import '../../../styles/common.less';
+</style>
+<template>
+    <div>
+        <Form ref="teamEventEditData"  :rules="ruleValidate" :model="teamEventEditData"  :label-width="100">
+            <Card>
+                <p slot="title">
+                    <Icon type="edit"></Icon>
+                    团队基本信息
+                </p>
+                <Row>
+                    <Col span="8" offset="2">
+                        <FormItem label="事项年度：" >
+                            <Input v-model="teamEventEditData.eventYear" disabled ></Input>
+                        </FormItem>
+                    </Col>
+                    <Col span="8" offset="2">
+                        <FormItem label="处理单位" >
+                            <Input v-model="teamEventEditData.eventApart" disabled ></Input>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span="8" offset="2">
+                        <FormItem label="事项分类：" >
+                            <Select v-model="teamEventEditData.eventType" style="width:100%" disabled>
+                                <Option v-for="item in eventTypeList" :value="item.value" :key="item.value">{{ item.label }}</Option>
+                            </Select>
+                        </FormItem>
+                    </Col>
+                    <Col span="8" offset="2">
+                        <FormItem label="处理时间：" >
+                            <Input v-model="teamEventEditData.createTime" disabled ></Input>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span="18" offset="2">
+                        <FormItem label="事项内容：" prop="eventText">
+                            <Input v-model="teamEventEditData.eventText" type="textarea" style="width: 100%" :autosize="{minRows: 2,maxRows: 6}"></Input>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span="4" offset="9">
+                        <Button type="primary" icon="checkmark" @click="teamEventEditSubToRev('teamEventEditData')" :loading="loading">提交</Button>
+                    </Col>
+                    <Col span="4" >
+                        <Button type="primary" icon="reply" @click.prevent="pageBack">返回</Button>
+                    </Col>
+                </Row>
+            </Card>
+        </Form>
+    </div>
+</template>
+<script>
+    import { mapActions, mapState } from 'vuex';
+    import {resetWorkHeight} from '@/libs/util.js';
+    export default{
+        name: 'teamEventEdit',
+        data () {
+            const validatePatmentEndCheck = (rule, value, callback) => {
+                if (value.length > 265) {
+                    callback(new Error('事项内容最大长度265!'));
+                }
+                callback();
+            };
+            return {
+                ruleValidate: {
+                    eventText: [
+                        { validator: validatePatmentEndCheck }
+                    ]
+                },
+                eventTypeList: [{
+                    value: '0',
+                    label: '奖励'
+                }, {
+                    value: '1',
+                    label: '处罚'
+                }, {
+                    value: '2',
+                    label: '其他'
+                }]
+            };
+        },
+        computed: {
+            ...mapState({
+                loading: ({teamEventEdit}) => teamEventEdit.loading,
+                teamEventEditData: ({teamEventEdit}) => teamEventEdit.teamEventEditData,
+                isSuccess: ({teamEventEdit}) => teamEventEdit.isSuccess,
+                teamEventEditMsg: ({teamEventEdit}) => teamEventEdit.teamEventEditMsg
+            })
+        },
+        methods: {
+            ...mapActions([
+                'handelQueryTeamEventById',
+                'handleTeamEventEditSubToRev'
+            ]),
+            init () {
+                this.queryTeamEventEditById(this.$route.query.id);
+                resetWorkHeight();
+            },
+            queryTeamEventEditById (id) {
+                this.handelQueryTeamEventById(id).then(res => {
+                });
+            },
+            teamEventEditSubToRev (name) { // 提交审核
+                delete this.teamEventEditData.createTime;
+                console.log(this.teamEventEditData);// 此数据提交
+                this.$refs[name].validate((valid) => {
+                    if (valid) {
+                        this.handleTeamEventEditSubToRev(this.teamEventEditData).then(res => {
+                            if (this.isSuccess) {
+                                this.$Modal.success({
+                                    title: '消息',
+                                    content: this.teamEventEditMsg,
+                                    onOk: () => {
+                                        this.$router.push({name: 'teamEventList'});
+                                    }
+                                });
+                            } else {
+                                this.$Modal.error({
+                                    title: '消息',
+                                    content: this.teamEventEditMsg
+                                });
+                            }
+                        });
+                    } else {
+                        this.$Message.error('验证错误!');
+                    }
+                });
+            },
+            pageBack () {
+                this.$router.push({name: 'teamEventList'});
+            }
+        },
+        mounted () {
+            this.init();
+        }
+    };
+</script>

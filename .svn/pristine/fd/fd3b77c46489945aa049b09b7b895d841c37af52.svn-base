@@ -1,0 +1,720 @@
+<style lang="less">
+    @import '../../../styles/common.less';
+</style>
+<template>
+    <div>
+        <Form  ref="activeReviewCheckDate" :label-width="140" :rules="ruleValidate"  :model="activeReviewCheckDate">
+            <Card>
+                <p slot="title">
+                    <Icon type="search"></Icon>
+                    促销活动信息
+                </p>
+                <Row>
+                    <Col span="8" offset="2">
+                        <FormItem label="归属区域名称：" >
+                            <Input v-model="activeReviewViewDataResult.ativeMain.areaName" disabled ></Input>
+                        </FormItem>
+                    </Col>
+                    <Col span="8" offset="2">
+                        <FormItem label="活动代码：" >
+                            <Input v-model="activeReviewViewDataResult.ativeMain.activeCode" disabled ></Input>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span="8" offset="2">
+                        <FormItem label="活动名称：" >
+                            <Input v-model="activeReviewViewDataResult.ativeMain.activeName" disabled></Input>
+                        </FormItem>
+                    </Col>
+                    <Col span="8" offset="2">
+                        <FormItem label="首付比例(%)：" >
+                            <Row>
+                                <Col span="11">
+                                    <Input v-model="activeReviewViewDataResult.ativeMain.patmentBegin" :max="100" :min="1" disabled style="width: 100%"></Input>
+                                </Col>
+                                <Col span="2" style="text-align: center">-</Col>
+                                <Col span="11">
+                                    <FormItem >
+                                        <Input v-model="activeReviewViewDataResult.ativeMain.patmentEnd" :max="100" :min="1" disabled style="width: 100%"></Input>
+                                    </FormItem>
+                                </Col>
+                            </Row>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span="8" offset="2">
+                        <FormItem label="贷款金额(元)：" >
+                            <Row>
+                                <Col span="11">
+                                    <Input v-model="activeReviewViewDataResult.ativeMain.loanAmtBegin" :min="1" disabled style="width: 100%"></Input>
+                                </Col>
+                                <Col span="2" style="text-align: center">-</Col>
+                                <Col span="11">
+                                    <Input v-model="activeReviewViewDataResult.ativeMain.loanAmtEnd" :min="1" disabled style="width: 100%"></Input>
+                                </Col>
+                            </Row>
+                        </FormItem>
+                    </Col>
+                    <Col span="8" offset="2">
+                        <FormItem label="贷款期限(月)：" >
+                            <Row>
+                                <Col span="11">
+                                    <Input v-model="activeReviewViewDataResult.ativeMain.loanTermBegin" :min="1" disabled style="width: 100%"></Input>
+                                </Col>
+                                <Col span="2" style="text-align: center">-</Col>
+                                <Col span="11">
+                                    <Input v-model="activeReviewViewDataResult.ativeMain.loanTermEnd" :min="1" disabled style="width: 100%"></Input>
+                                </Col>
+                            </Row>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span="8" offset="2">
+                        <FormItem label="受理开始日期：">
+                            <DatePicker type="date" v-model="activeReviewViewDataResult.ativeMain.activeStartime" disabled style="width: 100%"></DatePicker>
+                        </FormItem>
+                    </Col>
+                    <Col span="8" offset="2">
+                        <FormItem label="受理截至日期：">
+                            <DatePicker  type="date" v-model="activeReviewViewDataResult.ativeMain.activeEndtime" disabled style="width: 100%"></DatePicker>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span="8" offset="2">
+                        <FormItem label="放款开始日期：">
+                            <DatePicker type="date" v-model="activeReviewViewDataResult.ativeMain.loanStartime" disabled style="width: 100%"></DatePicker>
+                        </FormItem>
+                    </Col>
+                                <!--<Col span="2" style="text-align: center">-</Col>-->
+                        <Col span="8" offset="2">
+                            <FormItem label="放款截至日期：">
+                                    <DatePicker  type="date"  v-model="activeReviewViewDataResult.ativeMain.loanEndtime" disabled style="width: 100%"></DatePicker>
+                            </FormItem>
+                        </Col>
+                </Row>
+                <Row>
+                    <Col span="8" offset="2">
+                        <FormItem label="车籍：" >
+                            <Select v-model="activeReviewViewDataResult.ativeMain.carReg"  style="width:100%" disabled>
+                                <Option value="00">全部</Option>
+                                <Option value="01">法人</Option>
+                                <Option value="02">自然人</Option>
+                            </Select>
+                        </FormItem>
+                    </Col>
+                    <Col span="8" offset="2">
+                        <FormItem label="促销活动激励标准：" >
+                            <Input v-model="activeReviewViewDataResult.ativeMain.avtiveCriterion" disabled ></Input>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span="8" offset="2">
+                        <FormItem label="预计活动笔数：" >
+                            <Input v-model="activeReviewViewDataResult.ativeMain.expectedCount" disabled></Input>
+                        </FormItem>
+                    </Col>
+                    <Col span="8" offset="2">
+                        <FormItem label="经销商导入：" >
+                            <Select v-model="activeReviewViewDataResult.ativeMain.inputDeale" disabled>
+                                <Option value="1">是</Option>
+                                <Option value="0">否</Option>
+                            </Select>
+                        </FormItem>
+                    </Col>
+                </Row>
+            </Card>
+            <Card class="margin-top-10" v-show="showFlag.dealerFlag">
+                <p slot="title">
+                    <Icon type="search"></Icon>
+                    经销商信息
+                </p>
+                <Row>
+                    <Col span="17" offset="3">
+                        <Table :columns="dealerColumns" :data="activeReviewViewDataResult.ativeDealeList"></Table>
+                    </Col>
+                </Row>
+            </Card>
+            <Card class="margin-top-10" v-show="showFlag.areaFlag">
+                <p slot="title">
+                    <Icon type="search"></Icon>
+                    区域信息
+                </p>
+                <Row>
+                    <Col span="8" offset="2">
+                        <FormItem label="活动范围：" >
+                            <Select v-model="activeReviewViewDataResult.ativeMain.inputArea" style="width:100%" placeholder = "全部" disabled>
+                                <Option value="1" >区域</Option>
+                                <Option value="0" >省市</Option>
+                            </Select>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row v-show="showFlag.areaRow">
+                    <Col span="18" offset="2">
+                        <FormItem label="活动区域：" >
+                            <!--<Input v-model="activeReviewViewData.areaName" style="width:100%" disabled multiple></Input>-->
+                            <Select v-model="activeReviewViewDataResult.areasList" style="width:100%" disabled multiple>
+                                <Option v-for="item in activeReviewViewAreaListData" :value="item.value" :key="item.value">{{ item.label }}</Option>
+                            </Select>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row v-show="showFlag.cityRow">
+                    <Row>
+                        <Col span="18" offset="2">
+                            <FormItem label="活动省份：" >
+                                <Select v-model="activeReviewViewDataResult.provincesList" style="width:100%" disabled multiple >
+                                    <Option v-for="item in activeReviewViewProvinceListData" :value="item.value" :key="item.value">{{ item.label }}</Option>
+                                </Select>
+                            </FormItem>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col span="18" offset="2">
+                            <FormItem label="活动城市：" >
+                                <Select v-model="activeReviewViewDataResult.cityList" style="width:100%" disabled multiple>
+                                    <Option v-for="item in activeReviewViewCityListData" :value="item.value" :key="item.value">{{ item.label }}</Option>
+                                </Select>
+                            </FormItem>
+                        </Col>
+                    </Row>
+                </Row>
+            </Card>
+            <Card class="margin-top-10">
+                <p slot="title">
+                    <Icon type="search"></Icon>
+                    品牌信息
+                </p>
+                <Row >
+                    <Col span="18" offset="2">
+                        <FormItem label="活动品牌：" >
+                            <Select v-model="activeReviewViewDataResult.brandsCode" style="width:100%" disabled >
+                                <Option v-for="item in activeReviewViewBrandsListData" :value="item.value" :key="item.value">{{ item.label }}</Option>
+                            </Select>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row >
+                    <Col span="18" offset="2">
+                        <FormItem label="活动子品牌：" >
+                            <Select v-model="activeReviewViewDataResult.seriesList" style="width:100%" disabled multiple>
+                                <Option v-for="item in activeReviewViewSeriesListData" :value="item.value" :key="item.value">{{ item.label }}</Option>
+                            </Select>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row >
+                    <Col span="18" offset="2">
+                        <FormItem label="活动车型：" >
+                            <Select v-model="activeReviewViewData.moderList" style="width:100%" disabled multiple>
+                                <Option v-for="item in activeReviewViewModerListData" :value="item.value" :key="item.value">{{ item.label }}</Option>
+                            </Select>
+                        </FormItem>
+                    </Col>
+                </Row>
+            </Card>
+            <Card class="margin-top-10">
+                <p slot="title">
+                    <Icon type="search"></Icon>
+                    产品信息
+                </p>
+                <Row >
+                    <Col span="18" offset="2">
+                        <FormItem label="金融产品：" >
+                            <Select v-model="activeReviewViewDataResult.financeProdCodeList" style="width:100%" disabled multiple>
+                                <Option v-for="item in activeReviewViewAllProductListData.financeCodes" :value="item.value" :key="item.value">{{ item.label }}</Option>
+                            </Select>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row >
+                    <Col span="18" offset="2">
+                        <FormItem label="业务模式：" >
+                            <Select v-model="activeReviewViewDataResult.businessCodeList" style="width:100%" disabled multiple>
+                                <Option v-for="item in activeReviewViewAllProductListData.businessCodes" :value="item.value" :key="item.value">{{ item.label }}</Option>
+                            </Select>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row >
+                    <Col span="18" offset="2">
+                        <FormItem label="信贷产品：" >
+                            <Select v-model="activeReviewViewDataResult.creditProdCodeList" style="width:100%" disabled multiple>
+                                <Option v-for="item in activeReviewViewAllProductListData.creditCodes" :value="item.value" :key="item.value">{{ item.label }}</Option>
+                            </Select>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row >
+                    <Col span="18" offset="2">
+                        <FormItem label="营销活动：" >
+                            <Select v-model="activeReviewViewDataResult.marketingCodeList" style="width:100%" disabled multiple>
+                                <Option v-for="item in activeReviewViewAllProductListData.marketingCodes" :value="item.value" :key="item.value">{{ item.label }}</Option>
+                            </Select>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row >
+                    <Col span="6" offset="2" >
+                        <FormItem label="附加贷：" >
+                            <Select v-model="activeReviewViewDataResult.ativeMain.additionFlag"  style="width:100%" disabled>
+                                <Option value="0">否</Option>
+                                <Option value="1">是</Option>
+                            </Select>
+                        </FormItem>
+                    </Col>
+                    <Col span="8" offset="2" v-show="showFlag.additionFlag">
+                        <FormItem label="附加贷金额：" >
+                            <Row>
+                                <Col span="11">
+                                    <Input v-model="activeReviewViewDataResult.ativeMain.additionAmtBegin"  disabled ></Input>
+                                </Col>
+                                <Col span="2" style="text-align: center">-</Col>
+                                <Col span="11">
+                                    <Input v-model="activeReviewViewDataResult.ativeMain.additionAmtEnd"  disabled ></Input>
+                                </Col>
+                            </Row>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row v-show="showFlag.additionFlag">
+                    <Col span="15" offset="2">
+                        <FormItem label="附加贷子项：" >
+                            <Select v-model="activeReviewViewDataResult.AdditionalList" style="width:100%" disabled multiple>
+                                <Option v-for="item in activeReviewViewAllProductListData.additionalCodes" :value="item.value" :key="item.value">{{ item.label }}</Option>
+                            </Select>
+                        </FormItem>
+                    </Col>
+                </Row>
+            </Card>
+            <Card class="margin-top-10">
+                <p slot="title">
+                    <Icon type="search"></Icon>
+                    附件信息
+                </p>
+                <Row>
+                    <Col span="8" offset="2">
+                        <FormItem label="附件列表：" >
+                            <Button type="success" @click="btn_add_appendix">查看附件</Button>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span="18" offset="2">
+                        <FormItem label="备注：" >
+                            <Input v-model="activeReviewViewDataResult.ativeMain.remark" type="textarea" style="width: 100%" :autosize="{minRows: 2,maxRows: 6}" disabled></Input>
+                        </FormItem>
+                    </Col>
+                </Row>
+            </Card>
+            <!--<Card class="margin-top-10">-->
+                <!--<p slot="title">-->
+                    <!--<Icon type="search"></Icon>-->
+                    <!--费用信息-->
+                <!--</p>-->
+                <!--<Row>-->
+                    <!--<Col span="8" offset="2">-->
+                        <!--<FormItem label="应付金额(元)：" >-->
+                            <!--<Input v-model="activeReviewViewDataResult.maxBillFee" disabled ></Input>-->
+                        <!--</FormItem>-->
+                    <!--</Col>-->
+                    <!--<Col span="8" offset="2">-->
+                        <!--<FormItem label="调整金额(元)：" prop="billFee">-->
+                            <!--<Input v-model="activeReviewViewDataResult.billFee"  disabled></Input>-->
+                        <!--</FormItem>-->
+                    <!--</Col>-->
+                <!--</Row>-->
+                <!--<Row>-->
+                    <!--<Col span="18" offset="2">-->
+                        <!--<FormItem label="备注：" prop="remark2">-->
+                            <!--<Input v-model="activeReviewViewDataResult.remark2" type="textarea" style="width: 100%" :autosize="{minRows: 2,maxRows: 6}" disabled></Input>-->
+                        <!--</FormItem>-->
+                    <!--</Col>-->
+                <!--</Row>-->
+            <!--</Card>-->
+            <Card class="margin-top-10" v-show="showFlag.reviewMsg">
+                <p slot="title">
+                    <Icon type="edit" ></Icon>
+                    审核意见
+                </p>
+                <Row>
+                    <Col span="8" offset="2">
+                <FormItem label="审核结果：">
+                        <Select v-model="activeReviewCheckDate.reviewStatus" @on-change='changeStatusOne' style="width:100%">
+                            <Option value="04">通过</Option>
+                            <Option value="00">驳回</Option>
+                        </Select>
+                </FormItem>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span="18" offset="2">
+                        <FormItem label="审核意见：" prop="opinion">
+                            <Input v-model="opinionData" type="textarea" style="width: 100%" :autosize="{minRows: 2,maxRows: 6}"></Input>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Col offset="10">
+                    <Button type="primary" icon="checkmark" :loading="loading" @click="handleSubmitReivew('activeReviewCheckDate')">审核</Button>
+                </Col>
+                <Col span="4" offset="13">
+                    <Button type="primary" icon="reply" style="position: absolute; top: -33px" @click.prevent="pageBack">返回</Button>
+                </Col>
+            </Card>
+        </Form>
+    </div>
+</template>
+
+<script>
+    import { mapActions, mapState } from 'vuex';
+    import {resetWorkHeight, formatDate, getUserCookie, isEmpty} from '@/libs/util.js';
+    export default {
+        name: 'activeReviewEdit',
+        data () {
+            const validateOpinionCheck = (rule, value, callback) => {
+                if (!isEmpty(this.opinionData)) {
+                    if (this.opinionData.length > 265) {
+                        callback(new Error('审核意见最大长度265!'));
+                    }
+                } else {
+                    callback(new Error('请输入审核意见!'));
+                }
+                callback();
+            };
+            return {
+                opinionData: '同意',
+                DataMes: {
+                    id: 0,
+                    folowId: 0
+                },
+                showFlag: {
+                    dealerFlag: false,
+                    areaFlag: false,
+                    areaRow: false,
+                    cityRow: false,
+                    additionFlag: false,
+                    reviewMsg: false
+                },
+                ruleValidate: {
+                    opinion: [
+                        { required: true, message: '审核意见不能为空111!', trigger: 'blur' },
+                        { validator: validateOpinionCheck }
+                    ]
+                },
+                dealerColumns: [
+                    {
+                        title: '经销商代码',
+                        align: 'center',
+                        key: 'dealerCode'
+                    }, {
+                        title: '经销商名称',
+                        align: 'center',
+                        key: 'dealerName'
+                    }, {
+                        title: '活动上限/辆',
+                        align: 'center',
+                        key: 'activeNumber'
+                    }
+                ]
+            };
+        },
+        computed: {
+            ...mapState({
+                activeReviewViewDataResult: ({activeReviewEdit}) => activeReviewEdit.activeReviewViewDataResult,
+                activeReviewCheckDate: ({activeReviewEdit}) => activeReviewEdit.activeReviewCheckDate,
+                activeReviewViewProvinceListData: ({activeReviewEdit}) => activeReviewEdit.activeReviewViewProvinceListData, // 默认加载全部省份
+                activeReviewViewCityListData: ({activeReviewEdit}) => activeReviewEdit.activeReviewViewCityListData, // 默认加载全部城市
+                activeReviewViewBrandsListData: ({activeReviewEdit}) => activeReviewEdit.activeReviewViewBrandsListData, // 加载所有活动品牌
+                activeReviewViewSeriesListData: ({activeReviewEdit}) => activeReviewEdit.activeReviewViewSeriesListData, // 加载所有子品牌
+                activeReviewViewModerListData: ({activeReviewEdit}) => activeReviewEdit.activeReviewViewModerListData, // 根据子品牌加载车型
+                activeReviewViewAllProductListData: ({activeReviewEdit}) => activeReviewEdit.activeReviewViewAllProductListData, // 加载所有产品模块信息
+                activeReviewViewData: ({activeReviewEdit}) => activeReviewEdit.activeReviewViewData,
+                activeReviewViewAreaListData: ({activeReviewEdit}) => activeReviewEdit.activeReviewViewAreaListData,
+                isSuccess: ({activeReviewEdit}) => activeReviewEdit.isSuccess,
+                loading: ({activeReviewEdit}) => activeReviewEdit.loading,
+                msg: ({activeReviewEdit}) => activeReviewEdit.msg
+            })
+        },
+        methods: {
+            ...mapActions([
+                'handleSearchDateById',
+                'handleSearchProvinceList',
+                'handelActiveReviewAreaList',
+                'handleSearchCityList',
+                'handleSearchBrandsList',
+                'handleSearchSeriesList',
+                'handleSearchModerCode',
+                'handelActiveReviewAllProductList',
+                'handleSendReviewAction',
+                'handleChangeStatus'
+            ]),
+            init () {
+                this.searchAreaList();
+                this.searchProvinceList();
+                this.searchBrandsList();
+                this.searchActiveProductList();
+                this.searchDateByIdForActiveReview(this.$route.query.id);
+            },
+            /**
+             * 查询活动所有数据
+             */
+            searchDateByIdForActiveReview (data) {
+                this.handleSearchDateById(data).then(res => {
+                    this.activeReviewCheckDate.reviewStatus = '04';
+                    if (this.activeReviewViewDataResult.ativeMain.inputDeale === '0') {
+                        this.showFlag.areaFlag = true;
+                        if (this.activeReviewViewDataResult.ativeMain.inputArea === '1') {
+                            this.showFlag.areaRow = true;
+                            this.complidAreaList();
+                            this.showFlag.cityRow = false;
+                        } else {
+                            this.showFlag.areaRow = false;
+                            this.showFlag.cityRow = true;
+                            this.complidProvinceList();
+                            this.SearchCityList();
+                            this.complidCityList();
+                        };
+                    } else { // 有经销商导入
+                        this.showFlag.dealerFlag = true;
+                        this.showFlag.areaRow = false;
+                        this.showFlag.cityRow = false;
+                        this.showFlag.areaFlag = false;
+                    };
+                    if (this.activeReviewViewDataResult.ativeMain.additionFlag === '1') {
+                        this.showFlag.additionFlag = true;
+                    } else {
+                        this.activeReviewViewDataResult.ativeMain.additionFlag = '0';
+                    };
+                    var id = this.$route.query.id;
+                    this.DataMes.id = id;
+                    this.DataMes.folowId = this.activeReviewViewDataResult.ativeMain.folowId;
+                    this.showFlag.reviewMsg = true;
+                    this.showFlag.button1 = true;
+                    if (this.activeReviewViewDataResult.ativeMain.reviewStatus === '02') {
+                        this.handleChangeStatus(this.DataMes).then(res => {
+                            // this.$Modal.success({
+                            //     title: '信息',
+                            //     content: '该信息已经在审核中',
+                            //     onOk: () => {
+                            //         this.$router.push({name: 'activeReviewList'});
+                            //     }
+                            // });
+                        });
+                    }
+                    this.complidBrandsList();
+                    this.searchSeriesList();
+                    this.complidSeriesList();
+                    this.showActiveProList()
+                    this.searchModerCode();
+                    this.complidModerList();
+                    this.complidAllProductList();
+                    this.judgmentAdditionFlag();
+                });
+            },
+            /**
+             * 加载所有省份
+             */
+            searchProvinceList () {
+                this.handleSearchProvinceList().then(res => {});
+            },
+            /**
+             * 解析查询到的省份
+             */
+            complidProvinceList () {
+                var provinceLists = [];
+                provinceLists = this.activeReviewViewDataResult.activeArea.provinceCode.split(',');
+                this.activeReviewViewDataResult.provincesList = provinceLists;
+            },
+            /**
+             * 加载所有活动区域
+             */
+            searchAreaList () {
+                this.handelActiveReviewAreaList().then(res => {});
+                resetWorkHeight();
+            },
+            /**
+             * 解析查询到的区域
+             */
+            complidAreaList () {
+                var areasLists = [];
+                areasLists = this.activeReviewViewDataResult.activeArea.areaCode.split(',');
+                this.activeReviewViewDataResult.areasList = areasLists;
+            },
+            /**
+             * 根据省份加载城市
+             */
+            SearchCityList () {
+                this.handleSearchCityList(this.activeReviewViewDataResult.activeArea.provinceCode).then(res => {
+                    resetWorkHeight();
+                });
+            },
+            /**
+             * 解析城市信息
+             */
+            complidCityList () {
+                var cityLists = [];
+                cityLists = this.activeReviewViewDataResult.activeArea.cityCode.split(',');
+                this.activeReviewViewDataResult.cityList = cityLists;
+            },
+            /**
+             * 加载所有品牌
+             */
+            searchBrandsList () {
+                this.handleSearchBrandsList().then(res => { resetWorkHeight(); });
+            },
+            /**
+             * 解析查询到的品牌信息
+             */
+            complidBrandsList () {
+                var brandsCode = '';
+                brandsCode = this.activeReviewViewDataResult.activeCar.brandsCode;
+                this.activeReviewViewDataResult.brandsCode = brandsCode;
+            },
+            /**
+             * 根据活动品牌加载子品牌
+             */
+            searchSeriesList () {
+                this.handleSearchSeriesList(this.activeReviewViewDataResult.brandsCode).then(res => { resetWorkHeight(); });
+            },
+            /**
+             * 解析查询到的子品牌
+             */
+            complidSeriesList () {
+                var seriesLists = [];
+                seriesLists = this.activeReviewViewDataResult.activeCar.seriesCode.split(',');
+                this.activeReviewViewDataResult.seriesList = seriesLists;
+            },
+            /**
+             * 根据子品牌加载车型
+             */
+            searchModerCode () {
+                this.handleSearchModerCode(this.activeReviewViewDataResult.activeCar.moderCode).then(res => { resetWorkHeight(); });
+            },
+            /**
+             * 解析查询到的车型
+             */
+            complidModerList () {
+                var moderLists = [];
+                moderLists = this.activeReviewViewDataResult.activeCar.moderCode.split(',');
+                this.activeReviewViewData.moderList = moderLists;
+            },
+            /**
+             * 加载所有产品信息
+             */
+            searchActiveProductList () {
+                this.handelActiveReviewAllProductList().then(res => {
+                    resetWorkHeight();
+                });
+            },
+            /**
+             * 解析所有产品信息
+             */
+            complidAllProductList () {
+                var businessCodes = [];
+                var marketingCodes = [];
+                businessCodes = this.activeReviewViewDataResult.activeBusiness.businessCode.split(',');
+                this.activeReviewViewDataResult.businessCodeList = businessCodes;
+                marketingCodes = this.activeReviewViewDataResult.activeMarketing.marketingCode.split(',');
+                this.activeReviewViewDataResult.marketingCodeList = marketingCodes;
+                this.showActiveProList();
+            },
+            /**
+             * 显示金融贷产品
+             */
+            showActiveProList () {
+                var financeProdCodes = [];
+                var creditProdCodes = [];
+                const length = this.activeReviewViewDataResult.activeProdList.length;
+                if (length > 0) {
+                    for (var i = 0; i < length; i++) {
+                        if (this.activeReviewViewDataResult.activeProdList[i].hasOwnProperty('prodType') && this.activeReviewViewDataResult.activeProdList[i].prodType === '01') { // 金融产品
+                            financeProdCodes = this.activeReviewViewDataResult.activeProdList[i].prodCode.split(',');
+                            this.activeReviewViewDataResult.financeProdCodeList = financeProdCodes;
+                        } else if (this.activeReviewViewDataResult.activeProdList[i].hasOwnProperty('prodType') && this.activeReviewViewDataResult.activeProdList[i].prodType != '01') { // 信贷产品
+                            creditProdCodes = this.activeReviewViewDataResult.activeProdList[i].prodCode.split(',');
+                            this.activeReviewViewDataResult.creditProdCodeList = creditProdCodes;
+                        }
+                    }
+                }
+            },
+            /**
+             * 附件链接
+             */
+            btn_add_appendix () {
+                window.open('http://gfimg.faf.com.cn:9080/afImg/imageBasic/ImageBasicAction.do?method=showMainFrame&paraInfo=<USER_CODE>1</USER_CODE><APP_CODE>sett_counter</APP_CODE><BUSI_NO>' + this.activeReviewCheckDate.additionalId + '</BUSI_NO><is_scan>1</is_scan><is_import>1</is_import><is_delete>1</is_delete><is_modifyname>0</is_modifyname >');
+            },
+            pageBack () {
+                this.$router.push({name: 'activeReviewList'});
+            },
+            /**
+             * 判断是否附加贷
+             */
+            judgmentAdditionFlag () {
+                const addFlag = this.activeReviewViewDataResult.ativeMain.additionFlag;
+                if (addFlag === '0') {
+                    this.showFlag.additionFlag = false;
+                } else {
+                    this.showFlag.additionFlag = true;
+                    var Additionals = [];
+                    Additionals = this.activeReviewViewDataResult.activeAdditional.additionalCode.split(',');
+                    this.activeReviewViewDataResult.AdditionalList = Additionals;
+                }
+            },
+            handleSubmitReivew (name) {
+                var user = getUserCookie();
+                this.activeReviewCheckDate.modifierName = user.name;
+                this.activeReviewCheckDate.opinion = this.opinionData;
+                console.log('1 提交表单数据：' + this.activeReviewCheckDate);
+                var date1 = formatDate(new Date(), 'yyyy-MM-dd');
+                var date2 = formatDate(this.activeReviewViewDataResult.ativeMain.activeStartime, 'yyyy-MM-dd');
+                var time1 = parseInt(date1.replace(/-/g, ''));
+                var time2 = parseInt(date2.replace(/-/g, ''));
+                if (time1 > time2 && this.activeReviewCheckDate.reviewStatus === '04') {
+                    this.$Modal.success({
+                        title: '提交审核',
+                        content: '该申请已经过期，请驳回!'
+                    });
+                } else {
+                    this.$refs[name].validate((valid) => {
+                        if (valid) {
+                            console.log('2 提交表单数据：' + this.activeReviewCheckDate);
+                            this.handleSendReviewAction(this.activeReviewCheckDate).then(res => {
+                                if (this.isSuccess) {
+                                    this.$Modal.success({
+                                        title: '提交审核',
+                                        content: this.msg,
+                                        onOk: () => {
+                                            this.$router.push({name: 'activeReviewList'});
+                                        }
+                                    });
+                                }
+                            });
+                        } else {
+                            this.$Message.error('验证错误!');
+                        }
+                    });
+                }
+            },
+            changeStatusOne (value) {
+                if (value === '04') {
+                    this.opinionData = '同意';
+                } else {
+                    console.log('false');
+                    this.opinionData = '';
+                }
+            }
+        },
+        mounted () {
+            this.init();
+        }
+    };
+</script>
+
+<style scoped>
+
+</style>

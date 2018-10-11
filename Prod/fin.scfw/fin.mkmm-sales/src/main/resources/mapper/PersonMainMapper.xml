@@ -1,0 +1,1654 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yqjr.fin.mkmm.sales.mapper.PersonMainMapper">
+
+    <!-- region BaseMapper DO NOT MODIFY!!!  -->
+
+    <sql id="Base_Table_Name">
+        MKMM_PERSON_MAIN
+    </sql>
+
+
+    <!-- region BaseResultMap  -->
+    <resultMap id="BaseResultMap" type="com.yqjr.fin.mkmm.sales.entity.PersonMain">
+        <result property="id" column="ID"/><!--序号-->
+        <result property="personCode" column="PERSON_CODE"/><!--员工编号-->
+        <result property="personName" column="PERSON_NAME"/><!--员工姓名-->
+        <result property="personIdcard" column="PERSON_IDCARD"/><!--身份证号-->
+        <result property="personAge" column="PERSON_AGE"/><!--年龄-->
+        <result property="personEthnic" column="PERSON_ETHNIC"/><!--民族-->
+        <result property="personMarr" column="PERSON_MARR"/><!--婚姻状况-->
+        <result property="personSchool" column="PERSON_SCHOOL"/><!--毕业学校-->
+        <result property="personSubject" column="PERSON_SUBJECT"/><!--专业-->
+        <result property="personEdu" column="PERSON_EDU"/><!--最高学历-->
+        <result property="personEdulevel" column="PERSON_EDULEVEL"/><!--学位-->
+        <result property="personWorktime" column="PERSON_WORKTIME"/><!--工龄-->
+        <result property="personFirstworktime" column="PERSON_FIRSTWORKTIME"/><!--参加工作时间-->
+        <result property="personAddress" column="PERSON_ADDRESS"/><!--家庭住址-->
+        <result property="personHomephone" column="PERSON_HOMEPHONE"/><!--家庭电话-->
+        <result property="personWorkphone" column="PERSON_WORKPHONE"/><!--工作电话-->
+        <result property="personPhone" column="PERSON_PHONE"/><!--移动电话-->
+        <result property="perrsonEmail" column="PERRSON_EMAIL"/><!--e-mail-->
+        <result property="personStatus" column="PERSON_STATUS"/><!--员工状态(0 无效,1 有效，2 注销)-->
+        <result property="startTime" column="START_TIME"/><!--生效时间-->
+        <result property="createTime" column="CREATE_TIME"/><!--创建时间-->
+        <result property="modifyTime" column="MODIFY_TIME"/><!--修改时间-->
+        <result property="remark" column="REMARK"/><!--备注-->
+        <result property="personBirth" column="PERSON_BIRTH"/><!--出生日期-->
+        <result property="transcode2" column="TRANSCODE2"/><!--备注2-->
+        <result property="transcode3" column="TRANSCODE3"/><!--备注3-->
+        <result property="transcode4" column="TRANSCODE4"/><!--备注4-->
+        <result property="creator" column="CREATOR"/><!--创建人-->
+        <result property="modifier" column="MODIFIER"/><!--修改人-->
+        <result property="flag" column="FLAG"/><!--最新标识-->
+        <result property="transcode1" column="TRANSCODE1"/><!--备注1-->
+        <result property="loginName" column="LOGIN_NAME"/><!--登陆名称-->
+        <result property="company" column="COMPANY"/><!--所属公司-->
+    </resultMap>
+    <!-- endregion -->
+
+    <!-- region Base_Column_List  -->
+    <sql id="Base_Column_List">
+    ID,PERSON_CODE,PERSON_NAME,PERSON_IDCARD,PERSON_AGE,PERSON_ETHNIC,PERSON_MARR,PERSON_SCHOOL,PERSON_SUBJECT,PERSON_EDU,PERSON_EDULEVEL,PERSON_WORKTIME,PERSON_FIRSTWORKTIME,PERSON_ADDRESS,PERSON_HOMEPHONE,PERSON_WORKPHONE,PERSON_PHONE,PERRSON_EMAIL,PERSON_STATUS,START_TIME,CREATE_TIME,MODIFY_TIME,REMARK,PERSON_BIRTH,TRANSCODE2,TRANSCODE3,TRANSCODE4,CREATOR,MODIFIER,FLAG,TRANSCODE1,LOGIN_NAME,COMPANY
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_List_Selective  -->
+    <sql id="Base_Column_List_Selective">
+        <trim suffixOverrides=",">
+            <if test="id != null">
+                ID,
+            </if>
+            <if test="personCode != null">
+                PERSON_CODE,
+            </if>
+            <if test="personName != null">
+                PERSON_NAME,
+            </if>
+            <if test="personIdcard != null">
+                PERSON_IDCARD,
+            </if>
+            <if test="personAge != null">
+                PERSON_AGE,
+            </if>
+            <if test="personEthnic != null">
+                PERSON_ETHNIC,
+            </if>
+            <if test="personMarr != null">
+                PERSON_MARR,
+            </if>
+            <if test="personSchool != null">
+                PERSON_SCHOOL,
+            </if>
+            <if test="personSubject != null">
+                PERSON_SUBJECT,
+            </if>
+            <if test="personEdu != null">
+                PERSON_EDU,
+            </if>
+            <if test="personEdulevel != null">
+                PERSON_EDULEVEL,
+            </if>
+            <if test="personWorktime != null">
+                PERSON_WORKTIME,
+            </if>
+            <if test="personFirstworktime != null">
+                PERSON_FIRSTWORKTIME,
+            </if>
+            <if test="personAddress != null">
+                PERSON_ADDRESS,
+            </if>
+            <if test="personHomephone != null">
+                PERSON_HOMEPHONE,
+            </if>
+            <if test="personWorkphone != null">
+                PERSON_WORKPHONE,
+            </if>
+            <if test="personPhone != null">
+                PERSON_PHONE,
+            </if>
+            <if test="perrsonEmail != null">
+                PERRSON_EMAIL,
+            </if>
+            <if test="personStatus != null">
+                PERSON_STATUS,
+            </if>
+            <if test="startTime != null">
+                START_TIME,
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME,
+            </if>
+            <if test="modifyTime != null">
+                MODIFY_TIME,
+            </if>
+            <if test="remark != null">
+                REMARK,
+            </if>
+            <if test="personBirth != null">
+                PERSON_BIRTH,
+            </if>
+            <if test="transcode2 != null">
+                TRANSCODE2,
+            </if>
+            <if test="transcode3 != null">
+                TRANSCODE3,
+            </if>
+            <if test="transcode4 != null">
+                TRANSCODE4,
+            </if>
+            <if test="creator != null">
+                CREATOR,
+            </if>
+            <if test="modifier != null">
+                MODIFIER,
+            </if>
+            <if test="flag != null">
+                FLAG,
+            </if>
+            <if test="transcode1 != null">
+                TRANSCODE1,
+            </if>
+            <if test="loginName != null">
+                LOGIN_NAME,
+            </if>
+            <if test="company != null">
+                COMPANY
+            </if>
+        </trim>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Values  -->
+    <sql id="Base_Column_Values">
+    SEQ_MKMM_PERSON_MAIN.nextval,
+    #{personCode,jdbcType=VARCHAR},
+    #{personName,jdbcType=VARCHAR},
+    #{personIdcard,jdbcType=VARCHAR},
+    #{personAge,jdbcType=VARCHAR},
+    #{personEthnic,jdbcType=VARCHAR},
+    #{personMarr,jdbcType=VARCHAR},
+    #{personSchool,jdbcType=VARCHAR},
+    #{personSubject,jdbcType=VARCHAR},
+    #{personEdu,jdbcType=VARCHAR},
+    #{personEdulevel,jdbcType=VARCHAR},
+    #{personWorktime,jdbcType=VARCHAR},
+    #{personFirstworktime,jdbcType=TIMESTAMP},
+    #{personAddress,jdbcType=VARCHAR},
+    #{personHomephone,jdbcType=VARCHAR},
+    #{personWorkphone,jdbcType=VARCHAR},
+    #{personPhone,jdbcType=VARCHAR},
+    #{perrsonEmail,jdbcType=VARCHAR},
+    #{personStatus,jdbcType=VARCHAR},
+    #{startTime,jdbcType=TIMESTAMP},
+    #{createTime,jdbcType=TIMESTAMP},
+    #{modifyTime,jdbcType=TIMESTAMP},
+    #{remark,jdbcType=VARCHAR},
+    #{personBirth,jdbcType=TIMESTAMP},
+    #{transcode2,jdbcType=VARCHAR},
+    #{transcode3,jdbcType=VARCHAR},
+    #{transcode4,jdbcType=VARCHAR},
+    #{creator,jdbcType=NUMERIC},
+    #{modifier,jdbcType=NUMERIC},
+    #{flag,jdbcType=VARCHAR},
+    #{transcode1,jdbcType=VARCHAR},
+    #{loginName,jdbcType=VARCHAR},
+    #{company,jdbcType=VARCHAR}
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Values_Selective  -->
+    <sql id="Base_Column_Values_Selective">
+        <trim suffixOverrides=",">
+            <if test="id != null">
+                #{id},
+            </if>
+            <if test="personCode != null">
+                #{personCode},
+            </if>
+            <if test="personName != null">
+                #{personName},
+            </if>
+            <if test="personIdcard != null">
+                #{personIdcard},
+            </if>
+            <if test="personAge != null">
+                #{personAge},
+            </if>
+            <if test="personEthnic != null">
+                #{personEthnic},
+            </if>
+            <if test="personMarr != null">
+                #{personMarr},
+            </if>
+            <if test="personSchool != null">
+                #{personSchool},
+            </if>
+            <if test="personSubject != null">
+                #{personSubject},
+            </if>
+            <if test="personEdu != null">
+                #{personEdu},
+            </if>
+            <if test="personEdulevel != null">
+                #{personEdulevel},
+            </if>
+            <if test="personWorktime != null">
+                #{personWorktime},
+            </if>
+            <if test="personFirstworktime != null">
+                #{personFirstworktime},
+            </if>
+            <if test="personAddress != null">
+                #{personAddress},
+            </if>
+            <if test="personHomephone != null">
+                #{personHomephone},
+            </if>
+            <if test="personWorkphone != null">
+                #{personWorkphone},
+            </if>
+            <if test="personPhone != null">
+                #{personPhone},
+            </if>
+            <if test="perrsonEmail != null">
+                #{perrsonEmail},
+            </if>
+            <if test="personStatus != null">
+                #{personStatus},
+            </if>
+            <if test="startTime != null">
+                #{startTime},
+            </if>
+            <if test="createTime != null">
+                #{createTime},
+            </if>
+            <if test="modifyTime != null">
+                #{modifyTime},
+            </if>
+            <if test="remark != null">
+                #{remark},
+            </if>
+            <if test="personBirth != null">
+                #{personBirth},
+            </if>
+            <if test="transcode2 != null">
+                #{transcode2},
+            </if>
+            <if test="transcode3 != null">
+                #{transcode3},
+            </if>
+            <if test="transcode4 != null">
+                #{transcode4},
+            </if>
+            <if test="creator != null">
+                #{creator},
+            </if>
+            <if test="modifier != null">
+                #{modifier},
+            </if>
+            <if test="flag != null">
+                #{flag},
+            </if>
+            <if test="transcode1 != null">
+                #{transcode1},
+            </if>
+            <if test="loginName != null">
+                #{loginName},
+            </if>
+            <if test="company != null">
+                #{company}
+            </if>
+        </trim>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Set_Values  -->
+    <sql id="Base_Column_Set_Values">
+    ID = #{id},
+    PERSON_CODE = #{personCode},
+    PERSON_NAME = #{personName},
+    PERSON_IDCARD = #{personIdcard},
+    PERSON_AGE = #{personAge},
+    PERSON_ETHNIC = #{personEthnic},
+    PERSON_MARR = #{personMarr},
+    PERSON_SCHOOL = #{personSchool},
+    PERSON_SUBJECT = #{personSubject},
+    PERSON_EDU = #{personEdu},
+    PERSON_EDULEVEL = #{personEdulevel},
+    PERSON_WORKTIME = #{personWorktime},
+    PERSON_FIRSTWORKTIME = #{personFirstworktime},
+    PERSON_ADDRESS = #{personAddress},
+    PERSON_HOMEPHONE = #{personHomephone},
+    PERSON_WORKPHONE = #{personWorkphone},
+    PERSON_PHONE = #{personPhone},
+    PERRSON_EMAIL = #{perrsonEmail},
+    PERSON_STATUS = #{personStatus},
+    START_TIME = #{startTime},
+    CREATE_TIME = #{createTime},
+    MODIFY_TIME = #{modifyTime},
+    REMARK = #{remark},
+    PERSON_BIRTH = #{personBirth},
+    TRANSCODE2 = #{transcode2},
+    TRANSCODE3 = #{transcode3},
+    TRANSCODE4 = #{transcode4},
+    CREATOR = #{creator},
+    MODIFIER = #{modifier},
+    FLAG = #{flag},
+    TRANSCODE1 = #{transcode1},
+    LOGIN_NAME = #{loginName},
+    COMPANY = #{company}
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Set_Values_Selective  -->
+    <sql id="Base_Column_Set_Values_Selective">
+        <if test="id != null">
+            ID = #{id},
+        </if>
+        <if test="personCode != null">
+            PERSON_CODE = #{personCode},
+        </if>
+        <if test="personName != null">
+            PERSON_NAME = #{personName},
+        </if>
+        <if test="personIdcard != null">
+            PERSON_IDCARD = #{personIdcard},
+        </if>
+        <if test="personAge != null">
+            PERSON_AGE = #{personAge},
+        </if>
+        <if test="personEthnic != null">
+            PERSON_ETHNIC = #{personEthnic},
+        </if>
+        <if test="personMarr != null">
+            PERSON_MARR = #{personMarr},
+        </if>
+        <if test="personSchool != null">
+            PERSON_SCHOOL = #{personSchool},
+        </if>
+        <if test="personSubject != null">
+            PERSON_SUBJECT = #{personSubject},
+        </if>
+        <if test="personEdu != null">
+            PERSON_EDU = #{personEdu},
+        </if>
+        <if test="personEdulevel != null">
+            PERSON_EDULEVEL = #{personEdulevel},
+        </if>
+        <if test="personWorktime != null">
+            PERSON_WORKTIME = #{personWorktime},
+        </if>
+        <if test="personFirstworktime != null">
+            PERSON_FIRSTWORKTIME = #{personFirstworktime},
+        </if>
+        <if test="personAddress != null">
+            PERSON_ADDRESS = #{personAddress},
+        </if>
+        <if test="personHomephone != null">
+            PERSON_HOMEPHONE = #{personHomephone},
+        </if>
+        <if test="personWorkphone != null">
+            PERSON_WORKPHONE = #{personWorkphone},
+        </if>
+        <if test="personPhone != null">
+            PERSON_PHONE = #{personPhone},
+        </if>
+        <if test="perrsonEmail != null">
+            PERRSON_EMAIL = #{perrsonEmail},
+        </if>
+        <if test="personStatus != null">
+            PERSON_STATUS = #{personStatus},
+        </if>
+        <if test="startTime != null">
+            START_TIME = #{startTime},
+        </if>
+        <if test="createTime != null">
+            CREATE_TIME = #{createTime},
+        </if>
+        <if test="modifyTime != null">
+            MODIFY_TIME = #{modifyTime},
+        </if>
+        <if test="remark != null">
+            REMARK = #{remark},
+        </if>
+        <if test="personBirth != null">
+            PERSON_BIRTH = #{personBirth},
+        </if>
+        <if test="transcode2 != null">
+            TRANSCODE2 = #{transcode2},
+        </if>
+        <if test="transcode3 != null">
+            TRANSCODE3 = #{transcode3},
+        </if>
+        <if test="transcode4 != null">
+            TRANSCODE4 = #{transcode4},
+        </if>
+        <if test="creator != null">
+            CREATOR = #{creator},
+        </if>
+        <if test="modifier != null">
+            MODIFIER = #{modifier},
+        </if>
+        <if test="flag != null">
+            FLAG = #{flag},
+        </if>
+        <if test="transcode1 != null">
+            TRANSCODE1 = #{transcode1},
+        </if>
+        <if test="loginName != null">
+            LOGIN_NAME = #{loginName},
+        </if>
+        <if test="company != null">
+            COMPANY = #{company}
+        </if>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Where_Selective  -->
+    <sql id="Base_Column_Where_Selective">
+        <if test="id != null">
+            and ID = #{id}
+        </if>
+        <if test="personCode != null">
+            and PERSON_CODE = #{personCode}
+        </if>
+        <if test="personName != null">
+            and PERSON_NAME = #{personName}
+        </if>
+        <if test="personIdcard != null">
+            and PERSON_IDCARD = #{personIdcard}
+        </if>
+        <if test="personAge != null">
+            and PERSON_AGE = #{personAge}
+        </if>
+        <if test="personEthnic != null">
+            and PERSON_ETHNIC = #{personEthnic}
+        </if>
+        <if test="personMarr != null">
+            and PERSON_MARR = #{personMarr}
+        </if>
+        <if test="personSchool != null">
+            and PERSON_SCHOOL = #{personSchool}
+        </if>
+        <if test="personSubject != null">
+            and PERSON_SUBJECT = #{personSubject}
+        </if>
+        <if test="personEdu != null">
+            and PERSON_EDU = #{personEdu}
+        </if>
+        <if test="personEdulevel != null">
+            and PERSON_EDULEVEL = #{personEdulevel}
+        </if>
+        <if test="personWorktime != null">
+            and PERSON_WORKTIME = #{personWorktime}
+        </if>
+        <if test="personFirstworktime != null">
+            and PERSON_FIRSTWORKTIME = #{personFirstworktime}
+        </if>
+        <if test="personAddress != null">
+            and PERSON_ADDRESS = #{personAddress}
+        </if>
+        <if test="personHomephone != null">
+            and PERSON_HOMEPHONE = #{personHomephone}
+        </if>
+        <if test="personWorkphone != null">
+            and PERSON_WORKPHONE = #{personWorkphone}
+        </if>
+        <if test="personPhone != null">
+            and PERSON_PHONE = #{personPhone}
+        </if>
+        <if test="perrsonEmail != null">
+            and PERRSON_EMAIL = #{perrsonEmail}
+        </if>
+        <if test="personStatus != null">
+            and PERSON_STATUS = #{personStatus}
+        </if>
+        <if test="startTime != null">
+            and START_TIME = #{startTime}
+        </if>
+        <if test="createTime != null">
+            and CREATE_TIME = #{createTime}
+        </if>
+        <if test="modifyTime != null">
+            and MODIFY_TIME = #{modifyTime}
+        </if>
+        <if test="remark != null">
+            and REMARK = #{remark}
+        </if>
+        <if test="personBirth != null">
+            and PERSON_BIRTH = #{personBirth}
+        </if>
+        <if test="transcode2 != null">
+            and TRANSCODE2 = #{transcode2}
+        </if>
+        <if test="transcode3 != null">
+            and TRANSCODE3 = #{transcode3}
+        </if>
+        <if test="transcode4 != null">
+            and TRANSCODE4 = #{transcode4}
+        </if>
+        <if test="creator != null">
+            and CREATOR = #{creator}
+        </if>
+        <if test="modifier != null">
+            and MODIFIER = #{modifier}
+        </if>
+        <if test="flag != null">
+            and FLAG = #{flag}
+        </if>
+        <if test="transcode1 != null">
+            and TRANSCODE1 = #{transcode1}
+        </if>
+        <if test="loginName != null">
+            and LOGIN_NAME = #{loginName}
+        </if>
+        <if test="company != null">
+            and COMPANY = #{company}
+        </if>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Where_Selective_Param1  -->
+    <sql id="Base_Column_Where_Selective_Param1">
+        <if test="param1.id != null">
+            and ID = #{param1.id}
+        </if>
+        <if test="param1.personCode != null">
+            and PERSON_CODE = #{param1.personCode}
+        </if>
+        <if test="param1.personName != null">
+            and PERSON_NAME = #{param1.personName}
+        </if>
+        <if test="param1.personIdcard != null">
+            and PERSON_IDCARD = #{param1.personIdcard}
+        </if>
+        <if test="param1.personAge != null">
+            and PERSON_AGE = #{param1.personAge}
+        </if>
+        <if test="param1.personEthnic != null">
+            and PERSON_ETHNIC = #{param1.personEthnic}
+        </if>
+        <if test="param1.personMarr != null">
+            and PERSON_MARR = #{param1.personMarr}
+        </if>
+        <if test="param1.personSchool != null">
+            and PERSON_SCHOOL = #{param1.personSchool}
+        </if>
+        <if test="param1.personSubject != null">
+            and PERSON_SUBJECT = #{param1.personSubject}
+        </if>
+        <if test="param1.personEdu != null">
+            and PERSON_EDU = #{param1.personEdu}
+        </if>
+        <if test="param1.personEdulevel != null">
+            and PERSON_EDULEVEL = #{param1.personEdulevel}
+        </if>
+        <if test="param1.personWorktime != null">
+            and PERSON_WORKTIME = #{param1.personWorktime}
+        </if>
+        <if test="param1.personFirstworktime != null">
+            and PERSON_FIRSTWORKTIME = #{param1.personFirstworktime}
+        </if>
+        <if test="param1.personAddress != null">
+            and PERSON_ADDRESS = #{param1.personAddress}
+        </if>
+        <if test="param1.personHomephone != null">
+            and PERSON_HOMEPHONE = #{param1.personHomephone}
+        </if>
+        <if test="param1.personWorkphone != null">
+            and PERSON_WORKPHONE = #{param1.personWorkphone}
+        </if>
+        <if test="param1.personPhone != null">
+            and PERSON_PHONE = #{param1.personPhone}
+        </if>
+        <if test="param1.perrsonEmail != null">
+            and PERRSON_EMAIL = #{param1.perrsonEmail}
+        </if>
+        <if test="param1.personStatus != null">
+            and PERSON_STATUS = #{param1.personStatus}
+        </if>
+        <if test="param1.startTime != null">
+            and START_TIME = #{param1.startTime}
+        </if>
+        <if test="param1.createTime != null">
+            and CREATE_TIME = #{param1.createTime}
+        </if>
+        <if test="param1.modifyTime != null">
+            and MODIFY_TIME = #{param1.modifyTime}
+        </if>
+        <if test="param1.remark != null">
+            and REMARK = #{param1.remark}
+        </if>
+        <if test="param1.personBirth != null">
+            and PERSON_BIRTH = #{param1.personBirth}
+        </if>
+        <if test="param1.transcode2 != null">
+            and TRANSCODE2 = #{param1.transcode2}
+        </if>
+        <if test="param1.transcode3 != null">
+            and TRANSCODE3 = #{param1.transcode3}
+        </if>
+        <if test="param1.transcode4 != null">
+            and TRANSCODE4 = #{param1.transcode4}
+        </if>
+        <if test="param1.creator != null">
+            and CREATOR = #{param1.creator}
+        </if>
+        <if test="param1.modifier != null">
+            and MODIFIER = #{param1.modifier}
+        </if>
+        <if test="param1.flag != null">
+            and FLAG = #{param1.flag}
+        </if>
+        <if test="param1.transcode1 != null">
+            and TRANSCODE1 = #{param1.transcode1}
+        </if>
+        <if test="param1.loginName != null">
+            and LOGIN_NAME = #{param1.loginName}
+        </if>
+        <if test="param1.company != null">
+            and COMPANY = #{param1.company}
+        </if>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Order_By  -->
+    <sql id="Base_Order_By">
+        <bind name="propName" value="sortField"></bind>
+        ORDER BY
+        <include refid="Base_Column_Name"/>
+        <choose>
+            <when test="isAscend">
+                ASC
+            </when>
+            <otherwise>
+                DESC
+            </otherwise>
+        </choose>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Name  -->
+    <sql id="Base_Column_Name">
+        <if test='"id" == propName'>
+            ID
+        </if>
+        <if test='"personCode" == propName'>
+            PERSON_CODE
+        </if>
+        <if test='"personName" == propName'>
+            PERSON_NAME
+        </if>
+        <if test='"personIdcard" == propName'>
+            PERSON_IDCARD
+        </if>
+        <if test='"personAge" == propName'>
+            PERSON_AGE
+        </if>
+        <if test='"personEthnic" == propName'>
+            PERSON_ETHNIC
+        </if>
+        <if test='"personMarr" == propName'>
+            PERSON_MARR
+        </if>
+        <if test='"personSchool" == propName'>
+            PERSON_SCHOOL
+        </if>
+        <if test='"personSubject" == propName'>
+            PERSON_SUBJECT
+        </if>
+        <if test='"personEdu" == propName'>
+            PERSON_EDU
+        </if>
+        <if test='"personEdulevel" == propName'>
+            PERSON_EDULEVEL
+        </if>
+        <if test='"personWorktime" == propName'>
+            PERSON_WORKTIME
+        </if>
+        <if test='"personFirstworktime" == propName'>
+            PERSON_FIRSTWORKTIME
+        </if>
+        <if test='"personAddress" == propName'>
+            PERSON_ADDRESS
+        </if>
+        <if test='"personHomephone" == propName'>
+            PERSON_HOMEPHONE
+        </if>
+        <if test='"personWorkphone" == propName'>
+            PERSON_WORKPHONE
+        </if>
+        <if test='"personPhone" == propName'>
+            PERSON_PHONE
+        </if>
+        <if test='"perrsonEmail" == propName'>
+            PERRSON_EMAIL
+        </if>
+        <if test='"personStatus" == propName'>
+            PERSON_STATUS
+        </if>
+        <if test='"startTime" == propName'>
+            START_TIME
+        </if>
+        <if test='"createTime" == propName'>
+            CREATE_TIME
+        </if>
+        <if test='"modifyTime" == propName'>
+            MODIFY_TIME
+        </if>
+        <if test='"remark" == propName'>
+            REMARK
+        </if>
+        <if test='"personBirth" == propName'>
+            PERSON_BIRTH
+        </if>
+        <if test='"transcode2" == propName'>
+            TRANSCODE2
+        </if>
+        <if test='"transcode3" == propName'>
+            TRANSCODE3
+        </if>
+        <if test='"transcode4" == propName'>
+            TRANSCODE4
+        </if>
+        <if test='"creator" == propName'>
+            CREATOR
+        </if>
+        <if test='"modifier" == propName'>
+            MODIFIER
+        </if>
+        <if test='"flag" == propName'>
+            FLAG
+        </if>
+        <if test='"transcode1" == propName'>
+            TRANSCODE1
+        </if>
+        <if test='"loginName" == propName'>
+            LOGIN_NAME
+        </if>
+        <if test='"company" == propName'>
+            COMPANY
+        </if>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Id_Array  -->
+    <sql id="Base_Id_Array">
+        <foreach collection="array" open="(" close=")" separator="," item="id">
+            #{id}
+        </foreach>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Id_List  -->
+    <sql id="Base_Id_List">
+        <foreach collection="list" open="(" close=")" separator="," item="id">
+            #{id}
+        </foreach>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Select_All  -->
+    <sql id="Base_Select_All">
+        select
+        <include refid="Base_Column_List"/>
+        from
+        <include refid="Base_Table_Name"/>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region selectById  -->
+    <select id="selectById" resultMap="BaseResultMap">
+        <include refid="Base_Select_All"/>
+        where ID = #{id}
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectByIds  -->
+    <select id="selectByIds" resultMap="BaseResultMap">
+        <include refid="Base_Select_All"/>
+        where ID in
+        <include refid="Base_Id_List"/>
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectAll  -->
+    <select id="selectAll" resultMap="BaseResultMap">
+        <include refid="Base_Select_All"/>
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectCount  -->
+    <select id="selectCount" resultType="int">
+        select count(*)
+        from
+        <include refid="Base_Table_Name"/>
+        <where>
+            <include refid="Base_Column_Where_Selective"/>
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region select  -->
+    <select id="select" resultMap="BaseResultMap">
+        <include refid="Base_Select_All"/>
+        <where>
+            <include refid="Base_Column_Where_Selective"/>
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectOne  -->
+    <select id="selectOne" resultMap="BaseResultMap">
+        <include refid="Base_Select_All"/>
+        <where>
+            <include refid="Base_Column_Where_Selective"/>
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectOrderBy  -->
+    <select id="selectOrderBy" resultMap="BaseResultMap">
+        <include refid="Base_Select_All"/>
+        <where>
+            <include refid="Base_Column_Where_Selective_Param1"/>
+        </where>
+        <include refid="Base_Order_By"/>
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectByProperty  -->
+    <select id="selectByProperty" resultMap="BaseResultMap">
+        <include refid="Base_Select_All"/>
+        <where>
+            <include refid="Base_Column_Name"/>
+            = #{propValue}
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectByPropertyIn  -->
+    <select id="selectByPropertyIn" resultMap="BaseResultMap">
+        <include refid="Base_Select_All"/>
+        <where>
+            <include refid="Base_Column_Name"/>
+            IN
+            <foreach collection="propValues" open="(" close=")" separator="," item="propValue">
+                #{propValue}
+            </foreach>
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region delete  -->
+    <delete id="delete">
+        delete
+        from
+        <include refid="Base_Table_Name"/>
+        <where>
+            <include refid="Base_Column_Where_Selective"/>
+        </where>
+    </delete>
+    <!-- endregion -->
+
+    <!-- region deleteById  -->
+    <delete id="deleteById">
+        delete
+        from
+        <include refid="Base_Table_Name"/>
+        where ID = #{id}
+    </delete>
+    <!-- endregion -->
+
+    <!-- region deleteByIds  -->
+    <delete id="deleteByIds">
+        delete
+        from
+        <include refid="Base_Table_Name"/>
+        where ID in
+        <include refid="Base_Id_List"/>
+    </delete>
+    <!-- endregion -->
+
+    <!-- region insert  -->
+    <insert id="insert" parameterType="com.yqjr.fin.mkmm.sales.entity.PersonMain">
+        <!--<selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>-->
+        insert into
+        <include refid="Base_Table_Name"/>
+        (
+        <include refid="Base_Column_List"/>
+        )
+        values (
+        <include refid="Base_Column_Values"/>
+        )
+    </insert>
+    <!-- endregion -->
+
+    <!-- region updateById  -->
+    <update id="updateById" parameterType="com.yqjr.fin.mkmm.sales.entity.PersonMain">
+        update
+        <include refid="Base_Table_Name"/>
+        <set>
+            <include refid="Base_Column_Set_Values"/>
+        </set>
+        where ID = #{id}
+    </update>
+    <!-- endregion -->
+
+    <!-- region patchById  -->
+    <update id="patchById" parameterType="com.yqjr.fin.mkmm.sales.entity.PersonMain">
+        update
+        <include refid="Base_Table_Name"/>
+        <set>
+            <include refid="Base_Column_Set_Values_Selective"/>
+        </set>
+        where ID = #{id}
+    </update>
+    <!-- endregion -->
+
+    <!-- endregion BaseMapper -->
+
+    <!-- region generated by CodeRobot  -->
+
+    <!-- region 结果集映射  -->
+    <resultMap id="PersonMainResult" type="com.yqjr.fin.mkmm.sales.entity.PersonMain">
+        <result property="id" column="ID"/><!--序号-->
+        <result property="personCode" column="PERSON_CODE"/><!--员工编号-->
+        <result property="personName" column="PERSON_NAME"/><!--员工姓名-->
+        <result property="personIdcard" column="PERSON_IDCARD"/><!--身份证号-->
+        <result property="personAge" column="PERSON_AGE"/><!--年龄-->
+        <result property="personEthnic" column="PERSON_ETHNIC"/><!--民族-->
+        <result property="personMarr" column="PERSON_MARR"/><!--婚姻状况-->
+        <result property="personSchool" column="PERSON_SCHOOL"/><!--毕业学校-->
+        <result property="personSubject" column="PERSON_SUBJECT"/><!--专业-->
+        <result property="personEdu" column="PERSON_EDU"/><!--最高学历-->
+        <result property="personEdulevel" column="PERSON_EDULEVEL"/><!--学位-->
+        <result property="personWorktime" column="PERSON_WORKTIME"/><!--工龄-->
+        <result property="personFirstworktime" column="PERSON_FIRSTWORKTIME"/><!--参加工作时间-->
+        <result property="personAddress" column="PERSON_ADDRESS"/><!--家庭住址-->
+        <result property="personHomephone" column="PERSON_HOMEPHONE"/><!--家庭电话-->
+        <result property="personWorkphone" column="PERSON_WORKPHONE"/><!--工作电话-->
+        <result property="personPhone" column="PERSON_PHONE"/><!--移动电话-->
+        <result property="perrsonEmail" column="PERRSON_EMAIL"/><!--e-mail-->
+        <result property="personStatus" column="PERSON_STATUS"/><!--员工状态(0 无效,1 有效，2 注销)-->
+        <result property="startTime" column="START_TIME"/><!--生效时间-->
+        <result property="createTime" column="CREATE_TIME"/><!--创建时间-->
+        <result property="modifyTime" column="MODIFY_TIME"/><!--修改时间-->
+        <result property="remark" column="REMARK"/><!--备注-->
+        <result property="personBirth" column="PERSON_BIRTH"/><!--出生日期-->
+        <result property="transcode2" column="TRANSCODE2"/><!--备注2-->
+        <result property="transcode3" column="TRANSCODE3"/><!--备注3-->
+        <result property="transcode4" column="TRANSCODE4"/><!--备注4-->
+        <result property="creator" column="CREATOR"/><!--创建人-->
+        <result property="modifier" column="MODIFIER"/><!--修改人-->
+        <result property="flag" column="FLAG"/><!--最新标识-->
+        <result property="transcode1" column="TRANSCODE1"/><!--备注1-->
+        <result property="loginName" column="LOGIN_NAME"/><!--登陆名称-->
+        <result property="company" column="COMPANY"/><!--所属公司-->
+    </resultMap>
+    <!-- endregion -->
+
+    <!-- 查询条件判断 入参为对象 条件为模糊-->
+    <sql id="queryLikePersonMain">
+
+        <if test="id!=null and id!=''">
+            AND ID LIKE CONCAT(#{id},'%')<!--序号-->
+        </if>
+        <if test="personCode!=null and personCode!=''">
+            AND PERSON_CODE LIKE CONCAT(#{personCode},'%')<!--员工编号-->
+        </if>
+        <if test="personName!=null and personName!=''">
+            AND PERSON_NAME LIKE CONCAT(#{personName},'%')<!--员工姓名-->
+        </if>
+        <if test="personIdcard!=null and personIdcard!=''">
+            AND PERSON_IDCARD LIKE CONCAT(#{personIdcard},'%')<!--身份证号-->
+        </if>
+        <if test="personAge!=null and personAge!=''">
+            AND PERSON_AGE LIKE CONCAT(#{personAge},'%')<!--年龄-->
+        </if>
+        <if test="personEthnic!=null and personEthnic!=''">
+            AND PERSON_ETHNIC LIKE CONCAT(#{personEthnic},'%')<!--民族-->
+        </if>
+        <if test="personMarr!=null and personMarr!=''">
+            AND PERSON_MARR LIKE CONCAT(#{personMarr},'%')<!--婚姻状况-->
+        </if>
+        <if test="personSchool!=null and personSchool!=''">
+            AND PERSON_SCHOOL LIKE CONCAT(#{personSchool},'%')<!--毕业学校-->
+        </if>
+        <if test="personSubject!=null and personSubject!=''">
+            AND PERSON_SUBJECT LIKE CONCAT(#{personSubject},'%')<!--专业-->
+        </if>
+        <if test="personEdu!=null and personEdu!=''">
+            AND PERSON_EDU LIKE CONCAT(#{personEdu},'%')<!--最高学历-->
+        </if>
+        <if test="personEdulevel!=null and personEdulevel!=''">
+            AND PERSON_EDULEVEL LIKE CONCAT(#{personEdulevel},'%')<!--学位-->
+        </if>
+        <if test="personWorktime!=null and personWorktime!=''">
+            AND PERSON_WORKTIME LIKE CONCAT(#{personWorktime},'%')<!--工龄-->
+        </if>
+        <if test="personFirstworktime!=null and personFirstworktime!=''">
+            AND PERSON_FIRSTWORKTIME LIKE CONCAT(#{personFirstworktime},'%')<!--参加工作时间-->
+        </if>
+        <if test="personAddress!=null and personAddress!=''">
+            AND PERSON_ADDRESS LIKE CONCAT(#{personAddress},'%')<!--家庭住址-->
+        </if>
+        <if test="personHomephone!=null and personHomephone!=''">
+            AND PERSON_HOMEPHONE LIKE CONCAT(#{personHomephone},'%')<!--家庭电话-->
+        </if>
+        <if test="personWorkphone!=null and personWorkphone!=''">
+            AND PERSON_WORKPHONE LIKE CONCAT(#{personWorkphone},'%')<!--工作电话-->
+        </if>
+        <if test="personPhone!=null and personPhone!=''">
+            AND PERSON_PHONE LIKE CONCAT(#{personPhone},'%')<!--移动电话-->
+        </if>
+        <if test="perrsonEmail!=null and perrsonEmail!=''">
+            AND PERRSON_EMAIL LIKE CONCAT(#{perrsonEmail},'%')<!--e-mail-->
+        </if>
+        <if test="personStatus!=null and personStatus!=''">
+            AND PERSON_STATUS LIKE CONCAT(#{personStatus},'%')<!--员工状态(0 无效,1 有效，2 注销)-->
+        </if>
+        <if test="startTime!=null and startTime!=''">
+            AND START_TIME LIKE CONCAT(#{startTime},'%')<!--生效时间-->
+        </if>
+        <if test="createTime!=null and createTime!=''">
+            AND CREATE_TIME LIKE CONCAT(#{createTime},'%')<!--创建时间-->
+        </if>
+        <if test="modifyTime!=null and modifyTime!=''">
+            AND MODIFY_TIME LIKE CONCAT(#{modifyTime},'%')<!--修改时间-->
+        </if>
+        <if test="remark!=null and remark!=''">
+            AND REMARK LIKE CONCAT(#{remark},'%')<!--备注-->
+        </if>
+        <if test="personBirth!=null and personBirth!=''">
+            AND PERSON_BIRTH LIKE CONCAT(#{personBirth},'%')<!--出生日期-->
+        </if>
+        <if test="transcode2!=null and transcode2!=''">
+            AND TRANSCODE2 LIKE CONCAT(#{transcode2},'%')<!--备注2-->
+        </if>
+        <if test="transcode3!=null and transcode3!=''">
+            AND TRANSCODE3 LIKE CONCAT(#{transcode3},'%')<!--备注3-->
+        </if>
+        <if test="transcode4!=null and transcode4!=''">
+            AND TRANSCODE4 LIKE CONCAT(#{transcode4},'%')<!--备注4-->
+        </if>
+        <if test="creator!=null and creator!=''">
+            AND CREATOR LIKE CONCAT(#{creator},'%')<!--创建人-->
+        </if>
+        <if test="modifier!=null and modifier!=''">
+            AND MODIFIER LIKE CONCAT(#{modifier},'%')<!--修改人-->
+        </if>
+        <if test="flag!=null and flag!=''">
+            AND FLAG LIKE CONCAT(#{flag},'%')<!--最新标识-->
+        </if>
+        <if test="transcode1!=null and transcode1!=''">
+            AND TRANSCODE1 LIKE CONCAT(#{transcode1},'%')<!--备注1-->
+        </if>
+        <if test="loginName!=null and loginName!=''">
+            AND LOGIN_NAME LIKE CONCAT(#{loginName},'%')<!--登陆名称-->
+        </if>
+        <if test="company!=null and company!=''">
+            and COMPANY LIKE CONCAT(#{company},'%')<!--所属公司-->
+        </if>
+
+    </sql>
+
+    <!-- 按条件模糊查询所有 -->
+    <select id="queryPersonMainList" parameterType="com.yqjr.fin.mkmm.sales.entity.PersonMain"
+            resultMap="PersonMainResult">
+        SELECT
+        ID,<!--序号-->
+        PERSON_CODE,<!--员工编号-->
+        PERSON_NAME,<!--员工姓名-->
+        PERSON_IDCARD,<!--身份证号-->
+        PERSON_AGE,<!--年龄-->
+        PERSON_ETHNIC,<!--民族-->
+        PERSON_MARR,<!--婚姻状况-->
+        PERSON_SCHOOL,<!--毕业学校-->
+        PERSON_SUBJECT,<!--专业-->
+        PERSON_EDU,<!--最高学历-->
+        PERSON_EDULEVEL,<!--学位-->
+        PERSON_WORKTIME,<!--工龄-->
+        PERSON_FIRSTWORKTIME,<!--参加工作时间-->
+        PERSON_ADDRESS,<!--家庭住址-->
+        PERSON_HOMEPHONE,<!--家庭电话-->
+        PERSON_WORKPHONE,<!--工作电话-->
+        PERSON_PHONE,<!--移动电话-->
+        PERRSON_EMAIL,<!--e-mail-->
+        PERSON_STATUS,<!--员工状态(0 无效,1 有效，2 注销)-->
+        START_TIME,<!--生效时间-->
+        CREATE_TIME,<!--创建时间-->
+        MODIFY_TIME,<!--修改时间-->
+        REMARK,<!--备注-->
+        PERSON_BIRTH,<!--出生日期-->
+        TRANSCODE2,<!--备注2-->
+        TRANSCODE3,<!--备注3-->
+        TRANSCODE4,<!--备注4-->
+        CREATOR,<!--创建人-->
+        MODIFIER,<!--修改人-->
+        FLAG,<!--最新标识-->
+        TRANSCODE1,<!--备注1-->
+        LOGIN_NAME,<!--登陆名称-->
+        COMPANY<!--所属公司-->
+        FROM MKMM_PERSON_MAIN
+        <where>
+            <include refid="queryLikePersonMain"/>
+        </where>
+    </select>
+
+    <!-- 按条件模糊统计所有条数 -->
+    <select id="queryPersonMainCount" parameterType="com.yqjr.fin.mkmm.sales.entity.PersonMain" resultType="int">
+        SELECT
+        count (id)
+        FROM MKMM_PERSON_MAIN
+        <where>
+            <include refid="queryLikePersonMain"/>
+        </where>
+    </select>
+
+    <!-- 批量删除，入参为数组  -->
+    <delete id="dynamicDelete">
+        delete from MKMM_PERSON_MAIN where id in
+        <foreach collection="array" open="(" close=")" separator="," item="arr">
+            #{arr}
+        </foreach>
+    </delete>
+
+    <!-- 批量删除，入参为list  -->
+    <delete id="dynamicDeleteList">
+        delete from MKMM_PERSON_MAIN where id in
+        <foreach collection="list" open="(" close=")" separator="," item="ids">
+            #{ids}
+        </foreach>
+    </delete>
+
+    <!-- 批量插入 -->
+    <insert id="insertBatch" parameterType="java.util.List">
+        <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into MKMM_PERSON_MAIN
+        (
+        <include refid="Base_Column_List"/>
+        )
+        values
+        <foreach collection="list" item="personMain" index="index" separator=",">
+            (
+            <include refid="Base_Column_Values"/>
+            )
+        </foreach>
+    </insert>
+
+    <!-- 插入单条数据，并返回主键ID -->
+    <insert id="saveObj" useGeneratedKeys="true" keyProperty="id"
+            parameterType="com.yqjr.fin.mkmm.sales.entity.PersonMain">
+        insert into MKMM_PERSON_MAIN
+        (
+        <include refid="Base_Column_List"/>
+        )
+        values
+        (
+        <include refid="Base_Column_Values"/>
+        )
+    </insert>
+
+
+    <!-- **********************************************************************-->
+    <!-- ************* 在此下方为一对一、一对多查询方式 仅供参考***************-->
+    <!-- **********************************************************************-->
+    <!-- 一个博客（BlogInfo） 属于一个作者（Author） ，一个作者（Author） 有多篇文章（Post） -->
+    <!--
+  <resultMap type="com.foo.bean.BlogInfo" id="BlogInfo">
+      <id column="blog_id" property="blogId" />
+      <result column="title" property="title" />
+      <association property="author" column="blog_author_id"
+          javaType="com.foo.bean.Author" select="com.foo.bean.AuthorMapper.selectByPrimaryKey">
+      </association>
+      <collection property="posts" column="blog_id" ofType="com.foo.bean.Post"
+          select="com.foo.bean.PostMapper.selectByBlogId">
+      </collection>
+  </resultMap>
+
+  <select id="queryBlogInfoById" resultMap="BlogInfo" parameterType="java.math.BigDecimal">
+      SELECT
+      B.BLOG_ID,
+      B.TITLE,
+      B.AUTHOR_ID AS BLOG_AUTHOR_ID
+      FROM BLOG B
+      where B.BLOG_ID = 博客ID
+  </select>
+
+          上述方法存在N+1问题
+      它的弊端也比较明显：即所谓的N+1问题。关联的嵌套查询显示得到一个结果集，然后根据这个结果集的每一条记录进行关联查询。
+      现在假设嵌套查询就一个（即resultMap 内部就一个association标签），现查询的结果集返回条数为N，那么关联查询语句将会被执行N次，加上自身返回结果集查询1次，共需要访问数据库N+1次。如果N比较大的话，这样的数据库访问消耗是非常大的！所以使用这种嵌套语句查询的使用者一定要考虑慎重考虑，确保N值不会很大。
+      以上面的例子为例，select 语句本身会返回com.foo.bean.BlogMapper.queryBlogInfoById 条数为1 的结果集，由于它有两条关联的语句查询，它需要共访问数据库 1*（1+1）=3次数据库。
+
+
+       <resultMap type="com.foo.bean.BlogInfo" id="BlogInfo">
+      <id column="blog_id" property="blogId"/>
+      <result column="title" property="title"/>
+      <association property="author" column="blog_author_id" javaType="com.foo.bean.Author">
+          <id column="author_id" property="authorId"/>
+          <result column="user_name" property="userName"/>
+          <result column="password" property="password"/>
+          <result column="email" property="email"/>
+          <result column="biography" property="biography"/>
+      </association>
+      <collection property="posts" column="blog_post_id" ofType="com.foo.bean.Post">
+          <id column="post_id" property="postId"/>
+          <result column="blog_id" property="blogId"/>
+          <result column="create_time" property="createTime"/>
+          <result column="subject" property="subject"/>
+          <result column="body" property="body"/>
+          <result column="draft" property="draft"/>
+      </collection>
+      </resultMap>
+
+
+      <select id="queryAllBlogInfo" resultMap="BlogInfo">
+          SELECT
+           B.BLOG_ID,
+           B.TITLE,
+           B.AUTHOR_ID AS BLOG_AUTHOR_ID,
+           A.AUTHOR_ID,
+           A.USER_NAME,
+           A.PASSWORD,
+           A.EMAIL,
+           A.BIOGRAPHY,
+           P.POST_ID,
+           P.BLOG_ID AS BLOG_POST_ID ,
+             P.CREATE_TIME,
+           P.SUBJECT,
+           P.BODY,
+           P.DRAFT
+      FROM BLOG B
+      LEFT OUTER JOIN AUTHOR A
+        ON B.AUTHOR_ID = A.AUTHOR_ID
+      LEFT OUTER JOIN POST P
+        ON P.BLOG_ID = B.BLOG_ID
+      </select>
+      -->
+
+    <!-- **********************************************************************-->
+    <!-- ************* 此线上方代码自动生成，在此下方编写自定义代码。***************-->
+    <!-- **********************************************************************-->
+
+    <sql id="Base_Person_Main">
+        A.AREA_NAME AS AREA_NAME,
+        A.TEAM_NAME AS TEAM_NAME,
+        B.REMARK AS PERSON_TEAM_REMARK,
+        B.PERSON_CODE AS PERSON_CODE,
+        B.COMPANY_CODE AS COMPANY_CODE,
+        B.TEAM_CODE AS TEAM_CODE,
+        B.TEAM_NAME AS TEAM_NAME,
+        B.PERSON_NATURE AS PERSON_NATURE,
+        B.PERSON_LEVEL AS PERSON_LEVEL,
+        B.PERSON_STATUS AS PERSON_STATUS,
+        B.PERSON_CHECK_START AS PERSON_CHECK_START,
+        B.PERSON_UPTIME AS PERSON_UPTIME,
+        B.PERSON_CORRECTIME AS PERSON_CORRECTIME,
+        B.PERSON_TRY_STARTIME AS PERSON_TRY_STARTIME,
+        B.PERSON_TRY_ENDTIME AS PERSON_TRY_ENDTIME,
+        B.PERSON_JOINTIME AS PERSON_JOINTIME,
+        B.REMARK AS REMARK,
+        C.START_TIME AS START_TIME,
+        B.CREATE_TIME AS CREATE_TIME,
+        B.MODIFY_TIME AS MODIFY_TIME,
+        B.CREATOR AS CREATOR,
+        B.MODIFIER AS MODIFIER,
+        B.AREA_CODE AS AREA_CODE,
+        C.ID AS ID,
+        C.PERSON_CODE AS PERSON_CODE,
+        C.PERSON_NAME AS PERSON_NAME,
+        C.PERSON_IDCARD AS PERSON_IDCARD,
+        C.REMARK AS REMARK,
+        C.PERSON_AGE AS PERSON_AGE,
+        C.PERSON_ETHNIC AS PERSON_ETHNIC,
+        C.PERSON_MARR AS PERSON_MARR,
+        C.PERSON_SCHOOL AS PERSON_SCHOOL,
+        C.PERSON_SUBJECT AS PERSON_SUBJECT,
+        C.PERSON_EDU AS PERSON_EDU,
+        C.PERSON_EDULEVEL AS PERSON_EDULEVEL,
+        C.PERSON_WORKTIME AS PERSON_WORKTIME,
+        C.PERSON_FIRSTWORKTIME AS PERSON_FIRSTWORKTIME,
+        C.PERSON_ADDRESS AS PERSON_ADDRESS,
+        C.PERSON_HOMEPHONE AS PERSON_HOMEPHONE,
+        C.PERSON_WORKPHONE AS PERSON_WORKPHONE,
+        C.PERSON_PHONE AS PERSON_PHONE,
+        C.PERRSON_EMAIL AS PERRSON_EMAIL,
+        C.PERSON_BIRTH AS PERSON_BIRTH,
+        D.ID AS CITY_ID,
+        D.CITY_CODE AS CITY_CODE,
+        D.PROVINCE_CODE AS PROVINCE_CODE,
+        E.BRAND_CODE AS BRAND_CODE
+    </sql>
+
+    <resultMap id="personMainDetailResultMap" type="com.yqjr.fin.mkmm.sales.vo.domin.PersonMainVo">
+        <id property="id" column="ID"/>
+        <result property="personCode" column="PERSON_CODE"/><!--人员代码-->
+        <result property="personName" column="PERSON_NAME"/><!--人员姓名-->
+        <result property="personIdcard" column="PERSON_IDCARD"/><!--身份证号-->
+        <result property="remark" column="REMARK"/><!--备注-->
+        <result property="personAge" column="PERSON_AGE"/><!--年龄-->
+        <result property="personEthnic" column="PERSON_ETHNIC"/><!--民族-->
+        <result property="personMarr" column="PERSON_MARR"/><!--婚姻状况-->
+        <result property="personSchool" column="PERSON_SCHOOL"/><!--毕业学校-->
+        <result property="personSubject" column="PERSON_SUBJECT"/><!--专业-->
+        <result property="personEdu" column="PERSON_EDU"/><!--最高学历-->
+        <result property="personEdulevel" column="PERSON_EDULEVEL"/><!--学位-->
+        <result property="personWorktime" column="PERSON_WORKTIME"/><!--工龄-->
+        <result property="personFirstworktime" column="PERSON_FIRSTWORKTIME"/><!--参加工作时间-->
+        <result property="personAddress" column="PERSON_ADDRESS"/><!--家庭住址-->
+        <result property="personHomephone" column="PERSON_HOMEPHONE"/><!--家庭电话-->
+        <result property="personWorkphone" column="PERSON_WORKPHONE"/><!--工作电话-->
+        <result property="personPhone" column="PERSON_PHONE"/><!--移动电话-->
+        <result property="perrsonEmail" column="PERRSON_EMAIL"/><!--e-mail-->
+        <result property="personBirth" column="PERSON_BIRTH"/><!--出生日期-->
+        <result property="startTime" column="START_TIME"/><!--生效时间-->
+        <!--团队信息-->
+        <association property="teamMain" javaType="com.yqjr.fin.mkmm.sales.entity.TeamMain">
+            <result property="areaName" column="AREA_NAME"/><!--区域名称-->
+            <result property="teamName" column="TEAM_NAME"/><!--团队名称-->
+        </association>
+        <association property="personTeam" javaType="com.yqjr.fin.mkmm.sales.entity.PersonTeam">
+            <result property="company" column="COMPANY_CODE"/><!--公司代码-->
+            <result property="areaCode" column="AREA_CODE"/><!--区域代码-->
+            <result property="teamCode" column="TEAM_CODE"/><!--团队代码-->
+            <result property="teamName" column="TEAM_NAME"/><!--团队代码-->
+            <result property="remark" column="PERSON_TEAM_REMARK"/><!--备注-->
+            <result property="personNature" column="PERSON_NATURE"/><!--人员性质（0团队负责人，1销售经理）-->
+            <result property="personLevel" column="PERSON_LEVEL"/><!--人员级别-->
+            <result property="personStatus" column="PERSON_STATUS"/><!--人员状态(0 无效,1 有效，2 注销)-->
+            <result property="personCheckStart" column="PERSON_CHECK_START"/><!--考核开始时间-->
+            <result property="personUptime" column="PERSON_UPTIME"/><!--上岗时间-->
+            <result property="personCorrectime" column="PERSON_CORRECTIME"/><!--转正时间-->
+            <result property="personTryStartime" column="PERSON_TRY_STARTIME"/><!--试用期开始时间-->
+            <result property="personTryEndtime" column="PERSON_TRY_ENDTIME"/><!--试用期结束时间-->
+            <result property="personJointime" column="PERSON_JOINTIME"/><!--加入我司时间-->
+            <result property="reviewStatus" column="REVIEW_STATUS"/><!--审核状态（00驳回,01提交审核,02待审核,03审核中,04审核通过）-->
+            <result property="createTime" column="CREATE_TIME"/><!--创建时间-->
+            <result property="modifyTime" column="MODIFY_TIME"/><!--修改时间-->
+            <result property="creator" column="CREATOR"/><!--创建人-->
+            <result property="modifier" column="MODIFIER"/><!--修改人-->
+            <result property="flag" column="FLAG"/><!--有效标识（如表记录不删除，以此区分,0无效，1有效）-->
+            <result property="reviewType" column="REVIEW_TYPE"/><!--审核类型（01人员新增，02人员修改）-->
+            <result property="flowId" column="FLOW_ID"/><!--工作流id-->
+        </association>
+        <!--负责城市-->
+        <association property="personCity" javaType="com.yqjr.fin.mkmm.sales.entity.PersonCity">
+            <result property="id" column="CITY_ID"/><!--品牌代码-->
+            <result property="cityCode" column="CITY_CODE"/><!--城市代码-->
+            <result property="provinceCode" column="PROVINCE_CODE"/><!--省份代码-->
+        </association>
+        <!--负责品牌-->
+        <!--<collection property="brands" ofType="com.yqjr.fin.mkmm.sales.entity.PersonBrand">-->
+            <!--<result property="brandCode" column="BRAND_CODE"/>&lt;!&ndash;品牌代码&ndash;&gt;-->
+        <!--</collection>-->
+        <association property="personBrand" javaType="com.yqjr.fin.mkmm.sales.entity.PersonBrand">
+            <result property="id" column="BRAND_ID"/><!--品牌代码-->
+            <result property="brandCode" column="BRAND_CODE"/><!--品牌代码-->
+        </association>
+    </resultMap>
+    <!--查询审核通过数据-->
+    <select id="selectPersonMainList" parameterType="com.yqjr.fin.mkmm.sales.condition.PersonWorkCondition"
+            resultMap="personMainDetailResultMap">
+        select
+        <include refid="Base_Person_Main"/>
+        from MKMM_TEAM_MAIN A,
+        MKMM_PERSON_TEAM B,
+        MKMM_PERSON_MAIN C,
+        MKMM_PERSON_CITY D,
+        MKMM_PERSON_BRAND E
+        WHERE A.TEAM_CODE = B.TEAM_CODE
+        AND B.PERSON_CODE = C.PERSON_CODE
+        AND C.PERSON_CODE = D.PERSON_CODE(+)
+        AND C.PERSON_CODE = E.PERSON_CODE(+)
+        <if test="personCode != null">
+            AND C.PERSON_CODE = #{personCode}
+        </if>
+        <if test="personName != null">
+            AND C.PERSON_NAME = #{personName}
+        </if>
+        <if test="reviewType != null">
+            AND B.REVIEW_TYPE = #{reviewType}
+        </if>
+        <if test="reviewStatus != null">
+            AND B.REVIEW_STATUS = #{reviewStatus}
+        </if>
+    </select>
+
+
+    <sql id="Base_Person_Main_Table">
+        A.AREA_NAME AS AREA_NAME,
+        A.TEAM_NAME AS TEAM_NAME,
+        B.COMPANY_CODE AS COMPANY_CODE,
+        B.TEAM_CODE AS TEAM_CODE,
+        B.PERSON_NATURE AS PERSON_NATURE,
+        B.PERSON_LEVEL AS PERSON_LEVEL,
+        B.PERSON_STATUS AS PERSON_STATUS,
+        B.PERSON_CHECK_START AS PERSON_CHECK_START,
+        B.PERSON_UPTIME AS PERSON_UPTIME,
+        B.PERSON_CORRECTIME AS PERSON_CORRECTIME,
+        B.PERSON_TRY_STARTIME AS PERSON_TRY_STARTIME,
+        B.PERSON_TRY_ENDTIME AS PERSON_TRY_ENDTIME,
+        B.PERSON_JOINTIME AS PERSON_JOINTIME,
+        B.START_TIME AS START_TIME,
+        B.CREATE_TIME AS CREATE_TIME,
+        B.MODIFY_TIME AS MODIFY_TIME,
+        B.CREATOR AS CREATOR,
+        B.MODIFIER AS MODIFIER,
+        B.AREA_CODE AS AREA_CODE,
+        C.ID AS ID,
+        C.PERSON_CODE AS PERSON_CODE,
+        C.PERSON_NAME AS PERSON_NAME,
+        C.PERSON_IDCARD AS PERSON_IDCARD,
+        C.REMARK AS REMARK,
+        C.PERSON_AGE AS PERSON_AGE,
+        C.PERSON_ETHNIC AS PERSON_ETHNIC,
+        C.PERSON_MARR AS PERSON_MARR,
+        C.PERSON_SCHOOL AS PERSON_SCHOOL,
+        C.PERSON_SUBJECT AS PERSON_SUBJECT,
+        C.PERSON_EDU AS PERSON_EDU,
+        C.PERSON_EDULEVEL AS PERSON_EDULEVEL,
+        C.PERSON_WORKTIME AS PERSON_WORKTIME,
+        C.PERSON_FIRSTWORKTIME AS PERSON_FIRSTWORKTIME,
+        C.PERSON_ADDRESS AS PERSON_ADDRESS,
+        C.PERSON_HOMEPHONE AS PERSON_HOMEPHONE,
+        C.PERSON_WORKPHONE AS PERSON_WORKPHONE,
+        C.PERSON_PHONE AS PERSON_PHONE,
+        C.PERRSON_EMAIL AS PERRSON_EMAIL,
+        C.PERSON_BIRTH AS PERSON_BIRTH
+    </sql>
+    <resultMap id="personMainTableResultMap" type="com.yqjr.fin.mkmm.sales.vo.domin.PersonMainVo">
+        <id property="id" column="ID"/>
+        <result property="personCode" column="PERSON_CODE"/><!--人员代码-->
+        <result property="personName" column="PERSON_NAME"/><!--人员姓名-->
+        <result property="personIdcard" column="PERSON_IDCARD"/><!--身份证号-->
+        <result property="remark" column="REMARK"/><!--备注-->
+        <result property="personAge" column="PERSON_AGE"/><!--年龄-->
+        <result property="personEthnic" column="PERSON_ETHNIC"/><!--民族-->
+        <result property="personMarr" column="PERSON_MARR"/><!--婚姻状况-->
+        <result property="personSchool" column="PERSON_SCHOOL"/><!--毕业学校-->
+        <result property="personSubject" column="PERSON_SUBJECT"/><!--专业-->
+        <result property="personEdu" column="PERSON_EDU"/><!--最高学历-->
+        <result property="personEdulevel" column="PERSON_EDULEVEL"/><!--学位-->
+        <result property="personWorktime" column="PERSON_WORKTIME"/><!--工龄-->
+        <result property="personFirstworktime" column="PERSON_FIRSTWORKTIME"/><!--参加工作时间-->
+        <result property="personAddress" column="PERSON_ADDRESS"/><!--家庭住址-->
+        <result property="personHomephone" column="PERSON_HOMEPHONE"/><!--家庭电话-->
+        <result property="personWorkphone" column="PERSON_WORKPHONE"/><!--工作电话-->
+        <result property="personPhone" column="PERSON_PHONE"/><!--移动电话-->
+        <result property="perrsonEmail" column="PERRSON_EMAIL"/><!--e-mail-->
+        <result property="personBirth" column="PERSON_BIRTH"/><!--出生日期-->
+        <!--团队信息-->
+        <association property="teamMain" javaType="com.yqjr.fin.mkmm.sales.entity.TeamMain">
+            <result property="areaName" column="AREA_NAME"/><!--区域名称-->
+            <result property="teamName" column="TEAM_NAME"/><!--团队名称-->
+        </association>
+        <!--入职信息-->
+        <association property="personTeam" javaType="com.yqjr.fin.mkmm.sales.entity.PersonTeam">
+            <result property="company" column="COMPANY"/><!--公司代码-->
+            <result property="areaCode" column="AREA_CODE"/><!--区域代码-->
+            <result property="teamCode" column="TEAM_CODE"/><!--团队代码-->
+            <result property="personNature" column="PERSON_NATURE"/><!--人员性质（0团队负责人，1销售经理）-->
+            <result property="personLevel" column="PERSON_LEVEL"/><!--人员级别-->
+            <result property="personStatus" column="PERSON_STATUS"/><!--人员状态(0 无效,1 有效，2 注销)-->
+            <result property="personCheckStart" column="PERSON_CHECK_START"/><!--考核开始时间-->
+            <result property="personUptime" column="PERSON_UPTIME"/><!--上岗时间-->
+            <result property="personCorrectime" column="PERSON_CORRECTIME"/><!--转正时间-->
+            <result property="personTryStartime" column="PERSON_TRY_STARTIME"/><!--试用期开始时间-->
+            <result property="personTryEndtime" column="PERSON_TRY_ENDTIME"/><!--试用期结束时间-->
+            <result property="personJointime" column="PERSON_JOINTIME"/><!--加入我司时间-->
+            <result property="reviewStatus" column="REVIEW_STATUS"/><!--审核状态（00驳回,01提交审核,02待审核,03审核中,04审核通过）-->
+            <result property="startTime" column="START_TIME"/><!--生效时间-->
+            <result property="createTime" column="CREATE_TIME"/><!--创建时间-->
+            <result property="modifyTime" column="MODIFY_TIME"/><!--修改时间-->
+            <result property="creator" column="CREATOR"/><!--创建人-->
+            <result property="modifier" column="MODIFIER"/><!--修改人-->
+            <result property="flag" column="FLAG"/><!--有效标识（如表记录不删除，以此区分,0无效，1有效）-->
+            <result property="reviewType" column="REVIEW_TYPE"/><!--审核类型（01人员新增，02人员修改）-->
+            <result property="flowId" column="FLOW_ID"/><!--工作流id-->
+        </association>
+    </resultMap>
+    <!--查询审核通过列表-->
+    <select id="selectPersonMainTable" parameterType="com.yqjr.fin.mkmm.sales.condition.PersonWorkCondition"
+            resultMap="personMainTableResultMap">
+        select
+        <include refid="Base_Person_Main_Table"/>
+        from MKMM_TEAM_MAIN A,
+        MKMM_PERSON_TEAM B,
+        MKMM_PERSON_MAIN C
+        WHERE
+        A.TEAM_CODE = B.TEAM_CODE
+        AND B.PERSON_CODE = C.PERSON_CODE
+        <if test="personCode != null and personCode!=''">
+            AND C.PERSON_CODE LIKE CONCAT(#{personCode},'%')
+        </if>
+        <if test="personName != null and personName!=''">
+            AND C.PERSON_NAME LIKE CONCAT(#{personName},'%')
+        </if>
+        <!--<if test="personNature !=selectPersonMainTable null and personNature!=''">-->
+        <!--AND B.PERSON_NATURE = #{personNature}-->
+        <!--</if>-->
+        <if test="reviewType != null and reviewType!=''">
+            AND B.REVIEW_TYPE LIKE CONCAT(#{reviewType},'%')
+        </if>
+        <if test="reviewStatus != null and reviewStatus!=''">
+            AND B.REVIEW_STATUS LIKE CONCAT(#{reviewStatus},'%')
+        </if>
+        <if test="personNature != null and personNature!=''">
+            AND B.PERSON_NATURE = #{personNature}
+        </if>
+        <if test="personStatus != null and personStatus!=''">
+            AND B.PERSON_STATUS = #{personStatus}
+        </if>
+        <if test="areaCode!= null and areaCode!=''">
+            AND B.AREA_CODE = #{areaCode}
+        </if>
+        <if test="company!= null and company!=''">
+            AND B.COMPANY = #{company}
+        </if>
+        <if test="teamCode!= null and teamCode!=''">
+            AND B.TEAM_CODE = #{teamCode}
+        </if>
+        ORDER BY B.PERSON_CODE DESC
+    </select>
+
+    <!--通过id查询销售人员信息-->
+    <select id="selectPersonMainById" parameterType="java.lang.Long" resultMap="personMainDetailResultMap">
+        select
+        <include refid="Base_Person_Main"/>
+        from MKMM_TEAM_MAIN A,
+        MKMM_PERSON_TEAM B,
+        MKMM_PERSON_MAIN C,
+        MKMM_PERSON_CITY D,
+        MKMM_PERSON_BRAND E
+        WHERE A.TEAM_CODE = B.TEAM_CODE
+        AND B.PERSON_CODE = C.PERSON_CODE
+        AND C.PERSON_CODE = D.PERSON_CODE(+)
+        AND C.PERSON_CODE = E.PERSON_CODE(+)
+        <if test="_parameter != null">
+            AND C.ID = #{_parameter}
+        </if>
+    </select>
+
+
+    <!--通过flowId查询审核通过人员信息-->
+    <select id="selectPersonMainByflowId" parameterType="java.lang.Long" resultMap="personMainDetailResultMap">
+        select
+        <include refid="Base_Person_Main"/>
+        from MKMM_TEAM_MAIN A,
+        MKMM_PERSON_TEAM_REVIEW B,
+        MKMM_PERSON_MAIN C,
+        MKMM_PERSON_CITY D,
+        MKMM_PERSON_BRAND E
+
+        WHERE A.TEAM_CODE = B.TEAM_CODE
+        AND B.PERSON_CODE = C.PERSON_CODE
+        AND C.PERSON_CODE = D.PERSON_CODE(+)
+        AND C.PERSON_CODE = E.PERSON_CODE(+)
+
+
+        <if test="_parameter != null">
+            AND B.FLOW_ID = #{_parameter}
+
+        </if>
+    </select>
+
+    <!-- endregion -->
+
+
+    <!--根据PersonCode更新数据-->
+    <update id="patchByPersonCode" parameterType="com.yqjr.fin.mkmm.sales.entity.PersonMain">
+        update
+        <include refid="Base_Table_Name"/>
+        <set>
+            <include refid="Base_Column_Set_Values_Selective"/>
+        </set>
+        where PERSON_CODE = #{personCode,jdbcType=VARCHAR}
+    </update>
+
+
+    <!--模糊查询人员代码查询人员，团队-->
+
+    <resultMap id="PersonInTeGrate" type="com.yqjr.fin.mkmm.sales.vo.domin.PersonTeamVo">
+        <result property="personCode" column="PERSON_CODE"/><!--人员代码-->
+        <result property="personName" column="PERSON_NAME"/><!--人员姓名-->
+        <result property="personNature" column="PERSON_NATURE"/><!--人员性质（0团队负责人，1销售经理）-->
+        <result property="personStatus" column="PERSON_STATUS"/><!--人员状态(0 无效,1 有效，2 注销)-->
+        <result property="teamCode" column="TEAM_CODE"/><!--团队名称-->
+        <result property="teamName" column="TEAM_NAME"/><!--团队代码-->
+
+    </resultMap>
+
+    <select id="selectAllNoStatus" resultMap="BaseResultMap">
+        select a.ID,a.PERSON_CODE,a.PERSON_NAME,a.PERSON_IDCARD,a.PERSON_AGE,a.PERSON_ETHNIC,a.PERSON_MARR,a.PERSON_SCHOOL,a.PERSON_SUBJECT,a.PERSON_EDU,a.PERSON_EDULEVEL,a.PERSON_WORKTIME,a.PERSON_FIRSTWORKTIME,a.PERSON_ADDRESS,a.PERSON_HOMEPHONE,a.PERSON_WORKPHONE,a.PERSON_PHONE,a.PERRSON_EMAIL,a.PERSON_STATUS,a.START_TIME,a.CREATE_TIME,a.MODIFY_TIME,a.REMARK,a.PERSON_BIRTH,a.TRANSCODE2,a.TRANSCODE3,a.TRANSCODE4,a.CREATOR,a.MODIFIER,a.FLAG,a.TRANSCODE1,a.LOGIN_NAME,a.COMPANY
+        from mkmm_person_main a join mkmm_person_team b
+        on a.person_code=b.person_code
+        where b.person_status='0'
+    </select>
+
+    <select id="selectByCode" resultMap="BaseResultMap" parameterType="String">
+        select
+            <include refid="Base_Column_List"/>
+        from
+            <include refid="Base_Table_Name"/>
+        where person_code=#{arg0}
+    </select>
+
+    <select id="selectPersonMainByCode" resultMap="BaseResultMap">
+        select
+            <include refid="Base_Column_List"/>
+        from
+            <include refid="Base_Table_Name"/>
+        <where>
+            <include refid="Base_Column_Where_Selective"/>
+        </where>
+    </select>
+
+</mapper>
+

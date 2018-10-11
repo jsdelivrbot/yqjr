@@ -1,0 +1,37 @@
+import {apiQueryPersonById} from '../../../../api/sale-person/person-maintenance/personMaintenanceApi';
+const personView = {
+    state: {
+        loading: false,
+        personData: {
+            personTeam: {},
+            teamMain: {}
+        }
+    },
+    actions: {
+        handleQueryPersonById ({ commit }, personId) {
+            commit('sendin');
+            return new Promise((resolve, reject) => {
+                apiQueryPersonById(personId).then((res) => {
+                    commit('setPersonData', res);
+                    commit('success');
+                    resolve();
+                }).catch((err) => {
+                    commit('success');
+                    reject(err);
+                });
+            });
+        }
+    },
+    mutations: {
+        setPersonData (state, data) {
+            state.personData = data.result;
+        },
+        sendin (state) {
+            state.loading = true;
+        },
+        success (state) {
+            state.loading = false;
+        }
+    }
+};
+export default personView;

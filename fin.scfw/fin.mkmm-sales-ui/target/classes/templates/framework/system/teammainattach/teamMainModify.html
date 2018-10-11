@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-store">
+    <meta HTTP-EQUIV="Pragma" CONTENT="no-cache">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <script src="/mkmm/ui/js/include/head.js"></script>
+    <title>一汽金融开发平台</title>
+</head>
+<body class="no-skin">
+<div class="page-content" id="mainContent">
+    <div class="widget-box transparent ui-sortable-handle" id="widget-box-search">
+        <div class="widget-header">
+            <h3 class="widget-title smaller lighter">&nbsp;修改</h3>
+
+            <div class="widget-toolbar no-border">
+            </div>
+        </div>
+        <div class="widget-body">
+            <div class="widget-main padding-6 no-padding-left no-padding-right">
+                <div class="space-6"></div>
+                <form id="inputForm"  action="" method="post" class="form-horizontal" enctype="application/x-www-form-urlencoded">
+                    <input type="hidden" name="_method" value="PUT">                   
+                    <div class="space-4"></div>
+					<div class="row">
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">序号：</label>
+							<div class="col-sm-3">
+								<input name="teamId" id="teamId"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">归属区域代码：</label>
+							<div class="col-sm-3">
+								<input name="areaCode" id="areaCode"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+					</div>
+					<div class="space-4"></div>
+					<div class="row">
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">归属区域名称：</label>
+							<div class="col-sm-3">
+								<input name="areaName" id="areaName"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">团队代码：</label>
+							<div class="col-sm-3">
+								<input name="teamCode" id="teamCode"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+					</div>
+					<div class="space-4"></div>
+					<div class="row">
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">团队名称：</label>
+							<div class="col-sm-3">
+								<input name="teamName" id="teamName"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">团队级别：</label>
+							<div class="col-sm-3">
+								<input name="teamLevel" id="teamLevel"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+					</div>
+					<div class="space-4"></div>
+					<div class="row">
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">团队类型：</label>
+							<div class="col-sm-3">
+								<input name="teamType" id="teamType"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">有效状态：</label>
+							<div class="col-sm-3">
+								<input name="teamStatus" id="teamStatus"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+					</div>
+					<div class="space-4"></div>
+					<div class="row">
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">团队负责人：</label>
+							<div class="col-sm-3">
+								<input name="teamLeader" id="teamLeader"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">电话：</label>
+							<div class="col-sm-3">
+								<input name="teamPhone" id="teamPhone"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+					</div>
+					<div class="space-4"></div>
+					<div class="row">
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">邮编：</label>
+							<div class="col-sm-3">
+								<input name="teamZip" id="teamZip"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">地址：</label>
+							<div class="col-sm-3">
+								<input name="teamAddress" id="teamAddress"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+					</div>
+					<div class="space-4"></div>
+					<div class="row">
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">传真：</label>
+							<div class="col-sm-3">
+								<input name="teamFax" id="teamFax"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">生效时间：</label>
+							<div class="col-sm-3">
+								<input name="teamStartime" id="teamStartime"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+					</div>
+					<div class="space-4"></div>
+					<div class="row">
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">创建时间：</label>
+							<div class="col-sm-3">
+								<input name="teamCreatime" id="teamCreatime"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">修改时间：</label>
+							<div class="col-sm-3">
+								<input name="teamModtime" id="teamModtime"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+					</div>
+					<div class="space-4"></div>
+					<div class="row">
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">备注：</label>
+							<div class="col-sm-3">
+								<input name="remark" id="remark"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">备注1：</label>
+							<div class="col-sm-3">
+								<input name="transcode1" id="transcode1"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+					</div>
+					<div class="space-4"></div>
+					<div class="row">
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">备注2：</label>
+							<div class="col-sm-3">
+								<input name="transcode2" id="transcode2"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">备注3：</label>
+							<div class="col-sm-3">
+								<input name="transcode3" id="transcode3"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+					</div>
+					<div class="space-4"></div>
+					<div class="row">
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">备注4：</label>
+							<div class="col-sm-3">
+								<input name="transcode4" id="transcode4"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+					</div>
+					<div class="space-4"></div>
+										
+					<div class="space-4"></div>
+                    
+                    <div class="space-4"></div>
+                    <div class="clearfix form-actions">
+                        <div class="col-md-offset-4 col-md-8">
+                            <button id="btnSubmit" class="btn btn-info" type="button">
+                                <i class="ace-icon fa fa-check bigger-110"></i>
+                                保存
+                            </button>
+                            &nbsp; &nbsp; &nbsp;
+                            <button class="btn" type="button" onclick="location.href=document.referrer;">
+                                <i class="ace-icon fa fa-undo bigger-110"></i>
+                                返回
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="/mkmm/ui/js/teammain/teamMainCommon.js"></script>
+<script src="/mkmm/ui/js/teammain/teamMainForm.js"></script>
+</html>

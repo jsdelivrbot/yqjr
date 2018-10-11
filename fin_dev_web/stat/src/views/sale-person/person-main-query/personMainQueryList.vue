@@ -1,0 +1,239 @@
+<style lang="less">
+    @import '../../../styles/common.less';
+</style>
+<template>
+    <div>
+        <Row>
+            <Card>
+                <p slot="title">
+                    <Icon type="search"></Icon>
+                    查询
+                </p>
+                <Form ref="formValidate" :model="searchFormDate" :label-width="100">
+                    <Row>
+                        <Col span="8" offset="2">
+                            <FormItem label="人员代码:" >
+                                <Input v-model="searchFormDate.personCode" placeholder="请输入人员代码"></Input>
+                            </FormItem>
+                        </Col>
+                        <Col span="8" offset="2">
+                            <FormItem label="人员姓名:">
+                                <Input v-model="searchFormDate.personName" placeholder="请输入人员姓名"></Input>
+                            </FormItem>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col span="8" offset="2">
+                            <FormItem label="人员性质:">
+                                <Select v-model="searchFormDate.personNature" style="width:100%" placeholder = "全部">
+                                    <Option value="" selected>全部</Option>
+                                    <Option value="1" >销售经理</Option>
+                                    <Option value="0" >团队负责人</Option>
+                                </Select>
+                            </FormItem>
+                        </Col>
+                        <Col span="8" offset="2">
+                            <FormItem label="人员状态:">
+                                <Select v-model="searchFormDate.personStatus" style="width:100%" placeholder = "全部">
+                                    <Option value="" selected>全部</Option>
+                                    <Option value="0" >无效</Option>
+                                    <Option value="1" >有效</Option>
+                                    <Option value="2" >注销</Option>
+                                </Select>
+                            </FormItem>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col span="4" offset="9">
+                            <Button type="primary" icon="search" @click="searchData">查询</Button>
+                        </Col>
+                        <Col span="4">
+                            <Button icon="refresh" @click="cleanData">重置</Button>
+                        </Col>
+                    </Row>
+                </Form>
+            </Card>
+        </Row>
+        <Row class="margin-top-10">
+            <Card>
+                <p slot="title">
+                    <Icon type="search"></Icon>
+                    人员信息列表
+                </p>
+                <Table :data="tableData" :columns="tableColumns"  :loading="loading" ref="tableExcel" class="margin-top-10"></Table>
+                <div style="margin: 10px;overflow: hidden">
+                    <div style="float: right;">
+                        <Page :total="total" :current="pageNo" :page-size="pageSize" size="small" @on-change="changePage" @on-page-size-change="pageSizeChange" show-total show-sizer></Page>
+                    </div>
+                </div>
+            </Card>
+        </Row>
+        <a id="hrefToExportTable" style="postion: absolute;left: -10px;top: -10px;width: 0px;height: 0px;"></a>
+    </div>
+</template>
+
+<script>
+import {resetWorkHeight} from '@/libs/util.js';
+import { mapActions, mapState } from 'vuex';
+export default{
+    name: 'personMainList',
+    data () {
+        return {
+            searchFormDate: {
+                personCode: '',
+                personName: '',
+                personNature: '',
+                personStatus: '',
+                pageInfo: {
+                    pageSize: '10',
+                    pageNo: '1'
+                }
+            },
+            tableColumns: [
+                {
+                    title: '人员代码',
+                    align: 'center',
+                    key: 'personCode'
+                    // sortable: true
+                }, {
+                    title: '人员姓名',
+                    align: 'center',
+                    key: 'personName'
+                }, {
+                    title: '人员性质',
+                    key: 'personNature',
+                    align: 'center',
+                    render: (h, params) => {
+                        const row = params.row;
+                        return h('div', [
+                            h('div', row.personTeam.personNature === '1' ? '销售经理' : row.personTeam.personNature === '0' ? '团队负责人' : '')
+                        ]);
+                    }
+                }, {
+                    title: '人员状态',
+                    key: 'personStatus',
+                    align: 'center',
+                    render: (h, params) => {
+                        const row = params.row;
+                        return h('div', [
+                            h('div', row.personTeam.personStatus === '0' ? '无效' : row.personTeam.personStatus === '1' ? '有效' : row.personTeam.personStatus === '2' ? '注销' : '')
+                        ]);
+                    }
+                }, {
+                    title: '团队代码',
+                    key: 'teamCode',
+                    align: 'center',
+                    render: (h, params) => {
+                        const row = params.row;
+                        return h('div', [
+                            h('div', row.personTeam.teamCode)
+                        ]);
+                    }
+                }, {
+                    title: '团队名称',
+                    key: 'teamName',
+                    align: 'center',
+                    render: (h, params) => {
+                        const row = params.row;
+                        return h('div', [
+                            h('div', row.teamMain.teamName)
+                        ]);
+                    }
+                }, {
+                    title: '操作',
+                    align: 'center',
+                    render: (h, params) => {
+                        return h('div', [
+                            h('Button', {
+                                props: {
+                                    type: 'primary',
+                                    size: 'small'
+                                },
+                                style: {
+                                    marginRight: '6px'
+                                },
+                                on: {
+                                    click: () => {
+                                        let routerParam = {id: params.row.id, personCode: params.row.personCode, tabName: 'name1'};
+                                        this.$router.push({
+                                            name: 'personMainQueryTabList',
+                                            query: routerParam
+                                        });
+                                    }
+                                }
+                            }, '查看')
+                        ]);
+                    }
+                }
+            ]
+        };
+    },
+    computed: {
+        ...mapState({
+            loading: ({personMainList}) => personMainList.loading,
+            tableData: ({personMainList}) => personMainList.personMainQueryList,
+            pageNo: ({personMainList}) => personMainList.pageNo,
+            pageSize: ({personMainList}) => personMainList.pageSize,
+            total: ({personMainList}) => personMainList.total,
+            pages: ({personMainList}) => personMainList.pages
+        })
+    },
+    methods: {
+        ...mapActions([
+            'handlePersonMainQueryList'
+        ]),
+        /**
+         * 初始化
+         */
+        init () {
+            this.searchData();
+        },
+        /**
+         * 点击查询按钮执行查询操作
+         */
+        searchData () {
+            this.handlePersonMainQueryList(this.searchFormDate).then(res => {
+                resetWorkHeight();
+                // this.$Message.info('查询成功!');
+            });
+        },
+        // 点击重置按钮执行重置操作
+        resetData () {
+            this.searchFormDate.personCode = '';
+            this.searchFormDate.personName = '';
+            this.searchFormDate.personNature = '';
+            this.searchFormDate.personStatus = '';
+        },
+        /**
+         * 页面改变
+         */
+        changePage (index) {
+            this.searchFormDate.pageInfo.pageNo = index;
+            this.handlePersonMainQueryList(this.searchFormDate).then(res => {
+                resetWorkHeight();
+                // this.$Message.info('查询成功!');
+                this.searchFormDate.pageInfo.pageNo = 1;
+            });
+        },
+        /**
+         * 切换每页条数
+         */
+        pageSizeChange (newPageSize) {
+            this.searchFormDate.pageInfo.pageSize = newPageSize;
+            this.handlePersonMainQueryList(this.searchFormDate).then(res => {
+                resetWorkHeight();
+                // this.$Message.info('查询成功!');
+            });
+        },
+        /**
+         * 重置按钮
+         */
+        cleanData () {
+            window.location.reload();
+        }
+    },
+    mounted () {
+        this.init();
+    }
+};
+</script>

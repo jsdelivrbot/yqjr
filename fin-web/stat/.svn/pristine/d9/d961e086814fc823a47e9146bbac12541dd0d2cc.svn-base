@@ -1,0 +1,6 @@
+import env from './env'
+
+const DEV_URL = 'http://localhost:8082';
+const PRO_URL = 'http://10.20.133.87:50001';
+
+export default env === 'development' ? DEV_URL : PRO_URL

@@ -1,0 +1,1503 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yqjr.fin.mkmm.sales.mapper.PlanTrackMapper">
+
+    <!-- region BaseMapper DO NOT MODIFY!!!  -->
+
+    <sql id="Base_Table_Name">
+        MKMM_PLAN_TRACK
+    </sql>
+
+
+
+    <!-- region BaseResultMap  -->
+    <resultMap id="BaseResultMap" type="com.yqjr.fin.mkmm.sales.entity.PlanTrack">
+        <result property="id" column="ID"/><!--ID-->
+        <result property="year" column="YEAR"/><!--年份-->
+        <result property="month" column="MONTH"/><!--月份-->
+        <result property="areaCode" column="AREA_CODE"/><!--区域代码-->
+        <result property="areaName" column="AREA_NAME"/><!--区域名称-->
+        <result property="teamCode" column="TEAM_CODE"/><!--团队代码-->
+        <result property="teamName" column="TEAM_NAME"/><!--团队名称-->
+        <result property="cityCode" column="CITY_CODE"/><!--下辖区域代码-->
+        <result property="cityName" column="CITY_NAME"/><!--下辖区域名称-->
+        <result property="personCode" column="PERSON_CODE"/><!--人员代码-->
+        <result property="personName" column="PERSON_NAME"/><!--人员名称-->
+        <result property="personType" column="PERSON_TYPE"/><!--人员类别-->
+        <result property="brands" column="BRANDS"/><!--品牌-->
+        <result property="brandType" column="BRAND_TYPE"/><!--品牌类别-->
+        <result property="monthActualNum" column="MONTH_ACTUAL_NUM"/><!--月实际台数达成量-->
+        <result property="monthPlanNum" column="MONTH_PLAN_NUM"/><!--月台数预算-->
+        <result property="monthPlanRate" column="MONTH_PLAN_RATE"/><!--月台数预算达成率-->
+        <result property="monthRate" column="MONTH_RATE"/><!--月序时进度-->
+        <result property="monthRateCal" column="MONTH_RATE_CAL"/><!--月达成率与序时进度差值-->
+        <result property="yearActualNum" column="YEAR_ACTUAL_NUM"/><!--年台数实际达成量-->
+        <result property="yearPlanNum" column="YEAR_PLAN_NUM"/><!--年台数预算数-->
+        <result property="yearPlanRate" column="YEAR_PLAN_RATE"/><!--年台数预算数达成率-->
+        <result property="yearRate" column="YEAR_RATE"/><!--年序时进度-->
+        <result property="yearRateCal" column="YEAR_RATE_CAL"/><!--年达成率与序时进度差值-->
+        <result property="createTime" column="CREATE_TIME"/><!--创建时间-->
+        <result property="modifyTime" column="MODIFY_TIME"/><!--修改时间-->
+        <result property="transcode1" column="TRANSCODE1"/><!--备用1-->
+        <result property="transcode2" column="TRANSCODE2"/><!--备用2-->
+        <result property="transcode3" column="TRANSCODE3"/><!--备用3-->
+        <result property="transcode4" column="TRANSCODE4"/><!--备用4-->
+        <result property="creator" column="CREATOR"/><!--创建人-->
+        <result property="startTime" column="START_TIME"/><!--生效时间-->
+        <result property="modifier" column="MODIFIER"/><!--修改人-->
+        <result property="flag" column="FLAG"/><!--最新标识-->
+        <result property="differentCode" column="DIFFERENT_CODE"/><!--导入识别码-->
+        <result property="company" column="COMPANY"/><!--公司-->
+    </resultMap>
+    <!-- endregion -->
+
+    <!-- region Base_Column_List  -->
+    <sql id="Base_Column_List">
+    ID,YEAR,MONTH,AREA_CODE,AREA_NAME,TEAM_CODE,TEAM_NAME,CITY_CODE,CITY_NAME,PERSON_CODE,PERSON_NAME,PERSON_TYPE,BRANDS,BRAND_TYPE,MONTH_ACTUAL_NUM,MONTH_PLAN_NUM,MONTH_PLAN_RATE,MONTH_RATE,MONTH_RATE_CAL,YEAR_ACTUAL_NUM,YEAR_PLAN_NUM,YEAR_PLAN_RATE,YEAR_RATE,YEAR_RATE_CAL,CREATE_TIME,MODIFY_TIME,TRANSCODE1,TRANSCODE2,TRANSCODE3,TRANSCODE4,CREATOR,START_TIME,MODIFIER,FLAG,DIFFERENT_CODE,COMPANY
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_List_Selective  -->
+    <sql id="Base_Column_List_Selective">
+        <trim suffixOverrides=",">
+            <if test="id != null">
+            ID,
+            </if>
+            <if test="year != null">
+            YEAR,
+            </if>
+            <if test="month != null">
+            MONTH,
+            </if>
+            <if test="areaCode != null">
+            AREA_CODE,
+            </if>
+            <if test="areaName != null">
+            AREA_NAME,
+            </if>
+            <if test="teamCode != null">
+            TEAM_CODE,
+            </if>
+            <if test="teamName != null">
+            TEAM_NAME,
+            </if>
+            <if test="cityCode != null">
+            CITY_CODE,
+            </if>
+            <if test="cityName != null">
+            CITY_NAME,
+            </if>
+            <if test="personCode != null">
+            PERSON_CODE,
+            </if>
+            <if test="personName != null">
+            PERSON_NAME,
+            </if>
+            <if test="personType != null">
+            PERSON_TYPE,
+            </if>
+            <if test="brands != null">
+            BRANDS,
+            </if>
+            <if test="brandType != null">
+            BRAND_TYPE,
+            </if>
+            <if test="monthActualNum != null">
+            MONTH_ACTUAL_NUM,
+            </if>
+            <if test="monthPlanNum != null">
+            MONTH_PLAN_NUM,
+            </if>
+            <if test="monthPlanRate != null">
+            MONTH_PLAN_RATE,
+            </if>
+            <if test="monthRate != null">
+            MONTH_RATE,
+            </if>
+            <if test="monthRateCal != null">
+            MONTH_RATE_CAL,
+            </if>
+            <if test="yearActualNum != null">
+            YEAR_ACTUAL_NUM,
+            </if>
+            <if test="yearPlanNum != null">
+            YEAR_PLAN_NUM,
+            </if>
+            <if test="yearPlanRate != null">
+            YEAR_PLAN_RATE,
+            </if>
+            <if test="yearRate != null">
+            YEAR_RATE,
+            </if>
+            <if test="yearRateCal != null">
+            YEAR_RATE_CAL,
+            </if>
+            <if test="createTime != null">
+            CREATE_TIME,
+            </if>
+            <if test="modifyTime != null">
+            MODIFY_TIME,
+            </if>
+            <if test="transcode1 != null">
+            TRANSCODE1,
+            </if>
+            <if test="transcode2 != null">
+            TRANSCODE2,
+            </if>
+            <if test="transcode3 != null">
+            TRANSCODE3,
+            </if>
+            <if test="transcode4 != null">
+            TRANSCODE4,
+            </if>
+            <if test="creator != null">
+            CREATOR,
+            </if>
+            <if test="startTime != null">
+            START_TIME,
+            </if>
+            <if test="modifier != null">
+            MODIFIER,
+            </if>
+            <if test="flag != null">
+            FLAG,
+            </if>
+            <if test="differentCode != null">
+            DIFFERENT_CODE,
+            </if>
+            <if test="company != null">
+            COMPANY
+            </if>
+        </trim>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Values  -->
+    <sql id="Base_Column_Values">
+    seq_mkmm_plan_track.nextval,
+    #{year,jdbcType=VARCHAR},
+    #{month,jdbcType=VARCHAR},
+    #{areaCode,jdbcType=VARCHAR},
+    #{areaName,jdbcType=VARCHAR},
+    #{teamCode,jdbcType=VARCHAR},
+    #{teamName,jdbcType=VARCHAR},
+    #{cityCode,jdbcType=VARCHAR},
+    #{cityName,jdbcType=VARCHAR},
+    #{personCode,jdbcType=VARCHAR},
+    #{personName,jdbcType=VARCHAR},
+    #{personType,jdbcType=VARCHAR},
+    #{brands,jdbcType=VARCHAR},
+    #{brandType,jdbcType=VARCHAR},
+    #{monthActualNum,jdbcType=INTEGER},
+    #{monthPlanNum,jdbcType=INTEGER},
+    #{monthPlanRate,jdbcType=VARCHAR},
+    #{monthRate,jdbcType=VARCHAR},
+    #{monthRateCal,jdbcType=VARCHAR},
+    #{yearActualNum,jdbcType=INTEGER},
+    #{yearPlanNum,jdbcType=INTEGER},
+    #{yearPlanRate,jdbcType=VARCHAR},
+    #{yearRate,jdbcType=VARCHAR},
+    #{yearRateCal,jdbcType=VARCHAR},
+    #{createTime,jdbcType=TIMESTAMP},
+    #{modifyTime,jdbcType=TIMESTAMP},
+    #{transcode1,jdbcType=VARCHAR},
+    #{transcode2,jdbcType=VARCHAR},
+    #{transcode3,jdbcType=VARCHAR},
+    #{transcode4,jdbcType=VARCHAR},
+    #{creator,jdbcType=INTEGER},
+    #{startTime,jdbcType=TIMESTAMP},
+    #{modifier,jdbcType=INTEGER},
+    #{flag,jdbcType=VARCHAR},
+    #{differentCode,jdbcType=INTEGER},
+    #{company,jdbcType=INTEGER}
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Values_Selective  -->
+    <sql id="Base_Column_Values_Selective">
+        <trim suffixOverrides=",">
+            <if test="id != null">
+            #{id},
+            </if>
+            <if test="year != null">
+            #{year},
+            </if>
+            <if test="month != null">
+            #{month},
+            </if>
+            <if test="areaCode != null">
+            #{areaCode},
+            </if>
+            <if test="areaName != null">
+            #{areaName},
+            </if>
+            <if test="teamCode != null">
+            #{teamCode},
+            </if>
+            <if test="teamName != null">
+            #{teamName},
+            </if>
+            <if test="cityCode != null">
+            #{cityCode},
+            </if>
+            <if test="cityName != null">
+            #{cityName},
+            </if>
+            <if test="personCode != null">
+            #{personCode},
+            </if>
+            <if test="personName != null">
+            #{personName},
+            </if>
+            <if test="personType != null">
+            #{personType},
+            </if>
+            <if test="brands != null">
+            #{brands},
+            </if>
+            <if test="brandType != null">
+            #{brandType},
+            </if>
+            <if test="monthActualNum != null">
+            #{monthActualNum},
+            </if>
+            <if test="monthPlanNum != null">
+            #{monthPlanNum},
+            </if>
+            <if test="monthPlanRate != null">
+            #{monthPlanRate},
+            </if>
+            <if test="monthRate != null">
+            #{monthRate},
+            </if>
+            <if test="monthRateCal != null">
+            #{monthRateCal},
+            </if>
+            <if test="yearActualNum != null">
+            #{yearActualNum},
+            </if>
+            <if test="yearPlanNum != null">
+            #{yearPlanNum},
+            </if>
+            <if test="yearPlanRate != null">
+            #{yearPlanRate},
+            </if>
+            <if test="yearRate != null">
+            #{yearRate},
+            </if>
+            <if test="yearRateCal != null">
+            #{yearRateCal},
+            </if>
+            <if test="createTime != null">
+            #{createTime},
+            </if>
+            <if test="modifyTime != null">
+            #{modifyTime},
+            </if>
+            <if test="transcode1 != null">
+            #{transcode1},
+            </if>
+            <if test="transcode2 != null">
+            #{transcode2},
+            </if>
+            <if test="transcode3 != null">
+            #{transcode3},
+            </if>
+            <if test="transcode4 != null">
+            #{transcode4},
+            </if>
+            <if test="creator != null">
+            #{creator},
+            </if>
+            <if test="startTime != null">
+            #{startTime},
+            </if>
+            <if test="modifier != null">
+            #{modifier},
+            </if>
+            <if test="flag != null">
+            #{flag},
+            </if>
+            <if test="differentCode != null">
+            #{differentCode},
+            </if>
+            <if test="company != null">
+            #{company}
+            </if>
+        </trim>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Set_Values  -->
+    <sql id="Base_Column_Set_Values">
+    ID = #{id,jdbcType=NUMERIC},
+    YEAR = #{year,jdbcType=VARCHAR},
+    MONTH = #{month,jdbcType=VARCHAR},
+    AREA_CODE = #{areaCode,jdbcType=VARCHAR},
+    AREA_NAME = #{areaName,jdbcType=VARCHAR},
+    TEAM_CODE = #{teamCode,jdbcType=VARCHAR},
+    TEAM_NAME = #{teamName,jdbcType=VARCHAR},
+    CITY_CODE = #{cityCode,jdbcType=VARCHAR},
+    CITY_NAME = #{cityName,jdbcType=VARCHAR},
+    PERSON_CODE = #{personCode,jdbcType=VARCHAR},
+    PERSON_NAME = #{personName,jdbcType=VARCHAR},
+    PERSON_TYPE = #{personType,jdbcType=VARCHAR},
+    BRANDS = #{brands,jdbcType=VARCHAR},
+    BRAND_TYPE = #{brandType,jdbcType=VARCHAR},
+    MONTH_ACTUAL_NUM = #{monthActualNum,jdbcType=INTEGER},
+    MONTH_PLAN_NUM = #{monthPlanNum,jdbcType=INTEGER},
+    MONTH_PLAN_RATE = #{monthPlanRate,jdbcType=VARCHAR},
+    MONTH_RATE = #{monthRate,jdbcType=VARCHAR},
+    MONTH_RATE_CAL = #{monthRateCal,jdbcType=VARCHAR},
+    YEAR_ACTUAL_NUM = #{yearActualNum,jdbcType=INTEGER},
+    YEAR_PLAN_NUM = #{yearPlanNum,jdbcType=INTEGER},
+    YEAR_PLAN_RATE = #{yearPlanRate,jdbcType=VARCHAR},
+    YEAR_RATE = #{yearRate,jdbcType=VARCHAR},
+    YEAR_RATE_CAL = #{yearRateCal,jdbcType=VARCHAR},
+    CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+    MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP},
+    TRANSCODE1 = #{transcode1,jdbcType=VARCHAR},
+    TRANSCODE2 = #{transcode2,jdbcType=VARCHAR},
+    TRANSCODE3 = #{transcode3,jdbcType=VARCHAR},
+    TRANSCODE4 = #{transcode4,jdbcType=VARCHAR},
+    CREATOR = #{creator,jdbcType=INTEGER},
+    START_TIME = #{startTime,jdbcType=TIMESTAMP},
+    MODIFIER = #{modifier,jdbcType=INTEGER},
+    FLAG = #{flag,jdbcType=VARCHAR},
+    DIFFERENT_CODE = #{differentCode,jdbcType=INTEGER},
+    COMPANY = #{company,jdbcType=INTEGER}
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Set_Values_Selective  -->
+    <sql id="Base_Column_Set_Values_Selective">
+        <if test="id != null">
+        ID = #{id},
+        </if>
+        <if test="year != null">
+        YEAR = #{year},
+        </if>
+        <if test="month != null">
+        MONTH = #{month},
+        </if>
+        <if test="areaCode != null">
+        AREA_CODE = #{areaCode},
+        </if>
+        <if test="areaName != null">
+        AREA_NAME = #{areaName},
+        </if>
+        <if test="teamCode != null">
+        TEAM_CODE = #{teamCode},
+        </if>
+        <if test="teamName != null">
+        TEAM_NAME = #{teamName},
+        </if>
+        <if test="cityCode != null">
+        CITY_CODE = #{cityCode},
+        </if>
+        <if test="cityName != null">
+        CITY_NAME = #{cityName},
+        </if>
+        <if test="personCode != null">
+        PERSON_CODE = #{personCode},
+        </if>
+        <if test="personName != null">
+        PERSON_NAME = #{personName},
+        </if>
+        <if test="personType != null">
+        PERSON_TYPE = #{personType},
+        </if>
+        <if test="brands != null">
+        BRANDS = #{brands},
+        </if>
+        <if test="brandType != null">
+        BRAND_TYPE = #{brandType},
+        </if>
+        <if test="monthActualNum != null">
+        MONTH_ACTUAL_NUM = #{monthActualNum},
+        </if>
+        <if test="monthPlanNum != null">
+        MONTH_PLAN_NUM = #{monthPlanNum},
+        </if>
+        <if test="monthPlanRate != null">
+        MONTH_PLAN_RATE = #{monthPlanRate},
+        </if>
+        <if test="monthRate != null">
+        MONTH_RATE = #{monthRate},
+        </if>
+        <if test="monthRateCal != null">
+        MONTH_RATE_CAL = #{monthRateCal},
+        </if>
+        <if test="yearActualNum != null">
+        YEAR_ACTUAL_NUM = #{yearActualNum},
+        </if>
+        <if test="yearPlanNum != null">
+        YEAR_PLAN_NUM = #{yearPlanNum},
+        </if>
+        <if test="yearPlanRate != null">
+        YEAR_PLAN_RATE = #{yearPlanRate},
+        </if>
+        <if test="yearRate != null">
+        YEAR_RATE = #{yearRate},
+        </if>
+        <if test="yearRateCal != null">
+        YEAR_RATE_CAL = #{yearRateCal},
+        </if>
+        <if test="createTime != null">
+        CREATE_TIME = #{createTime},
+        </if>
+        <if test="modifyTime != null">
+        MODIFY_TIME = #{modifyTime},
+        </if>
+        <if test="transcode1 != null">
+        TRANSCODE1 = #{transcode1},
+        </if>
+        <if test="transcode2 != null">
+        TRANSCODE2 = #{transcode2},
+        </if>
+        <if test="transcode3 != null">
+        TRANSCODE3 = #{transcode3},
+        </if>
+        <if test="transcode4 != null">
+        TRANSCODE4 = #{transcode4},
+        </if>
+        <if test="creator != null">
+        CREATOR = #{creator},
+        </if>
+        <if test="startTime != null">
+        START_TIME = #{startTime},
+        </if>
+        <if test="modifier != null">
+        MODIFIER = #{modifier},
+        </if>
+        <if test="flag != null">
+        FLAG = #{flag},
+        </if>
+        <if test="differentCode != null">
+        DIFFERENT_CODE = #{differentCode},
+        </if>
+        <if test="company != null">
+        COMPANY = #{company}
+        </if>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Where_Selective  -->
+    <sql id="Base_Column_Where_Selective">
+        <if test="id != null">
+            and ID = #{id}
+        </if>
+        <if test="year != null">
+            and YEAR = #{year}
+        </if>
+        <if test="month != null">
+            and MONTH = #{month}
+        </if>
+        <if test="areaCode != null">
+            and AREA_CODE = #{areaCode}
+        </if>
+        <if test="areaName != null">
+            and AREA_NAME = #{areaName}
+        </if>
+        <if test="teamCode != null">
+            and TEAM_CODE = #{teamCode}
+        </if>
+        <if test="teamName != null">
+            and TEAM_NAME = #{teamName}
+        </if>
+        <if test="cityCode != null">
+            and CITY_CODE = #{cityCode}
+        </if>
+        <if test="cityName != null">
+            and CITY_NAME = #{cityName}
+        </if>
+        <if test="personCode != null">
+            and PERSON_CODE = #{personCode}
+        </if>
+        <if test="personName != null">
+            and PERSON_NAME = #{personName}
+        </if>
+        <if test="personType != null">
+            and PERSON_TYPE = #{personType}
+        </if>
+        <if test="brands != null">
+            and BRANDS = #{brands}
+        </if>
+        <if test="brandType != null">
+            and BRAND_TYPE = #{brandType}
+        </if>
+        <if test="monthActualNum != null">
+            and MONTH_ACTUAL_NUM = #{monthActualNum}
+        </if>
+        <if test="monthPlanNum != null">
+            and MONTH_PLAN_NUM = #{monthPlanNum}
+        </if>
+        <if test="monthPlanRate != null">
+            and MONTH_PLAN_RATE = #{monthPlanRate}
+        </if>
+        <if test="monthRate != null">
+            and MONTH_RATE = #{monthRate}
+        </if>
+        <if test="monthRateCal != null">
+            and MONTH_RATE_CAL = #{monthRateCal}
+        </if>
+        <if test="yearActualNum != null">
+            and YEAR_ACTUAL_NUM = #{yearActualNum}
+        </if>
+        <if test="yearPlanNum != null">
+            and YEAR_PLAN_NUM = #{yearPlanNum}
+        </if>
+        <if test="yearPlanRate != null">
+            and YEAR_PLAN_RATE = #{yearPlanRate}
+        </if>
+        <if test="yearRate != null">
+            and YEAR_RATE = #{yearRate}
+        </if>
+        <if test="yearRateCal != null">
+            and YEAR_RATE_CAL = #{yearRateCal}
+        </if>
+        <if test="createTime != null">
+            and CREATE_TIME = #{createTime}
+        </if>
+        <if test="modifyTime != null">
+            and MODIFY_TIME = #{modifyTime}
+        </if>
+        <if test="transcode1 != null">
+            and TRANSCODE1 = #{transcode1}
+        </if>
+        <if test="transcode2 != null">
+            and TRANSCODE2 = #{transcode2}
+        </if>
+        <if test="transcode3 != null">
+            and TRANSCODE3 = #{transcode3}
+        </if>
+        <if test="transcode4 != null">
+            and TRANSCODE4 = #{transcode4}
+        </if>
+        <if test="creator != null">
+            and CREATOR = #{creator}
+        </if>
+        <if test="startTime != null">
+            and START_TIME = #{startTime}
+        </if>
+        <if test="modifier != null">
+            and MODIFIER = #{modifier}
+        </if>
+        <if test="flag != null">
+            and FLAG = #{flag}
+        </if>
+        <if test="differentCode != null">
+            and DIFFERENT_CODE = #{differentCode}
+        </if>
+        <if test="company != null">
+            and COMPANY = #{company}
+        </if>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Where_Selective_Param1  -->
+    <sql id="Base_Column_Where_Selective_Param1">
+        <if test="param1.id != null">
+            and ID = #{param1.id}
+        </if>
+        <if test="param1.year != null">
+            and YEAR = #{param1.year}
+        </if>
+        <if test="param1.month != null">
+            and MONTH = #{param1.month}
+        </if>
+        <if test="param1.areaCode != null">
+            and AREA_CODE = #{param1.areaCode}
+        </if>
+        <if test="param1.areaName != null">
+            and AREA_NAME = #{param1.areaName}
+        </if>
+        <if test="param1.teamCode != null">
+            and TEAM_CODE = #{param1.teamCode}
+        </if>
+        <if test="param1.teamName != null">
+            and TEAM_NAME = #{param1.teamName}
+        </if>
+        <if test="param1.cityCode != null">
+            and CITY_CODE = #{param1.cityCode}
+        </if>
+        <if test="param1.cityName != null">
+            and CITY_NAME = #{param1.cityName}
+        </if>
+        <if test="param1.personCode != null">
+            and PERSON_CODE = #{param1.personCode}
+        </if>
+        <if test="param1.personName != null">
+            and PERSON_NAME = #{param1.personName}
+        </if>
+        <if test="param1.personType != null">
+            and PERSON_TYPE = #{param1.personType}
+        </if>
+        <if test="param1.brands != null">
+            and BRANDS = #{param1.brands}
+        </if>
+        <if test="param1.brandType != null">
+            and BRAND_TYPE = #{param1.brandType}
+        </if>
+        <if test="param1.monthActualNum != null">
+            and MONTH_ACTUAL_NUM = #{param1.monthActualNum}
+        </if>
+        <if test="param1.monthPlanNum != null">
+            and MONTH_PLAN_NUM = #{param1.monthPlanNum}
+        </if>
+        <if test="param1.monthPlanRate != null">
+            and MONTH_PLAN_RATE = #{param1.monthPlanRate}
+        </if>
+        <if test="param1.monthRate != null">
+            and MONTH_RATE = #{param1.monthRate}
+        </if>
+        <if test="param1.monthRateCal != null">
+            and MONTH_RATE_CAL = #{param1.monthRateCal}
+        </if>
+        <if test="param1.yearActualNum != null">
+            and YEAR_ACTUAL_NUM = #{param1.yearActualNum}
+        </if>
+        <if test="param1.yearPlanNum != null">
+            and YEAR_PLAN_NUM = #{param1.yearPlanNum}
+        </if>
+        <if test="param1.yearPlanRate != null">
+            and YEAR_PLAN_RATE = #{param1.yearPlanRate}
+        </if>
+        <if test="param1.yearRate != null">
+            and YEAR_RATE = #{param1.yearRate}
+        </if>
+        <if test="param1.yearRateCal != null">
+            and YEAR_RATE_CAL = #{param1.yearRateCal}
+        </if>
+        <if test="param1.createTime != null">
+            and CREATE_TIME = #{param1.createTime}
+        </if>
+        <if test="param1.modifyTime != null">
+            and MODIFY_TIME = #{param1.modifyTime}
+        </if>
+        <if test="param1.transcode1 != null">
+            and TRANSCODE1 = #{param1.transcode1}
+        </if>
+        <if test="param1.transcode2 != null">
+            and TRANSCODE2 = #{param1.transcode2}
+        </if>
+        <if test="param1.transcode3 != null">
+            and TRANSCODE3 = #{param1.transcode3}
+        </if>
+        <if test="param1.transcode4 != null">
+            and TRANSCODE4 = #{param1.transcode4}
+        </if>
+        <if test="param1.creator != null">
+            and CREATOR = #{param1.creator}
+        </if>
+        <if test="param1.startTime != null">
+            and START_TIME = #{param1.startTime}
+        </if>
+        <if test="param1.modifier != null">
+            and MODIFIER = #{param1.modifier}
+        </if>
+        <if test="param1.flag != null">
+            and FLAG = #{param1.flag}
+        </if>
+        <if test="param1.differentCode != null">
+            and DIFFERENT_CODE = #{param1.differentCode}
+        </if>
+        <if test="param1.company != null">
+            and COMPANY = #{param1.company}
+        </if>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Order_By  -->
+    <sql id="Base_Order_By">
+        <bind name="propName" value="sortField"></bind>
+        ORDER BY <include refid="Base_Column_Name" />
+        <choose>
+            <when test="isAscend">
+                ASC
+            </when>
+            <otherwise>
+                DESC
+            </otherwise>
+        </choose>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Name  -->
+    <sql id="Base_Column_Name">
+        <if test='"id" == propName'>
+        ID
+        </if>
+        <if test='"year" == propName'>
+        YEAR
+        </if>
+        <if test='"month" == propName'>
+        MONTH
+        </if>
+        <if test='"areaCode" == propName'>
+        AREA_CODE
+        </if>
+        <if test='"areaName" == propName'>
+        AREA_NAME
+        </if>
+        <if test='"teamCode" == propName'>
+        TEAM_CODE
+        </if>
+        <if test='"teamName" == propName'>
+        TEAM_NAME
+        </if>
+        <if test='"cityCode" == propName'>
+        CITY_CODE
+        </if>
+        <if test='"cityName" == propName'>
+        CITY_NAME
+        </if>
+        <if test='"personCode" == propName'>
+        PERSON_CODE
+        </if>
+        <if test='"personName" == propName'>
+        PERSON_NAME
+        </if>
+        <if test='"personType" == propName'>
+        PERSON_TYPE
+        </if>
+        <if test='"brands" == propName'>
+        BRANDS
+        </if>
+        <if test='"brandType" == propName'>
+        BRAND_TYPE
+        </if>
+        <if test='"monthActualNum" == propName'>
+        MONTH_ACTUAL_NUM
+        </if>
+        <if test='"monthPlanNum" == propName'>
+        MONTH_PLAN_NUM
+        </if>
+        <if test='"monthPlanRate" == propName'>
+        MONTH_PLAN_RATE
+        </if>
+        <if test='"monthRate" == propName'>
+        MONTH_RATE
+        </if>
+        <if test='"monthRateCal" == propName'>
+        MONTH_RATE_CAL
+        </if>
+        <if test='"yearActualNum" == propName'>
+        YEAR_ACTUAL_NUM
+        </if>
+        <if test='"yearPlanNum" == propName'>
+        YEAR_PLAN_NUM
+        </if>
+        <if test='"yearPlanRate" == propName'>
+        YEAR_PLAN_RATE
+        </if>
+        <if test='"yearRate" == propName'>
+        YEAR_RATE
+        </if>
+        <if test='"yearRateCal" == propName'>
+        YEAR_RATE_CAL
+        </if>
+        <if test='"createTime" == propName'>
+        CREATE_TIME
+        </if>
+        <if test='"modifyTime" == propName'>
+        MODIFY_TIME
+        </if>
+        <if test='"transcode1" == propName'>
+        TRANSCODE1
+        </if>
+        <if test='"transcode2" == propName'>
+        TRANSCODE2
+        </if>
+        <if test='"transcode3" == propName'>
+        TRANSCODE3
+        </if>
+        <if test='"transcode4" == propName'>
+        TRANSCODE4
+        </if>
+        <if test='"creator" == propName'>
+        CREATOR
+        </if>
+        <if test='"startTime" == propName'>
+        START_TIME
+        </if>
+        <if test='"modifier" == propName'>
+        MODIFIER
+        </if>
+        <if test='"flag" == propName'>
+        FLAG
+        </if>
+        <if test='"differentCode" == propName'>
+        DIFFERENT_CODE
+        </if>
+        <if test='"company" == propName'>
+        COMPANY
+        </if>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Id_Array  -->
+    <sql id="Base_Id_Array">
+        <foreach collection="array" open="(" close=")" separator="," item="id">
+        #{id}
+        </foreach>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Id_List  -->
+    <sql id="Base_Id_List">
+        <foreach collection="list" open="(" close=")" separator="," item="id">
+        #{id}
+        </foreach>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Select_All  -->
+    <sql id="Base_Select_All">
+        select
+        <include refid="Base_Column_List" />
+        from <include refid="Base_Table_Name" />
+    </sql>
+    <!-- endregion -->
+
+    <!-- region selectById  -->
+    <select id="selectById" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        where ID = #{id}
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectByIds  -->
+    <select id="selectByIds" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        where ID in
+        <include refid="Base_Id_List" />
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectAll  -->
+    <select id="selectAll" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectCount  -->
+    <select id="selectCount" resultType="int">
+        select count(*)
+        from <include refid="Base_Table_Name" />
+        <where>
+            <include refid="Base_Column_Where_Selective" />
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region select  -->
+    <select id="select" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Where_Selective" />
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectOne  -->
+    <select id="selectOne" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Where_Selective" />
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectOrderBy  -->
+    <select id="selectOrderBy" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Where_Selective_Param1" />
+        </where>
+        <include refid="Base_Order_By" />
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectByProperty  -->
+    <select id="selectByProperty" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Name" /> = #{propValue}
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectByPropertyIn  -->
+    <select id="selectByPropertyIn" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Name" /> IN
+            <foreach collection="propValues" open="(" close=")" separator="," item="propValue">
+            #{propValue}
+            </foreach>
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region delete  -->
+    <delete id="delete">
+        delete
+        from <include refid="Base_Table_Name" />
+        <where>
+            <include refid="Base_Column_Where_Selective" />
+        </where>
+    </delete>
+    <!-- endregion -->
+
+    <!-- region deleteById  -->
+    <delete id="deleteById">
+        delete
+        from <include refid="Base_Table_Name" />
+        where ID = #{id}
+    </delete>
+    <!-- endregion -->
+
+    <!-- region deleteByIds  -->
+    <delete id="deleteByIds">
+        delete
+        from <include refid="Base_Table_Name" />
+        where ID in
+        <include refid="Base_Id_List" />
+    </delete>
+    <!-- endregion -->
+
+    <!-- region insert  -->
+    <insert id="insert" parameterType="com.yqjr.fin.mkmm.sales.entity.PlanTrack">
+        insert into <include refid="Base_Table_Name" /> (
+        <include refid="Base_Column_List" />
+        )
+        values (
+        <include refid="Base_Column_Values" />
+        )
+    </insert>
+    <!-- endregion -->
+
+    <!-- region updateById  -->
+    <update id="updateById" parameterType="com.yqjr.fin.mkmm.sales.entity.PlanTrack">
+        update <include refid="Base_Table_Name" />
+        <set>
+            <include refid="Base_Column_Set_Values" />
+        </set>
+        where ID = #{id}
+    </update>
+    <!-- endregion -->
+
+    <!-- region patchById  -->
+    <update id="patchById" parameterType="com.yqjr.fin.mkmm.sales.entity.PlanTrack">
+        update <include refid="Base_Table_Name" />
+        <set>
+            <include refid="Base_Column_Set_Values_Selective" />
+        </set>
+        where ID = #{id}
+    </update>
+    <!-- endregion -->
+
+    <!-- endregion BaseMapper -->
+
+    <!-- region generated by CodeRobot  -->
+
+    <!-- region 结果集映射  -->
+    <resultMap id="PlanTrackResult" type="com.yqjr.fin.mkmm.sales.entity.PlanTrack">
+        <result property="id" column="ID"/><!--ID-->
+        <result property="year" column="YEAR"/><!--年份-->
+        <result property="month" column="MONTH"/><!--月份-->
+        <result property="areaCode" column="AREA_CODE"/><!--区域代码-->
+        <result property="areaName" column="AREA_NAME"/><!--区域名称-->
+        <result property="teamCode" column="TEAM_CODE"/><!--团队代码-->
+        <result property="teamName" column="TEAM_NAME"/><!--团队名称-->
+        <result property="cityCode" column="CITY_CODE"/><!--下辖区域代码-->
+        <result property="cityName" column="CITY_NAME"/><!--下辖区域名称-->
+        <result property="personCode" column="PERSON_CODE"/><!--人员代码-->
+        <result property="personName" column="PERSON_NAME"/><!--人员名称-->
+        <result property="personType" column="PERSON_TYPE"/><!--人员类别-->
+        <result property="brands" column="BRANDS"/><!--品牌-->
+        <result property="brandType" column="BRAND_TYPE"/><!--品牌类别-->
+        <result property="monthActualNum" column="MONTH_ACTUAL_NUM"/><!--月实际台数达成量-->
+        <result property="monthPlanNum" column="MONTH_PLAN_NUM"/><!--月台数预算-->
+        <result property="monthPlanRate" column="MONTH_PLAN_RATE"/><!--月台数预算达成率-->
+        <result property="monthRate" column="MONTH_RATE"/><!--月序时进度-->
+        <result property="monthRateCal" column="MONTH_RATE_CAL"/><!--月达成率与序时进度差值-->
+        <result property="yearActualNum" column="YEAR_ACTUAL_NUM"/><!--年台数实际达成量-->
+        <result property="yearPlanNum" column="YEAR_PLAN_NUM"/><!--年台数预算数-->
+        <result property="yearPlanRate" column="YEAR_PLAN_RATE"/><!--年台数预算数达成率-->
+        <result property="yearRate" column="YEAR_RATE"/><!--年序时进度-->
+        <result property="yearRateCal" column="YEAR_RATE_CAL"/><!--年达成率与序时进度差值-->
+        <result property="createTime" column="CREATE_TIME"/><!--创建时间-->
+        <result property="modifyTime" column="MODIFY_TIME"/><!--修改时间-->
+        <result property="transcode1" column="TRANSCODE1"/><!--备用1-->
+        <result property="transcode2" column="TRANSCODE2"/><!--备用2-->
+        <result property="transcode3" column="TRANSCODE3"/><!--备用3-->
+        <result property="transcode4" column="TRANSCODE4"/><!--备用4-->
+        <result property="creator" column="CREATOR"/><!--创建人-->
+        <result property="startTime" column="START_TIME"/><!--生效时间-->
+        <result property="modifier" column="MODIFIER"/><!--修改人-->
+        <result property="flag" column="FLAG"/><!--最新标识-->
+        <result property="differentCode" column="DIFFERENT_CODE"/><!--导入识别码-->
+        <result property="company" column="COMPANY"/><!--公司-->
+    </resultMap>
+    <!-- endregion -->
+
+    <!-- 查询条件判断 入参为对象 条件为模糊-->
+    <sql id="queryLikePlanTrack">
+        <if test="planTrack!=null">
+            <if test="id!=null and id!=''">
+                AND ID LIKE CONCAT('%'#{id}'%')<!--ID-->
+            </if>
+            <if test="year!=null and year!=''">
+                AND YEAR LIKE CONCAT('%'#{year}'%')<!--年份-->
+            </if>
+            <if test="month!=null and month!=''">
+                AND MONTH LIKE CONCAT('%'#{month}'%')<!--月份-->
+            </if>
+            <if test="areaCode!=null and areaCode!=''">
+                AND AREA_CODE LIKE CONCAT('%'#{areaCode}'%')<!--区域代码-->
+            </if>
+            <if test="areaName!=null and areaName!=''">
+                AND AREA_NAME LIKE CONCAT('%'#{areaName}'%')<!--区域名称-->
+            </if>
+            <if test="teamCode!=null and teamCode!=''">
+                AND TEAM_CODE LIKE CONCAT('%'#{teamCode}'%')<!--团队代码-->
+            </if>
+            <if test="teamName!=null and teamName!=''">
+                AND TEAM_NAME LIKE CONCAT('%'#{teamName}'%')<!--团队名称-->
+            </if>
+            <if test="cityCode!=null and cityCode!=''">
+                AND CITY_CODE LIKE CONCAT('%'#{cityCode}'%')<!--下辖区域代码-->
+            </if>
+            <if test="cityName!=null and cityName!=''">
+                AND CITY_NAME LIKE CONCAT('%'#{cityName}'%')<!--下辖区域名称-->
+            </if>
+            <if test="personCode!=null and personCode!=''">
+                AND PERSON_CODE LIKE CONCAT('%'#{personCode}'%')<!--人员代码-->
+            </if>
+            <if test="personName!=null and personName!=''">
+                AND PERSON_NAME LIKE CONCAT('%'#{personName}'%')<!--人员名称-->
+            </if>
+            <if test="personType!=null and personType!=''">
+                AND PERSON_TYPE LIKE CONCAT('%'#{personType}'%')<!--人员类别-->
+            </if>
+            <if test="brands!=null and brands!=''">
+                AND BRANDS LIKE CONCAT('%'#{brands}'%')<!--品牌-->
+            </if>
+            <if test="brandType!=null and brandType!=''">
+                AND BRAND_TYPE LIKE CONCAT('%'#{brandType}'%')<!--品牌类别-->
+            </if>
+            <if test="monthActualNum!=null and monthActualNum!=''">
+                AND MONTH_ACTUAL_NUM LIKE CONCAT('%'#{monthActualNum}'%')<!--月实际台数达成量-->
+            </if>
+            <if test="monthPlanNum!=null and monthPlanNum!=''">
+                AND MONTH_PLAN_NUM LIKE CONCAT('%'#{monthPlanNum}'%')<!--月台数预算-->
+            </if>
+            <if test="monthPlanRate!=null and monthPlanRate!=''">
+                AND MONTH_PLAN_RATE LIKE CONCAT('%'#{monthPlanRate}'%')<!--月台数预算达成率-->
+            </if>
+            <if test="monthRate!=null and monthRate!=''">
+                AND MONTH_RATE LIKE CONCAT('%'#{monthRate}'%')<!--月序时进度-->
+            </if>
+            <if test="monthRateCal!=null and monthRateCal!=''">
+                AND MONTH_RATE_CAL LIKE CONCAT('%'#{monthRateCal}'%')<!--月达成率与序时进度差值-->
+            </if>
+            <if test="yearActualNum!=null and yearActualNum!=''">
+                AND YEAR_ACTUAL_NUM LIKE CONCAT('%'#{yearActualNum}'%')<!--年台数实际达成量-->
+            </if>
+            <if test="yearPlanNum!=null and yearPlanNum!=''">
+                AND YEAR_PLAN_NUM LIKE CONCAT('%'#{yearPlanNum}'%')<!--年台数预算数-->
+            </if>
+            <if test="yearPlanRate!=null and yearPlanRate!=''">
+                AND YEAR_PLAN_RATE LIKE CONCAT('%'#{yearPlanRate}'%')<!--年台数预算数达成率-->
+            </if>
+            <if test="yearRate!=null and yearRate!=''">
+                AND YEAR_RATE LIKE CONCAT('%'#{yearRate}'%')<!--年序时进度-->
+            </if>
+            <if test="yearRateCal!=null and yearRateCal!=''">
+                AND YEAR_RATE_CAL LIKE CONCAT('%'#{yearRateCal}'%')<!--年达成率与序时进度差值-->
+            </if>
+            <if test="createTime!=null and createTime!=''">
+                AND CREATE_TIME LIKE CONCAT('%'#{createTime}'%')<!--创建时间-->
+            </if>
+            <if test="modifyTime!=null and modifyTime!=''">
+                AND MODIFY_TIME LIKE CONCAT('%'#{modifyTime}'%')<!--修改时间-->
+            </if>
+            <if test="transcode1!=null and transcode1!=''">
+                AND TRANSCODE1 LIKE CONCAT('%'#{transcode1}'%')<!--备用1-->
+            </if>
+            <if test="transcode2!=null and transcode2!=''">
+                AND TRANSCODE2 LIKE CONCAT('%'#{transcode2}'%')<!--备用2-->
+            </if>
+            <if test="transcode3!=null and transcode3!=''">
+                AND TRANSCODE3 LIKE CONCAT('%'#{transcode3}'%')<!--备用3-->
+            </if>
+            <if test="transcode4!=null and transcode4!=''">
+                AND TRANSCODE4 LIKE CONCAT('%'#{transcode4}'%')<!--备用4-->
+            </if>
+            <if test="creator!=null and creator!=''">
+                AND CREATOR LIKE CONCAT('%'#{creator}'%')<!--创建人-->
+            </if>
+            <if test="startTime!=null and startTime!=''">
+                AND START_TIME LIKE CONCAT('%'#{startTime}'%')<!--生效时间-->
+            </if>
+            <if test="modifier!=null and modifier!=''">
+                AND MODIFIER LIKE CONCAT('%'#{modifier}'%')<!--修改人-->
+            </if>
+            <if test="flag!=null and flag!=''">
+                AND FLAG LIKE CONCAT('%'#{flag}'%')<!--最新标识-->
+            </if>
+            <if test="differentCode!=null and differentCode!=''">
+                DIFFERENT_CODE LIKE CONCAT('%'#{differentCode}'%')<!--导入识别码-->
+            </if>
+            <if test="company!=null and company!=''">
+                COMPANY LIKE CONCAT('%'#{company}'%')<!--导入识别码-->
+            </if>
+        </if>
+    </sql>
+
+    <!-- 按条件模糊查询所有 -->
+    <select id="queryPlanTrackList" parameterType="com.yqjr.fin.mkmm.sales.entity.PlanTrack"
+            resultMap="PlanTrackResult">
+        SELECT
+        ID,<!--ID-->
+        YEAR,<!--年份-->
+        MONTH,<!--月份-->
+        AREA_CODE,<!--区域代码-->
+        AREA_NAME,<!--区域名称-->
+        TEAM_CODE,<!--团队代码-->
+        TEAM_NAME,<!--团队名称-->
+        CITY_CODE,<!--下辖区域代码-->
+        CITY_NAME,<!--下辖区域名称-->
+        PERSON_CODE,<!--人员代码-->
+        PERSON_NAME,<!--人员名称-->
+        PERSON_TYPE,<!--人员类别-->
+        BRANDS,<!--品牌-->
+        BRAND_TYPE,<!--品牌类别-->
+        MONTH_ACTUAL_NUM,<!--月实际台数达成量-->
+        MONTH_PLAN_NUM,<!--月台数预算-->
+        MONTH_PLAN_RATE,<!--月台数预算达成率-->
+        MONTH_RATE,<!--月序时进度-->
+        MONTH_RATE_CAL,<!--月达成率与序时进度差值-->
+        YEAR_ACTUAL_NUM,<!--年台数实际达成量-->
+        YEAR_PLAN_NUM,<!--年台数预算数-->
+        YEAR_PLAN_RATE,<!--年台数预算数达成率-->
+        YEAR_RATE,<!--年序时进度-->
+        YEAR_RATE_CAL,<!--年达成率与序时进度差值-->
+        CREATE_TIME,<!--创建时间-->
+        MODIFY_TIME,<!--修改时间-->
+        TRANSCODE1,<!--备用1-->
+        TRANSCODE2,<!--备用2-->
+        TRANSCODE3,<!--备用3-->
+        TRANSCODE4,<!--备用4-->
+        CREATOR,<!--创建人-->
+        START_TIME,<!--生效时间-->
+        MODIFIER,<!--修改人-->
+        FLAG,<!--最新标识-->
+        DIFFERENT_CODE,<!--导入识别码-->
+        COMPANY<!--导入识别码-->
+        FROM MKMM_PLAN_TRACK
+        <where>
+            <include refid="queryLikePlanTrack"/>
+        </where>
+    </select>
+
+    <!-- 按条件模糊统计所有条数 -->
+    <select id="queryPlanTrackCount" parameterType="com.yqjr.fin.mkmm.sales.entity.PlanTrack" resultType="int">
+        SELECT
+        count (id)
+        FROM MKMM_PLAN_TRACK
+        <where>
+            <include refid="queryLikePlanTrack"/>
+        </where>
+    </select>
+
+    <!-- 批量删除，入参为数组  -->
+    <delete id="dynamicDelete">
+        delete from MKMM_PLAN_TRACK where id in
+        <foreach collection="array" open="(" close=")" separator="," item="arr">
+            #{arr}
+        </foreach>
+    </delete>
+
+    <!-- 批量删除，入参为list  -->
+    <delete id="dynamicDeleteList">
+        delete from MKMM_PLAN_TRACK where id in
+        <foreach collection="list" open="(" close=")" separator="," item="ids">
+            #{ids}
+        </foreach>
+    </delete>
+
+    <!-- 批量插入 -->
+    <insert id="insertBatch" parameterType="java.util.List">
+        <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into MKMM_PLAN_TRACK
+        (
+        <include refid="Base_Column_List" />
+        )
+        values
+        <foreach collection="list" item="planTrack" index="index" separator=",">
+            (
+            <include refid="Base_Column_Values" />
+            )
+        </foreach>
+    </insert>
+
+    <!-- 插入单条数据，并返回主键ID -->
+    <insert id="saveObj" useGeneratedKeys="true" keyProperty="id"
+            parameterType="com.yqjr.fin.mkmm.sales.entity.PlanTrack">
+        insert into MKMM_PLAN_TRACK
+        (
+        <include refid="Base_Column_List" />
+        )
+        values
+        (
+        <include refid="Base_Column_Values" />
+        )
+    </insert>
+
+
+    <!-- **********************************************************************-->
+    <!-- ************* 在此下方为一对一、一对多查询方式 仅供参考***************-->
+    <!-- **********************************************************************-->
+    <!-- 一个博客（BlogInfo） 属于一个作者（Author） ，一个作者（Author） 有多篇文章（Post） -->
+    <!--
+  <resultMap type="com.foo.bean.BlogInfo" id="BlogInfo">
+      <id column="blog_id" property="blogId" />
+      <result column="title" property="title" />
+      <association property="author" column="blog_author_id"
+          javaType="com.foo.bean.Author" select="com.foo.bean.AuthorMapper.selectByPrimaryKey">
+      </association>
+      <collection property="posts" column="blog_id" ofType="com.foo.bean.Post"
+          select="com.foo.bean.PostMapper.selectByBlogId">
+      </collection>
+  </resultMap>
+
+  <select id="queryBlogInfoById" resultMap="BlogInfo" parameterType="java.math.BigDecimal">
+      SELECT
+      B.BLOG_ID,
+      B.TITLE,
+      B.AUTHOR_ID AS BLOG_AUTHOR_ID
+      FROM BLOG B
+      where B.BLOG_ID = 博客ID
+  </select>
+
+          上述方法存在N+1问题
+      它的弊端也比较明显：即所谓的N+1问题。关联的嵌套查询显示得到一个结果集，然后根据这个结果集的每一条记录进行关联查询。
+      现在假设嵌套查询就一个（即resultMap 内部就一个association标签），现查询的结果集返回条数为N，那么关联查询语句将会被执行N次，加上自身返回结果集查询1次，共需要访问数据库N+1次。如果N比较大的话，这样的数据库访问消耗是非常大的！所以使用这种嵌套语句查询的使用者一定要考虑慎重考虑，确保N值不会很大。
+      以上面的例子为例，select 语句本身会返回com.foo.bean.BlogMapper.queryBlogInfoById 条数为1 的结果集，由于它有两条关联的语句查询，它需要共访问数据库 1*（1+1）=3次数据库。
+
+
+       <resultMap type="com.foo.bean.BlogInfo" id="BlogInfo">
+      <id column="blog_id" property="blogId"/>
+      <result column="title" property="title"/>
+      <association property="author" column="blog_author_id" javaType="com.foo.bean.Author">
+          <id column="author_id" property="authorId"/>
+          <result column="user_name" property="userName"/>
+          <result column="password" property="password"/>
+          <result column="email" property="email"/>
+          <result column="biography" property="biography"/>
+      </association>
+      <collection property="posts" column="blog_post_id" ofType="com.foo.bean.Post">
+          <id column="post_id" property="postId"/>
+          <result column="blog_id" property="blogId"/>
+          <result column="create_time" property="createTime"/>
+          <result column="subject" property="subject"/>
+          <result column="body" property="body"/>
+          <result column="draft" property="draft"/>
+      </collection>
+      </resultMap>
+
+
+      <select id="queryAllBlogInfo" resultMap="BlogInfo">
+          SELECT
+           B.BLOG_ID,
+           B.TITLE,
+           B.AUTHOR_ID AS BLOG_AUTHOR_ID,
+           A.AUTHOR_ID,
+           A.USER_NAME,
+           A.PASSWORD,
+           A.EMAIL,
+           A.BIOGRAPHY,
+           P.POST_ID,
+           P.BLOG_ID AS BLOG_POST_ID ,
+             P.CREATE_TIME,
+           P.SUBJECT,
+           P.BODY,
+           P.DRAFT
+      FROM BLOG B
+      LEFT OUTER JOIN AUTHOR A
+        ON B.AUTHOR_ID = A.AUTHOR_ID
+      LEFT OUTER JOIN POST P
+        ON P.BLOG_ID = B.BLOG_ID
+      </select>
+      -->
+
+    <!-- **********************************************************************-->
+    <!-- ************* 此线上方代码自动生成，在此下方编写自定义代码。***************-->
+    <!-- **********************************************************************-->
+
+    <!-- endregion -->
+
+
+    <!-- 根据名称查询记录-->
+    <select id="selectTrackByName" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        where PERSON_NAME = #{personName}
+    </select>
+
+    <!-- 根据条件查询要导出的记录-->
+    <select id="selectTrack" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Where_Selective" />
+        </where>
+    </select>
+
+    <!-- 根据条件查询要导出的记录-->
+    <select id="selectAllArea" resultMap="PersonTeamResultMap" parameterType="com.yqjr.fin.mkmm.sales.entity.PersonTeam">
+        select distinct AREA_CODE,AREA_name
+        from
+            MKMM_PERSON_TEAM
+    </select>
+
+    <!-- region BaseResultMap  -->
+    <resultMap id="PersonTeamResultMap" type="com.yqjr.fin.mkmm.sales.entity.PersonTeam">
+        <result property="id" column="ID"/><!--序列-->
+        <result property="personCode" column="PERSON_CODE"/><!--人员代码-->
+        <result property="companyCode" column="COMPANY_CODE"/><!--公司代码-->
+        <result property="areaCode" column="AREA_CODE"/><!--区域代码-->
+        <result property="teamCode" column="TEAM_CODE"/><!--团队代码-->
+        <result property="personNature" column="PERSON_NATURE"/><!--人员性质（0团队负责人，1销售经理）-->
+        <result property="personLevel" column="PERSON_LEVEL"/><!--人员级别-->
+        <result property="personStatus" column="PERSON_STATUS"/><!--人员状态(0 无效,1 有效，2 注销)-->
+        <result property="personCheckStart" column="PERSON_CHECK_START"/><!--考核开始时间-->
+        <result property="personUptime" column="PERSON_UPTIME"/><!--上岗时间-->
+        <result property="personCorrectime" column="PERSON_CORRECTIME"/><!--转正时间-->
+        <result property="personTryStartime" column="PERSON_TRY_STARTIME"/><!--试用期开始时间-->
+        <result property="personTryEndtime" column="PERSON_TRY_ENDTIME"/><!--试用期结束时间-->
+        <result property="personJointime" column="PERSON_JOINTIME"/><!--加入我司时间-->
+        <result property="remark" column="REMARK"/><!--备注-->
+        <result property="startTime" column="START_TIME"/><!--生效时间-->
+        <result property="createTime" column="CREATE_TIME"/><!--创建时间-->
+        <result property="modifyTime" column="MODIFY_TIME"/><!--修改时间-->
+        <result property="creator" column="CREATOR"/><!--创建人-->
+        <result property="modifier" column="MODIFIER"/><!--修改人-->
+    </resultMap>
+    <!-- 每个区域多少人 -->
+    <select id="selectPersonCodeByAreaCode" resultMap="PersonTeamResultMap">
+        select
+            ID,PERSON_CODE,COMPANY_CODE,AREA_CODE,TEAM_CODE,PERSON_NATURE,PERSON_LEVEL,PERSON_STATUS,PERSON_CHECK_START,PERSON_UPTIME,PERSON_CORRECTIME,PERSON_TRY_STARTIME,PERSON_TRY_ENDTIME,PERSON_JOINTIME,REMARK,START_TIME,CREATE_TIME,MODIFY_TIME,CREATOR,MODIFIER
+        from
+            MKMM_PERSON_TEAM
+        where
+            AREA_CODE = #{areaCode}
+    </select>
+
+    <!-- 每个区域多少人 -->
+    <select id="selectPersonNameByCode" resultType="String">
+        select
+            PERSON_NAME
+        from
+            MKMM_PERSON_MAIN
+        where
+            PERSON_CODE = #{personCode}
+    </select>
+
+    <!-- 查询是否存在记录 -->
+    <select id="selectTrackExist" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Where_Selective" />
+        </where>
+    </select>
+
+    <!-- 更新MKMM_PLAN_TRACK -->
+    <update id="updatePlanTrack" parameterType="com.yqjr.fin.mkmm.sales.entity.PlanTrack">
+        update
+            MKMM_PLAN_TRACK
+        set
+            MONTH_ACTUAL_NUM = #{monthActualNum},MONTH_PLAN_NUM = #{monthPlanNum}, MONTH_PLAN_RATE = #{monthPlanRate},MONTH_RATE = #{monthRate}, MONTH_RATE_CAL = #{monthRateCal},
+            YEAR_ACTUAL_NUM = #{yearActualNum}, YEAR_PLAN_NUM = #{yearPlanNum},YEAR_PLAN_RATE = #{yearPlanRate},YEAR_RATE = #{yearRate},YEAR_RATE_CAL = #{yearRateCal}
+        where
+            PERSON_CODE = #{personCode}
+        and YEAR = #{year}
+        and MONTH = #{month}
+        and AREA_CODE = #{areaCode}
+        and BRANDS = #{brands}
+        and PERSON_TYPE = #{personType}
+        <!-- and COMPANY = #{company} -->
+    </update>
+
+    <!-- 更新当前年之前月份的年序时进度和差值 -->
+    <update id="updatePlanTrackRate" parameterType="com.yqjr.fin.mkmm.sales.entity.PlanTrack">
+        update
+            MKMM_PLAN_TRACK
+        set
+            YEAR_RATE = #{yearRate},YEAR_RATE_CAL = #{yearRateCal}
+        where
+            PERSON_CODE = #{personCode}
+        and YEAR = #{year}
+        and AREA_CODE = #{areaCode}
+        and BRANDS = #{brands}
+        and PERSON_TYPE = #{personType}
+    </update>
+
+
+    <!-- region 结果集映射  -->
+    <resultMap id="TrackVoBaseResultMap" type="com.yqjr.fin.mkmm.sales.model.PlanTrackVo">
+        <result property="id" column="ID"/><!--ID-->
+        <result property="year" column="YEAR"/><!--年份-->
+        <result property="month" column="MONTH"/><!--月份-->
+        <result property="areaCode" column="AREA_CODE"/><!--区域代码-->
+        <result property="areaName" column="AREA_NAME"/><!--区域名称-->
+        <result property="teamCode" column="TEAM_CODE"/><!--团队代码-->
+        <result property="teamName" column="TEAM_NAME"/><!--团队名称-->
+        <result property="cityCode" column="CITY_CODE"/><!--下辖区域代码-->
+        <result property="cityName" column="CITY_NAME"/><!--下辖区域名称-->
+        <result property="personCode" column="PERSON_CODE"/><!--人员代码-->
+        <result property="personName" column="PERSON_NAME"/><!--人员名称-->
+        <result property="personType" column="PERSON_TYPE"/><!--人员类别-->
+        <result property="brands" column="BRANDS"/><!--品牌-->
+        <result property="monthActualNum" column="MONTH_ACTUAL_NUM"/><!--月实际台数达成量-->
+        <result property="monthPlanNum" column="MONTH_PLAN_NUM"/><!--月台数预算-->
+        <result property="monthPlanRate" column="MONTH_PLAN_RATE"/><!--月台数预算达成率-->
+        <result property="monthRate" column="MONTH_RATE"/><!--月序时进度-->
+        <result property="monthRateCal" column="MONTH_RATE_CAL"/><!--月达成率与序时进度差值-->
+        <result property="yearActualNum" column="YEAR_ACTUAL_NUM"/><!--年台数实际达成量-->
+        <result property="yearPlanNum" column="YEAR_PLAN_NUM"/><!--年台数预算数-->
+        <result property="yearPlanRate" column="YEAR_PLAN_RATE"/><!--年台数预算数达成率-->
+        <result property="yearRate" column="YEAR_RATE"/><!--年序时进度-->
+        <result property="yearRateCal" column="YEAR_RATE_CAL"/><!--年达成率与序时进度差值-->
+        <result property="company" column="COMPANY"/><!--公司-->
+        <result property="differentCode" column="DIFFERENT_CODE"/><!--导入识别码-->
+    </resultMap>
+    <!-- 计算计划跟踪 -->
+    <select id="sumPlanTrack" resultMap="TrackVoBaseResultMap" parameterType="com.yqjr.fin.mkmm.sales.model.PlanTrackVo">
+        select aa.area_name as area_name,aa.person_name as person_name, aa.person_type as person_type,SUM(aa.month_plan_num) as month_plan_num, SUM(aa.month_actual_num) as month_actual_num,aa.MONTH_RATE,SUM(bb.YEAR_PLAN_NUM) AS YEAR_PLAN_NUM ,SUM(bb.year_actual_num) as year_actual_num, bb.YEAR_RATE
+        from mkmm_plan_track aa, mkmm_plan_track_year bb
+        where aa.person_code = bb.person_code
+        and aa.year = bb.year
+        and aa.brands = bb.brands
+        and aa.company = bb.company
+        and aa.year = #{year}
+        and aa.month = #{month}
+        <if test="areaCode != null and areaCode!=''">
+            and aa.area_code = #{areaCode}
+        </if>
+        <if test="brands != null and brands!=''">
+            and aa.brands = #{brands}
+        </if>
+        <if test="personName != null and personName!=''">
+            AND aa.PERSON_NAME LIKE CONCAT(#{personName},'%')
+        </if>
+        and aa.company = #{company}
+        group by aa.area_name ,aa.person_name, aa.person_type, aa.MONTH_RATE, bb.YEAR_RATE
+    </select>
+
+</mapper>
+

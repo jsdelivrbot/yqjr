@@ -1,0 +1,471 @@
+ 
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta http-equiv="Expires" content="0">
+<meta http-equiv="Cache-Control" content="no-cache">
+<meta http-equiv="Cache-Control" content="no-store">
+<meta HTTP-EQUIV="Pragma" CONTENT="no-cache">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+<script src="/ui/js/include/head.js"></script>
+<title>一汽金融开发平台</title>
+</head>
+<body class="no-skin">
+	<div class="page-content" id="mainContent">
+	<div class="widget-box transparent ui-sortable-handle" id="widget-box-search">
+		<div class="widget-header">
+			<h3 class="widget-title smaller lighter">&nbsp;新增</h3>
+		</div>
+		<div class="widget-body">
+			<div class="widget-main padding-6 no-padding-left no-padding-right">
+				<div class="space-6"></div>
+				<form id="inputForm" action="/mkmm/sales/basicBussinesss" method="post" class="form-horizontal" >
+					<input type="hidden" value="id"/>
+					
+					<div class="row">
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">ID：</label>
+							<div class="col-sm-3">
+								<input name="id"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">业务明细表主键ID：</label>
+							<div class="col-sm-3">
+								<input name="businessid"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+					</div>
+					<div class="space-4"></div>
+					<div class="row">
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">申请ID（业务数据唯一标识）：</label>
+							<div class="col-sm-3">
+								<input name="applyid"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">结算单号：</label>
+							<div class="col-sm-3">
+								<input name="billNo"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+					</div>
+					<div class="space-4"></div>
+					<div class="row">
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">业务明细单号（合同号）：</label>
+							<div class="col-sm-3">
+								<input name="contractNo"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">借据号：</label>
+							<div class="col-sm-3">
+								<input name="loanNo"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+					</div>
+					<div class="space-4"></div>
+					<div class="row">
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">客户ID：</label>
+							<div class="col-sm-3">
+								<input name="customCode"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">客户名称：</label>
+							<div class="col-sm-3">
+								<input name="customName"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+					</div>
+					<div class="space-4"></div>
+					<div class="row">
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">证件类型：</label>
+							<div class="col-sm-3">
+								<input name="customIdType"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">证件号：</label>
+							<div class="col-sm-3">
+								<input name="customIdCard"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+					</div>
+					<div class="space-4"></div>
+					<div class="row">
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">所属公司：</label>
+							<div class="col-sm-3">
+								<input name="company"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">品牌编码：</label>
+							<div class="col-sm-3">
+								<input name="brandsCode"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+					</div>
+					<div class="space-4"></div>
+					<div class="row">
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">品牌名称：</label>
+							<div class="col-sm-3">
+								<input name="brandsName"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">车系代码：</label>
+							<div class="col-sm-3">
+								<input name="seriesCode"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+					</div>
+					<div class="space-4"></div>
+					<div class="row">
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">车系名称：</label>
+							<div class="col-sm-3">
+								<input name="seriesName"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">车型：</label>
+							<div class="col-sm-3">
+								<input name="carBrandType"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+					</div>
+					<div class="space-4"></div>
+					<div class="row">
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">车型名称：</label>
+							<div class="col-sm-3">
+								<input name="carBrandTypeName"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">净车价：</label>
+							<div class="col-sm-3">
+								<input name="carPrice"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+					</div>
+					<div class="space-4"></div>
+					<div class="row">
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">车籍：</label>
+							<div class="col-sm-3">
+								<input name="carMortgagerName"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">营销活动（车贷金融产品id）：</label>
+							<div class="col-sm-3">
+								<input name="nactivitiesId"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+					</div>
+					<div class="space-4"></div>
+					<div class="row">
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">营销活动名称（车贷金融产品id）：</label>
+							<div class="col-sm-3">
+								<input name="nactivitiesName"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">附加费金融产品id：</label>
+							<div class="col-sm-3">
+								<input name="necactivitiesId"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+					</div>
+					<div class="space-4"></div>
+					<div class="row">
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">附加费金融产品名称：</label>
+							<div class="col-sm-3">
+								<input name="necactivitiesName"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">业务类型Code：</label>
+							<div class="col-sm-3">
+								<input name="nbizType"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+					</div>
+					<div class="space-4"></div>
+					<div class="row">
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">业务类型名称：</label>
+							<div class="col-sm-3">
+								<input name="nbizTypeName"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">信贷产品Code：</label>
+							<div class="col-sm-3">
+								<input name="ngetinterestType"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+					</div>
+					<div class="space-4"></div>
+					<div class="row">
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">信贷产品名称：</label>
+							<div class="col-sm-3">
+								<input name="ngetinterestTypeName"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">金融产品(服务产品Code)：</label>
+							<div class="col-sm-3">
+								<input name="ndlrbizType"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+					</div>
+					<div class="space-4"></div>
+					<div class="row">
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">金融产品(服务产品名称)：</label>
+							<div class="col-sm-3">
+								<input name="ndlrbizTypeName"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">贷款金额：</label>
+							<div class="col-sm-3">
+								<input name="nloanMoney"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+					</div>
+					<div class="space-4"></div>
+					<div class="row">
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">贷款期限：</label>
+							<div class="col-sm-3">
+								<input name="timeLimit"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">申请日期：</label>
+							<div class="col-sm-3">
+								<input name="dapplyDate"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+					</div>
+					<div class="space-4"></div>
+					<div class="row">
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">放款日期：</label>
+							<div class="col-sm-3">
+								<input name="dfactstartDate"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">附加贷金额：</label>
+							<div class="col-sm-3">
+								<input name="necloanMoney"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+					</div>
+					<div class="space-4"></div>
+					<div class="row">
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">首付比例：</label>
+							<div class="col-sm-3">
+								<input name="firstRatio"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">大区代码：</label>
+							<div class="col-sm-3">
+								<input name="largeAreaCode"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+					</div>
+					<div class="space-4"></div>
+					<div class="row">
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">大区名称：</label>
+							<div class="col-sm-3">
+								<input name="largeAreaName"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">二区代码：</label>
+							<div class="col-sm-3">
+								<input name="zoneTwoCode"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+					</div>
+					<div class="space-4"></div>
+					<div class="row">
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">二区名称：</label>
+							<div class="col-sm-3">
+								<input name="zoneTwoName"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">经销商代码：</label>
+							<div class="col-sm-3">
+								<input name="distributorCode"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+					</div>
+					<div class="space-4"></div>
+					<div class="row">
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">经销商名称：</label>
+							<div class="col-sm-3">
+								<input name="distributorName"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">销售顾问代码：</label>
+							<div class="col-sm-3">
+								<input name="salesPersonCode"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+					</div>
+					<div class="space-4"></div>
+					<div class="row">
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">销售顾问名称：</label>
+							<div class="col-sm-3">
+								<input name="salesPersonName"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">省份代码：</label>
+							<div class="col-sm-3">
+								<input name="provinceCode"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+					</div>
+					<div class="space-4"></div>
+					<div class="row">
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">省份名称：</label>
+							<div class="col-sm-3">
+								<input name="provinceName"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">城市代码：</label>
+							<div class="col-sm-3">
+								<input name="cityCode"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+					</div>
+					<div class="space-4"></div>
+					<div class="row">
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">城市名称：</label>
+							<div class="col-sm-3">
+								<input name="cityName"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">备注：</label>
+							<div class="col-sm-3">
+								<input name="remark"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+					</div>
+					<div class="space-4"></div>
+					<div class="row">
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">创建时间(数据提取时间)：</label>
+							<div class="col-sm-3">
+								<input name="createTime"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">修改时间：</label>
+							<div class="col-sm-3">
+								<input name="modifyTime"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+					</div>
+					<div class="space-4"></div>
+					<div class="row">
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">生效时间：</label>
+							<div class="col-sm-3">
+								<input name="startTime"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">创建人：</label>
+							<div class="col-sm-3">
+								<input name="creator"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+					</div>
+					<div class="space-4"></div>
+					<div class="row">
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">修改人：</label>
+							<div class="col-sm-3">
+								<input name="modifier"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">活动统计标识（01-未统计 02-已统计）：</label>
+							<div class="col-sm-3">
+								<input name="activematchflag"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+					</div>
+					<div class="space-4"></div>
+					<div class="row">
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">计划跟踪标识（01-未统计 02-已统计）：</label>
+							<div class="col-sm-3">
+								<input name="planmatchflag"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">有效标识（如表记录不删除，以此区分,0无效，1有效）：</label>
+							<div class="col-sm-3">
+								<input name="flag"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+					</div>
+					<div class="space-4"></div>
+										
+					<div class="space-4"></div>
+					
+					<div class="clearfix form-actions">
+						<div class="col-md-offset-4 col-md-8">
+							<button id="btnSubmit" class="btn btn-info" type="button">
+								<i class="ace-icon fa fa-check bigger-110"></i>
+								保存
+							</button>
+								&nbsp; &nbsp; &nbsp;
+							<button class="btn" type="button" onclick="history.go(-1)">
+								<i class="ace-icon fa fa-undo bigger-110"></i>
+								返回
+							</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	</div>
+</body>
+<script src="/mkmm/ui/js/basicbussiness/basicBussinessCommon.js"></script>
+<script src="/mkmm/ui/js/basicbussiness/basicBussinessForm.js"></script>
+</html>

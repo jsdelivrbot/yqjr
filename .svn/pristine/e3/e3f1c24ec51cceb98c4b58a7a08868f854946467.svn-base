@@ -1,0 +1,291 @@
+<style lang="less">
+    @import '../../../styles/common.less';
+</style>
+<template>
+    <div>
+        <Row>
+            <Card>
+                <p slot="title">
+                    <Icon type="search"></Icon>
+                    查询
+                </p>
+                <Form ref="formValidate" :rules="ruleValidate" :model="formValidate" :label-width="100">
+                    <Row>
+                        <Col span="8" offset="2">
+                            <FormItem label="团队代码：">
+                                <Input v-model="formValidate.teamCode" placeholder="请输入团队代码"></Input>
+                            </FormItem>
+                        </Col>
+                        <Col span="8" offset="2">
+                            <FormItem label="团队名称：">
+                                <Input v-model="formValidate.teamName" placeholder="请输入团队名称"></Input>
+                            </FormItem>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col span="8" offset="2">
+                            <FormItem label="事项年度：">
+                                <DatePicker type="year" v-model="formValidate.eventYear" style="width: 100%" format="yyyy" placeholder="请输入事项年度"></DatePicker>
+                            </FormItem>
+                        </Col>
+                        <Col span="8" offset="2">
+                            <FormItem label="事项分类：">
+                                <Select v-model="formValidate.eventType" style="width:100%" placeholder = "全部">
+                                    <Option value="" selected>全部</Option>
+                                    <Option value="0" >奖励</Option>
+                                    <Option value="1" >处罚</Option>
+                                    <Option value="2" >其他</Option>
+                                </Select>
+                            </FormItem>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col span="8" offset="2">
+                            <FormItem label="处理单位：">
+                                <Input v-model="formValidate.eventApart" placeholder = "处理单位"></Input>
+                            </FormItem>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col span="4" offset="9">
+                            <Button type="primary" icon="search" @click="searchData">查询</Button>
+                        </Col>
+                        <Col span="4">
+                            <Button icon="close" @click="cleanData">重置</Button>
+                        </Col>
+                    </Row>
+                </Form>
+            </Card>
+        </Row>
+        <Row class="margin-top-10">
+            <Card>
+                <p slot="title">
+                    <Icon type="search"></Icon>
+                    表格数据
+                </p>
+                <Row type="flex" justify="end" :gutter="8" >
+                    <Col>
+                        <Button icon="android-add" type="success" @click="addData">新增</Button>
+                    </Col>
+                    <Col>
+                        <Button icon="android-close" type="error" @click="deletEventTeamData">删除</Button>
+                    </Col>
+                </Row>
+                <Table :data="tableData" @on-selection-change='selectionClick' :columns="tableColumns"  :loading="loading" ref="tableExcel" class="margin-top-10"></Table>
+                <div style="margin: 10px;overflow: hidden">
+                    <div style="float: right;">
+                        <Page :total="total" :current="pageNo" :page-size="pageSize" size="small" @on-change="changePage" @on-page-size-change="pageSizeChange" show-total show-sizer></Page>
+                    </div>
+                </div>
+            </Card>
+        </Row>
+        <a id="hrefToExportTable" style="postion: absolute;left: -10px;top: -10px;width: 0px;height: 0px;"></a>
+    </div>
+</template>
+<script>
+import {resetWorkHeight, formatDate, isEmpty} from '@/libs/util.js';
+import { mapActions, mapState } from 'vuex';
+export default{
+    name: 'teamList',
+    data () {
+        return {
+            formValidate: {
+                teamCode: '',
+                teamName: '',
+                eventYear: formatDate(new Date(), 'yyyy'),
+                eventType: '',
+                eventApart: '',
+                pageInfo: {
+                    pageSize: '10',
+                    pageNo: '1'
+                }
+            },
+            ruleValidate: {
+                eventYear: [
+                    { required: true, type: 'year', message: '请录入受理开始日期!', trigger: 'change' }
+                ]
+            },
+            tableColumns: [
+                {
+                    type: 'selection',
+                    width: 60,
+                    align: 'center'
+                }, {
+                    title: '团队名称',
+                    key: 'teamName',
+                    align: 'center'
+                }, {
+                    title: '团队代码',
+                    align: 'center',
+                    key: 'teamCode'
+                }, {
+                    title: '事项年度',
+                    align: 'center',
+                    key: 'eventYear',
+                    sortable: true
+                }, {
+                    title: '事项分类',
+                    align: 'center',
+                    key: 'eventType',
+                    render: (h, params) => {
+                        const row = params.row;
+                        return h('div', [
+                            h('div', row.eventType === '0' ? '奖励' : row.eventType === '1' ? '处罚' : '其他')
+                        ]);
+                    }
+                }, {
+                    title: '处理单位',
+                    align: 'center',
+                    key: 'eventApart'
+                }, {
+                    title: '处理时间',
+                    align: 'center',
+                    sortable: true,
+                    key: 'createTime'
+                }, {
+                    title: '操作',
+                    align: 'center',
+                    render: (h, params) => {
+                        return h('div', [
+                            h('Button', {
+                                props: {
+                                    type: 'primary',
+                                    size: 'small'
+                                },
+                                style: {
+                                    marginRight: '6px'
+                                },
+                                on: {
+                                    click: () => {
+                                        let routerParam = {id: params.row.id};
+                                        this.$router.push({
+                                            name: 'teamEventView',
+                                            query: routerParam
+                                        });
+                                    }
+                                }
+                            }, '查看'),
+                            h('Button', {
+                                props: {
+                                    type: 'warning',
+                                    size: 'small'
+                                },
+                                style: {
+                                    marginRight: '6px'
+                                },
+                                on: {
+                                    click: () => {
+                                        let routerParam = {id: params.row.id};
+                                        this.$router.push({
+                                            name: 'teamEventEdit',
+                                            query: routerParam
+                                        });
+                                    }
+                                }
+                            }, '修改')
+                        ]);
+                    }
+                }
+            ],
+            idArr: []
+        };
+    },
+    computed: {
+        ...mapState({
+            loading: ({teamEventList}) => teamEventList.loading,
+            tableData: ({teamEventList}) => teamEventList.teamEventListData,
+            pageNo: ({teamEventList}) => teamEventList.pageNo,
+            pageSize: ({teamEventList}) => teamEventList.pageSize,
+            total: ({teamEventList}) => teamEventList.total,
+            pages: ({teamEventList}) => teamEventList.pages
+        })
+    },
+    methods: {
+        ...mapActions([
+            'handleTeamEventList',
+            'handleDelTeamEventList'
+        ]),
+        /**
+         * 初始化
+         */
+        init () {
+            this.searchData();
+        },
+        /**
+         * 点击查询按钮执行查询操作
+         */
+        searchData () {
+            this.handleTeamEventList(this.formValidate).then(res => {
+                resetWorkHeight();
+                this.$Message.info('查询成功!');
+            });
+        },
+        /**
+         * 页面改变
+         */
+        changePage (index) {
+            this.formValidate.pageInfo.pageNo = index;
+            this.handleTeamEventList(this.formValidate).then(res => {
+                resetWorkHeight();
+                this.$Message.info('查询成功!');
+                this.formValidate.pageInfo.pageNo = 1;
+            });
+        },
+        /**
+         * 切换每页条数
+         */
+        pageSizeChange (newPageSize) {
+            this.formValidate.pageInfo.pageSize = newPageSize;
+            this.handleTeamEventList(this.formValidate).then(res => {
+                resetWorkHeight();
+                this.$Message.info('查询成功!');
+            });
+        },
+        /**
+         * 重置按钮
+         */
+        cleanData () {
+            window.location.reload();
+        },
+        /**
+         * 添加数据
+         */
+        addData () {
+            this.$router.push({name: 'teamEventAdd'});
+        },
+        /**
+         * 删除数据
+         */
+        deletEventTeamData () {
+            if (isEmpty(this.idArr)) {
+                this.$Message.info('请先选择一条数据再进行删除!');
+            } else {
+                this.$Modal.confirm({
+                    title: '删除',
+                    content: '<p>您确定要删除这条数据吗?</p>',
+                    onOk: () => {
+                        this.handleDelTeamEventList(this.idArr).then(res => {
+                            this.$Message.info('删除成功!');
+                            this.searchData();
+                        });
+                    },
+                    onCancel: () => {
+                    }
+                });
+            }
+        },
+        selectionClick: function (arr) {
+            var idArr = [];
+            if (!isEmpty(arr)) {
+                for (var i = 0; i < arr.length; i++) {
+                    idArr.push(arr[i].id);
+                }
+            }
+            this.idArr = idArr;
+        }
+    },
+    mounted () {
+        this.init();
+    }
+};
+</script>

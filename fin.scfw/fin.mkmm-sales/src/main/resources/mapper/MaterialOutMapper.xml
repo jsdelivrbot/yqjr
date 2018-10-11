@@ -1,0 +1,1059 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yqjr.fin.mkmm.sales.mapper.MaterialOutMapper">
+
+    <!-- region BaseMapper DO NOT MODIFY!!!  -->
+
+    <sql id="Base_Table_Name">
+        MKMM_MATERIAL_OUT
+    </sql>
+
+
+
+    <!-- region BaseResultMap  -->
+    <resultMap id="BaseResultMap" type="com.yqjr.fin.mkmm.sales.entity.MaterialOut">
+        <result property="id" column="ID"/><!--序号-->
+        <result property="materialCode" column="MATERIAL_CODE"/><!--素材类型编码-->
+        <result property="materialName" column="MATERIAL_NAME"/><!--素菜类型名称-->
+        <result property="materialTheme" column="MATERIAL_THEME"/><!--素材主题-->
+        <result property="brandsCode" column="BRANDS_CODE"/><!--适用品牌编码-->
+        <result property="brandsName" column="BRANDS_NAME"/><!--适用品牌名称-->
+        <result property="materialDescription" column="MATERIAL_DESCRIPTION"/><!--素材描述-->
+        <result property="appendixId" column="APPENDIX_ID"/><!--上传附件id 生成的id，送至影像平台-->
+        <result property="effectiveStartTime" column="EFFECTIVE_START_TIME"/><!--有效期开始时间-->
+        <result property="effectiveEndTime" column="EFFECTIVE_END_TIME"/><!--有效期结束时间-->
+        <result property="areaName" column="AREA_NAME"/><!--推送区域名称-->
+        <result property="areaCode" column="AREA_CODE"/><!--推送区域代码-->
+        <result property="materialSource" column="MATERIAL_SOURCE"/><!--素材来源-->
+        <result property="receiveTime" column="RECEIVE_TIME"/><!--接收时间-->
+        <result property="opinion" column="OPINION"/><!--经销商反馈意见-->
+        <result property="receiveStatus" column="RECEIVE_STATUS"/><!--接收状态0：未接收，1：已接收-->
+        <result property="company" column="COMPANY"/><!--公司1 ：汽车金融 ，2：租赁公司-->
+        <result property="createTime" column="CREATE_TIME"/><!--创建时间-->
+        <result property="modifyTime" column="MODIFY_TIME"/><!--修改时间-->
+        <result property="creator" column="CREATOR"/><!--创建人-->
+        <result property="modifier" column="MODIFIER"/><!--修改人-->
+        <result property="uploader" column="UPLOADER"/><!--修改人-->
+        <result property="inId" column="IN_ID"/><!--修改人-->
+    </resultMap>
+    <!-- endregion -->
+
+    <!-- region Base_Column_List  -->
+    <sql id="Base_Column_List">
+    ID,MATERIAL_CODE,MATERIAL_NAME,MATERIAL_THEME,BRANDS_CODE,BRANDS_NAME,MATERIAL_DESCRIPTION,APPENDIX_ID,EFFECTIVE_START_TIME,EFFECTIVE_END_TIME,AREA_NAME,AREA_CODE,MATERIAL_SOURCE,RECEIVE_TIME,OPINION,RECEIVE_STATUS,COMPANY,CREATE_TIME,MODIFY_TIME,CREATOR,MODIFIER,UPLOADER,IN_ID
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_List_Selective  -->
+    <sql id="Base_Column_List_Selective">
+        <trim suffixOverrides=",">
+            <if test="id != null">
+            ID,
+            </if>
+            <if test="materialCode != null">
+            MATERIAL_CODE,
+            </if>
+            <if test="materialName != null">
+            MATERIAL_NAME,
+            </if>
+            <if test="materialTheme != null">
+            MATERIAL_THEME,
+            </if>
+            <if test="brandsCode != null">
+            BRANDS_CODE,
+            </if>
+            <if test="brandsName != null">
+            BRANDS_NAME,
+            </if>
+            <if test="materialDescription != null">
+            MATERIAL_DESCRIPTION,
+            </if>
+            <if test="appendixId != null">
+            APPENDIX_ID,
+            </if>
+            <if test="effectiveStartTime != null">
+            EFFECTIVE_START_TIME,
+            </if>
+            <if test="effectiveEndTime != null">
+            EFFECTIVE_END_TIME,
+            </if>
+            <if test="areaName != null">
+            AREA_NAME,
+            </if>
+            <if test="areaCode != null">
+            AREA_CODE,
+            </if>
+            <if test="materialSource != null">
+            MATERIAL_SOURCE,
+            </if>
+            <if test="receiveTime != null">
+            RECEIVE_TIME,
+            </if>
+            <if test="opinion != null">
+            OPINION,
+            </if>
+            <if test="receiveStatus != null">
+            RECEIVE_STATUS,
+            </if>
+            <if test="company != null">
+            COMPANY,
+            </if>
+            <if test="createTime != null">
+            CREATE_TIME,
+            </if>
+            <if test="modifyTime != null">
+            MODIFY_TIME,
+            </if>
+            <if test="creator != null">
+            CREATOR,
+            </if>
+            <if test="modifier != null">
+            MODIFIER,
+            </if>
+            <if test="uploader != null">
+            UPLOADER,
+            </if>
+            <if test="inId != null">
+             IN_ID
+            </if>
+        </trim>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Values  -->
+    <sql id="Base_Column_Values">
+    #{id,jdbcType=INTEGER},
+    #{materialCode,jdbcType=VARCHAR},
+    #{materialName,jdbcType=VARCHAR},
+    #{materialTheme,jdbcType=VARCHAR},
+    #{brandsCode,jdbcType=VARCHAR},
+    #{brandsName,jdbcType=VARCHAR},
+    #{materialDescription,jdbcType=VARCHAR},
+    #{appendixId,jdbcType=VARCHAR},
+    #{effectiveStartTime,jdbcType=TIMESTAMP},
+    #{effectiveEndTime,jdbcType=TIMESTAMP},
+    #{areaName,jdbcType=VARCHAR},
+    #{areaCode,jdbcType=VARCHAR},
+    #{materialSource,jdbcType=VARCHAR},
+    #{receiveTime,jdbcType=TIMESTAMP},
+    #{opinion,jdbcType=VARCHAR},
+    #{receiveStatus,jdbcType=VARCHAR},
+    #{company,jdbcType=VARCHAR},
+    #{createTime,jdbcType=TIMESTAMP},
+    #{modifyTime,jdbcType=TIMESTAMP},
+    #{creator,jdbcType=INTEGER},
+    #{modifier,jdbcType=INTEGER},
+    #{uploader,jdbcType=VARCHAR},
+    #{inId,jdbcType=INTEGER}
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Values_Selective  -->
+    <sql id="Base_Column_Values_Selective">
+        <trim suffixOverrides=",">
+            <if test="id != null">
+            #{id},
+            </if>
+            <if test="materialCode != null">
+            #{materialCode},
+            </if>
+            <if test="materialName != null">
+            #{materialName},
+            </if>
+            <if test="materialTheme != null">
+            #{materialTheme},
+            </if>
+            <if test="brandsCode != null">
+            #{brandsCode},
+            </if>
+            <if test="brandsName != null">
+            #{brandsName},
+            </if>
+            <if test="materialDescription != null">
+            #{materialDescription},
+            </if>
+            <if test="appendixId != null">
+            #{appendixId},
+            </if>
+            <if test="effectiveStartTime != null">
+            #{effectiveStartTime},
+            </if>
+            <if test="effectiveEndTime != null">
+            #{effectiveEndTime},
+            </if>
+            <if test="areaName != null">
+            #{areaName},
+            </if>
+            <if test="areaCode != null">
+            #{areaCode},
+            </if>
+            <if test="materialSource != null">
+            #{materialSource},
+            </if>
+            <if test="receiveTime != null">
+            #{receiveTime},
+            </if>
+            <if test="opinion != null">
+            #{opinion},
+            </if>
+            <if test="receiveStatus != null">
+            #{receiveStatus},
+            </if>
+            <if test="company != null">
+            #{company},
+            </if>
+            <if test="createTime != null">
+            #{createTime},
+            </if>
+            <if test="modifyTime != null">
+            #{modifyTime},
+            </if>
+            <if test="creator != null">
+            #{creator},
+            </if>
+            <if test="modifier != null">
+            #{modifier},
+            </if>
+            <if test="uploader != null">
+            #{uploader},
+            </if>
+            <if test="inId != null">
+                #{inId}
+            </if>
+        </trim>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Set_Values  -->
+    <sql id="Base_Column_Set_Values">
+    ID = #{id},
+    MATERIAL_CODE = #{materialCode},
+    MATERIAL_NAME = #{materialName},
+    MATERIAL_THEME = #{materialTheme},
+    BRANDS_CODE = #{brandsCode},
+    BRANDS_NAME = #{brandsName},
+    MATERIAL_DESCRIPTION = #{materialDescription},
+    APPENDIX_ID = #{appendixId},
+    EFFECTIVE_START_TIME = #{effectiveStartTime},
+    EFFECTIVE_END_TIME = #{effectiveEndTime},
+    AREA_NAME = #{areaName},
+    AREA_CODE = #{areaCode},
+    MATERIAL_SOURCE = #{materialSource},
+    RECEIVE_TIME = #{receiveTime},
+    OPINION = #{opinion},
+    RECEIVE_STATUS = #{receiveStatus},
+    COMPANY = #{company},
+    CREATE_TIME = #{createTime},
+    MODIFY_TIME = #{modifyTime},
+    CREATOR = #{creator},
+    MODIFIER = #{modifier},
+    UPLOADER = #{uploader},
+     IN_ID = #{inId}
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Set_Values_Selective  -->
+    <sql id="Base_Column_Set_Values_Selective">
+        <if test="id != null">
+        ID = #{id},
+        </if>
+        <if test="materialCode != null">
+        MATERIAL_CODE = #{materialCode},
+        </if>
+        <if test="materialName != null">
+        MATERIAL_NAME = #{materialName},
+        </if>
+        <if test="materialTheme != null">
+        MATERIAL_THEME = #{materialTheme},
+        </if>
+        <if test="brandsCode != null">
+        BRANDS_CODE = #{brandsCode},
+        </if>
+        <if test="brandsName != null">
+        BRANDS_NAME = #{brandsName},
+        </if>
+        <if test="materialDescription != null">
+        MATERIAL_DESCRIPTION = #{materialDescription},
+        </if>
+        <if test="appendixId != null">
+        APPENDIX_ID = #{appendixId},
+        </if>
+        <if test="effectiveStartTime != null">
+        EFFECTIVE_START_TIME = #{effectiveStartTime},
+        </if>
+        <if test="effectiveEndTime != null">
+        EFFECTIVE_END_TIME = #{effectiveEndTime},
+        </if>
+        <if test="areaName != null">
+        AREA_NAME = #{areaName},
+        </if>
+        <if test="areaCode != null">
+        AREA_CODE = #{areaCode},
+        </if>
+        <if test="materialSource != null">
+        MATERIAL_SOURCE = #{materialSource},
+        </if>
+        <if test="receiveTime != null">
+        RECEIVE_TIME = #{receiveTime},
+        </if>
+        <if test="opinion != null">
+        OPINION = #{opinion},
+        </if>
+        <if test="receiveStatus != null">
+        RECEIVE_STATUS = #{receiveStatus},
+        </if>
+        <if test="company != null">
+        COMPANY = #{company},
+        </if>
+        <if test="createTime != null">
+        CREATE_TIME = #{createTime},
+        </if>
+        <if test="modifyTime != null">
+        MODIFY_TIME = #{modifyTime},
+        </if>
+        <if test="creator != null">
+        CREATOR = #{creator},
+        </if>
+        <if test="modifier != null">
+        MODIFIER = #{modifier},
+        </if>
+        <if test="uploader != null">
+            UPLOADER = #{uploader},
+        </if>
+        <if test="inId != null">
+            IN_ID = #{inId}
+        </if>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Where_Selective  -->
+    <sql id="Base_Column_Where_Selective">
+        <if test="id != null and id != ''">
+            and ID = #{id}
+        </if>
+        <if test="materialCode != null and materialCode != ''">
+            and MATERIAL_CODE = #{materialCode}
+        </if>
+        <if test="materialName != null and materialName != ''">
+            and MATERIAL_NAME = #{materialName}
+        </if>
+        <if test="materialTheme != null and materialTheme != ''">
+            and MATERIAL_THEME = #{materialTheme}
+        </if>
+        <if test="brandsCode != null and brandsCode != ''">
+            and BRANDS_CODE = #{brandsCode}
+        </if>
+        <if test="brandsName != null and brandsName != ''">
+            and BRANDS_NAME = #{brandsName}
+        </if>
+        <if test="materialDescription != null and materialDescription != ''">
+            and MATERIAL_DESCRIPTION = #{materialDescription}
+        </if>
+        <if test="appendixId != null and appendixId != ''">
+            and APPENDIX_ID = #{appendixId}
+        </if>
+        <if test="effectiveStartTime != null and effectiveStartTime != ''">
+            and EFFECTIVE_START_TIME = #{effectiveStartTime}
+        </if>
+        <if test="effectiveEndTime != null and effectiveEndTime != ''">
+            and EFFECTIVE_END_TIME = #{effectiveEndTime}
+        </if>
+        <if test="areaName != null and areaName != ''">
+            and AREA_NAME = #{areaName}
+        </if>
+        <if test="areaCode != null and areaCode != ''">
+            and AREA_CODE = #{areaCode}
+        </if>
+        <if test="materialSource != null and materialSource != ''">
+            and MATERIAL_SOURCE = #{materialSource}
+        </if>
+        <if test="receiveTime != null and receiveTime != ''">
+            and RECEIVE_TIME = #{receiveTime}
+        </if>
+        <if test="opinion != null and opinion != ''">
+            and OPINION = #{opinion}
+        </if>
+        <if test="receiveStatus != null and receiveStatus != ''">
+            and RECEIVE_STATUS = #{receiveStatus}
+        </if>
+        <if test="company != null and company != ''">
+            and COMPANY = #{company}
+        </if>
+        <if test="createTime != null and createTime != ''">
+            and CREATE_TIME = #{createTime}
+        </if>
+        <if test="modifyTime != null and modifyTime != ''">
+            and MODIFY_TIME = #{modifyTime}
+        </if>
+        <if test="creator != null and creator != ''">
+            and CREATOR = #{creator}
+        </if>
+        <if test="modifier != null and modifier != ''">
+            and MODIFIER = #{modifier}
+        </if>
+        <if test="uploader != null and uploader != ''">
+            and UPLOADER = #{uploader}
+        </if>
+        <if test="inId != null and inId != ''">
+            and IN_ID = #{inId}
+        </if>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Where_Selective_Param1  -->
+    <sql id="Base_Column_Where_Selective_Param1">
+        <if test="param1.id != null">
+            and ID = #{param1.id}
+        </if>
+        <if test="param1.materialCode != null">
+            and MATERIAL_CODE = #{param1.materialCode}
+        </if>
+        <if test="param1.materialName != null">
+            and MATERIAL_NAME = #{param1.materialName}
+        </if>
+        <if test="param1.materialTheme != null">
+            and MATERIAL_THEME = #{param1.materialTheme}
+        </if>
+        <if test="param1.brandsCode != null">
+            and BRANDS_CODE = #{param1.brandsCode}
+        </if>
+        <if test="param1.brandsName != null">
+            and BRANDS_NAME = #{param1.brandsName}
+        </if>
+        <if test="param1.materialDescription != null">
+            and MATERIAL_DESCRIPTION = #{param1.materialDescription}
+        </if>
+        <if test="param1.appendixId != null">
+            and APPENDIX_ID = #{param1.appendixId}
+        </if>
+        <if test="param1.effectiveStartTime != null">
+            and EFFECTIVE_START_TIME = #{param1.effectiveStartTime}
+        </if>
+        <if test="param1.effectiveEndTime != null">
+            and EFFECTIVE_END_TIME = #{param1.effectiveEndTime}
+        </if>
+        <if test="param1.areaName != null">
+            and AREA_NAME = #{param1.areaName}
+        </if>
+        <if test="param1.areaCode != null">
+            and AREA_CODE = #{param1.areaCode}
+        </if>
+        <if test="param1.materialSource != null">
+            and MATERIAL_SOURCE = #{param1.materialSource}
+        </if>
+        <if test="param1.receiveTime != null">
+            and RECEIVE_TIME = #{param1.receiveTime}
+        </if>
+        <if test="param1.opinion != null">
+            and OPINION = #{param1.opinion}
+        </if>
+        <if test="param1.receiveStatus != null">
+            and RECEIVE_STATUS = #{param1.receiveStatus}
+        </if>
+        <if test="param1.company != null">
+            and COMPANY = #{param1.company}
+        </if>
+        <if test="param1.createTime != null">
+            and CREATE_TIME = #{param1.createTime}
+        </if>
+        <if test="param1.modifyTime != null">
+            and MODIFY_TIME = #{param1.modifyTime}
+        </if>
+        <if test="param1.creator != null">
+            and CREATOR = #{param1.creator}
+        </if>
+        <if test="param1.modifier != null">
+            and MODIFIER = #{param1.modifier}
+        </if>
+        <if test="param1.uploader != null">
+            and UPLOADER = #{param1.uploader}
+        </if>
+        <if test="param1.inId != null">
+            and IN_ID = #{param1.inId}
+        </if>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Order_By  -->
+    <sql id="Base_Order_By">
+        <bind name="propName" value="sortField"></bind>
+        ORDER BY <include refid="Base_Column_Name" />
+        <choose>
+            <when test="isAscend">
+                ASC
+            </when>
+            <otherwise>
+                DESC
+            </otherwise>
+        </choose>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Name  -->
+    <sql id="Base_Column_Name">
+        <if test='"id" == propName'>
+        ID
+        </if>
+        <if test='"materialCode" == propName'>
+        MATERIAL_CODE
+        </if>
+        <if test='"materialName" == propName'>
+        MATERIAL_NAME
+        </if>
+        <if test='"materialTheme" == propName'>
+        MATERIAL_THEME
+        </if>
+        <if test='"brandsCode" == propName'>
+        BRANDS_CODE
+        </if>
+        <if test='"brandsName" == propName'>
+        BRANDS_NAME
+        </if>
+        <if test='"materialDescription" == propName'>
+        MATERIAL_DESCRIPTION
+        </if>
+        <if test='"appendixId" == propName'>
+        APPENDIX_ID
+        </if>
+        <if test='"effectiveStartTime" == propName'>
+        EFFECTIVE_START_TIME
+        </if>
+        <if test='"effectiveEndTime" == propName'>
+        EFFECTIVE_END_TIME
+        </if>
+        <if test='"areaName" == propName'>
+        AREA_NAME
+        </if>
+        <if test='"areaCode" == propName'>
+        AREA_CODE
+        </if>
+        <if test='"materialSource" == propName'>
+        MATERIAL_SOURCE
+        </if>
+        <if test='"receiveTime" == propName'>
+        RECEIVE_TIME
+        </if>
+        <if test='"opinion" == propName'>
+        OPINION
+        </if>
+        <if test='"receiveStatus" == propName'>
+        RECEIVE_STATUS
+        </if>
+        <if test='"company" == propName'>
+        COMPANY
+        </if>
+        <if test='"createTime" == propName'>
+        CREATE_TIME
+        </if>
+        <if test='"modifyTime" == propName'>
+        MODIFY_TIME
+        </if>
+        <if test='"creator" == propName'>
+        CREATOR
+        </if>
+        <if test='"modifier" == propName'>
+        MODIFIER
+        </if>
+        <if test='"uploader" == propName'>
+            UPLOADER
+        </if>
+        <if test='"inId" == propName'>
+            IN_ID
+        </if>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Id_Array  -->
+    <sql id="Base_Id_Array">
+        <foreach collection="array" open="(" close=")" separator="," item="id">
+        #{id}
+        </foreach>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Id_List  -->
+    <sql id="Base_Id_List">
+        <foreach collection="list" open="(" close=")" separator="," item="id">
+        #{id}
+        </foreach>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Select_All  -->
+    <sql id="Base_Select_All">
+        select
+        <include refid="Base_Column_List" />
+        from <include refid="Base_Table_Name" />
+    </sql>
+    <!-- endregion -->
+
+    <!-- region selectById  -->
+    <select id="selectById" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        where ID = #{id}
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectByIds  -->
+    <select id="selectByIds" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        where ID in
+        <include refid="Base_Id_List" />
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectAll  -->
+    <select id="selectAll" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectCount  -->
+    <select id="selectCount" resultType="int">
+        select count(*)
+        from <include refid="Base_Table_Name" />
+        <where>
+            <include refid="Base_Column_Where_Selective" />
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region select  -->
+    <select id="select" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Where_Selective" />
+        </where>
+        order by id desc
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectOne  -->
+    <select id="selectOne" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Where_Selective" />
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectOrderBy  -->
+    <select id="selectOrderBy" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Where_Selective_Param1" />
+        </where>
+        <include refid="Base_Order_By" />
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectByProperty  -->
+    <select id="selectByProperty" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Name" /> = #{propValue}
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectByPropertyIn  -->
+    <select id="selectByPropertyIn" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Name" /> IN
+            <foreach collection="propValues" open="(" close=")" separator="," item="propValue">
+            #{propValue}
+            </foreach>
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region delete  -->
+    <delete id="delete">
+        delete
+        from <include refid="Base_Table_Name" />
+        <where>
+            <include refid="Base_Column_Where_Selective" />
+        </where>
+    </delete>
+    <!-- endregion -->
+
+    <!-- region deleteById  -->
+    <delete id="deleteById">
+        delete
+        from <include refid="Base_Table_Name" />
+        where ID = #{id}
+    </delete>
+    <!-- endregion -->
+
+    <!-- region deleteByIds  -->
+    <delete id="deleteByIds">
+        delete
+        from <include refid="Base_Table_Name" />
+        where ID in
+        <include refid="Base_Id_List" />
+    </delete>
+    <!-- endregion -->
+
+    <!-- region insert  -->
+    <insert id="insert" parameterType="com.yqjr.fin.mkmm.sales.entity.MaterialOut">
+        <selectKey resultType="java.lang.Long" keyProperty="id" order="BEFORE">
+            SELECT SEQ_MKMM_MATERIAL_OUT.NEXTVAL FROM DUAL
+        </selectKey>
+        insert into <include refid="Base_Table_Name" /> (
+        <include refid="Base_Column_List" />
+        )
+        values (
+        <include refid="Base_Column_Values" />
+        )
+    </insert>
+    <!-- endregion -->
+
+    <!-- region updateById  -->
+    <update id="updateById" parameterType="com.yqjr.fin.mkmm.sales.entity.MaterialOut">
+        update <include refid="Base_Table_Name" />
+        <set>
+            <include refid="Base_Column_Set_Values" />
+        </set>
+        where ID = #{id}
+    </update>
+    <!-- endregion -->
+
+    <!-- region patchById  -->
+    <update id="patchById" parameterType="com.yqjr.fin.mkmm.sales.entity.MaterialOut">
+        update <include refid="Base_Table_Name" />
+        <set>
+            <include refid="Base_Column_Set_Values_Selective" />
+        </set>
+        where ID = #{id}
+    </update>
+    <!-- endregion -->
+
+    <!-- endregion BaseMapper -->
+
+    <!-- region generated by CodeRobot  -->
+
+    <!-- region 结果集映射  -->
+    <resultMap id="MaterialOutResult" type="com.yqjr.fin.mkmm.sales.entity.MaterialOut">
+        <result property="id" column="ID"/><!--序号-->
+        <result property="materialCode" column="MATERIAL_CODE"/><!--素材类型编码-->
+        <result property="materialName" column="MATERIAL_NAME"/><!--素菜类型名称-->
+        <result property="materialTheme" column="MATERIAL_THEME"/><!--素材主题-->
+        <result property="brandsCode" column="BRANDS_CODE"/><!--适用品牌编码-->
+        <result property="brandsName" column="BRANDS_NAME"/><!--适用品牌名称-->
+        <result property="materialDescription" column="MATERIAL_DESCRIPTION"/><!--素材描述-->
+        <result property="appendixId" column="APPENDIX_ID"/><!--上传附件id 生成的id，送至影像平台-->
+        <result property="effectiveStartTime" column="EFFECTIVE_START_TIME"/><!--有效期开始时间-->
+        <result property="effectiveEndTime" column="EFFECTIVE_END_TIME"/><!--有效期结束时间-->
+        <result property="areaName" column="AREA_NAME"/><!--推送区域名称-->
+        <result property="areaCode" column="AREA_CODE"/><!--推送区域代码-->
+        <result property="materialSource" column="MATERIAL_SOURCE"/><!--素材来源-->
+        <result property="receiveTime" column="RECEIVE_TIME"/><!--接收时间-->
+        <result property="opinion" column="OPINION"/><!--经销商反馈意见-->
+        <result property="receiveStatus" column="RECEIVE_STATUS"/><!--接收状态0：未接收，1：已接收-->
+        <result property="company" column="COMPANY"/><!--公司1 ：汽车金融 ，2：租赁公司-->
+        <result property="createTime" column="CREATE_TIME"/><!--创建时间-->
+        <result property="modifyTime" column="MODIFY_TIME"/><!--修改时间-->
+        <result property="creator" column="CREATOR"/><!--创建人-->
+        <result property="modifier" column="MODIFIER"/><!--修改人-->
+        <result property="uploader" column="UPLOADER"/><!--修改人-->
+        <result property="inId" column="IN_ID"/><!--修改人-->
+    </resultMap>
+    <!-- endregion -->
+
+    <!-- 查询条件判断 入参为对象 条件为模糊-->
+    <sql id="queryLikeMaterialOut">
+			<if test="id!=null and id!=''">
+			    AND ID LIKE CONCAT(#{id},'%')<!--序号-->
+			</if>
+			<if test="materialCode!=null and materialCode!=''">
+			    AND MATERIAL_CODE LIKE CONCAT(#{materialCode},'%')<!--素材类型编码-->
+			</if>
+			<if test="materialName!=null and materialName!=''">
+			    AND MATERIAL_NAME LIKE CONCAT(#{materialName},'%')<!--素菜类型名称-->
+			</if>
+			<if test="materialTheme!=null and materialTheme!=''">
+			    AND MATERIAL_THEME LIKE CONCAT(#{materialTheme},'%')<!--素材主题-->
+			</if>
+			<if test="brandsCode!=null and brandsCode!=''">
+			    AND BRANDS_CODE LIKE CONCAT(#{brandsCode},'%')<!--适用品牌编码-->
+			</if>
+			<if test="brandsName!=null and brandsName!=''">
+			    AND BRANDS_NAME LIKE CONCAT(#{brandsName},'%')<!--适用品牌名称-->
+			</if>
+			<if test="materialDescription!=null and materialDescription!=''">
+			    AND MATERIAL_DESCRIPTION LIKE CONCAT(#{materialDescription},'%')<!--素材描述-->
+			</if>
+			<if test="appendixId!=null and appendixId!=''">
+			    AND APPENDIX_ID LIKE CONCAT(#{appendixId},'%')<!--上传附件id 生成的id，送至影像平台-->
+			</if>
+			<if test="effectiveStartTime!=null and effectiveStartTime!=''">
+			    AND EFFECTIVE_START_TIME LIKE CONCAT(#{effectiveStartTime},'%')<!--有效期开始时间-->
+			</if>
+			<if test="effectiveEndTime!=null and effectiveEndTime!=''">
+			    AND EFFECTIVE_END_TIME LIKE CONCAT(#{effectiveEndTime},'%')<!--有效期结束时间-->
+			</if>
+			<if test="areaName!=null and areaName!=''">
+			    AND AREA_NAME LIKE CONCAT(#{areaName},'%')<!--推送区域名称-->
+			</if>
+			<if test="areaCode!=null and areaCode!=''">
+			    AND AREA_CODE LIKE CONCAT(#{areaCode},'%')<!--推送区域代码-->
+			</if>
+			<if test="materialSource!=null and materialSource!=''">
+			    AND MATERIAL_SOURCE LIKE CONCAT(#{materialSource},'%')<!--素材来源-->
+			</if>
+			<if test="receiveTime!=null and receiveTime!=''">
+			    AND RECEIVE_TIME LIKE CONCAT(#{receiveTime},'%')<!--接收时间-->
+			</if>
+			<if test="opinion!=null and opinion!=''">
+			    AND OPINION LIKE CONCAT(#{opinion},'%')<!--经销商反馈意见-->
+			</if>
+			<if test="receiveStatus!=null and receiveStatus!=''">
+			    AND RECEIVE_STATUS LIKE CONCAT(#{receiveStatus},'%')<!--接收状态0：未接收，1：已接收-->
+			</if>
+			<if test="company!=null and company!=''">
+			    AND COMPANY LIKE CONCAT(#{company},'%')<!--公司1 ：汽车金融 ，2：租赁公司-->
+			</if>
+			<if test="createTime!=null and createTime!=''">
+			    AND CREATE_TIME LIKE CONCAT(#{createTime},'%')<!--创建时间-->
+			</if>
+			<if test="modifyTime!=null and modifyTime!=''">
+			    AND MODIFY_TIME LIKE CONCAT(#{modifyTime},'%')<!--修改时间-->
+			</if>
+			<if test="creator!=null and creator!=''">
+			    AND CREATOR LIKE CONCAT(#{creator},'%')<!--创建人-->
+			</if>
+			<if test="modifier!=null and modifier!=''">
+			    MODIFIER LIKE CONCAT(#{modifier},'%')<!--修改人-->
+			</if>
+			<if test="uploader!=null and uploader!=''">
+                UPLOADER LIKE CONCAT(#{uploader},'%')<!--修改人-->
+			</if>
+        <if test="inId!=null and inId!=''">
+            IN_ID LIKE CONCAT(#{inId},'%')<!--修改人-->
+        </if>
+    </sql>
+
+    <!-- 按条件模糊查询所有 -->
+    <select id="queryMaterialOutList" parameterType="com.yqjr.fin.mkmm.sales.entity.MaterialOut"
+            resultMap="MaterialOutResult">
+        SELECT
+        ID,<!--序号-->
+        MATERIAL_CODE,<!--素材类型编码-->
+        MATERIAL_NAME,<!--素菜类型名称-->
+        MATERIAL_THEME,<!--素材主题-->
+        BRANDS_CODE,<!--适用品牌编码-->
+        BRANDS_NAME,<!--适用品牌名称-->
+        MATERIAL_DESCRIPTION,<!--素材描述-->
+        APPENDIX_ID,<!--上传附件id 生成的id，送至影像平台-->
+        EFFECTIVE_START_TIME,<!--有效期开始时间-->
+        EFFECTIVE_END_TIME,<!--有效期结束时间-->
+        AREA_NAME,<!--推送区域名称-->
+        AREA_CODE,<!--推送区域代码-->
+        MATERIAL_SOURCE,<!--素材来源-->
+        RECEIVE_TIME,<!--接收时间-->
+        OPINION,<!--经销商反馈意见-->
+        RECEIVE_STATUS,<!--接收状态0：未接收，1：已接收-->
+        COMPANY,<!--公司1 ：汽车金融 ，2：租赁公司-->
+        CREATE_TIME,<!--创建时间-->
+        MODIFY_TIME,<!--修改时间-->
+        CREATOR,<!--创建人-->
+        MODIFIER,<!--修改人-->
+        UPLOADER,<!--修改人-->
+        IN_ID<!--修改人-->
+        FROM MKMM_MATERIAL_OUT
+        <where>
+            <include refid="queryLikeMaterialOut"/>
+        </where>
+    </select>
+
+    <!-- 按条件模糊统计所有条数 -->
+    <select id="queryMaterialOutCount" parameterType="com.yqjr.fin.mkmm.sales.entity.MaterialOut" resultType="int">
+        SELECT
+        count (id)
+        FROM MKMM_MATERIAL_OUT
+        <where>
+            <include refid="queryLikeMaterialOut"/>
+        </where>
+    </select>
+
+    <!-- 批量删除，入参为数组  -->
+    <delete id="dynamicDelete">
+        delete from MKMM_MATERIAL_OUT where id in
+        <foreach collection="array" open="(" close=")" separator="," item="arr">
+            #{arr}
+        </foreach>
+    </delete>
+
+    <!-- 批量删除，入参为list  -->
+    <delete id="dynamicDeleteList">
+        delete from MKMM_MATERIAL_OUT where id in
+        <foreach collection="list" open="(" close=")" separator="," item="ids">
+            #{ids}
+        </foreach>
+    </delete>
+
+    <!-- 批量插入 -->
+    <insert id="insertBatch" parameterType="java.util.List">
+        <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into MKMM_MATERIAL_OUT
+        (
+        <include refid="Base_Column_List" />
+        )
+        values
+        <foreach collection="list" item="materialOut" index="index" separator=",">
+            (
+            <include refid="Base_Column_Values" />
+            )
+        </foreach>
+    </insert>
+
+    <!-- 插入单条数据，并返回主键ID -->
+    <insert id="saveObj" useGeneratedKeys="true" keyProperty="id"
+            parameterType="com.yqjr.fin.mkmm.sales.entity.MaterialOut">
+        insert into MKMM_MATERIAL_OUT
+        (
+        <include refid="Base_Column_List" />
+        )
+        values
+        (
+        <include refid="Base_Column_Values" />
+        )
+    </insert>
+
+
+    <!-- **********************************************************************-->
+    <!-- ************* 在此下方为一对一、一对多查询方式 仅供参考***************-->
+    <!-- **********************************************************************-->
+    <!-- 一个博客（BlogInfo） 属于一个作者（Author） ，一个作者（Author） 有多篇文章（Post） -->
+    <!--
+  <resultMap type="com.foo.bean.BlogInfo" id="BlogInfo">
+      <id column="blog_id" property="blogId" />
+      <result column="title" property="title" />
+      <association property="author" column="blog_author_id"
+          javaType="com.foo.bean.Author" select="com.foo.bean.AuthorMapper.selectByPrimaryKey">
+      </association>
+      <collection property="posts" column="blog_id" ofType="com.foo.bean.Post"
+          select="com.foo.bean.PostMapper.selectByBlogId">
+      </collection>
+  </resultMap>
+
+  <select id="queryBlogInfoById" resultMap="BlogInfo" parameterType="java.math.BigDecimal">
+      SELECT
+      B.BLOG_ID,
+      B.TITLE,
+      B.AUTHOR_ID AS BLOG_AUTHOR_ID
+      FROM BLOG B
+      where B.BLOG_ID = 博客ID
+  </select>
+
+          上述方法存在N+1问题
+      它的弊端也比较明显：即所谓的N+1问题。关联的嵌套查询显示得到一个结果集，然后根据这个结果集的每一条记录进行关联查询。
+      现在假设嵌套查询就一个（即resultMap 内部就一个association标签），现查询的结果集返回条数为N，那么关联查询语句将会被执行N次，加上自身返回结果集查询1次，共需要访问数据库N+1次。如果N比较大的话，这样的数据库访问消耗是非常大的！所以使用这种嵌套语句查询的使用者一定要考虑慎重考虑，确保N值不会很大。
+      以上面的例子为例，select 语句本身会返回com.foo.bean.BlogMapper.queryBlogInfoById 条数为1 的结果集，由于它有两条关联的语句查询，它需要共访问数据库 1*（1+1）=3次数据库。
+
+
+       <resultMap type="com.foo.bean.BlogInfo" id="BlogInfo">
+      <id column="blog_id" property="blogId"/>
+      <result column="title" property="title"/>
+      <association property="author" column="blog_author_id" javaType="com.foo.bean.Author">
+          <id column="author_id" property="authorId"/>
+          <result column="user_name" property="userName"/>
+          <result column="password" property="password"/>
+          <result column="email" property="email"/>
+          <result column="biography" property="biography"/>
+      </association>
+      <collection property="posts" column="blog_post_id" ofType="com.foo.bean.Post">
+          <id column="post_id" property="postId"/>
+          <result column="blog_id" property="blogId"/>
+          <result column="create_time" property="createTime"/>
+          <result column="subject" property="subject"/>
+          <result column="body" property="body"/>
+          <result column="draft" property="draft"/>
+      </collection>
+      </resultMap>
+
+
+      <select id="queryAllBlogInfo" resultMap="BlogInfo">
+          SELECT
+           B.BLOG_ID,
+           B.TITLE,
+           B.AUTHOR_ID AS BLOG_AUTHOR_ID,
+           A.AUTHOR_ID,
+           A.USER_NAME,
+           A.PASSWORD,
+           A.EMAIL,
+           A.BIOGRAPHY,
+           P.POST_ID,
+           P.BLOG_ID AS BLOG_POST_ID ,
+             P.CREATE_TIME,
+           P.SUBJECT,
+           P.BODY,
+           P.DRAFT
+      FROM BLOG B
+      LEFT OUTER JOIN AUTHOR A
+        ON B.AUTHOR_ID = A.AUTHOR_ID
+      LEFT OUTER JOIN POST P
+        ON P.BLOG_ID = B.BLOG_ID
+      </select>
+      -->
+
+    <!-- **********************************************************************-->
+    <!-- ************* 此线上方代码自动生成，在此下方编写自定义代码。***************-->
+    <!-- **********************************************************************-->
+
+    <!-- endregion -->
+
+    <resultMap id="HisResultMap" type="com.yqjr.fin.mkmm.sales.rest.vo.MaterialOutHisExport">
+        <result property="id" column="id"/><!--素材类型编码-->
+        <result property="materialCode" column="MATERIAL_CODE"/><!--素材类型编码-->
+        <result property="materialName" column="MATERIAL_NAME"/><!--素菜类型名称-->
+        <result property="materialTheme" column="MATERIAL_THEME"/><!--素材主题-->
+        <result property="brandsCode" column="BRANDS_CODE"/><!--适用品牌编码-->
+        <result property="brandsName" column="BRANDS_NAME"/><!--适用品牌名称-->
+        <result property="materialSource" column="material_source"/>
+        <result property="createTime" column="CREATE_TIME"/><!--创建时间-->
+        <result property="uploader" column="UPLOADER"/><!--修改人-->
+        <result property="outTime" column="OUT_TIME"/><!--修改人-->
+    </resultMap>
+    <select id="selectMsg" resultMap="HisResultMap" parameterType="com.yqjr.fin.mkmm.sales.entity.MaterialOut">
+        select
+        mmo.id,
+        mmi.material_code,
+        mmi.material_name,
+        mmi.brands_code,
+        mmi.brands_name,
+        mmi.material_theme,
+        mmi.material_source,
+        mmi.uploader,
+        mmi.create_time,
+        mmo.create_time as out_time
+        from MKMM_MATERIAL_IN mmi join MKMM_MATERIAL_OUT mmo
+        on mmi.id = mmo.in_id
+        <where>
+            <if test="materialCode != null and materialCode != ''">
+            and mmi.material_code = #{materialCode}
+            </if>
+            <if test="company != null and company != ''">
+            and mmi.company = #{company}
+            </if>
+            <if test="materialTheme != null and materialTheme != ''">
+            and mmi.material_theme LIKE CONCAT(CONCAT('%',#{materialTheme}),'%')
+            </if>
+            <if test="brandsCode != null and brandsCode != ''">
+            and mmi.brands_code = #{brandsCode}
+            </if>
+            <if test="uploader != null and uploader != ''">
+            and mmi.uploader  LIKE CONCAT(#{uploader},'%')
+            </if>
+            <if test="materialSource != null and materialSource != ''">
+            and mmi.material_source LIKE CONCAT(CONCAT('%',#{materialSource}),'%')
+            </if>
+        </where>
+        order by mmo.id desc
+    </select>
+</mapper>
+

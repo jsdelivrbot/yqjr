@@ -1,0 +1,24 @@
+scfw:
+  eureka:
+    server:
+      hostname: 127.0.0.1
+      port: 50101
+    client:
+      hostname: 127.0.0.1
+      prefer-ip: false
+jwt:
+  algorithm: HS512
+  issuer: http://yqjr.com
+  signingKey: xm8EV6Hy5RMFK4EEACIDAwQus
+  expirationTime: 60
+  refreshExpirationTime: 240
+  header: X-Authorization
+  headPrefix: 'Bearer '
+auth:
+  loginPath: /ui/comm/login
+  loginAction: /auth/login
+  logoutAction: /auth/logout
+  failurePath: /ui/comm/login
+  excludePaths: ['${auth.loginPath}', '${auth.loginAction}', '${auth.failurePath}', /error,
+                  /ui/static/**/*, /ui/common/**/*, /ui/css/**/*, /ui/fonts/**/*, /ui/images/**/*, /ui/img/**/*, /ui/js/**/*,
+                  /eco/ui/static/**/*, /eco/ui/common/**/*, /eco/ui/css/**/*, /eco/ui/fonts/**/*, /eco/ui/images/**/*, /eco/ui/img/**/*, /eco/ui/js/**/*]

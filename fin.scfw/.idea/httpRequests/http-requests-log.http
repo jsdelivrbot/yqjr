@@ -1,0 +1,24 @@
+GET http://localhost:50206/indicators/DeleteIndicatorsRest
+
+<> 2018-08-09T054530.500.json
+
+###
+
+GET http://localhost:50206/indicators/page
+
+<> 2018-08-09T054510.200.json
+
+###
+
+GET http://localhost:50201/indicatorss/InsertIndicatorsRest
+
+<> 2018-08-04T061643.500.json
+
+###
+
+GET http://localhost:50201/indicatorss/InsertIndicatorsRest
+
+<> 2018-08-04T055006.500.json
+
+###
+

@@ -1,0 +1,174 @@
+<style lang="less">
+    @import '../../../styles/common.less';
+</style>
+<template>
+    <div>
+        <Form ref="formValidate" :rules="ruleValidate" :model="formValidate" :label-width="100">
+            <Card>
+                <p slot="title">
+                    <Icon type="search"></Icon>
+                    主信息
+                </p>
+                <Row>
+                    <Col span="8" offset="2">
+                        <FormItem label="人员名称：" prop="personName">
+                            <Select transfer :label-in-value="true" filterable remote :remote-method="searchPerson"  @on-change='getPersonCode' :loading="loading" placeholder="请输入人员姓名|自动搜索" v-model="formValidate.personName">
+                                <Option v-for="item in personNameList"  :value="item.value" :key="item.label" :label="item.label" >{{item.label}}</Option>
+                            </Select>
+                        </FormItem>
+                    </Col>
+                    <Col span="8" offset="2">
+                        <FormItem label="人员代码：" >
+                            <Input v-model="formValidate.personCode" disabled ></Input>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span="8" offset="2">
+                        <FormItem label="事项年度：" prop="eventYear">
+                            <DatePicker type="year" v-model="formValidate.eventYear" style="width: 100%"></DatePicker>
+                        </FormItem>
+                    </Col>
+                    <Col span="8" offset="2">
+                        <FormItem label="处理单位" prop="eventApart">
+                            <Input v-model="formValidate.eventApart" ></Input>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span="8" offset="2">
+                        <FormItem label="事项分类：" prop="eventType">
+                            <Select v-model="formValidate.transcode1" style="width:100%">
+                                <Option value="0" selected>奖励</Option>
+                                <Option value="1" selected>处罚</Option>
+                                <Option value="2" selected>其他</Option>
+                            </Select>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span="18" offset="2">
+                        <FormItem label="事项内容：" prop="eventText">
+                            <Input v-model="formValidate.brandsText" type="textarea" style="width: 100%" :autosize="{minRows: 2,maxRows: 6}"></Input>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span="4" offset="9">
+                        <Button type="primary" icon="checkmark" :loading="loading" @click="personEventAddSub('formValidate')">提交</Button>
+                    </Col>
+                    <Col span="4" >
+                        <Button type="primary" icon="reply" @click.prevent="pageBack">返回</Button>
+                    </Col>
+                </Row>
+            </Card>
+        </Form>
+    </div>
+</template>
+<script>
+import { mapActions, mapState } from 'vuex';
+import {resetWorkHeight, formatDate} from '@/libs/util.js';
+export default{
+    name: 'personEventAdd',
+    data () {
+        const validatePatmentEndCheck = (rule, value, callback) => {
+            if (value.length > 265) {
+                callback(new Error('事项内容最大长度265!'));
+            }
+            callback();
+        };
+        return {
+            ruleValidate: {
+                personName: [
+                    { required: true, message: '请输入人员姓名!', trigger: 'change' }
+                ],
+                eventYear: [
+                    { required: true, type: 'date', message: '请输入事项年度!', trigger: 'change' }
+                ],
+                eventApart: [
+                    { required: true, message: '请输入处理单位!', trigger: 'blur' }
+                ],
+                transcode1: [
+                    { required: true, message: '请输入处理类型!', trigger: 'change' }
+                ],
+                brandsText: [
+                    { validator: validatePatmentEndCheck }
+                ]
+            },
+            file: null,
+            loadingStatus: false,
+            formValidate: {
+                personName: '',
+                eventApart: '',
+                personCode: '',
+                eventYear: '',
+                transcode1: '',
+                brandsText: ''
+            },
+            formValidate2: {
+                personName: ''
+            }
+        };
+    },
+    computed: {
+        ...mapState({
+            loading: ({personEventAdd}) => personEventAdd.loading,
+            msg: ({personEventAdd}) => personEventAdd.msg,
+            isSuccess: ({personEventAdd}) => personEventAdd.isSuccess,
+            personNameList: ({personEventAdd}) => personEventAdd.searchPersonData
+        })
+    },
+    methods: {
+        mounted () {
+            this.init();
+        },
+        init () {
+            resetWorkHeight();
+        },
+        ...mapActions([
+            'handlePersonEventAddSub',
+            'handleQueryBySearchPerson'
+        ]),
+        personEventAddSub (name) {
+            this.$refs[name].validate((valid) => {
+                if (valid) {
+                    console.log(this.formValidate);// 此数据提交
+                    this.formValidate.eventYear = formatDate(this.formValidate.eventYear, 'yyyy');
+                    this.formValidate.personName = this.formValidate2.personName;
+                    this.handlePersonEventAddSub(this.formValidate).then(res => {
+                        resetWorkHeight();
+                        if (this.isSuccess) {
+                            this.$Modal.success({
+                                title: '提交成功',
+                                content: this.msg,
+                                onOk: () => {
+                                    this.$router.push({name: 'personEventList'});
+                                }
+                            });
+                        } else {
+                            this.$Modal.error({
+                                title: '提交失败',
+                                content: this.msg
+                            });
+                        }
+                    });
+                } else {
+                    this.$Message.error('验证错误!');
+                }
+            });
+        },
+        pageBack () {
+            this.$router.push({name: 'personEventList'});
+        },
+        searchPerson (query) {
+            this.handleQueryBySearchPerson(query);
+        },
+        getPersonCode (data) {
+            console.log(data);
+            this.formValidate2.personName = data.label;
+            this.formValidate.personCode = data.value;
+        }
+    }
+
+};
+</script>

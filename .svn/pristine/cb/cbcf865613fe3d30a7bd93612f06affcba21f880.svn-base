@@ -1,0 +1,713 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yqjr.fin.mkmm.sales.mapper.DealerBrandsMapper">
+
+    <!-- region BaseMapper DO NOT MODIFY!!!  -->
+
+    <sql id="Base_Table_Name">
+        MKMM_DEALER_BRANDS
+    </sql>
+
+
+
+    <!-- region BaseResultMap  -->
+    <resultMap id="BaseResultMap" type="com.yqjr.fin.mkmm.sales.entity.DealerBrands">
+        <result property="id" column="ID"/><!--序号
+-->
+        <result property="dealerCode" column="DEALER_CODE"/><!--经销商编码
+-->
+        <result property="dealerName" column="DEALER_NAME"/><!--经销商名称
+-->
+        <result property="brandsCode" column="BRANDS_CODE"/><!--品牌代码
+-->
+        <result property="brandsName" column="BRANDS_NAME"/><!--品牌名称
+-->
+        <result property="company" column="COMPANY"/><!--公司
+-->
+        <result property="createTime" column="CREATE_TIME"/><!--创建时间
+-->
+        <result property="modifyTime" column="MODIFY_TIME"/><!--修改时间
+-->
+        <result property="creator" column="CREATOR"/><!--创建人
+-->
+        <result property="modifier" column="MODIFIER"/><!--修改人
+-->
+    </resultMap>
+    <!-- endregion -->
+
+    <!-- region Base_Column_List  -->
+    <sql id="Base_Column_List">
+    ID,DEALER_CODE,DEALER_NAME,BRANDS_CODE,BRANDS_NAME,COMPANY,CREATE_TIME,MODIFY_TIME,CREATOR,MODIFIER
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_List_Selective  -->
+    <sql id="Base_Column_List_Selective">
+        <trim suffixOverrides=",">
+            <if test="id != null">
+            ID,
+            </if>
+            <if test="dealerCode != null">
+            DEALER_CODE,
+            </if>
+            <if test="dealerName != null">
+            DEALER_NAME,
+            </if>
+            <if test="brandsCode != null">
+            BRANDS_CODE,
+            </if>
+            <if test="brandsName != null">
+            BRANDS_NAME,
+            </if>
+            <if test="company != null">
+            COMPANY,
+            </if>
+            <if test="createTime != null">
+            CREATE_TIME,
+            </if>
+            <if test="modifyTime != null">
+            MODIFY_TIME,
+            </if>
+            <if test="creator != null">
+            CREATOR,
+            </if>
+            <if test="modifier != null">
+            MODIFIER
+            </if>
+        </trim>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Values  -->
+    <sql id="Base_Column_Values">
+    #{id,jdbcType=INTEGER},
+    #{dealerCode,jdbcType=VARCHAR},
+    #{dealerName,jdbcType=VARCHAR},
+    #{brandsCode,jdbcType=VARCHAR},
+    #{brandsName,jdbcType=VARCHAR},
+    #{company,jdbcType=VARCHAR},
+    #{createTime,jdbcType=TIMESTAMP},
+    #{modifyTime,jdbcType=TIMESTAMP},
+    #{creator,jdbcType=INTEGER},
+    #{modifier,jdbcType=INTEGER}
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Values_Selective  -->
+    <sql id="Base_Column_Values_Selective">
+        <trim suffixOverrides=",">
+            <if test="id != null">
+            #{id},
+            </if>
+            <if test="dealerCode != null">
+            #{dealerCode},
+            </if>
+            <if test="dealerName != null">
+            #{dealerName},
+            </if>
+            <if test="brandsCode != null">
+            #{brandsCode},
+            </if>
+            <if test="brandsName != null">
+            #{brandsName},
+            </if>
+            <if test="company != null">
+            #{company},
+            </if>
+            <if test="createTime != null">
+            #{createTime},
+            </if>
+            <if test="modifyTime != null">
+            #{modifyTime},
+            </if>
+            <if test="creator != null">
+            #{creator},
+            </if>
+            <if test="modifier != null">
+            #{modifier}
+            </if>
+        </trim>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Set_Values  -->
+    <sql id="Base_Column_Set_Values">
+    ID = #{id},
+    DEALER_CODE = #{dealerCode},
+    DEALER_NAME = #{dealerName},
+    BRANDS_CODE = #{brandsCode},
+    BRANDS_NAME = #{brandsName},
+    COMPANY = #{company},
+    CREATE_TIME = #{createTime},
+    MODIFY_TIME = #{modifyTime},
+    CREATOR = #{creator},
+    MODIFIER = #{modifier}
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Set_Values_Selective  -->
+    <sql id="Base_Column_Set_Values_Selective">
+        <if test="id != null">
+        ID = #{id},
+        </if>
+        <if test="dealerCode != null">
+        DEALER_CODE = #{dealerCode},
+        </if>
+        <if test="dealerName != null">
+        DEALER_NAME = #{dealerName},
+        </if>
+        <if test="brandsCode != null">
+        BRANDS_CODE = #{brandsCode},
+        </if>
+        <if test="brandsName != null">
+        BRANDS_NAME = #{brandsName},
+        </if>
+        <if test="company != null">
+        COMPANY = #{company},
+        </if>
+        <if test="createTime != null">
+        CREATE_TIME = #{createTime},
+        </if>
+        <if test="modifyTime != null">
+        MODIFY_TIME = #{modifyTime},
+        </if>
+        <if test="creator != null">
+        CREATOR = #{creator},
+        </if>
+        <if test="modifier != null">
+        MODIFIER = #{modifier}
+        </if>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Where_Selective  -->
+    <sql id="Base_Column_Where_Selective">
+        <if test="id != null and id != ''">
+            and ID = #{id}
+        </if>
+        <if test="dealerCode != null and dealerCode != ''">
+            and DEALER_CODE = #{dealerCode}
+        </if>
+        <if test="dealerName != null and dealerName != ''">
+            and DEALER_NAME = #{dealerName}
+        </if>
+        <if test="brandsCode != null and brandsCode != ''">
+            and BRANDS_CODE = #{brandsCode}
+        </if>
+        <if test="brandsName != null and brandsName != ''">
+            and BRANDS_NAME = #{brandsName}
+        </if>
+        <if test="company != null and company != ''">
+            and COMPANY = #{company}
+        </if>
+        <if test="createTime != null and createTime != ''">
+            and CREATE_TIME = #{createTime}
+        </if>
+        <if test="modifyTime != null and modifyTime != ''">
+            and MODIFY_TIME = #{modifyTime}
+        </if>
+        <if test="creator != null and creator != ''">
+            and CREATOR = #{creator}
+        </if>
+        <if test="modifier != null and modifier != ''">
+            and MODIFIER = #{modifier}
+        </if>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Where_Selective_Param1  -->
+    <sql id="Base_Column_Where_Selective_Param1">
+        <if test="param1.id != null">
+            and ID = #{param1.id}
+        </if>
+        <if test="param1.dealerCode != null">
+            and DEALER_CODE = #{param1.dealerCode}
+        </if>
+        <if test="param1.dealerName != null">
+            and DEALER_NAME = #{param1.dealerName}
+        </if>
+        <if test="param1.brandsCode != null">
+            and BRANDS_CODE = #{param1.brandsCode}
+        </if>
+        <if test="param1.brandsName != null">
+            and BRANDS_NAME = #{param1.brandsName}
+        </if>
+        <if test="param1.company != null">
+            and COMPANY = #{param1.company}
+        </if>
+        <if test="param1.createTime != null">
+            and CREATE_TIME = #{param1.createTime}
+        </if>
+        <if test="param1.modifyTime != null">
+            and MODIFY_TIME = #{param1.modifyTime}
+        </if>
+        <if test="param1.creator != null">
+            and CREATOR = #{param1.creator}
+        </if>
+        <if test="param1.modifier != null">
+            and MODIFIER = #{param1.modifier}
+        </if>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Order_By  -->
+    <sql id="Base_Order_By">
+        <bind name="propName" value="sortField"></bind>
+        ORDER BY <include refid="Base_Column_Name" />
+        <choose>
+            <when test="isAscend">
+                ASC
+            </when>
+            <otherwise>
+                DESC
+            </otherwise>
+        </choose>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Name  -->
+    <sql id="Base_Column_Name">
+        <if test='"id" == propName'>
+        ID
+        </if>
+        <if test='"dealerCode" == propName'>
+        DEALER_CODE
+        </if>
+        <if test='"dealerName" == propName'>
+        DEALER_NAME
+        </if>
+        <if test='"brandsCode" == propName'>
+        BRANDS_CODE
+        </if>
+        <if test='"brandsName" == propName'>
+        BRANDS_NAME
+        </if>
+        <if test='"company" == propName'>
+        COMPANY
+        </if>
+        <if test='"createTime" == propName'>
+        CREATE_TIME
+        </if>
+        <if test='"modifyTime" == propName'>
+        MODIFY_TIME
+        </if>
+        <if test='"creator" == propName'>
+        CREATOR
+        </if>
+        <if test='"modifier" == propName'>
+        MODIFIER
+        </if>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Id_Array  -->
+    <sql id="Base_Id_Array">
+        <foreach collection="array" open="(" close=")" separator="," item="id">
+        #{id}
+        </foreach>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Id_List  -->
+    <sql id="Base_Id_List">
+        <foreach collection="list" open="(" close=")" separator="," item="id">
+        #{id}
+        </foreach>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Select_All  -->
+    <sql id="Base_Select_All">
+        select
+        <include refid="Base_Column_List" />
+        from <include refid="Base_Table_Name" />
+    </sql>
+    <!-- endregion -->
+
+    <!-- region selectById  -->
+    <select id="selectById" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        where ID = #{id}
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectByIds  -->
+    <select id="selectByIds" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        where ID in
+        <include refid="Base_Id_List" />
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectAll  -->
+    <select id="selectAll" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectCount  -->
+    <select id="selectCount" resultType="int">
+        select count(*)
+        from <include refid="Base_Table_Name" />
+        <where>
+            <include refid="Base_Column_Where_Selective" />
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region select  -->
+    <select id="select" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Where_Selective" />
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectOne  -->
+    <select id="selectOne" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Where_Selective" />
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectOrderBy  -->
+    <select id="selectOrderBy" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Where_Selective_Param1" />
+        </where>
+        <include refid="Base_Order_By" />
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectByProperty  -->
+    <select id="selectByProperty" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Name" /> = #{propValue}
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectByPropertyIn  -->
+    <select id="selectByPropertyIn" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Name" /> IN
+            <foreach collection="propValues" open="(" close=")" separator="," item="propValue">
+            #{propValue}
+            </foreach>
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region delete  -->
+    <delete id="delete">
+        delete
+        from <include refid="Base_Table_Name" />
+        <where>
+            <include refid="Base_Column_Where_Selective" />
+        </where>
+    </delete>
+    <!-- endregion -->
+
+    <!-- region deleteById  -->
+    <delete id="deleteById">
+        delete
+        from <include refid="Base_Table_Name" />
+        where ID = #{id}
+    </delete>
+    <!-- endregion -->
+
+    <!-- region deleteByIds  -->
+    <delete id="deleteByIds">
+        delete
+        from <include refid="Base_Table_Name" />
+        where ID in
+        <include refid="Base_Id_List" />
+    </delete>
+    <!-- endregion -->
+
+    <!-- region insert  -->
+    <insert id="insert" parameterType="com.yqjr.fin.mkmm.sales.entity.DealerBrands">
+        <selectKey resultType="java.lang.Long" keyProperty="id" order="BEFORE">
+            SELECT SEQ_MKMM_DEALER_BRANDS.NEXTVAL FROM DUAL
+        </selectKey>
+        insert into <include refid="Base_Table_Name" /> (
+        <include refid="Base_Column_List" />
+        )
+        values (
+        <include refid="Base_Column_Values" />
+        )
+    </insert>
+    <!-- endregion -->
+
+    <!-- region updateById  -->
+    <update id="updateById" parameterType="com.yqjr.fin.mkmm.sales.entity.DealerBrands">
+        update <include refid="Base_Table_Name" />
+        <set>
+            <include refid="Base_Column_Set_Values" />
+        </set>
+        where ID = #{id}
+    </update>
+    <!-- endregion -->
+
+    <!-- region patchById  -->
+    <update id="patchById" parameterType="com.yqjr.fin.mkmm.sales.entity.DealerBrands">
+        update <include refid="Base_Table_Name" />
+        <set>
+            <include refid="Base_Column_Set_Values_Selective" />
+        </set>
+        where ID = #{id}
+    </update>
+    <!-- endregion -->
+
+    <!-- endregion BaseMapper -->
+
+    <!-- region generated by CodeRobot  -->
+
+    <!-- region 结果集映射  -->
+    <resultMap id="DealerBrandsResult" type="com.yqjr.fin.mkmm.sales.entity.DealerBrands">
+        <result property="id" column="ID"/><!--序号
+-->
+        <result property="dealerCode" column="DEALER_CODE"/><!--经销商编码
+-->
+        <result property="dealerName" column="DEALER_NAME"/><!--经销商名称
+-->
+        <result property="brandsCode" column="BRANDS_CODE"/><!--品牌代码
+-->
+        <result property="brandsName" column="BRANDS_NAME"/><!--品牌名称
+-->
+        <result property="company" column="COMPANY"/><!--公司
+-->
+        <result property="createTime" column="CREATE_TIME"/><!--创建时间
+-->
+        <result property="modifyTime" column="MODIFY_TIME"/><!--修改时间
+-->
+        <result property="creator" column="CREATOR"/><!--创建人
+-->
+        <result property="modifier" column="MODIFIER"/><!--修改人
+-->
+    </resultMap>
+    <!-- endregion -->
+
+    <!-- 查询条件判断 入参为对象 条件为模糊-->
+    <sql id="queryLikeDealerBrands">
+			<if test="id!=null and id!=''">
+			    AND ID LIKE CONCAT(#{id},'%')<!--序号
+-->
+			</if>
+			<if test="dealerCode!=null and dealerCode!=''">
+			    AND DEALER_CODE LIKE CONCAT(#{dealerCode},'%')<!--经销商编码
+-->
+			</if>
+			<if test="dealerName!=null and dealerName!=''">
+			    AND DEALER_NAME LIKE CONCAT(#{dealerName},'%')<!--经销商名称
+-->
+			</if>
+			<if test="brandsCode!=null and brandsCode!=''">
+			    AND BRANDS_CODE LIKE CONCAT(#{brandsCode},'%')<!--品牌代码
+-->
+			</if>
+			<if test="brandsName!=null and brandsName!=''">
+			    AND BRANDS_NAME LIKE CONCAT(#{brandsName},'%')<!--品牌名称
+-->
+			</if>
+			<if test="company!=null and company!=''">
+			    AND COMPANY LIKE CONCAT(#{company},'%')<!--公司
+-->
+			</if>
+			<if test="createTime!=null and createTime!=''">
+			    AND CREATE_TIME LIKE CONCAT(#{createTime},'%')<!--创建时间
+-->
+			</if>
+			<if test="modifyTime!=null and modifyTime!=''">
+			    AND MODIFY_TIME LIKE CONCAT(#{modifyTime},'%')<!--修改时间
+-->
+			</if>
+			<if test="creator!=null and creator!=''">
+			    AND CREATOR LIKE CONCAT(#{creator},'%')<!--创建人
+-->
+			</if>
+			<if test="modifier!=null and modifier!=''">
+			    MODIFIER LIKE CONCAT(#{modifier},'%')<!--修改人
+-->
+			</if>
+    </sql>
+
+    <!-- 按条件模糊查询所有 -->
+    <select id="queryDealerBrandsList" parameterType="com.yqjr.fin.mkmm.sales.entity.DealerBrands"
+            resultMap="DealerBrandsResult">
+        SELECT
+        ID,<!--序号
+-->
+        DEALER_CODE,<!--经销商编码
+-->
+        DEALER_NAME,<!--经销商名称
+-->
+        BRANDS_CODE,<!--品牌代码
+-->
+        BRANDS_NAME,<!--品牌名称
+-->
+        COMPANY,<!--公司
+-->
+        CREATE_TIME,<!--创建时间
+-->
+        MODIFY_TIME,<!--修改时间
+-->
+        CREATOR,<!--创建人
+-->
+        MODIFIER<!--修改人
+-->
+        FROM MKMM_DEALER_BRANDS
+        <where>
+            <include refid="queryLikeDealerBrands"/>
+        </where>
+    </select>
+
+    <!-- 按条件模糊统计所有条数 -->
+    <select id="queryDealerBrandsCount" parameterType="com.yqjr.fin.mkmm.sales.entity.DealerBrands" resultType="int">
+        SELECT
+        count (id)
+        FROM MKMM_DEALER_BRANDS
+        <where>
+            <include refid="queryLikeDealerBrands"/>
+        </where>
+    </select>
+
+    <!-- 批量删除，入参为数组  -->
+    <delete id="dynamicDelete">
+        delete from MKMM_DEALER_BRANDS where id in
+        <foreach collection="array" open="(" close=")" separator="," item="arr">
+            #{arr}
+        </foreach>
+    </delete>
+
+    <!-- 批量删除，入参为list  -->
+    <delete id="dynamicDeleteList">
+        delete from MKMM_DEALER_BRANDS where id in
+        <foreach collection="list" open="(" close=")" separator="," item="ids">
+            #{ids}
+        </foreach>
+    </delete>
+
+    <!-- 批量插入 -->
+    <insert id="insertBatch" parameterType="java.util.List">
+        <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into MKMM_DEALER_BRANDS
+        (
+        <include refid="Base_Column_List" />
+        )
+        values
+        <foreach collection="list" item="dealerBrands" index="index" separator=",">
+            (
+            <include refid="Base_Column_Values" />
+            )
+        </foreach>
+    </insert>
+
+    <!-- 插入单条数据，并返回主键ID -->
+    <insert id="saveObj" useGeneratedKeys="true" keyProperty="id"
+            parameterType="com.yqjr.fin.mkmm.sales.entity.DealerBrands">
+        insert into MKMM_DEALER_BRANDS
+        (
+        <include refid="Base_Column_List" />
+        )
+        values
+        (
+        <include refid="Base_Column_Values" />
+        )
+    </insert>
+
+
+    <!-- **********************************************************************-->
+    <!-- ************* 在此下方为一对一、一对多查询方式 仅供参考***************-->
+    <!-- **********************************************************************-->
+    <!-- 一个博客（BlogInfo） 属于一个作者（Author） ，一个作者（Author） 有多篇文章（Post） -->
+    <!--
+  <resultMap type="com.foo.bean.BlogInfo" id="BlogInfo">
+      <id column="blog_id" property="blogId" />
+      <result column="title" property="title" />
+      <association property="author" column="blog_author_id"
+          javaType="com.foo.bean.Author" select="com.foo.bean.AuthorMapper.selectByPrimaryKey">
+      </association>
+      <collection property="posts" column="blog_id" ofType="com.foo.bean.Post"
+          select="com.foo.bean.PostMapper.selectByBlogId">
+      </collection>
+  </resultMap>
+
+  <select id="queryBlogInfoById" resultMap="BlogInfo" parameterType="java.math.BigDecimal">
+      SELECT
+      B.BLOG_ID,
+      B.TITLE,
+      B.AUTHOR_ID AS BLOG_AUTHOR_ID
+      FROM BLOG B
+      where B.BLOG_ID = 博客ID
+  </select>
+
+          上述方法存在N+1问题
+      它的弊端也比较明显：即所谓的N+1问题。关联的嵌套查询显示得到一个结果集，然后根据这个结果集的每一条记录进行关联查询。
+      现在假设嵌套查询就一个（即resultMap 内部就一个association标签），现查询的结果集返回条数为N，那么关联查询语句将会被执行N次，加上自身返回结果集查询1次，共需要访问数据库N+1次。如果N比较大的话，这样的数据库访问消耗是非常大的！所以使用这种嵌套语句查询的使用者一定要考虑慎重考虑，确保N值不会很大。
+      以上面的例子为例，select 语句本身会返回com.foo.bean.BlogMapper.queryBlogInfoById 条数为1 的结果集，由于它有两条关联的语句查询，它需要共访问数据库 1*（1+1）=3次数据库。
+
+
+       <resultMap type="com.foo.bean.BlogInfo" id="BlogInfo">
+      <id column="blog_id" property="blogId"/>
+      <result column="title" property="title"/>
+      <association property="author" column="blog_author_id" javaType="com.foo.bean.Author">
+          <id column="author_id" property="authorId"/>
+          <result column="user_name" property="userName"/>
+          <result column="password" property="password"/>
+          <result column="email" property="email"/>
+          <result column="biography" property="biography"/>
+      </association>
+      <collection property="posts" column="blog_post_id" ofType="com.foo.bean.Post">
+          <id column="post_id" property="postId"/>
+          <result column="blog_id" property="blogId"/>
+          <result column="create_time" property="createTime"/>
+          <result column="subject" property="subject"/>
+          <result column="body" property="body"/>
+          <result column="draft" property="draft"/>
+      </collection>
+      </resultMap>
+
+
+      <select id="queryAllBlogInfo" resultMap="BlogInfo">
+          SELECT
+           B.BLOG_ID,
+           B.TITLE,
+           B.AUTHOR_ID AS BLOG_AUTHOR_ID,
+           A.AUTHOR_ID,
+           A.USER_NAME,
+           A.PASSWORD,
+           A.EMAIL,
+           A.BIOGRAPHY,
+           P.POST_ID,
+           P.BLOG_ID AS BLOG_POST_ID ,
+             P.CREATE_TIME,
+           P.SUBJECT,
+           P.BODY,
+           P.DRAFT
+      FROM BLOG B
+      LEFT OUTER JOIN AUTHOR A
+        ON B.AUTHOR_ID = A.AUTHOR_ID
+      LEFT OUTER JOIN POST P
+        ON P.BLOG_ID = B.BLOG_ID
+      </select>
+      -->
+
+    <!-- **********************************************************************-->
+    <!-- ************* 此线上方代码自动生成，在此下方编写自定义代码。***************-->
+    <!-- **********************************************************************-->
+
+    <!-- endregion -->
+
+
+</mapper>
+

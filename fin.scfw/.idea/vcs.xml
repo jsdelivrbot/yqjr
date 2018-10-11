@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$" vcs="svn" />
+    <mapping directory="$PROJECT_DIR$/fin.mkmm-sales-model" vcs="svn" />
+    <mapping directory="$PROJECT_DIR$/fin.risk-stat-model" vcs="svn" />
+    <mapping directory="$PROJECT_DIR$/fin.scfw-auth" vcs="svn" />
+    <mapping directory="$PROJECT_DIR$/fin.scfw-common" vcs="svn" />
+    <mapping directory="$PROJECT_DIR$/fin.scfw-config" vcs="svn" />
+    <mapping directory="$PROJECT_DIR$/fin.scfw-isomer" vcs="svn" />
+    <mapping directory="$PROJECT_DIR$/fin.scfw-meta" vcs="svn" />
+    <mapping directory="$PROJECT_DIR$/fin.scfw-meta-model" vcs="svn" />
+    <mapping directory="$PROJECT_DIR$/fin.scfw-zuul" vcs="svn" />
+  </component>
+</project>

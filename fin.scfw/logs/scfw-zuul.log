@@ -1,0 +1,686 @@
+2018-05-02 08:08:36.910  INFO 5260 --- [main] org.springframework.context.annotation.AnnotationConfigApplicationContext : Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@72c8e7b: startup date [Wed May 02 08:08:36 CST 2018]; root of context hierarchy
+2018-05-02 08:08:37.582  INFO 5260 --- [main] org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor : JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2018-05-02 08:08:37.645  INFO 5260 --- [main] org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker : Bean 'configurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$3b6bd375] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-05-02 08:08:38.660  INFO 5260 --- [main] org.springframework.cloud.netflix.eureka.InstanceInfoFactory : Setting initial instance status as: STARTING
+2018-05-02 08:08:38.801  INFO 5260 --- [main] com.netflix.discovery.DiscoveryClient : Initializing Eureka in region us-east-1
+2018-05-02 08:08:38.989  INFO 5260 --- [main] com.netflix.discovery.provider.DiscoveryJerseyProvider : Using JSON encoding codec LegacyJacksonJson
+2018-05-02 08:08:38.989  INFO 5260 --- [main] com.netflix.discovery.provider.DiscoveryJerseyProvider : Using JSON decoding codec LegacyJacksonJson
+2018-05-02 08:08:39.192  INFO 5260 --- [main] com.netflix.discovery.provider.DiscoveryJerseyProvider : Using XML encoding codec XStreamXml
+2018-05-02 08:08:39.192  INFO 5260 --- [main] com.netflix.discovery.provider.DiscoveryJerseyProvider : Using XML decoding codec XStreamXml
+2018-05-02 08:08:39.489  INFO 5260 --- [main] com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver : Resolving eureka endpoints via configuration
+2018-05-02 08:08:39.598  INFO 5260 --- [main] com.netflix.discovery.DiscoveryClient : Disable delta property : false
+2018-05-02 08:08:39.614  INFO 5260 --- [main] com.netflix.discovery.DiscoveryClient : Single vip registry refresh property : null
+2018-05-02 08:08:39.614  INFO 5260 --- [main] com.netflix.discovery.DiscoveryClient : Force full registry fetch : false
+2018-05-02 08:08:39.614  INFO 5260 --- [main] com.netflix.discovery.DiscoveryClient : Application is null : false
+2018-05-02 08:08:39.614  INFO 5260 --- [main] com.netflix.discovery.DiscoveryClient : Registered Applications size is zero : true
+2018-05-02 08:08:39.614  INFO 5260 --- [main] com.netflix.discovery.DiscoveryClient : Application version is -1: true
+2018-05-02 08:08:39.614  INFO 5260 --- [main] com.netflix.discovery.DiscoveryClient : Getting all instance registry info from the eureka server
+2018-05-02 08:08:39.817  INFO 5260 --- [main] com.netflix.discovery.DiscoveryClient : The response status is 200
+2018-05-02 08:08:39.817  INFO 5260 --- [main] com.netflix.discovery.DiscoveryClient : Not registering with Eureka server per configuration
+2018-05-02 08:08:39.817  INFO 5260 --- [main] com.netflix.discovery.DiscoveryClient : Discovery Client initialized at timestamp 1525219719817 with initial instances count: 1
+2018-05-02 08:08:41.333  INFO 5260 --- [main] org.springframework.cloud.config.client.ConfigServicePropertySourceLocator : Fetching config from server at: http://DESKTOP-JED78CJ:50111/
+2018-05-02 08:08:42.286  INFO 5260 --- [main] org.springframework.cloud.config.client.ConfigServicePropertySourceLocator : Located environment: name=config, profiles=[default], label=null, version=null, state=null
+2018-05-02 08:08:42.286  INFO 5260 --- [main] org.springframework.cloud.bootstrap.config.PropertySourceBootstrapConfiguration : Located property source: CompositePropertySource [name='configService', propertySources=[]]
+2018-05-02 08:08:42.301  INFO 5260 --- [main] com.yqjr.fin.scfw.zuul.Application : No active profile set, falling back to default profiles: default
+2018-05-02 08:08:42.380  INFO 5260 --- [main] org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@6968bcec: startup date [Wed May 02 08:08:42 CST 2018]; parent: org.springframework.context.annotation.AnnotationConfigApplicationContext@72c8e7b
+2018-05-02 08:08:44.239  INFO 5260 --- [main] org.springframework.data.repository.config.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2018-05-02 08:08:44.505  INFO 5260 --- [main] org.springframework.beans.factory.support.DefaultListableBeanFactory : Overriding bean definition for bean 'counterFactory' with a different definition: replacing [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=org.springframework.cloud.netflix.zuul.ZuulServerAutoConfiguration$ZuulMetricsConfiguration; factoryMethodName=counterFactory; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [org/springframework/cloud/netflix/zuul/ZuulServerAutoConfiguration$ZuulMetricsConfiguration.class]] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=org.springframework.cloud.netflix.zuul.ZuulServerAutoConfiguration$ZuulCounterFactoryConfiguration; factoryMethodName=counterFactory; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [org/springframework/cloud/netflix/zuul/ZuulServerAutoConfiguration$ZuulCounterFactoryConfiguration.class]]
+2018-05-02 08:08:44.817  INFO 5260 --- [main] org.springframework.cloud.context.scope.GenericScope : BeanFactory id=4cbf1fb9-21bb-3e5f-9ede-b3416d612c4b
+2018-05-02 08:08:44.833  INFO 5260 --- [main] org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor : JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2018-05-02 08:08:45.146  INFO 5260 --- [main] org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.netflix.metrics.MetricsInterceptorConfiguration$MetricsRestTemplateConfiguration' of type [org.springframework.cloud.netflix.metrics.MetricsInterceptorConfiguration$MetricsRestTemplateConfiguration$$EnhancerBySpringCGLIB$$517e76b9] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-05-02 08:08:45.396  INFO 5260 --- [main] org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$3b6bd375] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-05-02 08:08:45.786  INFO 5260 --- [main] org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 50001 (http)
+2018-05-02 08:08:45.802  INFO 5260 --- [main] org.apache.catalina.core.StandardService : Starting service [Tomcat]
+2018-05-02 08:08:45.802  INFO 5260 --- [main] org.apache.catalina.core.StandardEngine : Starting Servlet Engine: Apache Tomcat/8.5.23
+2018-05-02 08:08:45.958  INFO 5260 --- [localhost-startStop-1] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext
+2018-05-02 08:08:45.958  INFO 5260 --- [localhost-startStop-1] org.springframework.web.context.ContextLoader : Root WebApplicationContext: initialization completed in 3578 ms
+2018-05-02 08:08:46.911  INFO 5260 --- [localhost-startStop-1] org.springframework.boot.web.servlet.ServletRegistrationBean : Mapping servlet: 'dispatcherServlet' to [/]
+2018-05-02 08:08:46.911  INFO 5260 --- [localhost-startStop-1] org.springframework.boot.web.servlet.ServletRegistrationBean : Mapping servlet: 'zuulServlet' to [/zuul/*]
+2018-05-02 08:08:46.927  INFO 5260 --- [localhost-startStop-1] org.springframework.boot.web.servlet.FilterRegistrationBean : Mapping filter: 'metricsFilter' to: [/*]
+2018-05-02 08:08:46.927  INFO 5260 --- [localhost-startStop-1] org.springframework.boot.web.servlet.FilterRegistrationBean : Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-05-02 08:08:46.927  INFO 5260 --- [localhost-startStop-1] org.springframework.boot.web.servlet.FilterRegistrationBean : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-05-02 08:08:46.927  INFO 5260 --- [localhost-startStop-1] org.springframework.boot.web.servlet.FilterRegistrationBean : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2018-05-02 08:08:46.927  INFO 5260 --- [localhost-startStop-1] org.springframework.boot.web.servlet.FilterRegistrationBean : Mapping filter: 'requestContextFilter' to: [/*]
+2018-05-02 08:08:46.927  INFO 5260 --- [localhost-startStop-1] org.springframework.boot.web.servlet.FilterRegistrationBean : Mapping filter: 'webRequestLoggingFilter' to: [/*]
+2018-05-02 08:08:46.927  INFO 5260 --- [localhost-startStop-1] org.springframework.boot.web.servlet.FilterRegistrationBean : Mapping filter: 'corsFilter' to: [/*]
+2018-05-02 08:08:46.927  INFO 5260 --- [localhost-startStop-1] org.springframework.boot.web.servlet.FilterRegistrationBean : Mapping filter: 'applicationContextIdFilter' to: [/*]
+2018-05-02 08:08:46.974  WARN 5260 --- [main] com.netflix.config.sources.URLConfigurationSource : No URLs will be polled as dynamic configuration sources.
+2018-05-02 08:08:46.974  INFO 5260 --- [main] com.netflix.config.sources.URLConfigurationSource : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2018-05-02 08:08:46.974  INFO 5260 --- [main] com.netflix.config.DynamicPropertyFactory : DynamicPropertyFactory is initialized with configuration sources: com.netflix.config.ConcurrentCompositeConfiguration@6f7a20da
+2018-05-02 08:08:47.677  INFO 5260 --- [main] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor : Initializing ExecutorService 
+2018-05-02 08:08:48.505  WARN 5260 --- [main] com.netflix.config.sources.URLConfigurationSource : No URLs will be polled as dynamic configuration sources.
+2018-05-02 08:08:48.505  INFO 5260 --- [main] com.netflix.config.sources.URLConfigurationSource : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2018-05-02 08:08:48.693  INFO 5260 --- [main] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] : jolokia: No access restrictor found, access to any MBean is allowed
+2018-05-02 08:08:49.099  INFO 5260 --- [main] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@6968bcec: startup date [Wed May 02 08:08:42 CST 2018]; parent: org.springframework.context.annotation.AnnotationConfigApplicationContext@72c8e7b
+2018-05-02 08:08:49.193  INFO 5260 --- [main] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2018-05-02 08:08:49.193  INFO 5260 --- [main] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-05-02 08:08:49.240  INFO 5260 --- [main] org.springframework.web.servlet.handler.SimpleUrlHandlerMapping : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-05-02 08:08:49.240  INFO 5260 --- [main] org.springframework.web.servlet.handler.SimpleUrlHandlerMapping : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-05-02 08:08:49.302  INFO 5260 --- [main] org.springframework.web.servlet.handler.SimpleUrlHandlerMapping : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-05-02 08:08:51.127  INFO 5260 --- [main] org.springframework.boot.actuate.endpoint.mvc.EndpointHandlerMapping : Mapped "{[/shutdown || /shutdown.json],methods=[POST],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.ShutdownMvcEndpoint.invoke()
+2018-05-02 08:08:51.127  INFO 5260 --- [main] org.springframework.boot.actuate.endpoint.mvc.EndpointHandlerMapping : Mapped "{[/metrics/{name:.*}],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.MetricsMvcEndpoint.value(java.lang.String)
+2018-05-02 08:08:51.127  INFO 5260 --- [main] org.springframework.boot.actuate.endpoint.mvc.EndpointHandlerMapping : Mapped "{[/metrics || /metrics.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+2018-05-02 08:08:51.127  INFO 5260 --- [main] org.springframework.boot.actuate.endpoint.mvc.EndpointHandlerMapping : Mapped "{[/info || /info.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+2018-05-02 08:08:51.127  INFO 5260 --- [main] org.springframework.boot.actuate.endpoint.mvc.EndpointHandlerMapping : Mapped "{[/filters || /filters.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+2018-05-02 08:08:51.127  INFO 5260 --- [main] org.springframework.boot.actuate.endpoint.mvc.EndpointHandlerMapping : Mapped "{[/mappings || /mappings.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+2018-05-02 08:08:51.127  INFO 5260 --- [main] org.springframework.boot.actuate.endpoint.mvc.EndpointHandlerMapping : Mapped "{[/jolokia/**]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.actuate.endpoint.mvc.JolokiaMvcEndpoint.handle(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse) throws java.lang.Exception
+2018-05-02 08:08:51.127  INFO 5260 --- [main] org.springframework.boot.actuate.endpoint.mvc.EndpointHandlerMapping : Mapped "{[/configprops || /configprops.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+2018-05-02 08:08:51.127  INFO 5260 --- [main] org.springframework.boot.actuate.endpoint.mvc.EndpointHandlerMapping : Mapped "{[/heapdump || /heapdump.json],methods=[GET],produces=[application/octet-stream]}" onto public void org.springframework.boot.actuate.endpoint.mvc.HeapdumpMvcEndpoint.invoke(boolean,javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse) throws java.io.IOException,javax.servlet.ServletException
+2018-05-02 08:08:51.127  INFO 5260 --- [main] org.springframework.boot.actuate.endpoint.mvc.EndpointHandlerMapping : Mapped "{[/hystrix.stream/**]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.cloud.netflix.endpoint.ServletWrappingEndpoint.handle(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse) throws java.lang.Exception
+2018-05-02 08:08:51.142  INFO 5260 --- [main] org.springframework.boot.actuate.endpoint.mvc.EndpointHandlerMapping : Mapped "{[/env/{name:.*}],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EnvironmentMvcEndpoint.value(java.lang.String)
+2018-05-02 08:08:51.142  INFO 5260 --- [main] org.springframework.boot.actuate.endpoint.mvc.EndpointHandlerMapping : Mapped "{[/env || /env.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+2018-05-02 08:08:51.142  INFO 5260 --- [main] org.springframework.boot.actuate.endpoint.mvc.EndpointHandlerMapping : Mapped "{[/routes || /routes.json],methods=[POST]}" onto public java.lang.Object org.springframework.cloud.netflix.zuul.RoutesMvcEndpoint.reset()
+2018-05-02 08:08:51.142  INFO 5260 --- [main] org.springframework.boot.actuate.endpoint.mvc.EndpointHandlerMapping : Mapped "{[/routes || /routes.json],methods=[GET],params=[format],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.cloud.netflix.zuul.RoutesMvcEndpoint.invokeRouteDetails(java.lang.String)
+2018-05-02 08:08:51.142  INFO 5260 --- [main] org.springframework.boot.actuate.endpoint.mvc.EndpointHandlerMapping : Mapped "{[/routes || /routes.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+2018-05-02 08:08:51.142  INFO 5260 --- [main] org.springframework.boot.actuate.endpoint.mvc.EndpointHandlerMapping : Mapped "{[/dump || /dump.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+2018-05-02 08:08:51.142  INFO 5260 --- [main] org.springframework.boot.actuate.endpoint.mvc.EndpointHandlerMapping : Mapped "{[/service-registry/instance-status],methods=[POST]}" onto public org.springframework.http.ResponseEntity<?> org.springframework.cloud.client.serviceregistry.endpoint.ServiceRegistryEndpoint.setStatus(java.lang.String)
+2018-05-02 08:08:51.142  INFO 5260 --- [main] org.springframework.boot.actuate.endpoint.mvc.EndpointHandlerMapping : Mapped "{[/service-registry/instance-status],methods=[GET]}" onto public org.springframework.http.ResponseEntity org.springframework.cloud.client.serviceregistry.endpoint.ServiceRegistryEndpoint.getStatus()
+2018-05-02 08:08:51.142  INFO 5260 --- [main] org.springframework.boot.actuate.endpoint.mvc.EndpointHandlerMapping : Mapped "{[/trace || /trace.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+2018-05-02 08:08:51.142  INFO 5260 --- [main] org.springframework.boot.actuate.endpoint.mvc.EndpointHandlerMapping : Mapped "{[/beans || /beans.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+2018-05-02 08:08:51.142  INFO 5260 --- [main] org.springframework.boot.actuate.endpoint.mvc.EndpointHandlerMapping : Mapped "{[/env],methods=[POST]}" onto public java.lang.Object org.springframework.cloud.context.environment.EnvironmentManagerMvcEndpoint.value(java.util.Map<java.lang.String, java.lang.String>)
+2018-05-02 08:08:51.158  INFO 5260 --- [main] org.springframework.boot.actuate.endpoint.mvc.EndpointHandlerMapping : Mapped "{[/env/reset],methods=[POST]}" onto public java.util.Map<java.lang.String, java.lang.Object> org.springframework.cloud.context.environment.EnvironmentManagerMvcEndpoint.reset()
+2018-05-02 08:08:51.158  INFO 5260 --- [main] org.springframework.boot.actuate.endpoint.mvc.EndpointHandlerMapping : Mapped "{[/features || /features.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+2018-05-02 08:08:51.158  INFO 5260 --- [main] org.springframework.boot.actuate.endpoint.mvc.EndpointHandlerMapping : Mapped "{[/auditevents || /auditevents.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public org.springframework.http.ResponseEntity<?> org.springframework.boot.actuate.endpoint.mvc.AuditEventsMvcEndpoint.findByPrincipalAndAfterAndType(java.lang.String,java.util.Date,java.lang.String)
+2018-05-02 08:08:51.158  INFO 5260 --- [main] org.springframework.boot.actuate.endpoint.mvc.EndpointHandlerMapping : Mapped "{[/health || /health.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.HealthMvcEndpoint.invoke(javax.servlet.http.HttpServletRequest,java.security.Principal)
+2018-05-02 08:08:51.158  INFO 5260 --- [main] org.springframework.boot.actuate.endpoint.mvc.EndpointHandlerMapping : Mapped "{[/loggers/{name:.*}],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.LoggersMvcEndpoint.get(java.lang.String)
+2018-05-02 08:08:51.158  INFO 5260 --- [main] org.springframework.boot.actuate.endpoint.mvc.EndpointHandlerMapping : Mapped "{[/loggers/{name:.*}],methods=[POST],consumes=[application/vnd.spring-boot.actuator.v1+json || application/json],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.LoggersMvcEndpoint.set(java.lang.String,java.util.Map<java.lang.String, java.lang.String>)
+2018-05-02 08:08:51.158  INFO 5260 --- [main] org.springframework.boot.actuate.endpoint.mvc.EndpointHandlerMapping : Mapped "{[/loggers || /loggers.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+2018-05-02 08:08:51.158  INFO 5260 --- [main] org.springframework.boot.actuate.endpoint.mvc.EndpointHandlerMapping : Mapped "{[/autoconfig || /autoconfig.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+2018-05-02 08:08:51.158  INFO 5260 --- [main] org.springframework.boot.actuate.endpoint.mvc.EndpointHandlerMapping : Mapped "{[/archaius || /archaius.json],methods=[GET],produces=[application/vnd.spring-boot.actuator.v1+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+2018-05-02 08:08:51.158  INFO 5260 --- [main] org.springframework.boot.actuate.endpoint.mvc.EndpointHandlerMapping : Mapped "{[/refresh || /refresh.json],methods=[POST]}" onto public java.lang.Object org.springframework.cloud.endpoint.GenericPostableMvcEndpoint.invoke()
+2018-05-02 08:08:51.767  INFO 5260 --- [main] com.netflix.discovery.DiscoveryClient : Shutting down DiscoveryClient ...
+2018-05-02 08:08:51.798  INFO 5260 --- [main] com.netflix.discovery.DiscoveryClient : Completed shut down of DiscoveryClient
+2018-05-02 08:08:52.205  INFO 5260 --- [main] org.springframework.cloud.netflix.zuul.ZuulFilterInitializer : Starting filter initializer
+2018-05-02 08:08:52.283  INFO 5260 --- [main] org.springframework.jmx.export.annotation.AnnotationMBeanExporter : Registering beans for JMX exposure on startup
+2018-05-02 08:08:52.299  INFO 5260 --- [main] org.springframework.jmx.export.annotation.AnnotationMBeanExporter : Bean with name 'environmentManager' has been autodetected for JMX exposure
+2018-05-02 08:08:52.299  INFO 5260 --- [main] org.springframework.jmx.export.annotation.AnnotationMBeanExporter : Bean with name 'configurationPropertiesRebinder' has been autodetected for JMX exposure
+2018-05-02 08:08:52.299  INFO 5260 --- [main] org.springframework.jmx.export.annotation.AnnotationMBeanExporter : Bean with name 'refreshEndpoint' has been autodetected for JMX exposure
+2018-05-02 08:08:52.314  INFO 5260 --- [main] org.springframework.jmx.export.annotation.AnnotationMBeanExporter : Bean with name 'serviceRegistryEndpoint' has been autodetected for JMX exposure
+2018-05-02 08:08:52.314  INFO 5260 --- [main] org.springframework.jmx.export.annotation.AnnotationMBeanExporter : Bean with name 'routesEndpoint' has been autodetected for JMX exposure
+2018-05-02 08:08:52.314  INFO 5260 --- [main] org.springframework.jmx.export.annotation.AnnotationMBeanExporter : Bean with name 'routesMvcEndpoint' has been autodetected for JMX exposure
+2018-05-02 08:08:52.314  INFO 5260 --- [main] org.springframework.jmx.export.annotation.AnnotationMBeanExporter : Bean with name 'filtersEndpoint' has been autodetected for JMX exposure
+2018-05-02 08:08:52.314  INFO 5260 --- [main] org.springframework.jmx.export.annotation.AnnotationMBeanExporter : Bean with name 'refreshScope' has been autodetected for JMX exposure
+2018-05-02 08:08:52.314  INFO 5260 --- [main] org.springframework.jmx.export.annotation.AnnotationMBeanExporter : Located managed bean 'environmentManager': registering with JMX server as MBean [org.springframework.cloud.context.environment:name=environmentManager,type=EnvironmentManager]
+2018-05-02 08:08:52.330  INFO 5260 --- [main] org.springframework.jmx.export.annotation.AnnotationMBeanExporter : Located managed bean 'routesEndpoint': registering with JMX server as MBean [org.springframework.cloud.netflix.zuul:name=routesEndpoint,type=RoutesEndpoint]
+2018-05-02 08:08:52.330  WARN 5260 --- [main] org.springframework.jmx.export.annotation.AnnotationMBeanExporter : Bean with key 'routesEndpoint' has been registered as an MBean but has no exposed attributes or operations
+2018-05-02 08:08:52.330  INFO 5260 --- [main] org.springframework.jmx.export.annotation.AnnotationMBeanExporter : Located managed bean 'routesMvcEndpoint': registering with JMX server as MBean [org.springframework.cloud.netflix.zuul:name=routesMvcEndpoint,type=RoutesMvcEndpoint]
+2018-05-02 08:08:52.330  INFO 5260 --- [main] org.springframework.jmx.export.annotation.AnnotationMBeanExporter : Located managed bean 'serviceRegistryEndpoint': registering with JMX server as MBean [org.springframework.cloud.client.serviceregistry.endpoint:name=serviceRegistryEndpoint,type=ServiceRegistryEndpoint]
+2018-05-02 08:08:52.345  INFO 5260 --- [main] org.springframework.jmx.export.annotation.AnnotationMBeanExporter : Located managed bean 'filtersEndpoint': registering with JMX server as MBean [org.springframework.cloud.netflix.zuul:name=filtersEndpoint,type=FiltersEndpoint]
+2018-05-02 08:08:52.345  WARN 5260 --- [main] org.springframework.jmx.export.annotation.AnnotationMBeanExporter : Bean with key 'filtersEndpoint' has been registered as an MBean but has no exposed attributes or operations
+2018-05-02 08:08:52.345  INFO 5260 --- [main] org.springframework.jmx.export.annotation.AnnotationMBeanExporter : Located managed bean 'refreshScope': registering with JMX server as MBean [org.springframework.cloud.context.scope.refresh:name=refreshScope,type=RefreshScope]
+2018-05-02 08:08:52.361  INFO 5260 --- [main] org.springframework.jmx.export.annotation.AnnotationMBeanExporter : Located managed bean 'configurationPropertiesRebinder': registering with JMX server as MBean [org.springframework.cloud.context.properties:name=configurationPropertiesRebinder,context=6968bcec,type=ConfigurationPropertiesRebinder]
+2018-05-02 08:08:52.361  INFO 5260 --- [main] org.springframework.jmx.export.annotation.AnnotationMBeanExporter : Located managed bean 'refreshEndpoint': registering with JMX server as MBean [org.springframework.cloud.endpoint:name=refreshEndpoint,type=RefreshEndpoint]
+2018-05-02 08:08:53.080  INFO 5260 --- [main] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] : jolokia: No access restrictor found, access to any MBean is allowed
+2018-05-02 08:08:53.080  INFO 5260 --- [main] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] : jolokia: jolokia:type=Config is already registered. Adding it with jolokia:type=Config,uuid=26596707-0fe7-49ab-b206-d2f6bf4e9566, but you should revise your setup in order to either use a qualifier or ensure, that only a single agent gets registered (otherwise history functionality might not work)
+2018-05-02 08:08:53.080  INFO 5260 --- [main] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] : jolokia: Cannot register (legacy) MBean handler for config store with name jmx4perl:type=Config since it already exists. This is the case if another agent has been already started within the same JVM. The registration is skipped.
+2018-05-02 08:08:53.080  INFO 5260 --- [main] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] : jolokia: Jolokia Discovery MBean registration is skipped because there is already one registered.
+2018-05-02 08:08:53.377  INFO 5260 --- [main] org.springframework.context.support.DefaultLifecycleProcessor : Starting beans in phase 0
+2018-05-02 08:08:53.377  INFO 5260 --- [main] org.springframework.cloud.netflix.eureka.InstanceInfoFactory : Setting initial instance status as: STARTING
+2018-05-02 08:08:53.392  INFO 5260 --- [main] com.netflix.discovery.DiscoveryClient : Initializing Eureka in region us-east-1
+2018-05-02 08:08:53.392  INFO 5260 --- [main] com.netflix.discovery.provider.DiscoveryJerseyProvider : Using JSON encoding codec LegacyJacksonJson
+2018-05-02 08:08:53.392  INFO 5260 --- [main] com.netflix.discovery.provider.DiscoveryJerseyProvider : Using JSON decoding codec LegacyJacksonJson
+2018-05-02 08:08:53.392  INFO 5260 --- [main] com.netflix.discovery.provider.DiscoveryJerseyProvider : Using XML encoding codec XStreamXml
+2018-05-02 08:08:53.392  INFO 5260 --- [main] com.netflix.discovery.provider.DiscoveryJerseyProvider : Using XML decoding codec XStreamXml
+2018-05-02 08:08:53.471  INFO 5260 --- [main] com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver : Resolving eureka endpoints via configuration
+2018-05-02 08:08:53.486  INFO 5260 --- [main] com.netflix.discovery.DiscoveryClient : Disable delta property : false
+2018-05-02 08:08:53.486  INFO 5260 --- [main] com.netflix.discovery.DiscoveryClient : Single vip registry refresh property : null
+2018-05-02 08:08:53.486  INFO 5260 --- [main] com.netflix.discovery.DiscoveryClient : Force full registry fetch : false
+2018-05-02 08:08:53.486  INFO 5260 --- [main] com.netflix.discovery.DiscoveryClient : Application is null : false
+2018-05-02 08:08:53.486  INFO 5260 --- [main] com.netflix.discovery.DiscoveryClient : Registered Applications size is zero : true
+2018-05-02 08:08:53.486  INFO 5260 --- [main] com.netflix.discovery.DiscoveryClient : Application version is -1: true
+2018-05-02 08:08:53.486  INFO 5260 --- [main] com.netflix.discovery.DiscoveryClient : Getting all instance registry info from the eureka server
+2018-05-02 08:08:53.486  INFO 5260 --- [main] com.netflix.discovery.DiscoveryClient : The response status is 200
+2018-05-02 08:08:53.486  INFO 5260 --- [main] com.netflix.discovery.DiscoveryClient : Starting heartbeat executor: renew interval is: 5
+2018-05-02 08:08:53.486  INFO 5260 --- [main] com.netflix.discovery.InstanceInfoReplicator : InstanceInfoReplicator onDemand update allowed rate per min is 4
+2018-05-02 08:08:53.486  INFO 5260 --- [main] com.netflix.discovery.DiscoveryClient : Discovery Client initialized at timestamp 1525219733486 with initial instances count: 1
+2018-05-02 08:08:53.486  INFO 5260 --- [main] org.springframework.cloud.netflix.eureka.serviceregistry.EurekaServiceRegistry : Registering application fin.scfw-zuul with eureka with status UP
+2018-05-02 08:08:53.486  INFO 5260 --- [main] com.netflix.discovery.DiscoveryClient : Saw local status change event StatusChangeEvent [timestamp=1525219733486, current=UP, previous=STARTING]
+2018-05-02 08:08:53.502  INFO 5260 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient : DiscoveryClient_FIN.SCFW-ZUUL/DESKTOP-JED78CJ:fin.scfw-zuul:50001: registering service...
+2018-05-02 08:08:53.533  INFO 5260 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient : DiscoveryClient_FIN.SCFW-ZUUL/DESKTOP-JED78CJ:fin.scfw-zuul:50001 - registration status: 204
+2018-05-02 08:08:53.564  INFO 5260 --- [main] org.springframework.context.support.DefaultLifecycleProcessor : Starting beans in phase 2147483647
+2018-05-02 08:08:53.580  INFO 5260 --- [main] org.springframework.cloud.netflix.hystrix.HystrixCircuitBreakerConfiguration$HystrixMetricsPollerConfiguration : Starting poller
+2018-05-02 08:08:53.674  INFO 5260 --- [main] org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer : Tomcat started on port(s): 50001 (http)
+2018-05-02 08:08:53.674  INFO 5260 --- [main] org.springframework.cloud.netflix.eureka.serviceregistry.EurekaAutoServiceRegistration : Updating port to 50001
+2018-05-02 08:08:53.689  INFO 5260 --- [main] com.yqjr.fin.scfw.zuul.Application : Started Application in 20.733 seconds (JVM running for 30.793)
+2018-05-02 08:08:54.518  INFO 5260 --- [RMI TCP Connection(10)-127.0.0.1] org.springframework.cloud.config.client.ConfigServicePropertySourceLocator : Fetching config from server at: http://DESKTOP-JED78CJ:50111/
+2018-05-02 08:08:55.283  INFO 5260 --- [RMI TCP Connection(10)-127.0.0.1] org.springframework.cloud.config.client.ConfigServicePropertySourceLocator : Located environment: name=config, profiles=[default], label=null, version=null, state=null
+2018-05-02 08:13:53.500  INFO 5260 --- [AsyncResolver-bootstrap-executor-0] com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver : Resolving eureka endpoints via configuration
+2018-05-02 08:18:53.513  INFO 5260 --- [AsyncResolver-bootstrap-executor-0] com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver : Resolving eureka endpoints via configuration
+2018-05-02 08:22:19.164  INFO 5260 --- [http-nio-50001-exec-1] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2018-05-02 08:22:19.165  INFO 5260 --- [http-nio-50001-exec-1] org.springframework.web.servlet.DispatcherServlet : FrameworkServlet 'dispatcherServlet': initialization started
+2018-05-02 08:22:19.191  INFO 5260 --- [http-nio-50001-exec-1] org.springframework.web.servlet.DispatcherServlet : FrameworkServlet 'dispatcherServlet': initialization completed in 25 ms
+2018-05-02 08:22:20.055  INFO 5260 --- [http-nio-50001-exec-1] org.springframework.cloud.netflix.zuul.web.ZuulHandlerMapping : Mapped URL path [/fin/**] onto handler of type [class org.springframework.cloud.netflix.zuul.web.ZuulController]
+2018-05-02 08:22:20.057  INFO 5260 --- [http-nio-50001-exec-1] org.springframework.cloud.netflix.zuul.web.ZuulHandlerMapping : Mapped URL path [/ui/**] onto handler of type [class org.springframework.cloud.netflix.zuul.web.ZuulController]
+2018-05-02 08:22:20.057  INFO 5260 --- [http-nio-50001-exec-1] org.springframework.cloud.netflix.zuul.web.ZuulHandlerMapping : Mapped URL path [/mkmm/ui/**] onto handler of type [class org.springframework.cloud.netflix.zuul.web.ZuulController]
+2018-05-02 08:22:20.058  INFO 5260 --- [http-nio-50001-exec-1] org.springframework.cloud.netflix.zuul.web.ZuulHandlerMapping : Mapped URL path [/mkmm/sales/**] onto handler of type [class org.springframework.cloud.netflix.zuul.web.ZuulController]
+2018-05-02 08:22:20.058  INFO 5260 --- [http-nio-50001-exec-1] org.springframework.cloud.netflix.zuul.web.ZuulHandlerMapping : Mapped URL path [/eco/base/**] onto handler of type [class org.springframework.cloud.netflix.zuul.web.ZuulController]
+2018-05-02 08:22:20.058  INFO 5260 --- [http-nio-50001-exec-1] org.springframework.cloud.netflix.zuul.web.ZuulHandlerMapping : Mapped URL path [/eco/prod/**] onto handler of type [class org.springframework.cloud.netflix.zuul.web.ZuulController]
+2018-05-02 08:22:20.058  INFO 5260 --- [http-nio-50001-exec-1] org.springframework.cloud.netflix.zuul.web.ZuulHandlerMapping : Mapped URL path [/eco/store/**] onto handler of type [class org.springframework.cloud.netflix.zuul.web.ZuulController]
+2018-05-02 08:22:20.058  INFO 5260 --- [http-nio-50001-exec-1] org.springframework.cloud.netflix.zuul.web.ZuulHandlerMapping : Mapped URL path [/eco/ui/**] onto handler of type [class org.springframework.cloud.netflix.zuul.web.ZuulController]
+2018-05-02 08:22:20.058  INFO 5260 --- [http-nio-50001-exec-1] org.springframework.cloud.netflix.zuul.web.ZuulHandlerMapping : Mapped URL path [/eco/ware/**] onto handler of type [class org.springframework.cloud.netflix.zuul.web.ZuulController]
+2018-05-02 08:22:20.059  INFO 5260 --- [http-nio-50001-exec-1] org.springframework.cloud.netflix.zuul.web.ZuulHandlerMapping : Mapped URL path [/eco/dict/**] onto handler of type [class org.springframework.cloud.netflix.zuul.web.ZuulController]
+2018-05-02 08:22:20.059  INFO 5260 --- [http-nio-50001-exec-1] org.springframework.cloud.netflix.zuul.web.ZuulHandlerMapping : Mapped URL path [/eco/material/**] onto handler of type [class org.springframework.cloud.netflix.zuul.web.ZuulController]
+2018-05-02 08:22:20.059  INFO 5260 --- [http-nio-50001-exec-1] org.springframework.cloud.netflix.zuul.web.ZuulHandlerMapping : Mapped URL path [/eco/member/**] onto handler of type [class org.springframework.cloud.netflix.zuul.web.ZuulController]
+2018-05-02 08:22:20.059  INFO 5260 --- [http-nio-50001-exec-1] org.springframework.cloud.netflix.zuul.web.ZuulHandlerMapping : Mapped URL path [/eco/supplier/**] onto handler of type [class org.springframework.cloud.netflix.zuul.web.ZuulController]
+2018-05-02 08:22:20.059  INFO 5260 --- [http-nio-50001-exec-1] org.springframework.cloud.netflix.zuul.web.ZuulHandlerMapping : Mapped URL path [/eco/warehouse/**] onto handler of type [class org.springframework.cloud.netflix.zuul.web.ZuulController]
+2018-05-02 08:22:20.059  INFO 5260 --- [http-nio-50001-exec-1] org.springframework.cloud.netflix.zuul.web.ZuulHandlerMapping : Mapped URL path [/eco/sto/**] onto handler of type [class org.springframework.cloud.netflix.zuul.web.ZuulController]
+2018-05-02 08:22:20.059  INFO 5260 --- [http-nio-50001-exec-1] org.springframework.cloud.netflix.zuul.web.ZuulHandlerMapping : Mapped URL path [/eco/order/**] onto handler of type [class org.springframework.cloud.netflix.zuul.web.ZuulController]
+2018-05-02 08:22:20.060  INFO 5260 --- [http-nio-50001-exec-1] org.springframework.cloud.netflix.zuul.web.ZuulHandlerMapping : Mapped URL path [/eco/alloc/**] onto handler of type [class org.springframework.cloud.netflix.zuul.web.ZuulController]
+2018-05-02 08:22:20.060  INFO 5260 --- [http-nio-50001-exec-1] org.springframework.cloud.netflix.zuul.web.ZuulHandlerMapping : Mapped URL path [/eco/purch/**] onto handler of type [class org.springframework.cloud.netflix.zuul.web.ZuulController]
+2018-05-02 08:22:20.339  INFO 5260 --- [http-nio-50001-exec-1] org.springframework.context.annotation.AnnotationConfigApplicationContext : Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@2732274a: startup date [Wed May 02 08:22:20 CST 2018]; parent: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@6968bcec
+2018-05-02 08:22:20.424  INFO 5260 --- [http-nio-50001-exec-1] org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor : JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2018-05-02 08:22:20.817  INFO 5260 --- [http-nio-50001-exec-1] com.netflix.config.ChainedDynamicProperty : Flipping property: fin.mkmm-ui.ribbon.ActiveConnectionsLimit to use NEXT property: niws.loadbalancer.availabilityFilteringRule.activeConnectionsLimit = 2147483647
+2018-05-02 08:22:20.839  INFO 5260 --- [http-nio-50001-exec-1] com.netflix.util.concurrent.ShutdownEnabledTimer : Shutdown hook installed for: NFLoadBalancer-PingTimer-fin.mkmm-ui
+2018-05-02 08:22:20.858  INFO 5260 --- [http-nio-50001-exec-1] com.netflix.loadbalancer.BaseLoadBalancer : Client: fin.mkmm-ui instantiated a LoadBalancer: DynamicServerListLoadBalancer:{NFLoadBalancer:name=fin.mkmm-ui,current list of Servers=[],Load balancer stats=Zone stats: {},Server stats: []}ServerList:null
+2018-05-02 08:22:20.872  INFO 5260 --- [http-nio-50001-exec-1] com.netflix.loadbalancer.DynamicServerListLoadBalancer : Using serverListUpdater PollingServerListUpdater
+2018-05-02 08:22:20.908  INFO 5260 --- [http-nio-50001-exec-1] com.netflix.config.ChainedDynamicProperty : Flipping property: fin.mkmm-ui.ribbon.ActiveConnectionsLimit to use NEXT property: niws.loadbalancer.availabilityFilteringRule.activeConnectionsLimit = 2147483647
+2018-05-02 08:22:20.911  INFO 5260 --- [http-nio-50001-exec-1] com.netflix.loadbalancer.DynamicServerListLoadBalancer : DynamicServerListLoadBalancer for client fin.mkmm-ui initialized: DynamicServerListLoadBalancer:{NFLoadBalancer:name=fin.mkmm-ui,current list of Servers=[DESKTOP-JED78CJ:50244],Load balancer stats=Zone stats: {defaultzone=[Zone:defaultzone;	Instance count:1;	Active connections count: 0;	Circuit breaker tripped count: 0;	Active connections per server: 0.0;]
+},Server stats: [[Server:DESKTOP-JED78CJ:50244;	Zone:defaultZone;	Total Requests:0;	Successive connection failure:0;	Total blackout seconds:0;	Last connection made:Thu Jan 01 08:00:00 CST 1970;	First connection made: Thu Jan 01 08:00:00 CST 1970;	Active Connections:0;	total failure count in last (1000) msecs:0;	average resp time:0.0;	90 percentile resp time:0.0;	95 percentile resp time:0.0;	min resp time:0.0;	max resp time:0.0;	stddev resp time:0.0]
+]}ServerList:org.springframework.cloud.netflix.ribbon.eureka.DomainExtractingServerList@4c4a989d
+2018-05-02 08:22:21.875  INFO 5260 --- [PollingServerListUpdater-0] com.netflix.config.ChainedDynamicProperty : Flipping property: fin.mkmm-ui.ribbon.ActiveConnectionsLimit to use NEXT property: niws.loadbalancer.availabilityFilteringRule.activeConnectionsLimit = 2147483647
+2018-05-02 08:22:23.924  WARN 5260 --- [http-nio-50001-exec-1] org.springframework.cloud.netflix.zuul.filters.post.SendErrorFilter : Error during filtering
+com.netflix.zuul.exception.ZuulException: Forwarding error
+	at org.springframework.cloud.netflix.zuul.filters.route.RibbonRoutingFilter.handleException(RibbonRoutingFilter.java:189)
+	at org.springframework.cloud.netflix.zuul.filters.route.RibbonRoutingFilter.forward(RibbonRoutingFilter.java:164)
+	at org.springframework.cloud.netflix.zuul.filters.route.RibbonRoutingFilter.run(RibbonRoutingFilter.java:111)
+	at com.netflix.zuul.ZuulFilter.runFilter(ZuulFilter.java:112)
+	at com.netflix.zuul.FilterProcessor.processZuulFilter(FilterProcessor.java:193)
+	at com.netflix.zuul.FilterProcessor.runFilters(FilterProcessor.java:157)
+	at com.netflix.zuul.FilterProcessor.route(FilterProcessor.java:118)
+	at com.netflix.zuul.ZuulRunner.route(ZuulRunner.java:96)
+	at com.netflix.zuul.http.ZuulServlet.route(ZuulServlet.java:116)
+	at com.netflix.zuul.http.ZuulServlet.service(ZuulServlet.java:81)
+	at org.springframework.web.servlet.mvc.ServletWrappingController.handleRequestInternal(ServletWrappingController.java:157)
+	at org.springframework.cloud.netflix.zuul.web.ZuulController.handleRequest(ZuulController.java:44)
+	at org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter.handle(SimpleControllerHandlerAdapter.java:50)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:967)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:901)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:861)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:635)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:742)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.boot.web.filter.ApplicationContextHeaderFilter.doFilterInternal(ApplicationContextHeaderFilter.java:55)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:96)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.boot.actuate.trace.WebRequestTraceFilter.doFilterInternal(WebRequestTraceFilter.java:110)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.HttpPutFormContentFilter.doFilterInternal(HttpPutFormContentFilter.java:108)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:81)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:197)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.boot.actuate.autoconfigure.MetricsFilter.doFilterInternal(MetricsFilter.java:106)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:199)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:478)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:803)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1459)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: com.netflix.hystrix.exception.HystrixRuntimeException: fin.mkmm-ui timed-out and no fallback available.
+	at com.netflix.hystrix.AbstractCommand$22.call(AbstractCommand.java:819)
+	at com.netflix.hystrix.AbstractCommand$22.call(AbstractCommand.java:804)
+	at rx.internal.operators.OperatorOnErrorResumeNextViaFunction$4.onError(OperatorOnErrorResumeNextViaFunction.java:140)
+	at rx.internal.operators.OnSubscribeDoOnEach$DoOnEachSubscriber.onError(OnSubscribeDoOnEach.java:87)
+	at rx.internal.operators.OnSubscribeDoOnEach$DoOnEachSubscriber.onError(OnSubscribeDoOnEach.java:87)
+	at com.netflix.hystrix.AbstractCommand$DeprecatedOnFallbackHookApplication$1.onError(AbstractCommand.java:1472)
+	at com.netflix.hystrix.AbstractCommand$FallbackHookApplication$1.onError(AbstractCommand.java:1397)
+	at rx.internal.operators.OnSubscribeDoOnEach$DoOnEachSubscriber.onError(OnSubscribeDoOnEach.java:87)
+	at rx.observers.Subscribers$5.onError(Subscribers.java:230)
+	at rx.internal.operators.OnSubscribeThrow.call(OnSubscribeThrow.java:44)
+	at rx.internal.operators.OnSubscribeThrow.call(OnSubscribeThrow.java:28)
+	at rx.Observable.unsafeSubscribe(Observable.java:10151)
+	at rx.internal.operators.OnSubscribeDefer.call(OnSubscribeDefer.java:51)
+	at rx.internal.operators.OnSubscribeDefer.call(OnSubscribeDefer.java:35)
+	at rx.Observable.unsafeSubscribe(Observable.java:10151)
+	at rx.internal.operators.OnSubscribeDoOnEach.call(OnSubscribeDoOnEach.java:41)
+	at rx.internal.operators.OnSubscribeDoOnEach.call(OnSubscribeDoOnEach.java:30)
+	at rx.internal.operators.OnSubscribeLift.call(OnSubscribeLift.java:48)
+	at rx.internal.operators.OnSubscribeLift.call(OnSubscribeLift.java:30)
+	at rx.internal.operators.OnSubscribeLift.call(OnSubscribeLift.java:48)
+	at rx.internal.operators.OnSubscribeLift.call(OnSubscribeLift.java:30)
+	at rx.Observable.unsafeSubscribe(Observable.java:10151)
+	at rx.internal.operators.OnSubscribeDoOnEach.call(OnSubscribeDoOnEach.java:41)
+	at rx.internal.operators.OnSubscribeDoOnEach.call(OnSubscribeDoOnEach.java:30)
+	at rx.Observable.unsafeSubscribe(Observable.java:10151)
+	at rx.internal.operators.OnSubscribeDoOnEach.call(OnSubscribeDoOnEach.java:41)
+	at rx.internal.operators.OnSubscribeDoOnEach.call(OnSubscribeDoOnEach.java:30)
+	at rx.internal.operators.OnSubscribeLift.call(OnSubscribeLift.java:48)
+	at rx.internal.operators.OnSubscribeLift.call(OnSubscribeLift.java:30)
+	at rx.Observable.unsafeSubscribe(Observable.java:10151)
+	at rx.internal.operators.OnSubscribeDoOnEach.call(OnSubscribeDoOnEach.java:41)
+	at rx.internal.operators.OnSubscribeDoOnEach.call(OnSubscribeDoOnEach.java:30)
+	at rx.internal.operators.OnSubscribeLift.call(OnSubscribeLift.java:48)
+	at rx.internal.operators.OnSubscribeLift.call(OnSubscribeLift.java:30)
+	at rx.Observable.unsafeSubscribe(Observable.java:10151)
+	at rx.internal.operators.OperatorOnErrorResumeNextViaFunction$4.onError(OperatorOnErrorResumeNextViaFunction.java:142)
+	at rx.internal.operators.OnSubscribeDoOnEach$DoOnEachSubscriber.onError(OnSubscribeDoOnEach.java:87)
+	at rx.internal.operators.OnSubscribeDoOnEach$DoOnEachSubscriber.onError(OnSubscribeDoOnEach.java:87)
+	at com.netflix.hystrix.AbstractCommand$HystrixObservableTimeoutOperator$1$1.run(AbstractCommand.java:1154)
+	at com.netflix.hystrix.strategy.concurrency.HystrixContextRunnable$1.call(HystrixContextRunnable.java:45)
+	at com.netflix.hystrix.strategy.concurrency.HystrixContextRunnable$1.call(HystrixContextRunnable.java:41)
+	at com.netflix.hystrix.strategy.concurrency.HystrixContextRunnable.run(HystrixContextRunnable.java:61)
+	at com.netflix.hystrix.AbstractCommand$HystrixObservableTimeoutOperator$1.tick(AbstractCommand.java:1159)
+	at com.netflix.hystrix.util.HystrixTimer$1.run(HystrixTimer.java:99)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	... 1 common frames omitted
+Caused by: java.util.concurrent.TimeoutException: null
+	at com.netflix.hystrix.AbstractCommand.handleTimeoutViaFallback(AbstractCommand.java:997)
+	at com.netflix.hystrix.AbstractCommand.access$500(AbstractCommand.java:60)
+	at com.netflix.hystrix.AbstractCommand$12.call(AbstractCommand.java:610)
+	at com.netflix.hystrix.AbstractCommand$12.call(AbstractCommand.java:601)
+	at rx.internal.operators.OperatorOnErrorResumeNextViaFunction$4.onError(OperatorOnErrorResumeNextViaFunction.java:140)
+	... 15 common frames omitted
+2018-05-02 08:22:41.890  INFO 5260 --- [http-nio-50001-exec-20] org.springframework.context.annotation.AnnotationConfigApplicationContext : Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@6eca29e1: startup date [Wed May 02 08:22:41 CST 2018]; parent: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@6968bcec
+2018-05-02 08:22:41.910  INFO 5260 --- [http-nio-50001-exec-20] org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor : JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2018-05-02 08:22:41.928  INFO 5260 --- [http-nio-50001-exec-20] com.netflix.config.ChainedDynamicProperty : Flipping property: fin.mkmm-sales.ribbon.ActiveConnectionsLimit to use NEXT property: niws.loadbalancer.availabilityFilteringRule.activeConnectionsLimit = 2147483647
+2018-05-02 08:22:41.930  INFO 5260 --- [http-nio-50001-exec-20] com.netflix.util.concurrent.ShutdownEnabledTimer : Shutdown hook installed for: NFLoadBalancer-PingTimer-fin.mkmm-sales
+2018-05-02 08:22:41.931  INFO 5260 --- [http-nio-50001-exec-20] com.netflix.loadbalancer.BaseLoadBalancer : Client: fin.mkmm-sales instantiated a LoadBalancer: DynamicServerListLoadBalancer:{NFLoadBalancer:name=fin.mkmm-sales,current list of Servers=[],Load balancer stats=Zone stats: {},Server stats: []}ServerList:null
+2018-05-02 08:22:41.933  INFO 5260 --- [http-nio-50001-exec-20] com.netflix.loadbalancer.DynamicServerListLoadBalancer : Using serverListUpdater PollingServerListUpdater
+2018-05-02 08:22:41.934  INFO 5260 --- [http-nio-50001-exec-20] com.netflix.config.ChainedDynamicProperty : Flipping property: fin.mkmm-sales.ribbon.ActiveConnectionsLimit to use NEXT property: niws.loadbalancer.availabilityFilteringRule.activeConnectionsLimit = 2147483647
+2018-05-02 08:22:41.935  INFO 5260 --- [http-nio-50001-exec-20] com.netflix.loadbalancer.DynamicServerListLoadBalancer : DynamicServerListLoadBalancer for client fin.mkmm-sales initialized: DynamicServerListLoadBalancer:{NFLoadBalancer:name=fin.mkmm-sales,current list of Servers=[DESKTOP-JED78CJ:50201],Load balancer stats=Zone stats: {defaultzone=[Zone:defaultzone;	Instance count:1;	Active connections count: 0;	Circuit breaker tripped count: 0;	Active connections per server: 0.0;]
+},Server stats: [[Server:DESKTOP-JED78CJ:50201;	Zone:defaultZone;	Total Requests:0;	Successive connection failure:0;	Total blackout seconds:0;	Last connection made:Thu Jan 01 08:00:00 CST 1970;	First connection made: Thu Jan 01 08:00:00 CST 1970;	Active Connections:0;	total failure count in last (1000) msecs:0;	average resp time:0.0;	90 percentile resp time:0.0;	95 percentile resp time:0.0;	min resp time:0.0;	max resp time:0.0;	stddev resp time:0.0]
+]}ServerList:org.springframework.cloud.netflix.ribbon.eureka.DomainExtractingServerList@469ea710
+2018-05-02 08:22:42.944  INFO 5260 --- [PollingServerListUpdater-0] com.netflix.config.ChainedDynamicProperty : Flipping property: fin.mkmm-sales.ribbon.ActiveConnectionsLimit to use NEXT property: niws.loadbalancer.availabilityFilteringRule.activeConnectionsLimit = 2147483647
+2018-05-02 08:23:53.529  INFO 5260 --- [AsyncResolver-bootstrap-executor-0] com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver : Resolving eureka endpoints via configuration
+2018-05-02 08:28:53.541  INFO 5260 --- [AsyncResolver-bootstrap-executor-0] com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver : Resolving eureka endpoints via configuration
+2018-05-02 08:33:53.546  INFO 5260 --- [AsyncResolver-bootstrap-executor-0] com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver : Resolving eureka endpoints via configuration
+2018-05-02 08:38:53.562  INFO 5260 --- [AsyncResolver-bootstrap-executor-0] com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver : Resolving eureka endpoints via configuration
+2018-05-02 08:43:53.569  INFO 5260 --- [AsyncResolver-bootstrap-executor-0] com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver : Resolving eureka endpoints via configuration
+2018-05-02 08:48:53.584  INFO 5260 --- [AsyncResolver-bootstrap-executor-0] com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver : Resolving eureka endpoints via configuration
+2018-05-02 08:53:53.587  INFO 5260 --- [AsyncResolver-bootstrap-executor-0] com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver : Resolving eureka endpoints via configuration
+2018-05-02 08:58:53.589  INFO 5260 --- [AsyncResolver-bootstrap-executor-0] com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver : Resolving eureka endpoints via configuration
+2018-05-02 09:03:53.603  INFO 5260 --- [AsyncResolver-bootstrap-executor-0] com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver : Resolving eureka endpoints via configuration
+2018-05-02 09:08:53.605  INFO 5260 --- [AsyncResolver-bootstrap-executor-0] com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver : Resolving eureka endpoints via configuration
+2018-05-02 09:13:53.615  INFO 5260 --- [AsyncResolver-bootstrap-executor-0] com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver : Resolving eureka endpoints via configuration
+2018-05-02 09:18:53.618  INFO 5260 --- [AsyncResolver-bootstrap-executor-0] com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver : Resolving eureka endpoints via configuration
+2018-05-02 09:23:53.619  INFO 5260 --- [AsyncResolver-bootstrap-executor-0] com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver : Resolving eureka endpoints via configuration
+2018-05-02 09:28:53.620  INFO 5260 --- [AsyncResolver-bootstrap-executor-0] com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver : Resolving eureka endpoints via configuration
+2018-05-02 09:33:53.622  INFO 5260 --- [AsyncResolver-bootstrap-executor-0] com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver : Resolving eureka endpoints via configuration
+2018-05-02 09:38:53.624  INFO 5260 --- [AsyncResolver-bootstrap-executor-0] com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver : Resolving eureka endpoints via configuration
+2018-05-02 09:43:53.625  INFO 5260 --- [AsyncResolver-bootstrap-executor-0] com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver : Resolving eureka endpoints via configuration
+2018-05-02 09:48:53.627  INFO 5260 --- [AsyncResolver-bootstrap-executor-0] com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver : Resolving eureka endpoints via configuration
+2018-05-02 09:53:53.629  INFO 5260 --- [AsyncResolver-bootstrap-executor-0] com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver : Resolving eureka endpoints via configuration
+2018-05-02 09:58:53.684  INFO 5260 --- [AsyncResolver-bootstrap-executor-0] com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver : Resolving eureka endpoints via configuration
+2018-05-02 10:03:53.686  INFO 5260 --- [AsyncResolver-bootstrap-executor-0] com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver : Resolving eureka endpoints via configuration
+2018-05-02 10:08:53.736  INFO 5260 --- [AsyncResolver-bootstrap-executor-0] com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver : Resolving eureka endpoints via configuration
+2018-05-02 10:13:53.737  INFO 5260 --- [AsyncResolver-bootstrap-executor-0] com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver : Resolving eureka endpoints via configuration
+2018-05-02 10:18:53.787  INFO 5260 --- [AsyncResolver-bootstrap-executor-0] com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver : Resolving eureka endpoints via configuration
+2018-05-02 10:23:53.789  INFO 5260 --- [AsyncResolver-bootstrap-executor-0] com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver : Resolving eureka endpoints via configuration
+2018-05-02 10:28:53.790  INFO 5260 --- [AsyncResolver-bootstrap-executor-0] com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver : Resolving eureka endpoints via configuration
+2018-05-02 10:33:53.792  INFO 5260 --- [AsyncResolver-bootstrap-executor-0] com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver : Resolving eureka endpoints via configuration
+2018-05-02 10:38:53.793  INFO 5260 --- [AsyncResolver-bootstrap-executor-0] com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver : Resolving eureka endpoints via configuration
+2018-05-02 10:43:53.796  INFO 5260 --- [AsyncResolver-bootstrap-executor-0] com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver : Resolving eureka endpoints via configuration
+2018-05-02 10:48:53.799  INFO 5260 --- [AsyncResolver-bootstrap-executor-0] com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver : Resolving eureka endpoints via configuration
+2018-05-02 10:53:53.802  INFO 5260 --- [AsyncResolver-bootstrap-executor-0] com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver : Resolving eureka endpoints via configuration
+2018-05-02 10:58:53.804  INFO 5260 --- [AsyncResolver-bootstrap-executor-0] com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver : Resolving eureka endpoints via configuration
+2018-05-02 11:03:53.805  INFO 5260 --- [AsyncResolver-bootstrap-executor-0] com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver : Resolving eureka endpoints via configuration
+2018-05-02 11:03:57.769  INFO 5260 --- [http-nio-50001-exec-37] org.springframework.context.annotation.AnnotationConfigApplicationContext : Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@66dbf120: startup date [Wed May 02 11:03:57 CST 2018]; parent: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@6968bcec
+2018-05-02 11:03:58.059  INFO 5260 --- [http-nio-50001-exec-37] org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor : JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2018-05-02 11:03:58.120  INFO 5260 --- [http-nio-50001-exec-37] com.netflix.config.ChainedDynamicProperty : Flipping property: sp-ui.ribbon.ActiveConnectionsLimit to use NEXT property: niws.loadbalancer.availabilityFilteringRule.activeConnectionsLimit = 2147483647
+2018-05-02 11:03:58.123  INFO 5260 --- [http-nio-50001-exec-37] com.netflix.util.concurrent.ShutdownEnabledTimer : Shutdown hook installed for: NFLoadBalancer-PingTimer-sp-ui
+2018-05-02 11:03:58.150  INFO 5260 --- [http-nio-50001-exec-37] com.netflix.loadbalancer.BaseLoadBalancer : Client: sp-ui instantiated a LoadBalancer: DynamicServerListLoadBalancer:{NFLoadBalancer:name=sp-ui,current list of Servers=[],Load balancer stats=Zone stats: {},Server stats: []}ServerList:null
+2018-05-02 11:03:58.153  INFO 5260 --- [http-nio-50001-exec-37] com.netflix.loadbalancer.DynamicServerListLoadBalancer : Using serverListUpdater PollingServerListUpdater
+2018-05-02 11:03:58.153  INFO 5260 --- [http-nio-50001-exec-37] com.netflix.loadbalancer.DynamicServerListLoadBalancer : DynamicServerListLoadBalancer for client sp-ui initialized: DynamicServerListLoadBalancer:{NFLoadBalancer:name=sp-ui,current list of Servers=[],Load balancer stats=Zone stats: {},Server stats: []}ServerList:org.springframework.cloud.netflix.ribbon.eureka.DomainExtractingServerList@6675299d
+2018-05-02 11:03:58.261  WARN 5260 --- [http-nio-50001-exec-37] org.springframework.cloud.netflix.zuul.filters.post.SendErrorFilter : Error during filtering
+com.netflix.zuul.exception.ZuulException: Forwarding error
+	at org.springframework.cloud.netflix.zuul.filters.route.RibbonRoutingFilter.handleException(RibbonRoutingFilter.java:189)
+	at org.springframework.cloud.netflix.zuul.filters.route.RibbonRoutingFilter.forward(RibbonRoutingFilter.java:164)
+	at org.springframework.cloud.netflix.zuul.filters.route.RibbonRoutingFilter.run(RibbonRoutingFilter.java:111)
+	at com.netflix.zuul.ZuulFilter.runFilter(ZuulFilter.java:112)
+	at com.netflix.zuul.FilterProcessor.processZuulFilter(FilterProcessor.java:193)
+	at com.netflix.zuul.FilterProcessor.runFilters(FilterProcessor.java:157)
+	at com.netflix.zuul.FilterProcessor.route(FilterProcessor.java:118)
+	at com.netflix.zuul.ZuulRunner.route(ZuulRunner.java:96)
+	at com.netflix.zuul.http.ZuulServlet.route(ZuulServlet.java:116)
+	at com.netflix.zuul.http.ZuulServlet.service(ZuulServlet.java:81)
+	at org.springframework.web.servlet.mvc.ServletWrappingController.handleRequestInternal(ServletWrappingController.java:157)
+	at org.springframework.cloud.netflix.zuul.web.ZuulController.handleRequest(ZuulController.java:44)
+	at org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter.handle(SimpleControllerHandlerAdapter.java:50)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:967)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:901)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:861)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:635)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:742)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.boot.web.filter.ApplicationContextHeaderFilter.doFilterInternal(ApplicationContextHeaderFilter.java:55)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:96)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.boot.actuate.trace.WebRequestTraceFilter.doFilterInternal(WebRequestTraceFilter.java:110)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.HttpPutFormContentFilter.doFilterInternal(HttpPutFormContentFilter.java:108)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:81)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:197)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.boot.actuate.autoconfigure.MetricsFilter.doFilterInternal(MetricsFilter.java:106)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:199)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:478)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:803)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1459)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: com.netflix.client.ClientException: Load balancer does not have available server for client: sp-ui
+	at com.netflix.loadbalancer.LoadBalancerContext.getServerFromLoadBalancer(LoadBalancerContext.java:483)
+	at com.netflix.loadbalancer.reactive.LoadBalancerCommand$1.call(LoadBalancerCommand.java:184)
+	at com.netflix.loadbalancer.reactive.LoadBalancerCommand$1.call(LoadBalancerCommand.java:180)
+	at rx.Observable.unsafeSubscribe(Observable.java:10151)
+	at rx.internal.operators.OnSubscribeConcatMap.call(OnSubscribeConcatMap.java:94)
+	at rx.internal.operators.OnSubscribeConcatMap.call(OnSubscribeConcatMap.java:42)
+	at rx.internal.operators.OnSubscribeLift.call(OnSubscribeLift.java:48)
+	at rx.internal.operators.OnSubscribeLift.call(OnSubscribeLift.java:30)
+	at rx.internal.operators.OnSubscribeLift.call(OnSubscribeLift.java:48)
+	at rx.internal.operators.OnSubscribeLift.call(OnSubscribeLift.java:30)
+	at rx.Observable.subscribe(Observable.java:10247)
+	at rx.Observable.subscribe(Observable.java:10214)
+	at rx.observables.BlockingObservable.blockForSingle(BlockingObservable.java:444)
+	at rx.observables.BlockingObservable.single(BlockingObservable.java:341)
+	at com.netflix.client.AbstractLoadBalancerAwareClient.executeWithLoadBalancer(AbstractLoadBalancerAwareClient.java:112)
+	at org.springframework.cloud.netflix.zuul.filters.route.support.AbstractRibbonCommand.run(AbstractRibbonCommand.java:117)
+	at org.springframework.cloud.netflix.zuul.filters.route.support.AbstractRibbonCommand.run(AbstractRibbonCommand.java:46)
+	at com.netflix.hystrix.HystrixCommand$2.call(HystrixCommand.java:302)
+	at com.netflix.hystrix.HystrixCommand$2.call(HystrixCommand.java:298)
+	at rx.internal.operators.OnSubscribeDefer.call(OnSubscribeDefer.java:46)
+	at rx.internal.operators.OnSubscribeDefer.call(OnSubscribeDefer.java:35)
+	at rx.internal.operators.OnSubscribeLift.call(OnSubscribeLift.java:48)
+	at rx.internal.operators.OnSubscribeLift.call(OnSubscribeLift.java:30)
+	at rx.internal.operators.OnSubscribeLift.call(OnSubscribeLift.java:48)
+	at rx.internal.operators.OnSubscribeLift.call(OnSubscribeLift.java:30)
+	at rx.internal.operators.OnSubscribeLift.call(OnSubscribeLift.java:48)
+	at rx.internal.operators.OnSubscribeLift.call(OnSubscribeLift.java:30)
+	at rx.Observable.unsafeSubscribe(Observable.java:10151)
+	at rx.internal.operators.OnSubscribeDefer.call(OnSubscribeDefer.java:51)
+	at rx.internal.operators.OnSubscribeDefer.call(OnSubscribeDefer.java:35)
+	at rx.internal.operators.OnSubscribeLift.call(OnSubscribeLift.java:48)
+	at rx.internal.operators.OnSubscribeLift.call(OnSubscribeLift.java:30)
+	at rx.Observable.unsafeSubscribe(Observable.java:10151)
+	at rx.internal.operators.OnSubscribeDoOnEach.call(OnSubscribeDoOnEach.java:41)
+	at rx.internal.operators.OnSubscribeDoOnEach.call(OnSubscribeDoOnEach.java:30)
+	at rx.Observable.unsafeSubscribe(Observable.java:10151)
+	at rx.internal.operators.OnSubscribeDoOnEach.call(OnSubscribeDoOnEach.java:41)
+	at rx.internal.operators.OnSubscribeDoOnEach.call(OnSubscribeDoOnEach.java:30)
+	at rx.internal.operators.OnSubscribeLift.call(OnSubscribeLift.java:48)
+	at rx.internal.operators.OnSubscribeLift.call(OnSubscribeLift.java:30)
+	at rx.Observable.unsafeSubscribe(Observable.java:10151)
+	at rx.internal.operators.OnSubscribeDoOnEach.call(OnSubscribeDoOnEach.java:41)
+	at rx.internal.operators.OnSubscribeDoOnEach.call(OnSubscribeDoOnEach.java:30)
+	at rx.Observable.unsafeSubscribe(Observable.java:10151)
+	at rx.internal.operators.OnSubscribeDoOnEach.call(OnSubscribeDoOnEach.java:41)
+	at rx.internal.operators.OnSubscribeDoOnEach.call(OnSubscribeDoOnEach.java:30)
+	at rx.Observable.unsafeSubscribe(Observable.java:10151)
+	at rx.internal.operators.OnSubscribeDoOnEach.call(OnSubscribeDoOnEach.java:41)
+	at rx.internal.operators.OnSubscribeDoOnEach.call(OnSubscribeDoOnEach.java:30)
+	at rx.internal.operators.OnSubscribeLift.call(OnSubscribeLift.java:48)
+	at rx.internal.operators.OnSubscribeLift.call(OnSubscribeLift.java:30)
+	at rx.Observable.unsafeSubscribe(Observable.java:10151)
+	at rx.internal.operators.OnSubscribeDefer.call(OnSubscribeDefer.java:51)
+	at rx.internal.operators.OnSubscribeDefer.call(OnSubscribeDefer.java:35)
+	at rx.Observable.unsafeSubscribe(Observable.java:10151)
+	at rx.internal.operators.OnSubscribeMap.call(OnSubscribeMap.java:48)
+	at rx.internal.operators.OnSubscribeMap.call(OnSubscribeMap.java:33)
+	at rx.Observable.unsafeSubscribe(Observable.java:10151)
+	at rx.internal.operators.OnSubscribeDoOnEach.call(OnSubscribeDoOnEach.java:41)
+	at rx.internal.operators.OnSubscribeDoOnEach.call(OnSubscribeDoOnEach.java:30)
+	at rx.internal.operators.OnSubscribeLift.call(OnSubscribeLift.java:48)
+	at rx.internal.operators.OnSubscribeLift.call(OnSubscribeLift.java:30)
+	at rx.Observable.unsafeSubscribe(Observable.java:10151)
+	at rx.internal.operators.OnSubscribeDoOnEach.call(OnSubscribeDoOnEach.java:41)
+	at rx.internal.operators.OnSubscribeDoOnEach.call(OnSubscribeDoOnEach.java:30)
+	at rx.Observable.unsafeSubscribe(Observable.java:10151)
+	at rx.internal.operators.OnSubscribeDefer.call(OnSubscribeDefer.java:51)
+	at rx.internal.operators.OnSubscribeDefer.call(OnSubscribeDefer.java:35)
+	at rx.internal.operators.OnSubscribeLift.call(OnSubscribeLift.java:48)
+	at rx.internal.operators.OnSubscribeLift.call(OnSubscribeLift.java:30)
+	at rx.Observable.subscribe(Observable.java:10247)
+	at rx.Observable.subscribe(Observable.java:10214)
+	at rx.internal.operators.BlockingOperatorToFuture.toFuture(BlockingOperatorToFuture.java:51)
+	at rx.observables.BlockingObservable.toFuture(BlockingObservable.java:411)
+	at com.netflix.hystrix.HystrixCommand.queue(HystrixCommand.java:378)
+	at com.netflix.hystrix.HystrixCommand.execute(HystrixCommand.java:344)
+	at org.springframework.cloud.netflix.zuul.filters.route.RibbonRoutingFilter.forward(RibbonRoutingFilter.java:158)
+	... 71 common frames omitted
+2018-05-02 11:08:53.807  INFO 5260 --- [AsyncResolver-bootstrap-executor-0] com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver : Resolving eureka endpoints via configuration
+2018-05-02 11:13:53.812  INFO 5260 --- [AsyncResolver-bootstrap-executor-0] com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver : Resolving eureka endpoints via configuration
+2018-05-02 11:18:53.814  INFO 5260 --- [AsyncResolver-bootstrap-executor-0] com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver : Resolving eureka endpoints via configuration
+2018-05-02 11:23:53.815  INFO 5260 --- [AsyncResolver-bootstrap-executor-0] com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver : Resolving eureka endpoints via configuration
+2018-05-02 11:28:53.816  INFO 5260 --- [AsyncResolver-bootstrap-executor-0] com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver : Resolving eureka endpoints via configuration
+2018-05-02 11:33:53.818  INFO 5260 --- [AsyncResolver-bootstrap-executor-0] com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver : Resolving eureka endpoints via configuration
+2018-05-02 11:38:53.819  INFO 5260 --- [AsyncResolver-bootstrap-executor-0] com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver : Resolving eureka endpoints via configuration
+2018-05-02 11:43:53.821  INFO 5260 --- [AsyncResolver-bootstrap-executor-0] com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver : Resolving eureka endpoints via configuration
+2018-05-02 11:48:53.824  INFO 5260 --- [AsyncResolver-bootstrap-executor-0] com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver : Resolving eureka endpoints via configuration
+2018-05-02 13:21:51.218  INFO 5260 --- [AsyncResolver-bootstrap-executor-0] com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver : Resolving eureka endpoints via configuration
+2018-05-02 13:26:51.220  INFO 5260 --- [AsyncResolver-bootstrap-executor-0] com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver : Resolving eureka endpoints via configuration
+2018-05-02 13:31:51.222  INFO 5260 --- [AsyncResolver-bootstrap-executor-0] com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver : Resolving eureka endpoints via configuration
+2018-05-02 13:36:51.224  INFO 5260 --- [AsyncResolver-bootstrap-executor-0] com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver : Resolving eureka endpoints via configuration
+2018-05-02 13:39:32.073  WARN 5260 --- [http-nio-50001-exec-9] org.springframework.cloud.netflix.zuul.filters.post.SendErrorFilter : Error during filtering
+com.netflix.zuul.exception.ZuulException: Forwarding error
+	at org.springframework.cloud.netflix.zuul.filters.route.RibbonRoutingFilter.handleException(RibbonRoutingFilter.java:189)
+	at org.springframework.cloud.netflix.zuul.filters.route.RibbonRoutingFilter.forward(RibbonRoutingFilter.java:164)
+	at org.springframework.cloud.netflix.zuul.filters.route.RibbonRoutingFilter.run(RibbonRoutingFilter.java:111)
+	at com.netflix.zuul.ZuulFilter.runFilter(ZuulFilter.java:112)
+	at com.netflix.zuul.FilterProcessor.processZuulFilter(FilterProcessor.java:193)
+	at com.netflix.zuul.FilterProcessor.runFilters(FilterProcessor.java:157)
+	at com.netflix.zuul.FilterProcessor.route(FilterProcessor.java:118)
+	at com.netflix.zuul.ZuulRunner.route(ZuulRunner.java:96)
+	at com.netflix.zuul.http.ZuulServlet.route(ZuulServlet.java:116)
+	at com.netflix.zuul.http.ZuulServlet.service(ZuulServlet.java:81)
+	at org.springframework.web.servlet.mvc.ServletWrappingController.handleRequestInternal(ServletWrappingController.java:157)
+	at org.springframework.cloud.netflix.zuul.web.ZuulController.handleRequest(ZuulController.java:44)
+	at org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter.handle(SimpleControllerHandlerAdapter.java:50)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:967)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:901)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:861)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:635)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:742)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.boot.web.filter.ApplicationContextHeaderFilter.doFilterInternal(ApplicationContextHeaderFilter.java:55)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:96)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.boot.actuate.trace.WebRequestTraceFilter.doFilterInternal(WebRequestTraceFilter.java:110)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.HttpPutFormContentFilter.doFilterInternal(HttpPutFormContentFilter.java:108)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:81)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:197)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.boot.actuate.autoconfigure.MetricsFilter.doFilterInternal(MetricsFilter.java:106)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:199)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:478)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:803)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1459)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: com.netflix.hystrix.exception.HystrixRuntimeException: fin.mkmm-sales timed-out and no fallback available.
+	at com.netflix.hystrix.AbstractCommand$22.call(AbstractCommand.java:819)
+	at com.netflix.hystrix.AbstractCommand$22.call(AbstractCommand.java:804)
+	at rx.internal.operators.OperatorOnErrorResumeNextViaFunction$4.onError(OperatorOnErrorResumeNextViaFunction.java:140)
+	at rx.internal.operators.OnSubscribeDoOnEach$DoOnEachSubscriber.onError(OnSubscribeDoOnEach.java:87)
+	at rx.internal.operators.OnSubscribeDoOnEach$DoOnEachSubscriber.onError(OnSubscribeDoOnEach.java:87)
+	at com.netflix.hystrix.AbstractCommand$DeprecatedOnFallbackHookApplication$1.onError(AbstractCommand.java:1472)
+	at com.netflix.hystrix.AbstractCommand$FallbackHookApplication$1.onError(AbstractCommand.java:1397)
+	at rx.internal.operators.OnSubscribeDoOnEach$DoOnEachSubscriber.onError(OnSubscribeDoOnEach.java:87)
+	at rx.observers.Subscribers$5.onError(Subscribers.java:230)
+	at rx.internal.operators.OnSubscribeThrow.call(OnSubscribeThrow.java:44)
+	at rx.internal.operators.OnSubscribeThrow.call(OnSubscribeThrow.java:28)
+	at rx.Observable.unsafeSubscribe(Observable.java:10151)
+	at rx.internal.operators.OnSubscribeDefer.call(OnSubscribeDefer.java:51)
+	at rx.internal.operators.OnSubscribeDefer.call(OnSubscribeDefer.java:35)
+	at rx.Observable.unsafeSubscribe(Observable.java:10151)
+	at rx.internal.operators.OnSubscribeDoOnEach.call(OnSubscribeDoOnEach.java:41)
+	at rx.internal.operators.OnSubscribeDoOnEach.call(OnSubscribeDoOnEach.java:30)
+	at rx.internal.operators.OnSubscribeLift.call(OnSubscribeLift.java:48)
+	at rx.internal.operators.OnSubscribeLift.call(OnSubscribeLift.java:30)
+	at rx.internal.operators.OnSubscribeLift.call(OnSubscribeLift.java:48)
+	at rx.internal.operators.OnSubscribeLift.call(OnSubscribeLift.java:30)
+	at rx.Observable.unsafeSubscribe(Observable.java:10151)
+	at rx.internal.operators.OnSubscribeDoOnEach.call(OnSubscribeDoOnEach.java:41)
+	at rx.internal.operators.OnSubscribeDoOnEach.call(OnSubscribeDoOnEach.java:30)
+	at rx.Observable.unsafeSubscribe(Observable.java:10151)
+	at rx.internal.operators.OnSubscribeDoOnEach.call(OnSubscribeDoOnEach.java:41)
+	at rx.internal.operators.OnSubscribeDoOnEach.call(OnSubscribeDoOnEach.java:30)
+	at rx.internal.operators.OnSubscribeLift.call(OnSubscribeLift.java:48)
+	at rx.internal.operators.OnSubscribeLift.call(OnSubscribeLift.java:30)
+	at rx.Observable.unsafeSubscribe(Observable.java:10151)
+	at rx.internal.operators.OnSubscribeDoOnEach.call(OnSubscribeDoOnEach.java:41)
+	at rx.internal.operators.OnSubscribeDoOnEach.call(OnSubscribeDoOnEach.java:30)
+	at rx.internal.operators.OnSubscribeLift.call(OnSubscribeLift.java:48)
+	at rx.internal.operators.OnSubscribeLift.call(OnSubscribeLift.java:30)
+	at rx.Observable.unsafeSubscribe(Observable.java:10151)
+	at rx.internal.operators.OperatorOnErrorResumeNextViaFunction$4.onError(OperatorOnErrorResumeNextViaFunction.java:142)
+	at rx.internal.operators.OnSubscribeDoOnEach$DoOnEachSubscriber.onError(OnSubscribeDoOnEach.java:87)
+	at rx.internal.operators.OnSubscribeDoOnEach$DoOnEachSubscriber.onError(OnSubscribeDoOnEach.java:87)
+	at com.netflix.hystrix.AbstractCommand$HystrixObservableTimeoutOperator$1$1.run(AbstractCommand.java:1154)
+	at com.netflix.hystrix.strategy.concurrency.HystrixContextRunnable$1.call(HystrixContextRunnable.java:45)
+	at com.netflix.hystrix.strategy.concurrency.HystrixContextRunnable$1.call(HystrixContextRunnable.java:41)
+	at com.netflix.hystrix.strategy.concurrency.HystrixContextRunnable.run(HystrixContextRunnable.java:61)
+	at com.netflix.hystrix.AbstractCommand$HystrixObservableTimeoutOperator$1.tick(AbstractCommand.java:1159)
+	at com.netflix.hystrix.util.HystrixTimer$1.run(HystrixTimer.java:99)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:308)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:294)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	... 1 common frames omitted
+Caused by: java.util.concurrent.TimeoutException: null
+	at com.netflix.hystrix.AbstractCommand.handleTimeoutViaFallback(AbstractCommand.java:997)
+	at com.netflix.hystrix.AbstractCommand.access$500(AbstractCommand.java:60)
+	at com.netflix.hystrix.AbstractCommand$12.call(AbstractCommand.java:610)
+	at com.netflix.hystrix.AbstractCommand$12.call(AbstractCommand.java:601)
+	at rx.internal.operators.OperatorOnErrorResumeNextViaFunction$4.onError(OperatorOnErrorResumeNextViaFunction.java:140)
+	... 15 common frames omitted
+2018-05-02 13:41:51.225  INFO 5260 --- [AsyncResolver-bootstrap-executor-0] com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver : Resolving eureka endpoints via configuration
+2018-05-02 13:46:51.227  INFO 5260 --- [AsyncResolver-bootstrap-executor-0] com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver : Resolving eureka endpoints via configuration
+2018-05-02 13:51:51.228  INFO 5260 --- [AsyncResolver-bootstrap-executor-0] com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver : Resolving eureka endpoints via configuration
+2018-05-02 13:56:51.230  INFO 5260 --- [AsyncResolver-bootstrap-executor-0] com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver : Resolving eureka endpoints via configuration
+2018-05-02 14:01:51.231  INFO 5260 --- [AsyncResolver-bootstrap-executor-0] com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver : Resolving eureka endpoints via configuration
+2018-05-02 14:06:51.233  INFO 5260 --- [AsyncResolver-bootstrap-executor-0] com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver : Resolving eureka endpoints via configuration
+2018-05-02 14:11:51.234  INFO 5260 --- [AsyncResolver-bootstrap-executor-0] com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver : Resolving eureka endpoints via configuration
+2018-05-02 14:16:51.236  INFO 5260 --- [AsyncResolver-bootstrap-executor-0] com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver : Resolving eureka endpoints via configuration
+2018-05-02 14:21:51.238  INFO 5260 --- [AsyncResolver-bootstrap-executor-0] com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver : Resolving eureka endpoints via configuration
+2018-05-02 14:26:51.239  INFO 5260 --- [AsyncResolver-bootstrap-executor-0] com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver : Resolving eureka endpoints via configuration
+2018-05-02 14:31:51.241  INFO 5260 --- [AsyncResolver-bootstrap-executor-0] com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver : Resolving eureka endpoints via configuration
+2018-05-02 14:36:51.243  INFO 5260 --- [AsyncResolver-bootstrap-executor-0] com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver : Resolving eureka endpoints via configuration
+2018-05-02 14:41:51.245  INFO 5260 --- [AsyncResolver-bootstrap-executor-0] com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver : Resolving eureka endpoints via configuration
+2018-05-02 14:46:51.246  INFO 5260 --- [AsyncResolver-bootstrap-executor-0] com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver : Resolving eureka endpoints via configuration
+2018-05-02 14:51:51.248  INFO 5260 --- [AsyncResolver-bootstrap-executor-0] com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver : Resolving eureka endpoints via configuration
+2018-05-02 14:56:51.249  INFO 5260 --- [AsyncResolver-bootstrap-executor-0] com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver : Resolving eureka endpoints via configuration
+2018-05-02 15:01:51.252  INFO 5260 --- [AsyncResolver-bootstrap-executor-0] com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver : Resolving eureka endpoints via configuration
+2018-05-02 15:06:51.254  INFO 5260 --- [AsyncResolver-bootstrap-executor-0] com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver : Resolving eureka endpoints via configuration
+2018-05-02 15:11:51.256  INFO 5260 --- [AsyncResolver-bootstrap-executor-0] com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver : Resolving eureka endpoints via configuration
+2018-05-02 15:16:51.257  INFO 5260 --- [AsyncResolver-bootstrap-executor-0] com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver : Resolving eureka endpoints via configuration

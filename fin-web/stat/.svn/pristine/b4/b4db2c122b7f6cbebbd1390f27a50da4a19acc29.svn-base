@@ -1,0 +1,131 @@
+<style lang="less">
+    @import '../../../styles/common.less';
+</style>
+<template>
+    <div>
+        <Form :label-width="100">
+            <Card>
+                <p slot="title">
+                    <Icon type="search"></Icon>
+                    团队基本信息
+                </p>
+                <Row>
+                    <Col span="8" offset="2">
+                        <FormItem label="指标类型:">
+                            <Input  v-model="teamEventViewData.indicators.indicatorTypes.name" style="width:200px" disabled></Input>
+                        </FormItem>
+                    </Col>
+                    <Col span="8" offset="2">
+                        <FormItem label="指标代码:" prop="indicators.indicatorcode">
+                            <Input   v-model="teamEventViewData.indicators.indicatorcode" style="width:200px" disabled></Input>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span="8" offset="2">
+                        <FormItem label="是否预警:" >
+                            <Input  v-model="teamEventViewData.indicators.alertflag=== '0' ? '否' : teamEventViewData.indicators.alertflag === '1' ? '是' : '其他'" style="width:200px" disabled></Input>
+                        </FormItem>
+                    </Col>
+                    <Col span="8" offset="2">
+                        <FormItem label="指标名称:">
+                            <Input  v-model="teamEventViewData.indicators.indicatorname" style="width:200px" disabled></Input>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span="8" offset="2">
+                        <FormItem label="上限:">
+                            <Input  v-model="teamEventViewData.topvalue" style="width:200px" disabled></Input>
+                        </FormItem>
+                    </Col>
+                    <Col span="8" offset="2">
+                        <FormItem label="下限:">
+                            <Input   v-model="teamEventViewData.lowervalue" style="width:200px" disabled></Input>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span="8" offset="2">
+                        <FormItem label="信号灯:">
+                            <Input  v-model="teamEventViewData.signallamp=== '0' ? '绿' : teamEventViewData.signallamp === '1' ? '黄' : teamEventViewData.signallamp === '2' ? '红' : '其他'" style="width:200px" disabled></Input>
+                        </FormItem>
+                    </Col>
+                    <Col span="8" offset="2">
+                        <FormItem label="区域范围:">
+                            <Input   v-model="teamEventViewData.areatype" style="width:200px" disabled></Input>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span="8" offset="2">
+                        <FormItem label="区域:">
+                            <Input   v-model="teamEventViewData.areacode" style="width:200px" disabled></Input>
+                        </FormItem>
+                    </Col>
+                    <Col span="8" offset="2">
+                        <FormItem label="维度类别:">
+                            <Input   v-model="teamEventViewData.dimtype" style="width:200px" disabled></Input>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span="8" offset="2">
+                        <FormItem label="维度代码:">
+                            <Input   v-model="teamEventViewData.dimcode" style="width:200px" disabled></Input>
+                        </FormItem>
+                    </Col>
+                    <Col span="8" offset="2">
+                        <FormItem label="备注:">
+                            <Input placeholder="请输入备注" v-model="teamEventViewData.remark" style="width:200px" disabled=""></Input>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span="4" offset="9">
+                        <Button type="primary" icon="reply" @click.prevent="pageBack">返回</Button>
+                    </Col>
+                </Row>
+            </Card>
+        </Form>
+    </div>
+</template>
+<script>
+    import { mapActions, mapState } from 'vuex';
+    import {resetWorkHeight} from '@/libs/util.js';
+    export default{
+        name: 'indicatorRangesView',
+        data () {
+            return {
+            };
+        },
+        computed: {
+            ...mapState({
+                loading: ({indicatorRangesView}) => indicatorRangesView.loading,
+                teamEventViewData: ({indicatorRangesView}) => indicatorRangesView.teamEventViewData
+            })
+        },
+        methods: {
+            ...mapActions([
+                'handelQueryTeamEventById2'
+            ]),
+            init () {
+                this.queryTeamEventById(this.$route.query.id);
+                console.log(this.$route.query.id);
+                resetWorkHeight();
+            },
+            queryTeamEventById (id) {
+                this.handelQueryTeamEventById2(id);
+                console.log(this.teamEventViewData);
+            },
+            pageBack () {
+                this.$router.push({name: 'indicatorRangesList'});
+            }
+        },
+        mounted () {
+            this.init();
+        }
+    };
+</script>
+
+

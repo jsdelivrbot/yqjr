@@ -1,0 +1,13 @@
+package com.yqjr.fin.fpms.product.condition;
+import lombok.Data;
+import com.ritoinfo.framework.evo.sp.base.dto.PageDto;
+
+/**
+* 金融产品主表用户交互响应类
+* @Author:          lixue
+* @CreateDate:     2018-08-27 10:49:56
+*/
+@Data
+public class ProductCondition extends PageDto {
+
+}

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta http-equiv="Expires" content="0">
+<meta http-equiv="Cache-Control" content="no-cache">
+<meta http-equiv="Cache-Control" content="no-store">
+<meta HTTP-EQUIV="Pragma" CONTENT="no-cache">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+<script src="/ui/js/include/head.js"></script>
+<title>一汽金融开发平台</title>
+</head>
+<body class="no-skin">
+	<div class="page-content" id="mainContent">
+		<div class="widget-box transparent ui-sortable-handle collapsed"
+			id="widget-box-search">
+			<div class="widget-header">
+				<h3 class="widget-title smaller lighter">&nbsp;列表</h3>
+				<div class="widget-toolbar no-border">
+					<a href="#" data-action="collapse"> <i class="ace-icon fa fa-chevron-down">
+						<span style="font-family: '微软雅黑'; font-size: 14px;">&nbsp;打开</span></i>
+					</a>
+				</div>
+			</div>
+
+			<div class="widget-body">
+				<div class="widget-main padding-6 no-padding-left no-padding-right">
+					<div class="space-6"></div>
+					<form id="searchForm" modelAttribute="userCondition" method="post" class="form-horizontal">
+					
+						<div class="row">
+							<div class="form-group-2">
+								<label class="col-sm-2 control-label no-padding-right">序列：</label>
+								<div class="col-sm-3">
+									<input name="id"  maxlength="50" class="form-control required" />
+								</div>
+							</div>
+							<div class="form-group-2">
+								<label class="col-sm-2 control-label no-padding-right">产品类型（INTEREST_TYPE-信贷产品，PD_DLRBIZTYPE-金融产品，PD_BIZTYPE-业务类型，EXTRACHARGE_LIST-附加贷）：</label>
+								<div class="col-sm-3">
+									<input name="vdictcode"  maxlength="50" class="form-control required" />
+								</div>
+							</div>
+						</div>
+						<div class="space-4"></div>
+						<div class="row">
+							<div class="form-group-2">
+								<label class="col-sm-2 control-label no-padding-right">产品编号：</label>
+								<div class="col-sm-3">
+									<input name="value"  maxlength="50" class="form-control required" />
+								</div>
+							</div>
+							<div class="form-group-2">
+								<label class="col-sm-2 control-label no-padding-right">产品名称：</label>
+								<div class="col-sm-3">
+									<input name="name"  maxlength="50" class="form-control required" />
+								</div>
+							</div>
+						</div>
+						<div class="space-4"></div>
+						<div class="row">
+							<div class="form-group-2">
+								<label class="col-sm-2 control-label no-padding-right">NGRADATION：</label>
+								<div class="col-sm-3">
+									<input name="ngradation"  maxlength="50" class="form-control required" />
+								</div>
+							</div>
+							<div class="form-group-2">
+								<label class="col-sm-2 control-label no-padding-right">状态：</label>
+								<div class="col-sm-3">
+									<input name="vstatus"  maxlength="50" class="form-control required" />
+								</div>
+							</div>
+						</div>
+						<div class="space-4"></div>
+										
+					<div class="space-4"></div>
+						<div class="row">
+							<div class="col-sm-4">
+								<div class="dataTables_paginate paging_simple_numbers">
+									<ul class="pagination">
+										<li>
+											<button id="searchBtn" onclick="searchData('productCodeTable')" type="button" class="btn btn-primary">
+												<span class="ace-icon fa fa-search icon-on-right bigger-110"></span>
+												查询
+											</button>
+										</li>
+										<li>
+											<button id="resetBtn" type="reset" class="btn btn-primary">
+												<span class="ace-icon fa fa-refresh icon-on-right bigger-110"></span>
+												重 置
+											</button>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="hr hr-dotted"></div>
+					</form>
+				</div>
+			</div>
+			<div class="btn-group">
+				<button type="button" class="btn btn-white btn-sm btn-primary" onclick="commonForward('/mkmm/ui/productCode/form')">新增</button>
+				<button type="button" class="btn btn-white btn-sm btn-primary" onclick="update();">修改</button>
+				<button type="button" class="btn btn-white btn-sm btn-primary" onclick="batchDelete();">删除</button>
+			</div>
+			<table id="productCodeTable"></table>
+		</div>
+		<div id="pager"></div>
+	</div>
+</body>
+<script src="/mkmm/ui/js/productcode/productCodeCommon.js"></script>
+<script src="/mkmm/ui/js/productcode/productCodeList.js"></script>
+</html>

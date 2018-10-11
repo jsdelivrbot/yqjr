@@ -1,0 +1,1691 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yqjr.fin.mkmm.sales.mapper.CommodityReviewMapper">
+
+    <!-- region BaseMapper DO NOT MODIFY!!!  -->
+
+    <sql id="Base_Table_Name">
+        MKMM_COMMODITY_REVIEW
+    </sql>
+
+
+
+    <!-- region BaseResultMap  -->
+    <resultMap id="BaseResultMap" type="com.yqjr.fin.mkmm.sales.entity.CommodityReview">
+        <result property="id" column="ID"/><!--序号-->
+        <result property="commodityName" column="COMMODITY_NAME"/><!--物料名称-->
+        <result property="commodityCode" column="COMMODITY_CODE"/><!--物料编码-->
+        <result property="commodityTypeName" column="COMMODITY_TYPE_NAME"/><!--物料分类名称-->
+        <result property="commodityTypeCode" column="COMMODITY_TYPE_CODE"/><!--物料分类编码-->
+        <result property="projectName" column="PROJECT_NAME"/><!--项目名称-->
+        <result property="projectCode" column="PROJECT_CODE"/><!--项目编码-->
+        <result property="provideOrganization" column="PROVIDE_ORGANIZATION"/><!--供应单位-->
+        <result property="areaCode" column="AREA_CODE"/><!--区域编码-->
+        <result property="areaName" column="AREA_NAME"/><!--区域名称-->
+        <result property="acceptanceNumber" column="ACCEPTANCE_NUMBER"/><!--验收数量-->
+        <result property="acceptanceOrganization" column="ACCEPTANCE_ORGANIZATION"/><!--验收单位-->
+        <result property="acceptancePerson" column="ACCEPTANCE_PERSON"/><!--验收人-->
+        <result property="inNumber" column="IN_NUMBER"/><!--入库数量-->
+        <result property="inUnivalent" column="IN_UNIVALENT"/><!--入库单价-->
+        <result property="amount" column="AMOUNT"/><!--总金额-->
+        <result property="custodian" column="CUSTODIAN"/><!--保管人-->
+        <result property="inTime" column="IN_TIME"/><!--入库时间-->
+        <result property="acceptanceId" column="ACCEPTANCE_ID"/><!--验收表id-->
+        <result property="dealerCode" column="DEALER_CODE"/><!--投放经销商编码-->
+        <result property="dealerName" column="DEALER_NAME"/><!--投放经销商名称-->
+        <result property="putNumber" column="PUT_NUMBER"/><!--投放数量-->
+        <result property="putUnivalent" column="PUT_UNIVALENT"/><!--投放单价-->
+        <result property="putStatus" column="PUT_STATUS"/><!--投放状态0：未投放，1：投放中，2：投放成功-->
+        <result property="putName" column="PUT_NAME"/><!--出库人-->
+        <result property="type" column="TYPE"/><!--入库出库审核标识1：入库审核，2出库审核-->
+        <result property="company" column="COMPANY"/><!--公司1：汽车金融 ，2：租赁公司-->
+        <result property="remark" column="REMARK"/><!--审核意见-->
+        <result property="flag" column="FLAG"/><!--数据有效标识0：无效，1：有效-->
+        <result property="commodityStatus" column="COMMODITY_STATUS"/><!--物料状态02待审核，04审核通过，00审核驳回-->
+        <result property="createTime" column="CREATE_TIME"/><!--创建时间-->
+        <result property="modifyTime" column="MODIFY_TIME"/><!--修改时间-->
+        <result property="creator" column="CREATOR"/><!--创建人-->
+        <result property="modifier" column="MODIFIER"/><!--修改人-->
+        <result property="batchCode" column="BATCH_CODE"/><!--修改人-->
+    </resultMap>
+    <!-- endregion -->
+
+    <!-- region Base_Column_List  -->
+    <sql id="Base_Column_List">
+    ID,COMMODITY_NAME,COMMODITY_CODE,COMMODITY_TYPE_NAME,COMMODITY_TYPE_CODE,PROJECT_NAME,PROJECT_CODE,PROVIDE_ORGANIZATION,AREA_CODE,AREA_NAME,ACCEPTANCE_NUMBER,ACCEPTANCE_ORGANIZATION,ACCEPTANCE_PERSON,IN_NUMBER,IN_UNIVALENT,AMOUNT,CUSTODIAN,IN_TIME,ACCEPTANCE_ID,DEALER_CODE,DEALER_NAME,PUT_NUMBER,PUT_UNIVALENT,PUT_STATUS,PUT_NAME,TYPE,COMPANY,REMARK,FLAG,COMMODITY_STATUS,CREATE_TIME,MODIFY_TIME,CREATOR,MODIFIER,BATCH_CODE
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_List_Selective  -->
+    <sql id="Base_Column_List_Selective">
+        <trim suffixOverrides=",">
+            <if test="id != null">
+            ID,
+            </if>
+            <if test="commodityName != null">
+            COMMODITY_NAME,
+            </if>
+            <if test="commodityCode != null">
+            COMMODITY_CODE,
+            </if>
+            <if test="commodityTypeName != null">
+            COMMODITY_TYPE_NAME,
+            </if>
+            <if test="commodityTypeCode != null">
+            COMMODITY_TYPE_CODE,
+            </if>
+            <if test="projectName != null">
+            PROJECT_NAME,
+            </if>
+            <if test="projectCode != null">
+            PROJECT_CODE,
+            </if>
+            <if test="provideOrganization != null">
+            PROVIDE_ORGANIZATION,
+            </if>
+            <if test="areaCode != null">
+            AREA_CODE,
+            </if>
+            <if test="areaName != null">
+            AREA_NAME,
+            </if>
+            <if test="acceptanceNumber != null">
+            ACCEPTANCE_NUMBER,
+            </if>
+            <if test="acceptanceOrganization != null">
+            ACCEPTANCE_ORGANIZATION,
+            </if>
+            <if test="acceptancePerson != null">
+            ACCEPTANCE_PERSON,
+            </if>
+            <if test="inNumber != null">
+            IN_NUMBER,
+            </if>
+            <if test="inUnivalent != null">
+            IN_UNIVALENT,
+            </if>
+            <if test="amount != null">
+            AMOUNT,
+            </if>
+            <if test="custodian != null">
+            CUSTODIAN,
+            </if>
+            <if test="inTime != null">
+            IN_TIME,
+            </if>
+            <if test="acceptanceId != null">
+            ACCEPTANCE_ID,
+            </if>
+            <if test="dealerCode != null">
+            DEALER_CODE,
+            </if>
+            <if test="dealerName != null">
+            DEALER_NAME,
+            </if>
+            <if test="putNumber != null">
+            PUT_NUMBER,
+            </if>
+            <if test="putUnivalent != null">
+            PUT_UNIVALENT,
+            </if>
+            <if test="putStatus != null">
+            PUT_STATUS,
+            </if>
+            <if test="putName != null">
+            PUT_NAME,
+            </if>
+            <if test="type != null">
+            TYPE,
+            </if>
+            <if test="company != null">
+            COMPANY,
+            </if>
+            <if test="remark != null">
+            REMARK,
+            </if>
+            <if test="flag != null">
+            FLAG,
+            </if>
+            <if test="commodityStatus != null">
+            COMMODITY_STATUS,
+            </if>
+            <if test="createTime != null">
+            CREATE_TIME,
+            </if>
+            <if test="modifyTime != null">
+            MODIFY_TIME,
+            </if>
+            <if test="creator != null">
+            CREATOR,
+            </if>
+            <if test="modifier != null">
+            MODIFIER
+            </if>
+            <if test="batchCode != null">
+              batch_code
+            </if>
+        </trim>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Values  -->
+    <sql id="Base_Column_Values">
+    #{id,jdbcType=INTEGER},
+    #{commodityName,jdbcType=VARCHAR},
+    #{commodityCode,jdbcType=VARCHAR},
+    #{commodityTypeName,jdbcType=VARCHAR},
+    #{commodityTypeCode,jdbcType=VARCHAR},
+    #{projectName,jdbcType=VARCHAR},
+    #{projectCode,jdbcType=VARCHAR},
+    #{provideOrganization,jdbcType=VARCHAR},
+    #{areaCode,jdbcType=VARCHAR},
+    #{areaName,jdbcType=VARCHAR},
+    #{acceptanceNumber,jdbcType=INTEGER},
+    #{acceptanceOrganization,jdbcType=VARCHAR},
+    #{acceptancePerson,jdbcType=VARCHAR},
+    #{inNumber,jdbcType=INTEGER},
+    #{inUnivalent,jdbcType=DECIMAL},
+    #{amount,jdbcType=DECIMAL},
+    #{custodian,jdbcType=VARCHAR},
+    #{inTime,jdbcType=TIMESTAMP},
+    #{acceptanceId,jdbcType=INTEGER},
+    #{dealerCode,jdbcType=VARCHAR},
+    #{dealerName,jdbcType=VARCHAR},
+    #{putNumber,jdbcType=INTEGER},
+    #{putUnivalent,jdbcType=DECIMAL},
+    #{putStatus,jdbcType=VARCHAR},
+    #{putName,jdbcType=VARCHAR},
+    #{type,jdbcType=VARCHAR},
+    #{company,jdbcType=VARCHAR},
+    #{remark,jdbcType=VARCHAR},
+    #{flag,jdbcType=VARCHAR},
+    #{commodityStatus,jdbcType=VARCHAR},
+    #{createTime,jdbcType=TIMESTAMP},
+    #{modifyTime,jdbcType=TIMESTAMP},
+    #{creator,jdbcType=INTEGER},
+    #{modifier,jdbcType=INTEGER},
+    #{batchCode,jdbcType=VARCHAR}
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Values_Selective  -->
+    <sql id="Base_Column_Values_Selective">
+        <trim suffixOverrides=",">
+            <if test="id != null">
+            #{id},
+            </if>
+            <if test="commodityName != null">
+            #{commodityName},
+            </if>
+            <if test="commodityCode != null">
+            #{commodityCode},
+            </if>
+            <if test="commodityTypeName != null">
+            #{commodityTypeName},
+            </if>
+            <if test="commodityTypeCode != null">
+            #{commodityTypeCode},
+            </if>
+            <if test="projectName != null">
+            #{projectName},
+            </if>
+            <if test="projectCode != null">
+            #{projectCode},
+            </if>
+            <if test="provideOrganization != null">
+            #{provideOrganization},
+            </if>
+            <if test="areaCode != null">
+            #{areaCode},
+            </if>
+            <if test="areaName != null">
+            #{areaName},
+            </if>
+            <if test="acceptanceNumber != null">
+            #{acceptanceNumber},
+            </if>
+            <if test="acceptanceOrganization != null">
+            #{acceptanceOrganization},
+            </if>
+            <if test="acceptancePerson != null">
+            #{acceptancePerson},
+            </if>
+            <if test="inNumber != null">
+            #{inNumber},
+            </if>
+            <if test="inUnivalent != null">
+            #{inUnivalent},
+            </if>
+            <if test="amount != null">
+            #{amount},
+            </if>
+            <if test="custodian != null">
+            #{custodian},
+            </if>
+            <if test="inTime != null">
+            #{inTime},
+            </if>
+            <if test="acceptanceId != null">
+            #{acceptanceId},
+            </if>
+            <if test="dealerCode != null">
+            #{dealerCode},
+            </if>
+            <if test="dealerName != null">
+            #{dealerName},
+            </if>
+            <if test="putNumber != null">
+            #{putNumber},
+            </if>
+            <if test="putUnivalent != null">
+            #{putUnivalent},
+            </if>
+            <if test="putStatus != null">
+            #{putStatus},
+            </if>
+            <if test="putName != null">
+            #{putName},
+            </if>
+            <if test="type != null">
+            #{type},
+            </if>
+            <if test="company != null">
+            #{company},
+            </if>
+            <if test="remark != null">
+            #{remark},
+            </if>
+            <if test="flag != null">
+            #{flag},
+            </if>
+            <if test="commodityStatus != null">
+            #{commodityStatus},
+            </if>
+            <if test="createTime != null">
+            #{createTime},
+            </if>
+            <if test="modifyTime != null">
+            #{modifyTime},
+            </if>
+            <if test="creator != null">
+            #{creator},
+            </if>
+            <if test="modifier != null">
+            #{modifier}
+            </if>
+            <if test="batchCode != null">
+            #{batchCode}
+            </if>
+        </trim>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Set_Values  -->
+    <sql id="Base_Column_Set_Values">
+    ID = #{id},
+    COMMODITY_NAME = #{commodityName},
+    COMMODITY_CODE = #{commodityCode},
+    COMMODITY_TYPE_NAME = #{commodityTypeName},
+    COMMODITY_TYPE_CODE = #{commodityTypeCode},
+    PROJECT_NAME = #{projectName},
+    PROJECT_CODE = #{projectCode},
+    PROVIDE_ORGANIZATION = #{provideOrganization},
+    AREA_CODE = #{areaCode},
+    AREA_NAME = #{areaName},
+    ACCEPTANCE_NUMBER = #{acceptanceNumber},
+    ACCEPTANCE_ORGANIZATION = #{acceptanceOrganization},
+    ACCEPTANCE_PERSON = #{acceptancePerson},
+    IN_NUMBER = #{inNumber},
+    IN_UNIVALENT = #{inUnivalent},
+    AMOUNT = #{amount},
+    CUSTODIAN = #{custodian},
+    IN_TIME = #{inTime},
+    ACCEPTANCE_ID = #{acceptanceId},
+    DEALER_CODE = #{dealerCode},
+    DEALER_NAME = #{dealerName},
+    PUT_NUMBER = #{putNumber},
+    PUT_UNIVALENT = #{putUnivalent},
+    PUT_STATUS = #{putStatus},
+    PUT_NAME = #{putName},
+    TYPE = #{type},
+    COMPANY = #{company},
+    REMARK = #{remark},
+    FLAG = #{flag},
+    COMMODITY_STATUS = #{commodityStatus},
+    CREATE_TIME = #{createTime},
+    MODIFY_TIME = #{modifyTime},
+    CREATOR = #{creator},
+    MODIFIER = #{modifier},
+    BATCH_CODE = #{batchCode}
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Set_Values_Selective  -->
+    <sql id="Base_Column_Set_Values_Selective">
+        <if test="id != null">
+        ID = #{id},
+        </if>
+        <if test="commodityName != null">
+        COMMODITY_NAME = #{commodityName},
+        </if>
+        <if test="commodityCode != null">
+        COMMODITY_CODE = #{commodityCode},
+        </if>
+        <if test="commodityTypeName != null">
+        COMMODITY_TYPE_NAME = #{commodityTypeName},
+        </if>
+        <if test="commodityTypeCode != null">
+        COMMODITY_TYPE_CODE = #{commodityTypeCode},
+        </if>
+        <if test="projectName != null">
+        PROJECT_NAME = #{projectName},
+        </if>
+        <if test="projectCode != null">
+        PROJECT_CODE = #{projectCode},
+        </if>
+        <if test="provideOrganization != null">
+        PROVIDE_ORGANIZATION = #{provideOrganization},
+        </if>
+        <if test="areaCode != null">
+        AREA_CODE = #{areaCode},
+        </if>
+        <if test="areaName != null">
+        AREA_NAME = #{areaName},
+        </if>
+        <if test="acceptanceNumber != null">
+        ACCEPTANCE_NUMBER = #{acceptanceNumber},
+        </if>
+        <if test="acceptanceOrganization != null">
+        ACCEPTANCE_ORGANIZATION = #{acceptanceOrganization},
+        </if>
+        <if test="acceptancePerson != null">
+        ACCEPTANCE_PERSON = #{acceptancePerson},
+        </if>
+        <if test="inNumber != null">
+        IN_NUMBER = #{inNumber},
+        </if>
+        <if test="inUnivalent != null">
+        IN_UNIVALENT = #{inUnivalent},
+        </if>
+        <if test="amount != null">
+        AMOUNT = #{amount},
+        </if>
+        <if test="custodian != null">
+        CUSTODIAN = #{custodian},
+        </if>
+        <if test="inTime != null">
+        IN_TIME = #{inTime},
+        </if>
+        <if test="acceptanceId != null">
+        ACCEPTANCE_ID = #{acceptanceId},
+        </if>
+        <if test="dealerCode != null">
+        DEALER_CODE = #{dealerCode},
+        </if>
+        <if test="dealerName != null">
+        DEALER_NAME = #{dealerName},
+        </if>
+        <if test="putNumber != null">
+        PUT_NUMBER = #{putNumber},
+        </if>
+        <if test="putUnivalent != null">
+        PUT_UNIVALENT = #{putUnivalent},
+        </if>
+        <if test="putStatus != null">
+        PUT_STATUS = #{putStatus},
+        </if>
+        <if test="putName != null">
+        PUT_NAME = #{putName},
+        </if>
+        <if test="type != null">
+        TYPE = #{type},
+        </if>
+        <if test="company != null">
+        COMPANY = #{company},
+        </if>
+        <if test="remark != null">
+        REMARK = #{remark},
+        </if>
+        <if test="flag != null">
+        FLAG = #{flag},
+        </if>
+        <if test="commodityStatus != null">
+        COMMODITY_STATUS = #{commodityStatus},
+        </if>
+        <if test="createTime != null">
+        CREATE_TIME = #{createTime},
+        </if>
+        <if test="modifyTime != null">
+        MODIFY_TIME = #{modifyTime},
+        </if>
+        <if test="creator != null">
+        CREATOR = #{creator},
+        </if>
+        <if test="modifier != null">
+        MODIFIER = #{modifier}
+        </if>
+        <if test="batchCode != null">
+        BATCH_CODE = #{batchCode}
+        </if>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Where_Selective  -->
+    <sql id="Base_Column_Where_Selective">
+        <if test="id != null and id != ''">
+            and ID = #{id}
+        </if>
+        <if test="commodityName != null and commodityName != ''">
+            and COMMODITY_NAME = #{commodityName}
+        </if>
+        <if test="commodityCode != null and commodityCode != ''">
+            and COMMODITY_CODE = #{commodityCode}
+        </if>
+        <if test="commodityTypeName != null and commodityTypeName != ''">
+            and COMMODITY_TYPE_NAME = #{commodityTypeName}
+        </if>
+        <if test="commodityTypeCode != null and commodityTypeCode != ''">
+            and COMMODITY_TYPE_CODE = #{commodityTypeCode}
+        </if>
+        <if test="projectName != null and projectName != ''">
+            and PROJECT_NAME = #{projectName}
+        </if>
+        <if test="projectCode != null and projectCode != ''">
+            and PROJECT_CODE = #{projectCode}
+        </if>
+        <if test="provideOrganization != null and provideOrganization != ''">
+            and PROVIDE_ORGANIZATION = #{provideOrganization}
+        </if>
+        <if test="areaCode != null and areaCode != ''">
+            and AREA_CODE = #{areaCode}
+        </if>
+        <if test="areaName != null and areaName != ''">
+            and AREA_NAME = #{areaName}
+        </if>
+        <if test="acceptanceNumber != null and acceptanceNumber != ''">
+            and ACCEPTANCE_NUMBER = #{acceptanceNumber}
+        </if>
+        <if test="acceptanceOrganization != null and acceptanceOrganization != ''">
+            and ACCEPTANCE_ORGANIZATION = #{acceptanceOrganization}
+        </if>
+        <if test="acceptancePerson != null and acceptancePerson != ''">
+            and ACCEPTANCE_PERSON = #{acceptancePerson}
+        </if>
+        <if test="inNumber != null and inNumber != ''">
+            and IN_NUMBER = #{inNumber}
+        </if>
+        <if test="inUnivalent != null and inUnivalent != ''">
+            and IN_UNIVALENT = #{inUnivalent}
+        </if>
+        <if test="amount != null and amount != ''">
+            and AMOUNT = #{amount}
+        </if>
+        <if test="custodian != null and custodian != ''">
+            and CUSTODIAN = #{custodian}
+        </if>
+        <if test="inTime != null and inTime != ''">
+            and IN_TIME = #{inTime}
+        </if>
+        <if test="acceptanceId != null and acceptanceId != ''">
+            and ACCEPTANCE_ID = #{acceptanceId}
+        </if>
+        <if test="dealerCode != null and dealerCode != ''">
+            and DEALER_CODE = #{dealerCode}
+        </if>
+        <if test="dealerName != null and dealerName != ''">
+            and DEALER_NAME = #{dealerName}
+        </if>
+        <if test="putNumber != null and putNumber != ''">
+            and PUT_NUMBER = #{putNumber}
+        </if>
+        <if test="putUnivalent != null and putUnivalent != ''">
+            and PUT_UNIVALENT = #{putUnivalent}
+        </if>
+        <if test="putStatus != null and putStatus != ''">
+            and PUT_STATUS = #{putStatus}
+        </if>
+        <if test="putName != null and putName != ''">
+            and PUT_NAME = #{putName}
+        </if>
+        <if test="type != null and type != ''">
+            and TYPE = #{type}
+        </if>
+        <if test="company != null and company != ''">
+            and COMPANY = #{company}
+        </if>
+        <if test="remark != null and remark != ''">
+            and REMARK = #{remark}
+        </if>
+        <if test="flag != null and flag != ''">
+            and FLAG = #{flag}
+        </if>
+        <if test="commodityStatus != null and commodityStatus != ''">
+            and COMMODITY_STATUS = #{commodityStatus}
+        </if>
+        <if test="createTime != null and createTime != ''">
+            and CREATE_TIME = #{createTime}
+        </if>
+        <if test="modifyTime != null and modifyTime != ''">
+            and MODIFY_TIME = #{modifyTime}
+        </if>
+        <if test="creator != null and creator != ''">
+            and CREATOR = #{creator}
+        </if>
+        <if test="modifier != null and modifier != ''">
+            and MODIFIER = #{modifier}
+        </if>
+        <if test="batchCode != null and batchCode != ''">
+            and BATCH_CODE = #{batchCode}
+        </if>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Where_Selective_Param1  -->
+    <sql id="Base_Column_Where_Selective_Param1">
+        <if test="param1.id != null">
+            and ID = #{param1.id}
+        </if>
+        <if test="param1.commodityName != null">
+            and COMMODITY_NAME = #{param1.commodityName}
+        </if>
+        <if test="param1.commodityCode != null">
+            and COMMODITY_CODE = #{param1.commodityCode}
+        </if>
+        <if test="param1.commodityTypeName != null">
+            and COMMODITY_TYPE_NAME = #{param1.commodityTypeName}
+        </if>
+        <if test="param1.commodityTypeCode != null">
+            and COMMODITY_TYPE_CODE = #{param1.commodityTypeCode}
+        </if>
+        <if test="param1.projectName != null">
+            and PROJECT_NAME = #{param1.projectName}
+        </if>
+        <if test="param1.projectCode != null">
+            and PROJECT_CODE = #{param1.projectCode}
+        </if>
+        <if test="param1.provideOrganization != null">
+            and PROVIDE_ORGANIZATION = #{param1.provideOrganization}
+        </if>
+        <if test="param1.areaCode != null">
+            and AREA_CODE = #{param1.areaCode}
+        </if>
+        <if test="param1.areaName != null">
+            and AREA_NAME = #{param1.areaName}
+        </if>
+        <if test="param1.acceptanceNumber != null">
+            and ACCEPTANCE_NUMBER = #{param1.acceptanceNumber}
+        </if>
+        <if test="param1.acceptanceOrganization != null">
+            and ACCEPTANCE_ORGANIZATION = #{param1.acceptanceOrganization}
+        </if>
+        <if test="param1.acceptancePerson != null">
+            and ACCEPTANCE_PERSON = #{param1.acceptancePerson}
+        </if>
+        <if test="param1.inNumber != null">
+            and IN_NUMBER = #{param1.inNumber}
+        </if>
+        <if test="param1.inUnivalent != null">
+            and IN_UNIVALENT = #{param1.inUnivalent}
+        </if>
+        <if test="param1.amount != null">
+            and AMOUNT = #{param1.amount}
+        </if>
+        <if test="param1.custodian != null">
+            and CUSTODIAN = #{param1.custodian}
+        </if>
+        <if test="param1.inTime != null">
+            and IN_TIME = #{param1.inTime}
+        </if>
+        <if test="param1.acceptanceId != null">
+            and ACCEPTANCE_ID = #{param1.acceptanceId}
+        </if>
+        <if test="param1.dealerCode != null">
+            and DEALER_CODE = #{param1.dealerCode}
+        </if>
+        <if test="param1.dealerName != null">
+            and DEALER_NAME = #{param1.dealerName}
+        </if>
+        <if test="param1.putNumber != null">
+            and PUT_NUMBER = #{param1.putNumber}
+        </if>
+        <if test="param1.putUnivalent != null">
+            and PUT_UNIVALENT = #{param1.putUnivalent}
+        </if>
+        <if test="param1.putStatus != null">
+            and PUT_STATUS = #{param1.putStatus}
+        </if>
+        <if test="param1.putName != null">
+            and PUT_NAME = #{param1.putName}
+        </if>
+        <if test="param1.type != null">
+            and TYPE = #{param1.type}
+        </if>
+        <if test="param1.company != null">
+            and COMPANY = #{param1.company}
+        </if>
+        <if test="param1.remark != null">
+            and REMARK = #{param1.remark}
+        </if>
+        <if test="param1.flag != null">
+            and FLAG = #{param1.flag}
+        </if>
+        <if test="param1.commodityStatus != null">
+            and COMMODITY_STATUS = #{param1.commodityStatus}
+        </if>
+        <if test="param1.createTime != null">
+            and CREATE_TIME = #{param1.createTime}
+        </if>
+        <if test="param1.modifyTime != null">
+            and MODIFY_TIME = #{param1.modifyTime}
+        </if>
+        <if test="param1.creator != null">
+            and CREATOR = #{param1.creator}
+        </if>
+        <if test="param1.modifier != null">
+            and MODIFIER = #{param1.modifier}
+        </if>
+        <if test="param1.batchCode != null">
+            and BATCH_CODE = #{param1.batchCode}
+        </if>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Order_By  -->
+    <sql id="Base_Order_By">
+        <bind name="propName" value="sortField"></bind>
+        ORDER BY <include refid="Base_Column_Name" />
+        <choose>
+            <when test="isAscend">
+                ASC
+            </when>
+            <otherwise>
+                DESC
+            </otherwise>
+        </choose>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Name  -->
+    <sql id="Base_Column_Name">
+        <if test='"id" == propName'>
+        ID
+        </if>
+        <if test='"commodityName" == propName'>
+        COMMODITY_NAME
+        </if>
+        <if test='"commodityCode" == propName'>
+        COMMODITY_CODE
+        </if>
+        <if test='"commodityTypeName" == propName'>
+        COMMODITY_TYPE_NAME
+        </if>
+        <if test='"commodityTypeCode" == propName'>
+        COMMODITY_TYPE_CODE
+        </if>
+        <if test='"projectName" == propName'>
+        PROJECT_NAME
+        </if>
+        <if test='"projectCode" == propName'>
+        PROJECT_CODE
+        </if>
+        <if test='"provideOrganization" == propName'>
+        PROVIDE_ORGANIZATION
+        </if>
+        <if test='"areaCode" == propName'>
+        AREA_CODE
+        </if>
+        <if test='"areaName" == propName'>
+        AREA_NAME
+        </if>
+        <if test='"acceptanceNumber" == propName'>
+        ACCEPTANCE_NUMBER
+        </if>
+        <if test='"acceptanceOrganization" == propName'>
+        ACCEPTANCE_ORGANIZATION
+        </if>
+        <if test='"acceptancePerson" == propName'>
+        ACCEPTANCE_PERSON
+        </if>
+        <if test='"inNumber" == propName'>
+        IN_NUMBER
+        </if>
+        <if test='"inUnivalent" == propName'>
+        IN_UNIVALENT
+        </if>
+        <if test='"amount" == propName'>
+        AMOUNT
+        </if>
+        <if test='"custodian" == propName'>
+        CUSTODIAN
+        </if>
+        <if test='"inTime" == propName'>
+        IN_TIME
+        </if>
+        <if test='"acceptanceId" == propName'>
+        ACCEPTANCE_ID
+        </if>
+        <if test='"dealerCode" == propName'>
+        DEALER_CODE
+        </if>
+        <if test='"dealerName" == propName'>
+        DEALER_NAME
+        </if>
+        <if test='"putNumber" == propName'>
+        PUT_NUMBER
+        </if>
+        <if test='"putUnivalent" == propName'>
+        PUT_UNIVALENT
+        </if>
+        <if test='"putStatus" == propName'>
+        PUT_STATUS
+        </if>
+        <if test='"putName" == propName'>
+        PUT_NAME
+        </if>
+        <if test='"type" == propName'>
+        TYPE
+        </if>
+        <if test='"company" == propName'>
+        COMPANY
+        </if>
+        <if test='"remark" == propName'>
+        REMARK
+        </if>
+        <if test='"flag" == propName'>
+        FLAG
+        </if>
+        <if test='"commodityStatus" == propName'>
+        COMMODITY_STATUS
+        </if>
+        <if test='"createTime" == propName'>
+        CREATE_TIME
+        </if>
+        <if test='"modifyTime" == propName'>
+        MODIFY_TIME
+        </if>
+        <if test='"creator" == propName'>
+        CREATOR
+        </if>
+        <if test='"modifier" == propName'>
+        MODIFIER
+        </if>
+        <if test='"batchCode" == propName'>
+        BATCH_CODE
+        </if>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Id_Array  -->
+    <sql id="Base_Id_Array">
+        <foreach collection="array" open="(" close=")" separator="," item="id">
+        #{id}
+        </foreach>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Id_List  -->
+    <sql id="Base_Id_List">
+        <foreach collection="list" open="(" close=")" separator="," item="id">
+        #{id}
+        </foreach>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Select_All  -->
+    <sql id="Base_Select_All">
+        select
+        <include refid="Base_Column_List" />
+        from <include refid="Base_Table_Name" />
+    </sql>
+    <!-- endregion -->
+
+    <!-- region selectById  -->
+    <select id="selectById" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        where ID = #{id}
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectByIds  -->
+    <select id="selectByIds" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        where ID in
+        <include refid="Base_Id_List" />
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectAll  -->
+    <select id="selectAll" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectCount  -->
+    <select id="selectCount" resultType="int">
+        select count(*)
+        from <include refid="Base_Table_Name" />
+        <where>
+            <include refid="Base_Column_Where_Selective" />
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region select  -->
+    <select id="select" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Where_Selective" />
+        </where>
+        order by id desc
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectOne  -->
+    <select id="selectOne" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Where_Selective" />
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectOrderBy  -->
+    <select id="selectOrderBy" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Where_Selective_Param1" />
+        </where>
+        <include refid="Base_Order_By" />
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectByProperty  -->
+    <select id="selectByProperty" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Name" /> = #{propValue}
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectByPropertyIn  -->
+    <select id="selectByPropertyIn" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Name" /> IN
+            <foreach collection="propValues" open="(" close=")" separator="," item="propValue">
+            #{propValue}
+            </foreach>
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region delete  -->
+    <delete id="delete">
+        delete
+        from <include refid="Base_Table_Name" />
+        <where>
+            <include refid="Base_Column_Where_Selective" />
+        </where>
+    </delete>
+    <!-- endregion -->
+
+    <!-- region deleteById  -->
+    <delete id="deleteById">
+        delete
+        from <include refid="Base_Table_Name" />
+        where ID = #{id}
+    </delete>
+    <!-- endregion -->
+
+    <!-- region deleteByIds  -->
+    <delete id="deleteByIds">
+        delete
+        from <include refid="Base_Table_Name" />
+        where ID in
+        <include refid="Base_Id_List" />
+    </delete>
+    <!-- endregion -->
+
+    <!-- region insert  -->
+    <insert id="insert" parameterType="com.yqjr.fin.mkmm.sales.entity.CommodityReview">
+        <selectKey resultType="java.lang.Long" keyProperty="id" order="BEFORE">
+            SELECT SEQ_MKMM_COMMODITY_REVIEW.NEXTVAL FROM DUAL
+        </selectKey>
+        insert into <include refid="Base_Table_Name" /> (
+        <include refid="Base_Column_List" />
+        )
+        values (
+        <include refid="Base_Column_Values" />
+        )
+    </insert>
+    <!-- endregion -->
+
+    <!-- region updateById  -->
+    <update id="updateById" parameterType="com.yqjr.fin.mkmm.sales.entity.CommodityReview">
+        update <include refid="Base_Table_Name" />
+        <set>
+            <include refid="Base_Column_Set_Values" />
+        </set>
+        where ID = #{id}
+    </update>
+    <!-- endregion -->
+
+    <!-- region patchById  -->
+    <update id="patchById" parameterType="com.yqjr.fin.mkmm.sales.entity.CommodityReview">
+        update <include refid="Base_Table_Name" />
+        <set>
+            <include refid="Base_Column_Set_Values_Selective" />
+        </set>
+        where ID = #{id}
+    </update>
+    <!-- endregion -->
+
+    <!-- endregion BaseMapper -->
+
+    <!-- region generated by CodeRobot  -->
+
+    <!-- region 结果集映射  -->
+    <resultMap id="CommodityReviewResult" type="com.yqjr.fin.mkmm.sales.entity.CommodityReview">
+        <result property="id" column="ID"/><!--序号-->
+        <result property="commodityName" column="COMMODITY_NAME"/><!--物料名称-->
+        <result property="commodityCode" column="COMMODITY_CODE"/><!--物料编码-->
+        <result property="commodityTypeName" column="COMMODITY_TYPE_NAME"/><!--物料分类名称-->
+        <result property="commodityTypeCode" column="COMMODITY_TYPE_CODE"/><!--物料分类编码-->
+        <result property="projectName" column="PROJECT_NAME"/><!--项目名称-->
+        <result property="projectCode" column="PROJECT_CODE"/><!--项目编码-->
+        <result property="provideOrganization" column="PROVIDE_ORGANIZATION"/><!--供应单位-->
+        <result property="areaCode" column="AREA_CODE"/><!--区域编码-->
+        <result property="areaName" column="AREA_NAME"/><!--区域名称-->
+        <result property="acceptanceNumber" column="ACCEPTANCE_NUMBER"/><!--验收数量-->
+        <result property="acceptanceOrganization" column="ACCEPTANCE_ORGANIZATION"/><!--验收单位-->
+        <result property="acceptancePerson" column="ACCEPTANCE_PERSON"/><!--验收人-->
+        <result property="inNumber" column="IN_NUMBER"/><!--入库数量-->
+        <result property="inUnivalent" column="IN_UNIVALENT"/><!--入库单价-->
+        <result property="amount" column="AMOUNT"/><!--总金额-->
+        <result property="custodian" column="CUSTODIAN"/><!--保管人-->
+        <result property="inTime" column="IN_TIME"/><!--入库时间-->
+        <result property="acceptanceId" column="ACCEPTANCE_ID"/><!--验收表id-->
+        <result property="dealerCode" column="DEALER_CODE"/><!--投放经销商编码-->
+        <result property="dealerName" column="DEALER_NAME"/><!--投放经销商名称-->
+        <result property="putNumber" column="PUT_NUMBER"/><!--投放数量-->
+        <result property="putUnivalent" column="PUT_UNIVALENT"/><!--投放单价-->
+        <result property="putStatus" column="PUT_STATUS"/><!--投放状态0：未投放，1：投放中，2：投放成功-->
+        <result property="putName" column="PUT_NAME"/><!--出库人-->
+        <result property="type" column="TYPE"/><!--入库出库审核标识1：入库审核，2出库审核-->
+        <result property="company" column="COMPANY"/><!--公司1：汽车金融 ，2：租赁公司-->
+        <result property="remark" column="REMARK"/><!--审核意见-->
+        <result property="flag" column="FLAG"/><!--数据有效标识0：无效，1：有效-->
+        <result property="commodityStatus" column="COMMODITY_STATUS"/><!--物料状态02待审核，04审核通过，00审核驳回-->
+        <result property="createTime" column="CREATE_TIME"/><!--创建时间-->
+        <result property="modifyTime" column="MODIFY_TIME"/><!--修改时间-->
+        <result property="creator" column="CREATOR"/><!--创建人-->
+        <result property="modifier" column="MODIFIER"/><!--修改人-->
+        <result property="batchCode" column="BATCH_CODE"/><!--修改人-->
+    </resultMap>
+    <!-- endregion -->
+
+    <!-- 查询条件判断 入参为对象 条件为模糊-->
+    <sql id="queryLikeCommodityReview">
+			<if test="id!=null and id!=''">
+			    AND ID LIKE CONCAT(#{id},'%')<!--序号-->
+			</if>
+			<if test="commodityName!=null and commodityName!=''">
+			    AND COMMODITY_NAME LIKE CONCAT(#{commodityName},'%')<!--物料名称-->
+			</if>
+			<if test="commodityCode!=null and commodityCode!=''">
+			    AND COMMODITY_CODE LIKE CONCAT(#{commodityCode},'%')<!--物料编码-->
+			</if>
+			<if test="commodityTypeName!=null and commodityTypeName!=''">
+			    AND COMMODITY_TYPE_NAME LIKE CONCAT(#{commodityTypeName},'%')<!--物料分类名称-->
+			</if>
+			<if test="commodityTypeCode!=null and commodityTypeCode!=''">
+			    AND COMMODITY_TYPE_CODE LIKE CONCAT(#{commodityTypeCode},'%')<!--物料分类编码-->
+			</if>
+			<if test="projectName!=null and projectName!=''">
+			    AND PROJECT_NAME LIKE CONCAT(#{projectName},'%')<!--项目名称-->
+			</if>
+			<if test="projectCode!=null and projectCode!=''">
+			    AND PROJECT_CODE LIKE CONCAT(#{projectCode},'%')<!--项目编码-->
+			</if>
+			<if test="provideOrganization!=null and provideOrganization!=''">
+			    AND PROVIDE_ORGANIZATION LIKE CONCAT(#{provideOrganization},'%')<!--供应单位-->
+			</if>
+			<if test="areaCode!=null and areaCode!=''">
+			    AND AREA_CODE LIKE CONCAT(#{areaCode},'%')<!--区域编码-->
+			</if>
+			<if test="areaName!=null and areaName!=''">
+			    AND AREA_NAME LIKE CONCAT(#{areaName},'%')<!--区域名称-->
+			</if>
+			<if test="acceptanceNumber!=null and acceptanceNumber!=''">
+			    AND ACCEPTANCE_NUMBER LIKE CONCAT(#{acceptanceNumber},'%')<!--验收数量-->
+			</if>
+			<if test="acceptanceOrganization!=null and acceptanceOrganization!=''">
+			    AND ACCEPTANCE_ORGANIZATION LIKE CONCAT(#{acceptanceOrganization},'%')<!--验收单位-->
+			</if>
+			<if test="acceptancePerson!=null and acceptancePerson!=''">
+			    AND ACCEPTANCE_PERSON LIKE CONCAT(#{acceptancePerson},'%')<!--验收人-->
+			</if>
+			<if test="inNumber!=null and inNumber!=''">
+			    AND IN_NUMBER LIKE CONCAT(#{inNumber},'%')<!--入库数量-->
+			</if>
+			<if test="inUnivalent!=null and inUnivalent!=''">
+			    AND IN_UNIVALENT LIKE CONCAT(#{inUnivalent},'%')<!--入库单价-->
+			</if>
+			<if test="amount!=null and amount!=''">
+			    AND AMOUNT LIKE CONCAT(#{amount},'%')<!--总金额-->
+			</if>
+			<if test="custodian!=null and custodian!=''">
+			    AND CUSTODIAN LIKE CONCAT(#{custodian},'%')<!--保管人-->
+			</if>
+			<if test="inTime!=null and inTime!=''">
+			    AND IN_TIME LIKE CONCAT(#{inTime},'%')<!--入库时间-->
+			</if>
+			<if test="acceptanceId!=null and acceptanceId!=''">
+			    AND ACCEPTANCE_ID LIKE CONCAT(#{acceptanceId},'%')<!--验收表id-->
+			</if>
+			<if test="dealerCode!=null and dealerCode!=''">
+			    AND DEALER_CODE LIKE CONCAT(#{dealerCode},'%')<!--投放经销商编码-->
+			</if>
+			<if test="dealerName!=null and dealerName!=''">
+			    AND DEALER_NAME LIKE CONCAT(#{dealerName},'%')<!--投放经销商名称-->
+			</if>
+			<if test="putNumber!=null and putNumber!=''">
+			    AND PUT_NUMBER LIKE CONCAT(#{putNumber},'%')<!--投放数量-->
+			</if>
+			<if test="putUnivalent!=null and putUnivalent!=''">
+			    AND PUT_UNIVALENT LIKE CONCAT(#{putUnivalent},'%')<!--投放单价-->
+			</if>
+			<if test="putStatus!=null and putStatus!=''">
+			    AND PUT_STATUS LIKE CONCAT(#{putStatus},'%')<!--投放状态0：未投放，1：投放中，2：投放成功-->
+			</if>
+			<if test="putName!=null and putName!=''">
+			    AND PUT_NAME LIKE CONCAT(#{putName},'%')<!--出库人-->
+			</if>
+			<if test="type!=null and type!=''">
+			    AND TYPE LIKE CONCAT(#{type},'%')<!--入库出库审核标识1：入库审核，2出库审核-->
+			</if>
+			<if test="company!=null and company!=''">
+			    AND COMPANY LIKE CONCAT(#{company},'%')<!--公司1：汽车金融 ，2：租赁公司-->
+			</if>
+			<if test="remark!=null and remark!=''">
+			    AND REMARK LIKE CONCAT(#{remark},'%')<!--审核意见-->
+			</if>
+			<if test="flag!=null and flag!=''">
+			    AND FLAG LIKE CONCAT(#{flag},'%')<!--数据有效标识0：无效，1：有效-->
+			</if>
+			<if test="commodityStatus!=null and commodityStatus!=''">
+			    AND COMMODITY_STATUS LIKE CONCAT(#{commodityStatus},'%')<!--物料状态02待审核，04审核通过，00审核驳回-->
+			</if>
+			<if test="createTime!=null and createTime!=''">
+			    AND CREATE_TIME LIKE CONCAT(#{createTime},'%')<!--创建时间-->
+			</if>
+			<if test="modifyTime!=null and modifyTime!=''">
+			    AND MODIFY_TIME LIKE CONCAT(#{modifyTime},'%')<!--修改时间-->
+			</if>
+			<if test="creator!=null and creator!=''">
+			    AND CREATOR LIKE CONCAT(#{creator},'%')<!--创建人-->
+			</if>
+			<if test="modifier!=null and modifier!=''">
+                AND MODIFIER LIKE CONCAT(#{modifier},'%')<!--修改人-->
+			</if>
+        <if test="batchCode!=null and batchCode!=''">
+                BATCH_CODE LIKE CONCAT(#{batchCode},'%')<!--修改人-->
+        </if>
+    </sql>
+
+    <!-- 按条件模糊查询所有 -->
+    <select id="queryCommodityReviewList" parameterType="com.yqjr.fin.mkmm.sales.entity.CommodityReview"
+            resultMap="CommodityReviewResult">
+        SELECT
+        ID,<!--序号-->
+        COMMODITY_NAME,<!--物料名称-->
+        COMMODITY_CODE,<!--物料编码-->
+        COMMODITY_TYPE_NAME,<!--物料分类名称-->
+        COMMODITY_TYPE_CODE,<!--物料分类编码-->
+        PROJECT_NAME,<!--项目名称-->
+        PROJECT_CODE,<!--项目编码-->
+        PROVIDE_ORGANIZATION,<!--供应单位-->
+        AREA_CODE,<!--区域编码-->
+        AREA_NAME,<!--区域名称-->
+        ACCEPTANCE_NUMBER,<!--验收数量-->
+        ACCEPTANCE_ORGANIZATION,<!--验收单位-->
+        ACCEPTANCE_PERSON,<!--验收人-->
+        IN_NUMBER,<!--入库数量-->
+        IN_UNIVALENT,<!--入库单价-->
+        AMOUNT,<!--总金额-->
+        CUSTODIAN,<!--保管人-->
+        IN_TIME,<!--入库时间-->
+        ACCEPTANCE_ID,<!--验收表id-->
+        DEALER_CODE,<!--投放经销商编码-->
+        DEALER_NAME,<!--投放经销商名称-->
+        PUT_NUMBER,<!--投放数量-->
+        PUT_UNIVALENT,<!--投放单价-->
+        PUT_STATUS,<!--投放状态0：未投放，1：投放中，2：投放成功-->
+        PUT_NAME,<!--出库人-->
+        TYPE,<!--入库出库审核标识1：入库审核，2出库审核-->
+        COMPANY,<!--公司1：汽车金融 ，2：租赁公司-->
+        REMARK,<!--审核意见-->
+        FLAG,<!--数据有效标识0：无效，1：有效-->
+        COMMODITY_STATUS,<!--物料状态02待审核，04审核通过，00审核驳回-->
+        CREATE_TIME,<!--创建时间-->
+        MODIFY_TIME,<!--修改时间-->
+        CREATOR,<!--创建人-->
+        MODIFIER<!--修改人-->
+        BATCH_CODE<!--修改人-->
+        FROM MKMM_COMMODITY_REVIEW
+        <where>
+            <include refid="queryLikeCommodityReview"/>
+        </where>
+    </select>
+
+    <!-- 按条件模糊统计所有条数 -->
+    <select id="queryCommodityReviewCount" parameterType="com.yqjr.fin.mkmm.sales.entity.CommodityReview" resultType="int">
+        SELECT
+        count (id)
+        FROM MKMM_COMMODITY_REVIEW
+        <where>
+            <include refid="queryLikeCommodityReview"/>
+        </where>
+    </select>
+
+    <!-- 批量删除，入参为数组  -->
+    <delete id="dynamicDelete">
+        delete from MKMM_COMMODITY_REVIEW where id in
+        <foreach collection="array" open="(" close=")" separator="," item="arr">
+            #{arr}
+        </foreach>
+    </delete>
+
+    <!-- 批量删除，入参为list  -->
+    <delete id="dynamicDeleteList">
+        delete from MKMM_COMMODITY_REVIEW where id in
+        <foreach collection="list" open="(" close=")" separator="," item="ids">
+            #{ids}
+        </foreach>
+    </delete>
+
+    <!-- 批量插入 -->
+    <insert id="insertBatch" parameterType="java.util.List">
+        <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into MKMM_COMMODITY_REVIEW
+        (
+        <include refid="Base_Column_List" />
+        )
+        values
+        <foreach collection="list" item="commodityReview" index="index" separator=",">
+            (
+            <include refid="Base_Column_Values" />
+            )
+        </foreach>
+    </insert>
+
+    <!-- 插入单条数据，并返回主键ID -->
+    <insert id="saveObj" useGeneratedKeys="true" keyProperty="id"
+            parameterType="com.yqjr.fin.mkmm.sales.entity.CommodityReview">
+        insert into MKMM_COMMODITY_REVIEW
+        (
+        <include refid="Base_Column_List" />
+        )
+        values
+        (
+        <include refid="Base_Column_Values" />
+        )
+    </insert>
+
+
+    <!-- **********************************************************************-->
+    <!-- ************* 在此下方为一对一、一对多查询方式 仅供参考***************-->
+    <!-- **********************************************************************-->
+    <!-- 一个博客（BlogInfo） 属于一个作者（Author） ，一个作者（Author） 有多篇文章（Post） -->
+    <!--
+  <resultMap type="com.foo.bean.BlogInfo" id="BlogInfo">
+      <id column="blog_id" property="blogId" />
+      <result column="title" property="title" />
+      <association property="author" column="blog_author_id"
+          javaType="com.foo.bean.Author" select="com.foo.bean.AuthorMapper.selectByPrimaryKey">
+      </association>
+      <collection property="posts" column="blog_id" ofType="com.foo.bean.Post"
+          select="com.foo.bean.PostMapper.selectByBlogId">
+      </collection>
+  </resultMap>
+
+  <select id="queryBlogInfoById" resultMap="BlogInfo" parameterType="java.math.BigDecimal">
+      SELECT
+      B.BLOG_ID,
+      B.TITLE,
+      B.AUTHOR_ID AS BLOG_AUTHOR_ID
+      FROM BLOG B
+      where B.BLOG_ID = 博客ID
+  </select>
+
+          上述方法存在N+1问题
+      它的弊端也比较明显：即所谓的N+1问题。关联的嵌套查询显示得到一个结果集，然后根据这个结果集的每一条记录进行关联查询。
+      现在假设嵌套查询就一个（即resultMap 内部就一个association标签），现查询的结果集返回条数为N，那么关联查询语句将会被执行N次，加上自身返回结果集查询1次，共需要访问数据库N+1次。如果N比较大的话，这样的数据库访问消耗是非常大的！所以使用这种嵌套语句查询的使用者一定要考虑慎重考虑，确保N值不会很大。
+      以上面的例子为例，select 语句本身会返回com.foo.bean.BlogMapper.queryBlogInfoById 条数为1 的结果集，由于它有两条关联的语句查询，它需要共访问数据库 1*（1+1）=3次数据库。
+
+
+       <resultMap type="com.foo.bean.BlogInfo" id="BlogInfo">
+      <id column="blog_id" property="blogId"/>
+      <result column="title" property="title"/>
+      <association property="author" column="blog_author_id" javaType="com.foo.bean.Author">
+          <id column="author_id" property="authorId"/>
+          <result column="user_name" property="userName"/>
+          <result column="password" property="password"/>
+          <result column="email" property="email"/>
+          <result column="biography" property="biography"/>
+      </association>
+      <collection property="posts" column="blog_post_id" ofType="com.foo.bean.Post">
+          <id column="post_id" property="postId"/>
+          <result column="blog_id" property="blogId"/>
+          <result column="create_time" property="createTime"/>
+          <result column="subject" property="subject"/>
+          <result column="body" property="body"/>
+          <result column="draft" property="draft"/>
+      </collection>
+      </resultMap>
+
+
+      <select id="queryAllBlogInfo" resultMap="BlogInfo">
+          SELECT
+           B.BLOG_ID,
+           B.TITLE,
+           B.AUTHOR_ID AS BLOG_AUTHOR_ID,
+           A.AUTHOR_ID,
+           A.USER_NAME,
+           A.PASSWORD,
+           A.EMAIL,
+           A.BIOGRAPHY,
+           P.POST_ID,
+           P.BLOG_ID AS BLOG_POST_ID ,
+             P.CREATE_TIME,
+           P.SUBJECT,
+           P.BODY,
+           P.DRAFT
+      FROM BLOG B
+      LEFT OUTER JOIN AUTHOR A
+        ON B.AUTHOR_ID = A.AUTHOR_ID
+      LEFT OUTER JOIN POST P
+        ON P.BLOG_ID = B.BLOG_ID
+      </select>
+      -->
+
+    <!-- **********************************************************************-->
+    <!-- ************* 此线上方代码自动生成，在此下方编写自定义代码。***************-->
+    <!-- **********************************************************************-->
+
+    <!-- endregion -->
+    <select id="selectReviewMsg" resultMap="BaseResultMap" parameterType="String">
+        select <include refid="Base_Column_List"/> from <include refid="Base_Table_Name"/>
+        where BATCH_CODE = #{batchCode}
+        and flag = '1'
+        and COMMODITY_STATUS = '02'
+        order by id desc
+    </select>
+
+    <update id="updateByBatchCode" parameterType="com.yqjr.fin.mkmm.sales.entity.CommodityReview">
+        update <include refid="Base_Table_Name"/>
+        <set>
+            <include refid="Base_Column_Set_Values_Selective"/>
+        </set>
+        where batch_code = #{batchCode}
+        and COMMODITY_STATUS = '02'
+    </update>
+
+    <select id="selectByBatchCode" resultMap="BaseResultMap" parameterType="String">
+        select <include refid="Base_Column_List"/> from <include refid="Base_Table_Name"/>
+        where BATCH_CODE = #{batchCode}
+        and COMMODITY_STATUS = '02'
+        order by id desc
+    </select>
+
+
+    <sql id="Base_Column_Where_Selective_Not">
+        <if test="id != null and id != ''">
+            and ID = #{id}
+        </if>
+        <if test="commodityName != null and commodityName != ''">
+            and COMMODITY_NAME = #{commodityName}
+        </if>
+        <if test="commodityCode != null and commodityCode != ''">
+            and COMMODITY_CODE = #{commodityCode}
+        </if>
+        <if test="commodityTypeName != null and commodityTypeName != ''">
+            and COMMODITY_TYPE_NAME = #{commodityTypeName}
+        </if>
+        <if test="commodityTypeCode != null and commodityTypeCode != ''">
+            and COMMODITY_TYPE_CODE = #{commodityTypeCode}
+        </if>
+        <if test="projectName != null and projectName != ''">
+            and PROJECT_NAME = #{projectName}
+        </if>
+        <if test="projectCode != null and projectCode != ''">
+            and PROJECT_CODE = #{projectCode}
+        </if>
+        <if test="provideOrganization != null and provideOrganization != ''">
+            and PROVIDE_ORGANIZATION = #{provideOrganization}
+        </if>
+        <if test="areaCode != null and areaCode != ''">
+            and AREA_CODE = #{areaCode}
+        </if>
+        <if test="areaName != null and areaName != ''">
+            and AREA_NAME = #{areaName}
+        </if>
+        <if test="acceptanceNumber != null and acceptanceNumber != ''">
+            and ACCEPTANCE_NUMBER = #{acceptanceNumber}
+        </if>
+        <if test="acceptanceOrganization != null and acceptanceOrganization != ''">
+            and ACCEPTANCE_ORGANIZATION = #{acceptanceOrganization}
+        </if>
+        <if test="acceptancePerson != null and acceptancePerson != ''">
+            and ACCEPTANCE_PERSON = #{acceptancePerson}
+        </if>
+        <if test="inNumber != null and inNumber != ''">
+            and IN_NUMBER = #{inNumber}
+        </if>
+        <if test="inUnivalent != null and inUnivalent != ''">
+            and IN_UNIVALENT = #{inUnivalent}
+        </if>
+        <if test="amount != null and amount != ''">
+            and AMOUNT = #{amount}
+        </if>
+        <if test="custodian != null and custodian != ''">
+            and CUSTODIAN = #{custodian}
+        </if>
+        <if test="inTime != null and inTime != ''">
+            and IN_TIME = #{inTime}
+        </if>
+        <if test="acceptanceId != null and acceptanceId != ''">
+            and ACCEPTANCE_ID = #{acceptanceId}
+        </if>
+        <if test="dealerCode != null and dealerCode != ''">
+            and DEALER_CODE = #{dealerCode}
+        </if>
+        <if test="dealerName != null and dealerName != ''">
+            and DEALER_NAME = #{dealerName}
+        </if>
+        <if test="putNumber != null and putNumber != ''">
+            and PUT_NUMBER = #{putNumber}
+        </if>
+        <if test="putUnivalent != null and putUnivalent != ''">
+            and PUT_UNIVALENT = #{putUnivalent}
+        </if>
+        <if test="putStatus != null and putStatus != ''">
+            and PUT_STATUS = #{putStatus}
+        </if>
+        <if test="putName != null and putName != ''">
+            and PUT_NAME = #{putName}
+        </if>
+        <if test="type != null and type != ''">
+            and TYPE = #{type}
+        </if>
+        <if test="company != null and company != ''">
+            and COMPANY = #{company}
+        </if>
+        <if test="remark != null and remark != ''">
+            and REMARK = #{remark}
+        </if>
+        <if test="flag != null and flag != ''">
+            and FLAG = #{flag}
+        </if>
+        <if test="commodityStatus != null and commodityStatus != ''">
+            and COMMODITY_STATUS = #{commodityStatus}
+        </if>
+        <if test="createTime != null and createTime != ''">
+            and CREATE_TIME = #{createTime}
+        </if>
+        <if test="modifyTime != null and modifyTime != ''">
+            and MODIFY_TIME = #{modifyTime}
+        </if>
+        <if test="creator != null and creator != ''">
+            and CREATOR != #{creator}
+        </if>
+        <if test="modifier != null and modifier != ''">
+            and MODIFIER = #{modifier}
+        </if>
+        <if test="batchCode != null and batchCode != ''">
+            and BATCH_CODE = #{batchCode}
+        </if>
+    </sql>
+    <!-- 出库审核列表页 -->
+    <select id="queryOutReviewList" resultMap="BaseResultMap">
+        select rownum cid, aa.batch_code, aa.COMMODITY_NAME, aa.COMMODITY_TYPE_NAME, aa.PROJECT_NAME, aa.PROVIDE_ORGANIZATION, aa.PUT_NAME
+        from (
+            (select distinct(batch_code), COMMODITY_NAME, COMMODITY_TYPE_NAME, PROJECT_NAME, PROVIDE_ORGANIZATION, PUT_NAME
+            from
+            <include refid="Base_Table_Name"/>
+            <where>
+                <include refid="Base_Column_Where_Selective_Not"/>
+            </where>
+            order by batch_code desc) aa
+        )
+        order by cid
+    </select>
+
+    <!-- 入库审核列表页 -->
+    <select id="queryInReviewList" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Where_Selective_Not" />
+        </where>
+        order by id desc
+    </select>
+
+    <!-- 查询物料审核进度处理信息 -->
+    <select id="queryInProcessList" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        where FLAG = '1'
+        <if test="id != null and id != ''">
+            and ID = #{id}
+        </if>
+        <if test="commodityName != null and commodityName != ''">
+            and COMMODITY_NAME = #{commodityName}
+        </if>
+        <if test="commodityCode != null and commodityCode != ''">
+            and COMMODITY_CODE = #{commodityCode}
+        </if>
+        <if test="commodityTypeName != null and commodityTypeName != ''">
+            and COMMODITY_TYPE_NAME = #{commodityTypeName}
+        </if>
+        <if test="commodityTypeCode != null and commodityTypeCode != ''">
+            and COMMODITY_TYPE_CODE = #{commodityTypeCode}
+        </if>
+        <if test="projectName != null and projectName != ''">
+            and PROJECT_NAME = #{projectName}
+        </if>
+        <if test="projectCode != null and projectCode != ''">
+            and PROJECT_CODE = #{projectCode}
+        </if>
+        <if test="provideOrganization != null and provideOrganization != ''">
+            and PROVIDE_ORGANIZATION = #{provideOrganization}
+        </if>
+        <if test="areaCode != null and areaCode != ''">
+            and AREA_CODE = #{areaCode}
+        </if>
+        <if test="areaName != null and areaName != ''">
+            and AREA_NAME = #{areaName}
+        </if>
+        <if test="acceptanceNumber != null and acceptanceNumber != ''">
+            and ACCEPTANCE_NUMBER = #{acceptanceNumber}
+        </if>
+        <if test="acceptanceOrganization != null and acceptanceOrganization != ''">
+            and ACCEPTANCE_ORGANIZATION = #{acceptanceOrganization}
+        </if>
+        <if test="acceptancePerson != null and acceptancePerson != ''">
+            and ACCEPTANCE_PERSON = #{acceptancePerson}
+        </if>
+        <if test="inNumber != null and inNumber != ''">
+            and IN_NUMBER = #{inNumber}
+        </if>
+        <if test="inUnivalent != null and inUnivalent != ''">
+            and IN_UNIVALENT = #{inUnivalent}
+        </if>
+        <if test="amount != null and amount != ''">
+            and AMOUNT = #{amount}
+        </if>
+        <if test="custodian != null and custodian != ''">
+            and CUSTODIAN = #{custodian}
+        </if>
+        <if test="inTime != null and inTime != ''">
+            and IN_TIME = #{inTime}
+        </if>
+        <if test="acceptanceId != null and acceptanceId != ''">
+            and ACCEPTANCE_ID = #{acceptanceId}
+        </if>
+        <if test="dealerCode != null and dealerCode != ''">
+            and DEALER_CODE = #{dealerCode}
+        </if>
+        <if test="dealerName != null and dealerName != ''">
+            and DEALER_NAME = #{dealerName}
+        </if>
+        <if test="putNumber != null and putNumber != ''">
+            and PUT_NUMBER = #{putNumber}
+        </if>
+        <if test="putUnivalent != null and putUnivalent != ''">
+            and PUT_UNIVALENT = #{putUnivalent}
+        </if>
+        <if test="putStatus != null and putStatus != ''">
+            and PUT_STATUS = #{putStatus}
+        </if>
+        <if test="putName != null and putName != ''">
+            and PUT_NAME = #{putName}
+        </if>
+        <if test="company != null and company != ''">
+            and COMPANY = #{company}
+        </if>
+        <if test="remark != null and remark != ''">
+            and REMARK = #{remark}
+        </if>
+        <if test="createTime != null and createTime != ''">
+            and CREATE_TIME = #{createTime}
+        </if>
+        <if test="modifyTime != null and modifyTime != ''">
+            and MODIFY_TIME = #{modifyTime}
+        </if>
+        <if test="creator != null and creator != ''">
+            and CREATOR = #{creator}
+        </if>
+        <if test="modifier != null and modifier != ''">
+            and MODIFIER = #{modifier}
+        </if>
+        <if test="batchCode != null and batchCode != ''">
+            and BATCH_CODE = #{batchCode}
+        </if>
+        <if test="commodityStatus != null and commodityStatus != ''">
+            and commodity_status = #{commodityStatus}
+        </if>
+        and type = '1'
+        order by id desc
+    </select>
+
+    <!-- 查询物料审核进度处理信息 -->
+    <select id="queryOutProcessList" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        where  FLAG = '1'
+        <if test="id != null and id != ''">
+            and ID = #{id}
+        </if>
+        <if test="commodityName != null and commodityName != ''">
+            and COMMODITY_NAME = #{commodityName}
+        </if>
+        <if test="commodityCode != null and commodityCode != ''">
+            and COMMODITY_CODE = #{commodityCode}
+        </if>
+        <if test="commodityTypeName != null and commodityTypeName != ''">
+            and COMMODITY_TYPE_NAME = #{commodityTypeName}
+        </if>
+        <if test="commodityTypeCode != null and commodityTypeCode != ''">
+            and COMMODITY_TYPE_CODE = #{commodityTypeCode}
+        </if>
+        <if test="projectName != null and projectName != ''">
+            and PROJECT_NAME = #{projectName}
+        </if>
+        <if test="projectCode != null and projectCode != ''">
+            and PROJECT_CODE = #{projectCode}
+        </if>
+        <if test="provideOrganization != null and provideOrganization != ''">
+            and PROVIDE_ORGANIZATION = #{provideOrganization}
+        </if>
+        <if test="areaCode != null and areaCode != ''">
+            and AREA_CODE = #{areaCode}
+        </if>
+        <if test="areaName != null and areaName != ''">
+            and AREA_NAME = #{areaName}
+        </if>
+        <if test="acceptanceNumber != null and acceptanceNumber != ''">
+            and ACCEPTANCE_NUMBER = #{acceptanceNumber}
+        </if>
+        <if test="acceptanceOrganization != null and acceptanceOrganization != ''">
+            and ACCEPTANCE_ORGANIZATION = #{acceptanceOrganization}
+        </if>
+        <if test="acceptancePerson != null and acceptancePerson != ''">
+            and ACCEPTANCE_PERSON = #{acceptancePerson}
+        </if>
+        <if test="inNumber != null and inNumber != ''">
+            and IN_NUMBER = #{inNumber}
+        </if>
+        <if test="inUnivalent != null and inUnivalent != ''">
+            and IN_UNIVALENT = #{inUnivalent}
+        </if>
+        <if test="amount != null and amount != ''">
+            and AMOUNT = #{amount}
+        </if>
+        <if test="custodian != null and custodian != ''">
+            and CUSTODIAN = #{custodian}
+        </if>
+        <if test="inTime != null and inTime != ''">
+            and IN_TIME = #{inTime}
+        </if>
+        <if test="acceptanceId != null and acceptanceId != ''">
+            and ACCEPTANCE_ID = #{acceptanceId}
+        </if>
+        <if test="dealerCode != null and dealerCode != ''">
+            and DEALER_CODE = #{dealerCode}
+        </if>
+        <if test="dealerName != null and dealerName != ''">
+            and DEALER_NAME = #{dealerName}
+        </if>
+        <if test="putNumber != null and putNumber != ''">
+            and PUT_NUMBER = #{putNumber}
+        </if>
+        <if test="putUnivalent != null and putUnivalent != ''">
+            and PUT_UNIVALENT = #{putUnivalent}
+        </if>
+        <if test="putStatus != null and putStatus != ''">
+            and PUT_STATUS = #{putStatus}
+        </if>
+        <if test="putName != null and putName != ''">
+            and PUT_NAME = #{putName}
+        </if>
+        <if test="company != null and company != ''">
+            and COMPANY = #{company}
+        </if>
+        <if test="remark != null and remark != ''">
+            and REMARK = #{remark}
+        </if>
+        <if test="createTime != null and createTime != ''">
+            and CREATE_TIME = #{createTime}
+        </if>
+        <if test="modifyTime != null and modifyTime != ''">
+            and MODIFY_TIME = #{modifyTime}
+        </if>
+        <if test="creator != null and creator != ''">
+            and CREATOR = #{creator}
+        </if>
+        <if test="modifier != null and modifier != ''">
+            and MODIFIER = #{modifier}
+        </if>
+        <if test="batchCode != null and batchCode != ''">
+            and BATCH_CODE = #{batchCode}
+        </if>
+        and type = '2'
+        <if test="commodityStatus != null and commodityStatus != ''">
+            and commodity_status = #{commodityStatus}
+        </if>
+        order by id desc
+    </select>
+</mapper>
+

@@ -1,0 +1,117 @@
+package com.yqjr.fin.fpms.product.rest;
+
+import com.ritoinfo.framework.evo.sp.base.exception.RestException;
+import com.ritoinfo.framework.evo.sp.base.model.ServiceResponse;
+import com.yqjr.fin.common.base.starter.enums.ServiceResponseEnum;
+import com.yqjr.fin.common.base.starter.exception.BusinessException;
+import io.swagger.annotations.Api;
+import com.ritoinfo.framework.evo.sp.base.starter.rest.BaseRest;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.bind.EscapedErrors;
+import org.springframework.web.bind.annotation.*;
+import com.yqjr.fin.fpms.product.condition.ProductCondition;
+import com.yqjr.fin.fpms.product.bizz.ProductBizz;
+import com.yqjr.fin.fpms.product.dto.ProductDto;
+
+import java.util.Map;
+
+/**
+* 金融产品主表 rest层
+* @Author:          lixue
+* @CreateDate:     2018-08-27 10:49:56
+*/
+@Api(consumes = "application/json",
+        produces = "application/json",
+        protocols = "http",
+        basePath = "products")
+@RestController
+@Slf4j
+@RequestMapping(value = "/products")
+public class ProductRest extends BaseRest<ProductBizz,Long, ProductDto, ProductCondition>  {
+
+    @ApiOperation(value = "金融产品基本信息新增")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "productDto",
+                    value = "金融产品实体", required = true,
+                    dataType = "ProductDto")
+    })
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    public ServiceResponse<ProductDto> add(@RequestBody ProductDto productDto){
+        try {
+            bizz.addProduct(productDto);
+            return ServiceResponse.of(ServiceResponseEnum.ADD_SUCCESS.getCode(),
+                    ServiceResponseEnum.ADD_SUCCESS.getMessage(),null);
+        } catch (Exception e) {
+            log.error("系统异常 : " + e,e.getMessage());
+            return ServiceResponse.of(ServiceResponseEnum.SYSTEM_EXCEPTION.getCode(),
+                    ServiceResponseEnum.SYSTEM_EXCEPTION.getMessage(),null);
+        }
+    }
+
+    @ApiOperation(value = "金融产品基本信息删除")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "productId",
+                    value = "金融产品id", required = true,
+                    dataType = "Long")
+    })
+    @RequestMapping(value = "/delete", method = RequestMethod.GET)
+    public ServiceResponse<ProductDto> delete(@RequestParam(value = "id") Long id){
+        try {
+            bizz.deleteProduct(id);
+            return ServiceResponse.of(ServiceResponseEnum.DELETE_SUCCESS.getCode(),
+                    ServiceResponseEnum.DELETE_SUCCESS.getMessage(),null);
+        }catch (RestException e) {
+            log.error("金融产品无法删除： msg="+e.getMessage(),e);
+            return ServiceResponse.of(e.getCode(), e.getMessage(),null);
+        } catch (Exception e) {
+            log.error("系统异常" + e.getMessage(),e);
+            return ServiceResponse.of(ServiceResponseEnum.SYSTEM_EXCEPTION.getCode(),
+                    ServiceResponseEnum.SYSTEM_EXCEPTION.getMessage(),null);
+        }
+    }
+
+    @ApiOperation(value = "金融产品基本信息修改")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "productDto",
+                    value = "金融产品实体", required = true,
+                    dataType = "ProductDto")
+    })
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    public ServiceResponse<ProductDto> update(@RequestBody ProductDto productDto){
+        try {
+            bizz.updateProduct(productDto);
+            return ServiceResponse.of(ServiceResponseEnum.UPDATE_SUCCESS.getCode(),
+                    ServiceResponseEnum.UPDATE_SUCCESS.getMessage(),null);
+        }catch (Exception e) {
+            log.error("系统异常" + e.getMessage(),e);
+            return ServiceResponse.of(ServiceResponseEnum.SYSTEM_EXCEPTION.getCode(),
+                    ServiceResponseEnum.SYSTEM_EXCEPTION.getMessage(),null);
+        }
+    }
+
+    @ApiOperation(value = "金融产品审核状态分页查询")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "productCondition",
+                    value = "金融产品条件实体", required = true,
+                    dataType = "ProductCondition")
+    })
+    @RequestMapping(value = "/find/Examine", method = RequestMethod.POST)
+    public ServiceResponse<ProductDto> findExamineStatus(
+            @RequestBody ProductCondition productCondition){
+        try {
+            bizz.findExamineStatus(productCondition);
+            return ServiceResponse.of(ServiceResponseEnum.SUCCESS.getCode(),
+                    ServiceResponseEnum.SUCCESS.getMessage(),null);
+        }catch (Exception e){
+            log.error("系统异常" + e.getMessage(),e);
+            return ServiceResponse.of(ServiceResponseEnum.SYSTEM_EXCEPTION.getCode(),
+                    ServiceResponseEnum.SYSTEM_EXCEPTION.getMessage(),null);
+        }
+    }
+
+
+
+}

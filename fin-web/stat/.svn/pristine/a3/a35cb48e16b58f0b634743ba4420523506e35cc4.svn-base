@@ -1,0 +1,82 @@
+import {
+    apiQueryFive,
+    apiQueryTeamEventById3,
+    apiw
+} from '../../../../api/stat-warning/warning-indicatorRanges/indicatorRangesApi.js';
+import config from '@/config';
+
+const indicatorRangesEdit = {
+    state: {
+        teData: {},
+        hData: [],
+        teamMsg: [],
+        loading: false,
+        pageNo: 1, // 当前页码
+        pageSize: config.pageSize, // 每页记录数
+        isSuccess: true,
+        total: 0, // 总记录数
+        pages: 0// 总页数
+    },
+    actions: {
+        handelQueryEventById ({ commit }, queryView) {
+            commit('sendin');
+            return new Promise((resolve, reject) => {
+                apiQueryTeamEventById3(queryView).then(res => {
+                    commit('setVi', res);
+                    commit('success');
+                    resolve();
+                }).catch(err => {
+                    commit('success');
+                    reject(err);
+                });
+            });
+        },
+        handelFive ({ commit }) {
+            commit('sendin');
+            return new Promise((resolve, reject) => {
+                apiQueryFive().then(res => {
+                    commit('setew', res);
+                    commit('success');
+                    resolve();
+                }).catch(err => {
+                    commit('success');
+                    reject(err);
+                });
+            });
+        },
+        handleEditS ({ commit }, formQueryData) {
+            commit('sendin');
+            return new Promise((resolve, reject) => {
+                apiw(formQueryData).then(res => {
+                    commit('setMsg', res);
+                    commit('success');
+                    resolve();
+                }).catch(err => {
+                    commit('success');
+                    reject(err);
+                });
+            });
+        }
+    },
+    mutations: {
+        setew (state, data) {
+            state.hData = data;
+        },
+        setVi (state, data) {
+            state.teData = data.result;
+            state.teamEventEditMsg = data.msg;
+        },
+
+        setMsg (state, data) {
+            state.teamMsg = data.msg;
+            state.isSuccess = data.isSuccess;
+        },
+        sendin (state) {
+            state.loading = true;
+        },
+        success (state) {
+            state.loading = false;
+        }
+    }
+};
+export default indicatorRangesEdit;

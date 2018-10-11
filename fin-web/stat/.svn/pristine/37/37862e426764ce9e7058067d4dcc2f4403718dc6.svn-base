@@ -1,0 +1,350 @@
+<style lang="less">
+    @import '../../../styles/common.less';
+</style>
+<template>
+    <div>
+        <Form ref="tah" :rules="ruleValidate" :model="tah"  :label-width="100">
+            <Card>
+                <p slot="title">
+                    <Icon type="search"></Icon>
+                    指标基本信息
+                </p>
+                <Row>
+                    <Col span="8" offset="2" prop="typecode">
+                        <FormItem label="指标类型:">
+                            <Input  v-model="tah.indicators.indicatorTypes.name" style="width:200px" disabled></Input>
+                        </FormItem>
+                    </Col>
+                    <Col span="8" offset="2" >
+                        <FormItem label="指标名称:"  prop="indicators.indicatorname">
+                            <Input  v-model="tah.indicators.indicatorname" style="width:200px" disabled></Input>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span="8" offset="2">
+                        <FormItem label="指标代码:" prop="indicators.indicatorcode">
+                            <Input   v-model="tah.indicators.indicatorcode" style="width:200px" disabled></Input>
+                        </FormItem>
+                    </Col>
+                    <Col span="8" offset="2">
+                        <FormItem label="是否预警:" prop="isalert">
+                            <Input  v-model="tah.indicators.alertflag=== '0' ? '否' : tah.indicators.alertflag === '1' ? '是' : ''" style="width:200px" disabled></Input>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span="8" offset="2" >
+                        <FormItem label="上限:" prop="topvalue">
+                            <Input  v-model.number="tah.topvalue" type="number" style="width:200px" ></Input>
+                        </FormItem>
+                    </Col>
+                    <Col span="8" offset="2" >
+                        <FormItem label="下限:" prop="lowervalue">
+                            <Input   v-model.number="tah.lowervalue" type="number" style="width:200px" ></Input>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span="8" offset="2">
+                        <FormItem label="区域范围:" prop="areatype" >
+                            <Select v-model="tah.areatype" style="width:200px" @on-change="selArea($event)">
+                                <Option v-for="item in areaType1" :value="item.value" :key="item.value" >
+                                    {{ item.label}}
+                                </Option>
+                            </Select>
+                        </FormItem>
+                    </Col>
+                     <Col span="8" offset="2">
+                        <FormItem label="区域:" prop="areaname">
+                            <Select id='myarea' v-model="tah.areacode" style="width:200px">
+                                <Option v-for="item in gData" :value="item.value"  :key="item.value">{{ item.name
+                                    }}
+                                </Option>
+                            </Select>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span="8" offset="2">
+                        <FormItem label="维度类别:" prop="dimtype">
+                            <Select v-model="tah.dimtype" style="width:200px"  @on-change="selDim($event)">
+                                <Option v-for="item in DimType1" :value="item.value" :key="item.value" >
+                                    {{ item.label}}
+                                </Option>
+                            </Select>
+                        </FormItem>
+                    </Col>
+                    <Col span="8" offset="2">
+                        <FormItem label="维度代码:" prop="dimname">
+                            <Select id='mydim' v-model="tah.dimcode" style="width:200px">
+                                <Option v-for="item in gData1" :value="item.value"  :key="item.value">{{ item.name
+                                    }}
+                                </Option>
+                            </Select>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span="8" offset="2">
+                        <FormItem label="信号灯:" prop="signallamp">
+                            <Select v-model="tah.signallamp" style="width:200px">
+                                <Option v-for="item in cityList3" :value="item.value" :key="item.value" >
+                                    {{ item.label}}
+                                </Option>
+                            </Select>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span="8" offset="2">
+                        <FormItem label="备注:" prop="remark">
+                            <Input type="textarea" placeholder="请输入备注" maxlength="300" v-model="tah.remark" style="width:710px"></Input>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span="4" offset="9">
+                        <Button type="warning" icon="checkmark" @click="EditSubToRev('tah')" :loading="loading">修改</Button>
+                    </Col>
+                    <Col span="4" >
+                        <Button type="primary" icon="reply" @click.prevent="pageBack">返回</Button>
+                    </Col>
+                </Row>
+            </Card>
+        </Form>
+    </div>
+</template>
+<script>
+    import { mapActions, mapState } from 'vuex';
+    import { getUserCookie, formatDate, resetWorkHeight} from '@/libs/util.js';
+    export default{
+        name: 'indicatorRangesEdit',
+        data () {
+            // const validateNumber = (rule, value, callback) => {
+            //     // var reg = /([1-9]+[0-9]*|0)(\\.[\\d]+)?/;
+            //     var reg = /^(?:(?!0)\d*|0|\s*)(?:\.\d+)?$/;
+            //     console.log(rule);
+            //     console.log(value);
+            //     console.log(typeof value);
+            //     if (reg.test(value)) {
+            //     // if (isNaN(value)) {
+            //         callback();
+            //     } else {
+            //         callback(new Error('请输入数字'));
+            //     }
+            // };
+            // const validatePatmentEndCheck = (rule, value, callback) => {
+            //     if (value.length > 265) {
+            //         callback(new Error('事项内容最大长度265!'));
+            //     }
+            //     callback();
+            // };
+            return {
+                ruleValidate: {
+                    // lowervalue: [
+                    //     { required: true, type: 'number', message: '请输入数字!', trigger: 'blur' }
+                    // ],
+                    // topvalue: [
+                    //     {validator: validateNumber, trigger: 'blur'}
+                    // ]
+                    signallamp: [
+                        { required: true, message: '请选择信号灯!', trigger: 'change' }
+                    ]
+                },
+                cityList: [{
+                    value: '1',
+                    label: '是'
+                },
+                {
+                    value: '0',
+                    label: '否'
+                }],
+                cityList3: [{
+                    value: 'G',
+                    label: '绿'
+                },
+                {
+                    value: 'Y',
+                    label: '黄'
+                },
+                {
+                    value: 'R',
+                    label: '红'
+                }
+                ],
+                areaType1: [{
+                    value: '公司',
+                    label: '公司'
+                },
+                {
+                    value: '区域',
+                    label: '区域'
+                },
+                {
+                    value: 'ALL',
+                    label: 'ALL'
+                }
+                ],
+                DimType1: [{
+                    value: '品牌',
+                    label: '品牌'
+                },
+                {
+                    value: 'ALL',
+                    label: 'ALL'
+                }
+                ]
+            };
+        },
+        computed: {
+            ...mapState({
+                loading: ({indicatorRangesEdit}) => indicatorRangesEdit.loading,
+                tah: ({indicatorRangesEdit}) => indicatorRangesEdit.tah,
+                gData: ({indicatorRangesEdit}) => indicatorRangesEdit.gData,
+                gData1: ({indicatorRangesEdit}) => indicatorRangesEdit.gData1,
+                isSuccess: ({indicatorRangesEdit}) => indicatorRangesEdit.isSuccess,
+                teamMsg: ({indicatorRangesEdit}) => indicatorRangesEdit.teamMsg,
+                msg: ({indicatorRangesAdd}) => indicatorRangesAdd.msg,
+                isSuccess1: ({indicatorRangesAdd}) => indicatorRangesAdd.isSuccess
+            })
+        },
+        methods: {
+            selArea () {
+                this.tah.areacode = '';
+                console.log(this.gData);
+                if (this.tah.areatype === '区域') {
+                    this.tah.code = 'Zone';
+                    this.tah.flag = 0;
+                    this.handelQuery5(this.tah).then(res => {
+                    });
+                } else if (this.tah.areatype === '公司') {
+                    this.tah.code = 'Company';
+                    this.tah.flag = 0;
+                    this.handelQuery5(this.tah).then(res => {
+                    });
+                } else if (this.tah.areatype === 'ALL') {
+                    this.$store.state.indicatorRangesEdit.gData = [{
+                        value: 'ALL',
+                        name: 'ALL'
+                    }];
+                }
+            },
+            selDim () {
+                this.tah.dimcode = '';
+                if (this.tah.dimtype === '品牌') {
+                    this.tah.code = 'CarBrand';
+                    this.tah.flag = 0;
+                    this.handelData9(this.tah).then(res => {
+                    });
+                } else if (this.tah.dimtype === 'ALL') {
+                    this.$store.state.indicatorRangesEdit.gData1 = [{
+                        value: 'ALL',
+                        name: 'ALL'
+                    }];
+                }
+            },
+            ...mapActions([
+                'handelQueryEventById',
+                'handleEditS',
+                'handelQuery5',
+                'handelData9',
+                'handelIntId'
+            ]),
+            init () {
+                this.tah.areacode = '';
+                this.tah.dimcode = '';
+                this.queryTeamEventEditById(this.$route.query.id);
+                if (this.tah.areatype === '区域') {
+                    this.tah.code = 'Zone';
+                    this.tah.flag = 0;
+                    this.handelQuery5(this.tah).then(res => {
+                    });
+                } else if (this.tah.areatype === '公司') {
+                    this.tah.code = 'Company';
+                    this.tah.flag = 0;
+                    this.handelQuery5(this.tah).then(res => {
+                    });
+                } else if (this.tah.areatype === 'ALL') {
+                    // this.tah.areacode = '';
+                    this.$store.state.indicatorRangesEdit.gData = [{
+                        value: 'ALL',
+                        name: 'ALL'
+                    }];
+                }
+                if (this.tah.dimtype === '品牌') {
+                    this.tah.code = 'CarBrand';
+                    this.tah.flag = 0;
+                    this.handelData9(this.tah).then(res => {
+                    });
+                } else if (this.tah.dimtype === 'ALL') {
+                    // this.tah.dimcode = '';
+                    this.$store.state.indicatorRangesEdit.gData1 = [{
+                        value: 'ALL',
+                        name: 'ALL'
+                    }];
+                }
+                console.log(this.tah);
+            },
+            queryTeamEventEditById (id) {
+                this.handelQueryEventById(id).then(res => {
+                });
+                console.log(this.tah);
+            },
+            updateData () {
+                const user = getUserCookie();
+                this.tah.createName = user.name;
+                this.tah.modifier = user.id;
+                this.tah.modifyTime = formatDate(new Date(), 'yyyy-MM-dd');
+                console.log(document.getElementById('myarea').innerText);
+                console.log(document.getElementById('mydim').innerText);
+                if (document.getElementById('myarea').innerText.split('\n')[0] === '请选择') {
+                    this.tah.areaname = '';
+                } else {
+                    this.tah.areaname = document.getElementById('myarea').innerText.split('\n')[0];
+                }
+                if (document.getElementById('mydim').innerText.split('\n')[0] === '请选择') {
+                    this.tah.dimname = '';
+                } else {
+                    this.tah.dimname = document.getElementById('mydim').innerText.split('\n')[0];
+                }
+                console.log(this.tah.dimcode);// 此数据提交
+                console.log(this.tah.areacode);// 此数据提交
+                console.log(this.tah);// 此数据提交
+                this.handleEditS(this.tah).then(res => {
+                    if (this.isSuccess) {
+                        this.$Modal.success({
+                            title: '修改',
+                            content: this.teamMsg,
+                            onOk: () => {
+                                this.$router.push({name: 'indicatorRangesList'});
+                            }
+                        });
+                    } else {
+                        this.$Modal.error({
+                            title: '提示',
+                            content: this.teamMsg
+                        });
+                    }
+                });
+            },
+            EditSubToRev (name) { // 提交审核
+                this.$refs[name].validate((valid) => {
+                    if (valid) {
+                        this.updateData();
+                    } else {
+                        this.$Message.error('验证错误!');
+                    }
+                });
+            },
+            pageBack () {
+                this.$router.push({name: 'indicatorRangesList'});
+            }
+        },
+        mounted () {
+            this.init();
+        }
+    };
+</script>
+
+

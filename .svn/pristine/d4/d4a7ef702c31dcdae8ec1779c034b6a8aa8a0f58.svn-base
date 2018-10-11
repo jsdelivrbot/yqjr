@@ -1,0 +1,328 @@
+<style lang="less">
+    @import '../../../styles/common.less';
+</style>
+<template>
+    <div>
+        <Row>
+            <Card>
+                <p slot="title">
+                    <Icon type="search"></Icon>
+                    查询
+                </p>
+                <Form ref="formValidate" :model="formValidate" :label-width="100" :rules="ruleValidate">
+                    <Row>
+                        <Col span="8" offset="2">
+                            <FormItem label="活动代码:" prop="activeCode">
+                                <!--<Input v-model="formValidate.activeCode" />-->
+                                <Select :label-in-value="true" v-model="formValidate.activeCode" filterable remote :remote-method="searchActiveCode" @on-change='getActiveName' :loading="loading" style="width:100%" placeholder="请输入活动代码|自动搜索" >
+                                    <Option v-for="item in activeCodeList" :key="item.value" :label="item.value" :value="item.value">{{ item.value }}</Option>
+                                </Select>
+                            </FormItem>
+                        </Col>
+                        <Col span="8" offset="2">
+                            <FormItem label="活 动 名 称:">
+                                <!--<Input v-model="formValidate.activeName" disabled/>-->
+                                <Select :label-in-value="true" v-model="formValidate.activeName" placeholder="" disabled>
+                                    <Option v-for="item in activeCodeList" :key="item.value" :label="item.label" :value="item.value">{{ item.label }}</Option>
+                                </Select>
+                            </FormItem>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col span="8" offset="2">
+                            <FormItem label="活 动 品 牌:">
+                                <!--<Input v-model="formValidate.brandsCode" style="width: 100%"></Input>-->
+                                <Select v-model="formValidate.brandsCode" style="width:100%" :loading="loading" @on-change="searchSerie">
+                                    <Option v-for="brands in brandsCodeList" :value="brands.value" :key="brands.value">{{ brands.label }}</Option>
+                                </Select>
+                            </FormItem>
+                        </Col>
+                        <Col span="8" offset="2">
+                            <FormItem label="活 动 区 域:">
+                                <Input v-model="formValidate.largeAreaName" style="width: 100%"></Input>
+                            </FormItem>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col span="8" offset="2">
+                            <FormItem label="活动子品牌:">
+                                <!--<Input v-model="formValidate.seriesCode" />-->
+                                <Select v-model="formValidate.seriesCode" style="width:100%" @on-change="searchCarBrand">
+                                    <Option v-for="series in seriesCodeList" :value="series.value" :key="series.value">{{ series.label }}</Option>
+                                </Select>
+                            </FormItem>
+                        </Col>
+                        <Col span="8" offset="2">
+                            <FormItem label="活动经销商:">
+                                <Input v-model="formValidate.distributorName" />
+                            </FormItem>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col span="8" offset="2">
+                            <FormItem label="活 动 车 型:">
+                                <!--<Input v-model="formValidate.carBrandType" />-->
+                                <Select v-model="formValidate.carBrandType" style="width:100%" >
+                                    <Option v-for="carBrand in carBrandTypeList" :value="carBrand.value" :key="carBrand.value">{{ carBrand.label }}</Option>
+                                </Select>
+                            </FormItem>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col span="4" offset="9">
+                            <Button type="primary" icon="search" @click="searchDate('formValidate')">查询</Button>
+                        </Col>
+                        <Col span="4">
+                            <Button icon="close" @click="cleanData">重置</Button>
+                        </Col>
+                    </Row>
+                </Form>
+            </Card>
+        </Row>
+        <Row class="margin-top-10">
+            <Card>
+                <p slot="title">
+                    <Icon type="search"></Icon>
+                    表格数据
+                </p>
+                <a href="#" slot="extra" @click.prevent="exportExcel">
+                    <Icon type="ios-cloud-download"></Icon>
+                    导出数据
+                </a>
+                <Table :data="tableDate"  :columns="tableColumns"  :loading="loading" ref="tableExcel" class="margin-top-10"></Table>
+                <div style="margin: 10px;overflow: hidden">
+                    <div style="float: right;">
+                        <Page :total="records" :current="pageNo" :page-size="pageSize" size="small" @on-change="changePage" @on-page-size-change="pageSizeChange" show-total show-sizer></Page>
+                    </div>
+                </div>
+            </Card>
+        </Row>
+        <a id="hrefToExportTable" style="postion: absolute;left: -10px;top: -10px;width: 0px;height: 0px;"></a>
+    </div>
+</template>
+
+<script>
+    import table2excel from '@/libs/table2excel.js';
+    import {resetWorkHeight} from '../../../libs/util';
+    import { mapActions, mapState } from 'vuex';
+    export default {
+        name: 'activeMatchDetailList',
+        data () {
+            return {
+                formValidate: {
+                    activeCode: '',
+                    activeName: '',
+                    brandsCode: '',
+                    largeAreaName: '',
+                    seriesCode: '',
+                    distributorName: '',
+                    carBrandType: '',
+                    pageInfo: {
+                        pageSize: 10,
+                        pageNo: 1
+                    }
+                },
+                formValidate2: {
+                    activeCode: ''
+                },
+                ruleValidate: {
+                    activeCode: [
+                        {required: true, message: '活动代码不能为空，请输入活动代码查询!', trigger: 'change'}
+                    ]
+                },
+                tableColumns: [
+                    {
+                        title: '活动代码',
+                        key: 'businessCode',
+                        fixed: 'left',
+                        align: 'center',
+                        width: 150
+                    },
+                    {
+                        title: '活动名称',
+                        key: 'businessName',
+                        align: 'center',
+                        width: 150
+                    },
+                    {
+                        title: '归属区域名称',
+                        key: 'largeAreaName',
+                        align: 'center',
+                        width: 150
+                    },
+                    {
+                        title: '活动经销商',
+                        key: 'distributorName',
+                        align: 'center',
+                        width: 150
+                    },
+                    {
+                        title: '活动品牌',
+                        key: 'brandsName',
+                        align: 'center',
+                        width: 150
+                    },
+                    {
+                        title: '活动子品牌',
+                        key: 'seriesName',
+                        align: 'center',
+                        width: 150
+                    },
+                    {
+                        title: '活动车型',
+                        key: 'carBrandTypeName',
+                        align: 'center',
+                        width: 150
+                    },
+                    {
+                        title: '贷款金额',
+                        key: 'nloanMoney',
+                        align: 'center',
+                        width: 150
+                    },
+                    {
+                        title: '放款日期',
+                        key: 'dfactstartDate',
+                        align: 'center',
+                        width: 150
+                    },
+                    {
+                        title: '营销活动',
+                        key: 'nactivitiesName',
+                        align: 'center',
+                        width: 150
+                    },
+                    {
+                        title: '金融产品',
+                        key: 'ndlrbizTypeName',
+                        align: 'center',
+                        width: 150
+                    },
+                    {
+                        title: '业务模式',
+                        key: 'nbizTypeName',
+                        align: 'center',
+                        width: 150
+                    },
+                    {
+                        title: '信贷产品',
+                        key: 'ngetinterestTypeName',
+                        align: 'center',
+                        width: 150,
+                        fixed: 'right'
+                    }
+                ],
+                excelFileName: '业务数据明细导出'
+            };
+        },
+        computed: {
+            ...mapState({
+                pageNo: ({activeMatchDetailList}) => activeMatchDetailList.pageNo,
+                pageSize: ({activeMatchDetailList}) => activeMatchDetailList.pageSize,
+                tableDate: ({activeMatchDetailList}) => activeMatchDetailList.activeMatchVoDate,
+                total: ({activeMatchDetailList}) => activeMatchDetailList.total,
+                records: ({activeMatchDetailList}) => activeMatchDetailList.records,
+                loading: ({activeMatchDetailList}) => activeMatchDetailList.loading,
+                brandsCodeList: ({activeMatchDetailList}) => activeMatchDetailList.brandsCodeList,
+                seriesCodeList: ({activeMatchDetailList}) => activeMatchDetailList.seriesCodeList,
+                carBrandTypeList: ({activeMatchDetailList}) => activeMatchDetailList.carBrandTypeList,
+                activeCodeList: ({activeMatchDetailList}) => activeMatchDetailList.activeCodeList,
+                isSuccess: ({activeMatchDetailList}) => activeMatchDetailList.isSuccess,
+                msg: ({activeMatchDetailList}) => activeMatchDetailList.msg
+            })
+        },
+        methods: {
+            init () {
+                this.searchBrandsCodeList();
+            },
+            ...mapActions([
+                'handleSearchDate',
+                'selectBrandsCodeList',
+                'searchSeriesCodeList',
+                'searchCarBrandList',
+                'searchActiveCodeList',
+                'handleDemoList'
+            ]),
+            /**
+             * 点击按钮查询
+             */
+            searchDate (name) {
+                this.$refs[name].validate((valid) => {
+                    if (valid) {
+                        this.handleSearchDate(this.formValidate).then(res => {
+                            if (this.isSuccess === true) {
+                                resetWorkHeight();
+                                this.$Message.info('查询成功');
+                            } else {
+                                this.$Message.error('查询失败');
+                            }
+                        });
+                    } else {
+                        this.$Message.error('验证错误');
+                    }
+                });
+            },
+            changePage (newPageNum) {
+                this.formValidate.pageInfo.pageNo = newPageNum;
+                this.handleSearchDate(this.formValidate).then(res => {
+                });
+            },
+            pageSizeChange (newPageSize) {
+                this.formValidate.pageInfo.pageSize = newPageSize;
+                this.handleDemoList(this.searchFormData).then(res => {
+                });
+            },
+            /**
+             * 导出execl
+             */
+            exportExcel () {
+                table2excel.transform(this.$refs.tableExcel, 'hrefToExportTable', this.excelFileName);
+            },
+            /**
+             * 加载活动品牌值
+             */
+            searchBrandsCodeList () {
+                this.selectBrandsCodeList().then(res => {});
+            },
+            /**
+             * 加载活动子品牌
+             */
+            searchSerie (data) {
+                this.searchSeriesCodeList(data).then(res => {});
+            },
+            /**
+             * 加载车型
+             * @param data
+             */
+            searchCarBrand (data) {
+                this.searchCarBrandList(data).then(res => {});
+            },
+            /**
+             * 根据活动代码模糊查询
+             */
+            searchActiveCode (data) {
+                this.searchActiveCodeList(data).then(res => {});
+            },
+            getActiveName (data) {
+                this.formValidate.activeName = data.value;
+            },
+            /**
+             * 重置按钮
+             */
+            cleanData () {
+                window.location.reload();
+            },
+            changeName (data) {
+                console.log(data);
+                this.formatedDate.activeName = data.label;
+            }
+        },
+        mounted () {
+            this.init();
+        }
+    };
+</script>
+
+<style scoped>
+
+</style>

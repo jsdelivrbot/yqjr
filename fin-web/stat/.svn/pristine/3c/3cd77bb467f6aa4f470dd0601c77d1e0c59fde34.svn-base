@@ -1,0 +1,250 @@
+<style lang="less">
+    @import '../../../styles/common.less';
+</style>
+<template>
+    <div>
+        <Form ref="teamEditData" :rules="ruleValidate" :model="teamEditData"  :label-width="100">
+            <Card>
+                <p slot="title">
+                    <Icon type="search"></Icon>
+                    指标基本信息
+                </p>
+                <Row>
+                    <Col span="8" offset="2">
+                        <FormItem label="指标类型:" prop="indicatorname">
+                            <Select v-model="teamEditData.typecode" style="width:200px">
+                                <Option v-for="item in indicatorTypes" :value="item.code" :key="item.value">{{ item.name}}</Option>
+                            </Select>
+                        </FormItem>
+                    </Col>
+                    <Col span="8" offset="2">
+                        <FormItem label="指标代码:" prop="indicatorcode">
+                            <Input  placeholder="请输入指标代码" v-model="teamEditData.indicatorcode" style="width:200px" ></Input>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span="8" offset="2">
+                        <FormItem label="指标对象:" prop="indicatortarget">
+                            <Input  placeholder="请输入指标对象" v-model="teamEditData.indicatortarget" style="width:200px" ></Input>
+                        </FormItem>
+                    </Col>
+                    <Col span="8" offset="2">
+                        <FormItem label="指标名称:" prop="indicatorname">
+                            <Input  placeholder="请输入指标名称" v-model="teamEditData.indicatorname" style="width:200px" ></Input>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span="8" offset="2">
+                        <FormItem label="指标主题:" prop="indicatorcaption">
+                            <Input  placeholder="请输入指标主题" v-model="teamEditData.indicatorcaption" style="width:200px" ></Input>
+                        </FormItem>
+                    </Col>
+                    <Col span="8" offset="2">
+                        <FormItem label="指标小类:" prop="indicatorgroup">
+                            <Input  placeholder="请输入指标小类" v-model="teamEditData.indicatorgroup" style="width:200px" ></Input>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span="8" offset="2">
+                        <FormItem label="指标说明:" prop="indicatorcaption">
+                            <Input  placeholder="请输入指标说明" v-model="teamEditData.indicatordesc" style="width:200px" ></Input>
+                        </FormItem>
+                    </Col>
+                    <Col span="8" offset="2">
+                        <FormItem label="是否预警:" prop="alertflag">
+                            <Select v-model="teamEditData.alertflag" style="width:200px">
+                                <Option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.label }}</Option>
+                            </Select>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span="8" offset="2">
+                        <FormItem label="是否启用:"  prop="enabledflag">
+                            <Select v-model="teamEditData.enabledflag" style="width:200px">
+                                <Option v-for="item in cityList1" :value="item.value" :key="item.value">{{ item.label }}</Option>
+                            </Select>
+                        </FormItem>
+                    </Col>
+                    <Col span="8" offset="2">
+                        <FormItem label="显示顺序:" prop="displayorder">
+                            <Input  placeholder="请输入显示顺序" v-model="teamEditData.displayorder" style="width:200px" ></Input>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span="8" offset="2">
+                        <FormItem label="上级指标:" prop="parentindicatorcode">
+                            <Input  placeholder="请输入上级指标" v-model="teamEditData.parentindicatorcode" style="width:200px" ></Input>
+                        </FormItem>
+                    </Col>
+                    <Col span="8" offset="2">
+                        <FormItem label="归属公司:" prop="comcode">
+                            <Select v-model="teamEditData.comcode" style="width:200px">
+                                <Option v-for="item in teamStatusList" :value="item.label" :key="item.value">{{ item.label }}</Option>
+                            </Select>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span="8" offset="2">
+                        <FormItem label="备注:" prop="remark">
+                            <Input  placeholder="请输入备注" v-model="teamEditData.remark" style="width:200px" ></Input>
+                        </FormItem>
+                    </Col>
+                    <Col span="8" offset="2">
+                        <FormItem label="公式:" prop="calformula">
+                            <Input  placeholder="请输入公式" v-model="teamEditData.calformula" style="width:200px" ></Input>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span="4" offset="9">
+                        <Button type="warning" icon="checkmark" @click="teamEditSubToRev('teamEditData')" :loading="loading">修改</Button>
+                    </Col>
+                    <Col span="4" >
+                        <Button type="primary" icon="reply" @click.prevent="pageBack">返回</Button>
+                    </Col>
+                </Row>
+            </Card>
+        </Form>
+    </div>
+</template>
+<script>
+    import { mapActions, mapState } from 'vuex';
+    import {resetWorkHeight, getUserCookie, formatDate} from '@/libs/util.js';
+    export default{
+        name: 'indicatorEdit',
+        data () {
+            const validatePatmentEndCheck = (rule, value, callback) => {
+                if (value.length > 265) {
+                    callback(new Error('事项内容最大长度265!'));
+                }
+                callback();
+            };
+            return {
+                ruleValidate: {
+                    code: [
+                        { required: true, message: '请输入指标类型代码!', trigger: 'blur' }
+                    ],
+                    name: [
+                        { required: true, message: '请输入指标类型名称!', trigger: 'blur' }
+                    ],
+                    remark: [
+                        { required: true, message: '请输入备注!', trigger: 'blur' },
+                        { validator: validatePatmentEndCheck }
+                    ]
+                },
+                cityList: [{
+                    value: '1',
+                    label: '是'
+                },
+                {
+                    value: '0',
+                    label: '否'
+                }],
+                cityList1: [{
+                    value: 1,
+                    label: '是'
+                },
+                {
+                    value: 0,
+                    label: '否'
+                }],
+                teamLevelList: [{
+                    value: '100',
+                    label: '财务指标'
+                },
+                {
+                    value: '200',
+                    label: '监管指标'
+                },
+                {
+                    value: '300',
+                    label: '风险预警指标'
+                }],
+                teamStatusList: [{
+                    value: '1',
+                    label: '一汽金融公司'
+                }, {
+                    value: '2',
+                    label: '一汽财务公司'
+                },
+                {
+                    value: '3',
+                    label: '一汽租赁公司'
+                }
+                ]
+            };
+        },
+        computed: {
+            ...mapState({
+                loading: ({indicatorEdit}) => indicatorEdit.loading,
+                teamEditData: ({indicatorEdit}) => indicatorEdit.teamEditData,
+                isSuccess: ({indicatorEdit}) => indicatorEdit.isSuccess,
+                teamEditMsg: ({indicatorEdit}) => indicatorEdit.teamEditMsg,
+                indicatorTypes: ({indicatorRangesList}) => indicatorRangesList.indicatorTypes
+            })
+        },
+        methods: {
+            ...mapActions([
+                'handelQueryTeamById',
+                'handleTeamEditSubToRev',
+                'handleIndicatorTypes3'
+            ]),
+            init () {
+                this.queryTeamById(this.$route.query.id);
+                this.searchIndicatorTypes();
+                resetWorkHeight();
+            },
+            queryTeamById (id) {
+                this.handelQueryTeamById(id).then(res => {
+                });
+            },
+            searchIndicatorTypes () {
+                this.handleIndicatorTypes3(this.teamEditData).then(res => {
+                    resetWorkHeight();
+                });
+            },
+            teamEditSubToRev (name) { // 提交审核
+                this.$refs[name].validate((valid) => {
+                    if (valid) {
+                        const user = getUserCookie();
+                        this.teamEditData.createName = user.name;
+                        this.teamEditData.modifier = user.id;
+                        this.teamEditData.modifyTime = formatDate(new Date(), 'yyyy-MM-dd');
+                        console.log(this.teamEditData);// 此数据提交
+                        console.log(this.teamEditData.modifyTime);// 此数据提交
+                        this.handleTeamEditSubToRev(this.teamEditData).then(res => {
+                            if (this.isSuccess) {
+                                this.$Modal.success({
+                                    title: '修改',
+                                    content: this.teamEditMsg,
+                                    onOk: () => {
+                                        this.$router.push({name: 'indicatorList'});
+                                    }
+                                });
+                            } else {
+                                this.$Modal.error({
+                                    title: '提示',
+                                    content: this.teamEditMsg
+                                });
+                            }
+                        });
+                    } else {
+                        this.$Message.error('验证错误!');
+                    }
+                });
+            },
+            pageBack () {
+                this.$router.push({name: 'indicatorList'});
+            }
+        },
+        mounted () {
+            this.init();
+        }
+    };
+</script>

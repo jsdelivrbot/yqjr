@@ -1,0 +1,319 @@
+<style lang="less">
+    @import '../../../styles/common.less';
+</style>
+<template>
+    <div>
+        <Row>
+            <Card>
+                <p slot="title">
+                    <Icon type="search"></Icon>
+                    查询
+                </p>
+                <Form ref="formValidate" :model="searchFormDate" :label-width="100">
+                    <Row>
+                        <Col span="8" offset="2">
+                            <FormItem label="类名称:" >
+                                <Input v-model="searchFormDate.beanName" placeholder="请输入类名称"></Input>
+                            </FormItem>
+                        </Col>
+                        <Col span="8" offset="2">
+                            <FormItem label="方法名称:">
+                                <Input v-model="searchFormDate.methodName" placeholder="请输入方法名称"></Input>
+                            </FormItem>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col span="8" offset="2">
+                            <FormItem label="传入参数:" >
+                                <Input v-model="searchFormDate.params" placeholder="请输入传入参数"></Input>
+                            </FormItem>
+                        </Col>
+                        <Col span="8" offset="2">
+                            <FormItem label="备注:">
+                                <Input v-model="searchFormDate.remark" placeholder="请输入备注"></Input>
+                            </FormItem>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col span="4" offset="9">
+                            <Button type="primary" icon="search" @click="search">查询</Button>
+                        </Col>
+                        <Col span="4">
+                            <Button icon="close" @click="cleanData">重置</Button>
+                        </Col>
+                    </Row>
+                </Form>
+            </Card>
+        </Row>
+        <Row class="margin-top-10">
+            <Card>
+                <p slot="title">
+                    <Icon type="search"></Icon>
+                    表格数据
+                </p>
+                <Row type="flex" justify="end" :gutter="8" >
+                    <Col>
+                        <Button icon="android-add" type="success" @click="add">新增</Button>
+                    </Col>
+                    <Col>
+                        <Button icon="android-close" type="error" @click="del">删除</Button>
+                    </Col>
+                    <Col>
+                        <Button icon="android-arrow-dropright-circle" type="success" @click="runOnce">立即执行</Button>
+                    </Col>
+                    <Col>
+                        <Button icon="android-arrow-dropright" type="success" @click="resume">启动</Button>
+                    </Col>
+                    <Col>
+                        <Button icon="pause" type="warning" @click="pause">暂停</Button>
+                    </Col>
+                </Row>
+                <Table :data="tableData" @on-selection-change='selectionClick' :columns="tableColumns"  :loading="loading" ref="tableExcel" class="margin-top-10"></Table>
+                <div style="margin: 10px;overflow: hidden">
+                    <div style="float: right;">
+                        <Page :total="total" :current="pageNo" :page-size="pageSize" size="small" @on-change="changePage" @on-page-size-change="pageSizeChange" show-total show-sizer></Page>
+                    </div>
+                </div>
+            </Card>
+        </Row>
+        <a id="hrefToExportTable" style="postion: absolute;left: -10px;top: -10px;width: 0px;height: 0px;"></a>
+    </div>
+</template>
+
+<script>
+
+import {resetWorkHeight, isEmpty} from '@/libs/util.js';
+import { mapActions, mapState } from 'vuex';
+export default{
+    name: 'timeSettingList',
+    data () {
+        return {
+            searchFormDate: {
+                pageInfo: {
+                    pageSize: '10',
+                    pageNo: '1'
+                }
+            },
+            tableColumns: [
+                {
+                    type: 'selection',
+                    width: 60,
+                    align: 'center'
+                },
+                {
+                    title: '类名称',
+                    align: 'center',
+                    width: 130,
+                    key: 'beanName'
+                }, {
+                    title: '方法名称',
+                    align: 'center',
+                    key: 'methodName'
+                },
+                {
+                    title: '传入参数',
+                    align: 'center',
+                    key: 'params'
+                },
+                {
+                    title: '备注',
+                    align: 'center',
+                    key: 'remark'
+                },
+                {
+                    title: '状态',
+                    align: 'center',
+                    width: 80,
+                    key: 'status',
+                    render: (h, params) => {
+                        const row = params.row;
+                        return h('div', [
+                            h('div', row.status === 0 ? '正常' : row.status === 1 ? '暂停' : '')
+                        ]);
+                    }
+                },
+                {
+                    title: '运行时间',
+                    align: 'center',
+                    key: 'executionTime'
+                },
+                {
+                    title: '操作',
+                    align: 'center',
+                    render: (h, params) => {
+                        return h('div', [
+                            h('Button', {
+                                props: {
+                                    type: 'warning',
+                                    size: 'small'
+                                },
+                                on: {
+                                    click: () => {
+                                        let routerParam = {id: params.row.id};
+                                        this.$router.push({
+                                            name: 'timeSettingEdit',
+                                            query: routerParam
+                                        });
+                                    }
+                                }
+                            }, '修改')
+                        ]);
+                    }
+                }
+            ],
+            excelFileName: 'data',
+            idArr: []
+        };
+    },
+    computed: {
+        ...mapState({
+            loading: ({timeSettingList}) => timeSettingList.loading,
+            tableData: ({timeSettingList}) => timeSettingList.timeSettingList,
+            pageNo: ({timeSettingList}) => timeSettingList.pageNo,
+            pageSize: ({timeSettingList}) => timeSettingList.pageSize,
+            total: ({timeSettingList}) => timeSettingList.total,
+            pages: ({timeSettingList}) => timeSettingList.pages,
+            msgs: ({timeSettingList}) => timeSettingList.msg
+        })
+    },
+    methods: {
+        ...mapActions([
+            'delTimeSetting',
+            'getTimeSettingList',
+            'pauseTimeSetting',
+            'resumeTimeSetting',
+            'runOnceTimeSetting'
+        ]),
+        /**
+         * 初始化
+         */
+        init () { this.chuShi(); },
+        chuShi () {
+            this.getTimeSettingList(this.searchFormDate).then(res => {});
+        },
+        /**
+         * 点击查询按钮执行查询操作
+         */
+        search () {
+            this.getTimeSettingList(this.searchFormDate).then(res => {
+            });
+        },
+        /**
+         * 页面改变
+         */
+        changePage (index) {
+            this.searchFormDate.pageInfo.pageNo = index;
+            this.getTimeSettingList(this.searchFormDate).then(res => {
+                resetWorkHeight();
+                this.searchFormDate.pageInfo.pageNo = 1;
+            });
+        },
+        /**
+         * 切换每页条数
+         */
+        pageSizeChange (newPageSize) {
+            this.searchFormDate.pageInfo.pageSize = newPageSize;
+            this.getTimeSettingList(this.searchFormDate).then(res => {
+                resetWorkHeight();
+            });
+        },
+        /**
+         * 重置按钮
+         */
+        cleanData () { window.location.reload(); },
+        /**
+         * 添加数据
+         */
+        add () {
+            this.$router.push({name: 'timeSettingAdd'});
+        },
+        /**
+         * 删除数据
+         */
+        del () {
+            if (isEmpty(this.idArr)) {
+                this.$Message.info('请先选择一条数据再进行删除!');
+            } else {
+                this.$Modal.confirm({
+                    title: '删除',
+                    content: '<p>您确定要删除这些数据吗?</p>',
+                    onOk: () => {
+                        this.delTimeSetting(this.idArr).then(res => {
+                            this.$Message.info('删除成功');
+                            this.search();
+                        });
+                    },
+                    onCancel: () => {
+                    }
+                });
+            }
+        },
+        pause () { // 暂停
+            if (isEmpty(this.idArr)) {
+                this.$Message.info('请先选择一条数据再进行暂停!');
+            } else {
+                this.$Modal.confirm({
+                    title: '暂停',
+                    content: '<p>您确定要暂停这些数据吗?</p>',
+                    onOk: () => {
+                        this.pauseTimeSetting(this.idArr).then(res => {
+                            this.$Message.info('暂停成功');
+                            this.search();
+                        });
+                    },
+                    onCancel: () => {
+                    }
+                });
+            }
+        },
+        resume () { // 恢复
+            if (isEmpty(this.idArr)) {
+                this.$Message.info('请先选择一条数据再进行启动!');
+            } else {
+                this.$Modal.confirm({
+                    title: '启动',
+                    content: '<p>您确定要启动这些数据吗?</p>',
+                    onOk: () => {
+                        this.resumeTimeSetting(this.idArr).then(res => {
+                            this.$Message.info('启动成功');
+                            this.search();
+                        });
+                    },
+                    onCancel: () => {
+                    }
+                });
+            }
+        },
+        runOnce () { // 立即执行
+            if (isEmpty(this.idArr)) {
+                this.$Message.info('请先选择一条数据再进行立即执行!');
+            } else {
+                this.$Modal.confirm({
+                    title: '立即执行',
+                    content: '<p>您确定要立即执行这些数据吗?</p>',
+                    onOk: () => {
+                        this.runOnceTimeSetting(this.idArr).then(res => {
+                            this.$Message.info('执行成功');
+                            this.search();
+                        });
+                    },
+                    onCancel: () => {
+                    }
+                });
+            }
+        },
+        selectionClick: function (arr) {
+            var idArr = [];
+            if (!isEmpty(arr)) {
+                for (var i = 0; i < arr.length; i++) {
+                    idArr.push(arr[i].id);
+                }
+            }
+            this.idArr = idArr;
+        }
+    },
+    mounted () {
+        this.init();
+    }
+};
+</script>

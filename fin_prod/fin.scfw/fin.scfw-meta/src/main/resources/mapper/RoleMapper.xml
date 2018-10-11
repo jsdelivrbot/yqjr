@@ -1,0 +1,713 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yqjr.fin.scfw.meta.mapper.RoleMapper">
+
+    <!-- region BaseMapper DO NOT MODIFY!!!  -->
+
+    <sql id="Base_Table_Name">
+        SYS_ROLE
+    </sql>
+
+
+
+    <!-- region BaseResultMap  -->
+    <resultMap id="BaseResultMap" type="com.yqjr.fin.scfw.meta.entity.Role">
+        <result property="id" column="ID"/><!--主键-->
+        <result property="systemId" column="SYSTEM_ID"/><!--所属系统ID-->
+        <result property="name" column="NAME"/><!--角色名称-->
+        <result property="roleType" column="ROLE_TYPE"/><!--角色类型-->
+        <result property="isSys" column="IS_SYS"/><!--是否系统数据-->
+        <result property="useAble" column="USE_ABLE"/><!--是否可用-->
+        <result property="creator" column="CREATOR"/><!--创建人-->
+        <result property="createTime" column="CREATE_TIME"/><!--创建时间-->
+        <result property="modifier" column="MODIFIER"/><!--最后更新人-->
+        <result property="modifyTime" column="MODIFY_TIME"/><!--最后更新时间-->
+        <result property="remarks" column="REMARKS"/><!--备注-->
+        <result property="status" column="STATUS"/><!--有效无效标识-->
+        <result property="enName" column="EN_NAME"/><!--角色英文名-->
+        <result property="roleCode" column="ROLE_CODE"/><!--角色英文名-->
+    </resultMap>
+    <!-- endregion -->
+
+    <!-- region Base_Column_List  -->
+    <sql id="Base_Column_List">
+    ID,SYSTEM_ID,NAME,ROLE_TYPE,IS_SYS,USE_ABLE,CREATOR,CREATE_TIME,MODIFIER,MODIFY_TIME,REMARKS,STATUS,EN_NAME,ROLE_CODE
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_List_Selective  -->
+    <sql id="Base_Column_List_Selective">
+        <trim suffixOverrides=",">
+            <if test="id != null">
+            ID,
+            </if>
+            <if test="systemId != null">
+            SYSTEM_ID,
+            </if>
+            <if test="name != null">
+            NAME,
+            </if>
+            <if test="roleType != null">
+            ROLE_TYPE,
+            </if>
+            <if test="isSys != null">
+            IS_SYS,
+            </if>
+            <if test="useAble != null">
+            USE_ABLE,
+            </if>
+            <if test="creator != null">
+            CREATOR,
+            </if>
+            <if test="createTime != null">
+            CREATE_TIME,
+            </if>
+            <if test="modifier != null">
+            MODIFIER,
+            </if>
+            <if test="modifyTime != null">
+            MODIFY_TIME,
+            </if>
+            <if test="remarks != null">
+            REMARKS,
+            </if>
+            <if test="status != null">
+            STATUS,
+            </if>
+            <if test="enName != null">
+            EN_NAME,
+            </if>
+            <if test="roleCode != null">  
+              ROLE_CODE
+            </if>
+        </trim>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Values  -->
+    <sql id="Base_Column_Values">
+    #{id},
+    #{systemId},
+    #{name},
+    #{roleType},
+    #{isSys},
+    #{useAble},
+    #{creator},
+    #{createTime},
+    #{modifier},
+    #{modifyTime},
+    #{remarks},
+    #{status},
+    #{enName},
+    #{roleCode}
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Values_Selective  -->
+    <sql id="Base_Column_Values_Selective">
+        <trim suffixOverrides=",">
+            <if test="id != null">
+            #{id},
+            </if>
+            <if test="systemId != null">
+            #{systemId},
+            </if>
+            <if test="name != null">
+            #{name},
+            </if>
+            <if test="roleType != null">
+            #{roleType},
+            </if>
+            <if test="isSys != null">
+            #{isSys},
+            </if>
+            <if test="useAble != null">
+            #{useAble},
+            </if>
+            <if test="creator != null">
+            #{creator},
+            </if>
+            <if test="createTime != null">
+            #{createTime},
+            </if>
+            <if test="modifier != null">
+            #{modifier},
+            </if>
+            <if test="modifyTime != null">
+            #{modifyTime},
+            </if>
+            <if test="remarks != null">
+            #{remarks},
+            </if>
+            <if test="status != null">
+            #{status},
+            </if>
+            <if test="enName != null">
+            #{enName},
+            </if>
+                        <if test="roleCode != null">
+            #{roleCode}
+            </if>
+        </trim>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Set_Values  -->
+    <sql id="Base_Column_Set_Values">
+    ID = #{id},
+    SYSTEM_ID = #{systemId},
+    NAME = #{name},
+    ROLE_TYPE = #{roleType},
+    IS_SYS = #{isSys},
+    USE_ABLE = #{useAble},
+    CREATOR = #{creator},
+    CREATE_TIME = #{createTime},
+    MODIFIER = #{modifier},
+    MODIFY_TIME = #{modifyTime},
+    REMARKS = #{remarks},
+    STATUS = #{status},
+    EN_NAME = #{enName},
+    ROLE_CODE=#{roleCode}
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Set_Values_Selective  -->
+    <sql id="Base_Column_Set_Values_Selective">
+        <if test="id != null">
+        ID = #{id},
+        </if>
+        <if test="systemId != null">
+        SYSTEM_ID = #{systemId},
+        </if>
+        <if test="name != null">
+        NAME = #{name},
+        </if>
+        <if test="roleType != null">
+        ROLE_TYPE = #{roleType},
+        </if>
+        <if test="isSys != null">
+        IS_SYS = #{isSys},
+        </if>
+        <if test="useAble != null">
+        USE_ABLE = #{useAble},
+        </if>
+        <if test="creator != null">
+        CREATOR = #{creator},
+        </if>
+        <if test="createTime != null">
+        CREATE_TIME = #{createTime},
+        </if>
+        <if test="modifier != null">
+        MODIFIER = #{modifier},
+        </if>
+        <if test="modifyTime != null">
+        MODIFY_TIME = #{modifyTime},
+        </if>
+        <if test="remarks != null">
+        REMARKS = #{remarks},
+        </if>
+        <if test="status != null">
+        STATUS = #{status},
+        </if>
+        <if test="enName != null">
+        EN_NAME = #{enName},
+        </if>
+         <if test="roleCode != null">
+        ROLE_CODE=#{roleCode}
+        </if>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Where_Selective  -->
+    <sql id="Base_Column_Where_Selective">
+        <if test="id != null">
+            and ID = #{id}
+        </if>
+        <if test="systemId != null">
+            and SYSTEM_ID = #{systemId}
+        </if>
+        <if test="name != null">
+            and NAME = #{name}
+        </if>
+        <if test="roleType != null">
+            and ROLE_TYPE = #{roleType}
+        </if>
+        <if test="isSys != null">
+            and IS_SYS = #{isSys}
+        </if>
+        <if test="useAble != null">
+            and USE_ABLE = #{useAble}
+        </if>
+        <if test="creator != null">
+            and CREATOR = #{creator}
+        </if>
+        <if test="createTime != null">
+            and CREATE_TIME = #{createTime}
+        </if>
+        <if test="modifier != null">
+            and MODIFIER = #{modifier}
+        </if>
+        <if test="modifyTime != null">
+            and MODIFY_TIME = #{modifyTime}
+        </if>
+        <if test="remarks != null">
+            and REMARKS = #{remarks}
+        </if>
+        <if test="status != null">
+            and STATUS = #{status}
+        </if>
+        <if test="enName != null">
+            and EN_NAME = #{enName}
+        </if>
+           <if test="roleCode != null">
+         AND ROLE_CODE=#{roleCode}
+        </if>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Where_Selective_Param1  -->
+    <sql id="Base_Column_Where_Selective_Param1">
+        <if test="param1.id != null">
+            and ID = #{param1.id}
+        </if>
+        <if test="param1.systemId != null">
+            and SYSTEM_ID = #{param1.systemId}
+        </if>
+        <if test="param1.name != null">
+            and NAME = #{param1.name}
+        </if>
+        <if test="param1.roleType != null">
+            and ROLE_TYPE = #{param1.roleType}
+        </if>
+        <if test="param1.isSys != null">
+            and IS_SYS = #{param1.isSys}
+        </if>
+        <if test="param1.useAble != null">
+            and USE_ABLE = #{param1.useAble}
+        </if>
+        <if test="param1.creator != null">
+            and CREATOR = #{param1.creator}
+        </if>
+        <if test="param1.createTime != null">
+            and CREATE_TIME = #{param1.createTime}
+        </if>
+        <if test="param1.modifier != null">
+            and MODIFIER = #{param1.modifier}
+        </if>
+        <if test="param1.modifyTime != null">
+            and MODIFY_TIME = #{param1.modifyTime}
+        </if>
+        <if test="param1.remarks != null">
+            and REMARKS = #{param1.remarks}
+        </if>
+        <if test="param1.status != null">
+            and STATUS = #{param1.status}
+        </if>
+        <if test="param1.enName != null">
+            and EN_NAME = #{param1.enName}
+        </if>
+        <if test="param1.roleCode != null">
+            and ROLE_CODE = #{param1.roleCode}
+        </if>
+      
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Order_By  -->
+    <sql id="Base_Order_By">
+        <bind name="propName" value="sortField"></bind>
+        ORDER BY <include refid="Base_Column_Name" />
+        <choose>
+            <when test="isAscend">
+                ASC
+            </when>
+            <otherwise>
+                DESC
+            </otherwise>
+        </choose>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Name  -->
+    <sql id="Base_Column_Name">
+        <if test='"id" == propName'>
+        ID
+        </if>
+        <if test='"systemId" == propName'>
+        SYSTEM_ID
+        </if>
+        <if test='"name" == propName'>
+        NAME
+        </if>
+        <if test='"roleType" == propName'>
+        ROLE_TYPE
+        </if>
+        <if test='"isSys" == propName'>
+        IS_SYS
+        </if>
+        <if test='"useAble" == propName'>
+        USE_ABLE
+        </if>
+        <if test='"creator" == propName'>
+        CREATOR
+        </if>
+        <if test='"createTime" == propName'>
+        CREATE_TIME
+        </if>
+        <if test='"modifier" == propName'>
+        MODIFIER
+        </if>
+        <if test='"modifyTime" == propName'>
+        MODIFY_TIME
+        </if>
+        <if test='"remarks" == propName'>
+        REMARKS
+        </if>
+        <if test='"status" == propName'>
+        STATUS
+        </if>
+        <if test='"enName" == propName'>
+        EN_NAME
+        </if>
+       <if test='"roleCode" == propName'>
+        ROLE_CODE
+        </if>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Id_Array  -->
+    <sql id="Base_Id_Array">
+        <foreach collection="array" open="(" close=")" separator="," item="id">
+        #{id}
+        </foreach>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Id_List  -->
+    <sql id="Base_Id_List">
+        <foreach collection="list" open="(" close=")" separator="," item="id">
+        #{id}
+        </foreach>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Select_All  -->
+    <sql id="Base_Select_All">
+        select
+        <include refid="Base_Column_List" />
+        from <include refid="Base_Table_Name" />
+    </sql>
+    <!-- endregion -->
+
+    <!-- region selectById  -->
+    <select id="selectById" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        where ID = #{id}
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectByIds  -->
+    <select id="selectByIds" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        where ID in
+        <include refid="Base_Id_List" />
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectAll  -->
+    <select id="selectAll" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectCount  -->
+    <select id="selectCount" resultType="int">
+        select count(*)
+        from <include refid="Base_Table_Name" />
+        <where>
+            <include refid="Base_Column_Where_Selective" />
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region select  -->
+    <select id="select" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Where_Selective" />
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectOne  -->
+    <select id="selectOne" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Where_Selective" />
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectOrderBy  -->
+    <select id="selectOrderBy" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Where_Selective_Param1" />
+        </where>
+        <include refid="Base_Order_By" />
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectByProperty  -->
+    <select id="selectByProperty" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Name" /> = #{propValue}
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectByPropertyIn  -->
+    <select id="selectByPropertyIn" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Name" /> IN
+            <foreach collection="propValues" open="(" close=")" separator="," item="propValue">
+            #{propValue}
+            </foreach>
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region delete  -->
+    <delete id="delete">
+        delete
+        from <include refid="Base_Table_Name" />
+        <where>
+            <include refid="Base_Column_Where_Selective" />
+        </where>
+    </delete>
+    <!-- endregion -->
+
+    <!-- region deleteById  -->
+    <delete id="deleteById">
+        delete
+        from <include refid="Base_Table_Name" />
+        where ID = #{id}
+    </delete>
+    <!-- endregion -->
+
+    <!-- region deleteByIds  -->
+    <delete id="deleteByIds">
+        delete
+        from <include refid="Base_Table_Name" />
+        where ID in
+        <include refid="Base_Id_List" />
+    </delete>
+    <!-- endregion -->
+
+    <!-- region insert  -->
+    <insert id="insert" parameterType="com.yqjr.fin.scfw.meta.entity.Role">
+        <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into <include refid="Base_Table_Name" /> (
+        <include refid="Base_Column_List" />
+        )
+        values (
+        <include refid="Base_Column_Values" />
+        )
+    </insert>
+    <!-- endregion -->
+
+    <!-- region updateById  -->
+    <update id="updateById" parameterType="com.yqjr.fin.scfw.meta.entity.Role">
+        update <include refid="Base_Table_Name" />
+        <set>
+            <include refid="Base_Column_Set_Values" />
+        </set>
+        where ID = #{id}
+    </update>
+    <!-- endregion -->
+
+    <!-- region patchById  -->
+    <update id="patchById" parameterType="com.yqjr.fin.scfw.meta.entity.Role">
+        update <include refid="Base_Table_Name" />
+        <set>
+            <include refid="Base_Column_Set_Values_Selective" />
+        </set>
+        where ID = #{id}
+    </update>
+    <!-- endregion -->
+
+    <!-- endregion BaseMapper -->
+
+    <!-- region generated by CodeRobot  -->
+
+    <!-- region 结果集映射  -->
+    <resultMap id="RoleResult" type="com.yqjr.fin.scfw.meta.entity.Role">
+        <result property="id" column="ID"/><!--主键-->
+        <result property="systemId" column="SYSTEM_ID"/><!--所属系统ID-->
+        <result property="name" column="NAME"/><!--角色名称-->
+        <result property="roleType" column="ROLE_TYPE"/><!--角色类型-->
+        <result property="isSys" column="IS_SYS"/><!--是否系统数据-->
+        <result property="useAble" column="USE_ABLE"/><!--是否可用-->
+        <result property="creator" column="CREATOR"/><!--创建人-->
+        <result property="createTime" column="CREATE_TIME"/><!--创建时间-->
+        <result property="modifier" column="MODIFIER"/><!--最后更新人-->
+        <result property="modifyTime" column="MODIFY_TIME"/><!--最后更新时间-->
+        <result property="remarks" column="REMARKS"/><!--备注-->
+        <result property="status" column="STATUS"/><!--有效无效标识-->
+        <result property="enName" column="EN_NAME"/><!--角色英文名-->
+         <result property="roleCode" column="ROLE_CODE"/><!--角色代码-->
+    </resultMap>
+    <!-- endregion -->
+
+    <!-- 查询条件判断 入参为对象 条件为模糊-->
+    <sql id="queryLikeRole">
+        <if test="role!=null">
+            <if test="id!=null and id!=''">
+                AND ID LIKE CONCAT('%'#{id}'%')<!--主键-->
+            </if>
+            <if test="systemId!=null and systemId!=''">
+                AND SYSTEM_ID LIKE CONCAT('%'#{systemId}'%')<!--所属系统ID-->
+            </if>
+            <if test="name!=null and name!=''">
+                AND NAME LIKE CONCAT('%'#{name}'%')<!--角色名称-->
+            </if>
+            <if test="roleType!=null and roleType!=''">
+                AND ROLE_TYPE LIKE CONCAT('%'#{roleType}'%')<!--角色类型-->
+            </if>
+            <if test="isSys!=null and isSys!=''">
+                AND IS_SYS LIKE CONCAT('%'#{isSys}'%')<!--是否系统数据-->
+            </if>
+            <if test="useAble!=null and useAble!=''">
+                AND USE_ABLE LIKE CONCAT('%'#{useAble}'%')<!--是否可用-->
+            </if>
+            <if test="creator!=null and creator!=''">
+                AND CREATOR LIKE CONCAT('%'#{creator}'%')<!--创建人-->
+            </if>
+            <if test="createTime!=null and createTime!=''">
+                AND CREATE_TIME LIKE CONCAT('%'#{createTime}'%')<!--创建时间-->
+            </if>
+            <if test="modifier!=null and modifier!=''">
+                AND MODIFIER LIKE CONCAT('%'#{modifier}'%')<!--最后更新人-->
+            </if>
+            <if test="modifyTime!=null and modifyTime!=''">
+                AND MODIFY_TIME LIKE CONCAT('%'#{modifyTime}'%')<!--最后更新时间-->
+            </if>
+            <if test="remarks!=null and remarks!=''">
+                AND REMARKS LIKE CONCAT('%'#{remarks}'%')<!--备注-->
+            </if>
+            <if test="status!=null and status!=''">
+                AND STATUS LIKE CONCAT('%'#{status}'%')<!--有效无效标识-->
+            </if>
+            <if test="enName!=null and enName!=''">
+                AND EN_NAME LIKE CONCAT('%'#{enName}'%')<!--角色英文名-->
+            </if>
+            
+            <if test="roleCode!=null and roleCode!=''">
+                ROLE_CODE LIKE CONCAT('%'#{roleCode}'%')<!--角色英文名-->
+            </if>
+        </if>
+    </sql>
+
+    <!-- 按条件模糊查询所有 -->
+    <select id="queryRoleList" parameterType="com.yqjr.fin.scfw.meta.entity.Role"
+            resultMap="RoleResult">
+        SELECT
+        ID,<!--主键-->
+        SYSTEM_ID,<!--所属系统ID-->
+        NAME,<!--角色名称-->
+        ROLE_TYPE,<!--角色类型-->
+        IS_SYS,<!--是否系统数据-->
+        USE_ABLE,<!--是否可用-->
+        CREATOR,<!--创建人-->
+        CREATE_TIME,<!--创建时间-->
+        MODIFIER,<!--最后更新人-->
+        MODIFY_TIME,<!--最后更新时间-->
+        REMARKS,<!--备注-->
+        STATUS,<!--有效无效标识-->
+        EN_NAME,<!--角色英文名-->
+        ROLE_CODE
+        FROM SYS_ROLE
+        <where>
+            <include refid="queryLikeRole"/>
+        </where>
+    </select>
+
+    <!-- 按条件模糊统计所有条数 -->
+    <select id="queryRoleCount" parameterType="com.yqjr.fin.scfw.meta.entity.Role" resultType="int">
+        SELECT
+        count (id)
+        FROM SYS_ROLE
+        <where>
+            <include refid="queryLikeRole"/>
+        </where>
+    </select>
+
+    <!-- 批量删除，入参为数组  -->
+    <delete id="dynamicDelete">
+        delete from SYS_ROLE where id in
+        <foreach collection="array" open="(" close=")" separator="," item="arr">
+            #{arr}
+        </foreach>
+    </delete>
+
+    <!-- 批量删除，入参为list  -->
+    <delete id="dynamicDeleteList">
+        delete from SYS_ROLE where id in
+        <foreach collection="list" open="(" close=")" separator="," item="ids">
+            #{ids}
+        </foreach>
+    </delete>
+
+    <!-- 批量插入 -->
+    <insert id="insertBatch" parameterType="java.util.List">
+        <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into SYS_ROLE
+        (
+        <include refid="Base_Column_List" />
+        )
+        values
+        <foreach collection="list" item="role" index="index" separator=",">
+            (
+            <include refid="Base_Column_Values" />
+            )
+        </foreach>
+    </insert>
+
+    <!-- 插入单条数据，并返回主键ID -->
+    <insert id="saveObj" useGeneratedKeys="true" keyProperty="id"
+            parameterType="com.yqjr.fin.scfw.meta.entity.Role">
+        insert into SYS_ROLE
+        (
+        <include refid="Base_Column_List" />
+        )
+        values
+        (
+        <include refid="Base_Column_Values" />
+        )
+    </insert>
+
+
+	<select id="getRoleByUserId" resultMap="BaseResultMap">
+		select 
+		  <include refid="Base_Column_List" /> 
+		 from sys_role sr
+      where sr.id in
+       ( select spr.role_id from sys_post_role spr where spr.post_id in(
+           select sp.id from sys_post sp where status='1' and   sp.id in(
+             select post_id from sys_user_post sup where sup.user_id=#{userId}
+           )
+         )
+       union all( select sur.role_id from sys_user_role sur where sur.user_id=#{userId})
+       )
+       and status='1' 
+       order by id asc
+	</select>
+</mapper>
+

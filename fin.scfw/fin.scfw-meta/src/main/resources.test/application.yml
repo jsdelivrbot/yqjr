@@ -1,0 +1,61 @@
+management:
+  security:
+    enabled: false
+
+spring:
+    datasource:
+      name: test
+      url: jdbc:oracle:thin:@10.6.200.245:1521:PLD
+      username: meta
+      password: meta
+      type: com.alibaba.druid.pool.DruidDataSource
+      driver-class-name: oracle.jdbc.OracleDriver
+      filters: stat
+      maxActive: 20
+      initialSize: 1
+      maxWait: 60000
+      minIdle: 1
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: select 1 from dual
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      poolPreparedStatements: true
+      maxOpenPreparedStatements: 20
+    redis:
+      cluster:
+        nodes: 10.20.133.85:7000, 10.20.133.85:7002, 10.20.133.85:7003, 10.20.133.85:7004, 10.20.133.85:7005
+    sleuth:
+      sampler:
+        percentage: 1.0
+#   activiti:
+#    database-schema: eco #数据库名称
+#    database-schema-update: none #数据库中没有表时会新建
+#    check-process-definitions: false #是否检测流程定义文件
+#    async-executor-activate: false
+#    async-executor-enabled: false
+mybatis:
+  type-aliases-package: com.yqjr.fin.scfw.meta.entity
+  basepackage: com.yqjr.fin.scfw.meta.mapper
+  mapper-locations: classpath:mapper/**/*.xml
+  xmlLocation: ${mybatis.mapper-locations}
+
+##存储配置
+#fileStorage:
+#  #本地存储
+#  #type: local
+#  #local:
+#  #   dir: c:/storage
+#
+#  #FastDFS配置
+#  type: fastdfs
+#  fastdfs:
+#    connect_timeout_in_seconds: 5
+#    network_timeout_in_seconds: 30
+#    charset: UTF-8
+#    http_anti_steal_token: false
+#    http_secret_key: FastDFS1234567890
+#    http_tracker_http_port: 80
+#    tracker_servers: 10.21.120.82:22122
+

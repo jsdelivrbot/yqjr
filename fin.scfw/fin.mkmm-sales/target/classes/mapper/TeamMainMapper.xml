@@ -1,0 +1,1356 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yqjr.fin.mkmm.sales.mapper.TeamMainMapper">
+
+    <!-- region BaseMapper DO NOT MODIFY!!!  -->
+
+    <sql id="Base_Table_Name">
+        MKMM_TEAM_MAIN
+    </sql>
+
+
+
+    <!-- region BaseResultMap  -->
+    <resultMap id="BaseResultMap" type="com.yqjr.fin.mkmm.sales.entity.TeamMain">
+        <result property="id" column="ID"/><!--序号-->
+        <result property="areaCode" column="AREA_CODE"/><!--归属区域代码-->
+        <result property="areaName" column="AREA_NAME"/><!--归属区域名称-->
+        <result property="teamCode" column="TEAM_CODE"/><!--团队代码-->
+        <result property="teamName" column="TEAM_NAME"/><!--团队名称-->
+        <result property="teamLevel" column="TEAM_LEVEL"/><!--团队级别-->
+        <result property="teamType" column="TEAM_TYPE"/><!--团队类型-->
+        <result property="teamStatus" column="TEAM_STATUS"/><!--有效状态-->
+        <result property="teamLeader" column="TEAM_LEADER"/><!--团队负责人-->
+        <result property="teamPhone" column="TEAM_PHONE"/><!--电话-->
+        <result property="teamZip" column="TEAM_ZIP"/><!--邮编-->
+        <result property="teamAddress" column="TEAM_ADDRESS"/><!--地址-->
+        <result property="teamFax" column="TEAM_FAX"/><!--传真-->
+        <result property="startTime" column="START_TIME"/><!--生效时间-->
+        <result property="createTime" column="CREATE_TIME"/><!--创建时间-->
+        <result property="modifyTime" column="MODIFY_TIME"/><!--修改时间-->
+        <result property="remark" column="REMARK"/><!--备注-->
+        <result property="transcode1" column="TRANSCODE1"/><!--备注1-->
+        <result property="transcode2" column="TRANSCODE2"/><!--备注2-->
+        <result property="transcode3" column="TRANSCODE3"/><!--备注3-->
+        <result property="transcode4" column="TRANSCODE4"/><!--备注4-->
+        <result property="creator" column="CREATOR"/><!--创建人-->
+        <result property="modifier" column="MODIFIER"/><!--修改人-->
+        <result property="reviewId" column="REVIEW_ID"/><!--审核ID-->
+        <result property="company" column="COMPANY"/><!--公司代码-->
+    </resultMap>
+    <!-- endregion -->
+
+    <!-- region Base_Column_List  -->
+    <sql id="Base_Column_List">
+    ID,AREA_CODE,AREA_NAME,TEAM_CODE,TEAM_NAME,TEAM_LEVEL,TEAM_TYPE,TEAM_STATUS,TEAM_LEADER,TEAM_PHONE,TEAM_ZIP,TEAM_ADDRESS,TEAM_FAX,START_TIME,CREATE_TIME,MODIFY_TIME,REMARK,TRANSCODE1,TRANSCODE2,TRANSCODE3,TRANSCODE4,CREATOR,MODIFIER,REVIEW_ID,COMPANY
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_List_Selective  -->
+    <sql id="Base_Column_List_Selective">
+        <trim suffixOverrides=",">
+            <if test="id != null">
+            ID,
+            </if>
+            <if test="areaCode != null">
+            AREA_CODE,
+            </if>
+            <if test="areaName != null">
+            AREA_NAME,
+            </if>
+            <if test="teamCode != null">
+            TEAM_CODE,
+            </if>
+            <if test="teamName != null">
+            TEAM_NAME,
+            </if>
+            <if test="teamLevel != null">
+            TEAM_LEVEL,
+            </if>
+            <if test="teamType != null">
+            TEAM_TYPE,
+            </if>
+            <if test="teamStatus != null">
+            TEAM_STATUS,
+            </if>
+            <if test="teamLeader != null">
+            TEAM_LEADER,
+            </if>
+            <if test="teamPhone != null">
+            TEAM_PHONE,
+            </if>
+            <if test="teamZip != null">
+            TEAM_ZIP,
+            </if>
+            <if test="teamAddress != null">
+            TEAM_ADDRESS,
+            </if>
+            <if test="teamFax != null">
+            TEAM_FAX,
+            </if>
+            <if test="startTime != null">
+            START_TIME,
+            </if>
+            <if test="createTime != null">
+            CREATE_TIME,
+            </if>
+            <if test="modifyTime != null">
+            MODIFY_TIME,
+            </if>
+            <if test="remark != null">
+            REMARK,
+            </if>
+            <if test="transcode1 != null">
+            TRANSCODE1,
+            </if>
+            <if test="transcode2 != null">
+            TRANSCODE2,
+            </if>
+            <if test="transcode3 != null">
+            TRANSCODE3,
+            </if>
+            <if test="transcode4 != null">
+            TRANSCODE4,
+            </if>
+            <if test="creator != null">
+            CREATOR,
+            </if>
+            <if test="modifier != null">
+            MODIFIER,
+            </if>
+            <if test="reviewId != null">
+            REVIEW_ID,
+            </if>
+            <if test="company != null">
+            COMPANY
+            </if>
+        </trim>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Values  -->
+    <sql id="Base_Column_Values">
+     SEQ_MKMM_TEAM_MAIN.nextval,
+    #{areaCode,jdbcType=VARCHAR},
+    #{areaName,jdbcType=VARCHAR},
+    #{teamCode,jdbcType=VARCHAR},
+    #{teamName,jdbcType=VARCHAR},
+    #{teamLevel,jdbcType=VARCHAR},
+    #{teamType,jdbcType=VARCHAR},
+    #{teamStatus,jdbcType=VARCHAR},
+    #{teamLeader,jdbcType=VARCHAR},
+    #{teamPhone,jdbcType=VARCHAR},
+    #{teamZip,jdbcType=VARCHAR},
+    #{teamAddress,jdbcType=VARCHAR},
+    #{teamFax,jdbcType=VARCHAR},
+    #{startTime,jdbcType=TIMESTAMP},
+    #{createTime,jdbcType=TIMESTAMP},
+    #{modifyTime,jdbcType=TIMESTAMP},
+    #{remark,jdbcType=VARCHAR},
+    #{transcode1,jdbcType=VARCHAR},
+    #{transcode2,jdbcType=VARCHAR},
+    #{transcode3,jdbcType=VARCHAR},
+    #{transcode4,jdbcType=VARCHAR},
+    #{creator,jdbcType=INTEGER},
+    #{modifier,jdbcType=INTEGER},
+    #{reviewId,jdbcType=INTEGER},
+    #{company,jdbcType=VARCHAR}
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Values_Selective  -->
+    <sql id="Base_Column_Values_Selective">
+        <trim suffixOverrides=",">
+            <if test="id != null">
+            #{id},
+            </if>
+            <if test="areaCode != null">
+            #{areaCode},
+            </if>
+            <if test="areaName != null">
+            #{areaName},
+            </if>
+            <if test="teamCode != null">
+            #{teamCode},
+            </if>
+            <if test="teamName != null">
+            #{teamName},
+            </if>
+            <if test="teamLevel != null">
+            #{teamLevel},
+            </if>
+            <if test="teamType != null">
+            #{teamType},
+            </if>
+            <if test="teamStatus != null">
+            #{teamStatus},
+            </if>
+            <if test="teamLeader != null">
+            #{teamLeader},
+            </if>
+            <if test="teamPhone != null">
+            #{teamPhone},
+            </if>
+            <if test="teamZip != null">
+            #{teamZip},
+            </if>
+            <if test="teamAddress != null">
+            #{teamAddress},
+            </if>
+            <if test="teamFax != null">
+            #{teamFax},
+            </if>
+            <if test="startTime != null">
+            #{startTime},
+            </if>
+            <if test="createTime != null">
+            #{createTime},
+            </if>
+            <if test="modifyTime != null">
+            #{modifyTime},
+            </if>
+            <if test="remark != null">
+            #{remark},
+            </if>
+            <if test="transcode1 != null">
+            #{transcode1},
+            </if>
+            <if test="transcode2 != null">
+            #{transcode2},
+            </if>
+            <if test="transcode3 != null">
+            #{transcode3},
+            </if>
+            <if test="transcode4 != null">
+            #{transcode4},
+            </if>
+            <if test="creator != null">
+            #{creator},
+            </if>
+            <if test="modifier != null">
+            #{modifier},
+            </if>
+            <if test="reviewId != null">
+            #{reviewId},
+            </if>
+            <if test="company != null">
+            #{company}
+            </if>
+        </trim>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Set_Values  -->
+    <sql id="Base_Column_Set_Values">
+    ID = #{id},
+    AREA_CODE = #{areaCode},
+    AREA_NAME = #{areaName},
+    TEAM_CODE = #{teamCode},
+    TEAM_NAME = #{teamName},
+    TEAM_LEVEL = #{teamLevel},
+    TEAM_TYPE = #{teamType},
+    TEAM_STATUS = #{teamStatus},
+    TEAM_LEADER = #{teamLeader},
+    TEAM_PHONE = #{teamPhone},
+    TEAM_ZIP = #{teamZip},
+    TEAM_ADDRESS = #{teamAddress},
+    TEAM_FAX = #{teamFax},
+    START_TIME = #{startTime},
+    CREATE_TIME = #{createTime},
+    MODIFY_TIME = #{modifyTime},
+    REMARK = #{remark},
+    TRANSCODE1 = #{transcode1},
+    TRANSCODE2 = #{transcode2},
+    TRANSCODE3 = #{transcode3},
+    TRANSCODE4 = #{transcode4},
+    CREATOR = #{creator},
+    MODIFIER = #{modifier},
+    REVIEW_ID = #{reviewId},
+    COMPANY = #{company}
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Set_Values_Selective  -->
+    <sql id="Base_Column_Set_Values_Selective">
+        <if test="id != null">
+        ID = #{id},
+        </if>
+        <if test="areaCode != null">
+        AREA_CODE = #{areaCode,jdbcType=VARCHAR},
+        </if>
+        <if test="areaName != null">
+        AREA_NAME = #{areaName,jdbcType=VARCHAR},
+        </if>
+        <if test="teamCode != null">
+        TEAM_CODE = #{teamCode,jdbcType=VARCHAR},
+        </if>
+        <if test="teamName != null">
+        TEAM_NAME = #{teamName,jdbcType=VARCHAR},
+        </if>
+        <if test="teamLevel != null">
+        TEAM_LEVEL = #{teamLevel,jdbcType=VARCHAR},
+        </if>
+        <if test="teamType != null">
+        TEAM_TYPE = #{teamType,jdbcType=VARCHAR},
+        </if>
+        <if test="teamStatus != null">
+        TEAM_STATUS = #{teamStatus,jdbcType=VARCHAR},
+        </if>
+        <if test="teamLeader != null">
+        TEAM_LEADER = #{teamLeader,jdbcType=VARCHAR},
+        </if>
+        <if test="teamPhone != null">
+        TEAM_PHONE = #{teamPhone,jdbcType=VARCHAR},
+        </if>
+        <if test="teamZip != null">
+        TEAM_ZIP = #{teamZip,jdbcType=VARCHAR},
+        </if>
+        <if test="teamAddress != null">
+        TEAM_ADDRESS = #{teamAddress,jdbcType=VARCHAR},
+        </if>
+        <if test="teamFax != null">
+        TEAM_FAX = #{teamFax,jdbcType=VARCHAR},
+        </if>
+        <if test="startTime != null">
+        START_TIME = #{startTime,jdbcType=TIMESTAMP},
+        </if>
+        <if test="createTime != null">
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+        </if>
+        <if test="modifyTime != null">
+        MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP},
+        </if>
+        <if test="remark != null">
+        REMARK = #{remark,jdbcType=VARCHAR},
+        </if>
+        <if test="transcode1 != null">
+        TRANSCODE1 = #{transcode1,jdbcType=VARCHAR},
+        </if>
+        <if test="transcode2 != null">
+        TRANSCODE2 = #{transcode2,jdbcType=VARCHAR},
+        </if>
+        <if test="transcode3 != null">
+        TRANSCODE3 = #{transcode3,jdbcType=VARCHAR},
+        </if>
+        <if test="transcode4 != null">
+        TRANSCODE4 = #{transcode4,jdbcType=VARCHAR},
+        </if>
+        <if test="creator != null">
+        CREATOR = #{creator,jdbcType=INTEGER},
+        </if>
+        <if test="modifier != null">
+        MODIFIER = #{modifier,jdbcType=INTEGER},
+        </if>
+        <if test="reviewId != null">
+        REVIEW_ID = #{reviewId,jdbcType=INTEGER},
+        </if>
+        <if test="company != null">
+        COMPANY = #{company,jdbcType=VARCHAR}
+        </if>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Where_Selective  -->
+    <sql id="Base_Column_Where_Selective">
+        <if test="id != null and id != ''">
+            and ID = #{id}
+        </if>
+        <if test="areaCode != null and  areaCode != ''">
+            and AREA_CODE = #{areaCode}
+        </if>
+        <if test="areaName != null and areaName != ''">
+            and AREA_NAME LIKE CONCAT(#{areaName},'%')
+        </if>
+        <if test="teamCode != null and teamCode != ''">
+            and TEAM_CODE LIKE CONCAT(#{teamCode},'%')
+        </if>
+        <if test="teamName != null and teamName != ''">
+            and TEAM_NAME LIKE CONCAT(#{teamName},'%')
+        </if>
+        <if test="teamLevel != null and teamLevel != ''">
+            and TEAM_LEVEL = #{teamLevel}
+        </if>
+        <if test="teamType != null and teamType != ''">
+            and TEAM_TYPE = #{teamType}
+        </if>
+        <if test="teamStatus != null and teamStatus != ''">
+            and TEAM_STATUS = #{teamStatus}
+        </if>
+        <if test="teamLeader != null and teamLeader != ''">
+            and TEAM_LEADER = #{teamLeader}
+        </if>
+        <if test="teamPhone != null and teamPhone != ''">
+            and TEAM_PHONE = #{teamPhone}
+        </if>
+        <if test="teamZip != null and teamZip != ''">
+            and TEAM_ZIP = #{teamZip}
+        </if>
+        <if test="teamAddress != null and teamAddress != ''">
+            and TEAM_ADDRESS = #{teamAddress}
+        </if>
+        <if test="teamFax != null and teamFax != ''">
+            and TEAM_FAX = #{teamFax}
+        </if>
+        <if test="startTime != null and startTime != ''">
+            and START_TIME = #{startTime}
+        </if>
+        <if test="createTime != null and createTime != ''">
+            and CREATE_TIME = #{createTime}
+        </if>
+        <if test="modifyTime != null and modifyTime != ''">
+            and MODIFY_TIME = #{modifyTime}
+        </if>
+        <if test="remark != null and remark != ''">
+            and REMARK = #{remark}
+        </if>
+        <if test="transcode1 != null and transcode1 != ''">
+            and TRANSCODE1 = #{transcode1}
+        </if>
+        <if test="transcode2 != null and transcode2 != ''">
+            and TRANSCODE2 = #{transcode2}
+        </if>
+        <if test="transcode3 != null and transcode3 != ''">
+            and TRANSCODE3 = #{transcode3}
+        </if>
+        <if test="transcode4 != null and transcode4 != ''">
+            and TRANSCODE4 = #{transcode4}
+        </if>
+        <if test="creator != null and creator != ''">
+            and CREATOR = #{creator}
+        </if>
+        <if test="modifier != null and modifier != ''">
+            and MODIFIER = #{modifier}
+        </if>
+        <if test="reviewId != null and reviewId != ''">
+            and REVIEW_ID = #{reviewId}
+        </if>
+        <if test="company != null and company != ''">
+            and COMPANY = #{company}
+        </if>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Where_Selective_Param1  -->
+    <sql id="Base_Column_Where_Selective_Param1">
+        <if test="param1.id != null">
+            and ID = #{param1.id}
+        </if>
+        <if test="param1.areaCode != null">
+            and AREA_CODE = #{param1.areaCode}
+        </if>
+        <if test="param1.areaName != null">
+            and AREA_NAME = #{param1.areaName}
+        </if>
+        <if test="param1.teamLevel != null">
+            and TEAM_LEVEL = #{param1.teamLevel}
+        </if>
+        <if test="param1.teamType != null">
+            and TEAM_TYPE = #{param1.teamType}
+        </if>
+        <if test="param1.teamStatus != null">
+            and TEAM_STATUS = #{param1.teamStatus}
+        </if>
+        <if test="param1.teamLeader != null">
+            and TEAM_LEADER = #{param1.teamLeader}
+        </if>
+        <if test="param1.teamPhone != null">
+            and TEAM_PHONE = #{param1.teamPhone}
+        </if>
+        <if test="param1.teamZip != null">
+            and TEAM_ZIP = #{param1.teamZip}
+        </if>
+        <if test="param1.teamAddress != null">
+            and TEAM_ADDRESS = #{param1.teamAddress}
+        </if>
+        <if test="param1.teamFax != null">
+            and TEAM_FAX = #{param1.teamFax}
+        </if>
+        <if test="param1.startTime != null">
+            and START_TIME = #{param1.startTime}
+        </if>
+        <if test="param1.createTime != null">
+            and CREATE_TIME = #{param1.createTime}
+        </if>
+        <if test="param1.modifyTime != null">
+            and MODIFY_TIME = #{param1.modifyTime}
+        </if>
+        <if test="param1.remark != null">
+            and REMARK = #{param1.remark}
+        </if>
+        <if test="param1.transcode1 != null">
+            and TRANSCODE1 = #{param1.transcode1}
+        </if>
+        <if test="param1.transcode2 != null">
+            and TRANSCODE2 = #{param1.transcode2}
+        </if>
+        <if test="param1.transcode3 != null">
+            and TRANSCODE3 = #{param1.transcode3}
+        </if>
+        <if test="param1.transcode4 != null">
+            and TRANSCODE4 = #{param1.transcode4}
+        </if>
+        <if test="param1.creator != null">
+            and CREATOR = #{param1.creator}
+        </if>
+        <if test="param1.modifier != null">
+            and MODIFIER = #{param1.modifier}
+        </if>
+        <if test="param1.reviewId != null">
+            and REVIEW_ID = #{param1.reviewId}
+        </if>
+        <if test="param1.company != null">
+            and COMPANY = #{param1.company}
+        </if>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Order_By  -->
+    <sql id="Base_Order_By">
+        <bind name="propName" value="sortField"></bind>
+        ORDER BY <include refid="Base_Column_Name" />
+        <choose>
+            <when test="isAscend">
+                ASC
+            </when>
+            <otherwise>
+                DESC
+            </otherwise>
+        </choose>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Name  -->
+    <sql id="Base_Column_Name">
+        <if test='"id" == propName'>
+        ID
+        </if>
+        <if test='"areaCode" == propName'>
+        AREA_CODE
+        </if>
+        <if test='"areaName" == propName'>
+        AREA_NAME
+        </if>
+        <if test='"teamCode" == propName'>
+        TEAM_CODE
+        </if>
+        <if test='"teamName" == propName'>
+        TEAM_NAME
+        </if>
+        <if test='"teamLevel" == propName'>
+        TEAM_LEVEL
+        </if>
+        <if test='"teamType" == propName'>
+        TEAM_TYPE
+        </if>
+        <if test='"teamStatus" == propName'>
+        TEAM_STATUS
+        </if>
+        <if test='"teamLeader" == propName'>
+        TEAM_LEADER
+        </if>
+        <if test='"teamPhone" == propName'>
+        TEAM_PHONE
+        </if>
+        <if test='"teamZip" == propName'>
+        TEAM_ZIP
+        </if>
+        <if test='"teamAddress" == propName'>
+        TEAM_ADDRESS
+        </if>
+        <if test='"teamFax" == propName'>
+        TEAM_FAX
+        </if>
+        <if test='"startTime" == propName'>
+        START_TIME
+        </if>
+        <if test='"createTime" == propName'>
+        CREATE_TIME
+        </if>
+        <if test='"modifyTime" == propName'>
+        MODIFY_TIME
+        </if>
+        <if test='"remark" == propName'>
+        REMARK
+        </if>
+        <if test='"transcode1" == propName'>
+        TRANSCODE1
+        </if>
+        <if test='"transcode2" == propName'>
+        TRANSCODE2
+        </if>
+        <if test='"transcode3" == propName'>
+        TRANSCODE3
+        </if>
+        <if test='"transcode4" == propName'>
+        TRANSCODE4
+        </if>
+        <if test='"creator" == propName'>
+        CREATOR
+        </if>
+        <if test='"modifier" == propName'>
+        MODIFIER
+        </if>
+        <if test='"reviewId" == propName'>
+        REVIEW_ID
+        </if>
+        <if test='"company" == propName'>
+        COMPANY
+        </if>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Id_Array  -->
+    <sql id="Base_Id_Array">
+        <foreach collection="array" open="(" close=")" separator="," item="id">
+        #{id}
+        </foreach>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Id_List  -->
+    <sql id="Base_Id_List">
+        <foreach collection="list" open="(" close=")" separator="," item="id">
+        #{id}
+        </foreach>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Select_All  -->
+    <sql id="Base_Select_All">
+        select
+        <include refid="Base_Column_List" />
+        from <include refid="Base_Table_Name" />
+    </sql>
+    <!-- endregion -->
+
+    <!-- region selectById  -->
+    <select id="selectBySearchId" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        where ID = #{id}
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectByIds  -->
+    <select id="selectByIds" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        where ID in
+        <include refid="Base_Id_List" />
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectAll  -->
+    <select id="selectAll" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectCount  -->
+    <select id="selectCount" resultType="int">
+        select count(*)
+        from <include refid="Base_Table_Name" />
+        <where>
+            <include refid="Base_Column_Where_Selective" />
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region select  -->
+    <select id="select" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Where_Selective" />
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectOne  -->
+    <select id="selectOne" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Where_Selective" />
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectOrderBy  -->
+    <select id="selectOrderBy" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Where_Selective_Param1" />
+        </where>
+        <include refid="Base_Order_By" />
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectByProperty  -->
+    <select id="selectByProperty" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Name" /> = #{propValue}
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectByPropertyIn  -->
+    <select id="selectByPropertyIn" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Name" /> IN
+            <foreach collection="propValues" open="(" close=")" separator="," item="propValue">
+            #{propValue}
+            </foreach>
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region delete  -->
+    <delete id="delete">
+        delete
+        from <include refid="Base_Table_Name" />
+        <where>
+            <include refid="Base_Column_Where_Selective" />
+        </where>
+    </delete>
+    <!-- endregion -->
+
+    <!-- region deleteById  -->
+    <delete id="deleteById">
+        delete
+        from <include refid="Base_Table_Name" />
+        where ID = #{id}
+    </delete>
+    <!-- endregion -->
+
+    <!-- region deleteByIds  -->
+    <delete id="deleteByIds">
+        delete
+        from <include refid="Base_Table_Name" />
+        where ID in
+        <include refid="Base_Id_List" />
+    </delete>
+    <!-- endregion -->
+
+    <!-- region insert  -->
+    <insert id="insert" parameterType="com.yqjr.fin.mkmm.sales.entity.TeamMain">
+        insert into <include refid="Base_Table_Name" /> (
+        <include refid="Base_Column_List" />
+        )
+        values (
+        <include refid="Base_Column_Values" />
+        )
+    </insert>
+    <!-- endregion -->
+
+    <!-- region updateById  -->
+    <update id="updateById" parameterType="com.yqjr.fin.mkmm.sales.entity.TeamMain">
+        update <include refid="Base_Table_Name" />
+        <set>
+            <include refid="Base_Column_Set_Values" />
+        </set>
+        where ID = #{id}
+    </update>
+    <!-- endregion -->
+
+    <!-- region patchById  -->
+    <update id="patchById" parameterType="com.yqjr.fin.mkmm.sales.entity.TeamMain">
+        update <include refid="Base_Table_Name" />
+        <set>
+            <include refid="Base_Column_Set_Values_Selective" />
+        </set>
+        where ID = #{id}
+    </update>
+    <!-- endregion -->
+
+    <!-- endregion BaseMapper -->
+
+    <!-- region generated by CodeRobot  -->
+
+    <!-- region 结果集映射  -->
+    <resultMap id="TeamMainResult" type="com.yqjr.fin.mkmm.sales.entity.TeamMain">
+        <result property="id" column="ID"/><!--序号-->
+        <result property="areaCode" column="AREA_CODE"/><!--归属区域代码-->
+        <result property="areaName" column="AREA_NAME"/><!--归属区域名称-->
+        <result property="teamCode" column="TEAM_CODE"/><!--团队代码-->
+        <result property="teamName" column="TEAM_NAME"/><!--团队名称-->
+        <result property="teamLevel" column="TEAM_LEVEL"/><!--团队级别-->
+        <result property="teamType" column="TEAM_TYPE"/><!--团队类型-->
+        <result property="teamStatus" column="TEAM_STATUS"/><!--有效状态-->
+        <result property="teamLeader" column="TEAM_LEADER"/><!--团队负责人-->
+        <result property="teamPhone" column="TEAM_PHONE"/><!--电话-->
+        <result property="teamZip" column="TEAM_ZIP"/><!--邮编-->
+        <result property="teamAddress" column="TEAM_ADDRESS"/><!--地址-->
+        <result property="teamFax" column="TEAM_FAX"/><!--传真-->
+        <result property="startTime" column="START_TIME"/><!--生效时间-->
+        <result property="createTime" column="CREATE_TIME"/><!--创建时间-->
+        <result property="modifyTime" column="MODIFY_TIME"/><!--修改时间-->
+        <result property="remark" column="REMARK"/><!--备注-->
+        <result property="transcode1" column="TRANSCODE1"/><!--备注1-->
+        <result property="transcode2" column="TRANSCODE2"/><!--备注2-->
+        <result property="transcode3" column="TRANSCODE3"/><!--备注3-->
+        <result property="transcode4" column="TRANSCODE4"/><!--备注4-->
+        <result property="creator" column="CREATOR"/><!--创建人-->
+        <result property="modifier" column="MODIFIER"/><!--修改人-->
+        <result property="reviewId" column="REVIEW_ID"/><!--审核ID-->
+        <result property="company" column="COMPANY"/><!--公司代码-->
+    </resultMap>
+    <!-- endregion -->
+
+    <!-- 查询条件判断 入参为对象 条件为模糊-->
+    <sql id="queryLikeTeamMain">
+        <if test="id!=null and id!=''">
+            AND ID LIKE CONCAT(#{id},'%')<!--序号-->
+        </if>
+        <if test="areaCode!=null and areaCode!=''">
+            AND AREA_CODE LIKE CONCAT(#{areaCode},'%')<!--归属区域代码-->
+        </if>
+        <if test="areaName!=null and areaName!=''">
+            AND AREA_NAME LIKE CONCAT(#{areaName},'%')<!--归属区域名称-->
+        </if>
+        <if test="teamCode!=null and teamCode!=''">
+            AND TEAM_CODE LIKE CONCAT(#{teamCode},'%')<!--团队代码-->
+        </if>
+        <if test="teamName!=null and teamName!=''">
+            AND TEAM_NAME LIKE CONCAT(#{teamName},'%')<!--团队名称-->
+        </if>
+        <if test="teamLevel!=null and teamLevel!=''">
+            AND TEAM_LEVEL LIKE CONCAT(#{teamLevel},'%')<!--团队级别-->
+        </if>
+        <if test="teamType!=null and teamType!=''">
+            AND TEAM_TYPE LIKE CONCAT(#{teamType},'%')<!--团队类型-->
+        </if>
+        <if test="teamStatus!=null and teamStatus!=''">
+            AND TEAM_STATUS LIKE CONCAT(#{teamStatus},'%')<!--有效状态-->
+        </if>
+        <if test="teamLeader!=null and teamLeader!=''">
+            AND TEAM_LEADER LIKE CONCAT(#{teamLeader},'%')<!--团队负责人-->
+        </if>
+        <if test="teamPhone!=null and teamPhone!=''">
+            AND TEAM_PHONE LIKE CONCAT(#{teamPhone},'%')<!--电话-->
+        </if>
+        <if test="teamZip!=null and teamZip!=''">
+            AND TEAM_ZIP LIKE CONCAT(#{teamZip},'%')<!--邮编-->
+        </if>
+        <if test="teamAddress!=null and teamAddress!=''">
+            AND TEAM_ADDRESS LIKE CONCAT(#{teamAddress},'%')<!--地址-->
+        </if>
+        <if test="teamFax!=null and teamFax!=''">
+            AND TEAM_FAX LIKE CONCAT(#{teamFax},'%')<!--传真-->
+        </if>
+        <if test="startTime!=null and startTime!=''">
+            AND START_TIME LIKE CONCAT(#{startTime},'%')<!--生效时间-->
+        </if>
+        <if test="createTime!=null and createTime!=''">
+            AND CREATE_TIME LIKE CONCAT(#{createTime},'%')<!--创建时间-->
+        </if>
+        <if test="modifyTime!=null and modifyTime!=''">
+            AND MODIFY_TIME LIKE CONCAT(#{modifyTime},'%')<!--修改时间-->
+        </if>
+        <if test="remark!=null and remark!=''">
+            AND REMARK LIKE CONCAT(#{remark},'%')<!--备注-->
+        </if>
+        <if test="transcode1!=null and transcode1!=''">
+            AND TRANSCODE1 LIKE CONCAT(#{transcode1},'%')<!--备注1-->
+        </if>
+        <if test="transcode2!=null and transcode2!=''">
+            AND TRANSCODE2 LIKE CONCAT(#{transcode2},'%')<!--备注2-->
+        </if>
+        <if test="transcode3!=null and transcode3!=''">
+            AND TRANSCODE3 LIKE CONCAT(#{transcode3},'%')<!--备注3-->
+        </if>
+        <if test="transcode4!=null and transcode4!=''">
+            AND TRANSCODE4 LIKE CONCAT(#{transcode4},'%')<!--备注4-->
+        </if>
+        <if test="creator!=null and creator!=''">
+            AND CREATOR LIKE CONCAT(#{creator},'%')<!--创建人-->
+        </if>
+        <if test="modifier!=null and modifier!=''">
+            AND MODIFIER LIKE CONCAT(#{modifier},'%')<!--修改人-->
+        </if>
+        <if test="reviewId!=null and reviewId!=''">
+            AND REVIEW_ID LIKE CONCAT(#{reviewId},'%')<!--审核ID-->
+        </if>
+        <if test="company!=null and company!=''">
+            AND COMPANY LIKE CONCAT(#{company},'%')<!--修改人-->
+        </if>
+    </sql>
+
+    <!-- 按条件模糊查询所有 -->
+    <select id="queryTeamMainList" parameterType="com.yqjr.fin.mkmm.sales.entity.TeamMain"
+            resultMap="TeamMainResult">
+        SELECT
+        ID,<!--序号-->
+        AREA_CODE,<!--归属区域代码-->
+        AREA_NAME,<!--归属区域名称-->
+        TEAM_CODE,<!--团队代码-->
+        TEAM_NAME,<!--团队名称-->
+        TEAM_LEVEL,<!--团队级别-->
+        TEAM_TYPE,<!--团队类型-->
+        TEAM_STATUS,<!--有效状态-->
+        TEAM_LEADER,<!--团队负责人-->
+        TEAM_PHONE,<!--电话-->
+        TEAM_ZIP,<!--邮编-->
+        TEAM_ADDRESS,<!--地址-->
+        TEAM_FAX,<!--传真-->
+        START_TIME,<!--生效时间-->
+        CREATE_TIME,<!--创建时间-->
+        MODIFY_TIME,<!--修改时间-->
+        REMARK,<!--备注-->
+        TRANSCODE1,<!--备注1-->
+        TRANSCODE2,<!--备注2-->
+        TRANSCODE3,<!--备注3-->
+        TRANSCODE4,<!--备注4-->
+        CREATOR,<!--创建人-->
+        MODIFIER,<!--修改人-->
+        REVIEW_ID,<!--审核ID-->
+        COMPANY<!--公司代码-->
+        FROM MKMM_TEAM_MAIN
+        <where>
+            <include refid="queryLikeTeamMain"/>
+        </where>
+    </select>
+
+    <!-- 按条件模糊统计所有条数 -->
+    <select id="queryTeamMainCount" parameterType="com.yqjr.fin.mkmm.sales.entity.TeamMain" resultType="int">
+        SELECT
+        count (id)
+        FROM MKMM_TEAM_MAIN
+        <where>
+            <include refid="queryLikeTeamMain"/>
+        </where>
+    </select>
+
+    <!-- 批量删除，入参为数组  -->
+    <delete id="dynamicDelete">
+        delete from MKMM_TEAM_MAIN where id in
+        <foreach collection="array" open="(" close=")" separator="," item="arr">
+            #{arr}
+        </foreach>
+    </delete>
+
+    <!-- 批量删除，入参为list  -->
+    <delete id="dynamicDeleteList">
+        delete from MKMM_TEAM_MAIN where id in
+        <foreach collection="list" open="(" close=")" separator="," item="ids">
+            #{ids}
+        </foreach>
+    </delete>
+
+    <!-- 批量插入 -->
+    <insert id="insertBatch" parameterType="java.util.List">
+        insert into MKMM_TEAM_MAIN
+        (
+        <include refid="Base_Column_List" />
+        )
+        values
+        <foreach collection="list" item="teamMain" index="index" separator=",">
+            (
+            <include refid="Base_Column_Values" />
+            )
+        </foreach>
+    </insert>
+    <!--根据TeamCode更新数据-->
+    <update id="patchByTeamCode" parameterType="com.yqjr.fin.mkmm.sales.entity.TeamMain">
+        update <include refid="Base_Table_Name" />
+        <set>
+            <include refid="Base_Column_Set_Values_Selective" />
+        </set>
+        where TEAM_CODE = #{teamCode,jdbcType=VARCHAR}
+    </update>
+
+
+    <!-- **********************************************************************-->
+    <!-- ************* 在此下方为一对一、一对多查询方式 仅供参考***************-->
+    <!-- **********************************************************************-->
+    <!-- 一个博客（BlogInfo） 属于一个作者（Author） ，一个作者（Author） 有多篇文章（Post） -->
+    <!--
+  <resultMap type="com.foo.bean.BlogInfo" id="BlogInfo">
+      <id column="blog_id" property="blogId" />
+      <result column="title" property="title" />
+      <association property="author" column="blog_author_id"
+          javaType="com.foo.bean.Author" select="com.foo.bean.AuthorMapper.selectByPrimaryKey">
+      </association>
+      <collection property="posts" column="blog_id" ofType="com.foo.bean.Post"
+          select="com.foo.bean.PostMapper.selectByBlogId">
+      </collection>
+  </resultMap>
+
+  <select id="queryBlogInfoById" resultMap="BlogInfo" parameterType="java.math.BigDecimal">
+      SELECT
+      B.BLOG_ID,
+      B.TITLE,
+      B.AUTHOR_ID AS BLOG_AUTHOR_ID
+      FROM BLOG B
+      where B.BLOG_ID = 博客ID
+  </select>
+
+          上述方法存在N+1问题
+      它的弊端也比较明显：即所谓的N+1问题。关联的嵌套查询显示得到一个结果集，然后根据这个结果集的每一条记录进行关联查询。
+      现在假设嵌套查询就一个（即resultMap 内部就一个association标签），现查询的结果集返回条数为N，那么关联查询语句将会被执行N次，加上自身返回结果集查询1次，共需要访问数据库N+1次。如果N比较大的话，这样的数据库访问消耗是非常大的！所以使用这种嵌套语句查询的使用者一定要考虑慎重考虑，确保N值不会很大。
+      以上面的例子为例，select 语句本身会返回com.foo.bean.BlogMapper.queryBlogInfoById 条数为1 的结果集，由于它有两条关联的语句查询，它需要共访问数据库 1*（1+1）=3次数据库。
+
+
+       <resultMap type="com.foo.bean.BlogInfo" id="BlogInfo">
+      <id column="blog_id" property="blogId"/>
+      <result column="title" property="title"/>
+      <association property="author" column="blog_author_id" javaType="com.foo.bean.Author">
+          <id column="author_id" property="authorId"/>
+          <result column="user_name" property="userName"/>
+          <result column="password" property="password"/>
+          <result column="email" property="email"/>
+          <result column="biography" property="biography"/>
+      </association>
+      <collection property="posts" column="blog_post_id" ofType="com.foo.bean.Post">
+          <id column="post_id" property="postId"/>
+          <result column="blog_id" property="blogId"/>
+          <result column="create_time" property="createTime"/>
+          <result column="subject" property="subject"/>
+          <result column="body" property="body"/>
+          <result column="draft" property="draft"/>
+      </collection>
+      </resultMap>
+
+
+      <select id="queryAllBlogInfo" resultMap="BlogInfo">
+          SELECT
+           B.BLOG_ID,
+           B.TITLE,
+           B.AUTHOR_ID AS BLOG_AUTHOR_ID,
+           A.AUTHOR_ID,
+           A.USER_NAME,
+           A.PASSWORD,
+           A.EMAIL,
+           A.BIOGRAPHY,
+           P.POST_ID,
+           P.BLOG_ID AS BLOG_POST_ID ,
+             P.CREATE_TIME,
+           P.SUBJECT,
+           P.BODY,
+           P.DRAFT
+      FROM BLOG B
+      LEFT OUTER JOIN AUTHOR A
+        ON B.AUTHOR_ID = A.AUTHOR_ID
+      LEFT OUTER JOIN POST P
+        ON P.BLOG_ID = B.BLOG_ID
+      </select>
+      -->
+
+    <!-- **********************************************************************-->
+    <!-- ************* 此线上方代码自动生成，在此下方编写自定义代码。***************-->
+    <!-- **********************************************************************-->
+
+    <!-- endregion -->
+
+    <resultMap id="PersonTeamVoMap" type="com.yqjr.fin.mkmm.sales.vo.domin.PersonTeamVo">
+        <result property="personCode" column="PERSON_CODE"/><!--人员编号-->
+        <result property="personName" column="PERSON_NAME"/><!--归属区域代码-->
+        <result property="personIdcard" column="PERSON_IDCARD"/><!--归属区域名称-->
+        <result property="personNature" column="PERSON_NATURE"/><!--团队代码-->
+        <result property="personLevel" column="PERSON_LEVEL"/><!--团队名称-->
+        <result property="personJointime" column="PERSON_JOINTIME"/><!--团队级别（01一级，02二级，03三级）-->
+        <result property="personStatus" column="PERSON_STATUS"/><!--团队类型（01普通）-->
+        <result property="startTime" column="START_TIME"/><!--团队类型（01普通）-->
+    </resultMap>
+
+
+    <!-- 综合查询，团队下人员信息 -->
+    <select id="queryPersonByTeamCode" resultMap="PersonTeamVoMap" >
+        select
+            a.PERSON_CODE as PERSON_CODE,a.PERSON_NAME as PERSON_NAME,a.PERSON_IDCARD as PERSON_IDCARD,b.PERSON_NATURE as PERSON_NATURE,b.PERSON_LEVEL as PERSON_LEVEL,b.PERSON_JOINTIME as PERSON_JOINTIME,b.PERSON_STATUS as PERSON_STATUS, b.START_TIME as START_TIME
+        from
+            mkmm_person_main a,mkmm_person_team b
+
+        where
+            a.PERSON_CODE = b.PERSON_CODE
+        and
+            a.company = b.company
+        and
+            b.TEAM_CODE = #{arg0}
+        and
+            a.company = #{arg1}
+    </select>
+
+
+
+    <!-- region 团队维护结果集映射  -->
+    <resultMap id="TeamMainListResult" type="com.yqjr.fin.mkmm.sales.entity.TeamMain">
+        <result property="id" column="ID"/><!--序号-->
+        <result property="areaCode" column="AREA_CODE"/><!--归属区域代码-->
+        <result property="areaName" column="AREA_NAME"/><!--归属区域名称-->
+        <result property="teamCode" column="TEAM_CODE"/><!--团队代码-->
+        <result property="teamName" column="TEAM_NAME"/><!--团队名称-->
+        <result property="teamLevel" column="TEAM_LEVEL"/><!--团队级别-->
+        <result property="teamType" column="TEAM_TYPE"/><!--团队类型-->
+        <result property="teamStatus" column="TEAM_STATUS"/><!--有效状态-->
+        <result property="teamLeader" column="TEAM_LEADER"/><!--团队负责人-->
+        <result property="teamPhone" column="TEAM_PHONE"/><!--电话-->
+        <result property="teamZip" column="TEAM_ZIP"/><!--邮编-->
+        <result property="teamAddress" column="TEAM_ADDRESS"/><!--地址-->
+        <result property="teamFax" column="TEAM_FAX"/><!--传真-->
+        <result property="startTime" column="START_TIME"/><!--生效时间-->
+        <result property="createTime" column="CREATE_TIME"/><!--创建时间-->
+        <result property="modifyTime" column="MODIFY_TIME"/><!--修改时间-->
+        <result property="remark" column="REMARK"/><!--备注-->
+        <result property="transcode1" column="TRANSCODE1"/><!--备注1-->
+        <result property="transcode2" column="TRANSCODE2"/><!--备注2-->
+        <result property="transcode3" column="TRANSCODE3"/><!--备注3-->
+        <result property="transcode4" column="TRANSCODE4"/><!--备注4-->
+        <result property="creator" column="CREATOR"/><!--创建人-->
+        <result property="modifier" column="MODIFIER"/><!--修改人-->
+        <result property="reviewId" column="REVIEW_ID"/><!--审核ID-->
+        <result property="company" column="COMPANY"/><!--公司代码-->
+    </resultMap>
+
+
+    <!-- 团队维护查询 -->
+    <select id="queryTeamMain" resultMap="TeamMainListResult">
+        SELECT
+        ID,<!--序号-->
+        AREA_CODE,<!--归属区域代码-->
+        AREA_NAME,<!--归属区域名称-->
+        TEAM_CODE,<!--团队代码-->
+        TEAM_NAME,<!--团队名称-->
+        TEAM_LEVEL,<!--团队级别-->
+        TEAM_TYPE,<!--团队类型-->
+        CASE WHEN START_TIME IS NOT NULL and START_TIME &lt;= SYSDATE THEN
+          1
+        ELSE
+          0
+        END as TEAM_STATUS,<!--有效状态-->
+        TEAM_LEADER,<!--团队负责人-->
+        TEAM_PHONE,<!--电话-->
+        TEAM_ZIP,<!--邮编-->
+        TEAM_ADDRESS,<!--地址-->
+        TEAM_FAX,<!--传真-->
+        START_TIME,<!--生效时间-->
+        CREATE_TIME,<!--创建时间-->
+        MODIFY_TIME,<!--修改时间-->
+        REMARK,<!--备注-->
+        TRANSCODE1,<!--备注1-->
+        TRANSCODE2,<!--备注2-->
+        TRANSCODE3,<!--备注3-->
+        TRANSCODE4,<!--备注4-->
+        CREATOR,<!--创建人-->
+        MODIFIER,<!--修改人-->
+        REVIEW_ID,<!--审核ID-->
+        COMPANY<!--公司代码-->
+        FROM MKMM_TEAM_MAIN
+        <where>
+            <if test="areaCode!=null and areaCode!=''">
+                AND MKMM_TEAM_MAIN.AREA_CODE LIKE CONCAT(#{areaCode},'%')<!--区域代码-->
+            </if>
+            <if test="areaName!=null and areaName!=''">
+                AND MKMM_TEAM_MAIN.AREA_NAME LIKE CONCAT(#{areaName},'%')<!--区域名称-->
+            </if>
+            <if test="teamCode!=null and teamCode!=''">
+                AND MKMM_TEAM_MAIN.TEAM_CODE LIKE CONCAT(#{teamCode},'%')<!--团队代码-->
+            </if>
+            <if test="teamName!=null and teamName!=''">
+                AND MKMM_TEAM_MAIN.TEAM_NAME LIKE CONCAT(#{teamName},'%')<!--团队名称-->
+            </if>
+            <if test="company!=null and company!=''">
+                AND MKMM_TEAM_MAIN.COMPANY = #{company}          <!--公司-->
+            </if>
+        </where>
+    </select>
+
+
+    <!-- region 综合查询结果集映射  -->
+    <resultMap id="TeamMainAllListResult" type="com.yqjr.fin.mkmm.sales.entity.TeamMain">
+        <result property="id" column="ID"/><!--序号-->
+        <result property="areaCode" column="AREA_CODE"/><!--归属区域代码-->
+        <result property="areaName" column="AREA_NAME"/><!--归属区域名称-->
+        <result property="teamCode" column="TEAM_CODE"/><!--团队代码-->
+        <result property="teamName" column="TEAM_NAME"/><!--团队名称-->
+        <result property="teamLevel" column="TEAM_LEVEL"/><!--团队级别-->
+        <result property="teamType" column="TEAM_TYPE"/><!--团队类型-->
+        <result property="teamStatus" column="TEAM_STATUS"/><!--有效状态-->
+        <result property="teamLeader" column="TEAM_LEADER"/><!--团队负责人-->
+        <result property="teamPhone" column="TEAM_PHONE"/><!--电话-->
+        <result property="teamZip" column="TEAM_ZIP"/><!--邮编-->
+        <result property="teamAddress" column="TEAM_ADDRESS"/><!--地址-->
+        <result property="teamFax" column="TEAM_FAX"/><!--传真-->
+        <result property="startTime" column="START_TIME"/><!--生效时间-->
+        <result property="createTime" column="CREATE_TIME"/><!--创建时间-->
+        <result property="modifyTime" column="MODIFY_TIME"/><!--修改时间-->
+        <result property="remark" column="REMARK"/><!--备注-->
+        <result property="transcode1" column="TRANSCODE1"/><!--备注1-->
+        <result property="transcode2" column="TRANSCODE2"/><!--备注2-->
+        <result property="transcode3" column="TRANSCODE3"/><!--备注3-->
+        <result property="transcode4" column="TRANSCODE4"/><!--备注4-->
+        <result property="creator" column="CREATOR"/><!--创建人-->
+        <result property="modifier" column="MODIFIER"/><!--修改人-->
+        <result property="reviewId" column="REVIEW_ID"/><!--审核ID-->
+        <result property="company" column="COMPANY"/><!--公司代码-->
+    </resultMap>
+
+    <!-- 团队维护查询 -->
+    <select id="queryAllListTeamMain" resultMap="TeamMainAllListResult">
+        SELECT
+        ID,<!--序号-->
+        AREA_CODE,<!--归属区域代码-->
+        AREA_NAME,<!--归属区域名称-->
+        TEAM_CODE,<!--团队代码-->
+        TEAM_NAME,<!--团队名称-->
+        TEAM_LEVEL,<!--团队级别-->
+        TEAM_TYPE,<!--团队类型-->
+        TEAM_STATUS,<!--有效状态-->
+        TEAM_LEADER,<!--团队负责人-->
+        TEAM_PHONE,<!--电话-->
+        TEAM_ZIP,<!--邮编-->
+        TEAM_ADDRESS,<!--地址-->
+        TEAM_FAX,<!--传真-->
+        START_TIME,<!--生效时间-->
+        CREATE_TIME,<!--创建时间-->
+        MODIFY_TIME,<!--修改时间-->
+        REMARK,<!--备注-->
+        TRANSCODE1,<!--备注1-->
+        TRANSCODE2,<!--备注2-->
+        TRANSCODE3,<!--备注3-->
+        TRANSCODE4,<!--备注4-->
+        CREATOR,<!--创建人-->
+        MODIFIER,<!--修改人-->
+        REVIEW_ID,<!--审核ID-->
+        COMPANY<!--公司代码-->
+        FROM MKMM_TEAM_MAIN
+        <where>
+            <if test="company!=null and company!=''">
+                AND MKMM_TEAM_MAIN.COMPANY = #{company}                <!--公司-->
+            </if>
+            <if test="areaCode!=null and areaCode!=''">
+                AND MKMM_TEAM_MAIN.AREA_CODE LIKE CONCAT(#{areaCode},'%')<!--区域代码-->
+            </if>
+            <if test="areaName!=null and areaName!=''">
+                AND MKMM_TEAM_MAIN.AREA_NAME LIKE CONCAT(#{areaName},'%')<!--区域名称-->
+            </if>
+            <if test="teamCode!=null and teamCode!=''">
+                AND MKMM_TEAM_MAIN.TEAM_CODE LIKE CONCAT(#{teamCode},'%')<!--团队代码-->
+            </if>
+            <if test="teamName!=null and teamName!=''">
+                AND MKMM_TEAM_MAIN.TEAM_NAME LIKE CONCAT(#{teamName},'%')<!--团队名称-->
+            </if>
+            <if test="teamLevel!=null and teamLevel!=''">
+                AND MKMM_TEAM_MAIN.TEAM_LEVEL =#{teamLevel,jdbcType=VARCHAR}<!--团队等级-->
+            </if>
+            <if test="teamStatus!=null and teamStatus!=''">
+                AND MKMM_TEAM_MAIN.TEAM_STATUS =#{teamStatus,jdbcType=VARCHAR}<!--团队状态-->
+            </if>
+        </where>
+    </select>
+
+    <select id="selectById" resultMap="BaseResultMap">
+        select
+        ID,AREA_CODE,AREA_NAME,TEAM_CODE,TEAM_NAME,TEAM_LEVEL,TEAM_TYPE,
+        CASE WHEN START_TIME IS NOT NULL and START_TIME &lt;= SYSDATE THEN
+        1
+        ELSE
+        0
+        END as TEAM_STATUS,
+        TEAM_LEADER,TEAM_PHONE,TEAM_ZIP,TEAM_ADDRESS,TEAM_FAX,START_TIME,CREATE_TIME,MODIFY_TIME,REMARK,TRANSCODE1,TRANSCODE2,TRANSCODE3,TRANSCODE4,CREATOR,MODIFIER,REVIEW_ID,COMPANY
+        from <include refid="Base_Table_Name" />
+        where ID = #{id,jdbcType=INTEGER}
+    </select>
+
+    <select id="selectAllTeamStatus" resultMap="BaseResultMap">
+        select <include refid="Base_Column_List"/>
+        from <include refid="Base_Table_Name"/>
+        where team_status='0'
+    </select>
+
+    <select id="selectByCode" resultMap="BaseResultMap" parameterType="String">
+        select
+          <include refid="Base_Column_List"/>
+        from
+          <include refid="Base_Table_Name"/>
+        where team_code=#{arg0}
+    </select>
+
+
+    <sql id="Column_Where_No_Like">
+        <if test="id != null and id != ''">
+            and ID = #{id}
+        </if>
+        <if test="areaCode != null and  areaCode != ''">
+            and AREA_CODE = #{areaCode}
+        </if>
+        <if test="areaName != null and areaName != ''">
+            and AREA_NAME = #{areaName}
+        </if>
+        <if test="teamCode != null and teamCode != ''">
+            and TEAM_CODE = #{teamCode}
+        </if>
+        <if test="teamName != null and teamName != ''">
+            and TEAM_NAME = #{teamName}
+        </if>
+        <if test="teamLevel != null and teamLevel != ''">
+            and TEAM_LEVEL = #{teamLevel}
+        </if>
+        <if test="teamType != null and teamType != ''">
+            and TEAM_TYPE = #{teamType}
+        </if>
+        <if test="teamStatus != null and teamStatus != ''">
+            and TEAM_STATUS = #{teamStatus}
+        </if>
+        <if test="teamLeader != null and teamLeader != ''">
+            and TEAM_LEADER = #{teamLeader}
+        </if>
+        <if test="teamPhone != null and teamPhone != ''">
+            and TEAM_PHONE = #{teamPhone}
+        </if>
+        <if test="teamZip != null and teamZip != ''">
+            and TEAM_ZIP = #{teamZip}
+        </if>
+        <if test="teamAddress != null and teamAddress != ''">
+            and TEAM_ADDRESS = #{teamAddress}
+        </if>
+        <if test="teamFax != null and teamFax != ''">
+            and TEAM_FAX = #{teamFax}
+        </if>
+        <if test="startTime != null and startTime != ''">
+            and START_TIME = #{startTime}
+        </if>
+        <if test="createTime != null and createTime != ''">
+            and CREATE_TIME = #{createTime}
+        </if>
+        <if test="modifyTime != null and modifyTime != ''">
+            and MODIFY_TIME = #{modifyTime}
+        </if>
+        <if test="remark != null and remark != ''">
+            and REMARK = #{remark}
+        </if>
+        <if test="transcode1 != null and transcode1 != ''">
+            and TRANSCODE1 = #{transcode1}
+        </if>
+        <if test="transcode2 != null and transcode2 != ''">
+            and TRANSCODE2 = #{transcode2}
+        </if>
+        <if test="transcode3 != null and transcode3 != ''">
+            and TRANSCODE3 = #{transcode3}
+        </if>
+        <if test="transcode4 != null and transcode4 != ''">
+            and TRANSCODE4 = #{transcode4}
+        </if>
+        <if test="creator != null and creator != ''">
+            and CREATOR = #{creator}
+        </if>
+        <if test="modifier != null and modifier != ''">
+            and MODIFIER = #{modifier}
+        </if>
+        <if test="reviewId != null and reviewId != ''">
+            and REVIEW_ID = #{reviewId}
+        </if>
+        <if test="company != null and company != ''">
+            and COMPANY = #{company}
+        </if>
+    </sql>
+
+    <!-- 根据名称查询团队数量 -->
+    <select id="selectTeamCount" resultType="int" >
+        select count(*)
+        from <include refid="Base_Table_Name" />
+        <where>
+            <include refid="Column_Where_No_Like" />
+        </where>
+
+    </select>
+</mapper>

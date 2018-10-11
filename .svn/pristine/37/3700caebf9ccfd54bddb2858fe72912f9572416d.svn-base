@@ -1,0 +1,107 @@
+package com.yqjr.fin.mkmm.sales.services;
+
+import com.yqjr.fin.mkmm.sales.entity.CommodityAcceptance;
+import com.yqjr.fin.mkmm.sales.entity.CommodityIn;
+import com.yqjr.scfw.common.service.BaseService;
+import com.yqjr.fin.mkmm.sales.entity.CommodityReview;
+import com.yqjr.fin.mkmm.sales.mapper.CommodityReviewMapper;
+import com.yqjr.scfw.common.session.SessionHolder;
+import com.yqjr.scfw.common.session.UserContext;
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.math.BigDecimal;
+import java.util.Date;
+
+@Service
+@Transactional(readOnly = true)
+public class CommodityReviewService extends BaseService<CommodityReviewMapper, CommodityReview, Long> {
+
+    @Autowired
+    private CommodityInService commodityInService;
+    @Autowired
+    private CommodityAcceptanceService commodityAcceptanceService;
+
+
+    @Transactional
+    public void review(Long id, String CommodityStatus) {
+        if("04".equals(CommodityStatus)) {//审核通过
+            CommodityReview commodityReview = new CommodityReview();
+            commodityReview.setId(id);
+            commodityReview.setCommodityStatus("04");
+            commodityReview.setFlag("0");
+            this.updateById(commodityReview);
+            //数据进入入库表
+            commodityReview = this.selectById(id);
+            insertIntoCommodityIn(commodityReview);
+            //更新验收表物料状态
+            Long acceptId = commodityReview.getAcceptanceId();
+            updateCommodityAcceptance(acceptId);
+        } else if ("00".equals(CommodityStatus)) {//审核驳回
+            CommodityReview commodityReview = new CommodityReview();
+            commodityReview.setId(id);
+            commodityReview.setCommodityStatus("00");
+            this.updateById(commodityReview);
+        }
+
+    }
+
+
+    /**
+     * 将数据插入入库表
+     * @param commodityReview
+     */
+    public void insertIntoCommodityIn(CommodityReview commodityReview){
+        UserContext userContext = SessionHolder.getUserContext();
+        CommodityIn commodityIn = new CommodityIn();
+        commodityIn.setCommodityTypeCode(commodityReview.getCommodityTypeCode());
+        commodityIn.setCommodityTypeName(commodityReview.getCommodityTypeName());
+        commodityIn.setCommodityCode(commodityReview.getCommodityCode());
+        commodityIn.setCommodityName(commodityReview.getCommodityName());
+        commodityIn.setAreaCode(commodityReview.getAreaCode());
+        commodityIn.setAreaName(commodityReview.getAreaName());
+        commodityIn.setProjectCode(commodityReview.getProjectCode());
+        commodityIn.setProjectName(commodityReview.getProjectName());
+        commodityIn.setCompany(commodityReview.getCompany());
+        commodityIn.setCustodian(commodityReview.getCustodian());
+        commodityIn.setChecker(userContext.getName());
+        commodityIn.setAcceptanceId(commodityReview.getAcceptanceId());
+        commodityIn.setProvideOrganization(commodityReview.getProvideOrganization());
+        commodityIn.setInNumber(commodityReview.getInNumber());
+        commodityIn.setInUnivalent(commodityIn.getInUnivalent());
+        commodityIn.setAmount(commodityReview.getAmount());
+        commodityIn.setInTime(new Date());
+        commodityIn.setCommodityStatus("00");//已入库
+        commodityInService.insert(commodityIn);
+    }
+
+    /**
+     * 更新验收表物料状态
+     * @param id
+     */
+    public void updateCommodityAcceptance(Long id) {
+        CommodityAcceptance commodityAcceptance = new CommodityAcceptance();
+        commodityAcceptance.setId(id);
+        commodityAcceptance.setAcceptanceStatus("2");
+        commodityAcceptanceService.updateById(commodityAcceptance);
+    }
+
+    /**
+     * 物料入库审核进度处理
+     * @param commodityReview
+     */
+    public void inProcess(CommodityReview commodityReview) {
+        CommodityReview cr = new CommodityReview();
+        Long id = commodityReview.getId();
+        Long number = commodityReview.getInNumber();
+        BigDecimal amount = commodityReview.getAmount();
+        //更新待审核状态
+        cr.setCommodityStatus("02");
+        cr.setId(id);
+        cr.setAmount(amount);
+        cr.setInNumber(number);
+        this.updateById(cr);
+    }
+}

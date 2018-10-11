@@ -1,0 +1,102 @@
+package com.yqjr.fin.fpms.product.bizz;
+
+import com.ritoinfo.framework.evo.common.uitl.BeanUtil;
+import com.ritoinfo.framework.evo.sp.base.model.PageList;
+import com.yqjr.fin.common.base.starter.enums.ServiceResponseEnum;
+import com.yqjr.fin.common.base.starter.exception.BusinessException;
+import com.yqjr.fin.common.base.starter.exception.CommonBizzException;
+import com.yqjr.fin.fpms.product.condition.ProductCondition;
+import com.yqjr.fin.fpms.product.entity.ProductEntity;
+import com.yqjr.fin.fpms.product.dao.ProductDao;
+import com.yqjr.fin.fpms.product.dto.ProductDto;
+import com.yqjr.fin.fpms.product.exception.ProductBizzException;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import com.ritoinfo.framework.evo.sp.base.starter.bizz.BaseMapperBizz;
+import tk.mybatis.mapper.entity.Example;
+import tk.mybatis.mapper.util.Sqls;
+
+import java.security.cert.X509Certificate;
+import java.util.Date;
+
+/**
+* 金融产品主表逻辑处理层，该类为小的Bizz类,
+* 只简单操作对应的Dao（持久）层方法，
+* 具体业务由大的Bizz类实现
+* @Author:         lixue
+* @CreateDate:     2018-08-27 10:49:56
+*/
+@Service
+@Slf4j
+@Transactional(readOnly = true)
+public class ProductBizz extends BaseMapperBizz<ProductDao, ProductEntity, Long,ProductDto> {
+    /**
+     * @Description:金融产品基本信息新增
+     * @Author zengxiaoran
+     * @Date 2018/9/3 10:24
+     * @Param [productDto]
+     * @Return void
+     */
+    public void addProduct(ProductDto productDto){
+        create(productDto);
+    }
+
+    /**
+     * @Description:金融产品删除
+     * @Author zengxiaoran
+     * @Date 2018/9/3 10:53
+     * @Param [productDto]
+     * @Return void
+     */
+    public void deleteProduct(Long id){
+        ProductEntity productEntity = dao.selectByPrimaryKey(id);
+        Integer examineStatusCode =  productEntity.getExamineStatusCode();
+        if (examineStatusCode==4000 || examineStatusCode==1000){
+            productEntity.setFlag(0L);
+            Example example = new Example(productEntity.getClass(),true);
+            example.createCriteria().andEqualTo("id",productEntity.getId());
+            dao.updateByExampleSelective(productEntity,example);
+        } else {
+            throw new CommonBizzException(ServiceResponseEnum.DELETE_FAIL.getMessage());
+        }
+    }
+
+    /**
+     * @Description:金融产品修改
+     * @Author zengxiaoran
+     * @Date 2018/9/3 15:59
+     * @Param [productDto]
+     * @Return void
+     */
+    public void updateProduct(ProductDto productDto){
+        ProductEntity productEntity = dao.selectByPrimaryKey(productDto.getId());
+        Integer examineStatusCode =  productEntity.getExamineStatusCode();
+        if (examineStatusCode==4000 || examineStatusCode==1000){
+            BeanUtil.copy(productEntity,productDto);
+            Example example = new Example(productEntity.getClass());
+            example.createCriteria().andEqualTo("id",productEntity.getId());
+            dao.updateByExample(productEntity,example);
+        }else {
+            throw new CommonBizzException(ServiceResponseEnum.UPDATE_FAIL.getMessage());
+        }
+    }
+
+
+    /**
+     * @Description:金融产品审核状态分页查询
+     * @Author zengxiaoran
+     * @Date 2018/9/3 16:28
+     * @Param [productDto]
+     * @Return com.ritoinfo.framework.evo.sp.base.model.PageList<com.yqjr.fin.fpms.product.dto.ProductDto>
+     */
+    public PageList<ProductDto> findExamineStatus(ProductCondition productCondition){
+        return findPage(productCondition);
+    }
+
+
+
+    
+
+
+}

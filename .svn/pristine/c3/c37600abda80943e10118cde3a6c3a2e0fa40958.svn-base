@@ -1,0 +1,14 @@
+package com.yqjr.fin.mkmm.sales.mapper;
+
+import com.yqjr.fin.mkmm.sales.rest.vo.JxsSelect;
+import com.yqjr.fin.mkmm.sales.rest.vo.MaterialOutVo;
+import com.yqjr.scfw.common.mapper.Mapper;
+import com.yqjr.fin.mkmm.sales.entity.MaterialOut;
+import org.springframework.stereotype.Service;
+
+@Service
+public interface MaterialOutMapper extends Mapper<MaterialOut, Long> {
+
+    public void insertToMaterialOut(MaterialOutVo condition);
+	
+}

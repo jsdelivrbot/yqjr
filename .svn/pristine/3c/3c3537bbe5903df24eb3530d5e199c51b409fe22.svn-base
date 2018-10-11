@@ -1,0 +1,902 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yqjr.fin.risk.stat.mapper.IndicatorRangesMapper">
+
+
+    <sql id="Base_Table_Name">
+        P_INDICATOR_RANGES
+    </sql>
+
+
+    <resultMap id="BaseResultMap" type="com.yqjr.fin.risk.stat.entity.IndicatorRanges">
+        <result property="id" column="ID"/><!--ID-->
+        <result property="indId" column="IND_ID"/><!--指标ID-->
+        <result property="areatype" column="AREATYPE"/>
+        <result property="dimtype" column="DIMTYPE"/>
+        <result property="dimcode" column="DIMCODE"/>
+        <result property="lowervalue" column="LOWERVALUE"/>
+        <result property="topvalue" column="TOPVALUE"/>
+        <result property="valueunit" column="VALUEUNIT"/>
+        <result property="signallevel" column="SIGNALLEVEL"/>
+        <result property="signallamp" column="SIGNALLAMP"/>
+        <result property="enabledflag" column="ENABLEDFLAG"/>
+        <result property="areacode" column="AREACODE"/>
+        <result property="caltype" column="CALTYPE"/>
+        <result property="creator" column="CREATOR"/><!--创建人-->
+        <result property="createTime" column="CREATE_TIME"/><!--创建时间-->
+        <result property="modifier" column="MODIFIER"/><!--最后更新人-->
+        <result property="modifyTime" column="MODIFY_TIME"/><!--最后更新时间-->
+    </resultMap>
+
+    <sql id="Base_Column_List">
+    ID,IND_ID,AREATYPE,DIMTYPE,DIMCODE,LOWERVALUE,TOPVALUE,VALUEUNIT,SIGNALLEVEL,SIGNALLAMP,ENABLEDFLAG,AREACODE,CALTYPE
+    </sql>
+
+    <sql id="Base_Column_List_Selective">
+        <trim suffixOverrides=",">
+            <if test="id != null">
+                ID,
+            </if>
+            <if test="indId != null">
+                IND_ID,
+            </if>
+            <if test="areatype != null">
+                AREATYPE,
+            </if>
+            <if test="dimtype != null">
+                DIMTYPE,
+            </if>
+            <if test="dimcode != null">
+                DIMCODE,
+            </if>
+            <if test="lowervalue != null">
+                LOWERVALUE,
+            </if>
+            <if test="topvalue != null">
+                TOPVALUE,
+            </if>
+            <if test="valueunit != null">
+                VALUEUNIT,
+            </if>
+            <if test="signallevel != null">
+                SIGNALLEVEL,
+            </if>
+            <if test="signallamp != null">
+                SIGNALLAMP,
+            </if>
+            <if test="enabledflag != null">
+                ENABLEDFLAG,
+            </if>
+            <if test="areacode != null">
+                AREACODE,
+            </if>
+            <if test="caltype != null">
+                CALTYPE
+            </if>
+        </trim>
+    </sql>
+
+    <sql id="Base_Column_Values">
+    #{id},
+    #{indId},
+    #{areatype},
+    #{dimtype},
+    #{dimcode},
+    #{lowervalue},
+    #{topvalue},
+    #{valueunit},
+    #{signallevel},
+    #{signallamp},
+    #{enabledflag},
+    #{areacode},
+    #{caltype}
+    </sql>
+
+    <sql id="Base_Column_Values_Selective">
+        <trim suffixOverrides=",">
+            <if test="id != null">
+                #{id},
+            </if>
+            <if test="indId != null">
+                #{indId},
+            </if>
+            <if test="areatype != null">
+                #{areatype},
+            </if>
+            <if test="dimtype != null">
+                #{dimtype},
+            </if>
+            <if test="dimcode != null">
+                #{dimcode},
+            </if>
+            <if test="lowervalue != null">
+                #{lowervalue},
+            </if>
+            <if test="topvalue != null">
+                #{topvalue},
+            </if>
+            <if test="valueunit != null">
+                #{valueunit},
+            </if>
+            <if test="signallevel != null">
+                #{signallevel},
+            </if>
+            <if test="signallamp != null">
+                #{signallamp},
+            </if>
+            <if test="enabledflag != null">
+                #{enabledflag},
+            </if>
+            <if test="areacode != null">
+                #{areacode},
+            </if>
+            <if test="caltype != null">
+                #{caltype}
+            </if>
+        </trim>
+    </sql>
+
+    <sql id="Base_Column_Set_Values">
+    ID = #{id},
+    IND_ID = #{indId},
+    AREATYPE = #{areatype},
+    DIMTYPE = #{dimtype},
+    DIMCODE = #{dimcode},
+    LOWERVALUE = #{lowervalue},
+    TOPVALUE = #{topvalue},
+    VALUEUNIT = #{valueunit},
+    SIGNALLEVEL = #{signallevel},
+    SIGNALLAMP = #{signallamp},
+    ENABLEDFLAG = #{enabledflag},
+    AREACODE = #{areacode},
+    CALTYPE = #{caltype},
+    ISALERT=#{isalert}
+    </sql>
+
+    <sql id="Base_Column_Set_Values_Selective">
+        <if test="id != null">
+            ID = #{id,jdbcType=NUMERIC},
+        </if>
+        <if test="indId != null">
+            IND_ID = #{indId,jdbcType=NUMERIC},
+        </if>
+        <if test="areatype != null">
+            AREATYPE = #{areatype,jdbcType=VARCHAR},
+        </if>
+        <if test="dimtype != null">
+            DIMTYPE = #{dimtype,jdbcType=VARCHAR},
+        </if>
+        <if test="dimcode != null">
+            DIMCODE = #{dimcode,jdbcType=VARCHAR},
+        </if>
+        <if test="lowervalue != null">
+            LOWERVALUE = #{lowervalue,jdbcType=BIGINT},
+        </if>
+        <if test="topvalue != null">
+            TOPVALUE = #{topvalue,jdbcType=BIGINT},
+        </if>
+        <if test="valueunit != null">
+            VALUEUNIT = #{valueunit,jdbcType=VARCHAR},
+        </if>
+        <if test="signallevel != null">
+            SIGNALLEVEL = #{signallevel,jdbcType=VARCHAR},
+        </if>
+        <if test="signallamp != null">
+            SIGNALLAMP = #{signallamp,jdbcType=VARCHAR},
+        </if>
+        <if test="enabledflag != null">
+            ENABLEDFLAG = #{enabledflag,jdbcType=BIGINT},
+        </if>
+        <if test="areacode != null">
+            AREACODE = #{areacode,jdbcType=BIGINT},
+        </if>
+        <if test="caltype != null">
+            CALTYPE = #{caltype,jdbcType=BIGINT},
+        </if>
+        <if test="isalert != null and isalert !=''">
+           ISALERT = #{isalert,jdbcType=VARCHAR},
+        </if>
+        <if test="creator != null">
+            CREATOR = #{creator,jdbcType=NUMERIC},
+        </if>
+        <if test="createTime != null">
+            CREATE_TIME = #{createTime,jdbcType=DATE},
+        </if>
+        <if test="modifier != null">
+            MODIFIER = #{modifier,jdbcType=NUMERIC},
+        </if>
+        <if test="modifyTime != null">
+            MODIFY_TIME = #{modifyTime,jdbcType=DATE}
+        </if>
+    </sql>
+
+    <sql id="Base_Column_Where_Selective">
+        <if test="id != null">
+            and ID = #{id}
+        </if>
+        <if test="indId != null">
+            and IND_ID = #{indId}
+        </if>
+        <if test="areatype != null">
+            and AREATYPE = #{areatype}
+        </if>
+        <if test="dimtype != null">
+            and DIMTYPE = #{dimtype}
+        </if>
+        <if test="dimcode != null">
+            and DIMCODE = #{dimcode}
+        </if>
+        <if test="lowervalue != null">
+            and LOWERVALUE = #{lowervalue}
+        </if>
+        <if test="topvalue != null">
+            and TOPVALUE = #{topvalue}
+        </if>
+        <if test="valueunit != null">
+            and VALUEUNIT = #{valueunit}
+        </if>
+        <if test="signallevel != null">
+            and SIGNALLEVEL = #{signallevel}
+        </if>
+        <if test="signallamp != null">
+            and SIGNALLAMP = #{signallamp}
+        </if>
+        <if test="enabledflag != null">
+            and ENABLEDFLAG = #{enabledflag}
+        </if>
+        <if test="areacode != null">
+            and AREACODE = #{areacode}
+        </if>
+        <if test="caltype != null">
+            and CALTYPE = #{caltype}
+        </if>
+    </sql>
+
+    <sql id="Base_Column_Where_Selective_Param1">
+        <if test="param1.id != null">
+            and ID = #{param1.id}
+        </if>
+        <if test="param1.indId != null">
+            and IND_ID = #{param1.indId}
+        </if>
+        <if test="param1.areatype != null">
+            and AREATYPE = #{param1.areatype}
+        </if>
+        <if test="param1.dimtype != null">
+            and DIMTYPE = #{param1.dimtype}
+        </if>
+        <if test="param1.dimcode != null">
+            and DIMCODE = #{param1.dimcode}
+        </if>
+        <if test="param1.lowervalue != null">
+            and LOWERVALUE = #{param1.lowervalue}
+        </if>
+        <if test="param1.topvalue != null">
+            and TOPVALUE = #{param1.topvalue}
+        </if>
+        <if test="param1.valueunit != null">
+            and VALUEUNIT = #{param1.valueunit}
+        </if>
+        <if test="param1.signallevel != null">
+            and SIGNALLEVEL = #{param1.signallevel}
+        </if>
+        <if test="param1.signallamp != null">
+            and SIGNALLAMP = #{param1.signallamp}
+        </if>
+        <if test="param1.enabledflag != null">
+            and ENABLEDFLAG = #{param1.enabledflag}
+        </if>
+        <if test="param1.areacode != null">
+            and AREACODE = #{param1.areacode}
+        </if>
+        <if test="param1.caltype != null">
+            and CALTYPE = #{param1.caltype}
+        </if>
+    </sql>
+
+    <sql id="Base_Order_By">
+        <bind name="propName" value="sortField"></bind>
+        ORDER BY <include refid="Base_Column_Name" />
+        <choose>
+            <when test="isAscend">
+                ASC
+            </when>
+            <otherwise>
+                DESC
+            </otherwise>
+        </choose>
+    </sql>
+
+    <sql id="Base_Column_Name">
+        <if test='"id" == propName'>
+            ID
+        </if>
+        <if test='"indId" == propName'>
+            IND_ID
+        </if>
+        <if test='"areatype" == propName'>
+            AREATYPE
+        </if>
+        <if test='"dimtype" == propName'>
+            DIMTYPE
+        </if>
+        <if test='"dimcode" == propName'>
+            DIMCODE
+        </if>
+        <if test='"lowervalue" == propName'>
+            LOWERVALUE
+        </if>
+        <if test='"topvalue" == propName'>
+            TOPVALUE
+        </if>
+        <if test='"valueunit" == propName'>
+            VALUEUNIT
+        </if>
+        <if test='"signallevel" == propName'>
+            SIGNALLEVEL
+        </if>
+        <if test='"signallamp" == propName'>
+            SIGNALLAMP
+        </if>
+        <if test='"enabledflag" == propName'>
+            ENABLEDFLAG
+        </if>
+        <if test='"areacode" == propName'>
+            AREACODE
+        </if>
+        <if test='"caltype" == propName'>
+            CALTYPE
+        </if>
+    </sql>
+
+    <sql id="Base_Id_Array">
+        <foreach collection="array" open="(" close=")" separator="," item="id">
+            #{id}
+        </foreach>
+    </sql>
+
+    <sql id="Base_Id_List">
+        <foreach collection="list" open="(" close=")" separator="," item="id">
+            #{id}
+        </foreach>
+    </sql>
+
+    <sql id="Base_Select_All">
+        select
+        <include refid="Base_Column_List" />
+        from <include refid="Base_Table_Name" />
+    </sql>
+
+    <select id="selectById" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        where ID = #{id}
+    </select>
+
+    <select id="selectByIds" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        where ID in
+        <include refid="Base_Id_List" />
+    </select>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+    </select>
+
+    <select id="selectCount" resultType="int">
+        select count(*)
+        from <include refid="Base_Table_Name" />
+        <where>
+            <include refid="Base_Column_Where_Selective" />
+        </where>
+    </select>
+
+    <select id="select" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Where_Selective" />
+        </where>
+    </select>
+
+    <select id="selectOne" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Where_Selective" />
+        </where>
+    </select>
+
+    <select id="selectOrderBy" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Where_Selective_Param1" />
+        </where>
+        <include refid="Base_Order_By" />
+    </select>
+
+    <select id="selectByProperty" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Name" /> = #{propValue}
+        </where>
+    </select>
+
+    <select id="selectByPropertyIn" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Name" /> IN
+            <foreach collection="propValues" open="(" close=")" separator="," item="propValue">
+                #{propValue}
+            </foreach>
+        </where>
+    </select>
+
+    <delete id="delete">
+        delete
+        from <include refid="Base_Table_Name" />
+        <where>
+            <include refid="Base_Column_Where_Selective" />
+        </where>
+    </delete>
+
+    <delete id="deleteById">
+        delete
+        from <include refid="Base_Table_Name" />
+        where ID = #{id}
+    </delete>
+
+    <delete id="deleteByIds">
+        delete
+        from <include refid="Base_Table_Name" />
+        where ID in
+        <include refid="Base_Id_List" />
+    </delete>
+
+    <sql id="Base_Column_List_Selective_null1">
+        <trim suffixOverrides=",">
+            id,
+            <if test="indId != null and indId !=''">
+                IND_ID,
+            </if>
+            <if test="areatype != null and areatype !=''">
+                AREATYPE,
+            </if>
+            <if test="dimtype != null and dimtype !=''">
+                DIMTYPE,
+            </if>
+            <if test="dimcode != null and dimcode !=''">
+                DIMCODE,
+            </if>
+            <if test="lowervalue != null and lowervalue !=''">
+                LOWERVALUE,
+            </if>
+            <if test="topvalue != null and topvalue !=''">
+                TOPVALUE,
+            </if>
+            <if test="valueunit != null and valueunit !=''">
+                VALUEUNIT,
+            </if>
+            <if test="signallevel != null and signallevel !=''">
+                SIGNALLEVEL,
+            </if>
+            <if test="signallamp != null and signallamp !=''">
+                SIGNALLAMP,
+            </if>
+            <if test="enabledflag != null and enabledflag !=''">
+                ENABLEDFLAG,
+            </if>
+            <if test="areacode != null and areacode !=''">
+                AREACODE,
+            </if>
+            <if test="caltype != null and caltype !=''">
+                CALTYPE,
+            </if>
+            <if test="isalert != null and isalert !=''">
+                ISALERT,
+            </if>
+            <if test="creator != null and creator !=''">
+                CREATOR,
+            </if>
+            <if test="createTime != null ">
+                CREATE_TIME,
+            </if>
+            <if test="modifier != null and modifier !=''">
+                MODIFIER,
+            </if>
+            <if test="modifyTime != null">
+                MODIFY_TIME
+            </if>
+        </trim>
+    </sql>
+    <sql id="Base_Column_List_Selective_null">
+        <trim suffixOverrides=",">
+            INDICATORRANGES_SEQ.nextval,
+            <if test="indId != null and indId !=''">
+                #{indId,jdbcType=NUMERIC},
+            </if>
+            <if test="areatype != null and areatype !=''">
+                #{areatype,jdbcType=VARCHAR},
+            </if>
+            <if test="dimtype != null and dimtype !=''">
+                #{dimtype,jdbcType=VARCHAR},
+            </if>
+            <if test="dimcode != null and dimcode !=''">
+                #{dimcode,jdbcType=VARCHAR},
+            </if>
+            <if test="lowervalue != null and lowervalue !=''">
+                #{lowervalue,jdbcType=BIGINT},
+            </if>
+            <if test="topvalue != null and topvalue !=''">
+                #{topvalue,jdbcType=BIGINT},
+            </if>
+            <if test="valueunit != null and valueunit !=''">
+                #{valueunit,jdbcType=VARCHAR},
+            </if>
+            <if test="signallevel != null and signallevel !=''">
+                #{signallevel,jdbcType=VARCHAR},
+            </if>
+            <if test="signallamp != null and signallamp !=''">
+                #{signallamp,jdbcType=VARCHAR},
+            </if>
+            <if test="enabledflag != null and enabledflag !=''">
+                #{enabledflag,jdbcType=BIGINT},
+            </if>
+            <if test="areacode != null and areacode !=''">
+                #{areacode,jdbcType=VARCHAR},
+            </if>
+            <if test="caltype != null and caltype !=''">
+                #{caltype,jdbcType=BIGINT},
+            </if>
+            <if test="isalert != null and isalert !=''">
+                #{isalert,jdbcType=VARCHAR},
+            </if>
+            <if test="creator != null and creator !=''">
+                #{creator,jdbcType=NUMERIC},
+            </if>
+            <if test="createTime != null ">
+                #{createTime,jdbcType=DATE},
+            </if>
+            <if test="modifier != null and modifier !=''">
+                #{modifier,jdbcType=NUMERIC},
+            </if>
+            <if test="modifyTime != null ">
+                #{modifyTime,jdbcType=DATE}
+            </if>
+        </trim>
+    </sql>
+    <insert id="insert" parameterType="com.yqjr.fin.risk.stat.entity.IndicatorRanges">
+        <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER">
+            SELECT INDICATORRANGES_SEQ.nextval from dual
+        </selectKey>
+        insert into <include refid="Base_Table_Name" /> (
+        <include refid="Base_Column_List_Selective_null1" />
+        )
+        values (
+        <include refid="Base_Column_List_Selective_null" />
+        )
+    </insert>
+
+    <update id="updateById" parameterType="com.yqjr.fin.risk.stat.entity.IndicatorRanges">
+        update <include refid="Base_Table_Name" />
+        <set>
+            <include refid="Base_Column_Set_Values" />
+        </set>
+        where ID = #{id}
+    </update>
+
+    <update id="patchById" parameterType="com.yqjr.fin.risk.stat.condition.IndicatorRangesCondition">
+        update <include refid="Base_Table_Name" />
+        <set>
+            <include refid="Base_Column_Set_Values_Selective" />
+        </set>
+        where ID = #{id,jdbcType=NUMERIC}
+    </update>
+
+    <resultMap id="IndicatorRangesResult" type="com.yqjr.fin.risk.stat.entity.IndicatorRanges">
+        <result property="id" column="ID"/>
+        <result property="indId" column="IND_ID"/>
+        <result property="areatype" column="AREATYPE"/>
+        <result property="dimtype" column="DIMTYPE"/>
+        <result property="dimcode" column="DIMCODE"/>
+        <result property="lowervalue" column="LOWERVALUE"/>
+        <result property="topvalue" column="TOPVALUE"/>
+        <result property="valueunit" column="VALUEUNIT"/>
+        <result property="signallevel" column="SIGNALLEVEL"/>
+        <result property="signallamp" column="SIGNALLAMP"/>
+        <result property="enabledflag" column="ENABLEDFLAG"/>
+        <result property="areacode" column="AREACODE"/>
+        <result property="caltype" column="CALTYPE"/>
+    </resultMap>
+
+    <sql id="queryLikeIndicatorRanges">
+        <if test="indicatorRanges!=null">
+            <if test="id!=null and id!=''">
+                AND ID LIKE CONCAT('%'#{id}'%')
+            </if>
+            <if test="indId!=null and indId!=''">
+                AND IND_ID LIKE CONCAT('%'#{indId}'%')
+            </if>
+            <if test="areatype!=null and areatype!=''">
+                AND AREATYPE LIKE CONCAT('%'#{areatype}'%')
+            </if>
+            <if test="dimtype!=null and dimtype!=''">
+                AND DIMTYPE LIKE CONCAT('%'#{dimtype}'%')
+            </if>
+            <if test="dimcode!=null and dimcode!=''">
+                AND DIMCODE LIKE CONCAT('%'#{dimcode}'%')
+            </if>
+            <if test="lowervalue!=null and lowervalue!=''">
+                AND LOWERVALUE LIKE CONCAT('%'#{lowervalue}'%')
+            </if>
+            <if test="topvalue!=null and topvalue!=''">
+                AND TOPVALUE LIKE CONCAT('%'#{topvalue}'%')
+            </if>
+            <if test="valueunit!=null and valueunit!=''">
+                AND VALUEUNIT LIKE CONCAT('%'#{valueunit}'%')
+            </if>
+            <if test="signallevel!=null and signallevel!=''">
+                AND SIGNALLEVEL LIKE CONCAT('%'#{signallevel}'%')
+            </if>
+            <if test="signallamp!=null and signallamp!=''">
+                AND SIGNALLAMP LIKE CONCAT('%'#{signallamp}'%')
+            </if>
+            <if test="enabledflag!=null and enabledflag!=''">
+                AND ENABLEDFLAG LIKE CONCAT('%'#{enabledflag}'%')
+            </if>
+            <if test="areacode!=null and areacode!=''">
+                AND AREACODE LIKE CONCAT('%'#{areacode}'%')
+            </if>
+            <if test="caltype!=null and caltype!=''">
+                CALTYPE LIKE CONCAT('%'#{caltype}'%')
+            </if>
+        </if>
+    </sql>
+
+
+    <select id="queryIndicatorRangesList" parameterType="com.yqjr.fin.risk.stat.entity.IndicatorRanges"
+            resultMap="IndicatorRangesResult">
+        SELECT
+        ID,
+        IND_ID,
+        AREATYPE,
+        DIMTYPE,
+        DIMCODE,
+        LOWERVALUE,
+        TOPVALUE,
+        VALUEUNIT,
+        SIGNALLEVEL,
+        SIGNALLAMP,
+        ENABLEDFLAG,
+        AREACODE,
+        CALTYPE
+        FROM P_INDICATOR_RANGES
+        <where>
+            <include refid="queryLikeIndicatorRanges"/>
+        </where>
+    </select>
+
+
+    <select id="queryIndicatorRangesCount" parameterType="com.yqjr.fin.risk.stat.entity.IndicatorRanges" resultType="int">
+        SELECT
+        count (id)
+        FROM P_INDICATOR_RANGES
+        <where>
+            <include refid="queryLikeIndicatorRanges"/>
+        </where>
+    </select>
+
+
+    <delete id="dynamicDelete">
+        delete from P_INDICATOR_RANGES where id in
+        <foreach collection="array" open="(" close=")" separator="," item="arr">
+            #{arr}
+        </foreach>
+    </delete>
+
+
+    <delete id="dynamicDeleteList">
+        delete from P_INDICATOR_RANGES where id in
+        <foreach collection="list" open="(" close=")" separator="," item="ids">
+            #{ids}
+        </foreach>
+    </delete>
+
+
+    <insert id="insertBatch" parameterType="java.util.List">
+        <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into P_INDICATOR_RANGES
+        (
+        <include refid="Base_Column_List" />
+        )
+        values
+        <foreach collection="list" item="indicatorRanges" index="index" separator=",">
+            (
+            <include refid="Base_Column_Values" />
+            )
+        </foreach>
+    </insert>
+
+
+    <insert id="saveObj" useGeneratedKeys="true" keyProperty="id"
+            parameterType="com.yqjr.fin.risk.stat.entity.IndicatorRanges">
+        insert into P_INDICATOR_RANGES
+        (
+        <include refid="Base_Column_List" />
+        )
+        values
+        (
+        <include refid="Base_Column_Values" />
+        )
+    </insert>
+
+    <resultMap id="BaseResultMap2" type="com.yqjr.fin.risk.stat.entity.IndicatorRanges">
+        <result property="id" column="ID"/><!--ID-->
+        <result property="indId" column="IND_ID"/><!--指标ID-->
+        <result property="areatype" column="AREATYPE"/>
+        <result property="dimtype" column="DIMTYPE"/>
+        <result property="dimcode" column="DIMCODE"/>
+        <result property="lowervalue" column="LOWERVALUE"/>
+        <result property="topvalue" column="TOPVALUE"/>
+        <result property="valueunit" column="VALUEUNIT"/>
+        <result property="signallevel" column="SIGNALLEVEL"/>
+        <result property="signallamp" column="SIGNALLAMP"/>
+        <result property="enabledflag" column="ENABLEDFLAG"/>
+        <result property="areacode" column="AREACODE"/>
+        <result property="caltype" column="CALTYPE"/>
+        <result property="creator" column="CREATOR"/><!--创建人-->
+        <result property="createTime" column="CREATE_TIME"/><!--创建时间-->
+        <result property="modifier" column="MODIFIER"/><!--最后更新人-->
+        <result property="modifyTime" column="MODIFY_TIME"/><!--最后更新时间-->
+        <association property="indicators" resultMap="BaseResultMap3"/>
+    </resultMap>
+
+    <resultMap id="BaseResultMap3" type="com.yqjr.fin.risk.stat.entity.Indicators">
+        <result property="id" column="ID"/>
+        <result property="typecode" column="TYPECODE"/>
+        <result property="indicatorcode" column="INDICATORCODE"/>
+        <result property="indicatorname" column="INDICATORNAME"/>
+        <result property="indicatortarget" column="INDICATORTARGET"/>
+        <result property="indicatordesc" column="INDICATORDESC"/>
+        <result property="indicatorcaption" column="INDICATORCAPTION"/>
+        <result property="indicatorgroup" column="INDICATORGROUP"/>
+        <result property="calformula" column="CALFORMULA"/>
+        <result property="displayorder" column="DISPLAYORDER"/>
+        <result property="alertflag" column="ALERTFLAG"/>
+        <result property="alertcycle" column="ALERTCYCLE"/>
+        <result property="parentindicatorid" column="PARENTINDICATORID"/>
+        <result property="remark" column="REMARK"/>
+        <result property="enabledflag" column="ENABLEDFLAG"/>
+        <result property="parentindicatorcode" column="PARENTINDICATORCODE"/>
+        <result property="indlevel" column="INDLEVEL"/>
+        <result property="cycCounttype" column="CYC_COUNTTYPE"/>
+        <result property="hasbudget" column="HASBUDGET"/>
+        <result property="sourcefrom" column="SOURCEFROM"/>
+        <result property="valuetype" column="VALUETYPE"/>
+        <result property="countcycle" column="COUNTCYCLE"/>
+        <result property="valuemapping" column="VALUEMAPPING"/>
+        <result property="ctcode" column="CTCODE"/>
+        <result property="indicatordetail" column="INDICATORDETAIL"/>
+        <result property="coutorder" column="COUTORDER"/>
+        <result property="alerttype" column="ALERTTYPE"/>
+        <result property="comcode" column="COMCODE"/>
+        <result property="creator" column="CREATOR"/><!--创建人-->
+        <result property="createTime" column="CREATE_TIME"/><!--创建时间-->
+        <result property="modifier" column="MODIFIER"/><!--最后更新人-->
+        <result property="modifyTime" column="MODIFY_TIME"/><!--最后更新时间-->
+    </resultMap>
+    <select id="selIndicatorRangesByPage" parameterType="com.yqjr.fin.risk.stat.condition.IndicatorsCondition" resultMap="BaseResultMap2">
+        SELECT
+        PR.id,
+        PR.IND_ID,
+        PR.AREATYPE,
+        PR.DIMTYPE,
+        PR.DIMCODE,
+        PR.TOPVALUE,
+        PR.LOWERVALUE,
+        PR.VALUEUNIT,
+        PR.SIGNALLEVEL,
+        PR.SIGNALLAMP,
+        PR.ENABLEDFLAG,
+        PR.AREACODE,
+        PR.CALTYPE,
+        PR.ISALERT,
+        PS.INDICATORCODE,
+        PS.INDICATORNAME
+        from P_INDICATOR_RANGES PR left join P_INDICATORS PS
+        on PS.id=PR.IND_ID
+        <trim prefix="where"  prefixOverrides="AND"  >
+            <if test="typecode!=null and typecode !=''">
+                and PS.TYPECODE like concat(concat('%',#{typecode,jdbcType=VARCHAR}),'%')
+            </if>
+            <if test="indicatorcode!=null and indicatorcode !=''">
+                and PS.INDICATORCODE LIKE  concat(concat('%',#{indicatorcode,jdbcType=VARCHAR}),'%')
+            </if>
+            <if test="indicatorname!=null and indicatorname !=''">
+                and PS.INDICATORNAME LIKE  concat(concat('%',#{indicatorname,jdbcType=VARCHAR}),'%')
+            </if>
+            <if test="alertflag!=null and alertflag !=''">
+                and PS.ALERTFLAG  = #{alertflag,jdbcType=VARCHAR}
+            </if>
+            <if test="enabledflag!=null ">
+                and PS.ENABLEDFLAG = #{enabledflag,jdbcType=NUMERIC}
+            </if>
+            <if test="comcode!=null and comcode !=''">
+                and PS.COMCODE LIKE  concat(concat('%',#{comcode,jdbcType=VARCHAR}),'%')
+            </if>
+        </trim>
+    </select>
+
+
+    <select id="selectById2" parameterType="com.yqjr.fin.risk.stat.condition.IndicatorRangesCondition" resultMap="BaseResultMap2">
+    SELECT
+    PR.id,
+    PR.IND_ID,
+    PR.AREATYPE,
+    PR.DIMTYPE,
+    PR.DIMCODE,
+    PR.TOPVALUE,
+    PR.LOWERVALUE,
+    PR.VALUEUNIT,
+    PR.SIGNALLEVEL,
+    PR.SIGNALLAMP,
+    PR.ENABLEDFLAG,
+    PR.AREACODE,
+    PR.CALTYPE,
+    PR.ISALERT,
+    PS.INDICATORCODE,
+    PS.INDICATORNAME,
+    PS.REMARK
+    from P_INDICATOR_RANGES PR left join P_INDICATORS PS
+    on PS.id=PR.IND_ID
+        where
+        <if test="id!=null and id!=''">
+            PR.ID = #{id}
+        </if>
+    </select>
+    <select id="selIndicatorRangesById" parameterType="int" resultType="map">
+        SELECT
+        TYPECODE as typecode,INDICATORCODE as indicatorcode,,ALERTFLAG as alertflag, INDICATORNAME as indicatorname,
+        TOPVALUE as topvalue,LOWERVALUE as lowervalue,SIGNALLAMP as signallamp,AREATYPE as areatype,AREACODE as areacode,
+        DIMTYPE as dimtype,DIMCODE as dimcode,REMARK as remark
+        FROM P_INDICATORS left join  P_INDICATOR_RANGES on P_INDICATORS.id=P_INDICATOR_RANGES.IND_ID where P_INDICATORS.id=#{id}
+    </select>
+
+    <select id="selIndicatorRangesFive" resultMap="BaseResultMap">
+        SELECT
+        SIGNALLAMP,AREATYPE,AREACODE,DIMTYPE,DIMCODE
+        FROM P_INDICATOR_RANGES
+    </select>
+    <select id="selAreatype" resultMap="BaseResultMap">
+        SELECT
+        distinct
+        AREATYPE
+        FROM P_INDICATOR_RANGES  where AREATYPE is not null
+    </select>
+    <select id="selAreacode" resultMap="BaseResultMap">
+        SELECT
+        distinct
+        AREACODE
+        FROM P_INDICATOR_RANGES where AREACODE is not null
+    </select>
+    <select id="selDimType" resultMap="BaseResultMap">
+        SELECT
+        distinct
+        DIMTYPE
+        FROM P_INDICATOR_RANGES where DIMTYPE is not null
+    </select>
+    <select id="selDimcode" resultMap="BaseResultMap">
+        SELECT
+        distinct
+        DIMCODE
+        FROM P_INDICATOR_RANGES where DIMCODE is not null
+    </select>
+    <select id="selSignallamp" resultMap="BaseResultMap">
+        SELECT
+        distinct
+        SIGNALLAMP
+        FROM P_INDICATOR_RANGES where SIGNALLAMP is not null
+    </select>
+
+</mapper>
+

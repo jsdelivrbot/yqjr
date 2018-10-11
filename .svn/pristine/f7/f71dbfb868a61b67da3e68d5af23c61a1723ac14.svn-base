@@ -1,0 +1,41 @@
+package com.yqjr.fin.qcms.credit.rest;
+
+import com.ritoinfo.framework.evo.sp.base.model.ServiceResponse;
+import com.ritoinfo.framework.evo.sp.base.starter.rest.BaseRest;
+import com.yqjr.fin.qcms.credit.bizz.ScoreModelBizz;
+import com.yqjr.fin.qcms.credit.condition.ScoreModelCondition;
+import com.yqjr.fin.qcms.credit.dto.ScoreModelDto;
+import feign.Param;
+import io.swagger.annotations.Api;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+/**
+ * 评分模型主表	 rest层
+ *
+ * @Author: zxd
+ * @CreateDate: 2018-08-27 10:34:30
+ */
+@Api(consumes = "application/json",
+        produces = "application/json",
+        protocols = "http",
+        basePath = "scoreModels")
+@RestController
+@RequestMapping(value = "/scoreModels")
+public class ScoreModelRest extends BaseRest<ScoreModelBizz, Long, ScoreModelDto, ScoreModelCondition> {
+    /**
+     *
+     * @param modelName 传入modelName后验证在数据库中是否存在
+     * @return 返回一个serviceResponse 其中serviceResponse的data是Bizz返回的一个int，0则为数据库不存在该数据，1则为数据库已存在该数据，
+     * 然而我并不需要这玩意儿，直接在service层抛出了异常
+     */
+
+    @GetMapping(value = "/verifyRepetition")
+    public ServiceResponse verifyRepetition(@Param("modelName") String modelName) {
+        this.bizz.verifyRepetition(modelName);
+        return ServiceResponse.ok();
+    }
+    
+
+}

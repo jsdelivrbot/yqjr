@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-store">
+    <meta HTTP-EQUIV="Pragma" CONTENT="no-cache">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <script src="/mkmm/ui/js/include/head.js"></script>
+    <title>一汽金融开发平台</title>
+</head>
+<body class="no-skin">
+<div class="page-content" id="mainContent">
+    <div class="widget-box transparent ui-sortable-handle collapsed"
+         id="widget-box-search">
+        <div class="widget-header">
+            <h3 class="widget-title smaller lighter">&nbsp;查询</h3>
+            <div class="widget-toolbar no-border">
+                <a href="#" data-action="collapse"> <i class="ace-icon fa fa-chevron-down">
+                    <span style="font-family: '微软雅黑'; font-size: 14px;">&nbsp;打开</span></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="widget-body">
+            <div class="widget-main padding-6 no-padding-left no-padding-right">
+                <div class="space-6"></div>
+                <form id="searchForm" modelAttribute="userCondition" method="post" class="form-horizontal">
+
+                    <div class="row">
+                        <div class="form-group-2">
+                            <label class="col-sm-2 control-label no-padding-right">归属区域名称：</label>
+                            <div class="col-sm-3">
+                                <!--<input name="areaName"  maxlength="50" class="form-control required" />-->
+                                <select name="areaCode" class="form-control required"  id="areaCode"  >
+
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group-2">
+                            <label class="col-sm-2 control-label no-padding-right">年度：</label>
+                            <div class="col-sm-3">
+                                <input name="year" id="year" maxlength="50" class="form-control required yearpicker" />
+                            </div>
+                        </div>
+
+                        <!--<div class="form-group-2">-->
+                            <!--<label class="col-sm-2 control-label no-padding-right">下辖区域名称：</label>-->
+                            <!--<div class="col-sm-3">-->
+                                <!--&lt;!&ndash;<input name="cityName"  maxlength="50" class="form-control required" />&ndash;&gt;-->
+                                <!--<select name="cityCode" class="form-control required"  id="cityCode">-->
+                                    <!--<option value=''>-请选择-</option>-->
+                                <!--</select>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    </div>
+                    <div class="space-4"></div>
+                    <div class="row">
+                        <div class="form-group-2">
+                            <label class="col-sm-2 control-label no-padding-right">人员姓名：</label>
+                            <div class="col-sm-3">
+                                <input name="personName"  maxlength="50" class="form-control required" id="personName"/>
+                            </div>
+                        </div>
+                        <div class="form-group-2">
+                            <label class="col-sm-2 control-label no-padding-right">月份：</label>
+                            <div class="col-sm-3">
+                                <!--<input name="month"  maxlength="50" class="form-control required" id="month"/>-->
+                                <select name="month" class="form-control required" id="month">
+                                    <!--<option value=''>-全部-</option>-->
+                                    <option value='1'>1月</option>
+                                    <option value='2'>2月</option>
+                                    <option value='3'>3月</option>
+                                    <option value='4'>4月</option>
+                                    <option value='5'>5月</option>
+                                    <option value='6'>6月</option>
+                                    <option value='7'>7月</option>
+                                    <option value='8'>8月</option>
+                                    <option value='9'>9月</option>
+                                    <option value='10'>10月</option>
+                                    <option value='11'>11月</option>
+                                    <option value='12'>12月</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="space-4"></div>
+                    <div class="row">
+                        <div class="form-group-2">
+                            <label class="col-sm-2 control-label no-padding-right">销售品牌：</label>
+                            <div class="col-sm-3">
+                                <!--<input name="brands"  maxlength="50" class="form-control required" />-->
+                                <select name="brands" class="form-control required" id="brands">
+                                    <option value=''>-全部-</option>
+                                    <option value='624'>马自达</option>
+                                    <option value='621'>大众</option>
+                                    <option value='629'>红旗</option>
+                                    <option value='622'>奥迪</option>
+                                    <option value='625'>解放</option>
+                                    <option value='623'>丰田</option>
+                                    <option value='626'>夏利</option>
+                                    <option value='3461'>海马</option>
+                                    <option value='3401'>一汽吉林</option>
+                                    <option value='11453'>奔腾</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="space-4"></div>
+
+                    <div class="space-4"></div>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="dataTables_paginate paging_simple_numbers">
+                                <ul class="pagination">
+                                    <li>
+                                        <button id="searchBtn" onclick="searchData1111('planTrackTable')" type="button" class="btn btn-primary">
+                                            <span class="ace-icon fa fa-search icon-on-right bigger-110"></span>
+                                            查询
+                                        </button>
+                                    </li>
+                                    <li>
+                                        <button id="resetBtn" type="reset" class="btn btn-primary">
+                                            <span class="ace-icon fa fa-refresh icon-on-right bigger-110"></span>
+                                            重置
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hr hr-dotted"></div>
+                </form>
+            </div>
+        </div>
+        <div class="btn-group">
+            <button type="button" class="btn btn-white btn-sm btn-primary" onclick="oneExplore();">导出</button>
+        </div>
+        <table id="planTrackTable"></table>
+    </div>
+    <div id="pager"></div>
+</div>
+</body>
+<script src="/mkmm/ui/js/plantrack/planTrackCommon.js"></script>
+<script src="/mkmm/ui/js/plantrack/planTrackList.js"></script>
+</html>

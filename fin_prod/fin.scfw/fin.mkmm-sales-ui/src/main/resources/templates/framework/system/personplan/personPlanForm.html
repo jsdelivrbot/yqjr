@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-store">
+    <meta HTTP-EQUIV="Pragma" CONTENT="no-cache">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <script src="/mkmm/ui/js/include/head.js"></script>
+    <title>一汽金融开发平台</title>
+</head>
+<body class="no-skin">
+<div class="page-content" id="mainContent">
+    <div class="widget-box transparent ui-sortable-handle collapsed"
+         id="widget-box-search">
+        <div class="widget-header">
+            <h3 class="widget-title smaller lighter">&nbsp;销售计划上传</h3>
+        </div>
+
+        <div class="widget-body">
+            <div class="widget-main padding-6 no-padding-left no-padding-right">
+                <div class="space-6"></div>
+                <form id="searchForm" modelAttribute="userCondition" method="post" class="form-horizontal" enctype="multipart/form-data">
+                    <!--<table style="text-align:center">-->
+                    <!--&lt;!&ndash;<h3 class="widget-title smaller lighter" style="color: #4383b4">&nbsp;销售计划上传</h3>&ndash;&gt;-->
+                    <!--<div class="space-4"></div>-->
+                    <!--<tr>-->
+                    <!--<td style="margin-right:30px; float:left;">-->
+                    <!--<input id="sources" type="file" name="fileName" >-->
+                    <!--</td>-->
+                    <!--<td style="float:left;">-->
+                    <!--年度（必输）：<input id="uploadYear" type="text" name="pYear" class="yearpicker" >-->
+                    <!--</td>-->
+                    <!--</tr>-->
+                    <!--</table>-->
+                    <!--<div class="row">-->
+                    <!--<div class="col-sm-4">-->
+                    <!--<div class="dataTables_paginate paging_simple_numbers">-->
+                    <!--<ul class="pagination">-->
+                    <!--<li>-->
+                    <!--<button id="searchBtn" onclick="searchData11('personPlanTable')" type="button" class="btn btn-primary">-->
+                    <!--<span class="ace-icon fa fa-search icon-on-right bigger-110"></span>-->
+                    <!--文件上传-->
+                    <!--</button>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                    <!--<button id="resetBtn" type="reset" class="btn btn-primary">-->
+                    <!--<span class="ace-icon fa fa-refresh icon-on-right bigger-110"></span>-->
+                    <!--返 回-->
+                    <!--</button>-->
+                    <!--</li>-->
+
+                    <!--</ul>-->
+                    <!--</div>-->
+                    <!--</div>-->
+                    <!--</div>-->
+                    <div class="hr hr-dotted"></div>
+                </form>
+            </div>
+        </div>
+        <div class="widget-main padding-6 no-padding-left no-padding-right" >
+            <form id="uploadForm"  enctype="multipart/form-data" method="post" >
+                <div class="row">
+                    <td style="float:left;">
+                        <input id="uploadYear" type="text" name="uploadYear" readonly="readonly" hidden="true"/>
+                    </td>
+                </div>
+                <div class="space-4"></div>
+                <div class="space-4"></div>
+
+                <!--<table style="text-align:center">-->
+                    <!--<h3 class="widget-title smaller lighter" style="color: #4383b4">&nbsp;销售计划上传</h3>-->
+                    <div class="space-4"></div>
+
+                    <div class="row">
+                        <label class="col-sm-2 control-label no-padding-right">&nbsp;&nbsp;&nbsp;&nbsp;计划上传列表：</label>
+                        <div class="col-sm-3">
+                            <input type="file" id="dealer-input-file" name="fileName"/>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="upload" type="button" class="btn btn-xs btn-success">计划上传</button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button type="button" class="btn btn-xs btn-success" onclick="downLoadExcel()">模板下载</button>
+                        </div>
+                    </div>
+                    <!--<tr>-->
+                        <!--<td style="margin-right:30px; float:left;">-->
+                            <!--销售计划上传：<input id="dealer-input-fil" type="file" name="fileName" >-->
+                        <!--</td>-->
+                    <!--</tr>-->
+                <!--</table>-->
+            <!--</form>-->
+            <!--<div class="btn-group" >-->
+                <!--<button id="upload" type="button" class="btn btn-xs btn-success" style="margin-right:20px; float:left;">计划上传</button>-->
+                <!--<button type="button" class="btn btn-xs btn-success" onclick="downLoadExcel()">模板导出</button>-->
+            <!--</div>-->
+
+            </form>
+        </div>
+    </div>
+</div>
+<div class="row" id="loading" hidden="hidden">
+    <div class="col-sm-6">
+        <h3 class="header blue lighter smaller">
+            <i class="ace-icon fa fa-spinner"></i>
+            正在上传......
+        </h3>
+        <div id="progressbar"></div>
+    </div>
+</div>
+
+
+</body>
+
+
+
+
+
+
+
+
+
+
+    <!--<div class="widget-box transparent ui-sortable-handle" id="widget-box-search">-->
+        <!--<div class="widget-header">-->
+            <!--<h3 class="widget-title smaller lighter">&nbsp;销售计划上传</h3>-->
+        <!--</div>-->
+        <!--<div class="widget-body">-->
+            <!--<div class="widget-main padding-6 no-padding-left no-padding-right">-->
+                <!--<div class="space-6"></div>-->
+                <!--<form id="uploadForm" modelAttribute="userCondition" method="post" class="form-horizontal" >-->
+                    <!--<input type="hidden" value="id" enctype="multsipart/form-data"/>-->
+                    <!--<div class="row">-->
+                        <!--<label class="col-sm-2 control-label no-padding-right">计划上传列表：</label>-->
+                        <!--<div class="col-sm-3">-->
+                            <!--<input type="file" id="dealer-input-file" />-->
+                        <!--</div>-->
+                        <!--<div class="col-sm-1">-->
+                            <!--<button id="upload" type="button" class="btn btn-xs btn-success">计划上传</button>-->
+                        <!--</div>-->
+                        <!--<div class="col-sm-1">-->
+                            <!--<button type="button" class="btn btn-xs btn-success" onclick="downLoadExcel()">模板下载</button>-->
+                        <!--</div>-->
+                    <!--</div>-->
+
+
+
+
+                    <!--<div id="div_activeDeale">-->
+
+                        <!--<h3 class="header smaller lighter blue">-->
+                            <!--销售计划上传-->
+                        <!--</h3>-->
+                        <!--<div class="row">-->
+                            <!--<label class="col-sm-2 control-label no-padding-right">计划上传列表：</label>-->
+                            <!--<div class="col-sm-3">-->
+                                <!--<input type="file" id="dealer-input-file" />-->
+                            <!--</div>-->
+                            <!--<div class="col-sm-1">-->
+                                <!--<button id="upload" type="button" class="btn btn-xs btn-success">计划上传</button>-->
+                            <!--</div>-->
+                            <!--<div class="col-sm-1">-->
+                                <!--<button type="button" class="btn btn-xs btn-success" onclick="downLoadExcel()">模板下载</button>-->
+                            <!--</div>-->
+                        <!--</div>-->
+
+                        <!--<table id="activeDealeReviewTable" class="table  table-bordered table-hover" style="margin-left: 12px;margin-right: 12px">-->
+
+                        <!--</table>-->
+                    <!--</div>-->
+
+
+
+<script src="/mkmm/ui/js/personplan/personPlanCommon.js"></script>
+<!--<script src="/mkmm/ui/js/personplan/personPlanList.js"></script>-->
+<script src="/mkmm/ui/js/personplan/personPlanForm.js"></script>
+</html>

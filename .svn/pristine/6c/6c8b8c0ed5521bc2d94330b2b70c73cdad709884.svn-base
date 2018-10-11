@@ -1,0 +1,1937 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yqjr.fin.risk.stat.mapper.FctAltCustomMapper">
+
+    <!-- region BaseMapper DO NOT MODIFY!!!  -->
+
+    <sql id="Base_Table_Name">
+        A11_FCT_ALT_CUSTOM
+    </sql>
+
+
+
+    <!-- region BaseResultMap  -->
+    <resultMap id="BaseResultMap" type="com.yqjr.fin.risk.stat.entity.FctAltCustom">
+        <result property="eventid" jdbcType="NUMERIC" column="EVENTID"/><!--事件ID-->
+        <result property="customid" jdbcType="NUMERIC"  column="CUSTOMID"/><!--客户ID-->
+        <result property="indId" jdbcType="NUMERIC"  column="IND_ID"/><!--指标ID-->
+        <result property="bizdate" jdbcType="VARCHAR"  column="BIZDATE"/><!--日期-->
+        <result property="factvalue" jdbcType="NUMERIC"  column="FACTVALUE"/><!--指标实际值-->
+        <result property="factvalue1" jdbcType="NUMERIC"  column="FACTVALUE1"/><!--当期值1-->
+        <result property="factvalue2" jdbcType="NUMERIC"  column="FACTVALUE2"/><!--当期值2-->
+        <result property="factvalue3" jdbcType="NUMERIC"  column="FACTVALUE3"/><!--当期值3-->
+        <result property="facttotalvalue" jdbcType="NUMERIC"  column="FACTTOTALVALUE"/><!--合计值-->
+        <result property="facttotalvalue1" jdbcType="NUMERIC"  column="FACTTOTALVALUE1"/><!--合计值1-->
+        <result property="lastfactvalue" jdbcType="NUMERIC"  column="LASTFACTVALUE"/><!--上期-->
+        <result property="lastfactvalue1" jdbcType="NUMERIC"  column="LASTFACTVALUE1"/><!--上期1-->
+        <result property="lastyearvalue" jdbcType="NUMERIC"  column="LASTYEARVALUE"/><!--去年同期-->
+        <result property="lastyearvalue1" jdbcType="NUMERIC"  column="LASTYEARVALUE1"/><!--去年同期1-->
+        <result property="eventstate" jdbcType="VARCHAR" column="EVENTSTATE"/><!--事件状态-->
+        <result property="handlestate" jdbcType="VARCHAR" column="HANDLESTATE"/><!--干预状态。-->
+        <result property="alerttime" jdbcType="DATE" column="ALERTTIME"/><!--预警时间-->
+        <result property="assvalue1" jdbcType="VARCHAR" column="ASSVALUE1"/><!--备用字段1-->
+        <result property="assvalue2" jdbcType="VARCHAR" column="ASSVALUE2"/><!--备用字段2-->
+        <result property="signallamp"  jdbcType="VARCHAR" column="SIGNALLAMP"/><!--信号灯-->
+        <result property="signallevel" jdbcType="NUMERIC" column="SIGNALLEVEL"/><!--信号级别。如1,2,3，其中1的级别最低，3的级别最高，依此类推。-->
+        <result property="customname" jdbcType="VARCHAR" column="CUSTOMNAME"/><!--客户名称-->
+        <result property="cityname" jdbcType="VARCHAR" column="CITYNAME"/><!--客户所属城市名称-->
+        <result property="areacode" jdbcType="VARCHAR" column="AREACODE"/><!--区域代码，客户所属的区域。-->
+        <result property="areaname" jdbcType="VARCHAR" column="AREANAME"/><!--区域名称-->
+        <result property="brand" jdbcType="VARCHAR" column="BRAND"/><!--品牌代码-->
+        <result property="brandname" jdbcType="VARCHAR" column="BRANDNAME"/><!--品牌名称-->
+        <result property="provcode" jdbcType="VARCHAR" column="PROVCODE"/><!--区划代码-->
+        <result property="provname" jdbcType="VARCHAR" column="PROVNAME"/><!--区划名称-->
+        <result property="areatype" jdbcType="VARCHAR" column="AREATYPE"/><!--区域类别-->
+        <result property="asstext" jdbcType="VARCHAR" column="ASSTEXT"/><!--辅助-->
+        <result property="asscode" jdbcType="VARCHAR" column="ASSCODE"/><!--辅助-->
+        <result property="citycode" jdbcType="VARCHAR" column="CITYCODE"/><!--城市代码-->
+        <result property="factdate" jdbcType="VARCHAR" column="FACTDATE"/><!--数据日期-->
+        <result property="firstalertdate" jdbcType="VARCHAR" column="FIRSTALERTDATE"/><!--只对日指标有效，表示该客户该指标同级别预警信号在一个预警周期内首次预警时间，如2010年8月1日为黄色预警，若上一次该客户该指标首次黄色预警为2010年7月20日，若预警时间差超过黄色预警的上限，则该字段伟2010-8-1，否则为2010-7-20，若8月2日继续黄色预警，则该字段为2010-8-1-->
+        <result property="alertcontinuetime" jdbcType="NUMERIC" column="ALERTCONTINUETIME"/><!--只对日指标有效，同FIRSTALERTDATE配合使用，表示该客户该指标同级别预警信号持续天数-->
+        <result property="isdisplay" jdbcType="NUMERIC" column="ISDISPLAY"/><!--只对日指标有效，同FIRSTALERTDATE配合使用，表示该预警事件在预警干预时是否显示-->
+        <result property="asstext1" jdbcType="VARCHAR" column="ASSTEXT1"/><!--存储大容量字符-->
+        <result property="remark" jdbcType="VARCHAR" column="REMARK"/><!--备注-->
+        <result property="creator" jdbcType="NUMERIC" column="CREATOR"/><!--创建人-->
+        <result property="createTime" jdbcType="DATE" column="CREATE_TIME"/><!--创建时间-->
+        <result property="modifier" jdbcType="NUMERIC" column="MODIFIER"/><!--最后更新人-->
+        <result property="modifyTime" jdbcType="DATE" column="MODIFY_TIME"/><!--最后更新时间-->
+        <association property="indicators" resultMap="IndicatorsMap"/>
+    </resultMap>
+    <resultMap id="IndicatorsMap" type="com.yqjr.fin.risk.stat.entity.Indicators">
+        <id column="ID" property="id"/>
+        <result property="typecode" column="TYPECODE"/>
+        <result property="indicatorcode" column="INDICATORCODE"/>
+        <result property="indicatorname" column="INDICATORNAME"/>
+        <result property="indicatortarget" column="INDICATORTARGET"/>
+        <result property="indicatordesc" column="INDICATORDESC"/>
+        <result property="indicatorcaption" column="INDICATORCAPTION"/>
+        <result property="indicatorgroup" column="INDICATORGROUP"/>
+        <result property="calformula" column="CALFORMULA"/>
+        <result property="displayorder" column="DISPLAYORDER"/>
+        <result property="alertflag" column="ALERTFLAG"/>
+        <result property="alertcycle" column="ALERTCYCLE"/>
+        <result property="parentindicatorid" column="PARENTINDICATORID"/>
+        <result property="remark" column="REMARK"/>
+        <result property="enabledflag" column="ENABLEDFLAG"/>
+        <result property="parentindicatorcode" column="PARENTINDICATORCODE"/>
+        <result property="indlevel" column="INDLEVEL"/>
+        <result property="cycCounttype" column="CYC_COUNTTYPE"/>
+        <result property="hasbudget" column="HASBUDGET"/>
+        <result property="sourcefrom" column="SOURCEFROM"/>
+        <result property="valuetype" column="VALUETYPE"/>
+        <result property="countcycle" column="COUNTCYCLE"/>
+        <result property="valuemapping" column="VALUEMAPPING"/>
+        <result property="ctcode" column="CTCODE"/>
+        <result property="indicatordetail" column="INDICATORDETAIL"/>
+        <result property="coutorder" column="COUTORDER"/>
+        <result property="alerttype" column="ALERTTYPE"/>
+        <result property="comcode" column="COMCODE"/>
+    </resultMap>
+    <!-- endregion -->
+
+    <!-- region Base_Column_List  -->
+    <sql id="Base_Column_List">
+    EVENTID,CUSTOMID,IND_ID,BIZDATE,FACTVALUE,FACTVALUE1,FACTVALUE2,FACTVALUE3,FACTTOTALVALUE,FACTTOTALVALUE1,LASTFACTVALUE,LASTFACTVALUE1,LASTYEARVALUE,LASTYEARVALUE1,EVENTSTATE,HANDLESTATE,ALERTTIME,ASSVALUE1,ASSVALUE2,SIGNALLAMP,SIGNALLEVEL,CUSTOMNAME,CITYNAME,AREACODE,AREANAME,BRAND,BRANDNAME,PROVCODE,PROVNAME,AREATYPE,ASSTEXT,ASSCODE,CITYCODE,FACTDATE,FIRSTALERTDATE,ALERTCONTINUETIME,ISDISPLAY,ASSTEXT1,REMARK,CREATOR,CREATE_TIME,MODIFIER,MODIFY_TIME
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_List_Selective  -->
+    <sql id="Base_Column_List_Selective">
+        <trim suffixOverrides=",">
+            <if test="eventid != null">
+            EVENTID,
+            </if>
+            <if test="customid != null">
+            CUSTOMID,
+            </if>
+            <if test="indId != null">
+            IND_ID,
+            </if>
+            <if test="bizdate != null">
+            BIZDATE,
+            </if>
+            <if test="factvalue != null">
+            FACTVALUE,
+            </if>
+            <if test="factvalue1 != null">
+            FACTVALUE1,
+            </if>
+            <if test="factvalue2 != null">
+            FACTVALUE2,
+            </if>
+            <if test="factvalue3 != null">
+            FACTVALUE3,
+            </if>
+            <if test="facttotalvalue != null">
+            FACTTOTALVALUE,
+            </if>
+            <if test="facttotalvalue1 != null">
+            FACTTOTALVALUE1,
+            </if>
+            <if test="lastfactvalue != null">
+            LASTFACTVALUE,
+            </if>
+            <if test="lastfactvalue1 != null">
+            LASTFACTVALUE1,
+            </if>
+            <if test="lastyearvalue != null">
+            LASTYEARVALUE,
+            </if>
+            <if test="lastyearvalue1 != null">
+            LASTYEARVALUE1,
+            </if>
+            <if test="eventstate != null">
+            EVENTSTATE,
+            </if>
+            <if test="handlestate != null">
+            HANDLESTATE,
+            </if>
+            <if test="alerttime != null">
+            ALERTTIME,
+            </if>
+            <if test="assvalue1 != null">
+            ASSVALUE1,
+            </if>
+            <if test="assvalue2 != null">
+            ASSVALUE2,
+            </if>
+            <if test="signallamp != null">
+            SIGNALLAMP,
+            </if>
+            <if test="signallevel != null">
+            SIGNALLEVEL,
+            </if>
+            <if test="customname != null">
+            CUSTOMNAME,
+            </if>
+            <if test="cityname != null">
+            CITYNAME,
+            </if>
+            <if test="areacode != null">
+            AREACODE,
+            </if>
+            <if test="areaname != null">
+            AREANAME,
+            </if>
+            <if test="brand != null">
+            BRAND,
+            </if>
+            <if test="brandname != null">
+            BRANDNAME,
+            </if>
+            <if test="provcode != null">
+            PROVCODE,
+            </if>
+            <if test="provname != null">
+            PROVNAME,
+            </if>
+            <if test="areatype != null">
+            AREATYPE,
+            </if>
+            <if test="asstext != null">
+            ASSTEXT,
+            </if>
+            <if test="asscode != null">
+            ASSCODE,
+            </if>
+            <if test="citycode != null">
+            CITYCODE,
+            </if>
+            <if test="factdate != null">
+            FACTDATE,
+            </if>
+            <if test="firstalertdate != null">
+            FIRSTALERTDATE,
+            </if>
+            <if test="alertcontinuetime != null">
+            ALERTCONTINUETIME,
+            </if>
+            <if test="isdisplay != null">
+            ISDISPLAY,
+            </if>
+            <if test="asstext1 != null">
+            ASSTEXT1,
+            </if>
+            <if test="remark != null">
+            REMARK,
+            </if>
+            <if test="creator != null">
+            CREATOR,
+            </if>
+            <if test="createTime != null">
+            CREATE_TIME,
+            </if>
+            <if test="modifier != null">
+            MODIFIER,
+            </if>
+            <if test="modifyTime != null">
+            MODIFY_TIME
+            </if>
+        </trim>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Values  -->
+    <sql id="Base_Column_Values">
+    #{eventid},
+    #{customid},
+    #{indId},
+    #{bizdate},
+    #{factvalue},
+    #{factvalue1},
+    #{factvalue2},
+    #{factvalue3},
+    #{facttotalvalue},
+    #{facttotalvalue1},
+    #{lastfactvalue},
+    #{lastfactvalue1},
+    #{lastyearvalue},
+    #{lastyearvalue1},
+    #{eventstate},
+    #{handlestate},
+    #{alerttime},
+    #{assvalue1},
+    #{assvalue2},
+    #{signallamp},
+    #{signallevel},
+    #{customname},
+    #{cityname},
+    #{areacode},
+    #{areaname},
+    #{brand},
+    #{brandname},
+    #{provcode},
+    #{provname},
+    #{areatype},
+    #{asstext},
+    #{asscode},
+    #{citycode},
+    #{factdate},
+    #{firstalertdate},
+    #{alertcontinuetime},
+    #{isdisplay},
+    #{asstext1},
+    #{remark},
+    #{creator},
+    #{createTime},
+    #{modifier},
+    #{modifyTime}
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Values_Selective  -->
+    <sql id="Base_Column_Values_Selective">
+        <trim suffixOverrides=",">
+            <if test="eventid != null">
+            #{eventid},
+            </if>
+            <if test="customid != null">
+            #{customid},
+            </if>
+            <if test="indId != null">
+            #{indId},
+            </if>
+            <if test="bizdate != null">
+            #{bizdate},
+            </if>
+            <if test="factvalue != null">
+            #{factvalue},
+            </if>
+            <if test="factvalue1 != null">
+            #{factvalue1},
+            </if>
+            <if test="factvalue2 != null">
+            #{factvalue2},
+            </if>
+            <if test="factvalue3 != null">
+            #{factvalue3},
+            </if>
+            <if test="facttotalvalue != null">
+            #{facttotalvalue},
+            </if>
+            <if test="facttotalvalue1 != null">
+            #{facttotalvalue1},
+            </if>
+            <if test="lastfactvalue != null">
+            #{lastfactvalue},
+            </if>
+            <if test="lastfactvalue1 != null">
+            #{lastfactvalue1},
+            </if>
+            <if test="lastyearvalue != null">
+            #{lastyearvalue},
+            </if>
+            <if test="lastyearvalue1 != null">
+            #{lastyearvalue1},
+            </if>
+            <if test="eventstate != null">
+            #{eventstate},
+            </if>
+            <if test="handlestate != null">
+            #{handlestate},
+            </if>
+            <if test="alerttime != null">
+            #{alerttime},
+            </if>
+            <if test="assvalue1 != null">
+            #{assvalue1},
+            </if>
+            <if test="assvalue2 != null">
+            #{assvalue2},
+            </if>
+            <if test="signallamp != null">
+            #{signallamp},
+            </if>
+            <if test="signallevel != null">
+            #{signallevel},
+            </if>
+            <if test="customname != null">
+            #{customname},
+            </if>
+            <if test="cityname != null">
+            #{cityname},
+            </if>
+            <if test="areacode != null">
+            #{areacode},
+            </if>
+            <if test="areaname != null">
+            #{areaname},
+            </if>
+            <if test="brand != null">
+            #{brand},
+            </if>
+            <if test="brandname != null">
+            #{brandname},
+            </if>
+            <if test="provcode != null">
+            #{provcode},
+            </if>
+            <if test="provname != null">
+            #{provname},
+            </if>
+            <if test="areatype != null">
+            #{areatype},
+            </if>
+            <if test="asstext != null">
+            #{asstext},
+            </if>
+            <if test="asscode != null">
+            #{asscode},
+            </if>
+            <if test="citycode != null">
+            #{citycode},
+            </if>
+            <if test="factdate != null">
+            #{factdate},
+            </if>
+            <if test="firstalertdate != null">
+            #{firstalertdate},
+            </if>
+            <if test="alertcontinuetime != null">
+            #{alertcontinuetime},
+            </if>
+            <if test="isdisplay != null">
+            #{isdisplay},
+            </if>
+            <if test="asstext1 != null">
+            #{asstext1},
+            </if>
+            <if test="remark != null">
+            #{remark},
+            </if>
+            <if test="creator != null">
+            #{creator},
+            </if>
+            <if test="createTime != null">
+            #{createTime},
+            </if>
+            <if test="modifier != null">
+            #{modifier},
+            </if>
+            <if test="modifyTime != null">
+            #{modifyTime}
+            </if>
+        </trim>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Set_Values  -->
+    <sql id="Base_Column_Set_Values">
+    EVENTID = #{eventid,jdbcType=NUMERIC},
+    CUSTOMID = #{customid,jdbcType=NUMERIC},
+    IND_ID = #{indId,jdbcType=NUMERIC},
+    BIZDATE = #{bizdate,jdbcType=VARCHAR},
+    FACTVALUE = #{factvalue,jdbcType=NUMERIC},
+    FACTVALUE1 = #{factvalue1,jdbcType=NUMERIC},
+    FACTVALUE2 = #{factvalue2,jdbcType=NUMERIC},
+    FACTVALUE3 = #{factvalue3,jdbcType=NUMERIC},
+    FACTTOTALVALUE = #{facttotalvalue,jdbcType=NUMERIC},
+    FACTTOTALVALUE1 = #{facttotalvalue1,jdbcType=NUMERIC},
+    LASTFACTVALUE = #{lastfactvalue,jdbcType=NUMERIC},
+    LASTFACTVALUE1 = #{lastfactvalue1,jdbcType=NUMERIC},
+    LASTYEARVALUE = #{lastyearvalue,jdbcType=NUMERIC},
+    LASTYEARVALUE1 = #{lastyearvalue1,jdbcType=NUMERIC},
+    EVENTSTATE = #{eventstate,jdbcType=VARCHAR},
+    HANDLESTATE = #{handlestate,jdbcType=VARCHAR},
+    ALERTTIME = #{alerttime,jdbcType=DATE},
+    ASSVALUE1 = #{assvalue1,jdbcType=VARCHAR},
+    ASSVALUE2 = #{assvalue2,jdbcType=VARCHAR},
+    SIGNALLAMP = #{signallamp,jdbcType=VARCHAR},
+    SIGNALLEVEL = #{signallevel,jdbcType=NUMERIC},
+    CUSTOMNAME = #{customname,jdbcType=VARCHAR},
+    CITYNAME = #{cityname,jdbcType=VARCHAR},
+    AREACODE = #{areacode,jdbcType=VARCHAR},
+    AREANAME = #{areaname,jdbcType=VARCHAR},
+    BRAND = #{brand,jdbcType=VARCHAR},
+    BRANDNAME = #{brandname,jdbcType=VARCHAR},
+    PROVCODE = #{provcode,jdbcType=VARCHAR},
+    PROVNAME = #{provname,jdbcType=VARCHAR},
+    AREATYPE = #{areatype,jdbcType=VARCHAR},
+    ASSTEXT = #{asstext,jdbcType=VARCHAR},
+    ASSCODE = #{asscode,jdbcType=VARCHAR},
+    CITYCODE = #{citycode,jdbcType=VARCHAR},
+    FACTDATE = #{factdate,jdbcType=VARCHAR},
+    FIRSTALERTDATE = #{firstalertdate,jdbcType=VARCHAR},
+    ALERTCONTINUETIME = #{alertcontinuetime,jdbcType=NUMERIC},
+    ISDISPLAY = #{isdisplay,jdbcType=NUMERIC},
+    ASSTEXT1 = #{asstext1,jdbcType=VARCHAR},
+    REMARK = #{remark,jdbcType=VARCHAR},
+    CREATOR = #{creator,jdbcType=NUMERIC},
+    CREATE_TIME = #{createTime,jdbcType=DATE},
+    MODIFIER = #{modifier,jdbcType=NUMERIC},
+    MODIFY_TIME = #{modifyTime,jdbcType=DATE}
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Set_Values_Selective  -->
+    <sql id="Base_Column_Set_Values_Selective">
+        <if test="eventid != null">
+        EVENTID = #{eventid,jdbcType=NUMERIC},
+        </if>
+        <if test="customid != null">
+        CUSTOMID = #{customid,jdbcType=NUMERIC},
+        </if>
+        <if test="indId != null">
+        IND_ID = #{indId,jdbcType=NUMERIC},
+        </if>
+        <if test="bizdate != null">
+        BIZDATE = #{bizdate,jdbcType=VARCHAR},
+        </if>
+        <if test="factvalue != null">
+        FACTVALUE = #{factvalue,jdbcType=NUMERIC},
+        </if>
+        <if test="factvalue1 != null">
+        FACTVALUE1 = #{factvalue1,jdbcType=NUMERIC},
+        </if>
+        <if test="factvalue2 != null">
+        FACTVALUE2 = #{factvalue2,jdbcType=NUMERIC},
+        </if>
+        <if test="factvalue3 != null">
+        FACTVALUE3 = #{factvalue3,jdbcType=NUMERIC},
+        </if>
+        <if test="facttotalvalue != null">
+        FACTTOTALVALUE = #{facttotalvalue,jdbcType=NUMERIC},
+        </if>
+        <if test="facttotalvalue1 != null">
+        FACTTOTALVALUE1 = #{facttotalvalue1,jdbcType=NUMERIC},
+        </if>
+        <if test="lastfactvalue != null">
+        LASTFACTVALUE = #{lastfactvalue,jdbcType=NUMERIC},
+        </if>
+        <if test="lastfactvalue1 != null">
+        LASTFACTVALUE1 = #{lastfactvalue1,jdbcType=NUMERIC},
+        </if>
+        <if test="lastyearvalue != null">
+        LASTYEARVALUE = #{lastyearvalue,jdbcType=NUMERIC},
+        </if>
+        <if test="lastyearvalue1 != null">
+        LASTYEARVALUE1 = #{lastyearvalue1,jdbcType=NUMERIC},
+        </if>
+        <if test="eventstate != null">
+        EVENTSTATE = #{eventstate,jdbcType=VARCHAR},
+        </if>
+        <if test="handlestate != null">
+        HANDLESTATE = #{handlestate,jdbcType=VARCHAR},
+        </if>
+        <if test="alerttime != null">
+        ALERTTIME = #{alerttime,jdbcType=DATE},
+        </if>
+        <if test="assvalue1 != null">
+        ASSVALUE1 = #{assvalue1,jdbcType=VARCHAR},
+        </if>
+        <if test="assvalue2 != null">
+        ASSVALUE2 = #{assvalue2,jdbcType=VARCHAR},
+        </if>
+        <if test="signallamp != null">
+        SIGNALLAMP = #{signallamp,jdbcType=VARCHAR},
+        </if>
+        <if test="signallevel != null">
+        SIGNALLEVEL = #{signallevel,jdbcType=NUMERIC},
+        </if>
+        <if test="customname != null">
+        CUSTOMNAME = #{customname,jdbcType=VARCHAR},
+        </if>
+        <if test="cityname != null">
+        CITYNAME = #{cityname,jdbcType=VARCHAR},
+        </if>
+        <if test="areacode != null">
+        AREACODE = #{areacode,jdbcType=VARCHAR},
+        </if>
+        <if test="areaname != null">
+        AREANAME = #{areaname,jdbcType=VARCHAR},
+        </if>
+        <if test="brand != null">
+        BRAND = #{brand,jdbcType=VARCHAR},
+        </if>
+        <if test="brandname != null">
+        BRANDNAME = #{brandname,jdbcType=VARCHAR},
+        </if>
+        <if test="provcode != null">
+        PROVCODE = #{provcode,jdbcType=VARCHAR},
+        </if>
+        <if test="provname != null">
+        PROVNAME = #{provname,jdbcType=VARCHAR},
+        </if>
+        <if test="areatype != null">
+        AREATYPE = #{areatype,jdbcType=VARCHAR},
+        </if>
+        <if test="asstext != null">
+        ASSTEXT = #{asstext,jdbcType=VARCHAR},
+        </if>
+        <if test="asscode != null">
+        ASSCODE = #{asscode,jdbcType=VARCHAR},
+        </if>
+        <if test="citycode != null">
+        CITYCODE = #{citycode,jdbcType=VARCHAR},
+        </if>
+        <if test="factdate != null">
+        FACTDATE = #{factdate,jdbcType=VARCHAR},
+        </if>
+        <if test="firstalertdate != null">
+        FIRSTALERTDATE = #{firstalertdate,jdbcType=VARCHAR},
+        </if>
+        <if test="alertcontinuetime != null">
+        ALERTCONTINUETIME = #{alertcontinuetime,jdbcType=NUMERIC},
+        </if>
+        <if test="isdisplay != null">
+        ISDISPLAY = #{isdisplay,jdbcType=NUMERIC},
+        </if>
+        <if test="asstext1 != null">
+        ASSTEXT1 = #{asstext1,jdbcType=VARCHAR},
+        </if>
+        <if test="remark != null">
+        REMARK = #{remark,jdbcType=VARCHAR},
+        </if>
+        <if test="creator != null">
+        CREATOR = #{creator,jdbcType=NUMERIC},
+        </if>
+        <if test="createTime != null">
+        CREATE_TIME = #{createTime,jdbcType=DATE},
+        </if>
+        <if test="modifier != null">
+        MODIFIER = #{modifier,jdbcType=NUMERIC},
+        </if>
+        <if test="modifyTime != null">
+        MODIFY_TIME = #{modifyTime,jdbcType=DATE}
+        </if>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Where_Selective  -->
+    <sql id="Base_Column_Where_Selective">
+        <if test="eventid != null">
+            and EVENTID = #{eventid,jdbcType=NUMERIC}
+        </if>
+        <if test="customid != null">
+            and CUSTOMID = #{customid,jdbcType=NUMERIC}
+        </if>
+        <if test="indId != null">
+            and IND_ID = #{indId,jdbcType=NUMERIC}
+        </if>
+        <if test="bizdate != null">
+            and BIZDATE = #{bizdate,jdbcType=VARCHAR}
+        </if>
+        <if test="factvalue != null">
+            and FACTVALUE = #{factvalue,jdbcType=NUMERIC}
+        </if>
+        <if test="factvalue1 != null">
+            and FACTVALUE1 = #{factvalue1,jdbcType=NUMERIC}
+        </if>
+        <if test="factvalue2 != null">
+            and FACTVALUE2 = #{factvalue2,jdbcType=NUMERIC}
+        </if>
+        <if test="factvalue3 != null">
+            and FACTVALUE3 = #{factvalue3,jdbcType=NUMERIC}
+        </if>
+        <if test="facttotalvalue != null">
+            and FACTTOTALVALUE = #{facttotalvalue,jdbcType=NUMERIC}
+        </if>
+        <if test="facttotalvalue1 != null">
+            and FACTTOTALVALUE1 = #{facttotalvalue1,jdbcType=NUMERIC}
+        </if>
+        <if test="lastfactvalue != null">
+            and LASTFACTVALUE = #{lastfactvalue,jdbcType=NUMERIC}
+        </if>
+        <if test="lastfactvalue1 != null">
+            and LASTFACTVALUE1 = #{lastfactvalue1,jdbcType=NUMERIC}
+        </if>
+        <if test="lastyearvalue != null">
+            and LASTYEARVALUE = #{lastyearvalue,jdbcType=NUMERIC}
+        </if>
+        <if test="lastyearvalue1 != null">
+            and LASTYEARVALUE1 = #{lastyearvalue1,jdbcType=NUMERIC}
+        </if>
+        <if test="eventstate != null">
+            and EVENTSTATE = #{eventstate,jdbcType=VARCHAR}
+        </if>
+        <if test="handlestate != null">
+            and HANDLESTATE = #{handlestate,jdbcType=VARCHAR}
+        </if>
+        <if test="alerttime != null">
+            and ALERTTIME = #{alerttime,jdbcType=DATE}
+        </if>
+        <if test="assvalue1 != null">
+            and ASSVALUE1 = #{assvalue1,jdbcType=VARCHAR}
+        </if>
+        <if test="assvalue2 != null">
+            and ASSVALUE2 = #{assvalue2,jdbcType=VARCHAR}
+        </if>
+        <if test="signallamp != null">
+            and SIGNALLAMP = #{signallamp,jdbcType=VARCHAR}
+        </if>
+        <if test="signallevel != null">
+            and SIGNALLEVEL = #{signallevel,jdbcType=NUMERIC}
+        </if>
+        <if test="customname != null">
+            and CUSTOMNAME = #{customname,jdbcType=VARCHAR}
+        </if>
+        <if test="cityname != null">
+            and CITYNAME = #{cityname,jdbcType=VARCHAR}
+        </if>
+        <if test="areacode != null">
+            and AREACODE = #{areacode,jdbcType=VARCHAR}
+        </if>
+        <if test="areaname != null">
+            and AREANAME = #{areaname,jdbcType=VARCHAR}
+        </if>
+        <if test="brand != null">
+            and BRAND = #{brand,jdbcType=VARCHAR}
+        </if>
+        <if test="brandname != null">
+            and BRANDNAME = #{brandname,jdbcType=VARCHAR}
+        </if>
+        <if test="provcode != null">
+            and PROVCODE = #{provcode,jdbcType=VARCHAR}
+        </if>
+        <if test="provname != null">
+            and PROVNAME = #{provname,jdbcType=VARCHAR}
+        </if>
+        <if test="areatype != null">
+            and AREATYPE = #{areatype,jdbcType=VARCHAR}
+        </if>
+        <if test="asstext != null">
+            and ASSTEXT = #{asstext,jdbcType=VARCHAR}
+        </if>
+        <if test="asscode != null">
+            and ASSCODE = #{asscode,jdbcType=VARCHAR}
+        </if>
+        <if test="citycode != null">
+            and CITYCODE = #{citycode,jdbcType=VARCHAR}
+        </if>
+        <if test="factdate != null">
+            and FACTDATE = #{factdate,jdbcType=VARCHAR}
+        </if>
+        <if test="firstalertdate != null">
+            and FIRSTALERTDATE = #{firstalertdate,jdbcType=VARCHAR}
+        </if>
+        <if test="alertcontinuetime != null">
+            and ALERTCONTINUETIME = #{alertcontinuetime,jdbcType=NUMERIC}
+        </if>
+        <if test="isdisplay != null">
+            and ISDISPLAY = #{isdisplay,jdbcType=NUMERIC}
+        </if>
+        <if test="asstext1 != null">
+            and ASSTEXT1 = #{asstext1,jdbcType=VARCHAR}
+        </if>
+        <if test="remark != null">
+            and REMARK = #{remark,jdbcType=VARCHAR}
+        </if>
+        <if test="creator != null">
+            and CREATOR = #{creator,jdbcType=NUMERIC}
+        </if>
+        <if test="createTime != null">
+            and CREATE_TIME = #{createTime,jdbcType=DATE}
+        </if>
+        <if test="modifier != null">
+            and MODIFIER = #{modifier,jdbcType=NUMERIC}
+        </if>
+        <if test="modifyTime != null">
+            and MODIFY_TIME = #{modifyTime,jdbcType=DATE}
+        </if>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Where_Selective_Param1  -->
+    <sql id="Base_Column_Where_Selective_Param1">
+        <if test="param1.eventid != null">
+            and EVENTID = #{param1.eventid}
+        </if>
+        <if test="param1.customid != null">
+            and CUSTOMID = #{param1.customid}
+        </if>
+        <if test="param1.indId != null">
+            and IND_ID = #{param1.indId}
+        </if>
+        <if test="param1.bizdate != null">
+            and BIZDATE = #{param1.bizdate}
+        </if>
+        <if test="param1.factvalue != null">
+            and FACTVALUE = #{param1.factvalue}
+        </if>
+        <if test="param1.factvalue1 != null">
+            and FACTVALUE1 = #{param1.factvalue1}
+        </if>
+        <if test="param1.factvalue2 != null">
+            and FACTVALUE2 = #{param1.factvalue2}
+        </if>
+        <if test="param1.factvalue3 != null">
+            and FACTVALUE3 = #{param1.factvalue3}
+        </if>
+        <if test="param1.facttotalvalue != null">
+            and FACTTOTALVALUE = #{param1.facttotalvalue}
+        </if>
+        <if test="param1.facttotalvalue1 != null">
+            and FACTTOTALVALUE1 = #{param1.facttotalvalue1}
+        </if>
+        <if test="param1.lastfactvalue != null">
+            and LASTFACTVALUE = #{param1.lastfactvalue}
+        </if>
+        <if test="param1.lastfactvalue1 != null">
+            and LASTFACTVALUE1 = #{param1.lastfactvalue1}
+        </if>
+        <if test="param1.lastyearvalue != null">
+            and LASTYEARVALUE = #{param1.lastyearvalue}
+        </if>
+        <if test="param1.lastyearvalue1 != null">
+            and LASTYEARVALUE1 = #{param1.lastyearvalue1}
+        </if>
+        <if test="param1.eventstate != null">
+            and EVENTSTATE = #{param1.eventstate}
+        </if>
+        <if test="param1.handlestate != null">
+            and HANDLESTATE = #{param1.handlestate}
+        </if>
+        <if test="param1.alerttime != null">
+            and ALERTTIME = #{param1.alerttime}
+        </if>
+        <if test="param1.assvalue1 != null">
+            and ASSVALUE1 = #{param1.assvalue1}
+        </if>
+        <if test="param1.assvalue2 != null">
+            and ASSVALUE2 = #{param1.assvalue2}
+        </if>
+        <if test="param1.signallamp != null">
+            and SIGNALLAMP = #{param1.signallamp}
+        </if>
+        <if test="param1.signallevel != null">
+            and SIGNALLEVEL = #{param1.signallevel}
+        </if>
+        <if test="param1.customname != null">
+            and CUSTOMNAME = #{param1.customname}
+        </if>
+        <if test="param1.cityname != null">
+            and CITYNAME = #{param1.cityname}
+        </if>
+        <if test="param1.areacode != null">
+            and AREACODE = #{param1.areacode}
+        </if>
+        <if test="param1.areaname != null">
+            and AREANAME = #{param1.areaname}
+        </if>
+        <if test="param1.brand != null">
+            and BRAND = #{param1.brand}
+        </if>
+        <if test="param1.brandname != null">
+            and BRANDNAME = #{param1.brandname}
+        </if>
+        <if test="param1.provcode != null">
+            and PROVCODE = #{param1.provcode}
+        </if>
+        <if test="param1.provname != null">
+            and PROVNAME = #{param1.provname}
+        </if>
+        <if test="param1.areatype != null">
+            and AREATYPE = #{param1.areatype}
+        </if>
+        <if test="param1.asstext != null">
+            and ASSTEXT = #{param1.asstext}
+        </if>
+        <if test="param1.asscode != null">
+            and ASSCODE = #{param1.asscode}
+        </if>
+        <if test="param1.citycode != null">
+            and CITYCODE = #{param1.citycode}
+        </if>
+        <if test="param1.factdate != null">
+            and FACTDATE = #{param1.factdate}
+        </if>
+        <if test="param1.firstalertdate != null">
+            and FIRSTALERTDATE = #{param1.firstalertdate}
+        </if>
+        <if test="param1.alertcontinuetime != null">
+            and ALERTCONTINUETIME = #{param1.alertcontinuetime}
+        </if>
+        <if test="param1.isdisplay != null">
+            and ISDISPLAY = #{param1.isdisplay}
+        </if>
+        <if test="param1.asstext1 != null">
+            and ASSTEXT1 = #{param1.asstext1}
+        </if>
+        <if test="param1.remark != null">
+            and REMARK = #{param1.remark}
+        </if>
+        <if test="param1.creator != null">
+            and CREATOR = #{param1.creator}
+        </if>
+        <if test="param1.createTime != null">
+            and CREATE_TIME = #{param1.createTime}
+        </if>
+        <if test="param1.modifier != null">
+            and MODIFIER = #{param1.modifier}
+        </if>
+        <if test="param1.modifyTime != null">
+            and MODIFY_TIME = #{param1.modifyTime}
+        </if>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Order_By  -->
+    <sql id="Base_Order_By">
+        <bind name="propName" value="sortField"></bind>
+        ORDER BY <include refid="Base_Column_Name" />
+        <choose>
+            <when test="isAscend">
+                ASC
+            </when>
+            <otherwise>
+                DESC
+            </otherwise>
+        </choose>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Name  -->
+    <sql id="Base_Column_Name">
+        <if test='"eventid" == propName'>
+        EVENTID
+        </if>
+        <if test='"customid" == propName'>
+        CUSTOMID
+        </if>
+        <if test='"indId" == propName'>
+        IND_ID
+        </if>
+        <if test='"bizdate" == propName'>
+        BIZDATE
+        </if>
+        <if test='"factvalue" == propName'>
+        FACTVALUE
+        </if>
+        <if test='"factvalue1" == propName'>
+        FACTVALUE1
+        </if>
+        <if test='"factvalue2" == propName'>
+        FACTVALUE2
+        </if>
+        <if test='"factvalue3" == propName'>
+        FACTVALUE3
+        </if>
+        <if test='"facttotalvalue" == propName'>
+        FACTTOTALVALUE
+        </if>
+        <if test='"facttotalvalue1" == propName'>
+        FACTTOTALVALUE1
+        </if>
+        <if test='"lastfactvalue" == propName'>
+        LASTFACTVALUE
+        </if>
+        <if test='"lastfactvalue1" == propName'>
+        LASTFACTVALUE1
+        </if>
+        <if test='"lastyearvalue" == propName'>
+        LASTYEARVALUE
+        </if>
+        <if test='"lastyearvalue1" == propName'>
+        LASTYEARVALUE1
+        </if>
+        <if test='"eventstate" == propName'>
+        EVENTSTATE
+        </if>
+        <if test='"handlestate" == propName'>
+        HANDLESTATE
+        </if>
+        <if test='"alerttime" == propName'>
+        ALERTTIME
+        </if>
+        <if test='"assvalue1" == propName'>
+        ASSVALUE1
+        </if>
+        <if test='"assvalue2" == propName'>
+        ASSVALUE2
+        </if>
+        <if test='"signallamp" == propName'>
+        SIGNALLAMP
+        </if>
+        <if test='"signallevel" == propName'>
+        SIGNALLEVEL
+        </if>
+        <if test='"customname" == propName'>
+        CUSTOMNAME
+        </if>
+        <if test='"cityname" == propName'>
+        CITYNAME
+        </if>
+        <if test='"areacode" == propName'>
+        AREACODE
+        </if>
+        <if test='"areaname" == propName'>
+        AREANAME
+        </if>
+        <if test='"brand" == propName'>
+        BRAND
+        </if>
+        <if test='"brandname" == propName'>
+        BRANDNAME
+        </if>
+        <if test='"provcode" == propName'>
+        PROVCODE
+        </if>
+        <if test='"provname" == propName'>
+        PROVNAME
+        </if>
+        <if test='"areatype" == propName'>
+        AREATYPE
+        </if>
+        <if test='"asstext" == propName'>
+        ASSTEXT
+        </if>
+        <if test='"asscode" == propName'>
+        ASSCODE
+        </if>
+        <if test='"citycode" == propName'>
+        CITYCODE
+        </if>
+        <if test='"factdate" == propName'>
+        FACTDATE
+        </if>
+        <if test='"firstalertdate" == propName'>
+        FIRSTALERTDATE
+        </if>
+        <if test='"alertcontinuetime" == propName'>
+        ALERTCONTINUETIME
+        </if>
+        <if test='"isdisplay" == propName'>
+        ISDISPLAY
+        </if>
+        <if test='"asstext1" == propName'>
+        ASSTEXT1
+        </if>
+        <if test='"remark" == propName'>
+        REMARK
+        </if>
+        <if test='"creator" == propName'>
+        CREATOR
+        </if>
+        <if test='"createTime" == propName'>
+        CREATE_TIME
+        </if>
+        <if test='"modifier" == propName'>
+        MODIFIER
+        </if>
+        <if test='"modifyTime" == propName'>
+        MODIFY_TIME
+        </if>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Id_Array  -->
+    <sql id="Base_Id_Array">
+        <foreach collection="array" open="(" close=")" separator="," item="id">
+        #{id}
+        </foreach>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Id_List  -->
+    <sql id="Base_Id_List">
+        <foreach collection="list" open="(" close=")" separator="," item="id">
+        #{id}
+        </foreach>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Select_All  -->
+    <sql id="Base_Select_All">
+        select
+        <include refid="Base_Column_List" />
+        from <include refid="Base_Table_Name" />
+    </sql>
+    <!-- endregion -->
+
+    <!-- region selectById  -->
+    <select id="selectById" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        where ID = #{id}
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectByIds  -->
+    <select id="selectByIds" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        where ID in
+        <include refid="Base_Id_List" />
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectAll  -->
+    <select id="selectAll" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectCount  -->
+    <select id="selectCount" resultType="int">
+        select count(*)
+        from <include refid="Base_Table_Name" />
+        <where>
+            <include refid="Base_Column_Where_Selective" />
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region select  -->
+    <select id="select" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Where_Selective" />
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectOne  -->
+    <select id="selectOne" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Where_Selective" />
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectOrderBy  -->
+    <select id="selectOrderBy" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Where_Selective_Param1" />
+        </where>
+        <include refid="Base_Order_By" />
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectByProperty  -->
+    <select id="selectByProperty" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Name" /> = #{propValue}
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectByPropertyIn  -->
+    <select id="selectByPropertyIn" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Name" /> IN
+            <foreach collection="propValues" open="(" close=")" separator="," item="propValue">
+            #{propValue}
+            </foreach>
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region delete  -->
+    <delete id="delete">
+        delete
+        from <include refid="Base_Table_Name" />
+        <where>
+            <include refid="Base_Column_Where_Selective" />
+        </where>
+    </delete>
+    <!-- endregion -->
+
+    <!-- region deleteById  -->
+    <delete id="deleteById">
+        delete
+        from <include refid="Base_Table_Name" />
+        where ID = #{id}
+    </delete>
+    <!-- endregion -->
+
+    <!-- region deleteByIds  -->
+    <delete id="deleteByIds">
+        delete
+        from <include refid="Base_Table_Name" />
+        where ID in
+        <include refid="Base_Id_List" />
+    </delete>
+    <!-- endregion -->
+
+    <!-- region insert  -->
+    <insert id="insert" parameterType="com.yqjr.fin.risk.stat.entity.FctAltCustom">
+        <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into <include refid="Base_Table_Name" /> (
+        <include refid="Base_Column_List" />
+        )
+        values (
+        <include refid="Base_Column_Values" />
+        )
+    </insert>
+    <!-- endregion -->
+
+    <!-- region updateById  -->
+    <update id="updateById" parameterType="com.yqjr.fin.risk.stat.entity.FctAltCustom">
+        update <include refid="Base_Table_Name" />
+        <set>
+            <include refid="Base_Column_Set_Values" />
+        </set>
+        where ID = #{id,jdbcType=NUMERIC}
+    </update>
+    <!-- endregion -->
+
+    <!-- region patchById  -->
+    <update id="patchById" parameterType="com.yqjr.fin.risk.stat.entity.FctAltCustom">
+        update <include refid="Base_Table_Name" />
+        <set>
+            <include refid="Base_Column_Set_Values_Selective" />
+        </set>
+        where EVENTID = #{eventid,jdbcType=NUMERIC}
+    </update>
+    <!-- endregion -->
+
+    <!-- endregion BaseMapper -->
+
+    <!-- region generated by CodeRobot  -->
+
+    <!-- region 结果集映射  -->
+    <resultMap id="FctAltCustomResult" type="com.yqjr.fin.risk.stat.entity.FctAltCustom">
+        <result property="eventid" column="EVENTID"/><!--事件ID-->
+        <result property="customid" column="CUSTOMID"/><!--客户ID-->
+        <result property="indId" column="IND_ID"/><!--指标ID-->
+        <result property="bizdate" column="BIZDATE"/><!--日期-->
+        <result property="factvalue" column="FACTVALUE"/><!--指标实际值-->
+        <result property="factvalue1" column="FACTVALUE1"/><!--当期值1-->
+        <result property="factvalue2" column="FACTVALUE2"/><!--当期值2-->
+        <result property="factvalue3" column="FACTVALUE3"/><!--当期值3-->
+        <result property="facttotalvalue" column="FACTTOTALVALUE"/><!--合计值-->
+        <result property="facttotalvalue1" column="FACTTOTALVALUE1"/><!--合计值1-->
+        <result property="lastfactvalue" column="LASTFACTVALUE"/><!--上期-->
+        <result property="lastfactvalue1" column="LASTFACTVALUE1"/><!--上期1-->
+        <result property="lastyearvalue" column="LASTYEARVALUE"/><!--去年同期-->
+        <result property="lastyearvalue1" column="LASTYEARVALUE1"/><!--去年同期1-->
+        <result property="eventstate" column="EVENTSTATE"/><!--事件状态-->
+        <result property="handlestate" column="HANDLESTATE"/><!--干预状态。-->
+        <result property="alerttime" column="ALERTTIME"/><!--预警时间-->
+        <result property="assvalue1" column="ASSVALUE1"/><!--备用字段1-->
+        <result property="assvalue2" column="ASSVALUE2"/><!--备用字段2-->
+        <result property="signallamp" column="SIGNALLAMP"/><!--信号灯-->
+        <result property="signallevel" column="SIGNALLEVEL"/><!--信号级别。如1,2,3，其中1的级别最低，3的级别最高，依此类推。-->
+        <result property="customname" column="CUSTOMNAME"/><!--客户名称-->
+        <result property="cityname" column="CITYNAME"/><!--客户所属城市名称-->
+        <result property="areacode" column="AREACODE"/><!--区域代码，客户所属的区域。-->
+        <result property="areaname" column="AREANAME"/><!--区域名称-->
+        <result property="brand" column="BRAND"/><!--品牌代码-->
+        <result property="brandname" column="BRANDNAME"/><!--品牌名称-->
+        <result property="provcode" column="PROVCODE"/><!--区划代码-->
+        <result property="provname" column="PROVNAME"/><!--区划名称-->
+        <result property="areatype" column="AREATYPE"/><!--区域类别-->
+        <result property="asstext" column="ASSTEXT"/><!--辅助-->
+        <result property="asscode" column="ASSCODE"/><!--辅助-->
+        <result property="citycode" column="CITYCODE"/><!--城市代码-->
+        <result property="factdate" column="FACTDATE"/><!--数据日期-->
+        <result property="firstalertdate" column="FIRSTALERTDATE"/><!--只对日指标有效，表示该客户该指标同级别预警信号在一个预警周期内首次预警时间，如2010年8月1日为黄色预警，若上一次该客户该指标首次黄色预警为2010年7月20日，若预警时间差超过黄色预警的上限，则该字段伟2010-8-1，否则为2010-7-20，若8月2日继续黄色预警，则该字段为2010-8-1-->
+        <result property="alertcontinuetime" column="ALERTCONTINUETIME"/><!--只对日指标有效，同FIRSTALERTDATE配合使用，表示该客户该指标同级别预警信号持续天数-->
+        <result property="isdisplay" column="ISDISPLAY"/><!--只对日指标有效，同FIRSTALERTDATE配合使用，表示该预警事件在预警干预时是否显示-->
+        <result property="asstext1" column="ASSTEXT1"/><!--存储大容量字符-->
+        <result property="remark" column="REMARK"/><!--备注-->
+        <result property="creator" column="CREATOR"/><!--创建人-->
+        <result property="createTime" column="CREATE_TIME"/><!--创建时间-->
+        <result property="modifier" column="MODIFIER"/><!--最后更新人-->
+        <result property="modifyTime" column="MODIFY_TIME"/><!--最后更新时间-->
+    </resultMap>
+    <!-- endregion -->
+
+    <!-- 查询条件判断 入参为对象 条件为模糊-->
+    <sql id="queryLikeFctAltCustom">
+
+            <if test="eventid!=null and eventid!=''">
+                AND EVENTID LIKE CONCAT('%',CONCAT(#{eventid},'%'))<!--事件ID-->
+            </if>
+            <if test="customid!=null and customid!=''">
+                AND CUSTOMID LIKE CONCAT('%',CONCAT(#{customid},'%'))<!--客户ID-->
+            </if>
+            <if test="indId!=null and indId!=''">
+                AND IND_ID LIKE CONCAT('%',CONCAT(#{indId},'%'))<!--指标ID-->
+            </if>
+            <if test="bizdate!=null and bizdate!=''">
+                AND BIZDATE LIKE CONCAT('%',CONCAT(#{bizdate},'%'))<!--日期-->
+            </if>
+            <if test="factvalue!=null and factvalue!=''">
+                AND FACTVALUE LIKE CONCAT('%',CONCAT(#{factvalue},'%'))<!--指标实际值-->
+            </if>
+            <if test="factvalue1!=null and factvalue1!=''">
+                AND FACTVALUE1 LIKE CONCAT('%',CONCAT(#{factvalue1},'%'))<!--当期值1-->
+            </if>
+            <if test="factvalue2!=null and factvalue2!=''">
+                AND FACTVALUE2 LIKE CONCAT('%',CONCAT(#{factvalue2},'%'))<!--当期值2-->
+            </if>
+            <if test="factvalue3!=null and factvalue3!=''">
+                AND FACTVALUE3 LIKE CONCAT('%',CONCAT(#{factvalue3},'%'))<!--当期值3-->
+            </if>
+            <if test="facttotalvalue!=null and facttotalvalue!=''">
+                AND FACTTOTALVALUE LIKE CONCAT('%',CONCAT(#{facttotalvalue},'%'))<!--合计值-->
+            </if>
+            <if test="facttotalvalue1!=null and facttotalvalue1!=''">
+                AND FACTTOTALVALUE1 LIKE CONCAT('%',CONCAT(#{facttotalvalue1},'%'))<!--合计值1-->
+            </if>
+            <if test="lastfactvalue!=null and lastfactvalue!=''">
+                AND LASTFACTVALUE LIKE CONCAT('%',CONCAT(#{lastfactvalue},'%'))<!--上期-->
+            </if>
+            <if test="lastfactvalue1!=null and lastfactvalue1!=''">
+                AND LASTFACTVALUE1 LIKE CONCAT('%',CONCAT(#{lastfactvalue1},'%'))<!--上期1-->
+            </if>
+            <if test="lastyearvalue!=null and lastyearvalue!=''">
+                AND LASTYEARVALUE LIKE CONCAT('%',CONCAT(#{lastyearvalue},'%'))<!--去年同期-->
+            </if>
+            <if test="lastyearvalue1!=null and lastyearvalue1!=''">
+                AND LASTYEARVALUE1 LIKE CONCAT('%',CONCAT(#{lastyearvalue1},'%'))<!--去年同期1-->
+            </if>
+            <if test="eventstate!=null and eventstate!=''">
+                AND EVENTSTATE LIKE CONCAT('%',CONCAT(#{eventstate},'%'))<!--事件状态-->
+            </if>
+            <if test="handlestate!=null and handlestate!=''">
+                AND HANDLESTATE LIKE CONCAT('%',CONCAT(#{handlestate},'%'))<!--干预状态。-->
+            </if>
+            <if test="alerttime!=null and alerttime!=''">
+                AND ALERTTIME LIKE CONCAT('%',CONCAT(#{alerttime},'%'))<!--预警时间-->
+            </if>
+            <if test="assvalue1!=null and assvalue1!=''">
+                AND ASSVALUE1 LIKE CONCAT('%',CONCAT(#{assvalue1},'%'))<!--备用字段1-->
+            </if>
+            <if test="assvalue2!=null and assvalue2!=''">
+                AND ASSVALUE2 LIKE CONCAT('%',CONCAT(#{assvalue2},'%'))<!--备用字段2-->
+            </if>
+            <if test="signallamp!=null and signallamp!=''">
+                AND SIGNALLAMP LIKE CONCAT('%',CONCAT(#{signallamp},'%'))<!--信号灯-->
+            </if>
+            <if test="signallevel!=null and signallevel!=''">
+                AND SIGNALLEVEL LIKE CONCAT('%',CONCAT(#{signallevel},'%'))<!--信号级别。如1,2,3，其中1的级别最低，3的级别最高，依此类推。-->
+            </if>
+            <if test="customname!=null and customname!=''">
+                AND CUSTOMNAME LIKE CONCAT('%',CONCAT(#{customname},'%'))<!--客户名称-->
+            </if>
+            <if test="cityname!=null and cityname!=''">
+                AND CITYNAME LIKE CONCAT('%',CONCAT(#{cityname},'%'))<!--客户所属城市名称-->
+            </if>
+            <if test="areacode!=null and areacode!=''">
+                AND AREACODE LIKE CONCAT('%',CONCAT(#{areacode},'%'))<!--区域代码，客户所属的区域。-->
+            </if>
+            <if test="areaname!=null and areaname!=''">
+                AND AREANAME LIKE CONCAT('%',CONCAT(#{areaname},'%'))<!--区域名称-->
+            </if>
+            <if test="brand!=null and brand!=''">
+                AND BRAND LIKE CONCAT('%',CONCAT(#{brand},'%'))<!--品牌代码-->
+            </if>
+            <if test="brandname!=null and brandname!=''">
+                AND BRANDNAME LIKE CONCAT('%',CONCAT(#{brandname},'%'))<!--品牌名称-->
+            </if>
+            <if test="provcode!=null and provcode!=''">
+                AND PROVCODE LIKE CONCAT('%',CONCAT(#{provcode},'%'))<!--区划代码-->
+            </if>
+            <if test="provname!=null and provname!=''">
+                AND PROVNAME LIKE CONCAT('%',CONCAT(#{provname},'%'))<!--区划名称-->
+            </if>
+            <if test="areatype!=null and areatype!=''">
+                AND AREATYPE LIKE CONCAT('%',CONCAT(#{areatype},'%'))<!--区域类别-->
+            </if>
+            <if test="asstext!=null and asstext!=''">
+                AND ASSTEXT LIKE CONCAT('%',CONCAT(#{asstext},'%'))<!--辅助-->
+            </if>
+            <if test="asscode!=null and asscode!=''">
+                AND ASSCODE LIKE CONCAT('%',CONCAT(#{asscode},'%'))<!--辅助-->
+            </if>
+            <if test="citycode!=null and citycode!=''">
+                AND CITYCODE LIKE CONCAT('%',CONCAT(#{citycode},'%'))<!--城市代码-->
+            </if>
+            <if test="factdate!=null and factdate!=''">
+                AND FACTDATE LIKE CONCAT('%',CONCAT(#{factdate},'%'))<!--数据日期-->
+            </if>
+            <if test="firstalertdate!=null and firstalertdate!=''">
+                AND FIRSTALERTDATE LIKE CONCAT('%',CONCAT(#{firstalertdate},'%'))<!--只对日指标有效，表示该客户该指标同级别预警信号在一个预警周期内首次预警时间，如2010年8月1日为黄色预警，若上一次该客户该指标首次黄色预警为2010年7月20日，若预警时间差超过黄色预警的上限，则该字段伟2010-8-1，否则为2010-7-20，若8月2日继续黄色预警，则该字段为2010-8-1-->
+            </if>
+            <if test="alertcontinuetime!=null and alertcontinuetime!=''">
+                AND ALERTCONTINUETIME LIKE CONCAT('%',CONCAT(#{alertcontinuetime},'%'))<!--只对日指标有效，同FIRSTALERTDATE配合使用，表示该客户该指标同级别预警信号持续天数-->
+            </if>
+            <if test="isdisplay!=null and isdisplay!=''">
+                AND ISDISPLAY LIKE CONCAT('%',CONCAT(#{isdisplay},'%'))<!--只对日指标有效，同FIRSTALERTDATE配合使用，表示该预警事件在预警干预时是否显示-->
+            </if>
+            <if test="asstext1!=null and asstext1!=''">
+                AND ASSTEXT1 LIKE CONCAT('%',CONCAT(#{asstext1},'%'))<!--存储大容量字符-->
+            </if>
+            <if test="remark!=null and remark!=''">
+                AND REMARK LIKE CONCAT('%',CONCAT(#{remark},'%'))<!--备注-->
+            </if>
+            <if test="creator!=null and creator!=''">
+                AND CREATOR LIKE CONCAT('%',CONCAT(#{creator},'%'))<!--创建人-->
+            </if>
+            <if test="createTime!=null and createTime!=''">
+                AND CREATE_TIME LIKE CONCAT('%',CONCAT(#{createTime},'%'))<!--创建时间-->
+            </if>
+            <if test="modifier!=null and modifier!=''">
+                AND MODIFIER LIKE CONCAT('%',CONCAT(#{modifier},'%'))<!--最后更新人-->
+            </if>
+            <if test="modifyTime!=null and modifyTime!=''">
+                And MODIFY_TIME LIKE CONCAT('%',CONCAT(#{modifyTime},'%'))<!--最后更新时间-->
+            </if>
+
+    </sql>
+
+    <sql id="queryLikeFctAltCustomTime">
+
+
+        <if test="customid!=null and customid!=''">
+            AND CUSTOMID LIKE CONCAT('%',CONCAT(#{customid},'%'))<!--客户ID-->
+        </if>
+        <if test="indId!=null and indId!=''">
+            AND IND_ID LIKE CONCAT('%',CONCAT(#{indId},'%'))<!--指标ID-->
+        </if>
+        <if test="bizdate!=null and bizdate!=''">
+            AND BIZDATE LIKE CONCAT('%',CONCAT(#{bizdate},'%'))<!--日期-->
+        </if>
+        <if test="factvalue!=null and factvalue!=''">
+            AND FACTVALUE LIKE CONCAT('%',CONCAT(#{factvalue},'%'))<!--指标实际值-->
+        </if>
+        <if test="factvalue1!=null and factvalue1!=''">
+            AND FACTVALUE1 LIKE CONCAT('%',CONCAT(#{factvalue1},'%'))<!--当期值1-->
+        </if>
+        <if test="factvalue2!=null and factvalue2!=''">
+            AND FACTVALUE2 LIKE CONCAT('%',CONCAT(#{factvalue2},'%'))<!--当期值2-->
+        </if>
+        <if test="factvalue3!=null and factvalue3!=''">
+            AND FACTVALUE3 LIKE CONCAT('%',CONCAT(#{factvalue3},'%'))<!--当期值3-->
+        </if>
+        <if test="facttotalvalue!=null and facttotalvalue!=''">
+            AND FACTTOTALVALUE LIKE CONCAT('%',CONCAT(#{facttotalvalue},'%'))<!--合计值-->
+        </if>
+        <if test="facttotalvalue1!=null and facttotalvalue1!=''">
+            AND FACTTOTALVALUE1 LIKE CONCAT('%',CONCAT(#{facttotalvalue1},'%'))<!--合计值1-->
+        </if>
+        <if test="lastfactvalue!=null and lastfactvalue!=''">
+            AND LASTFACTVALUE LIKE CONCAT('%',CONCAT(#{lastfactvalue},'%'))<!--上期-->
+        </if>
+        <if test="lastfactvalue1!=null and lastfactvalue1!=''">
+            AND LASTFACTVALUE1 LIKE CONCAT('%',CONCAT(#{lastfactvalue1},'%'))<!--上期1-->
+        </if>
+        <if test="lastyearvalue!=null and lastyearvalue!=''">
+            AND LASTYEARVALUE LIKE CONCAT('%',CONCAT(#{lastyearvalue},'%'))<!--去年同期-->
+        </if>
+        <if test="lastyearvalue1!=null and lastyearvalue1!=''">
+            AND LASTYEARVALUE1 LIKE CONCAT('%',CONCAT(#{lastyearvalue1},'%'))<!--去年同期1-->
+        </if>
+        <if test="eventstate!=null and eventstate!=''">
+            AND EVENTSTATE LIKE CONCAT('%',CONCAT(#{eventstate},'%'))<!--事件状态-->
+        </if>
+        <if test="alerttime!=null and alerttime!=''">
+            AND ALERTTIME LIKE CONCAT('%',CONCAT(#{alerttime},'%'))<!--预警时间-->
+        </if>
+        <if test="assvalue1!=null and assvalue1!=''">
+            AND ASSVALUE1 LIKE CONCAT('%',CONCAT(#{assvalue1},'%'))<!--备用字段1-->
+        </if>
+        <if test="assvalue2!=null and assvalue2!=''">
+            AND ASSVALUE2 LIKE CONCAT('%',CONCAT(#{assvalue2},'%'))<!--备用字段2-->
+        </if>
+        <if test="signallamp!=null and signallamp!=''">
+            AND SIGNALLAMP LIKE CONCAT('%',CONCAT(#{signallamp},'%'))<!--信号灯-->
+        </if>
+        <if test="signallevel!=null and signallevel!=''">
+            AND SIGNALLEVEL LIKE CONCAT('%',CONCAT(#{signallevel},'%'))<!--信号级别。如1,2,3，其中1的级别最低，3的级别最高，依此类推。-->
+        </if>
+        <if test="customname!=null and customname!=''">
+            AND CUSTOMNAME LIKE CONCAT('%',CONCAT(#{customname},'%'))<!--客户名称-->
+        </if>
+        <if test="cityname!=null and cityname!=''">
+            AND CITYNAME LIKE CONCAT('%',CONCAT(#{cityname},'%'))<!--客户所属城市名称-->
+        </if>
+        <if test="areacode!=null and areacode!=''">
+            AND AREACODE LIKE CONCAT('%',CONCAT(#{areacode},'%'))<!--区域代码，客户所属的区域。-->
+        </if>
+        <if test="areaname!=null and areaname!=''">
+            AND AREANAME LIKE CONCAT('%',CONCAT(#{areaname},'%'))<!--区域名称-->
+        </if>
+        <if test="brand!=null and brand!=''">
+            AND BRAND LIKE CONCAT('%',CONCAT(#{brand},'%'))<!--品牌代码-->
+        </if>
+        <if test="brandname!=null and brandname!=''">
+            AND BRANDNAME LIKE CONCAT('%',CONCAT(#{brandname},'%'))<!--品牌名称-->
+        </if>
+        <if test="provcode!=null and provcode!=''">
+            AND PROVCODE LIKE CONCAT('%',CONCAT(#{provcode},'%'))<!--区划代码-->
+        </if>
+        <if test="provname!=null and provname!=''">
+            AND PROVNAME LIKE CONCAT('%',CONCAT(#{provname},'%'))<!--区划名称-->
+        </if>
+        <if test="areatype!=null and areatype!=''">
+            AND AREATYPE LIKE CONCAT('%',CONCAT(#{areatype},'%'))<!--区域类别-->
+        </if>
+        <if test="asstext!=null and asstext!=''">
+            AND ASSTEXT LIKE CONCAT('%',CONCAT(#{asstext},'%'))<!--辅助-->
+        </if>
+        <if test="asscode!=null and asscode!=''">
+            AND ASSCODE LIKE CONCAT('%',CONCAT(#{asscode},'%'))<!--辅助-->
+        </if>
+        <if test="citycode!=null and citycode!=''">
+            AND CITYCODE LIKE CONCAT('%',CONCAT(#{citycode},'%'))<!--城市代码-->
+        </if>
+        <if test="factdate!=null and factdate!=''">
+            AND FACTDATE LIKE CONCAT('%',CONCAT(#{factdate},'%'))<!--数据日期-->
+        </if>
+        <if test="firstalertdate!=null and firstalertdate!=''">
+            AND FIRSTALERTDATE LIKE CONCAT('%',CONCAT(#{firstalertdate},'%'))<!--只对日指标有效，表示该客户该指标同级别预警信号在一个预警周期内首次预警时间，如2010年8月1日为黄色预警，若上一次该客户该指标首次黄色预警为2010年7月20日，若预警时间差超过黄色预警的上限，则该字段伟2010-8-1，否则为2010-7-20，若8月2日继续黄色预警，则该字段为2010-8-1-->
+        </if>
+        <if test="alertcontinuetime!=null and alertcontinuetime!=''">
+            AND ALERTCONTINUETIME LIKE CONCAT('%',CONCAT(#{alertcontinuetime},'%'))<!--只对日指标有效，同FIRSTALERTDATE配合使用，表示该客户该指标同级别预警信号持续天数-->
+        </if>
+        <if test="isdisplay!=null and isdisplay!=''">
+            AND ISDISPLAY LIKE CONCAT('%',CONCAT(#{isdisplay},'%'))<!--只对日指标有效，同FIRSTALERTDATE配合使用，表示该预警事件在预警干预时是否显示-->
+        </if>
+        <if test="asstext1!=null and asstext1!=''">
+            AND ASSTEXT1 LIKE CONCAT('%',CONCAT(#{asstext1},'%'))<!--存储大容量字符-->
+        </if>
+        <if test="remark!=null and remark!=''">
+            AND REMARK LIKE CONCAT('%',CONCAT(#{remark},'%'))<!--备注-->
+        </if>
+        <if test="creator!=null and creator!=''">
+            AND A.CREATOR =#{creator,jdbcType=NUMERIC}<!--创建人-->
+        </if>
+        <if test="createTime!=null and createTime!=''">
+            AND CREATE_TIME LIKE CONCAT('%',CONCAT(#{createTime},'%'))<!--创建时间-->
+        </if>
+        <if test="modifier!=null and modifier!=''">
+            AND MODIFIER LIKE CONCAT('%',CONCAT(#{modifier},'%'))<!--最后更新人-->
+        </if>
+        <if test="modifyTime!=null and modifyTime!=''">
+            And MODIFY_TIME LIKE CONCAT('%',CONCAT(#{modifyTime},'%'))<!--最后更新时间-->
+        </if>
+        <if test="starDate!=null and starDate!=''">
+            And TO_DATE(#{starDate}, 'YYYY-MM-DD') &lt;= alerttime
+        </if>
+        <if test="endDate!=null and endDate!=''">
+            And TO_DATE(#{endDate}, 'YYYY-MM-DD') &gt;= alerttime
+        </if>
+    </sql>
+
+    <!-- 按条件模糊查询所有 -->
+    <select id="queryFctAltCustomList" parameterType="com.yqjr.fin.risk.stat.entity.FctAltCustom"
+            resultMap="FctAltCustomResult">
+        SELECT
+        EVENTID,<!--事件ID-->
+        CUSTOMID,<!--客户ID-->
+        IND_ID,<!--指标ID-->
+        BIZDATE,<!--日期-->
+        FACTVALUE,<!--指标实际值-->
+        FACTVALUE1,<!--当期值1-->
+        FACTVALUE2,<!--当期值2-->
+        FACTVALUE3,<!--当期值3-->
+        FACTTOTALVALUE,<!--合计值-->
+        FACTTOTALVALUE1,<!--合计值1-->
+        LASTFACTVALUE,<!--上期-->
+        LASTFACTVALUE1,<!--上期1-->
+        LASTYEARVALUE,<!--去年同期-->
+        LASTYEARVALUE1,<!--去年同期1-->
+        EVENTSTATE,<!--事件状态-->
+        HANDLESTATE,<!--干预状态。-->
+        ALERTTIME,<!--预警时间-->
+        ASSVALUE1,<!--备用字段1-->
+        ASSVALUE2,<!--备用字段2-->
+        SIGNALLAMP,<!--信号灯-->
+        SIGNALLEVEL,<!--信号级别。如1,2,3，其中1的级别最低，3的级别最高，依此类推。-->
+        CUSTOMNAME,<!--客户名称-->
+        CITYNAME,<!--客户所属城市名称-->
+        AREACODE,<!--区域代码，客户所属的区域。-->
+        AREANAME,<!--区域名称-->
+        BRAND,<!--品牌代码-->
+        BRANDNAME,<!--品牌名称-->
+        PROVCODE,<!--区划代码-->
+        PROVNAME,<!--区划名称-->
+        AREATYPE,<!--区域类别-->
+        ASSTEXT,<!--辅助-->
+        ASSCODE,<!--辅助-->
+        CITYCODE,<!--城市代码-->
+        FACTDATE,<!--数据日期-->
+        FIRSTALERTDATE,<!--只对日指标有效，表示该客户该指标同级别预警信号在一个预警周期内首次预警时间，如2010年8月1日为黄色预警，若上一次该客户该指标首次黄色预警为2010年7月20日，若预警时间差超过黄色预警的上限，则该字段伟2010-8-1，否则为2010-7-20，若8月2日继续黄色预警，则该字段为2010-8-1-->
+        ALERTCONTINUETIME,<!--只对日指标有效，同FIRSTALERTDATE配合使用，表示该客户该指标同级别预警信号持续天数-->
+        ISDISPLAY,<!--只对日指标有效，同FIRSTALERTDATE配合使用，表示该预警事件在预警干预时是否显示-->
+        ASSTEXT1,<!--存储大容量字符-->
+        REMARK,<!--备注-->
+        CREATOR,<!--创建人-->
+        CREATE_TIME,<!--创建时间-->
+        MODIFIER,<!--最后更新人-->
+        MODIFY_TIME<!--最后更新时间-->
+        FROM A11_FCT_ALT_CUSTOM
+        <where>
+            <include refid="queryLikeFctAltCustom"/>
+        </where>
+    </select>
+
+    <!-- 按条件模糊统计所有条数 -->
+    <select id="queryFctAltCustomCount" parameterType="com.yqjr.fin.risk.stat.entity.FctAltCustom" resultType="int">
+        SELECT
+        count (id)
+        FROM A11_FCT_ALT_CUSTOM
+        <where>
+            <include refid="queryLikeFctAltCustom"/>
+        </where>
+    </select>
+
+    <!-- 批量删除，入参为数组  -->
+    <delete id="dynamicDelete">
+        delete from A11_FCT_ALT_CUSTOM where id in
+        <foreach collection="array" open="(" close=")" separator="," item="arr">
+            #{arr}
+        </foreach>
+    </delete>
+
+    <!-- 批量删除，入参为list  -->
+    <delete id="dynamicDeleteList">
+        delete from A11_FCT_ALT_CUSTOM where id in
+        <foreach collection="list" open="(" close=")" separator="," item="ids">
+            #{ids}
+        </foreach>
+    </delete>
+
+    <!-- 批量插入 -->
+    <insert id="insertBatch" parameterType="java.util.List">
+        <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into A11_FCT_ALT_CUSTOM
+        (
+        <include refid="Base_Column_List" />
+        )
+        values
+        <foreach collection="list" item="fctAltCustom" index="index" separator=",">
+            (
+            <include refid="Base_Column_Values" />
+            )
+        </foreach>
+    </insert>
+
+    <!-- 插入单条数据，并返回主键ID -->
+    <insert id="saveObj" useGeneratedKeys="true" keyProperty="id"
+            parameterType="com.yqjr.fin.risk.stat.entity.FctAltCustom">
+        insert into A11_FCT_ALT_CUSTOM
+        (
+        <include refid="Base_Column_List" />
+        )
+        values
+        (
+        <include refid="Base_Column_Values" />
+        )
+    </insert>
+
+
+    <!-- **********************************************************************-->
+    <!-- ************* 在此下方为一对一、一对多查询方式 仅供参考***************-->
+    <!-- **********************************************************************-->
+    <!-- 一个博客（BlogInfo） 属于一个作者（Author） ，一个作者（Author） 有多篇文章（Post） -->
+    <!--
+  <resultMap type="com.foo.bean.BlogInfo" id="BlogInfo">
+      <id column="blog_id" property="blogId" />
+      <result column="title" property="title" />
+      <association property="author" column="blog_author_id"
+          javaType="com.foo.bean.Author" select="com.foo.bean.AuthorMapper.selectByPrimaryKey">
+      </association>
+      <collection property="posts" column="blog_id" ofType="com.foo.bean.Post"
+          select="com.foo.bean.PostMapper.selectByBlogId">
+      </collection>
+  </resultMap>
+
+  <select id="queryBlogInfoById" resultMap="BlogInfo" parameterType="java.math.BigDecimal">
+      SELECT
+      B.BLOG_ID,
+      B.TITLE,
+      B.AUTHOR_ID AS BLOG_AUTHOR_ID
+      FROM BLOG B
+      where B.BLOG_ID = 博客ID
+  </select>
+
+          上述方法存在N+1问题
+      它的弊端也比较明显：即所谓的N+1问题。关联的嵌套查询显示得到一个结果集，然后根据这个结果集的每一条记录进行关联查询。
+      现在假设嵌套查询就一个（即resultMap 内部就一个association标签），现查询的结果集返回条数为N，那么关联查询语句将会被执行N次，加上自身返回结果集查询1次，共需要访问数据库N+1次。如果N比较大的话，这样的数据库访问消耗是非常大的！所以使用这种嵌套语句查询的使用者一定要考虑慎重考虑，确保N值不会很大。
+      以上面的例子为例，select 语句本身会返回com.foo.bean.BlogMapper.queryBlogInfoById 条数为1 的结果集，由于它有两条关联的语句查询，它需要共访问数据库 1*（1+1）=3次数据库。
+
+
+       <resultMap type="com.foo.bean.BlogInfo" id="BlogInfo">
+      <id column="blog_id" property="blogId"/>
+      <result column="title" property="title"/>
+      <association property="author" column="blog_author_id" javaType="com.foo.bean.Author">
+          <id column="author_id" property="authorId"/>
+          <result column="user_name" property="userName"/>
+          <result column="password" property="password"/>
+          <result column="email" property="email"/>
+          <result column="biography" property="biography"/>
+      </association>
+      <collection property="posts" column="blog_post_id" ofType="com.foo.bean.Post">
+          <id column="post_id" property="postId"/>
+          <result column="blog_id" property="blogId"/>
+          <result column="create_time" property="createTime"/>
+          <result column="subject" property="subject"/>
+          <result column="body" property="body"/>
+          <result column="draft" property="draft"/>
+      </collection>
+      </resultMap>
+
+
+      <select id="queryAllBlogInfo" resultMap="BlogInfo">
+          SELECT
+           B.BLOG_ID,
+           B.TITLE,
+           B.AUTHOR_ID AS BLOG_AUTHOR_ID,
+           A.AUTHOR_ID,
+           A.USER_NAME,
+           A.PASSWORD,
+           A.EMAIL,
+           A.BIOGRAPHY,
+           P.POST_ID,
+           P.BLOG_ID AS BLOG_POST_ID ,
+             P.CREATE_TIME,
+           P.SUBJECT,
+           P.BODY,
+           P.DRAFT
+      FROM BLOG B
+      LEFT OUTER JOIN AUTHOR A
+        ON B.AUTHOR_ID = A.AUTHOR_ID
+      LEFT OUTER JOIN POST P
+        ON P.BLOG_ID = B.BLOG_ID
+      </select>
+      -->
+
+    <!-- **********************************************************************-->
+    <!-- ************* 此线上方代码自动生成，在此下方编写自定义代码。***************-->
+    <!-- **********************************************************************-->
+
+
+    <select id="selectFctAltCustomFenYe" parameterType="com.yqjr.fin.risk.stat.condition.FctAltCustomCondition" resultMap="BaseResultMap">
+ SELECT rownum rn,
+        A.EVENTID,
+        A.CUSTOMID,
+        A.IND_ID,
+        A.BIZDATE,
+        A.FACTVALUE,
+        A.FACTVALUE1,
+        A.FACTVALUE2,
+        A.FACTVALUE3,
+        A.FACTTOTALVALUE,
+        A.FACTTOTALVALUE1,
+        A.LASTFACTVALUE,
+        A.LASTFACTVALUE1,
+        A.LASTYEARVALUE,
+        A.LASTYEARVALUE1,
+        A.EVENTSTATE,
+        A.HANDLESTATE,
+        A.ALERTTIME,
+        A.ASSVALUE1,
+        A.ASSVALUE2,
+        A.SIGNALLAMP,
+        A.SIGNALLEVEL,
+        A.CUSTOMNAME,
+        A.CITYNAME,
+        A.AREACODE,
+        A.AREANAME,
+        A.BRAND,
+        A.BRANDNAME,
+        A.PROVCODE,
+        A.PROVNAME,
+        A.AREATYPE,
+        A.ASSTEXT,
+        A.ASSCODE,
+        A.CITYCODE,
+        A.FACTDATE,
+        A.FIRSTALERTDATE,
+        A.ALERTCONTINUETIME,
+        A.ISDISPLAY,
+        A.ASSTEXT1,
+        A.REMARK,
+        A.CREATOR,
+        A.CREATE_TIME,
+        A.MODIFIER,
+        A.MODIFY_TIME,
+        P.INDICATORNAME,
+        P.INDICATORCODE
+        FROM A11_FCT_ALT_CUSTOM A left join P_INDICATORS P  on A.IND_ID =P.ID
+        <where>
+        <include refid="queryLikeFctAltCustom" />
+    </where>
+    </select>
+
+    <select id="chaXunFctAltCustomFenYe" parameterType="com.yqjr.fin.risk.stat.condition.FctAltCustomCondition" resultMap="BaseResultMap">
+        SELECT rownum rn,
+        A.EVENTID,
+        A.CUSTOMID,
+        A.IND_ID,
+        A.BIZDATE,
+        A.FACTVALUE,
+        A.FACTVALUE1,
+        A.FACTVALUE2,
+        A.FACTVALUE3,
+        A.FACTTOTALVALUE,
+        A.FACTTOTALVALUE1,
+        A.LASTFACTVALUE,
+        A.LASTFACTVALUE1,
+        A.LASTYEARVALUE,
+        A.LASTYEARVALUE1,
+        A.EVENTSTATE,
+        A.HANDLESTATE,
+        A.ALERTTIME,
+        A.ASSVALUE1,
+        A.ASSVALUE2,
+        A.SIGNALLAMP,
+        A.SIGNALLEVEL,
+        A.CUSTOMNAME,
+        A.CITYNAME,
+        A.AREACODE,
+        A.AREANAME,
+        A.BRAND,
+        A.BRANDNAME,
+        A.PROVCODE,
+        A.PROVNAME,
+        A.AREATYPE,
+        A.ASSTEXT,
+        A.ASSCODE,
+        A.CITYCODE,
+        A.FACTDATE,
+        A.FIRSTALERTDATE,
+        A.ALERTCONTINUETIME,
+        A.ISDISPLAY,
+        A.ASSTEXT1,
+        A.REMARK,
+        A.CREATOR,
+        A.CREATE_TIME,
+        A.MODIFIER,
+        A.MODIFY_TIME,
+        P.INDICATORNAME,
+        P.INDICATORCODE
+        FROM A11_FCT_ALT_CUSTOM A left join P_INDICATORS P  on A.IND_ID =P.ID
+        <where>
+            <include refid="queryLikeFctAltCustomTime" />
+        </where>
+    </select>
+
+
+    <select id="selectFctAltCustomByEventid" parameterType="com.yqjr.fin.risk.stat.entity.FctAltCustom" resultMap="BaseResultMap">
+        SELECT
+        A.EVENTID,
+        A.CUSTOMID,
+        A.IND_ID,
+        A.BIZDATE,
+        A.FACTVALUE,
+        A.FACTVALUE1,
+        A.FACTVALUE2,
+        A.FACTVALUE3,
+        A.FACTTOTALVALUE,
+        A.FACTTOTALVALUE1,
+        A.LASTFACTVALUE,
+        A.LASTFACTVALUE1,
+        A.LASTYEARVALUE,
+        A.LASTYEARVALUE1,
+        A.EVENTSTATE,
+        A.HANDLESTATE,
+        A.ALERTTIME,
+        A.ASSVALUE1,
+        A.ASSVALUE2,
+        A.SIGNALLAMP,
+        A.SIGNALLEVEL,
+        A.CUSTOMNAME,
+        A.CITYNAME,
+        A.AREACODE,
+        A.AREANAME,
+        A.BRAND,
+        A.BRANDNAME,
+        A.PROVCODE,
+        A.PROVNAME,
+        A.AREATYPE,
+        A.ASSTEXT,
+        A.ASSCODE,
+        A.CITYCODE,
+        A.FACTDATE,
+        A.FIRSTALERTDATE,
+        A.ALERTCONTINUETIME,
+        A.ISDISPLAY,
+        A.ASSTEXT1,
+        A.REMARK,
+        A.CREATOR,
+        A.CREATE_TIME,
+        A.MODIFIER,
+        A.MODIFY_TIME,
+        P.ID,
+        P.INDICATORNAME,
+        P.INDICATORCODE,
+        p.calformula
+        FROM A11_FCT_ALT_CUSTOM A left join P_INDICATORS P  on A.IND_ID =P.ID where eventid =#{eventid}
+    </select>
+    <update id="updateHandlestateByEventid" parameterType="com.yqjr.fin.risk.stat.entity.FctAltCustom">
+        update <include refid="Base_Table_Name" />
+        set HANDLESTATE=#{handlestate}
+        where eventid = #{eventid,jdbcType=NUMERIC}
+    </update>
+
+    <select id="selectprov" parameterType="com.yqjr.fin.risk.stat.entity.FctAltCustom" resultMap="BaseResultMap">
+        select distinct provname,provcode from a11_fct_alt_custom
+    </select>
+    <!-- endregion -->
+    <select id="selProvname" resultMap="BaseResultMap">
+        select
+        distinct
+        PROVNAME
+        FROM A11_FCT_ALT_CUSTOM
+    </select>
+    <select id="selCreator" resultMap="BaseResultMap">
+        select
+        distinct
+        CREATOR
+        FROM A11_FCT_ALT_CUSTOM
+    </select>
+    <select id="selAreaName" resultMap="BaseResultMap">
+        select
+        distinct
+        AREANAME
+        FROM A11_FCT_ALT_CUSTOM
+    </select>
+
+
+    <select id="selAll" parameterType="com.yqjr.fin.risk.stat.condition.FctAltCustomCondition" resultMap="BaseResultMap">
+        SELECT
+        A.EVENTID,
+        A.CUSTOMID,
+        A.IND_ID,
+        A.BIZDATE,
+        A.FACTVALUE,
+        A.FACTVALUE1,
+        A.FACTVALUE2,
+        A.FACTVALUE3,
+        A.FACTTOTALVALUE,
+        A.FACTTOTALVALUE1,
+        A.LASTFACTVALUE,
+        A.LASTFACTVALUE1,
+        A.LASTYEARVALUE,
+        A.LASTYEARVALUE1,
+        A.EVENTSTATE,
+        A.HANDLESTATE,
+        A.ALERTTIME,
+        A.ASSVALUE1,
+        A.ASSVALUE2,
+        A.SIGNALLAMP,
+        A.SIGNALLEVEL,
+        A.CUSTOMNAME,
+        A.CITYNAME,
+        A.AREACODE,
+        A.AREANAME,
+        A.BRAND,
+        A.BRANDNAME,
+        A.PROVCODE,
+        A.PROVNAME,
+        A.AREATYPE,
+        A.ASSTEXT,
+        A.ASSCODE,
+        A.CITYCODE,
+        A.FACTDATE,
+        A.FIRSTALERTDATE,
+        A.ALERTCONTINUETIME,
+        A.ISDISPLAY,
+        A.ASSTEXT1,
+        A.REMARK,
+        A.CREATOR,
+        A.CREATE_TIME,
+        A.MODIFIER,
+        A.MODIFY_TIME,
+        P.INDICATORNAME,
+        P.INDICATORCODE
+        FROM A11_FCT_ALT_CUSTOM A left join P_INDICATORS P  on A.IND_ID =P.ID
+        <where>
+            <include refid="queryLikeFctAltCustomTime" />
+        </where>
+    </select>
+
+</mapper>
+

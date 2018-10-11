@@ -1,0 +1,159 @@
+<style lang="less">
+    @import '../../../styles/common.less';
+</style>
+<template>
+    <div>
+        <Form ref="formValidate" :rules="ruleValidate" :model="formValidate" :label-width="100">
+            <Card>
+                <p slot="title">
+                    <Icon type="search"></Icon>
+                    主信息
+                </p>
+
+                <Row>
+                    <Col span="8" offset="2">
+                        <FormItem label="指标类型代码："  prop="code">
+                            <Input v-model="formValidate.code" ></Input>
+                        </FormItem>
+                    </Col>
+                    <Col span="8" offset="2">
+                        <FormItem label="指标类型名称："  prop="name">
+                            <Input v-model="formValidate.name" ></Input>
+                        </FormItem>
+                    </Col>
+
+                </Row>
+                <Row>
+                    <Col span="8" offset="2">
+                        <FormItem label="备注信息："  prop="remark">
+                            <!--<Input v-model="formValidate.remark" ></Input>-->
+                            <textarea  v-model="formValidate.remark"  rows="3" cols="100" style="resize: none;"></textarea>
+                        </FormItem>
+                    </Col>
+
+
+                </Row>
+
+                <Row>
+                    <Col span="4" offset="9">
+                        <Button type="primary" icon="checkmark" @click="subWarningAdd('formValidate')" :loading="loading">添加</Button>
+                    </Col>
+                    <Col span="4" >
+                        <Button type="primary" icon="reply" @click.prevent="pageBack">返回</Button>
+                    </Col>
+                </Row>
+            </Card>
+        </Form>
+    </div>
+</template>
+<script>
+    import { mapActions, mapState } from 'vuex';
+    import {resetWorkHeight, getUserCookie} from '@/libs/util.js';
+    export default{
+        name: 'teamAdd',
+        data () {
+            const validatePatmentEndCheck = (rule, value, callback) => {
+                if (value.length > 150) {
+                    callback(new Error('备注最大长度150!'));
+                }
+                callback();
+            };
+            return {
+                ruleValidate: {
+                    code: [
+                        { required: true, pattern:/^[\x00-\xff]{1,3}$/, message: '指标类型代码不能为汉字且长度小于3', trigger: 'blur' }
+                    ],
+                    name: [
+                        { required: true,pattern:/^.{1,50}$/, message: '指标名称长度应在1-50之间', trigger: 'blur' }
+                    ],
+                    remark: [
+                        { validator: validatePatmentEndCheck }
+                    ]
+                },
+                pinpai: [],
+                file: null,
+                loadingStatus: false,
+                formValidate: {
+                    teamName: '',
+                    areaName: '',
+                    areaCode: '',
+                    company: '',
+                    teamLevel: '',
+                    teamSatus: '',
+                    teamType: '',
+                    teamZip: '',
+                    startTime: '',
+                    teamPhone: '',
+                    teamFax: '',
+                    teamAddress: '',
+                    remark: ''
+                }
+            };
+        },
+        computed: {
+            ...mapState({
+                loading: ({warningAdd}) => warningAdd.loading,
+                isSuccess: ({warningAdd}) => warningAdd.isSuccess,
+                teamData: ({warningAdd}) => warningAdd.warningAddData,
+                msg: ({warningAdd}) => warningAdd.msg
+            })
+        },
+        methods: {
+            init () {
+                const user = getUserCookie();
+                this.formValidate.areaName = user.areaName;
+                this.formValidate.areaCode = user.areaCode;
+                this.formValidate.company = user.comCode;
+            },
+            ...mapActions([
+                'WarningAddSto',
+                'yanZhengCode'
+            ]),
+            subWarningAdd (name) {
+                this.$refs[name].validate((valid) => {
+                    if (valid) {
+                        this.yanZhengCode(this.formValidate.code).then(res => {
+                            if (this.isSuccess) {
+                                this.subDate();
+                            } else {
+                                this.$Modal.error({
+                                    title: '提示',
+                                    content: this.msg
+                                });
+                            }
+                            resetWorkHeight();
+                        });
+                    } else {
+                        this.$Message.error('验证错误!');
+                    }
+                });
+            },
+            subDate(){
+                this.WarningAddSto(this.formValidate).then(res => {
+                    if (this.isSuccess) {
+                        this.$Modal.success({
+                            title: '提交成功',
+                            content: this.teamData,
+                            onOk: () => {
+                                this.$router.push({name: 'warningTargettypeList'});
+                            }
+                        });
+                    } else {
+                        this.$Modal.error({
+                            title: '提示',
+                            content: this.teamData
+                        });
+                    }
+                    resetWorkHeight();
+                });
+            },
+            pageBack () {
+                this.$router.push({name: 'warningTargettypeList'});
+            }
+        },
+        mounted () {
+            this.init();
+        }
+
+    };
+</script>

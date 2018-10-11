@@ -1,0 +1,1129 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yqjr.fin.mkmm.sales.mapper.CommodityOutMapper">
+
+    <!-- region BaseMapper DO NOT MODIFY!!!  -->
+
+    <sql id="Base_Table_Name">
+        MKMM_COMMODITY_OUT
+    </sql>
+
+
+
+    <!-- region BaseResultMap  -->
+    <resultMap id="BaseResultMap" type="com.yqjr.fin.mkmm.sales.entity.CommodityOut">
+        <result property="id" column="ID"/><!--序号-->
+        <result property="commodityName" column="COMMODITY_NAME"/><!--物料名称-->
+        <result property="commodityCode" column="COMMODITY_CODE"/><!--物料编码-->
+        <result property="commodityTypeName" column="COMMODITY_TYPE_NAME"/><!--物料分类名称-->
+        <result property="commodityTypeCode" column="COMMODITY_TYPE_CODE"/><!--物料分类编码-->
+        <result property="projectName" column="PROJECT_NAME"/><!--项目名称-->
+        <result property="projectCode" column="PROJECT_CODE"/><!--项目编码-->
+        <result property="dealerCode" column="DEALER_CODE"/><!--投放经销商编码-->
+        <result property="dealerName" column="DEALER_NAME"/><!--投放经销商名称-->
+        <result property="areaCode" column="AREA_CODE"/><!--区域编码-->
+        <result property="areaName" column="AREA_NAME"/><!--区域名称-->
+        <result property="putNumber" column="PUT_NUMBER"/><!--投放数量-->
+        <result property="putUnivalent" column="PUT_UNIVALENT"/><!--投放单价-->
+        <result property="amount" column="AMOUNT"/><!--总金额-->
+        <result property="putName" column="PUT_NAME"/><!--出库人 当前操作人-->
+        <result property="checker" column="CHECKER"/><!--校核人区域负责人审核-->
+        <result property="outTime" column="OUT_TIME"/><!--出库时间-->
+        <result property="receiveStatus" column="RECEIVE_STATUS"/><!--领用状态0：已领用，1：未领用-->
+        <result property="receiver" column="RECEIVER"/><!--领用人-->
+        <result property="receiveTime" column="RECEIVE_TIME"/><!--领用时间-->
+        <result property="opinion" column="OPINION"/><!--经销商意见反馈-->
+        <result property="commodityStatus" column="COMMODITY_STATUS"/><!--物料状态-->
+        <result property="company" column="COMPANY"/><!--公司1 ：汽车金融 ，2：租赁公司-->
+        <result property="createTime" column="CREATE_TIME"/><!--创建时间-->
+        <result property="modifyTime" column="MODIFY_TIME"/><!--修改时间-->
+        <result property="creator" column="CREATOR"/><!--创建人-->
+        <result property="modifier" column="MODIFIER"/><!--修改人-->
+    </resultMap>
+    <!-- endregion -->
+
+    <!-- region Base_Column_List  -->
+    <sql id="Base_Column_List">
+    ID,COMMODITY_NAME,COMMODITY_CODE,COMMODITY_TYPE_NAME,COMMODITY_TYPE_CODE,PROJECT_NAME,PROJECT_CODE,DEALER_CODE,DEALER_NAME,AREA_CODE,AREA_NAME,PUT_NUMBER,PUT_UNIVALENT,AMOUNT,PUT_NAME,CHECKER,OUT_TIME,RECEIVE_STATUS,RECEIVER,RECEIVE_TIME,OPINION,COMMODITY_STATUS,COMPANY,CREATE_TIME,MODIFY_TIME,CREATOR,MODIFIER
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_List_Selective  -->
+    <sql id="Base_Column_List_Selective">
+        <trim suffixOverrides=",">
+            <if test="id != null">
+            ID,
+            </if>
+            <if test="commodityName != null">
+            COMMODITY_NAME,
+            </if>
+            <if test="commodityCode != null">
+            COMMODITY_CODE,
+            </if>
+            <if test="commodityTypeName != null">
+            COMMODITY_TYPE_NAME,
+            </if>
+            <if test="commodityTypeCode != null">
+            COMMODITY_TYPE_CODE,
+            </if>
+            <if test="projectName != null">
+            PROJECT_NAME,
+            </if>
+            <if test="projectCode != null">
+            PROJECT_CODE,
+            </if>
+            <if test="dealerCode != null">
+            DEALER_CODE,
+            </if>
+            <if test="dealerName != null">
+            DEALER_NAME,
+            </if>
+            <if test="areaCode != null">
+            AREA_CODE,
+            </if>
+            <if test="areaName != null">
+            AREA_NAME,
+            </if>
+            <if test="putNumber != null">
+            PUT_NUMBER,
+            </if>
+            <if test="putUnivalent != null">
+            PUT_UNIVALENT,
+            </if>
+            <if test="amount != null">
+            AMOUNT,
+            </if>
+            <if test="putName != null">
+            PUT_NAME,
+            </if>
+            <if test="checker != null">
+            CHECKER,
+            </if>
+            <if test="outTime != null">
+            OUT_TIME,
+            </if>
+            <if test="receiveStatus != null">
+            RECEIVE_STATUS,
+            </if>
+            <if test="receiver != null">
+            RECEIVER,
+            </if>
+            <if test="receiveTime != null">
+            RECEIVE_TIME,
+            </if>
+            <if test="opinion != null">
+            OPINION,
+            </if>
+            <if test="commodityStatus != null">
+            COMMODITY_STATUS,
+            </if>
+            <if test="company != null">
+            COMPANY,
+            </if>
+            <if test="createTime != null">
+            CREATE_TIME,
+            </if>
+            <if test="modifyTime != null">
+            MODIFY_TIME,
+            </if>
+            <if test="creator != null">
+            CREATOR,
+            </if>
+            <if test="modifier != null">
+            MODIFIER
+            </if>
+        </trim>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Values  -->
+    <sql id="Base_Column_Values">
+    #{id,jdbcType=INTEGER},
+    #{commodityName,jdbcType=VARCHAR},
+    #{commodityCode,jdbcType=VARCHAR},
+    #{commodityTypeName,jdbcType=VARCHAR},
+    #{commodityTypeCode,jdbcType=VARCHAR},
+    #{projectName,jdbcType=VARCHAR},
+    #{projectCode,jdbcType=VARCHAR},
+    #{dealerCode,jdbcType=VARCHAR},
+    #{dealerName,jdbcType=VARCHAR},
+    #{areaCode,jdbcType=VARCHAR},
+    #{areaName,jdbcType=VARCHAR},
+    #{putNumber,jdbcType=INTEGER},
+    #{putUnivalent,jdbcType=DECIMAL},
+    #{amount,jdbcType=DECIMAL},
+    #{putName,jdbcType=VARCHAR},
+    #{checker,jdbcType=VARCHAR},
+    #{outTime,jdbcType=TIMESTAMP},
+    #{receiveStatus,jdbcType=VARCHAR},
+    #{receiver,jdbcType=VARCHAR},
+    #{receiveTime,jdbcType=TIMESTAMP},
+    #{opinion,jdbcType=VARCHAR},
+    #{commodityStatus,jdbcType=VARCHAR},
+    #{company,jdbcType=VARCHAR},
+    #{createTime,jdbcType=TIMESTAMP},
+    #{modifyTime,jdbcType=TIMESTAMP},
+    #{creator,jdbcType=INTEGER},
+    #{modifier,jdbcType=INTEGER}
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Values_Selective  -->
+    <sql id="Base_Column_Values_Selective">
+        <trim suffixOverrides=",">
+            <if test="id != null">
+            #{id},
+            </if>
+            <if test="commodityName != null">
+            #{commodityName},
+            </if>
+            <if test="commodityCode != null">
+            #{commodityCode},
+            </if>
+            <if test="commodityTypeName != null">
+            #{commodityTypeName},
+            </if>
+            <if test="commodityTypeCode != null">
+            #{commodityTypeCode},
+            </if>
+            <if test="projectName != null">
+            #{projectName},
+            </if>
+            <if test="projectCode != null">
+            #{projectCode},
+            </if>
+            <if test="dealerCode != null">
+            #{dealerCode},
+            </if>
+            <if test="dealerName != null">
+            #{dealerName},
+            </if>
+            <if test="areaCode != null">
+            #{areaCode},
+            </if>
+            <if test="areaName != null">
+            #{areaName},
+            </if>
+            <if test="putNumber != null">
+            #{putNumber},
+            </if>
+            <if test="putUnivalent != null">
+            #{putUnivalent},
+            </if>
+            <if test="amount != null">
+            #{amount},
+            </if>
+            <if test="putName != null">
+            #{putName},
+            </if>
+            <if test="checker != null">
+            #{checker},
+            </if>
+            <if test="outTime != null">
+            #{outTime},
+            </if>
+            <if test="receiveStatus != null">
+            #{receiveStatus},
+            </if>
+            <if test="receiver != null">
+            #{receiver},
+            </if>
+            <if test="receiveTime != null">
+            #{receiveTime},
+            </if>
+            <if test="opinion != null">
+            #{opinion},
+            </if>
+            <if test="commodityStatus != null">
+            #{commodityStatus},
+            </if>
+            <if test="company != null">
+            #{company},
+            </if>
+            <if test="createTime != null">
+            #{createTime},
+            </if>
+            <if test="modifyTime != null">
+            #{modifyTime},
+            </if>
+            <if test="creator != null">
+            #{creator},
+            </if>
+            <if test="modifier != null">
+            #{modifier}
+            </if>
+        </trim>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Set_Values  -->
+    <sql id="Base_Column_Set_Values">
+    ID = #{id},
+    COMMODITY_NAME = #{commodityName},
+    COMMODITY_CODE = #{commodityCode},
+    COMMODITY_TYPE_NAME = #{commodityTypeName},
+    COMMODITY_TYPE_CODE = #{commodityTypeCode},
+    PROJECT_NAME = #{projectName},
+    PROJECT_CODE = #{projectCode},
+    DEALER_CODE = #{dealerCode},
+    DEALER_NAME = #{dealerName},
+    AREA_CODE = #{areaCode},
+    AREA_NAME = #{areaName},
+    PUT_NUMBER = #{putNumber},
+    PUT_UNIVALENT = #{putUnivalent},
+    AMOUNT = #{amount},
+    PUT_NAME = #{putName},
+    CHECKER = #{checker},
+    OUT_TIME = #{outTime},
+    RECEIVE_STATUS = #{receiveStatus},
+    RECEIVER = #{receiver},
+    RECEIVE_TIME = #{receiveTime},
+    OPINION = #{opinion},
+    COMMODITY_STATUS = #{commodityStatus},
+    COMPANY = #{company},
+    CREATE_TIME = #{createTime},
+    MODIFY_TIME = #{modifyTime},
+    CREATOR = #{creator},
+    MODIFIER = #{modifier}
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Set_Values_Selective  -->
+    <sql id="Base_Column_Set_Values_Selective">
+        <if test="id != null">
+        ID = #{id},
+        </if>
+        <if test="commodityName != null">
+        COMMODITY_NAME = #{commodityName},
+        </if>
+        <if test="commodityCode != null">
+        COMMODITY_CODE = #{commodityCode},
+        </if>
+        <if test="commodityTypeName != null">
+        COMMODITY_TYPE_NAME = #{commodityTypeName},
+        </if>
+        <if test="commodityTypeCode != null">
+        COMMODITY_TYPE_CODE = #{commodityTypeCode},
+        </if>
+        <if test="projectName != null">
+        PROJECT_NAME = #{projectName},
+        </if>
+        <if test="projectCode != null">
+        PROJECT_CODE = #{projectCode},
+        </if>
+        <if test="dealerCode != null">
+        DEALER_CODE = #{dealerCode},
+        </if>
+        <if test="dealerName != null">
+        DEALER_NAME = #{dealerName},
+        </if>
+        <if test="areaCode != null">
+        AREA_CODE = #{areaCode},
+        </if>
+        <if test="areaName != null">
+        AREA_NAME = #{areaName},
+        </if>
+        <if test="putNumber != null">
+        PUT_NUMBER = #{putNumber},
+        </if>
+        <if test="putUnivalent != null">
+        PUT_UNIVALENT = #{putUnivalent},
+        </if>
+        <if test="amount != null">
+        AMOUNT = #{amount},
+        </if>
+        <if test="putName != null">
+        PUT_NAME = #{putName},
+        </if>
+        <if test="checker != null">
+        CHECKER = #{checker},
+        </if>
+        <if test="outTime != null">
+        OUT_TIME = #{outTime},
+        </if>
+        <if test="receiveStatus != null">
+        RECEIVE_STATUS = #{receiveStatus},
+        </if>
+        <if test="receiver != null">
+        RECEIVER = #{receiver},
+        </if>
+        <if test="receiveTime != null">
+        RECEIVE_TIME = #{receiveTime},
+        </if>
+        <if test="opinion != null">
+        OPINION = #{opinion},
+        </if>
+        <if test="commodityStatus != null">
+        COMMODITY_STATUS = #{commodityStatus},
+        </if>
+        <if test="company != null">
+        COMPANY = #{company},
+        </if>
+        <if test="createTime != null">
+        CREATE_TIME = #{createTime},
+        </if>
+        <if test="modifyTime != null">
+        MODIFY_TIME = #{modifyTime},
+        </if>
+        <if test="creator != null">
+        CREATOR = #{creator},
+        </if>
+        <if test="modifier != null">
+        MODIFIER = #{modifier}
+        </if>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Where_Selective  -->
+    <sql id="Base_Column_Where_Selective">
+        <if test="id != null and id != ''">
+            and ID = #{id}
+        </if>
+        <if test="commodityName != null and commodityName != ''">
+            and COMMODITY_NAME = #{commodityName}
+        </if>
+        <if test="commodityCode != null and commodityCode != ''">
+            and COMMODITY_CODE = #{commodityCode}
+        </if>
+        <if test="commodityTypeName != null and commodityTypeName != ''">
+            and COMMODITY_TYPE_NAME = #{commodityTypeName}
+        </if>
+        <if test="commodityTypeCode != null and commodityTypeCode != ''">
+            and COMMODITY_TYPE_CODE = #{commodityTypeCode}
+        </if>
+        <if test="projectName != null and projectName != ''">
+            and PROJECT_NAME = #{projectName}
+        </if>
+        <if test="projectCode != null and projectCode != ''">
+            and PROJECT_CODE = #{projectCode}
+        </if>
+        <if test="dealerCode != null and dealerCode != ''">
+            and DEALER_CODE = #{dealerCode}
+        </if>
+        <if test="dealerName != null and dealerName != ''">
+            and DEALER_NAME = #{dealerName}
+        </if>
+        <if test="areaCode != null and areaCode != ''">
+            and AREA_CODE = #{areaCode}
+        </if>
+        <if test="areaName != null and areaName != ''">
+            and AREA_NAME = #{areaName}
+        </if>
+        <if test="putNumber != null and putNumber != ''">
+            and PUT_NUMBER = #{putNumber}
+        </if>
+        <if test="putUnivalent != null and putUnivalent != ''">
+            and PUT_UNIVALENT = #{putUnivalent}
+        </if>
+        <if test="amount != null and amount != ''">
+            and AMOUNT = #{amount}
+        </if>
+        <if test="putName != null and putName != ''">
+            and PUT_NAME = #{putName}
+        </if>
+        <if test="checker != null and checker != ''">
+            and CHECKER = #{checker}
+        </if>
+        <if test="outTime != null and outTime != ''">
+            and OUT_TIME = #{outTime}
+        </if>
+        <if test="receiveStatus != null and receiveStatus != ''">
+            and RECEIVE_STATUS = #{receiveStatus}
+        </if>
+        <if test="receiver != null and receiver != ''">
+            and RECEIVER = #{receiver}
+        </if>
+        <if test="receiveTime != null and receiveTime != ''">
+            and RECEIVE_TIME = #{receiveTime}
+        </if>
+        <if test="opinion != null and opinion != ''">
+            and OPINION = #{opinion}
+        </if>
+        <if test="commodityStatus != null and commodityStatus != ''">
+            and COMMODITY_STATUS = #{commodityStatus}
+        </if>
+        <if test="company != null and company != ''">
+            and COMPANY = #{company}
+        </if>
+        <if test="createTime != null and createTime != ''">
+            and CREATE_TIME = #{createTime}
+        </if>
+        <if test="modifyTime != null and modifyTime != ''">
+            and MODIFY_TIME = #{modifyTime}
+        </if>
+        <if test="creator != null and creator != ''">
+            and CREATOR = #{creator}
+        </if>
+        <if test="modifier != null and modifier != ''">
+            and MODIFIER = #{modifier}
+        </if>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Where_Selective_Param1  -->
+    <sql id="Base_Column_Where_Selective_Param1">
+        <if test="param1.id != null">
+            and ID = #{param1.id}
+        </if>
+        <if test="param1.commodityName != null">
+            and COMMODITY_NAME = #{param1.commodityName}
+        </if>
+        <if test="param1.commodityCode != null">
+            and COMMODITY_CODE = #{param1.commodityCode}
+        </if>
+        <if test="param1.commodityTypeName != null">
+            and COMMODITY_TYPE_NAME = #{param1.commodityTypeName}
+        </if>
+        <if test="param1.commodityTypeCode != null">
+            and COMMODITY_TYPE_CODE = #{param1.commodityTypeCode}
+        </if>
+        <if test="param1.projectName != null">
+            and PROJECT_NAME = #{param1.projectName}
+        </if>
+        <if test="param1.projectCode != null">
+            and PROJECT_CODE = #{param1.projectCode}
+        </if>
+        <if test="param1.dealerCode != null">
+            and DEALER_CODE = #{param1.dealerCode}
+        </if>
+        <if test="param1.dealerName != null">
+            and DEALER_NAME = #{param1.dealerName}
+        </if>
+        <if test="param1.areaCode != null">
+            and AREA_CODE = #{param1.areaCode}
+        </if>
+        <if test="param1.areaName != null">
+            and AREA_NAME = #{param1.areaName}
+        </if>
+        <if test="param1.putNumber != null">
+            and PUT_NUMBER = #{param1.putNumber}
+        </if>
+        <if test="param1.putUnivalent != null">
+            and PUT_UNIVALENT = #{param1.putUnivalent}
+        </if>
+        <if test="param1.amount != null">
+            and AMOUNT = #{param1.amount}
+        </if>
+        <if test="param1.putName != null">
+            and PUT_NAME = #{param1.putName}
+        </if>
+        <if test="param1.checker != null">
+            and CHECKER = #{param1.checker}
+        </if>
+        <if test="param1.outTime != null">
+            and OUT_TIME = #{param1.outTime}
+        </if>
+        <if test="param1.receiveStatus != null">
+            and RECEIVE_STATUS = #{param1.receiveStatus}
+        </if>
+        <if test="param1.receiver != null">
+            and RECEIVER = #{param1.receiver}
+        </if>
+        <if test="param1.receiveTime != null">
+            and RECEIVE_TIME = #{param1.receiveTime}
+        </if>
+        <if test="param1.opinion != null">
+            and OPINION = #{param1.opinion}
+        </if>
+        <if test="param1.commodityStatus != null">
+            and COMMODITY_STATUS = #{param1.commodityStatus}
+        </if>
+        <if test="param1.company != null">
+            and COMPANY = #{param1.company}
+        </if>
+        <if test="param1.createTime != null">
+            and CREATE_TIME = #{param1.createTime}
+        </if>
+        <if test="param1.modifyTime != null">
+            and MODIFY_TIME = #{param1.modifyTime}
+        </if>
+        <if test="param1.creator != null">
+            and CREATOR = #{param1.creator}
+        </if>
+        <if test="param1.modifier != null">
+            and MODIFIER = #{param1.modifier}
+        </if>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Order_By  -->
+    <sql id="Base_Order_By">
+        <bind name="propName" value="sortField"></bind>
+        ORDER BY <include refid="Base_Column_Name" />
+        <choose>
+            <when test="isAscend">
+                ASC
+            </when>
+            <otherwise>
+                DESC
+            </otherwise>
+        </choose>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Name  -->
+    <sql id="Base_Column_Name">
+        <if test='"id" == propName'>
+        ID
+        </if>
+        <if test='"commodityName" == propName'>
+        COMMODITY_NAME
+        </if>
+        <if test='"commodityCode" == propName'>
+        COMMODITY_CODE
+        </if>
+        <if test='"commodityTypeName" == propName'>
+        COMMODITY_TYPE_NAME
+        </if>
+        <if test='"commodityTypeCode" == propName'>
+        COMMODITY_TYPE_CODE
+        </if>
+        <if test='"projectName" == propName'>
+        PROJECT_NAME
+        </if>
+        <if test='"projectCode" == propName'>
+        PROJECT_CODE
+        </if>
+        <if test='"dealerCode" == propName'>
+        DEALER_CODE
+        </if>
+        <if test='"dealerName" == propName'>
+        DEALER_NAME
+        </if>
+        <if test='"areaCode" == propName'>
+        AREA_CODE
+        </if>
+        <if test='"areaName" == propName'>
+        AREA_NAME
+        </if>
+        <if test='"putNumber" == propName'>
+        PUT_NUMBER
+        </if>
+        <if test='"putUnivalent" == propName'>
+        PUT_UNIVALENT
+        </if>
+        <if test='"amount" == propName'>
+        AMOUNT
+        </if>
+        <if test='"putName" == propName'>
+        PUT_NAME
+        </if>
+        <if test='"checker" == propName'>
+        CHECKER
+        </if>
+        <if test='"outTime" == propName'>
+        OUT_TIME
+        </if>
+        <if test='"receiveStatus" == propName'>
+        RECEIVE_STATUS
+        </if>
+        <if test='"receiver" == propName'>
+        RECEIVER
+        </if>
+        <if test='"receiveTime" == propName'>
+        RECEIVE_TIME
+        </if>
+        <if test='"opinion" == propName'>
+        OPINION
+        </if>
+        <if test='"commodityStatus" == propName'>
+        COMMODITY_STATUS
+        </if>
+        <if test='"company" == propName'>
+        COMPANY
+        </if>
+        <if test='"createTime" == propName'>
+        CREATE_TIME
+        </if>
+        <if test='"modifyTime" == propName'>
+        MODIFY_TIME
+        </if>
+        <if test='"creator" == propName'>
+        CREATOR
+        </if>
+        <if test='"modifier" == propName'>
+        MODIFIER
+        </if>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Id_Array  -->
+    <sql id="Base_Id_Array">
+        <foreach collection="array" open="(" close=")" separator="," item="id">
+        #{id}
+        </foreach>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Id_List  -->
+    <sql id="Base_Id_List">
+        <foreach collection="list" open="(" close=")" separator="," item="id">
+        #{id}
+        </foreach>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Select_All  -->
+    <sql id="Base_Select_All">
+        select
+        <include refid="Base_Column_List" />
+        from <include refid="Base_Table_Name" />
+    </sql>
+    <!-- endregion -->
+
+    <!-- region selectById  -->
+    <select id="selectById" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        where ID = #{id}
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectByIds  -->
+    <select id="selectByIds" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        where ID in
+        <include refid="Base_Id_List" />
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectAll  -->
+    <select id="selectAll" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectCount  -->
+    <select id="selectCount" resultType="int">
+        select count(*)
+        from <include refid="Base_Table_Name" />
+        <where>
+            <include refid="Base_Column_Where_Selective" />
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region select  -->
+    <select id="select" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Where_Selective" />
+        </where>
+        order by id desc
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectOne  -->
+    <select id="selectOne" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Where_Selective" />
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectOrderBy  -->
+    <select id="selectOrderBy" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Where_Selective_Param1" />
+        </where>
+        <include refid="Base_Order_By" />
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectByProperty  -->
+    <select id="selectByProperty" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Name" /> = #{propValue}
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectByPropertyIn  -->
+    <select id="selectByPropertyIn" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Name" /> IN
+            <foreach collection="propValues" open="(" close=")" separator="," item="propValue">
+            #{propValue}
+            </foreach>
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region delete  -->
+    <delete id="delete">
+        delete
+        from <include refid="Base_Table_Name" />
+        <where>
+            <include refid="Base_Column_Where_Selective" />
+        </where>
+    </delete>
+    <!-- endregion -->
+
+    <!-- region deleteById  -->
+    <delete id="deleteById">
+        delete
+        from <include refid="Base_Table_Name" />
+        where ID = #{id}
+    </delete>
+    <!-- endregion -->
+
+    <!-- region deleteByIds  -->
+    <delete id="deleteByIds">
+        delete
+        from <include refid="Base_Table_Name" />
+        where ID in
+        <include refid="Base_Id_List" />
+    </delete>
+    <!-- endregion -->
+
+    <!-- region insert  -->
+    <insert id="insert" parameterType="com.yqjr.fin.mkmm.sales.entity.CommodityOut">
+        <selectKey resultType="java.lang.Long" keyProperty="id" order="BEFORE">
+            SELECT SEQ_MKMM_COMMODITY_OUT.NEXTVAL FROM DUAL
+        </selectKey>
+        insert into <include refid="Base_Table_Name" /> (
+        <include refid="Base_Column_List" />
+        )
+        values (
+        <include refid="Base_Column_Values" />
+        )
+    </insert>
+    <!-- endregion -->
+
+    <!-- region updateById  -->
+    <update id="updateById" parameterType="com.yqjr.fin.mkmm.sales.entity.CommodityOut">
+        update <include refid="Base_Table_Name" />
+        <set>
+            <include refid="Base_Column_Set_Values" />
+        </set>
+        where ID = #{id}
+    </update>
+    <!-- endregion -->
+
+    <!-- region patchById  -->
+    <update id="patchById" parameterType="com.yqjr.fin.mkmm.sales.entity.CommodityOut">
+        update <include refid="Base_Table_Name" />
+        <set>
+            <include refid="Base_Column_Set_Values_Selective" />
+        </set>
+        where ID = #{id}
+    </update>
+    <!-- endregion -->
+
+    <!-- endregion BaseMapper -->
+
+    <!-- region generated by CodeRobot  -->
+
+    <!-- region 结果集映射  -->
+    <resultMap id="CommodityOutResult" type="com.yqjr.fin.mkmm.sales.entity.CommodityOut">
+        <result property="id" column="ID"/><!--序号-->
+        <result property="commodityName" column="COMMODITY_NAME"/><!--物料名称-->
+        <result property="commodityCode" column="COMMODITY_CODE"/><!--物料编码-->
+        <result property="commodityTypeName" column="COMMODITY_TYPE_NAME"/><!--物料分类名称-->
+        <result property="commodityTypeCode" column="COMMODITY_TYPE_CODE"/><!--物料分类编码-->
+        <result property="projectName" column="PROJECT_NAME"/><!--项目名称-->
+        <result property="projectCode" column="PROJECT_CODE"/><!--项目编码-->
+        <result property="dealerCode" column="DEALER_CODE"/><!--投放经销商编码-->
+        <result property="dealerName" column="DEALER_NAME"/><!--投放经销商名称-->
+        <result property="areaCode" column="AREA_CODE"/><!--区域编码-->
+        <result property="areaName" column="AREA_NAME"/><!--区域名称-->
+        <result property="putNumber" column="PUT_NUMBER"/><!--投放数量-->
+        <result property="putUnivalent" column="PUT_UNIVALENT"/><!--投放单价-->
+        <result property="amount" column="AMOUNT"/><!--总金额-->
+        <result property="putName" column="PUT_NAME"/><!--出库人 当前操作人-->
+        <result property="checker" column="CHECKER"/><!--校核人区域负责人审核-->
+        <result property="outTime" column="OUT_TIME"/><!--出库时间-->
+        <result property="receiveStatus" column="RECEIVE_STATUS"/><!--领用状态0：已领用，1：未领用-->
+        <result property="receiver" column="RECEIVER"/><!--领用人-->
+        <result property="receiveTime" column="RECEIVE_TIME"/><!--领用时间-->
+        <result property="opinion" column="OPINION"/><!--经销商意见反馈-->
+        <result property="commodityStatus" column="COMMODITY_STATUS"/><!--物料状态-->
+        <result property="company" column="COMPANY"/><!--公司1 ：汽车金融 ，2：租赁公司-->
+        <result property="createTime" column="CREATE_TIME"/><!--创建时间-->
+        <result property="modifyTime" column="MODIFY_TIME"/><!--修改时间-->
+        <result property="creator" column="CREATOR"/><!--创建人-->
+        <result property="modifier" column="MODIFIER"/><!--修改人-->
+    </resultMap>
+    <!-- endregion -->
+
+    <!-- 查询条件判断 入参为对象 条件为模糊-->
+    <sql id="queryLikeCommodityOut">
+			<if test="id!=null and id!=''">
+			    AND ID LIKE CONCAT(#{id},'%')<!--序号-->
+			</if>
+			<if test="commodityName!=null and commodityName!=''">
+			    AND COMMODITY_NAME LIKE CONCAT(#{commodityName},'%')<!--物料名称-->
+			</if>
+			<if test="commodityCode!=null and commodityCode!=''">
+			    AND COMMODITY_CODE LIKE CONCAT(#{commodityCode},'%')<!--物料编码-->
+			</if>
+			<if test="commodityTypeName!=null and commodityTypeName!=''">
+			    AND COMMODITY_TYPE_NAME LIKE CONCAT(#{commodityTypeName},'%')<!--物料分类名称-->
+			</if>
+			<if test="commodityTypeCode!=null and commodityTypeCode!=''">
+			    AND COMMODITY_TYPE_CODE LIKE CONCAT(#{commodityTypeCode},'%')<!--物料分类编码-->
+			</if>
+			<if test="projectName!=null and projectName!=''">
+			    AND PROJECT_NAME LIKE CONCAT(#{projectName},'%')<!--项目名称-->
+			</if>
+			<if test="projectCode!=null and projectCode!=''">
+			    AND PROJECT_CODE LIKE CONCAT(#{projectCode},'%')<!--项目编码-->
+			</if>
+			<if test="dealerCode!=null and dealerCode!=''">
+			    AND DEALER_CODE LIKE CONCAT(#{dealerCode},'%')<!--投放经销商编码-->
+			</if>
+			<if test="dealerName!=null and dealerName!=''">
+			    AND DEALER_NAME LIKE CONCAT(#{dealerName},'%')<!--投放经销商名称-->
+			</if>
+			<if test="areaCode!=null and areaCode!=''">
+			    AND AREA_CODE LIKE CONCAT(#{areaCode},'%')<!--区域编码-->
+			</if>
+			<if test="areaName!=null and areaName!=''">
+			    AND AREA_NAME LIKE CONCAT(#{areaName},'%')<!--区域名称-->
+			</if>
+			<if test="putNumber!=null and putNumber!=''">
+			    AND PUT_NUMBER LIKE CONCAT(#{putNumber},'%')<!--投放数量-->
+			</if>
+			<if test="putUnivalent!=null and putUnivalent!=''">
+			    AND PUT_UNIVALENT LIKE CONCAT(#{putUnivalent},'%')<!--投放单价-->
+			</if>
+			<if test="amount!=null and amount!=''">
+			    AND AMOUNT LIKE CONCAT(#{amount},'%')<!--总金额-->
+			</if>
+			<if test="putName!=null and putName!=''">
+			    AND PUT_NAME LIKE CONCAT(#{putName},'%')<!--出库人 当前操作人-->
+			</if>
+			<if test="checker!=null and checker!=''">
+			    AND CHECKER LIKE CONCAT(#{checker},'%')<!--校核人区域负责人审核-->
+			</if>
+			<if test="outTime!=null and outTime!=''">
+			    AND OUT_TIME LIKE CONCAT(#{outTime},'%')<!--出库时间-->
+			</if>
+			<if test="receiveStatus!=null and receiveStatus!=''">
+			    AND RECEIVE_STATUS LIKE CONCAT(#{receiveStatus},'%')<!--领用状态0：已领用，1：未领用-->
+			</if>
+			<if test="receiver!=null and receiver!=''">
+			    AND RECEIVER LIKE CONCAT(#{receiver},'%')<!--领用人-->
+			</if>
+			<if test="receiveTime!=null and receiveTime!=''">
+			    AND RECEIVE_TIME LIKE CONCAT(#{receiveTime},'%')<!--领用时间-->
+			</if>
+			<if test="opinion!=null and opinion!=''">
+			    AND OPINION LIKE CONCAT(#{opinion},'%')<!--经销商意见反馈-->
+			</if>
+			<if test="commodityStatus!=null and commodityStatus!=''">
+			    AND COMMODITY_STATUS LIKE CONCAT(#{commodityStatus},'%')<!--物料状态-->
+			</if>
+			<if test="company!=null and company!=''">
+			    AND COMPANY LIKE CONCAT(#{company},'%')<!--公司1 ：汽车金融 ，2：租赁公司-->
+			</if>
+			<if test="createTime!=null and createTime!=''">
+			    AND CREATE_TIME LIKE CONCAT(#{createTime},'%')<!--创建时间-->
+			</if>
+			<if test="modifyTime!=null and modifyTime!=''">
+			    AND MODIFY_TIME LIKE CONCAT(#{modifyTime},'%')<!--修改时间-->
+			</if>
+			<if test="creator!=null and creator!=''">
+			    AND CREATOR LIKE CONCAT(#{creator},'%')<!--创建人-->
+			</if>
+			<if test="modifier!=null and modifier!=''">
+			    MODIFIER LIKE CONCAT(#{modifier},'%')<!--修改人-->
+			</if>
+    </sql>
+
+    <!-- 按条件模糊查询所有 -->
+    <select id="queryCommodityOutList" parameterType="com.yqjr.fin.mkmm.sales.entity.CommodityOut"
+            resultMap="CommodityOutResult">
+        SELECT
+        ID,<!--序号-->
+        COMMODITY_NAME,<!--物料名称-->
+        COMMODITY_CODE,<!--物料编码-->
+        COMMODITY_TYPE_NAME,<!--物料分类名称-->
+        COMMODITY_TYPE_CODE,<!--物料分类编码-->
+        PROJECT_NAME,<!--项目名称-->
+        PROJECT_CODE,<!--项目编码-->
+        DEALER_CODE,<!--投放经销商编码-->
+        DEALER_NAME,<!--投放经销商名称-->
+        AREA_CODE,<!--区域编码-->
+        AREA_NAME,<!--区域名称-->
+        PUT_NUMBER,<!--投放数量-->
+        PUT_UNIVALENT,<!--投放单价-->
+        AMOUNT,<!--总金额-->
+        PUT_NAME,<!--出库人 当前操作人-->
+        CHECKER,<!--校核人区域负责人审核-->
+        OUT_TIME,<!--出库时间-->
+        RECEIVE_STATUS,<!--领用状态0：已领用，1：未领用-->
+        RECEIVER,<!--领用人-->
+        RECEIVE_TIME,<!--领用时间-->
+        OPINION,<!--经销商意见反馈-->
+        COMMODITY_STATUS,<!--物料状态-->
+        COMPANY,<!--公司1 ：汽车金融 ，2：租赁公司-->
+        CREATE_TIME,<!--创建时间-->
+        MODIFY_TIME,<!--修改时间-->
+        CREATOR,<!--创建人-->
+        MODIFIER<!--修改人-->
+        FROM MKMM_COMMODITY_OUT
+        <where>
+            <include refid="queryLikeCommodityOut"/>
+        </where>
+    </select>
+
+    <!-- 按条件模糊统计所有条数 -->
+    <select id="queryCommodityOutCount" parameterType="com.yqjr.fin.mkmm.sales.entity.CommodityOut" resultType="int">
+        SELECT
+        count (id)
+        FROM MKMM_COMMODITY_OUT
+        <where>
+            <include refid="queryLikeCommodityOut"/>
+        </where>
+    </select>
+
+    <!-- 批量删除，入参为数组  -->
+    <delete id="dynamicDelete">
+        delete from MKMM_COMMODITY_OUT where id in
+        <foreach collection="array" open="(" close=")" separator="," item="arr">
+            #{arr}
+        </foreach>
+    </delete>
+
+    <!-- 批量删除，入参为list  -->
+    <delete id="dynamicDeleteList">
+        delete from MKMM_COMMODITY_OUT where id in
+        <foreach collection="list" open="(" close=")" separator="," item="ids">
+            #{ids}
+        </foreach>
+    </delete>
+
+    <!-- 批量插入 -->
+    <insert id="insertBatch" parameterType="java.util.List">
+        <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into MKMM_COMMODITY_OUT
+        (
+        <include refid="Base_Column_List" />
+        )
+        values
+        <foreach collection="list" item="commodityOut" index="index" separator=",">
+            (
+            <include refid="Base_Column_Values" />
+            )
+        </foreach>
+    </insert>
+
+    <!-- 插入单条数据，并返回主键ID -->
+    <insert id="saveObj" useGeneratedKeys="true" keyProperty="id"
+            parameterType="com.yqjr.fin.mkmm.sales.entity.CommodityOut">
+        insert into MKMM_COMMODITY_OUT
+        (
+        <include refid="Base_Column_List" />
+        )
+        values
+        (
+        <include refid="Base_Column_Values" />
+        )
+    </insert>
+
+
+
+
+    <sql id="Base_Column_Where_Selective_Like">
+        <if test="id != null and id != ''">
+            and ID = #{id}
+        </if>
+        <if test="commodityName != null and commodityName != ''">
+            and COMMODITY_NAME = #{commodityName}
+        </if>
+        <if test="commodityCode != null and commodityCode != ''">
+            and COMMODITY_CODE = #{commodityCode}
+        </if>
+        <if test="commodityTypeName != null and commodityTypeName != ''">
+            and COMMODITY_TYPE_NAME = #{commodityTypeName}
+        </if>
+        <if test="commodityTypeCode != null and commodityTypeCode != ''">
+            and COMMODITY_TYPE_CODE = #{commodityTypeCode}
+        </if>
+        <if test="projectName != null and projectName != ''">
+            and PROJECT_NAME = #{projectName}
+        </if>
+        <if test="projectCode != null and projectCode != ''">
+            and PROJECT_CODE = #{projectCode}
+        </if>
+        <if test="dealerCode != null and dealerCode != ''">
+            and DEALER_CODE = #{dealerCode}
+        </if>
+        <if test="dealerName != null and dealerName != ''">
+            and DEALER_NAME like CONCAT(#{dealerName,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="areaCode != null and areaCode != ''">
+            and AREA_CODE = #{areaCode}
+        </if>
+        <if test="areaName != null and areaName != ''">
+            and AREA_NAME = #{areaName}
+        </if>
+        <if test="putNumber != null and putNumber != ''">
+            and PUT_NUMBER = #{putNumber}
+        </if>
+        <if test="putUnivalent != null and putUnivalent != ''">
+            and PUT_UNIVALENT = #{putUnivalent}
+        </if>
+        <if test="amount != null and amount != ''">
+            and AMOUNT = #{amount}
+        </if>
+        <if test="putName != null and putName != ''">
+            and PUT_NAME = #{putName}
+        </if>
+        <if test="checker != null and checker != ''">
+            and CHECKER = #{checker}
+        </if>
+        <if test="outTime != null and outTime != ''">
+            and OUT_TIME = #{outTime}
+        </if>
+        <if test="receiveStatus != null and receiveStatus != ''">
+            and RECEIVE_STATUS = #{receiveStatus}
+        </if>
+        <if test="receiver != null and receiver != ''">
+            and RECEIVER = #{receiver}
+        </if>
+        <if test="receiveTime != null and receiveTime != ''">
+            and RECEIVE_TIME = #{receiveTime}
+        </if>
+        <if test="opinion != null and opinion != ''">
+            and OPINION = #{opinion}
+        </if>
+        <if test="commodityStatus != null and commodityStatus != ''">
+            and COMMODITY_STATUS = #{commodityStatus}
+        </if>
+        <if test="company != null and company != ''">
+            and COMPANY = #{company}
+        </if>
+        <if test="createTime != null and createTime != ''">
+            and CREATE_TIME = #{createTime}
+        </if>
+        <if test="modifyTime != null and modifyTime != ''">
+            and MODIFY_TIME = #{modifyTime}
+        </if>
+        <if test="creator != null and creator != ''">
+            and CREATOR = #{creator}
+        </if>
+        <if test="modifier != null and modifier != ''">
+            and MODIFIER = #{modifier}
+        </if>
+    </sql>
+    <!-- 根据条件模糊查询首页 -->
+    <select id="selectCommodityOutList" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Where_Selective_Like" />
+        </where>
+        order by id desc
+    </select>
+
+
+
+</mapper>
+

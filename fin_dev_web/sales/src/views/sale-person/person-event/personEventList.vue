@@ -1,0 +1,290 @@
+<style lang="less">
+    @import '../../../styles/common.less';
+</style>
+<template>
+    <div>
+        <Row>
+            <Card>
+                <p slot="title">
+                    <Icon type="search"></Icon>
+                    查询
+                </p>
+                <Form ref="formValidate" :rules="ruleValidate" :model="formValidate" :label-width="100">
+                    <Row>
+                        <Col span="8" offset="2">
+                            <FormItem label="人员代码：">
+                                <Input v-model="formValidate.personCode" placeholder="请输入人员代码"></Input>
+                            </FormItem>
+                        </Col>
+                        <Col span="8" offset="2">
+                            <FormItem label="人员名称：">
+                                <Input v-model="formValidate.personName"  placeholder="请输入人员名称"></Input>
+                            </FormItem>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col span="8" offset="2">
+                            <FormItem label="事项年度：">
+                                <DatePicker type="year" placeholder="请输入事项年度" v-model="formValidate.eventYear" style="width: 100%" format="yyyy"></DatePicker>
+                            </FormItem>
+                        </Col>
+                        <Col span="8" offset="2">
+                            <FormItem label="事项分类：">
+                                <Select v-model="formValidate.transcode1" style="width:100%" placeholder = "全部">
+                                    <Option value="" selected>全部</Option>
+                                    <Option value="0" >奖励</Option>
+                                    <Option value="1" >处罚</Option>
+                                    <Option value="2" >其他</Option>
+                                </Select>
+                            </FormItem>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col span="8" offset="2">
+                            <FormItem label="处理单位：">
+                                <Input v-model="formValidate.eventApart" placeholder="请输入处理单位"></Input>
+                            </FormItem>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col span="4" offset="9">
+                            <Button type="primary" icon="search" @click="searchData">查询</Button>
+                        </Col>
+                        <Col span="4">
+                            <Button icon="refresh" @click="cleanData">重置</Button>
+                        </Col>
+                    </Row>
+                </Form>
+            </Card>
+        </Row>
+        <Row class="margin-top-10">
+            <Card>
+                <p slot="title">
+                    <Icon type="search"></Icon>
+                    表格数据
+                </p>
+                <Row type="flex" justify="end" :gutter="8" >
+                    <Col>
+                        <Button icon="android-add" type="success" @click="addData">新增</Button>
+                    </Col>
+                    <Col>
+                    <Button icon="android-close" type="error" @click="deletEventPersonData">删除</Button>
+                    </Col>
+                </Row>
+                <Table :data="tableData"  @on-selection-change='selectionClick'  :columns="tableColumns"  :loading="loading" ref="tableExcel" class="margin-top-10"></Table>
+                <div style="margin: 10px;overflow: hidden">
+                    <div style="float: right;">
+                        <Page :total="total" :current="pageNo" :page-size="pageSize" size="small" @on-change="changePage" @on-page-size-change="pageSizeChange" show-total show-sizer></Page>
+                    </div>
+                </div>
+            </Card>
+        </Row>
+        <a id="hrefToExportTable" style="postion: absolute;left: -10px;top: -10px;width: 0px;height: 0px;"></a>
+    </div>
+</template>
+<script>
+import {resetWorkHeight, formatDate, isEmpty} from '@/libs/util.js';
+import { mapActions, mapState } from 'vuex';
+export default{
+    name: 'personList',
+    data () {
+        return {
+            formValidate: {
+                personCode: '',
+                personName: '',
+                eventYear: '',
+                transcode1: '',
+                eventApart: '',
+                pageInfo: {
+                    pageSize: '10',
+                    pageNo: '1'
+                }
+            },
+            ruleValidate: {
+                eventYear: [
+                    { required: true, type: 'year', message: '请录入受理开始日期!', trigger: 'change' }
+                ]
+            },
+            tableColumns: [
+                {
+                    type: 'selection',
+                    width: 60,
+                    align: 'center'
+                },
+                {
+                    title: '人员代码',
+                    align: 'center',
+                    key: 'personCode'
+                }, {
+                    title: '人员姓名',
+                    align: 'center',
+                    key: 'personName'
+                }, {
+                    title: '事项年度',
+                    key: 'eventYear',
+                    align: 'center',
+                    sortable: true
+                }, {
+                    title: '事项分类',
+                    align: 'center',
+                    key: 'transcode1',
+                    render: (h, params) => {
+                        const row = params.row;
+                        return h('div', [
+                            h('div', row.transcode1 === '0' ? '奖励' : row.transcode1 === '1' ? '处罚' : '其他')
+                        ]);
+                    }
+                }, {
+                    title: '处理单位',
+                    align: 'center',
+                    key: 'eventApart'
+                }, {
+                    title: '处理时间',
+                    align: 'center',
+                    sortable: true,
+                    key: 'createTime'
+                }, {
+                    title: '操作',
+                    align: 'center',
+                    render: (h, params) => {
+                        return h('div', [
+                            h('Button', {
+                                props: {
+                                    type: 'primary',
+                                    size: 'small'
+                                },
+                                style: {
+                                    marginRight: '5px'
+                                },
+                                on: {
+                                    click: () => {
+                                        var id = {id: params.row.id};
+                                        this.$router.push({
+                                            name: 'personEventView',
+                                            query: id
+                                        });
+                                    }
+                                }
+                            }, '查看'),
+                            h('Button', {
+                                props: {
+                                    type: 'warning',
+                                    size: 'small'
+                                },
+                                style: {
+                                    marginRight: '5px'
+                                },
+                                on: {
+                                    click: () => {
+                                        var id = {id: params.row.id};
+                                        this.$router.push({
+                                            name: 'personEventEdit',
+                                            query: id
+                                        });
+                                    }
+                                }
+                            }, '修改')
+                        ]);
+                    }
+                }
+            ],
+            idArr: []
+        };
+    },
+    computed: {
+        ...mapState({
+            loading: ({personEventList}) => personEventList.loading,
+            tableData: ({personEventList}) => personEventList.personEventListData,
+            pageNo: ({personEventList}) => personEventList.pageNo,
+            pageSize: ({personEventList}) => personEventList.pageSize,
+            total: ({personEventList}) => personEventList.total,
+            pages: ({personEventList}) => personEventList.pages
+        })
+    },
+    methods: {
+        ...mapActions([
+            'handlePersonEventList',
+            'handleDelPersonEventList'
+        ]),
+        /**
+         * 初始化
+         */
+        init () {
+            this.searchData();
+        },
+        /**
+         * 点击查询按钮执行查询操作
+         */
+        searchData () {
+            this.formValidate.eventYear = formatDate(this.formValidate.eventYear, 'yyyy');
+            this.handlePersonEventList(this.formValidate).then(res => {
+                resetWorkHeight();
+                // this.$Message.info('查询成功!');
+                this.formValidate.pageInfo.pageNo = 1;
+            });
+        },
+        /**
+         * 页面改变
+         */
+        changePage (index) {
+            this.formValidate.pageInfo.pageNo = index;
+            this.searchData();
+        },
+        /**
+         * 切换每页条数
+         */
+        pageSizeChange (newPageSize) {
+            this.formValidate.pageInfo.pageSize = newPageSize;
+            this.searchData();
+        },
+        /**
+         * 添加数据
+         */
+        addData () {
+            this.$router.push({name: 'personEventAdd'});
+        },
+        /**
+         * 删除数据
+         */
+        deletEventPersonData: function () {
+            if (isEmpty(this.idArr)) {
+                this.$Modal.warning({
+                    title: '提示',
+                    content: '请选择要删除的数据!'
+                });
+            } else {
+                this.$Modal.confirm({
+                    title: '删除',
+                    content: '<p>您确定要删除这条数据吗?</p>',
+                    onOk: () => {
+                        this.handleDelPersonEventList(this.idArr).then(res => {
+                            this.$Message.info('删除成功!');
+                            this.searchData();
+                        });
+                    },
+                    onCancel: () => {
+                    }
+                });
+            }
+        },
+        selectionClick: function (arr) {
+            var idArr = [];
+            if (!isEmpty(arr)) {
+                for (var i = 0; i < arr.length; i++) {
+                    idArr.push(arr[i].id);
+                }
+            }
+            this.idArr = idArr;
+        },
+        /**
+         * 重置按钮
+         */
+        cleanData () {
+            window.location.reload();
+        }
+    },
+    mounted () {
+        this.init();
+    }
+};
+</script>

@@ -1,0 +1,21 @@
+import Mock from 'mockjs';
+import { demoList } from './demo';
+import {materialMaintenanceList, addMaterial, deleteMaterial} from './materialMaintenanceList';
+import {projectMaintenanceList, addProject, deleteProject} from './projectMaintenanceList';
+import {matterMaintenanceList, addMatter, deleteMatter} from './matterMaintenanceList';
+import {materialAcceptanceList, registerMaterialAcceptance, exportMaterialAcceptance} from './materialAcceptanceList';
+// 列表
+Mock.mock(/\/demoList/, demoList);
+Mock.mock(/\/materialMaintenanceList/, materialMaintenanceList);
+Mock.mock(/\/addMaterial/, addMaterial);
+Mock.mock(/\/deleteMaterial/, deleteMaterial);
+Mock.mock(/\/projectMaintenanceList/, projectMaintenanceList);
+Mock.mock(/\/addProject/, addProject);
+Mock.mock(/\/deleteProject/, deleteProject);
+Mock.mock(/\/matterMaintenanceList/, matterMaintenanceList);
+Mock.mock(/\/addMatter/, addMatter);
+Mock.mock(/\/deleteMatter/, deleteMatter);
+Mock.mock(/\/materialAcceptanceList/, materialAcceptanceList);
+Mock.mock(/\/registerMaterialAcceptance/, registerMaterialAcceptance);
+Mock.mock(/\/exportMaterialAcceptance/, exportMaterialAcceptance);
+export default Mock;

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="fin.mkmm-sales" />
+        <module name="fin.mkmm-sales-model" />
+        <module name="fin.mkmm-sales-ui" />
+        <module name="fin.scfw-common" />
+        <module name="fin.scfw-config" />
+        <module name="fin.scfw-eureka" />
+        <module name="fin.scfw-zuul" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="fin.scfw-auth" target="1.8" />
+      <module name="fin.scfw-meta" target="1.8" />
+      <module name="fin.scfw-meta-model" target="1.8" />
+      <module name="fin.scfw-meta-ui" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

@@ -1,0 +1,146 @@
+<style lang="less">
+    @import '../../../styles/common.less';
+</style>
+<style>
+    .demo-tabs-style1 > .ivu-tabs-card > .ivu-tabs-content {
+        height: 100%;
+        margin-top: -16px;
+    }
+
+    .demo-tabs-style1 > .ivu-tabs-card > .ivu-tabs-content > .ivu-tabs-tabpane {
+        background: #fff;
+        padding: 16px;
+    }
+
+    .demo-tabs-style1 > .ivu-tabs.ivu-tabs-card > .ivu-tabs-bar .ivu-tabs-tab {
+        border-color: transparent;
+    }
+
+    .demo-tabs-style1 > .ivu-tabs-card > .ivu-tabs-bar .ivu-tabs-tab-active {
+        border-color: #fff;
+    }
+</style>
+<template>
+    <div>
+        <Row :gutter="4">
+            <Form :label-width="100" >
+                <Card>
+                    <p slot="title">
+                        <Icon type="search"></Icon>
+                        预警审查
+
+                    </p>
+                    <Row>
+                        <Col span="12" class="demo-tabs-style1" style=" background: #e3e8ee;padding:16px; width: 100%">
+                            <Tabs type="card" :animated="false">
+                                <TabPane label="预警详情">
+                                    <Table stripe  :data="cTabList" :columns="personTableColumns"  :loading="loading" ref="tableExcel" class="margin-top-10"></Table>
+                                    <Table stripe  :data="cTabList" :columns="calformulaList"  :loading="loading" ref="tableExcel" class="margin-top-10"></Table>
+                                    <Table stripe  :data="cTabList" :columns="calformulaList"  :loading="loading" ref="tableExcel" class="margin-top-10"></Table>
+                                    <Row class="margin-top-20">
+                                        <Col span="4" offset="9">
+                                            <Button type="primary" icon="ios-search" @click.prevent="pageBack" style="margin-right: 70px">反馈审核结论</Button>
+                                        </Col>
+                                        <Col span="6" >
+
+                                            <Button type="info" icon="reply" @click.prevent="pageBack" >返回</Button>
+                                        </Col>
+                                    </Row>
+                                </TabPane>
+                            </Tabs>
+                        </Col>
+                    </Row>
+                </Card>
+            </Form>
+        </Row>
+    </div>
+</template>
+<script>
+    import {resetWorkHeight} from '@/libs/util.js';
+    import { mapActions, mapState } from 'vuex';
+    export default{
+        name: 'warningAuditingTabList',
+        data () {
+            return {
+                personTableColumns: [
+                    {
+                        title: '指标代码',
+                        key: 'indicatorcode',
+                        align: 'center',
+                        render: (h, params) => {
+                            const row = params.row;
+                            return h('div', [
+                                h('div', row.indicators.indicatorcode)
+                            ]);
+                        }
+                    }, {
+                        title: '指标名称',
+                        align: 'center',
+                        key: 'indicatorname',
+                        render: (h, params) => {
+                            const row = params.row;
+                            return h('div', [
+                                h('div', row.indicators.indicatorname)
+                            ]);
+                        }
+                    }, {
+                        title: '客户名称',
+                        align: 'center',
+                        key: 'customname'
+                    }, {
+                        title: '任务状态',
+                        align: 'center',
+                        key: 'eventstate',
+                        render: (h, params) => {
+                            const row = params.row;
+                            return h('div', [
+                                h('div', row.eventstate === '0' ? '待处理任务' : '已处理任务')
+                            ]);
+                        }
+                    }
+                ],
+                calformulaList: [{
+                    title: '公式及说明',
+                    align: 'center',
+                    key: 'calformula',
+                    render: (h, params) => {
+                        const row = params.row;
+                        return h('div', [
+                            h('div', row.indicators.calformula)
+                        ]);
+                    }
+                }]
+            };
+        },
+        computed: {
+            ...mapState({
+                loading: ({warningAuditingTabList}) => warningAuditingTabList.loading,
+                cTabList: ({warningAuditingTabList}) => warningAuditingTabList.cTabList
+            })
+        },
+        methods: {
+            ...mapActions([
+                'querycomwarningByEventidSto'
+            ]),
+            /**
+             * 初始化
+             */
+            init () {
+                this.querycomwarningByEventid(this.$route.query.eventid);
+                console.log(this.cTabList);
+            },
+            querycomwarningByEventid (eventid) {
+                this.querycomwarningByEventidSto(eventid).then(res => {
+                    resetWorkHeight();
+                });
+            },
+            pageBack () {
+                this.$router.push({name: 'warningAuditingList'});
+            }
+        },
+        mounted () {
+            this.init();
+        }
+    };
+</script>
+

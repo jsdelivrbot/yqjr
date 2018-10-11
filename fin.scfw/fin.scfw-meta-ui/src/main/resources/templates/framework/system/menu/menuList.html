@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-store">
+    <meta HTTP-EQUIV="Pragma" CONTENT="no-cache">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <script src="/ui/js/include/head.js"></script>
+    <link rel="stylesheet" href="/ui/js/ztree/css/metroStyle/metroStyle.css" type="text/css">
+    <script type="text/javascript" src="/ui/js/ztree/jquery.ztree.core.js"></script>
+    <title>一汽金融开发平台</title>
+</head>
+<body class="no-skin">
+<div class="page-content" id="mainContent">
+    <div class="widget-box transparent ui-sortable-handle collapsed"
+         id="widget-box-search">
+        <div class="widget-header">
+            <h3 class="widget-title smaller lighter">&nbsp;菜单列表</h3>
+            <!--<div class="widget-toolbar no-border">
+                <a href="#" data-action="collapse"> <i class="ace-icon fa fa-chevron-down">
+                    <span style="font-family: '微软雅黑'; font-size: 14px;">&nbsp;打开</span></i>
+                </a>
+            </div>-->
+        </div>
+        <div class="widget-body">
+            <div class="widget-main padding-6 no-padding-left no-padding-right">
+                <div class="space-6"></div>
+                <form id="searchForm" method="post" class="form-horizontal">
+                    <div class="row">
+                        <input type="hidden" id="selectedId" name="selectedId">
+                        <input type="hidden" id="selectedName" name="selectedName"/>
+                        <input type="hidden" id="selectedParentId" name="selectedParentId">
+                        <input type="hidden" id="selectedParentName" name="selectedParentName"/>
+                    </div>
+                    <div class="hr hr-dotted"></div>
+                </form>
+            </div>
+        </div>
+
+        <div class="btn-group">
+            <button type="button" class="btn btn-white btn-sm btn-primary" onclick="insert('normal');">添加同级菜单</button>
+            <button type="button" class="btn btn-white btn-sm btn-primary" onclick="insert('next');">添加下级菜单</button>
+            <button type="button" class="btn btn-white btn-sm btn-primary" onclick="update();">菜单修改</button>
+            <button type="button" class="btn btn-white btn-sm btn-primary" onclick="batchDelete();">菜单删除</button>
+        </div>
+        <div class="row">
+            <div class="col-sm-2">
+                <ul id="tree" class="ztree"></ul>
+            </div>
+            <div class="col-sm-10">
+                <table id="menuTable"></table>
+            </div>
+            <div id="pager"></div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    var parentNode,noData=false;
+    $(function() {
+        var shrinkToFit = false;
+        $("#menuTable").jqGrid(
+        {
+            url: "/base/menu/pageByJqGrid",
+            datatype: "local",
+            mtype: 'GET',
+            colModel:[{label:'id',name:'id',index:'id',width:200, align:'left',hidden:true},
+                {label:'parentId',name:'parentId',index:'parentId',width:200, align:'left',hidden:true},
+                {label:'菜单名称',name:'name',index:'name',width:200, align:'left'},
+                {label:'菜单排序',name:'sort',index:'sort',width:200, align:'left'},
+                {label:'菜单链接前缀',name:'urlPrefix',sortable:false, width:200, align:'left'},
+                {label:'菜单链接',name:'url',sortable:false, width:200, align:'left'},
+                {label:'菜单图标',name:'icon',sortable:false, width:100, align:'center'},
+                {label:'权限标识',name:'permission',sortable:false, width:100, align:'center'},
+                {label:'是否可见',name:'isShow',sortable:true,width:150,align:'center'},
+                {label:'创建时间',name:'createTime',sortable:false, width:200, align:'center'}],
+            height:'auto',
+            autowidth: true,
+            rowNum: 10,
+            rowList: [10, 20, 30],
+            pager: $('#pager'),
+            shrinkToFit : true,
+            viewrecords : true,
+            altRows: true,
+            multiselect: true,
+            multiboxonly: false,
+            sortable : true,
+            sorttype : true,
+            //当从服务器返回响应时执行
+            loadComplete : function(xhr) {
+                var table = this;
+                updatePagerIcons(table);
+                setHash();
+            }
+        })
+        $("#menuTable").jqGrid('navGrid',$("#pager"),{
+            edit:false,
+            add:false,
+            del:false,
+            search:false,
+            refresh:false
+        })
+        $(window).triggerHandler('resize.jqGrid');//trigger window resize to make the grid get the correct size
+        if(!shrinkToFit){
+            $("#menuTable").closest(".ui-jqgrid-bdiv").css({ 'overflow-x' : 'scroll' });
+        }
+        function updatePagerIcons(table) {
+            var replacement =
+                {
+                    'ui-icon-seek-first' : 'ace-icon fa fa-angle-double-left bigger-140',
+                    'ui-icon-seek-prev' : 'ace-icon fa fa-angle-left bigger-140',
+                    'ui-icon-seek-next' : 'ace-icon fa fa-angle-right bigger-140',
+                    'ui-icon-seek-end' : 'ace-icon fa fa-angle-double-right bigger-140'
+                };
+            $('.ui-pg-table:not(.navtable) > tbody > tr > .ui-pg-button > .ui-icon').each(function(){
+                var icon = $(this);
+                var $class = $.trim(icon.attr('class').replace('ui-icon', ''));
+
+                if($class in replacement) icon.attr('class', 'ui-icon '+replacement[$class]);
+            });
+        }
+        $.ajax({
+            async : false,
+            type : 'GET',
+            url : "/base/menu/allToZTree",
+            data: {},
+            dataType : 'json',
+            success : function(obj) {
+                // 查询失败
+                if(!obj.isSuccess){
+                    layer.alert(obj.msg);
+                    return;
+                }
+                var result = obj.result;
+                if(result.length<=0){
+                    noData=true;
+                    layer.alert("暂无菜单数据！");
+                    return;
+                }
+                var setting = {
+                    async: {
+                        enable: true,
+                        type:"GET",
+                        url:"/base/menu/allToZTreeReload",
+                        autoParam:["id", "name=n", "level=lv"],
+                        otherParam:{"otherParam":"zTreeAsyncTest"},
+                        dataFilter: filter
+                    },
+                    data: {
+                        simpleData: {
+                            enable: true
+                        }
+                    },
+                    callback: {
+                        onClick: onClick,
+                        onCollapse: onCollapse,
+                        onExpand: onExpand
+                    }
+                };
+                function filter(treeId, parentNode, childNodes) {
+                    if (!childNodes) return null;
+                    for (var i=0, l=childNodes.length; i<l; i++) {
+                        childNodes[i].name = childNodes[i].name.replace(/\.n/g, '.');
+                    }
+                    return childNodes;
+                }
+                function onClick(event, treeId, treeNode) {
+                    setSelectNodeData();
+                    $("#menuTable").jqGrid('setGridParam',{
+                        datatype:'json',
+                        postData:{'id':treeNode.id},
+                        search: true,
+                        page:1
+                    }).trigger("reloadGrid");
+                    setHash();
+                }
+                function onCollapse(event, treeId, treeNode) {
+                    setHash();
+                }
+                function onExpand(event, treeId, treeNode) {
+                    setHash();
+                }
+                function selectNodes(){
+                    var treeObj = $.fn.zTree.getZTreeObj("tree");
+                    //获取节点
+                    var nodes = treeObj.getNodes();
+                    if (nodes.length>0){
+                        treeObj.selectNode(nodes[0],false,false);
+                        onClick(null,setting.treeId, treeObj.getNodeByParam("id",nodes[0].id,null));
+                    }
+                }
+                function setSelectNodeData(){
+                    var treeObj = $.fn.zTree.getZTreeObj("tree");
+                    var nodes = treeObj.getSelectedNodes();
+                    if (nodes.length>0){
+                        $("#selectedId").val(nodes[0].id);
+                        $("#selectedName").val(nodes[0].name);
+                        $("#selectedParentId").val(nodes[0].pId);
+                        if(nodes[0].pId==null){
+                            $("#selectedParentId").val("0");
+                            $("#selectedParentName").val("ROOT");
+                        }else{
+                            var node=treeObj.getNodeByParam("id",nodes[0].pId,null);
+                            $("#selectedParentName").val(node.name);
+                        }
+                    }
+                }
+                function getParentNode(){
+                    var zTree = $.fn.zTree.getZTreeObj("tree"),
+                        nodes = zTree.getSelectedNodes();
+                    /*根据 zTree 的唯一标识 tId 快速获取节点 JSON 数据对象*/
+                    var parentNode = zTree.getNodeByTId(nodes[0].parentTId);
+                    return parentNode;
+                }
+                $.fn.zTree.init($("#tree"), setting,result);
+                selectNodes();
+                getParentNode();
+            }
+        });
+        setHash();
+    });
+    function selectNode(){
+        var treeObj = $.fn.zTree.getZTreeObj("tree");
+        //获取节点
+        var nodes = treeObj.getNodes();
+        console.log(nodes)
+        if (nodes.length>0){
+            treeObj.selectNode(nodes[0],false,false);
+            treeObj.onClick(null,setting.treeId, treeObj.getNodeByParam("id",nodes[0].id,null));
+        }
+    }
+    function refreshParentNode() {
+        var zTree = $.fn.zTree.getZTreeObj("tree"),
+            type = "refresh",
+            silent = false;
+        /*根据 zTree 的唯一标识 tId 快速获取节点 JSON 数据对象*/
+        var parentNode = parentNode;
+        console.log(parentNode)
+        /*选中指定节点*/
+        zTree.selectNode(parentNode);
+        zTree.reAsyncChildNodes(parentNode, type, silent);
+    }
+
+    function insert(type){
+        if($("#selectedId").val() != ''){
+            var parentId;
+            var parentName;
+            if(type == "next"){
+                parentId = $("#selectedId").val();
+                parentName = $("#selectedName").val();
+            }else if(type = "noraml"){
+            //     if($("#parentId").val() == "1"){
+            //         layer.alert("不能添加《功能菜单》的同级菜单！");
+            //         return false;
+            //     }
+            //     parentId = $("#selectedParentId").val();
+                parentId = $("#selectedParentId").val();
+                parentName = $("#selectedParentName").val();
+            }
+            commonForward(encodeURI('/ui/menu/form?parentId='+parentId+'&parentName='+parentName));
+        }else if(noData==true){
+            parentId = "0";
+            parentName = "ROOT";
+            commonForward(encodeURI('/ui/menu/form?parentId='+parentId+'&parentName='+parentName));
+        }else{
+            layer.alert("请选择左侧上级菜单！");
+        }
+    }
+    function update(){
+        var ids = $("#menuTable").jqGrid("getGridParam", "selarrrow");// 获得选中行数据
+        if (ids.length == 0) {
+            layer.alert("请选择需要操作的数据！");
+            return false;
+        }else if(ids.length > 1){
+            layer.alert("请选择一条记录！");
+        }else if(ids.length == 1){
+            var rowdata = $("#menuTable").jqGrid("getRowData", ids[0]);
+            if($("#selectedId").val() != ''){
+                var parentId = rowdata.parentId;
+                var parentName = "";
+                if($("#selectedParentId").val() == parentId){
+                    parentName = $("#selectedParentName").val();
+                }else if(parentId == 0){
+                    parentName = "ROOT";
+                }else {
+                    parentName = $("#selectedName").val();
+                }
+                commonForward(encodeURI('/ui/menu/modify?parentId='+parentId+'&parentName='+parentName+'&id='+rowdata.id));
+            }else{
+                layer.alert("请选择左侧上级菜单！");
+            }
+        }
+    }
+    function batchDelete(){
+        var ids = $("#menuTable").jqGrid("getGridParam", "selarrrow");// 获得选中行数据
+        if (ids.length == 0) {
+            layer.alert("请选择需要操作的数据！");
+            return false;
+        }else{
+            if(confirm("确定进行批量删除？")){
+                var url = "/base/menu/delByIds?ids="+ids.toString();
+                $.ajax({
+                    async : false,
+                    type : 'DELETE',
+                    url : url,
+                    dataType : 'json',
+                    success : function(obj) {
+                        // 查询失败
+                        if(!obj.isSuccess){
+                            layer.alert(obj.msg);
+                            return;
+                        }
+                        layer.alert(obj.msg);
+                        window.location.reload();
+                    }
+                });
+            }
+        }
+    }
+</script>
+</body>
+</html>

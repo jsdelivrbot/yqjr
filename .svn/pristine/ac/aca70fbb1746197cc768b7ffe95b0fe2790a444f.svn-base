@@ -1,0 +1,79 @@
+package com.yqjr.fin.mkmm.sales.services;
+
+
+import com.yqjr.fin.mkmm.sales.common.BeanUtil;
+import com.yqjr.fin.mkmm.sales.entity.MaterialDealer;
+import com.yqjr.fin.mkmm.sales.entity.MaterialIn;
+import com.yqjr.fin.mkmm.sales.rest.vo.JxsSelect;
+import com.yqjr.fin.mkmm.sales.rest.vo.MaterialOutVo;
+import com.yqjr.scfw.common.service.BaseService;
+import com.yqjr.fin.mkmm.sales.entity.MaterialOut;
+import com.yqjr.fin.mkmm.sales.mapper.MaterialOutMapper;
+import com.yqjr.scfw.common.session.SessionHolder;
+import com.yqjr.scfw.common.session.UserContext;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+
+@Service
+@Transactional(readOnly = true)
+public class MaterialOutService extends BaseService<MaterialOutMapper, MaterialOut, Long> {
+
+
+    @Autowired
+    MaterialInService materialInService;
+    @Autowired
+    MaterialOutMapper materialOutMapper;
+    @Autowired
+    MaterialDealerService materialDealerService;
+
+    public MaterialIn selectMessage(Long id){
+       return materialInService.selectMessage(id);
+    }
+
+    /**
+     * 将推送信息分别插入对应的表中
+     * @param condition
+     */
+    @Transactional(rollbackFor = { Exception.class })
+    public synchronized void insertToMaterialOut(MaterialOutVo condition){
+        MaterialOut materialOut = new MaterialOut();
+        BeanUtil.copyProperties(materialOut,condition);
+        //UserContext userContext = SessionHolder.getUserContext();
+//        materialOut.setAreaCode(userContext.getAreaCode());
+//        materialOut.setAreaName(userContext.getAreaName());
+//        materialOut.setCompany(userContext.getComCode());
+        materialOut.setUploader(condition.getUploader());
+        materialOut.setReceiveStatus("0");
+        this.insert(materialOut);
+        List<MaterialDealer> materialDealers = condition.getMaterialDealers();
+        MaterialDealer materialDealer = null;
+        MaterialDealer materialDe = new MaterialDealer();
+        for(int i=0;i<materialDealers.size();i++){
+            materialDealer = materialDealers.get(i);
+            BeanUtil.copyProperties(materialDe,materialDealer);
+//            materialDe.setAreaCode(userContext.getAreaCode());
+//            materialDe.setAreaName(userContext.getAreaName());
+//            materialDe.setCompany(userContext.getComCode());
+            materialDe.setMaterialCode(materialOut.getMaterialCode());
+            materialDe.setMaterialOutId(materialOut.getId());
+            materialDe.setReceiveStatus("0");
+            materialDealerService.insert(materialDe);
+        }
+    }
+
+    public MaterialOutVo selectOutMesById(Long id){
+        MaterialOut materialOut = this.selectById(id);
+        MaterialOutVo materialOutVo = new MaterialOutVo();
+        MaterialDealer materialDealer = new MaterialDealer();
+        materialDealer.setCompany(materialOut.getCompany());
+        materialDealer.setAreaCode(materialOut.getAreaCode());
+        materialDealer.setMaterialOutId(id);
+        List<MaterialDealer> materialDealers = materialDealerService.selectByMaterialOutId(materialDealer);
+        BeanUtil.copyProperties(materialOutVo,materialOut);
+        materialOutVo.setMaterialDealers(materialDealers);
+        return materialOutVo;
+    }
+}

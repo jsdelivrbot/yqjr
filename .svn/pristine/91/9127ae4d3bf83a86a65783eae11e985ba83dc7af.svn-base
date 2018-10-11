@@ -1,0 +1,58 @@
+{
+  "properties": [
+    {
+      "name": "fileStorage.type",
+      "type": "java.lang.String",
+      "description": "文件存储类型，包括：本地存储方式，FTP存储方式，FastDFS存储方式等",
+      "defaultValue": "fastdfs"
+    },
+    {
+      "name": "fileStorage.local.dir",
+      "type": "java.lang.String",
+      "description": "采用本地存储方式时，本地的存储路径",
+      "defaultValue": ""
+    },
+    {
+      "name": "fileStorage.fastdfs.connect_timeout_in_seconds",
+      "type": "java.lang.Integer",
+      "description": "FastDFS文件系统客户端连接超时时间，单位为秒",
+      "defaultValue": 5
+    },
+    {
+      "name": "fileStorage.fastdfs.network_timeout_in_seconds",
+      "type": "java.lang.Integer",
+      "description": "FastDFS文件系统客户端网络超时时间，单位为秒",
+      "defaultValue": 30
+    },
+    {
+      "name": "fileStorage.fastdfs.charset",
+      "type": "java.lang.String",
+      "description": "字符集",
+      "defaultValue": "UTF-8"
+    },
+    {
+      "name": "fileStorage.fastdfs.http_anti_steal_token",
+      "type": "java.lang.Boolean",
+      "description": "",
+      "defaultValue": false
+    },
+    {
+      "name": "fileStorage.fastdfs.http_secret_key",
+      "type": "java.lang.String",
+      "description": "",
+      "defaultValue": "FastDFS1234567890"
+    },
+    {
+      "name": "fileStorage.fastdfs.http_tracker_http_port",
+      "type": "java.lang.Integer",
+      "description": "",
+      "defaultValue": 80
+    },
+    {
+      "name": "fileStorage.fastdfs.tracker_servers",
+      "type": "java.lang.String",
+      "description": "FastDFS Tracker 地址和端口",
+      "defaultValue": "10.21.120.82:22122"
+    }
+  ]
+}

@@ -1,0 +1,284 @@
+<style lang="less">
+    @import '../../../styles/common.less';
+</style>
+<template>
+    <div>
+        <Form ref="teamReviewEditData" :rules="ruleValidate" :model="teamReviewEditData" :label-width="100">
+            <Card>
+                <p slot="title">
+                    <Icon type="search"></Icon>
+                    团队审核
+                </p>
+                <Row>
+                    <Col span="8" offset="2">
+                        <FormItem label="区域名称：" >
+                            <Input v-model="teamReviewEditData.areaName" disabled ></Input>
+                        </FormItem>
+                    </Col>
+                    <Col span="8" offset="2">
+                        <FormItem label="区域代码：" >
+                            <Input v-model="teamReviewEditData.areaCode" disabled ></Input>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span="8" offset="2">
+                        <FormItem label="团队名称：" >
+                            <Input v-model="teamReviewEditData.teamName"  disabled ></Input>
+                        </FormItem>
+                    </Col>
+                    <Col span="8" offset="2">
+                        <FormItem label="团队代码：" >
+                            <Input v-model="teamReviewEditData.teamCode" disabled ></Input>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span="8" offset="2">
+                        <FormItem label="团队等级：" >
+                            <Select v-model="teamReviewEditData.teamLevel" style="width:100%" disabled>
+                                <Option v-for="item in teamLevelList" :value="item.value" :key="item.value">{{ item.label }}</Option>
+                            </Select>
+                        </FormItem>
+                    </Col>
+                    <Col span="8" offset="2">
+                        <FormItem label="团队类别：" >
+                            <Select v-model="teamReviewEditData.teamType" style="width:100%" disabled>
+                                <Option v-for="item in teamTypeList" :value="item.value" :key="item.value">{{ item.label }}</Option>
+                            </Select>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span="8" offset="2">
+                        <FormItem label="团队状态：" >
+                            <Select v-model="teamReviewEditData.teamStatus" style="width:100%" disabled>
+                                <Option v-for="item in teamStatusList" :value="item.value" :key="item.value">{{ item.label }}</Option>
+                            </Select>
+                        </FormItem>
+                    </Col>
+                    <Col span="8" offset="2">
+                        <FormItem label="团队电话：" >
+                            <Input v-model="teamReviewEditData.teamPhone" disabled ></Input>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span="8" offset="2">
+                        <FormItem label="邮编：" >
+                            <Input v-model="teamReviewEditData.teamZip" disabled ></Input>
+                        </FormItem>
+                    </Col>
+                    <Col span="8" offset="2">
+                        <FormItem label="传真：" >
+                            <Input v-model="teamReviewEditData.teamFax" disabled ></Input>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span="8" offset="2">
+                        <FormItem label="生效时间：" >
+                            <Input v-model="teamReviewEditData.startTime" disabled ></Input>
+                        </FormItem>
+                    </Col>
+                    <Col span="8" offset="2">
+                        <FormItem label="创建时间：" >
+                            <Input v-model="teamReviewEditData.createTime" disabled ></Input>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span="18" offset="2">
+                        <FormItem label="团队地址：" >
+                            <Input v-model="teamReviewEditData.teamAddress" disabled ></Input>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span="18" offset="2">
+                        <FormItem label="备注：">
+                            <Input v-model="teamReviewEditData.remark" type="textarea" disabled style="width: 100%" :rows="4" :autosize="{minRows: 2,maxRows: 6}"></Input>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row v-show="false">
+                    <Col span="18" offset="2">
+                        <FormItem label="workId：">
+                            <Input v-model="teamReviewEditData.workId" disabled></Input>
+                        </FormItem>
+                    </Col>
+                </Row>
+
+            </Card>
+            <Card class="margin-top-10">
+                <p slot="title">
+                    <Icon type="edit"></Icon>
+                    审核信息
+                </p>
+                <Row>
+                    <Col span="8" offset="2">
+                        <FormItem label="审核结果：" prop="reviewStatus">
+                            <Select v-model="teamReviewEditData.reviewStatus" style="width:100%" @on-change='change'>
+                                <Option value="04" >通过</Option>
+                                <Option value="00" >驳回</Option>
+                            </Select>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span="18" offset="2">
+                        <FormItem label="审核意见：" prop="opinion">
+                            <Input v-model="teamReviewEditData.opinion" type="textarea" style="width: 100%" :autosize="{minRows: 2,maxRows: 6}"></Input>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span="4" offset="9">
+                        <Button type="primary" icon="checkmark" @click="teamReviewSub('teamReviewEditData')" :loading="loading">提交审核</Button>
+                    </Col>
+                    <Col span="4" >
+                        <Button type="primary" icon="reply" @click.prevent="pageBack">返回</Button>
+                    </Col>
+                </Row>
+            </Card>
+        </Form>
+    </div>
+</template>
+<script>
+    import { mapActions, mapState } from 'vuex';
+    import {resetWorkHeight, isEmpty, formatDate, getUserCookie} from '@/libs/util.js';
+
+    export default{
+        name: 'teamReviewEdit',
+        data () {
+            const validateOpinionCheck = (rule, value, callback) => {
+                if (!isEmpty(value)) {
+                    if (value.length > 265) {
+                        callback(new Error('审核意见最大长度265!'));
+                    }
+                }
+                callback();
+            };
+            return {
+                teamLevelList: [{
+                    value: '01',
+                    label: '一级'
+                }, {
+                    value: '02',
+                    label: '二级'
+                }, {
+                    value: '03',
+                    label: '三级'
+                }],
+                teamTypeList: [{
+                    value: '01',
+                    label: '普通'
+                }],
+                teamStatusList: [{
+                    value: '1',
+                    label: '有效'
+                }, {
+                    value: '0',
+                    label: '无效'
+                }],
+                ruleValidate: {
+                    opinion: [
+                        { required: true, message: '请输入审核意见!', trigger: 'blur' },
+                        { validator: validateOpinionCheck }
+                    ],
+                    reviewStatus: [
+                        { required: true, message: '请选择审核结果!', trigger: 'change' }
+                    ]
+                }
+            };
+        },
+        computed: {
+            ...mapState({
+                loading: ({teamReviewEdit}) => teamReviewEdit.loading,
+                teamReviewEditData: ({teamReviewEdit}) => teamReviewEdit.teamReviewEditData,
+                teamReviewEditMsg: ({teamReviewEdit}) => teamReviewEdit.teamReviewEditMsg,
+                isSuccess: ({teamReviewEdit}) => teamReviewEdit.isSuccess
+            })
+        },
+        methods: {
+            ...mapActions([
+                'handelQueryTeamReviewEditById',
+                'handelTeamReviewToSubmit'
+            ]),
+            init () {
+                this.queryTeamReviewEditById(this.$route.query);
+                resetWorkHeight();
+            },
+            queryTeamReviewEditById (data) {
+                this.handelQueryTeamReviewEditById(data).then(res => {
+                    if (!this.isSuccess) {
+                        this.$Modal.error({
+                            title: '提示',
+                            content: this.teamReviewEditMsg,
+                            onOk: () => {
+                                this.$router.push({name: 'teamReviewList'});
+                            }
+                        });
+                    }
+                });
+            },
+            teamReviewSub (name) { // 提交审核
+                this.$refs[name].validate((valid) => {
+                    if (valid) {
+                        if (this.teamReviewEditData.reviewStatus === '04' && this.teamReviewEditData.reviewType === '01') {
+                            var nowDate = new Date();
+                            var date = formatDate(nowDate, 'yyyy-MM-dd');
+                            var time1 = parseInt(date.replace(/-/g, ''));
+                            var time2 = parseInt(this.teamReviewEditData.startTime.replace(/-/g, ''));
+                            if (!(time1 < time2)) {
+                                this.$Modal.error({
+                                    title: '提示',
+                                    content: '该申请已经过期，请驳回!'
+                                });
+                                return;
+                            }
+                        }
+                        this.teamReviewEditData.workId = this.$route.query.workId;
+                        const user = getUserCookie();
+                        this.teamReviewEditData.modifierName = user.name;
+                        console.log(this.teamReviewEditData);// 此数据提交
+                        this.handelTeamReviewToSubmit(this.teamReviewEditData).then(res => {
+                            if (this.isSuccess) {
+                                this.$Modal.success({
+                                    title: '提交审核',
+                                    content: this.teamReviewEditMsg,
+                                    onOk: () => {
+                                        this.$router.push({name: 'teamReviewList'});
+                                    }
+                                });
+                            } else {
+                                this.$Modal.error({
+                                    title: '提交审核',
+                                    content: this.teamReviewEditMsg,
+                                    onOk: () => {
+                                        this.$router.push({name: 'teamReviewList'});
+                                    }
+                                });
+                            }
+                        });
+                    } else {
+                        this.$Message.error('验证错误!');
+                    }
+                });
+            },
+            change (data) {
+                if (data === '04') {
+                    this.teamReviewEditData.opinion = '同意';
+                } else {
+                    this.teamReviewEditData.opinion = '';
+                }
+            },
+            pageBack () {
+                this.$router.push({name: 'teamReviewList'});
+            }
+        },
+        mounted () {
+            this.init();
+        }
+    };
+</script>

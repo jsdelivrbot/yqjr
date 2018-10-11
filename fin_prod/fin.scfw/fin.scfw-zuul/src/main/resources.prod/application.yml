@@ -1,0 +1,55 @@
+spring:
+  redis:
+    cluster:
+      nodes: 10.20.133.49:7000,10.20.133.49:7001,10.20.133.49:7002, 10.20.133.42:7003,10.20.133.42:7004,10.20.133.42:7005
+
+management:
+  security:
+    enabled: false
+endpoints:
+  shutdown:
+    enabled: true
+zuul:
+  retryable: true
+  #ribbon:
+  #  eager-load:
+  #    enabled: true
+  sensitiveHeaders:
+  ignoredServices: '*'
+  routes:
+    fin-scfw-meta:
+      path: /meta/**
+      serviceId: fin-scfw-meta
+    fin-ui:
+      path: /ui/**
+      serviceId: fin-ui
+    fin-mkmm-ui:
+      path: /mkmm/ui/**
+      serviceId: fin-mkmm-ui
+    fin-mkmm-sales:
+      path: /mkmm/sales/**
+      serviceId: fin-mkmm-sales
+    fin-scfw-isomer:
+          path: /isomer/**
+          serviceId: fin-scfw-isomer
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: false
+        isolation:
+          thread:
+            timeoutInMilliseconds: 30000 #缺省为1000
+    #fin-scfw-auth:
+    # execution:
+    #  isolation:
+    #   thread:
+    #    timeoutInMilliseconds: 30000
+ribbon:
+  ReadTimeout: 30000
+  ConnectTimeout: 30000
+feign:
+  httpclient:
+    connection-timeout: 30000
+

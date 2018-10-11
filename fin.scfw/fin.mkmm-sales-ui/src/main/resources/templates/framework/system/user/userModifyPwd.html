@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-store">
+    <meta HTTP-EQUIV="Pragma" CONTENT="no-cache">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <script src="/ui/js/include/head.js"></script>
+    <title>一汽金融开发平台</title>
+</head>
+<body class="no-skin">
+<div class="page-content" id="mainContent">
+    <div class="widget-box transparent ui-sortable-handle" id="widget-box-search">
+        <div class="widget-header">
+            <h3 class="widget-title smaller lighter">&nbsp;密码修改</h3>
+
+            <div class="widget-toolbar no-border">
+            </div>
+        </div>
+        <div class="widget-body">
+            <div class="widget-main padding-6 no-padding-left no-padding-right">
+                <div class="space-6"></div>
+                <form id="inputForm" action="/base/user/modifyPwd" method="post" class="form-horizontal" enctype="application/x-www-form-urlencoded">
+                    <input type="hidden" name="_method" value="PUT">
+                    <input type="hidden" name="loginName" id="loginName"/>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label no-padding-right"><span style="color:red;font-size:16px;">*</span>原密码：</label>
+                        <div class="col-sm-4">
+                            <input name="oldPassword" id="oldPassword" type="password" maxlength="50" class="form-control required" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label no-padding-right"><span style="color:red;font-size:16px;">*</span>新密码：</label>
+                        <div class="col-sm-4">
+                            <input id="newPassword" name="newPassword" type="password" value="" maxlength="50" minlength="3" class="required form-control "/>
+                        </div>
+                        <div class="col-sm-4">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label no-padding-right"><span style="color:red;font-size:16px;">*</span>确认新密码：</label>
+                        <div class="col-sm-4">
+                            <input id="confirmNewPassword" name="confirmNewPassword" type="password" value="" maxlength="50" minlength="3" equalTo="#newPassword" class="form-control required"/>
+                        </div>
+                        <div class="col-sm-4">
+                        </div>
+                    </div>
+                    <div class="clearfix form-actions">
+                        <div class="col-md-offset-4 col-md-8">
+                            <button id="btnSubmit" class="btn btn-info" type="button">
+                                <i class="ace-icon fa fa-check bigger-110"></i>
+                                保存
+                            </button>
+                            &nbsp; &nbsp; &nbsp;
+                            <button class="btn" type="button" onclick="history.go(-1)">
+                                <i class="ace-icon fa fa-undo bigger-110"></i>
+                                返回
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script type="text/javascript">
+    $(function() {
+        var loginName=$.getUrlParam("loginName");
+        $("#loginName").val(loginName);
+        $("#inputForm").frameworkValid({
+            messages : {
+                oldPassword: {remote: "原密码错误，请输入正确的密码"},
+                confirmNewPassword: {equalTo: "输入与前面相同的密码"}
+            },//自定义错误提示信息
+            rules : {
+                oldPassword: {
+                    remote: {
+                        url: "/base/user/checkOldPassword",
+                        type: "GET",
+                        dataType: "json",
+                        data: {
+                            loginName: $("#loginName").val(),
+                            oldPassword:function(){
+                                return $("#oldPassword").val();
+                            }
+                        }
+                    }
+                },
+                confirmNewPassword: {
+                    required: true,
+                    equalTo: "#newPassword"
+                },
+            }
+        });
+        setHash();
+    });
+    $("#btnSubmit").on("click",function(){
+        var flag = $("#inputForm").valid();
+        if(!flag){
+            //没有通过验证
+            return;
+        }else{
+            $("button").attr("disabled",true);
+            $("#inputForm").ajaxSubmit({
+                dataType:"json",
+                success:function( obj ){
+                    // 保存失败
+                    if(!obj.isSuccess){
+                        layer.alert(obj.msg);
+                        return;
+                    }
+                    layer.alert(obj.msg);
+                    $("#inputForm").resetForm();
+                    $("button").attr("disabled",false);
+                }
+            });
+        }
+    });
+</script>
+</html>

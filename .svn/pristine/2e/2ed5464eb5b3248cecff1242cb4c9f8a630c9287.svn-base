@@ -1,0 +1,1025 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yqjr.fin.mkmm.sales.mapper.PersonTeamMapper">
+
+    <!-- region BaseMapper DO NOT MODIFY!!!  -->
+
+    <sql id="Base_Table_Name">
+        MKMM_PERSON_TEAM
+    </sql>
+
+
+    <!-- region BaseResultMap  -->
+    <resultMap id="BaseResultMap" type="com.yqjr.fin.mkmm.sales.entity.PersonTeam">
+        <result property="id" column="ID"/><!--序列-->
+        <result property="personCode" column="PERSON_CODE"/><!--人员代码-->
+        <result property="company" column="COMPANY"/><!--公司代码-->
+        <result property="teamCode" column="TEAM_CODE"/><!--团队代码-->
+        <result property="personNature" column="PERSON_NATURE"/><!--人员性质（0团队负责人，1销售经理）-->
+        <result property="personLevel" column="PERSON_LEVEL"/><!--人员级别-->
+        <result property="personStatus" column="PERSON_STATUS"/><!--人员状态(0 无效,1 有效，2 注销)-->
+        <result property="personCheckStart" column="PERSON_CHECK_START"/><!--考核开始时间-->
+        <result property="personUptime" column="PERSON_UPTIME"/><!--上岗时间-->
+        <result property="personCorrectime" column="PERSON_CORRECTIME"/><!--转正时间-->
+        <result property="personTryStartime" column="PERSON_TRY_STARTIME"/><!--试用期开始时间-->
+        <result property="personTryEndtime" column="PERSON_TRY_ENDTIME"/><!--试用期结束时间-->
+        <result property="personJointime" column="PERSON_JOINTIME"/><!--加入我司时间-->
+        <result property="remark" column="REMARK"/><!--备注-->
+        <result property="startTime" column="START_TIME"/><!--生效时间-->
+        <result property="createTime" column="CREATE_TIME"/><!--创建时间-->
+        <result property="modifyTime" column="MODIFY_TIME"/><!--修改时间-->
+        <result property="creator" column="CREATOR"/><!--创建人-->
+        <result property="modifier" column="MODIFIER"/><!--修改人-->
+        <result property="areaCode" column="AREA_CODE"/><!--区域代码-->
+        <result property="areaName" column="AREA_NAME"/><!--区域名称-->
+        <result property="teamName" column="TEAM_NAME"/><!--团队名称-->
+    </resultMap>
+    <!-- endregion -->
+
+    <!-- region Base_Column_List  -->
+    <sql id="Base_Column_List">
+    ID,PERSON_CODE,COMPANY,TEAM_CODE,PERSON_NATURE,PERSON_LEVEL,PERSON_STATUS,PERSON_CHECK_START,PERSON_UPTIME,PERSON_CORRECTIME,PERSON_TRY_STARTIME,PERSON_TRY_ENDTIME,PERSON_JOINTIME,REMARK,START_TIME,CREATE_TIME,MODIFY_TIME,CREATOR,MODIFIER,AREA_CODE,AREA_NAME,TEAM_NAME
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_List_Selective  -->
+    <sql id="Base_Column_List_Selective">
+        <trim suffixOverrides=",">
+            <if test="id != null">
+                ID,
+            </if>
+            <if test="personCode != null">
+                PERSON_CODE,
+            </if>
+            <if test="company != null">
+                COMPANY,
+            </if>
+            <if test="teamCode != null">
+                TEAM_CODE,
+            </if>
+            <if test="personNature != null">
+                PERSON_NATURE,
+            </if>
+            <if test="personLevel != null">
+                PERSON_LEVEL,
+            </if>
+            <if test="personStatus != null">
+                PERSON_STATUS,
+            </if>
+            <if test="personCheckStart != null">
+                PERSON_CHECK_START,
+            </if>
+            <if test="personUptime != null">
+                PERSON_UPTIME,
+            </if>
+            <if test="personCorrectime != null">
+                PERSON_CORRECTIME,
+            </if>
+            <if test="personTryStartime != null">
+                PERSON_TRY_STARTIME,
+            </if>
+            <if test="personTryEndtime != null">
+                PERSON_TRY_ENDTIME,
+            </if>
+            <if test="personJointime != null">
+                PERSON_JOINTIME,
+            </if>
+            <if test="remark != null">
+                REMARK,
+            </if>
+            <if test="startTime != null">
+                START_TIME,
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME,
+            </if>
+            <if test="modifyTime != null">
+                MODIFY_TIME,
+            </if>
+            <if test="creator != null">
+                CREATOR,
+            </if>
+            <if test="modifier != null">
+                MODIFIER,
+            </if>
+            <if test="areaCode != null">
+                AREA_CODE,
+            </if>
+            <if test="areaName != null">
+                AREA_NAME,
+            </if>
+            <if test="teamName != null">
+                TEAM_NAME
+            </if>
+        </trim>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Values  -->
+    <sql id="Base_Column_Values">
+    SEQ_MKMM_PERSON_TEAM.nextval,
+    #{personCode,jdbcType=VARCHAR},
+    #{company,jdbcType=VARCHAR},
+    #{teamCode,jdbcType=VARCHAR},
+    #{personNature,jdbcType=VARCHAR},
+    #{personLevel,jdbcType=VARCHAR},
+    #{personStatus,jdbcType=VARCHAR},
+    #{personCheckStart,jdbcType=TIMESTAMP},
+    #{personUptime,jdbcType=TIMESTAMP},
+    #{personCorrectime,jdbcType=TIMESTAMP},
+    #{personTryStartime,jdbcType=TIMESTAMP},
+    #{personTryEndtime,jdbcType=TIMESTAMP},
+    #{personJointime,jdbcType=TIMESTAMP},
+    #{remark,jdbcType=VARCHAR},
+    #{startTime,jdbcType=TIMESTAMP},
+    #{createTime,jdbcType=TIMESTAMP},
+    #{modifyTime,jdbcType=TIMESTAMP},
+    #{creator,jdbcType=NUMERIC},
+    #{modifier,jdbcType=NUMERIC},
+    #{areaCode,jdbcType=VARCHAR},
+    #{areaName,jdbcType=VARCHAR},
+    #{teamName,jdbcType=VARCHAR}
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Values_Selective  -->
+    <sql id="Base_Column_Values_Selective">
+        <trim suffixOverrides=",">
+            <if test="id != null">
+                #{id},
+            </if>
+            <if test="personCode != null">
+                #{personCode},
+            </if>
+            <if test="company != null">
+                #{company},
+            </if>
+            <if test="teamCode != null">
+                #{teamCode},
+            </if>
+            <if test="personNature != null">
+                #{personNature},
+            </if>
+            <if test="personLevel != null">
+                #{personLevel},
+            </if>
+            <if test="personStatus != null">
+                #{personStatus},
+            </if>
+            <if test="personCheckStart != null">
+                #{personCheckStart},
+            </if>
+            <if test="personUptime != null">
+                #{personUptime},
+            </if>
+            <if test="personCorrectime != null">
+                #{personCorrectime},
+            </if>
+            <if test="personTryStartime != null">
+                #{personTryStartime},
+            </if>
+            <if test="personTryEndtime != null">
+                #{personTryEndtime},
+            </if>
+            <if test="personJointime != null">
+                #{personJointime},
+            </if>
+            <if test="remark != null">
+                #{remark},
+            </if>
+            <if test="startTime != null">
+                #{startTime},
+            </if>
+            <if test="createTime != null">
+                #{createTime},
+            </if>
+            <if test="modifyTime != null">
+                #{modifyTime},
+            </if>
+            <if test="creator != null">
+                #{creator},
+            </if>
+            <if test="modifier != null">
+                #{modifier},
+            </if>
+            <if test="areaCode != null">
+                #{areaCode},
+            </if>
+            <if test="areaName != null">
+                #{areaName},
+            </if>
+            <if test="teamName != null">
+                #{teamName}
+            </if>
+        </trim>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Set_Values  -->
+    <sql id="Base_Column_Set_Values">
+    ID = #{id},
+    PERSON_CODE = #{personCode},
+    COMPANY = #{company},
+    TEAM_CODE = #{teamCode},
+    PERSON_NATURE = #{personNature},
+    PERSON_LEVEL = #{personLevel},
+    PERSON_STATUS = #{personStatus},
+    PERSON_CHECK_START = #{personCheckStart},
+    PERSON_UPTIME = #{personUptime},
+    PERSON_CORRECTIME = #{personCorrectime},
+    PERSON_TRY_STARTIME = #{personTryStartime},
+    PERSON_TRY_ENDTIME = #{personTryEndtime},
+    PERSON_JOINTIME = #{personJointime},
+    REMARK = #{remark},
+    START_TIME = #{startTime},
+    CREATE_TIME = #{createTime},
+    MODIFY_TIME = #{modifyTime},
+    CREATOR = #{creator},
+    MODIFIER = #{modifier},
+    AREA_CODE = #{areaCode},
+    AREA_NAME = #{areaName},
+    TEAM_NAME = #{teamName}
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Set_Values_Selective  -->
+    <sql id="Base_Column_Set_Values_Selective">
+        <if test="id != null">
+            ID = #{id},
+        </if>
+        <if test="personCode != null">
+            PERSON_CODE = #{personCode},
+        </if>
+        <if test="company != null">
+            COMPANY = #{company},
+        </if>
+        <if test="teamCode != null">
+            TEAM_CODE = #{teamCode},
+        </if>
+        <if test="personNature != null">
+            PERSON_NATURE = #{personNature},
+        </if>
+        <if test="personLevel != null">
+            PERSON_LEVEL = #{personLevel},
+        </if>
+        <if test="personStatus != null">
+            PERSON_STATUS = #{personStatus},
+        </if>
+        <if test="personCheckStart != null">
+            PERSON_CHECK_START = #{personCheckStart},
+        </if>
+        <if test="personUptime != null">
+            PERSON_UPTIME = #{personUptime},
+        </if>
+        <if test="personCorrectime != null">
+            PERSON_CORRECTIME = #{personCorrectime},
+        </if>
+        <if test="personTryStartime != null">
+            PERSON_TRY_STARTIME = #{personTryStartime},
+        </if>
+        <if test="personTryEndtime != null">
+            PERSON_TRY_ENDTIME = #{personTryEndtime},
+        </if>
+        <if test="personJointime != null">
+            PERSON_JOINTIME = #{personJointime},
+        </if>
+        <if test="remark != null">
+            REMARK = #{remark},
+        </if>
+        <if test="startTime != null">
+            START_TIME = #{startTime},
+        </if>
+        <if test="createTime != null">
+            CREATE_TIME = #{createTime},
+        </if>
+        <if test="modifyTime != null">
+            MODIFY_TIME = #{modifyTime},
+        </if>
+        <if test="creator != null">
+            CREATOR = #{creator},
+        </if>
+        <if test="modifier != null">
+            MODIFIER = #{modifier},
+        </if>
+        <if test="areaCode != null">
+            AREA_CODE = #{areaCode},
+        </if>
+        <if test="areaName != null">
+            AREA_NAME = #{areaName},
+        </if>
+        <if test="teamName != null">
+            TEAM_NAME = #{teamName}
+        </if>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Where_Selective  -->
+    <sql id="Base_Column_Where_Selective">
+        <if test="id != null">
+            and ID = #{id}
+        </if>
+        <if test="personCode != null">
+            and PERSON_CODE = #{personCode}
+        </if>
+        <if test="company != null">
+            and COMPANY = #{company}
+        </if>
+        <if test="teamCode != null">
+            and TEAM_CODE = #{teamCode}
+        </if>
+        <if test="personNature != null">
+            and PERSON_NATURE = #{personNature}
+        </if>
+        <if test="personLevel != null">
+            and PERSON_LEVEL = #{personLevel}
+        </if>
+        <if test="personStatus != null">
+            and PERSON_STATUS = #{personStatus}
+        </if>
+        <if test="personCheckStart != null">
+            and PERSON_CHECK_START = #{personCheckStart}
+        </if>
+        <if test="personUptime != null">
+            and PERSON_UPTIME = #{personUptime}
+        </if>
+        <if test="personCorrectime != null">
+            and PERSON_CORRECTIME = #{personCorrectime}
+        </if>
+        <if test="personTryStartime != null">
+            and PERSON_TRY_STARTIME = #{personTryStartime}
+        </if>
+        <if test="personTryEndtime != null">
+            and PERSON_TRY_ENDTIME = #{personTryEndtime}
+        </if>
+        <if test="personJointime != null">
+            and PERSON_JOINTIME = #{personJointime}
+        </if>
+        <if test="remark != null">
+            and REMARK = #{remark}
+        </if>
+        <if test="startTime != null">
+            and START_TIME = #{startTime}
+        </if>
+        <if test="createTime != null">
+            and CREATE_TIME = #{createTime}
+        </if>
+        <if test="modifyTime != null">
+            and MODIFY_TIME = #{modifyTime}
+        </if>
+        <if test="creator != null">
+            and CREATOR = #{creator}
+        </if>
+        <if test="modifier != null">
+            and MODIFIER = #{modifier}
+        </if>
+        <if test="areaCode != null">
+            and AREA_CODE = #{areaCode}
+        </if>
+        <if test="areaName != null">
+            and AREA_NAME = #{areaName}
+        </if>
+        <if test="teamName != null">
+            and TEAM_NAME = #{teamName}
+        </if>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Where_Selective_Param1  -->
+    <sql id="Base_Column_Where_Selective_Param1">
+        <if test="param1.id != null">
+            and ID = #{param1.id}
+        </if>
+        <if test="param1.personCode != null">
+            and PERSON_CODE = #{param1.personCode}
+        </if>
+        <if test="param1.company != null">
+            and COMPANY = #{param1.company}
+        </if>
+        <if test="param1.teamCode != null">
+            and TEAM_CODE = #{param1.teamCode}
+        </if>
+        <if test="param1.personNature != null">
+            and PERSON_NATURE = #{param1.personNature}
+        </if>
+        <if test="param1.personLevel != null">
+            and PERSON_LEVEL = #{param1.personLevel}
+        </if>
+        <if test="param1.personStatus != null">
+            and PERSON_STATUS = #{param1.personStatus}
+        </if>
+        <if test="param1.personCheckStart != null">
+            and PERSON_CHECK_START = #{param1.personCheckStart}
+        </if>
+        <if test="param1.personUptime != null">
+            and PERSON_UPTIME = #{param1.personUptime}
+        </if>
+        <if test="param1.personCorrectime != null">
+            and PERSON_CORRECTIME = #{param1.personCorrectime}
+        </if>
+        <if test="param1.personTryStartime != null">
+            and PERSON_TRY_STARTIME = #{param1.personTryStartime}
+        </if>
+        <if test="param1.personTryEndtime != null">
+            and PERSON_TRY_ENDTIME = #{param1.personTryEndtime}
+        </if>
+        <if test="param1.personJointime != null">
+            and PERSON_JOINTIME = #{param1.personJointime}
+        </if>
+        <if test="param1.remark != null">
+            and REMARK = #{param1.remark}
+        </if>
+        <if test="param1.startTime != null">
+            and START_TIME = #{param1.startTime}
+        </if>
+        <if test="param1.createTime != null">
+            and CREATE_TIME = #{param1.createTime}
+        </if>
+        <if test="param1.modifyTime != null">
+            and MODIFY_TIME = #{param1.modifyTime}
+        </if>
+        <if test="param1.creator != null">
+            and CREATOR = #{param1.creator}
+        </if>
+        <if test="param1.modifier != null">
+            and MODIFIER = #{param1.modifier}
+        </if>
+        <if test="param1.areaCode != null">
+            and AREA_CODE = #{param1.areaCode}
+        </if>
+        <if test="param1.areaName != null">
+            and AREA_NAME = #{param1.areaName}
+        </if>
+        <if test="param1.teamName != null">
+            and TEAM_NAME = #{param1.teamName}
+        </if>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Order_By  -->
+    <sql id="Base_Order_By">
+        <bind name="propName" value="sortField"></bind>
+        ORDER BY
+        <include refid="Base_Column_Name"/>
+        <choose>
+            <when test="isAscend">
+                ASC
+            </when>
+            <otherwise>
+                DESC
+            </otherwise>
+        </choose>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Name  -->
+    <sql id="Base_Column_Name">
+        <if test='"id" == propName'>
+            ID
+        </if>
+        <if test='"personCode" == propName'>
+            PERSON_CODE
+        </if>
+        <if test='"company" == propName'>
+            COMPANY
+        </if>
+        <if test='"teamCode" == propName'>
+            TEAM_CODE
+        </if>
+        <if test='"personNature" == propName'>
+            PERSON_NATURE
+        </if>
+        <if test='"personLevel" == propName'>
+            PERSON_LEVEL
+        </if>
+        <if test='"personStatus" == propName'>
+            PERSON_STATUS
+        </if>
+        <if test='"personCheckStart" == propName'>
+            PERSON_CHECK_START
+        </if>
+        <if test='"personUptime" == propName'>
+            PERSON_UPTIME
+        </if>
+        <if test='"personCorrectime" == propName'>
+            PERSON_CORRECTIME
+        </if>
+        <if test='"personTryStartime" == propName'>
+            PERSON_TRY_STARTIME
+        </if>
+        <if test='"personTryEndtime" == propName'>
+            PERSON_TRY_ENDTIME
+        </if>
+        <if test='"personJointime" == propName'>
+            PERSON_JOINTIME
+        </if>
+        <if test='"remark" == propName'>
+            REMARK
+        </if>
+        <if test='"startTime" == propName'>
+            START_TIME
+        </if>
+        <if test='"createTime" == propName'>
+            CREATE_TIME
+        </if>
+        <if test='"modifyTime" == propName'>
+            MODIFY_TIME
+        </if>
+        <if test='"creator" == propName'>
+            CREATOR
+        </if>
+        <if test='"modifier" == propName'>
+            MODIFIER
+        </if>
+        <if test='"areaCode" == propName'>
+            AREA_CODE
+        </if>
+        <if test='"areaName" == propName'>
+            AREA_NAME
+        </if>
+        <if test='"teamName" == propName'>
+            TEAM_NAME
+        </if>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Id_Array  -->
+    <sql id="Base_Id_Array">
+        <foreach collection="array" open="(" close=")" separator="," item="id">
+            #{id}
+        </foreach>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Id_List  -->
+    <sql id="Base_Id_List">
+        <foreach collection="list" open="(" close=")" separator="," item="id">
+            #{id}
+        </foreach>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Select_All  -->
+    <sql id="Base_Select_All">
+        select
+        <include refid="Base_Column_List"/>
+        from
+        <include refid="Base_Table_Name"/>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region selectById  -->
+    <select id="selectById" resultMap="BaseResultMap">
+        <include refid="Base_Select_All"/>
+        where ID = #{id}
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectByIds  -->
+    <select id="selectByIds" resultMap="BaseResultMap">
+        <include refid="Base_Select_All"/>
+        where ID in
+        <include refid="Base_Id_List"/>
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectAll  -->
+    <select id="selectAll" resultMap="BaseResultMap">
+        <include refid="Base_Select_All"/>
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectCount  -->
+    <select id="selectCount" resultType="int">
+        select count(*)
+        from
+        <include refid="Base_Table_Name"/>
+        <where>
+            <include refid="Base_Column_Where_Selective"/>
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region select  -->
+    <select id="select" resultMap="BaseResultMap">
+        <include refid="Base_Select_All"/>
+        <where>
+            <include refid="Base_Column_Where_Selective"/>
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectOne  -->
+    <select id="selectOne" resultMap="BaseResultMap">
+        <include refid="Base_Select_All"/>
+        <where>
+            <include refid="Base_Column_Where_Selective"/>
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectOrderBy  -->
+    <select id="selectOrderBy" resultMap="BaseResultMap">
+        <include refid="Base_Select_All"/>
+        <where>
+            <include refid="Base_Column_Where_Selective_Param1"/>
+        </where>
+        <include refid="Base_Order_By"/>
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectByProperty  -->
+    <select id="selectByProperty" resultMap="BaseResultMap">
+        <include refid="Base_Select_All"/>
+        <where>
+            <include refid="Base_Column_Name"/>
+            = #{propValue}
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectByPropertyIn  -->
+    <select id="selectByPropertyIn" resultMap="BaseResultMap">
+        <include refid="Base_Select_All"/>
+        <where>
+            <include refid="Base_Column_Name"/>
+            IN
+            <foreach collection="propValues" open="(" close=")" separator="," item="propValue">
+                #{propValue}
+            </foreach>
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region delete  -->
+    <delete id="delete">
+        delete
+        from
+        <include refid="Base_Table_Name"/>
+        <where>
+            <include refid="Base_Column_Where_Selective"/>
+        </where>
+    </delete>
+    <!-- endregion -->
+
+    <!-- region deleteById  -->
+    <delete id="deleteById">
+        delete
+        from
+        <include refid="Base_Table_Name"/>
+        where ID = #{id}
+    </delete>
+    <!-- endregion -->
+
+    <!-- region deleteByIds  -->
+    <delete id="deleteByIds">
+        delete
+        from
+        <include refid="Base_Table_Name"/>
+        where ID in
+        <include refid="Base_Id_List"/>
+    </delete>
+    <!-- endregion -->
+
+    <!-- region insert  -->
+    <insert id="insert" parameterType="com.yqjr.fin.mkmm.sales.entity.PersonTeam">
+        <!--<selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>-->
+        insert into
+        <include refid="Base_Table_Name"/>
+        (
+        <include refid="Base_Column_List"/>
+        )
+        values (
+        <include refid="Base_Column_Values"/>
+        )
+    </insert>
+    <!-- endregion -->
+
+    <!-- region updateById  -->
+    <update id="updateById" parameterType="com.yqjr.fin.mkmm.sales.entity.PersonTeam">
+        update
+        <include refid="Base_Table_Name"/>
+        <set>
+            <include refid="Base_Column_Set_Values"/>
+        </set>
+        where ID = #{id}
+    </update>
+    <!-- endregion -->
+
+    <!-- region patchById  -->
+    <update id="patchById" parameterType="com.yqjr.fin.mkmm.sales.entity.PersonTeam">
+        update
+        <include refid="Base_Table_Name"/>
+        <set>
+            <include refid="Base_Column_Set_Values_Selective"/>
+        </set>
+        where ID = #{id}
+    </update>
+    <!-- endregion -->
+
+    <!-- endregion BaseMapper -->
+
+    <!-- region generated by CodeRobot  -->
+
+    <!-- region 结果集映射  -->
+    <resultMap id="PersonTeamResult" type="com.yqjr.fin.mkmm.sales.entity.PersonTeam">
+        <result property="id" column="ID"/><!--序列-->
+        <result property="personCode" column="PERSON_CODE"/><!--人员代码-->
+        <result property="company" column="COMPANY"/><!--公司代码-->
+        <result property="teamCode" column="TEAM_CODE"/><!--团队代码-->
+        <result property="personNature" column="PERSON_NATURE"/><!--人员性质（0团队负责人，1销售经理）-->
+        <result property="personLevel" column="PERSON_LEVEL"/><!--人员级别-->
+        <result property="personStatus" column="PERSON_STATUS"/><!--人员状态(0 无效,1 有效，2 注销)-->
+        <result property="personCheckStart" column="PERSON_CHECK_START"/><!--考核开始时间-->
+        <result property="personUptime" column="PERSON_UPTIME"/><!--上岗时间-->
+        <result property="personCorrectime" column="PERSON_CORRECTIME"/><!--转正时间-->
+        <result property="personTryStartime" column="PERSON_TRY_STARTIME"/><!--试用期开始时间-->
+        <result property="personTryEndtime" column="PERSON_TRY_ENDTIME"/><!--试用期结束时间-->
+        <result property="personJointime" column="PERSON_JOINTIME"/><!--加入我司时间-->
+        <result property="remark" column="REMARK"/><!--备注-->
+        <result property="startTime" column="START_TIME"/><!--生效时间-->
+        <result property="createTime" column="CREATE_TIME"/><!--创建时间-->
+        <result property="modifyTime" column="MODIFY_TIME"/><!--修改时间-->
+        <result property="creator" column="CREATOR"/><!--创建人-->
+        <result property="modifier" column="MODIFIER"/><!--修改人-->
+        <result property="areaCode" column="AREA_CODE"/><!--区域代码-->
+        <result property="areaName" column="AREA_NAME"/><!--区域名称-->
+        <result property="teamName" column="TEAM_NAME"/><!--团队名称-->
+    </resultMap>
+    <!-- endregion -->
+
+    <!-- 查询条件判断 入参为对象 条件为模糊-->
+    <sql id="queryLikePersonTeam">
+        <if test="personTeam!=null">
+            <if test="id!=null and id!=''">
+                AND ID LIKE CONCAT('%'#{id}'%')<!--序列-->
+            </if>
+            <if test="personCode!=null and personCode!=''">
+                AND PERSON_CODE LIKE CONCAT('%'#{personCode}'%')<!--人员代码-->
+            </if>
+            <if test="company!=null and company!=''">
+                AND COMPANY LIKE CONCAT('%'#{company}'%')<!--公司代码-->
+            </if>
+            <if test="teamCode!=null and teamCode!=''">
+                AND TEAM_CODE LIKE CONCAT('%'#{teamCode}'%')<!--团队代码-->
+            </if>
+            <if test="personNature!=null and personNature!=''">
+                AND PERSON_NATURE LIKE CONCAT('%'#{personNature}'%')<!--人员性质（0团队负责人，1销售经理）-->
+            </if>
+            <if test="personLevel!=null and personLevel!=''">
+                AND PERSON_LEVEL LIKE CONCAT('%'#{personLevel}'%')<!--人员级别-->
+            </if>
+            <if test="personStatus!=null and personStatus!=''">
+                AND PERSON_STATUS LIKE CONCAT('%'#{personStatus}'%')<!--人员状态(0 无效,1 有效，2 注销)-->
+            </if>
+            <if test="personCheckStart!=null and personCheckStart!=''">
+                AND PERSON_CHECK_START LIKE CONCAT('%'#{personCheckStart}'%')<!--考核开始时间-->
+            </if>
+            <if test="personUptime!=null and personUptime!=''">
+                AND PERSON_UPTIME LIKE CONCAT('%'#{personUptime}'%')<!--上岗时间-->
+            </if>
+            <if test="personCorrectime!=null and personCorrectime!=''">
+                AND PERSON_CORRECTIME LIKE CONCAT('%'#{personCorrectime}'%')<!--转正时间-->
+            </if>
+            <if test="personTryStartime!=null and personTryStartime!=''">
+                AND PERSON_TRY_STARTIME LIKE CONCAT('%'#{personTryStartime}'%')<!--试用期开始时间-->
+            </if>
+            <if test="personTryEndtime!=null and personTryEndtime!=''">
+                AND PERSON_TRY_ENDTIME LIKE CONCAT('%'#{personTryEndtime}'%')<!--试用期结束时间-->
+            </if>
+            <if test="personJointime!=null and personJointime!=''">
+                AND PERSON_JOINTIME LIKE CONCAT('%'#{personJointime}'%')<!--加入我司时间-->
+            </if>
+            <if test="remark!=null and remark!=''">
+                AND REMARK LIKE CONCAT('%'#{remark}'%')<!--备注-->
+            </if>
+            <if test="startTime!=null and startTime!=''">
+                AND START_TIME LIKE CONCAT('%'#{startTime}'%')<!--生效时间-->
+            </if>
+            <if test="createTime!=null and createTime!=''">
+                AND CREATE_TIME LIKE CONCAT('%'#{createTime}'%')<!--创建时间-->
+            </if>
+            <if test="modifyTime!=null and modifyTime!=''">
+                AND MODIFY_TIME LIKE CONCAT('%'#{modifyTime}'%')<!--修改时间-->
+            </if>
+            <if test="creator!=null and creator!=''">
+                AND CREATOR LIKE CONCAT('%'#{creator}'%')<!--创建人-->
+            </if>
+            <if test="modifier!=null and modifier!=''">
+                AND MODIFIER LIKE CONCAT('%'#{modifier}'%')<!--修改人-->
+            </if>
+            <if test="areaCode!=null and areaCode!=''">
+                AND AREA_CODE LIKE CONCAT('%'#{areaCode}'%')<!--区域代码-->
+            </if>
+            <if test="areaName!=null and areaName!=''">
+                AND AREA_NAME LIKE CONCAT('%'#{areaName}'%')<!--区域名称-->
+            </if>
+            <if test="teamName!=null and teamName!=''">
+                TEAM_NAME LIKE CONCAT('%'#{teamName}'%')<!--团队名称-->
+            </if>
+        </if>
+    </sql>
+
+    <!-- 按条件模糊查询所有 -->
+    <select id="queryPersonTeamList" parameterType="com.yqjr.fin.mkmm.sales.entity.PersonTeam"
+            resultMap="PersonTeamResult">
+        SELECT
+        ID,<!--序列-->
+        PERSON_CODE,<!--人员代码-->
+        COMPANY,<!--公司代码-->
+        TEAM_CODE,<!--团队代码-->
+        PERSON_NATURE,<!--人员性质（0团队负责人，1销售经理）-->
+        PERSON_LEVEL,<!--人员级别-->
+        PERSON_STATUS,<!--人员状态(0 无效,1 有效，2 注销)-->
+        PERSON_CHECK_START,<!--考核开始时间-->
+        PERSON_UPTIME,<!--上岗时间-->
+        PERSON_CORRECTIME,<!--转正时间-->
+        PERSON_TRY_STARTIME,<!--试用期开始时间-->
+        PERSON_TRY_ENDTIME,<!--试用期结束时间-->
+        PERSON_JOINTIME,<!--加入我司时间-->
+        REMARK,<!--备注-->
+        START_TIME,<!--生效时间-->
+        CREATE_TIME,<!--创建时间-->
+        MODIFY_TIME,<!--修改时间-->
+        CREATOR,<!--创建人-->
+        MODIFIER,<!--修改人-->
+        AREA_CODE,<!--区域代码-->
+        AREA_NAME,<!--区域名称-->
+        TEAM_NAME<!--团队名称-->
+        FROM MKMM_PERSON_TEAM
+        <where>
+            <include refid="queryLikePersonTeam"/>
+        </where>
+    </select>
+
+    <!-- 按条件模糊统计所有条数 -->
+    <select id="queryPersonTeamCount" parameterType="com.yqjr.fin.mkmm.sales.entity.PersonTeam" resultType="int">
+        SELECT
+        count (id)
+        FROM MKMM_PERSON_TEAM
+        <where>
+            <include refid="queryLikePersonTeam"/>
+        </where>
+    </select>
+
+    <!-- 批量删除，入参为数组  -->
+    <delete id="dynamicDelete">
+        delete from MKMM_PERSON_TEAM where id in
+        <foreach collection="array" open="(" close=")" separator="," item="arr">
+            #{arr}
+        </foreach>
+    </delete>
+
+    <!-- 批量删除，入参为list  -->
+    <delete id="dynamicDeleteList">
+        delete from MKMM_PERSON_TEAM where id in
+        <foreach collection="list" open="(" close=")" separator="," item="ids">
+            #{ids}
+        </foreach>
+    </delete>
+
+    <!-- 批量插入 -->
+    <insert id="insertBatch" parameterType="java.util.List">
+        <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into MKMM_PERSON_TEAM
+        (
+        <include refid="Base_Column_List"/>
+        )
+        values
+        <foreach collection="list" item="personTeam" index="index" separator=",">
+            (
+            <include refid="Base_Column_Values"/>
+            )
+        </foreach>
+    </insert>
+
+    <!-- 插入单条数据，并返回主键ID -->
+    <insert id="saveObj" useGeneratedKeys="true" keyProperty="id"
+            parameterType="com.yqjr.fin.mkmm.sales.entity.PersonTeam">
+        insert into MKMM_PERSON_TEAM
+        (
+        <include refid="Base_Column_List"/>
+        )
+        values
+        (
+        <include refid="Base_Column_Values"/>
+        )
+    </insert>
+
+
+    <!-- **********************************************************************-->
+    <!-- ************* 在此下方为一对一、一对多查询方式 仅供参考***************-->
+    <!-- **********************************************************************-->
+    <!-- 一个博客（BlogInfo） 属于一个作者（Author） ，一个作者（Author） 有多篇文章（Post） -->
+    <!--
+  <resultMap type="com.foo.bean.BlogInfo" id="BlogInfo">
+      <id column="blog_id" property="blogId" />
+      <result column="title" property="title" />
+      <association property="author" column="blog_author_id"
+          javaType="com.foo.bean.Author" select="com.foo.bean.AuthorMapper.selectByPrimaryKey">
+      </association>
+      <collection property="posts" column="blog_id" ofType="com.foo.bean.Post"
+          select="com.foo.bean.PostMapper.selectByBlogId">
+      </collection>
+  </resultMap>
+
+  <select id="queryBlogInfoById" resultMap="BlogInfo" parameterType="java.math.BigDecimal">
+      SELECT
+      B.BLOG_ID,
+      B.TITLE,
+      B.AUTHOR_ID AS BLOG_AUTHOR_ID
+      FROM BLOG B
+      where B.BLOG_ID = 博客ID
+  </select>
+
+          上述方法存在N+1问题
+      它的弊端也比较明显：即所谓的N+1问题。关联的嵌套查询显示得到一个结果集，然后根据这个结果集的每一条记录进行关联查询。
+      现在假设嵌套查询就一个（即resultMap 内部就一个association标签），现查询的结果集返回条数为N，那么关联查询语句将会被执行N次，加上自身返回结果集查询1次，共需要访问数据库N+1次。如果N比较大的话，这样的数据库访问消耗是非常大的！所以使用这种嵌套语句查询的使用者一定要考虑慎重考虑，确保N值不会很大。
+      以上面的例子为例，select 语句本身会返回com.foo.bean.BlogMapper.queryBlogInfoById 条数为1 的结果集，由于它有两条关联的语句查询，它需要共访问数据库 1*（1+1）=3次数据库。
+
+
+       <resultMap type="com.foo.bean.BlogInfo" id="BlogInfo">
+      <id column="blog_id" property="blogId"/>
+      <result column="title" property="title"/>
+      <association property="author" column="blog_author_id" javaType="com.foo.bean.Author">
+          <id column="author_id" property="authorId"/>
+          <result column="user_name" property="userName"/>
+          <result column="password" property="password"/>
+          <result column="email" property="email"/>
+          <result column="biography" property="biography"/>
+      </association>
+      <collection property="posts" column="blog_post_id" ofType="com.foo.bean.Post">
+          <id column="post_id" property="postId"/>
+          <result column="blog_id" property="blogId"/>
+          <result column="create_time" property="createTime"/>
+          <result column="subject" property="subject"/>
+          <result column="body" property="body"/>
+          <result column="draft" property="draft"/>
+      </collection>
+      </resultMap>
+
+
+      <select id="queryAllBlogInfo" resultMap="BlogInfo">
+          SELECT
+           B.BLOG_ID,
+           B.TITLE,
+           B.AUTHOR_ID AS BLOG_AUTHOR_ID,
+           A.AUTHOR_ID,
+           A.USER_NAME,
+           A.PASSWORD,
+           A.EMAIL,
+           A.BIOGRAPHY,
+           P.POST_ID,
+           P.BLOG_ID AS BLOG_POST_ID ,
+             P.CREATE_TIME,
+           P.SUBJECT,
+           P.BODY,
+           P.DRAFT
+      FROM BLOG B
+      LEFT OUTER JOIN AUTHOR A
+        ON B.AUTHOR_ID = A.AUTHOR_ID
+      LEFT OUTER JOIN POST P
+        ON P.BLOG_ID = B.BLOG_ID
+      </select>
+      -->
+
+    <!-- **********************************************************************-->
+    <!-- ************* 此线上方代码自动生成，在此下方编写自定义代码。***************-->
+    <!-- **********************************************************************-->
+    <update id="patchByPersonCode" parameterType="com.yqjr.fin.mkmm.sales.entity.PersonTeam">
+        update
+        <include refid="Base_Table_Name"/>
+        <set>
+            <include refid="Base_Column_Set_Values_Selective"/>
+        </set>
+        where PERSON_CODE = #{personCode,jdbcType=VARCHAR}
+    </update>
+    <!-- endregion -->
+    <select id="selectByCheckUniquen" parameterType="String" resultType="String">
+        select mpt.team_code from mkmm_person_team mpt
+        join mkmm_person_main mpm
+        on mpt.person_code=mpm.person_code
+        where mpm.person_name=#{searchPerson}
+    </select>
+
+    <select id="selectByPersonCode" parameterType="String" resultMap="BaseResultMap">
+        select company_code,team_code,area_code,team_name
+        from mkmm_person_team
+        where PERSON_CODE = #{arg0}
+        and company = #{arg1}
+    </select>
+
+
+    <update id="updatePersonStatus">
+        update
+        <include refid="Base_Table_Name"/>
+        set PERSON_STATUS ='1'
+        where PERSON_STATUS ='0' and sysdate >=START_TIME
+    </update>
+
+</mapper>
+

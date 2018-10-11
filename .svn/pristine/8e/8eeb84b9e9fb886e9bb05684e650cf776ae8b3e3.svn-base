@@ -1,0 +1,294 @@
+<style lang="less">
+    @import '../../../styles/common.less';
+</style>
+<template>
+    <div>
+        <Row>
+            <Card>
+                <p slot="title">
+                    <Icon type="search"></Icon>
+                    查询
+                </p>
+                <Form ref="formValidate" :model="searchFormDate" :label-width="100">
+                    <Row>
+                        <Col span="8" offset="2">
+                            <FormItem label="活动名称:" >
+                                <Input placeholder="请输入活动名称" v-model="searchFormDate.businessName" ></Input>
+                            </FormItem>
+                        </Col>
+                        <Col span="8" offset="2">
+                            <FormItem label="活动代码:">
+                                <Input  placeholder="请输入活动代码" v-model="searchFormDate.businessCode" ></Input>
+                            </FormItem>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col span="8" offset="2">
+                            <FormItem label="受理开始日期:">
+                                <DatePicker type="date" v-model="searchFormDate.activeStartime" placeholder="请输入受理开始日期" clearable style="width: 100%"></DatePicker>
+                            </FormItem>
+                        </Col>
+                        <Col span="8" offset="2">
+                            <FormItem label="受理结束日期:">
+                                <DatePicker  type="date" v-model="searchFormDate.activeEndtime" placeholder="请输入受理结束日期" clearable style="width: 100%"></DatePicker>
+                            </FormItem>
+                        </Col>
+                    </Row>
+                    <Row v-show="showFlag.areaFlag">
+                        <Col span="8" offset="2">
+                            <FormItem label="归属区域名称:">
+                                <Input  placeholder="请输入区域名称" v-model="searchFormDate.areaName" ></Input>
+                            </FormItem>
+                        </Col>
+                        <Col span="8" offset="2">
+                            <FormItem label="归属区域代码:">
+                                <Input  placeholder="请输入区域代码" v-model="searchFormDate.areaCode" ></Input>
+                            </FormItem>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col span="4" offset="9">
+                            <Button type="primary" icon="search" @click="searchData">查询</Button>
+                        </Col>
+                        <Col span="4">
+                            <Button icon="close" @click="cleanData">重置</Button>
+                        </Col>
+                    </Row>
+                </Form>
+            </Card>
+        </Row>
+        <Row class="margin-top-10">
+            <Card>
+                <p slot="title">
+                    <Icon type="search"></Icon>
+                    表格数据
+                </p>
+                <!--<a href="#" slot="extra" @click.prevent="exportExcel">-->
+                    <!--<Icon type="ios-cloud-download"></Icon>-->
+                    <!--导出数据-->
+                <!--</a>-->
+                <Row type="flex" justify="end" :gutter="8" >
+                    <Col>
+                        <Button icon="edit" type="warning" @click="doPay">发起动支</Button>
+                    </Col>
+                    <Col>
+                        <Button icon="search" type="primary" @click="queryDet">查看明细</Button>
+                    </Col>
+                </Row>
+                <Table :data="feeDoPayListData" :columns="tableColumns"  :loading="loading" ref="tableExcel" class="margin-top-10" @on-selection-change="handleSelectData"></Table>
+                <div style="margin: 10px;overflow: hidden">
+                    <div style="float: right;">
+                        <Page :total="total" :current="pageNo" :page-size="pageSize" size="small" @on-change="changePage" @on-page-size-change="pageSizeChange" show-total show-sizer></Page>
+                    </div>
+                </div>
+            </Card>
+        </Row>
+        <a id="hrefToExportTable" style="postion: absolute;left: -10px;top: -10px;width: 0px;height: 0px;"></a>
+    </div>
+</template>
+
+<script>
+import table2excel from '@/libs/table2excel.js';
+import {resetWorkHeight, getUserCookie} from '@/libs/util.js';
+import { mapActions, mapState } from 'vuex';
+export default{
+    name: 'feeDoPayList',
+    data () {
+        return {
+            searchFormDate: {
+                areaCode: '',
+                areaName: '',
+                businessName: '',
+                businessCode: '',
+                activeStartime: '',
+                activeEndtime: '',
+                rowData: [],
+                pageInfo: {
+                    pageSize: '10',
+                    pageNo: '1'
+                }
+            },
+            showFlag: {
+                areaFlag: false
+            },
+            tableColumns: [
+                {
+                    type: 'selection',
+                    width: 30,
+                    align: 'center'
+                },
+                {
+                    title: '活动名称',
+                    align: 'center',
+                    key: 'businessName'
+                }, {
+                    title: '活动代码',
+                    align: 'center',
+                    key: 'businessCode'
+                }, {
+                    title: '区域名称',
+                    align: 'center',
+                    key: 'areaName'
+                }, {
+                    title: '区域',
+                    align: 'center',
+                    key: 'areaCode'
+                }, {
+                    title: '受理开始时间',
+                    align: 'center',
+                    key: 'activeStartime'
+                }, {
+                    title: '受理结束时间',
+                    align: 'center',
+                    key: 'activeEndtime'
+                }, {
+                    title: '预计活动成交数量',
+                    align: 'center',
+                    key: 'estimateTurnoverCount'
+                }, {
+                    title: '实际活动成交数量',
+                    align: 'center',
+                    key: 'actualTurnoverCount'
+                }, {
+                    title: '达成率',
+                    align: 'center',
+                    key: 'reachRate'
+                }, {
+                    title: '是否发起动支',
+                    key: 'isSettlement',
+                    align: 'center',
+                    render: (h, params) => {
+                        const row = params.row;
+                        return h('div', [
+                            h('div', row.isSettlement === '01' ? '未发起' : '未发起')
+                        ]);
+                    }
+                }, {
+                    title: '动支状态',
+                    align: 'center',
+                    key: 'billStatus',
+                    render: (h, params) => {
+                        const row = params.row;
+                        if (row.billStatus === '01') {
+                            return h('div', '未动支');
+                        } else if (row.billStatus === '02') {
+                            return h('div', '动支中');
+                        } else if (row.billStatus === '03') {
+                            return h('div', '已动支');
+                        } else if (row.billStatus === '04') {
+                            return h('div', '驳回');
+                        } else {
+                            return h('div', '未动支');
+                        }
+                    }
+                }
+            ],
+            excelFileName: 'data'
+        };
+    },
+    computed: {
+        ...mapState({
+            loading: ({feeDoPayList}) => feeDoPayList.loading,
+            feeDoPayListData: ({feeDoPayList}) => feeDoPayList.feeDoPayListData,
+            pageNo: ({feeDoPayList}) => feeDoPayList.pageNo,
+            pageSize: ({feeDoPayList}) => feeDoPayList.pageSize,
+            total: ({feeDoPayList}) => feeDoPayList.total,
+            pages: ({feeDoPayList}) => feeDoPayList.pages
+        })
+    },
+    methods: {
+        ...mapActions([
+            'handleQueryFeeDoPayList'
+        ]),
+        /**
+         * 初始化
+         */
+        init () {
+            const user = getUserCookie();
+            const roleCode = user.roleCodeList;
+            if (roleCode.indexOf('0000') >= 0 || roleCode.indexOf('0001') >= 0 || roleCode.indexOf('0002') >= 0) {
+                this.showFlag.areaFlag = true;
+            } else {
+                this.showFlag.areaFlag = false;
+            }
+            this.searchData();
+        },
+        /**
+         * 点击查询按钮执行查询操作
+         */
+        searchData () {
+            this.handleQueryFeeDoPayList(this.searchFormDate).then(res => {
+                resetWorkHeight();
+                this.$Message.info('查询成功!');
+            });
+        },
+        /**
+         * 页面改变
+         */
+        changePage (index) {
+            this.searchFormDate.pageInfo.pageNo = index;
+            this.handleQueryFeeDoPayList(this.searchFormDate).then(res => {
+                resetWorkHeight();
+                this.$Message.info('查询成功!');
+                this.searchFormDate.pageInfo.pageNo = 1;
+            });
+        },
+        /**
+         * 切换每页条数
+         */
+        pageSizeChange (newPageSize) {
+            this.searchFormDate.pageInfo.pageSize = newPageSize;
+            this.handleQueryFeeDoPayList(this.searchFormDate).then(res => {
+                resetWorkHeight();
+                this.$Message.info('查询成功!');
+            });
+        },
+        handleSelectData (row) {
+            this.searchFormDate.rowData = row;
+        },
+        /**
+         * 重置按钮
+         */
+        cleanData () {
+            window.location.reload();
+        },
+        /**
+         * 导出execl
+         */
+        exportExcel () {
+            table2excel.transform(this.$refs.tableExcel, 'hrefToExportTable', this.excelFileName);
+        },
+        /**
+         * 发起动支
+         */
+        doPay () {
+            if (this.searchFormDate.rowData.length !== 1) {
+                this.$Message.info('请选择一条记录!');
+                return;
+            }
+            const businessCode = {businessCode: this.searchFormDate.rowData[0].businessCode};
+            this.$router.push({
+                name: 'feeDoPayEdit',
+                params: businessCode
+            });
+        },
+        /**
+         * 查看明细
+         */
+        queryDet () {
+            if (this.searchFormDate.rowData.length !== 1) {
+                this.$Message.info('请选择一条记录!');
+                return;
+            }
+            const businessCode = {businessCode: this.searchFormDate.rowData[0].businessCode};
+            this.$router.push({
+                name: 'activeDetailsView',
+                params: businessCode
+            });
+        }
+    },
+    mounted () {
+        this.init();
+    }
+};
+</script>

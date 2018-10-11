@@ -1,0 +1,1831 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yqjr.fin.mkmm.sales.mapper.ActiveMainReviewMapper">
+
+    <!-- region BaseMapper DO NOT MODIFY!!!  -->
+
+    <sql id="Base_Table_Name">
+        MKMM_ACTIVE_MAIN_REVIEW
+    </sql>
+
+
+
+    <!-- region BaseResultMap  -->
+    <resultMap id="BaseResultMap" type="com.yqjr.fin.mkmm.sales.entity.ActiveMainReview">
+        <result property="id" column="ID"/><!--ID-->
+        <result property="activeCode" column="ACTIVE_CODE"/><!--活动编码-->
+        <result property="activeName" column="ACTIVE_NAME"/><!--活动名称-->
+        <result property="activeStartime" column="ACTIVE_STARTIME"/><!--活动开始日期-->
+        <result property="activeEndtime" column="ACTIVE_ENDTIME"/><!--活动截止日期-->
+        <result property="loanStartime" column="LOAN_STARTIME"/><!--放款开始日期-->
+        <result property="loanEndtime" column="LOAN_ENDTIME"/><!--放款截止日期-->
+        <result property="patmentBegin" column="PATMENT_BEGIN"/><!--首付起始比例-->
+        <result property="patmentEnd" column="PATMENT_END"/><!--首付终止比例-->
+        <result property="carReg" column="CAR_REG"/><!--车籍-->
+        <result property="loanTermBegin" column="LOAN_TERM_BEGIN"/><!--贷款期限-->
+        <result property="loanTermEnd" column="LOAN_TERM_END"/><!--贷款期限-->
+        <result property="loanAmtBegin" column="LOAN_AMT_BEGIN"/><!--贷款金额-->
+        <result property="loanAmtEnd" column="LOAN_AMT_END"/><!--贷款金额-->
+        <result property="avtiveCriterion" column="AVTIVE_CRITERION"/><!--促销活动激励标准-->
+        <result property="additionFlag" column="ADDITION_FLAG"/><!--附加贷(0没有，1有)-->
+        <result property="additionAmtBegin" column="ADDITION_AMT_BEGIN"/><!--附加贷起始金额-->
+        <result property="additionAmtEnd" column="ADDITION_AMT_END"/><!--附加贷终止金额-->
+        <result property="activeStatus" column="ACTIVE_STATUS"/><!--活动状态-->
+        <result property="createTime" column="CREATE_TIME"/><!--创建时间-->
+        <result property="modifyTime" column="MODIFY_TIME"/><!--修改时间-->
+        <result property="startTime" column="START_TIME"/><!--生效时间-->
+        <result property="annex" column="ANNEX"/><!--附件-->
+        <result property="creator" column="CREATOR"/><!--创建人-->
+        <result property="creatorName" column="CREATOR_NAME"/><!--创建人姓名-->
+        <result property="modifier" column="MODIFIER"/><!--修改人-->
+        <result property="company" column="COMPANY"/><!--所属公司-->
+        <result property="paymentStatus" column="PAYMENT_STATUS"/><!--动支状态-->
+        <result property="remark" column="REMARK"/><!--备注-->
+        <result property="expectedCount" column="EXPECTED_COUNT"/><!--活动预计笔数-->
+        <result property="folowId" column="FOLOW_ID"/><!--工作流最新ID-->
+        <result property="activeReviewId" column="ACTIVE_REVIEW_ID"/><!--（修改时）取主表中ACTIVE_MAIN_REVIEW_ID-->
+        <result property="reviewType" column="REVIEW_TYPE"/><!--审核类型（01新增，02修改）-->
+        <result property="reviewStatus" column="REVIEW_STATUS"/><!--审核状态（00驳回,01提交审核,02待审核,03审核中,04审核通过）-->
+        <result property="flag" column="FLAG"/><!--有效标识（如表记录不删除，以此区分,0无效，1有效）-->
+        <result property="additionalId" column="ADDITIONAL_ID"/><!--附件上传ID-->
+        <result property="inputDeale" column="INPUT_DEALE"/><!--是否导入经销商标识-->
+        <result property="areaCode" column="AREA_CODE"/><!--区域代码-->
+        <result property="areaName" column="AREA_NAME"/><!--区域名称-->
+        <result property="inputArea" column="INPUT_AREA"/><!--区域标识-->
+        <result property="founderLevel" column="FOUNDER_LEVEL"/><!--发起人级别-->
+    </resultMap>
+    <!-- endregion -->
+
+
+
+    <!-- region Base_Column_List_Selective  -->
+    <sql id="Base_Column_List_Selective">
+        <trim suffixOverrides=",">
+            <if test="id != null">
+            ID,
+            </if>
+            <if test="activeCode != null">
+            ACTIVE_CODE,
+            </if>
+            <if test="activeName != null">
+            ACTIVE_NAME,
+            </if>
+            <if test="activeStartime != null">
+            ACTIVE_STARTIME,
+            </if>
+            <if test="activeEndtime != null">
+            ACTIVE_ENDTIME,
+            </if>
+            <if test="loanStartime != null">
+            LOAN_STARTIME,
+            </if>
+            <if test="loanEndtime != null">
+            LOAN_ENDTIME,
+            </if>
+            <if test="patmentBegin != null">
+            PATMENT_BEGIN,
+            </if>
+            <if test="patmentEnd != null">
+            PATMENT_END,
+            </if>
+            <if test="carReg != null">
+            CAR_REG,
+            </if>
+            <if test="loanTermBegin != null">
+            LOAN_TERM_BEGIN,
+            </if>
+            <if test="loanTermEnd != null">
+            LOAN_TERM_END,
+            </if>
+            <if test="loanAmtBegin != null">
+            LOAN_AMT_BEGIN,
+            </if>
+            <if test="loanAmtEnd != null">
+            LOAN_AMT_END,
+            </if>
+            <if test="avtiveCriterion != null">
+            AVTIVE_CRITERION,
+            </if>
+            <if test="additionFlag != null">
+            ADDITION_FLAG,
+            </if>
+            <if test="additionAmtBegin != null">
+            ADDITION_AMT_BEGIN,
+            </if>
+            <if test="additionAmtEnd != null">
+            ADDITION_AMT_END,
+            </if>
+            <if test="activeStatus != null">
+            ACTIVE_STATUS,
+            </if>
+            <if test="createTime != null">
+            CREATE_TIME,
+            </if>
+            <if test="modifyTime != null">
+            MODIFY_TIME,
+            </if>
+            <if test="startTime != null">
+            START_TIME,
+            </if>
+            <if test="annex != null">
+            ANNEX,
+            </if>
+            <if test="creator != null">
+            CREATOR,
+            </if>
+            <if test="creatorName != null">
+            CREATOR_NAME,
+            </if>
+            <if test="modifier != null">
+            MODIFIER,
+            </if>
+            <if test="company != null">
+            COMPANY,
+            </if>
+            <if test="paymentStatus != null">
+            PAYMENT_STATUS,
+            </if>
+            <if test="remark != null">
+            REMARK,
+            </if>
+            <if test="expectedCount != null">
+            EXPECTED_COUNT,
+            </if>
+            <if test="folowId != null">
+            FOLOW_ID,
+            </if>
+            <if test="activeReviewId != null">
+            ACTIVE_REVIEW_ID,
+            </if>
+            <if test="reviewType != null">
+            REVIEW_TYPE,
+            </if>
+            <if test="reviewStatus != null">
+            REVIEW_STATUS,
+            </if>
+            <if test="flag != null">
+            FLAG,
+            </if>
+            <if test="additionalId != null">
+            ADDITIONAL_ID,
+            </if>
+            <if test="inputDeale != null">
+            INPUT_DEALE,
+            </if>
+            <if test="areaCode != null">
+            AREA_CODE,
+            </if>
+            <if test="areaName != null">
+            AREA_NAME,
+            </if>
+            <if test="inputArea != null">
+            INPUT_AREA,
+            </if>
+            <if test="founderLevel != null">
+            FOUNDER_LEVEL
+            </if>
+        </trim>
+    </sql>
+    <!-- endregion -->
+    <!-- region Base_Column_List  -->
+    <sql id="Base_Column_List">
+        ID,
+        ACTIVE_CODE,
+        ACTIVE_NAME,
+        ACTIVE_STARTIME,
+        ACTIVE_ENDTIME,
+        LOAN_STARTIME,
+        LOAN_ENDTIME,
+        PATMENT_BEGIN,
+        PATMENT_END,
+        CAR_REG,
+        LOAN_TERM_BEGIN,
+        LOAN_TERM_END,
+        LOAN_AMT_BEGIN,
+        LOAN_AMT_END,
+        AVTIVE_CRITERION,
+        ADDITION_FLAG,
+        ADDITION_AMT_BEGIN,
+        ADDITION_AMT_END,
+        ACTIVE_STATUS,
+        CREATE_TIME,
+        MODIFY_TIME,
+        START_TIME,
+        ANNEX,
+        CREATOR,
+        CREATOR_NAME,
+        MODIFIER,
+        COMPANY,
+        PAYMENT_STATUS,
+        REMARK,
+        EXPECTED_COUNT,
+        FOLOW_ID,
+        ACTIVE_REVIEW_ID,
+        REVIEW_TYPE,
+        REVIEW_STATUS,
+        FLAG,
+        ADDITIONAL_ID,
+        INPUT_DEALE,
+        AREA_CODE,
+        AREA_NAME,
+        INPUT_AREA,
+        FOUNDER_LEVEL
+    </sql>
+    <!-- endregion -->
+    <!-- region Base_Column_Values  -->
+    <sql id="Base_Column_Values">
+        #{id,jdbcType=INTEGER},
+        #{activeCode,jdbcType=VARCHAR},
+        #{activeName,jdbcType=VARCHAR},
+        #{activeStartime,jdbcType=TIMESTAMP},
+        #{activeEndtime,jdbcType=TIMESTAMP},
+        #{loanStartime,jdbcType=TIMESTAMP},
+        #{loanEndtime,jdbcType=TIMESTAMP},
+        #{patmentBegin,jdbcType=VARCHAR},
+        #{patmentEnd,jdbcType=VARCHAR},
+        #{carReg,jdbcType=VARCHAR},
+        #{loanTermBegin,jdbcType=INTEGER},
+        #{loanTermEnd,jdbcType=INTEGER},
+        #{loanAmtBegin,jdbcType=DECIMAL},
+        #{loanAmtEnd,jdbcType=DECIMAL},
+        #{avtiveCriterion,jdbcType=INTEGER},
+        #{additionFlag,jdbcType=VARCHAR},
+        #{additionAmtBegin,jdbcType=DECIMAL},
+        #{additionAmtEnd,jdbcType=DECIMAL},
+        #{activeStatus,jdbcType=VARCHAR},
+        #{createTime,jdbcType=TIMESTAMP},
+        #{modifyTime,jdbcType=TIMESTAMP},
+        #{startTime,jdbcType=TIMESTAMP},
+        #{annex,jdbcType=VARCHAR},
+        #{creator,jdbcType=INTEGER},
+        #{creatorName,jdbcType=VARCHAR},
+        #{modifier,jdbcType=INTEGER},
+        #{company,jdbcType=VARCHAR},
+        #{paymentStatus,jdbcType=VARCHAR},
+        #{remark,jdbcType=VARCHAR},
+        #{expectedCount,jdbcType=INTEGER},
+        #{folowId,jdbcType=INTEGER},
+        #{activeReviewId,jdbcType=INTEGER},
+        #{reviewType,jdbcType=VARCHAR},
+        #{reviewStatus,jdbcType=VARCHAR},
+        #{flag,jdbcType=VARCHAR},
+        #{additionalId,jdbcType=VARCHAR},
+        #{inputDeale,jdbcType=VARCHAR},
+        #{areaCode,jdbcType=VARCHAR},
+        #{areaName,jdbcType=VARCHAR},
+        #{inputArea,jdbcType=VARCHAR},
+        #{founderLevel,jdbcType=VARCHAR}
+    </sql>
+     <!--endregion -->
+
+    <!-- region Base_Column_Values_Selective  -->
+    <sql id="Base_Column_Values_Selective">
+        <trim suffixOverrides=",">
+            <if test="id != null">
+            #{id},
+            </if>
+            <if test="activeCode != null">
+            #{activeCode},
+            </if>
+            <if test="activeName != null">
+            #{activeName},
+            </if>
+            <if test="activeStartime != null">
+            #{activeStartime},
+            </if>
+            <if test="activeEndtime != null">
+            #{activeEndtime},
+            </if>
+            <if test="loanStartime != null">
+            #{loanStartime},
+            </if>
+            <if test="loanEndtime != null">
+            #{loanEndtime},
+            </if>
+            <if test="patmentBegin != null">
+            #{patmentBegin},
+            </if>
+            <if test="patmentEnd != null">
+            #{patmentEnd},
+            </if>
+            <if test="carReg != null">
+            #{carReg},
+            </if>
+            <if test="loanTermBegin != null">
+            #{loanTermBegin},
+            </if>
+            <if test="loanTermEnd != null">
+            #{loanTermEnd},
+            </if>
+            <if test="loanAmtBegin != null">
+            #{loanAmtBegin},
+            </if>
+            <if test="loanAmtEnd != null">
+            #{loanAmtEnd},
+            </if>
+            <if test="avtiveCriterion != null">
+            #{avtiveCriterion},
+            </if>
+            <if test="additionFlag != null">
+            #{additionFlag},
+            </if>
+            <if test="additionAmtBegin != null">
+            #{additionAmtBegin},
+            </if>
+            <if test="additionAmtEnd != null">
+            #{additionAmtEnd},
+            </if>
+            <if test="activeStatus != null">
+            #{activeStatus},
+            </if>
+            <if test="createTime != null">
+            #{createTime},
+            </if>
+            <if test="modifyTime != null">
+            #{modifyTime},
+            </if>
+            <if test="startTime != null">
+            #{startTime},
+            </if>
+            <if test="annex != null">
+            #{annex},
+            </if>
+            <if test="creator != null">
+            #{creator},
+            </if>
+            <if test="creatorName != null">
+            #{creatorName},
+            </if>
+            <if test="modifier != null">
+            #{modifier},
+            </if>
+            <if test="company != null">
+            #{company},
+            </if>
+            <if test="paymentStatus != null">
+            #{paymentStatus},
+            </if>
+            <if test="remark != null">
+            #{remark},
+            </if>
+            <if test="expectedCount != null">
+            #{expectedCount},
+            </if>
+            <if test="folowId != null">
+            #{folowId},
+            </if>
+            <if test="activeReviewId != null">
+            #{activeReviewId},
+            </if>
+            <if test="reviewType != null">
+            #{reviewType},
+            </if>
+            <if test="reviewStatus != null">
+            #{reviewStatus},
+            </if>
+            <if test="flag != null">
+            #{flag},
+            </if>
+            <if test="additionalId != null">
+            #{additionalId},
+            </if>
+            <if test="inputDeale != null">
+            #{inputDeale},
+            </if>
+            <if test="areaCode != null">
+            #{areaCode},
+            </if>
+            <if test="areaName != null">
+            #{areaName},
+            </if>
+            <if test="inputArea != null">
+            #{inputArea},
+            </if>
+            <if test="founderLevel != null">
+            #{founderLevel}
+            </if>
+        </trim>
+    </sql>
+    <!-- endregion -->
+
+
+
+    <!-- region Base_Column_Set_Values  -->
+    <sql id="Base_Column_Set_Values">
+    ID = #{id},
+    ACTIVE_CODE = #{activeCode},
+    ACTIVE_NAME = #{activeName},
+    ACTIVE_STARTIME = #{activeStartime},
+    ACTIVE_ENDTIME = #{activeEndtime},
+    LOAN_STARTIME = #{loanStartime},
+    LOAN_ENDTIME = #{loanEndtime},
+    PATMENT_BEGIN = #{patmentBegin},
+    PATMENT_END = #{patmentEnd},
+    CAR_REG = #{carReg},
+    LOAN_TERM_BEGIN = #{loanTermBegin},
+    LOAN_TERM_END = #{loanTermEnd},
+    LOAN_AMT_BEGIN = #{loanAmtBegin},
+    LOAN_AMT_END = #{loanAmtEnd},
+    AVTIVE_CRITERION = #{avtiveCriterion},
+    ADDITION_FLAG = #{additionFlag},
+    ADDITION_AMT_BEGIN = #{additionAmtBegin},
+    ADDITION_AMT_END = #{additionAmtEnd},
+    ACTIVE_STATUS = #{activeStatus},
+    CREATE_TIME = #{createTime},
+    MODIFY_TIME = #{modifyTime},
+    START_TIME = #{startTime},
+    ANNEX = #{annex},
+    CREATOR = #{creator},
+    CREATOR_NAME = #{creatorName},
+    MODIFIER = #{modifier},
+    COMPANY = #{company},
+    PAYMENT_STATUS = #{paymentStatus},
+    REMARK = #{remark},
+    EXPECTED_COUNT = #{expectedCount},
+    FOLOW_ID = #{folowId},
+    ACTIVE_REVIEW_ID = #{activeReviewId},
+    REVIEW_TYPE = #{reviewType},
+    REVIEW_STATUS = #{reviewStatus},
+    FLAG = #{flag},
+    ADDITIONAL_ID = #{additionalId},
+    INPUT_DEALE = #{inputDeale},
+    AREA_CODE = #{areaCode},
+    AREA_NAME = #{areaName},
+    INPUT_AREA = #{inputArea},
+    FOUNDER_LEVEL = #{founderLevel}
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Set_Values_Selective  -->
+    <sql id="Base_Column_Set_Values_Selective">
+        <if test="id != null">
+        ID = #{id},
+        </if>
+        <if test="activeCode != null">
+        ACTIVE_CODE = #{activeCode},
+        </if>
+        <if test="activeName != null">
+        ACTIVE_NAME = #{activeName},
+        </if>
+        <if test="activeStartime != null">
+        ACTIVE_STARTIME = #{activeStartime},
+        </if>
+        <if test="activeEndtime != null">
+        ACTIVE_ENDTIME = #{activeEndtime},
+        </if>
+        <if test="loanStartime != null">
+        LOAN_STARTIME = #{loanStartime},
+        </if>
+        <if test="loanEndtime != null">
+        LOAN_ENDTIME = #{loanEndtime},
+        </if>
+        <if test="patmentBegin != null">
+        PATMENT_BEGIN = #{patmentBegin},
+        </if>
+        <if test="patmentEnd != null">
+        PATMENT_END = #{patmentEnd},
+        </if>
+        <if test="carReg != null">
+        CAR_REG = #{carReg},
+        </if>
+        <if test="loanTermBegin != null">
+        LOAN_TERM_BEGIN = #{loanTermBegin},
+        </if>
+        <if test="loanTermEnd != null">
+        LOAN_TERM_END = #{loanTermEnd},
+        </if>
+        <if test="loanAmtBegin != null">
+        LOAN_AMT_BEGIN = #{loanAmtBegin},
+        </if>
+        <if test="loanAmtEnd != null">
+        LOAN_AMT_END = #{loanAmtEnd},
+        </if>
+        <if test="avtiveCriterion != null">
+        AVTIVE_CRITERION = #{avtiveCriterion},
+        </if>
+        <if test="additionFlag != null">
+        ADDITION_FLAG = #{additionFlag},
+        </if>
+        <if test="additionAmtBegin != null">
+        ADDITION_AMT_BEGIN = #{additionAmtBegin},
+        </if>
+        <if test="additionAmtEnd != null">
+        ADDITION_AMT_END = #{additionAmtEnd},
+        </if>
+        <if test="activeStatus != null">
+        ACTIVE_STATUS = #{activeStatus},
+        </if>
+        <if test="createTime != null">
+        CREATE_TIME = #{createTime},
+        </if>
+        <if test="modifyTime != null">
+        MODIFY_TIME = #{modifyTime},
+        </if>
+        <if test="startTime != null">
+        START_TIME = #{startTime},
+        </if>
+        <if test="annex != null">
+        ANNEX = #{annex},
+        </if>
+        <if test="creator != null">
+        CREATOR = #{creator},
+        </if>
+        <if test="creatorName != null">
+        CREATOR_NAME = #{creatorName},
+        </if>
+        <if test="modifier != null">
+        MODIFIER = #{modifier},
+        </if>
+        <if test="company != null">
+        COMPANY = #{company},
+        </if>
+        <if test="paymentStatus != null">
+        PAYMENT_STATUS = #{paymentStatus},
+        </if>
+        <if test="remark != null">
+        REMARK = #{remark},
+        </if>
+        <if test="expectedCount != null">
+        EXPECTED_COUNT = #{expectedCount},
+        </if>
+        <if test="folowId != null">
+        FOLOW_ID = #{folowId},
+        </if>
+        <if test="activeReviewId != null">
+        ACTIVE_REVIEW_ID = #{activeReviewId},
+        </if>
+        <if test="reviewType != null">
+        REVIEW_TYPE = #{reviewType},
+        </if>
+        <if test="reviewStatus != null">
+        REVIEW_STATUS = #{reviewStatus},
+        </if>
+        <if test="flag != null">
+        FLAG = #{flag},
+        </if>
+        <if test="additionalId != null">
+        ADDITIONAL_ID = #{additionalId},
+        </if>
+        <if test="inputDeale != null">
+        INPUT_DEALE = #{inputDeale},
+        </if>
+        <if test="areaCode != null">
+        AREA_CODE = #{areaCode},
+        </if>
+        <if test="areaName != null">
+        AREA_NAME = #{areaName},
+        </if>
+        <if test="inputArea != null">
+        INPUT_AREA = #{inputArea},
+        </if>
+        <if test="founderLevel != null">
+        FOUNDER_LEVEL = #{founderLevel}
+        </if>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Where_Selective  -->
+    <sql id="Base_Column_Where_Selective">
+        <if test="id != null">
+            and ID = #{id}
+        </if>
+        <if test="activeCode != null">
+            and ACTIVE_CODE = #{activeCode}
+        </if>
+        <if test="activeName != null">
+            and ACTIVE_NAME = #{activeName}
+        </if>
+        <if test="activeStartime != null">
+            and ACTIVE_STARTIME = #{activeStartime}
+        </if>
+        <if test="activeEndtime != null">
+            and ACTIVE_ENDTIME = #{activeEndtime}
+        </if>
+        <if test="loanStartime != null">
+            and LOAN_STARTIME = #{loanStartime}
+        </if>
+        <if test="loanEndtime != null">
+            and LOAN_ENDTIME = #{loanEndtime}
+        </if>
+        <if test="patmentBegin != null">
+            and PATMENT_BEGIN = #{patmentBegin}
+        </if>
+        <if test="patmentEnd != null">
+            and PATMENT_END = #{patmentEnd}
+        </if>
+        <if test="carReg != null">
+            and CAR_REG = #{carReg}
+        </if>
+        <if test="loanTermBegin != null">
+            and LOAN_TERM_BEGIN = #{loanTermBegin}
+        </if>
+        <if test="loanTermEnd != null">
+            and LOAN_TERM_END = #{loanTermEnd}
+        </if>
+        <if test="loanAmtBegin != null">
+            and LOAN_AMT_BEGIN = #{loanAmtBegin}
+        </if>
+        <if test="loanAmtEnd != null">
+            and LOAN_AMT_END = #{loanAmtEnd}
+        </if>
+        <if test="avtiveCriterion != null">
+            and AVTIVE_CRITERION = #{avtiveCriterion}
+        </if>
+        <if test="additionFlag != null">
+            and ADDITION_FLAG = #{additionFlag}
+        </if>
+        <if test="additionAmtBegin != null">
+            and ADDITION_AMT_BEGIN = #{additionAmtBegin}
+        </if>
+        <if test="additionAmtEnd != null">
+            and ADDITION_AMT_END = #{additionAmtEnd}
+        </if>
+        <if test="activeStatus != null">
+            and ACTIVE_STATUS = #{activeStatus}
+        </if>
+        <if test="createTime != null">
+            and CREATE_TIME = #{createTime}
+        </if>
+        <if test="modifyTime != null">
+            and MODIFY_TIME = #{modifyTime}
+        </if>
+        <if test="startTime != null">
+            and START_TIME = #{startTime}
+        </if>
+        <if test="annex != null">
+            and ANNEX = #{annex}
+        </if>
+        <if test="creator != null">
+            and CREATOR = #{creator}
+        </if>
+        <if test="creatorName != null">
+            and CREATOR_NAME = #{creatorName}
+        </if>
+        <if test="modifier != null">
+            and MODIFIER = #{modifier}
+        </if>
+        <if test="company != null">
+            and COMPANY = #{company}
+        </if>
+        <if test="paymentStatus != null">
+            and PAYMENT_STATUS = #{paymentStatus}
+        </if>
+        <if test="remark != null">
+            and REMARK = #{remark}
+        </if>
+        <if test="expectedCount != null">
+            and EXPECTED_COUNT = #{expectedCount}
+        </if>
+        <if test="folowId != null">
+            and FOLOW_ID = #{folowId}
+        </if>
+        <if test="activeReviewId != null">
+            and ACTIVE_REVIEW_ID = #{activeReviewId}
+        </if>
+        <if test="reviewType != null">
+            and REVIEW_TYPE = #{reviewType}
+        </if>
+        <if test="reviewStatus != null">
+            and REVIEW_STATUS = #{reviewStatus}
+        </if>
+        <if test="flag != null">
+            and FLAG = #{flag}
+        </if>
+        <if test="additionalId != null">
+            and ADDITIONAL_ID = #{additionalId}
+        </if>
+        <if test="inputDeale != null">
+            and INPUT_DEALE = #{inputDeale}
+        </if>
+        <if test="areaCode != null">
+            and AREA_CODE = #{areaCode}
+        </if>
+        <if test="areaName != null">
+            and AREA_NAME = #{areaName}
+        </if>
+        <if test="inputArea != null">
+            and INPUT_AREA = #{inputArea}
+        </if>
+        <if test="founderLevel != null">
+            and FOUNDER_LEVEL = #{founderLevel}
+        </if>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Where_Selective_Param1  -->
+    <sql id="Base_Column_Where_Selective_Param1">
+        <if test="param1.id != null">
+            and ID = #{param1.id}
+        </if>
+        <if test="param1.activeCode != null">
+            and ACTIVE_CODE = #{param1.activeCode}
+        </if>
+        <if test="param1.activeName != null">
+            and ACTIVE_NAME = #{param1.activeName}
+        </if>
+        <if test="param1.activeStartime != null">
+            and ACTIVE_STARTIME = #{param1.activeStartime}
+        </if>
+        <if test="param1.activeEndtime != null">
+            and ACTIVE_ENDTIME = #{param1.activeEndtime}
+        </if>
+        <if test="param1.loanStartime != null">
+            and LOAN_STARTIME = #{param1.loanStartime}
+        </if>
+        <if test="param1.loanEndtime != null">
+            and LOAN_ENDTIME = #{param1.loanEndtime}
+        </if>
+        <if test="param1.patmentBegin != null">
+            and PATMENT_BEGIN = #{param1.patmentBegin}
+        </if>
+        <if test="param1.patmentEnd != null">
+            and PATMENT_END = #{param1.patmentEnd}
+        </if>
+        <if test="param1.carReg != null">
+            and CAR_REG = #{param1.carReg}
+        </if>
+        <if test="param1.loanTermBegin != null">
+            and LOAN_TERM_BEGIN = #{param1.loanTermBegin}
+        </if>
+        <if test="param1.loanTermEnd != null">
+            and LOAN_TERM_END = #{param1.loanTermEnd}
+        </if>
+        <if test="param1.loanAmtBegin != null">
+            and LOAN_AMT_BEGIN = #{param1.loanAmtBegin}
+        </if>
+        <if test="param1.loanAmtEnd != null">
+            and LOAN_AMT_END = #{param1.loanAmtEnd}
+        </if>
+        <if test="param1.avtiveCriterion != null">
+            and AVTIVE_CRITERION = #{param1.avtiveCriterion}
+        </if>
+        <if test="param1.additionFlag != null">
+            and ADDITION_FLAG = #{param1.additionFlag}
+        </if>
+        <if test="param1.additionAmtBegin != null">
+            and ADDITION_AMT_BEGIN = #{param1.additionAmtBegin}
+        </if>
+        <if test="param1.additionAmtEnd != null">
+            and ADDITION_AMT_END = #{param1.additionAmtEnd}
+        </if>
+        <if test="param1.activeStatus != null">
+            and ACTIVE_STATUS = #{param1.activeStatus}
+        </if>
+        <if test="param1.createTime != null">
+            and CREATE_TIME = #{param1.createTime}
+        </if>
+        <if test="param1.modifyTime != null">
+            and MODIFY_TIME = #{param1.modifyTime}
+        </if>
+        <if test="param1.startTime != null">
+            and START_TIME = #{param1.startTime}
+        </if>
+        <if test="param1.annex != null">
+            and ANNEX = #{param1.annex}
+        </if>
+        <if test="param1.creator != null">
+            and CREATOR = #{param1.creator}
+        </if>
+        <if test="param1.creatorName != null">
+            and CREATOR_NAME = #{param1.creatorName}
+        </if>
+        <if test="param1.modifier != null">
+            and MODIFIER = #{param1.modifier}
+        </if>
+        <if test="param1.company != null">
+            and COMPANY = #{param1.company}
+        </if>
+        <if test="param1.paymentStatus != null">
+            and PAYMENT_STATUS = #{param1.paymentStatus}
+        </if>
+        <if test="param1.remark != null">
+            and REMARK = #{param1.remark}
+        </if>
+        <if test="param1.expectedCount != null">
+            and EXPECTED_COUNT = #{param1.expectedCount}
+        </if>
+        <if test="param1.folowId != null">
+            and FOLOW_ID = #{param1.folowId}
+        </if>
+        <if test="param1.activeReviewId != null">
+            and ACTIVE_REVIEW_ID = #{param1.activeReviewId}
+        </if>
+        <if test="param1.reviewType != null">
+            and REVIEW_TYPE = #{param1.reviewType}
+        </if>
+        <if test="param1.reviewStatus != null">
+            and REVIEW_STATUS = #{param1.reviewStatus}
+        </if>
+        <if test="param1.flag != null">
+            and FLAG = #{param1.flag}
+        </if>
+        <if test="param1.additionalId != null">
+            and ADDITIONAL_ID = #{param1.additionalId}
+        </if>
+        <if test="param1.inputDeale != null">
+            and INPUT_DEALE = #{inputDeale}
+        </if>
+        <if test="param1.areaCode != null">
+            and AREA_CODE = #{param1.areaCode}
+        </if>
+        <if test="param1.areaName != null">
+            and AREA_NAME = #{param1.areaName}
+        </if>
+        <if test="param1.inputArea != null">
+            and INPUT_AREA = #{param1.inputArea}
+        </if>
+        <if test="param1.founderLevel != null">
+            and FOUNDER_LEVEL = #{param1.founderLevel}
+        </if>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Order_By  -->
+    <sql id="Base_Order_By">
+        <bind name="propName" value="sortField"></bind>
+        ORDER BY <include refid="Base_Column_Name" />
+        <choose>
+            <when test="isAscend">
+                ASC
+            </when>
+            <otherwise>
+                DESC
+            </otherwise>
+        </choose>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Name  -->
+    <sql id="Base_Column_Name">
+        <if test='"id" == propName'>
+        ID
+        </if>
+        <if test='"activeCode" == propName'>
+        ACTIVE_CODE
+        </if>
+        <if test='"activeName" == propName'>
+        ACTIVE_NAME
+        </if>
+        <if test='"activeStartime" == propName'>
+        ACTIVE_STARTIME
+        </if>
+        <if test='"activeEndtime" == propName'>
+        ACTIVE_ENDTIME
+        </if>
+        <if test='"loanStartime" == propName'>
+        LOAN_STARTIME
+        </if>
+        <if test='"loanEndtime" == propName'>
+        LOAN_ENDTIME
+        </if>
+        <if test='"patmentBegin" == propName'>
+        PATMENT_BEGIN
+        </if>
+        <if test='"patmentEnd" == propName'>
+        PATMENT_END
+        </if>
+        <if test='"carReg" == propName'>
+        CAR_REG
+        </if>
+        <if test='"loanTermBegin" == propName'>
+        LOAN_TERM_BEGIN
+        </if>
+        <if test='"loanTermEnd" == propName'>
+        LOAN_TERM_END
+        </if>
+        <if test='"loanAmtBegin" == propName'>
+        LOAN_AMT_BEGIN
+        </if>
+        <if test='"loanAmtEnd" == propName'>
+        LOAN_AMT_END
+        </if>
+        <if test='"avtiveCriterion" == propName'>
+        AVTIVE_CRITERION
+        </if>
+        <if test='"additionFlag" == propName'>
+        ADDITION_FLAG
+        </if>
+        <if test='"additionAmtBegin" == propName'>
+        ADDITION_AMT_BEGIN
+        </if>
+        <if test='"additionAmtEnd" == propName'>
+        ADDITION_AMT_END
+        </if>
+        <if test='"activeStatus" == propName'>
+        ACTIVE_STATUS
+        </if>
+        <if test='"createTime" == propName'>
+        CREATE_TIME
+        </if>
+        <if test='"modifyTime" == propName'>
+        MODIFY_TIME
+        </if>
+        <if test='"startTime" == propName'>
+        START_TIME
+        </if>
+        <if test='"annex" == propName'>
+        ANNEX
+        </if>
+        <if test='"creator" == propName'>
+        CREATOR
+        </if>
+        <if test='"creatorName" == propName'>
+        CREATOR_NAME
+        </if>
+        <if test='"modifier" == propName'>
+        MODIFIER
+        </if>
+        <if test='"company" == propName'>
+        COMPANY
+        </if>
+        <if test='"paymentStatus" == propName'>
+        PAYMENT_STATUS
+        </if>
+        <if test='"remark" == propName'>
+        REMARK
+        </if>
+        <if test='"expectedCount" == propName'>
+        EXPECTED_COUNT
+        </if>
+        <if test='"folowId" == propName'>
+        FOLOW_ID
+        </if>
+        <if test='"activeReviewId" == propName'>
+        ACTIVE_REVIEW_ID
+        </if>
+        <if test='"reviewType" == propName'>
+        REVIEW_TYPE
+        </if>
+        <if test='"reviewStatus" == propName'>
+        REVIEW_STATUS
+        </if>
+        <if test='"flag" == propName'>
+        FLAG
+        </if>
+        <if test='"additionalId" == propName'>
+        ADDITIONAL_ID
+        </if>
+        <if test='"inputDeale" == propName'>
+        INPUT_DEALE
+        </if>
+        <if test='"areaCode" == propName'>
+        AREA_CODE
+        </if>
+        <if test='"areaName" == propName'>
+        AREA_NAME
+        </if>
+        <if test='"inputArea" == propName'>
+        INPUT_AREA
+        </if>
+        <if test='"founderLevel" == propName'>
+        FOUNDER_LEVEL
+        </if>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Id_Array  -->
+    <sql id="Base_Id_Array">
+        <foreach collection="array" open="(" close=")" separator="," item="id">
+        #{id}
+        </foreach>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Id_List  -->
+    <sql id="Base_Id_List">
+        <foreach collection="list" open="(" close=")" separator="," item="id">
+        #{id}
+        </foreach>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Select_All  -->
+    <sql id="Base_Select_All">
+        select
+        <include refid="Base_Column_List" />
+        from <include refid="Base_Table_Name" />
+    </sql>
+    <!-- endregion -->
+
+    <!-- region selectById  -->
+    <select id="selectById" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        where ID = #{id}
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectByIds  -->
+    <select id="selectByIds" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        where ID in
+        <include refid="Base_Id_List" />
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectAll  -->
+    <select id="selectAll" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectCount  -->
+    <select id="selectCount" resultType="int">
+        select count(*)
+        from <include refid="Base_Table_Name" />
+        <where>
+            <include refid="Base_Column_Where_Selective" />
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region select  -->
+    <select id="select" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Where_Selective" />
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectOne  -->
+    <select id="selectOne" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Where_Selective" />
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectOrderBy  -->
+    <select id="selectOrderBy" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Where_Selective_Param1" />
+        </where>
+        <include refid="Base_Order_By" />
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectByProperty  -->
+    <select id="selectByProperty" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Name" /> = #{propValue}
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectByPropertyIn  -->
+    <select id="selectByPropertyIn" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Name" /> IN
+            <foreach collection="propValues" open="(" close=")" separator="," item="propValue">
+            #{propValue}
+            </foreach>
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region delete  -->
+    <delete id="delete">
+        delete
+        from <include refid="Base_Table_Name" />
+        <where>
+            <include refid="Base_Column_Where_Selective" />
+        </where>
+    </delete>
+    <!-- endregion -->
+
+    <!-- region deleteById  -->
+    <delete id="deleteById">
+        delete
+        from <include refid="Base_Table_Name" />
+        where ID = #{id}
+    </delete>
+    <!-- endregion -->
+
+    <!-- region deleteByIds  -->
+    <delete id="deleteByIds">
+        delete
+        from <include refid="Base_Table_Name" />
+        where ID in
+        <include refid="Base_Id_List" />
+    </delete>
+    <!-- endregion -->
+
+    <!-- region insert  -->
+    <insert id="insert" parameterType="com.yqjr.fin.mkmm.sales.entity.ActiveMainReview">
+        <selectKey keyProperty="id" resultType="java.lang.Long" order="BEFORE">
+            select SEQ_MKMM_ACTIVE_MAIN_REVIEW.nextval from dual
+        </selectKey>
+        insert into <include refid="Base_Table_Name" /> (
+        <include refid="Base_Column_List" />
+        )
+        values (
+        <include refid="Base_Column_Values" />
+        )
+    </insert>
+    <!-- endregion -->
+
+    <!-- region updateById  -->
+    <update id="updateById" parameterType="com.yqjr.fin.mkmm.sales.entity.ActiveMainReview">
+        update <include refid="Base_Table_Name" />
+        <set>
+            <include refid="Base_Column_Set_Values" />
+        </set>
+        where ID = #{id}
+    </update>
+    <!-- endregion -->
+
+    <!-- region patchById  -->
+    <update id="patchById" parameterType="com.yqjr.fin.mkmm.sales.entity.ActiveMainReview">
+        update <include refid="Base_Table_Name" />
+        <set>
+            <include refid="Base_Column_Set_Values_Selective" />
+        </set>
+        where ID = #{id}
+    </update>
+    <!-- endregion -->
+
+    <!-- endregion BaseMapper -->
+
+    <!-- region generated by CodeRobot  -->
+
+    <!-- region 结果集映射  -->
+    <resultMap id="ActiveMainReviewResult" type="com.yqjr.fin.mkmm.sales.entity.ActiveMainReview">
+        <result property="id" column="ID"/><!--ID-->
+        <result property="activeCode" column="ACTIVE_CODE"/><!--活动编码-->
+        <result property="activeName" column="ACTIVE_NAME"/><!--活动名称-->
+        <result property="activeStartime" column="ACTIVE_STARTIME"/><!--活动开始日期-->
+        <result property="activeEndtime" column="ACTIVE_ENDTIME"/><!--活动截止日期-->
+        <result property="loanStartime" column="LOAN_STARTIME"/><!--放款开始日期-->
+        <result property="loanEndtime" column="LOAN_ENDTIME"/><!--放款截止日期-->
+        <result property="patmentBegin" column="PATMENT_BEGIN"/><!--首付起始比例-->
+        <result property="patmentEnd" column="PATMENT_END"/><!--首付终止比例-->
+        <result property="carReg" column="CAR_REG"/><!--车籍-->
+        <result property="loanTermBegin" column="LOAN_TERM_BEGIN"/><!--贷款期限-->
+        <result property="loanTermEnd" column="LOAN_TERM_END"/><!--贷款期限-->
+        <result property="loanAmtBegin" column="LOAN_AMT_BEGIN"/><!--贷款金额-->
+        <result property="loanAmtEnd" column="LOAN_AMT_END"/><!--贷款金额-->
+        <result property="avtiveCriterion" column="AVTIVE_CRITERION"/><!--促销活动激励标准-->
+        <result property="additionFlag" column="ADDITION_FLAG"/><!--附加贷(0没有，1有)-->
+        <result property="additionAmtBegin" column="ADDITION_AMT_BEGIN"/><!--附加贷起始金额-->
+        <result property="additionAmtEnd" column="ADDITION_AMT_END"/><!--附加贷终止金额-->
+        <result property="activeStatus" column="ACTIVE_STATUS"/><!--活动状态-->
+        <result property="createTime" column="CREATE_TIME"/><!--创建时间-->
+        <result property="modifyTime" column="MODIFY_TIME"/><!--修改时间-->
+        <result property="startTime" column="START_TIME"/><!--生效时间-->
+        <result property="annex" column="ANNEX"/><!--附件-->
+        <result property="creator" column="CREATOR"/><!--创建人-->
+        <result property="creatorName" column="CREATOR_NAME"/><!--创建人姓名-->
+        <result property="modifier" column="MODIFIER"/><!--修改人-->
+        <result property="company" column="COMPANY"/><!--所属公司-->
+        <result property="paymentStatus" column="PAYMENT_STATUS"/><!--动支状态-->
+        <result property="remark" column="REMARK"/><!--备注-->
+        <result property="expectedCount" column="EXPECTED_COUNT"/><!--活动预计笔数-->
+        <result property="folowId" column="FOLOW_ID"/><!--工作流最新ID-->
+        <result property="activeReviewId" column="ACTIVE_REVIEW_ID"/><!--（修改时）取主表中ACTIVE_MAIN_REVIEW_ID-->
+        <result property="reviewType" column="REVIEW_TYPE"/><!--审核类型（01新增，02修改）-->
+        <result property="reviewStatus" column="REVIEW_STATUS"/><!--审核状态（00驳回,01提交审核,02待审核,03审核中,04审核通过）-->
+        <result property="flag" column="FLAG"/><!--有效标识（如表记录不删除，以此区分,0无效，1有效）-->
+        <result property="additionalId" column="ADDITIONAL_ID"/><!--附件上传ID-->
+        <result property="inputDeale" column="INPUT_DEALE"/><!--经销商录入标识（1是 0否）-->
+        <result property="areaCode" column="AREA_CODE"/><!--区域代码-->
+        <result property="areaName" column="AREA_NAME"/><!--区域名称-->
+        <result property="inputArea" column="INPUT_AREA"/><!--区域标识-->
+        <result property="founderLevel" column="FOUNDER_LEVEL"/><!--发起人级别-->
+    </resultMap>
+    <!-- endregion -->
+
+    <!-- 查询条件判断 入参为对象 条件为模糊-->
+    <sql id="queryLikeActiveMainReview">
+
+            <if test="id!=null and id!=''">
+                AND ID LIKE CONCAT(#{id},'%')<!--ID-->
+            </if>
+            <if test="activeCode!=null and activeCode!=''">
+                AND ACTIVE_CODE LIKE CONCAT(#{activeCode},'%')<!--活动编码-->
+            </if>
+            <if test="activeName!=null and activeName!=''">
+                AND ACTIVE_NAME LIKE CONCAT(#{activeName},'%')<!--活动名称-->
+            </if>
+            <if test="activeStartime!=null and activeStartime!=''">
+                AND ACTIVE_STARTIME LIKE CONCAT(#{activeStartime},'%')<!--活动开始日期-->
+            </if>
+            <if test="activeEndtime!=null and activeEndtime!=''">
+                AND ACTIVE_ENDTIME LIKE CONCAT(#{activeEndtime},'%')<!--活动截止日期-->
+            </if>
+            <if test="loanStartime!=null and loanStartime!=''">
+                AND LOAN_STARTIME LIKE CONCAT(#{loanStartime},'%')<!--放款开始日期-->
+            </if>
+            <if test="loanEndtime!=null and loanEndtime!=''">
+                AND LOAN_ENDTIME LIKE CONCAT(#{loanEndtime},'%')<!--放款截止日期-->
+            </if>
+            <if test="patmentBegin!=null and patmentBegin!=''">
+                AND PATMENT_BEGIN LIKE CONCAT(#{patmentBegin},'%')<!--首付起始比例-->
+            </if>
+            <if test="patmentEnd!=null and patmentEnd!=''">
+                AND PATMENT_END LIKE CONCAT(#{patmentEnd},'%')<!--首付终止比例-->
+            </if>
+            <if test="carReg!=null and carReg!=''">
+                AND CAR_REG LIKE CONCAT(#{carReg},'%')<!--车籍-->
+            </if>
+            <if test="loanTermBegin!=null and loanTermBegin!=''">
+                AND LOAN_TERM_BEGIN LIKE CONCAT(#{loanTermBegin},'%')<!--贷款期限-->
+            </if>
+            <if test="loanTermEnd!=null and loanTermEnd!=''">
+                AND LOAN_TERM_END LIKE CONCAT(#{loanTermEnd},'%')<!--贷款期限-->
+            </if>
+            <if test="loanAmtBegin!=null and loanAmtBegin!=''">
+                AND LOAN_AMT_BEGIN LIKE CONCAT(#{loanAmtBegin},'%')<!--贷款金额-->
+            </if>
+            <if test="loanAmtEnd!=null and loanAmtEnd!=''">
+                AND LOAN_AMT_END LIKE CONCAT(#{loanAmtEnd},'%')<!--贷款金额-->
+            </if>
+            <if test="avtiveCriterion!=null and avtiveCriterion!=''">
+                AND AVTIVE_CRITERION LIKE CONCAT(#{avtiveCriterion},'%')<!--促销活动激励标准-->
+            </if>
+            <if test="additionFlag!=null and additionFlag!=''">
+                AND ADDITION_FLAG LIKE CONCAT(#{additionFlag},'%')<!--附加贷(0没有，1有)-->
+            </if>
+            <if test="additionAmtBegin!=null and additionAmtBegin!=''">
+                AND ADDITION_AMT_BEGIN LIKE CONCAT(#{additionAmtBegin},'%')<!--附加贷起始金额-->
+            </if>
+            <if test="additionAmtEnd!=null and additionAmtEnd!=''">
+                AND ADDITION_AMT_END LIKE CONCAT(#{additionAmtEnd},'%')<!--附加贷终止金额-->
+            </if>
+            <if test="activeStatus!=null and activeStatus!=''">
+                AND ACTIVE_STATUS LIKE CONCAT(#{activeStatus},'%')<!--活动状态-->
+            </if>
+            <if test="createTime!=null and createTime!=''">
+                AND CREATE_TIME LIKE CONCAT(#{createTime},'%')<!--创建时间-->
+            </if>
+            <if test="modifyTime!=null and modifyTime!=''">
+                AND MODIFY_TIME LIKE CONCAT(#{modifyTime},'%')<!--修改时间-->
+            </if>
+            <if test="startTime!=null and startTime!=''">
+                AND START_TIME LIKE CONCAT(#{startTime},'%')<!--生效时间-->
+            </if>
+            <if test="annex!=null and annex!=''">
+                AND ANNEX LIKE CONCAT(#{annex},'%')<!--附件-->
+            </if>
+            <if test="creator!=null and creator!=''">
+                AND CREATOR LIKE CONCAT(#{creator},'%')<!--创建人-->
+            </if>
+            <if test="creatorName!=null and creatorName!=''">
+                AND CREATOR_NAME LIKE CONCAT(#{creatorName},'%')<!--创建人姓名-->
+            </if>
+            <if test="modifier!=null and modifier!=''">
+                AND MODIFIER LIKE CONCAT(#{modifier},'%')<!--修改人-->
+            </if>
+            <if test="company!=null and company!=''">
+                AND COMPANY LIKE CONCAT(#{company},'%')<!--所属公司-->
+            </if>
+            <if test="paymentStatus!=null and paymentStatus!=''">
+                AND PAYMENT_STATUS LIKE CONCAT(#{paymentStatus},'%')<!--动支状态-->
+            </if>
+            <if test="remark!=null and remark!=''">
+                AND REMARK LIKE CONCAT(#{remark},'%')<!--备注-->
+            </if>
+            <if test="expectedCount!=null and expectedCount!=''">
+                AND EXPECTED_COUNT LIKE CONCAT(#{expectedCount},'%')<!--活动预计笔数-->
+            </if>
+            <if test="folowId!=null and folowId!=''">
+                AND FOLOW_ID LIKE CONCAT(#{folowId},'%')<!--工作流最新ID-->
+            </if>
+            <if test="activeReviewId!=null and activeReviewId!=''">
+                AND ACTIVE_REVIEW_ID LIKE CONCAT(#{activeReviewId},'%')<!--（修改时）取主表中ACTIVE_MAIN_REVIEW_ID-->
+            </if>
+            <if test="reviewType!=null and reviewType!=''">
+                AND REVIEW_TYPE LIKE CONCAT(#{reviewType},'%')<!--审核类型（01新增，02修改）-->
+            </if>
+            <if test="reviewStatus!=null and reviewStatus!=''">
+                AND REVIEW_STATUS LIKE CONCAT(#{reviewStatus},'%')<!--审核状态（00驳回,01提交审核,02待审核,03审核中,04审核通过）-->
+            </if>
+            <if test="flag!=null and flag!=''">
+                AND FLAG LIKE CONCAT(#{flag},'%')<!--有效标识（如表记录不删除，以此区分,0无效，1有效）-->
+            </if>
+            <if test="additionalId!=null and additionalId!=''">
+                AND ADDITIONAL_ID LIKE CONCAT(#{additionalId},'%')<!--附件上传ID-->
+            </if>
+            <if test="additionalId!=null and additionalId!=''">
+                AND INPUT_DEALE LIKE CONCAT(#{inputDeale},'%')<!--经销商录入标识（1是 0否）-->
+            </if>
+            <if test="areaCode!=null and areaCode!=''">
+                AND AREA_CODE LIKE CONCAT('%'#{areaCode}'%')<!--区域代码-->
+            </if>
+            <if test="areaName!=null and areaName!=''">
+                AND AREA_NAME LIKE CONCAT('%'#{areaName}'%')<!--区域名称-->
+            </if>
+            <if test="inputArea!=null and inputArea!=''">
+                AND INPUT_AREA LIKE CONCAT('%'#{inputArea}'%')<!--区域标识-->
+            </if>
+            <if test="founderLevel!=null and founderLevel!=''">
+                AND FOUNDER_LEVEL LIKE CONCAT('%'#{founderLevel}'%')<!--发起人级别-->
+            </if>
+    </sql>
+
+    <!-- 按条件模糊查询所有 -->
+    <select id="queryActiveMainReviewList" parameterType="com.yqjr.fin.mkmm.sales.entity.ActiveMainReview"
+            resultMap="ActiveMainReviewResult">
+        SELECT
+        ID,<!--ID-->
+        ACTIVE_CODE,<!--活动编码-->
+        ACTIVE_NAME,<!--活动名称-->
+        ACTIVE_STARTIME,<!--活动开始日期-->
+        ACTIVE_ENDTIME,<!--活动截止日期-->
+        LOAN_STARTIME,<!--放款开始日期-->
+        LOAN_ENDTIME,<!--放款截止日期-->
+        PATMENT_BEGIN,<!--首付起始比例-->
+        PATMENT_END,<!--首付终止比例-->
+        CAR_REG,<!--车籍-->
+        LOAN_TERM_BEGIN,<!--贷款期限-->
+        LOAN_TERM_END,<!--贷款期限-->
+        LOAN_AMT_BEGIN,<!--贷款金额-->
+        LOAN_AMT_END,<!--贷款金额-->
+        AVTIVE_CRITERION,<!--促销活动激励标准-->
+        ADDITION_FLAG,<!--附加贷(0没有，1有)-->
+        ADDITION_AMT_BEGIN,<!--附加贷起始金额-->
+        ADDITION_AMT_END,<!--附加贷终止金额-->
+        ACTIVE_STATUS,<!--活动状态-->
+        CREATE_TIME,<!--创建时间-->
+        MODIFY_TIME,<!--修改时间-->
+        START_TIME,<!--生效时间-->
+        ANNEX,<!--附件-->
+        CREATOR,<!--创建人-->
+        CREATOR_NAME,<!--创建人姓名-->
+        MODIFIER,<!--修改人-->
+        COMPANY,<!--所属公司-->
+        PAYMENT_STATUS,<!--动支状态-->
+        REMARK,<!--备注-->
+        EXPECTED_COUNT,<!--活动预计笔数-->
+        FOLOW_ID,<!--工作流最新ID-->
+        ACTIVE_REVIEW_ID,<!--（修改时）取主表中ACTIVE_MAIN_REVIEW_ID-->
+        REVIEW_TYPE,<!--审核类型（01新增，02修改）-->
+        REVIEW_STATUS,<!--审核状态（00驳回,01提交审核,02待审核,03审核中,04审核通过）-->
+        FLAG,<!--有效标识（如表记录不删除，以此区分,0无效，1有效）-->
+        ADDITIONAL_ID,<!--附件上传ID-->
+        INPUT_DEALE, <!--经销商录入标识（1是 0否）-->
+        AREA_CODE,
+        AREA_NAME,
+        INPUT_AREA,
+        FOUNDER_LEVEL
+        FROM MKMM_ACTIVE_MAIN_REVIEW
+        <where>
+            <include refid="queryLikeActiveMainReview"/>
+        </where>
+    </select>
+
+    <!-- 按条件模糊统计所有条数 -->
+    <select id="queryActiveMainReviewCount" resultType="int">
+        SELECT
+        count (id)
+        FROM MKMM_ACTIVE_MAIN_REVIEW
+        <where>
+            <include refid="queryLikeActiveMainReview"/>
+        </where>
+    </select>
+
+    <!-- 批量删除，入参为数组  -->
+    <delete id="dynamicDelete">
+        delete from MKMM_ACTIVE_MAIN_REVIEW where id in
+        <foreach collection="array" open="(" close=")" separator="," item="arr">
+            #{arr}
+        </foreach>
+    </delete>
+
+    <!-- 批量删除，入参为list  -->
+    <delete id="dynamicDeleteList">
+        delete from MKMM_ACTIVE_MAIN_REVIEW where id in
+        <foreach collection="list" open="(" close=")" separator="," item="ids">
+            #{ids}
+        </foreach>
+    </delete>
+
+    <!-- 批量插入 -->
+    <insert id="insertBatch" parameterType="java.util.List">
+        <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into MKMM_ACTIVE_MAIN_REVIEW
+        (
+        <include refid="Base_Column_List" />
+        )
+        values
+        <foreach collection="list" item="activeMainReview" index="index" separator=",">
+            (
+            <include refid="Base_Column_Values" />
+            )
+        </foreach>
+    </insert>
+
+    <!-- 插入单条数据，并返回主键ID -->
+    <insert id="saveObj" 
+            parameterType="com.yqjr.fin.mkmm.sales.entity.ActiveMainReview">
+        insert into MKMM_ACTIVE_MAIN_REVIEW
+        (
+        <include refid="Base_Column_List" />
+        )
+        values
+        (
+        <include refid="Base_Column_Values" />
+        )
+    </insert>
+
+
+    <!-- **********************************************************************-->
+    <!-- ************* 在此下方为一对一、一对多查询方式 仅供参考***************-->
+    <!-- **********************************************************************-->
+    <!-- 一个博客（BlogInfo） 属于一个作者（Author） ，一个作者（Author） 有多篇文章（Post） -->
+    <!--
+  <resultMap type="com.foo.bean.BlogInfo" id="BlogInfo">
+      <id column="blog_id" property="blogId" />
+      <result column="title" property="title" />
+      <association property="author" column="blog_author_id"
+          javaType="com.foo.bean.Author" select="com.foo.bean.AuthorMapper.selectByPrimaryKey">
+      </association>
+      <collection property="posts" column="blog_id" ofType="com.foo.bean.Post"
+          select="com.foo.bean.PostMapper.selectByBlogId">
+      </collection>
+  </resultMap>
+
+  <select id="queryBlogInfoById" resultMap="BlogInfo" parameterType="java.math.BigDecimal">
+      SELECT
+      B.BLOG_ID,
+      B.TITLE,
+      B.AUTHOR_ID AS BLOG_AUTHOR_ID
+      FROM BLOG B
+      where B.BLOG_ID = 博客ID
+  </select>
+
+          上述方法存在N+1问题
+      它的弊端也比较明显：即所谓的N+1问题。关联的嵌套查询显示得到一个结果集，然后根据这个结果集的每一条记录进行关联查询。
+      现在假设嵌套查询就一个（即resultMap 内部就一个association标签），现查询的结果集返回条数为N，那么关联查询语句将会被执行N次，加上自身返回结果集查询1次，共需要访问数据库N+1次。如果N比较大的话，这样的数据库访问消耗是非常大的！所以使用这种嵌套语句查询的使用者一定要考虑慎重考虑，确保N值不会很大。
+      以上面的例子为例，select 语句本身会返回com.foo.bean.BlogMapper.queryBlogInfoById 条数为1 的结果集，由于它有两条关联的语句查询，它需要共访问数据库 1*（1+1）=3次数据库。
+
+
+       <resultMap type="com.foo.bean.BlogInfo" id="BlogInfo">
+      <id column="blog_id" property="blogId"/>
+      <result column="title" property="title"/>
+      <association property="author" column="blog_author_id" javaType="com.foo.bean.Author">
+          <id column="author_id" property="authorId"/>
+          <result column="user_name" property="userName"/>
+          <result column="password" property="password"/>
+          <result column="email" property="email"/>
+          <result column="biography" property="biography"/>
+      </association>
+      <collection property="posts" column="blog_post_id" ofType="com.foo.bean.Post">
+          <id column="post_id" property="postId"/>
+          <result column="blog_id" property="blogId"/>
+          <result column="create_time" property="createTime"/>
+          <result column="subject" property="subject"/>
+          <result column="body" property="body"/>
+          <result column="draft" property="draft"/>
+      </collection>
+      </resultMap>
+
+
+      <select id="queryAllBlogInfo" resultMap="BlogInfo">
+          SELECT
+           B.BLOG_ID,
+           B.TITLE,
+           B.AUTHOR_ID AS BLOG_AUTHOR_ID,
+           A.AUTHOR_ID,
+           A.USER_NAME,
+           A.PASSWORD,
+           A.EMAIL,
+           A.BIOGRAPHY,
+           P.POST_ID,
+           P.BLOG_ID AS BLOG_POST_ID ,
+             P.CREATE_TIME,
+           P.SUBJECT,
+           P.BODY,
+           P.DRAFT
+      FROM BLOG B
+      LEFT OUTER JOIN AUTHOR A
+        ON B.AUTHOR_ID = A.AUTHOR_ID
+      LEFT OUTER JOIN POST P
+        ON P.BLOG_ID = B.BLOG_ID
+      </select>
+      -->
+
+    <!-- **********************************************************************-->
+    <!-- ************* 此线上方代码自动生成，在此下方编写自定义代码。***************-->
+    <!-- **********************************************************************-->
+
+    <!-- endregion -->
+    <!-- 查询活动编码最大ID -->
+    <select id="queryMaxID" resultType="java.lang.String" parameterType="java.lang.String">
+        select max(to_number(substr(ACTIVE_CODE,length(ACTIVE_CODE)-2,length(ACTIVE_CODE)))) as MAX_ID
+        from MKMM_ACTIVE_MAIN_REVIEW
+        where ACTIVE_CODE like CONCAT(#{likeID},'%')
+    </select>
+
+    <sql id="Active_Review_List">
+        A.ID,
+        A.ACTIVE_CODE,
+        A.ACTIVE_NAME,
+        A.ACTIVE_STARTIME,
+        A.ACTIVE_ENDTIME,
+        A.LOAN_STARTIME,
+        A.LOAN_ENDTIME,
+        A.PATMENT_BEGIN,
+        A.PATMENT_END,
+        A.CAR_REG,
+        A.LOAN_TERM_BEGIN,
+        A.LOAN_TERM_END,
+        A.LOAN_AMT_BEGIN,
+        A.LOAN_AMT_END,
+        A.AVTIVE_CRITERION,
+        A.ADDITION_FLAG,
+        A.ADDITION_AMT_BEGIN,
+        A.ADDITION_AMT_END,
+        A.ACTIVE_STATUS,
+        A.CREATE_TIME,
+        A.MODIFY_TIME,
+        A.START_TIME,
+        A.ANNEX,
+        A.CREATOR,
+        A.CREATOR_NAME,
+        A.MODIFIER,
+        A.COMPANY,
+        A.PAYMENT_STATUS,
+        A.REMARK,
+        A.EXPECTED_COUNT,
+        A.FOLOW_ID,
+        A.ACTIVE_REVIEW_ID,
+        A.REVIEW_TYPE,
+        A.REVIEW_STATUS,
+        A.FLAG,
+        A.ADDITIONAL_ID,
+        A.INPUT_DEALE,
+        A.INPUT_AREA,
+        A.FOUNDER_LEVEL,
+        B.ID AS WORK_ID,
+        B.REVIEW_STATUS AS WORK_REVIEW_STATUS,
+        B.REVIEW_LEVEL AS WORK_REVIEW_LEVEL,
+        B.OPINION AS OPINION,
+        B.TYPE AS TYPE,
+        B.FLOW_ID AS FLOW_ID,
+        B.MODIFIER_NAME AS MODIFIER_NAME
+    </sql>
+    <resultMap id="ActiveReviewResultMap" type="com.yqjr.fin.mkmm.sales.rest.vo.ActiveMainReviewVo">
+        <result property="id" column="ID"/><!--ID-->
+        <result property="activeCode" column="ACTIVE_CODE"/><!--活动编码-->
+        <result property="activeName" column="ACTIVE_NAME"/><!--活动名称-->
+        <result property="activeStartime" column="ACTIVE_STARTIME"/><!--活动开始日期-->
+        <result property="activeEndtime" column="ACTIVE_ENDTIME"/><!--活动截止日期-->
+        <result property="loanStartime" column="LOAN_STARTIME"/><!--放款开始日期-->
+        <result property="loanEndtime" column="LOAN_ENDTIME"/><!--放款截止日期-->
+        <result property="patmentBegin" column="PATMENT_BEGIN"/><!--首付起始比例-->
+        <result property="patmentEnd" column="PATMENT_END"/><!--首付终止比例-->
+        <result property="carReg" column="CAR_REG"/><!--车籍-->
+        <result property="loanTermBegin" column="LOAN_TERM_BEGIN"/><!--贷款期限-->
+        <result property="loanTermEnd" column="LOAN_TERM_END"/><!--贷款期限-->
+        <result property="loanAmtBegin" column="LOAN_AMT_BEGIN"/><!--贷款金额-->
+        <result property="loanAmtEnd" column="LOAN_AMT_END"/><!--贷款金额-->
+        <result property="avtiveCriterion" column="AVTIVE_CRITERION"/><!--促销活动激励标准-->
+        <result property="additionFlag" column="ADDITION_FLAG"/><!--附加贷(0没有，1有)-->
+        <result property="additionAmtBegin" column="ADDITION_AMT_BEGIN"/><!--附加贷起始金额-->
+        <result property="additionAmtEnd" column="ADDITION_AMT_END"/><!--附加贷终止金额-->
+        <result property="activeStatus" column="ACTIVE_STATUS"/><!--活动状态-->
+        <result property="createTime" column="CREATE_TIME"/><!--创建时间-->
+        <result property="modifyTime" column="MODIFY_TIME"/><!--修改时间-->
+        <result property="startTime" column="START_TIME"/><!--生效时间-->
+        <result property="annex" column="ANNEX"/><!--附件-->
+        <result property="creator" column="CREATOR"/><!--创建人-->
+        <result property="creatorName" column="CREATOR_NAME"/><!--创建人姓名-->
+        <result property="modifier" column="MODIFIER"/><!--修改人-->
+        <result property="company" column="COMPANY"/><!--所属公司-->
+        <result property="paymentStatus" column="PAYMENT_STATUS"/><!--动支状态-->
+        <result property="remark" column="REMARK"/><!--备注-->
+        <result property="expectedCount" column="EXPECTED_COUNT"/><!--活动预计笔数-->
+        <result property="folowId" column="FOLOW_ID"/><!--工作流最新ID-->
+        <result property="activeReviewId" column="ACTIVE_REVIEW_ID"/><!--（修改时）取主表中ACTIVE_MAIN_REVIEW_ID-->
+        <result property="reviewType" column="REVIEW_TYPE"/><!--审核类型（01新增，02修改）-->
+        <result property="reviewStatus" column="REVIEW_STATUS"/><!--审核状态（00驳回,01提交审核,02待审核,03审核中,04审核通过）-->
+        <result property="flag" column="FLAG"/><!--有效标识（如表记录不删除，以此区分,0无效，1有效）-->
+        <result property="additionalId" column="ADDITIONAL_ID"/><!--附件上传ID-->
+        <result property="inputDeale" column="INPUT_DEALE"/><!--是否导入经销商标识-->
+        <result property="inputArea" column="INPUT_AREA"/><!--区域标识-->
+        <result property="founderLevel" column="FOUNDER_LEVEL"/><!--发起人级别-->
+        <association property="workFlow" javaType="com.yqjr.fin.mkmm.sales.entity.WorkFlow">
+            <result property="id" column="WORK_ID"/><!--工作流ID-->
+            <result property="reviewStatus" column="WORK_REVIEW_STATUS"/><!--工作流状态-->
+            <result property="reviewLevel" column="WORK_REVIEW_LEVEL"/><!--工作流级别-->
+            <result property="opinion" column="OPINION"/><!--审批意见-->
+            <result property="type" column="TYPE"/><!--类型-->
+            <result property="flowId" column="FLOW_ID"/>
+            <result property="modifierName" column="MODIFIER_NAME"/>
+        </association>
+    </resultMap>
+
+    <select id="selectReviewList" parameterType="com.yqjr.fin.mkmm.sales.condition.ActiveReviewListCondition" resultMap="ActiveReviewResultMap">
+        select
+        <include refid="Active_Review_List" />
+        from MKMM_ACTIVE_MAIN_REVIEW A
+        LEFT JOIN MKMM_WORK_FLOW B
+        ON A.ACTIVE_CODE = B.REVIEW_ID,
+        (SELECT REVIEW_ID,MAX(ID) AS MAX_ID FROM MKMM_WORK_FLOW GROUP BY REVIEW_ID) C
+        <where>
+            A.FLAG = '1'
+            AND B.ID=C.MAX_ID
+            AND A.REVIEW_STATUS in('02','03')
+            <if test="company != null and company != ''">
+                AND A.COMPANY = #{company,jdbcType=VARCHAR}
+            </if>
+            <if test="activeCode != null and activeCode != ''">
+                AND A.ACTIVE_CODE LIKE CONCAT(#{activeCode,jdbcType=VARCHAR},'%')
+            </if>
+            <if test="activeName != null and activeName != ''">
+                AND A.ACTIVE_NAME LIKE CONCAT(#{activeName,jdbcType=VARCHAR},'%')
+            </if>
+            <if test="reviewType != null and reviewType != ''">
+                AND A.REVIEW_TYPE = #{reviewType,jdbcType=VARCHAR}
+            </if>
+            <if test="reviewStatus != null and reviewStatus != ''">
+                AND A.REVIEW_STATUS = #{reviewStatus,jdbcType=VARCHAR}
+            </if>
+            <if test="reviewLevel != null and reviewLevel != ''">
+                AND B.REVIEW_LEVEL = #{reviewLevel,jdbcType=VARCHAR}
+            </if>
+            <if test="areaCode != null and areaCode != ''">
+                AND A.AREA_CODE = #{areaCode,jdbcType=VARCHAR}
+            </if>
+            <if test="founderLevel != null and founderLevel != ''">
+                <choose>
+                    <when test="founderLevel == 03">AND A.FOUNDER_LEVEL in ('02','03')</when>
+                    <when test="founderLevel == 02">AND A.FOUNDER_LEVEL in ('01')</when>
+                </choose>
+            </if>
+        </where>
+        ORDER BY A.ID DESC
+    </select>
+
+    <sql id="Active_Process_List">
+        A.ID AS ID,
+        A.ACTIVE_CODE AS ACTIVE_CODE,
+        A.ACTIVE_NAME AS ACTIVE_NAME,
+        A.ACTIVE_STARTIME AS ACTIVE_STARTIME,
+        A.ACTIVE_ENDTIME AS ACTIVE_ENDTIME,
+        A.LOAN_STARTIME AS LOAN_STARTIME,
+        A.LOAN_ENDTIME AS LOAN_ENDTIME,
+        A.PATMENT_BEGIN AS PATMENT_BEGIN,
+        A.PATMENT_END AS PATMENT_END,
+        A.CAR_REG AS CAR_REG,
+        A.LOAN_TERM_BEGIN AS LOAN_TERM_BEGIN,
+        A.LOAN_TERM_END AS LOAN_TERM_END,
+        A.LOAN_AMT_BEGIN AS LOAN_AMT_BEGIN,
+        A.LOAN_AMT_END AS LOAN_AMT_END,
+        A.AVTIVE_CRITERION AS AVTIVE_CRITERION,
+        A.ADDITION_FLAG AS ADDITION_FLAG,
+        A.ADDITION_AMT_BEGIN AS ADDITION_AMT_BEGIN,
+        A.ADDITION_AMT_END AS ADDITION_AMT_END,
+        A.ACTIVE_STATUS AS ACTIVE_STATUS,
+        A.CREATE_TIME AS CREATE_TIME,
+        A.MODIFY_TIME AS MODIFY_TIME,
+        A.START_TIME AS START_TIME,
+        A.ANNEX AS ANNEX,
+        A.CREATOR AS CREATOR,
+        A.MODIFIER AS MODIFIER,
+        A.COMPANY AS COMPANY,
+        A.PAYMENT_STATUS AS PAYMENT_STATUS,
+        A.REMARK AS REMARK,
+        A.EXPECTED_COUNT AS EXPECTED_COUNT,
+        A.FOLOW_ID AS FOLOW_ID,
+        A.ACTIVE_REVIEW_ID AS ACTIVE_REVIEW_ID,
+        A.REVIEW_TYPE AS REVIEW_TYPE,
+        A.REVIEW_STATUS AS REVIEW_STATUS,
+        A.FLAG AS FLAG,
+        A.ADDITIONAL_ID AS ADDITIONAL_ID,
+        A.INPUT_DEALE AS INPUT_DEALE,
+        A.AREA_CODE AS AREA_CODE,
+        A.AREA_NAME AS AREA_NAME,
+        A.INPUT_AREA AS INPUT_AREA,
+        A.FOUNDER_LEVEL AS FOUNDER_LEVEL,
+        B.ID AS WORK_ID,
+        B.REVIEW_STATUS AS WORK_REVIEW_STATUS,
+        B.REVIEW_LEVEL AS WORK_REVIEW_LEVEL,
+        B.OPINION AS OPINION,
+        B.TYPE AS TYPE,
+        B.FLOW_ID AS FLOW_ID,
+        D.ID AS AREA_ID,
+        D.AREA_CODE AS AREA_ACTIVE_CODE,
+        D.AREA_NAME AS AREA_ACTIVE_NAME,
+        E.ID AS CAR_ID,
+        E.BRANDS_CODE AS BRANDS_CODE,
+        E.BRANDS_NAME AS BRANDS_NAME
+    </sql>
+    <resultMap id="ActiveProcessReviewResultMap" type="com.yqjr.fin.mkmm.sales.rest.vo.ActiveMainProcessReviewVo">
+        <result property="id" column="ID"/><!--ID-->
+        <result property="activeCode" column="ACTIVE_CODE"/><!--活动编码-->
+        <result property="activeName" column="ACTIVE_NAME"/><!--活动名称-->
+        <result property="activeStartime" column="ACTIVE_STARTIME"/><!--活动开始日期-->
+        <result property="activeEndtime" column="ACTIVE_ENDTIME"/><!--活动截止日期-->
+        <result property="loanStartime" column="LOAN_STARTIME"/><!--放款开始日期-->
+        <result property="loanEndtime" column="LOAN_ENDTIME"/><!--放款截止日期-->
+        <result property="patmentBegin" column="PATMENT_BEGIN"/><!--首付起始比例-->
+        <result property="patmentEnd" column="PATMENT_END"/><!--首付终止比例-->
+        <result property="carReg" column="CAR_REG"/><!--车籍-->
+        <result property="loanTermBegin" column="LOAN_TERM_BEGIN"/><!--贷款期限-->
+        <result property="loanTermEnd" column="LOAN_TERM_END"/><!--贷款期限-->
+        <result property="loanAmtBegin" column="LOAN_AMT_BEGIN"/><!--贷款金额-->
+        <result property="loanAmtEnd" column="LOAN_AMT_END"/><!--贷款金额-->
+        <result property="avtiveCriterion" column="AVTIVE_CRITERION"/><!--促销活动激励标准-->
+        <result property="additionFlag" column="ADDITION_FLAG"/><!--附加贷(0没有，1有)-->
+        <result property="additionAmtBegin" column="ADDITION_AMT_BEGIN"/><!--附加贷起始金额-->
+        <result property="additionAmtEnd" column="ADDITION_AMT_END"/><!--附加贷终止金额-->
+        <result property="activeStatus" column="ACTIVE_STATUS"/><!--活动状态-->
+        <result property="createTime" column="CREATE_TIME"/><!--创建时间-->
+        <result property="modifyTime" column="MODIFY_TIME"/><!--修改时间-->
+        <result property="startTime" column="START_TIME"/><!--生效时间-->
+        <result property="annex" column="ANNEX"/><!--附件-->
+        <result property="creator" column="CREATOR"/><!--创建人-->
+        <result property="modifier" column="MODIFIER"/><!--修改人-->
+        <result property="company" column="COMPANY"/><!--所属公司-->
+        <result property="paymentStatus" column="PAYMENT_STATUS"/><!--动支状态-->
+        <result property="remark" column="REMARK"/><!--备注-->
+        <result property="expectedCount" column="EXPECTED_COUNT"/><!--活动预计笔数-->
+        <result property="folowId" column="FOLOW_ID"/><!--工作流最新ID-->
+        <result property="activeReviewId" column="ACTIVE_REVIEW_ID"/><!--（修改时）取主表中ACTIVE_MAIN_REVIEW_ID-->
+        <result property="reviewType" column="REVIEW_TYPE"/><!--审核类型（01新增，02修改）-->
+        <result property="reviewStatus" column="REVIEW_STATUS"/><!--审核状态（00驳回,01提交审核,02待审核,03审核中,04审核通过）-->
+        <result property="flag" column="FLAG"/><!--有效标识（如表记录不删除，以此区分,0无效，1有效）-->
+        <result property="additionalId" column="ADDITIONAL_ID"/><!--附件上传ID-->
+        <result property="inputDeale" column="INPUT_DEALE"/><!--是否导入经销商标识-->
+        <result property="areaCode" column="AREA_CODE"/><!--区域代码-->
+        <result property="areaName" column="AREA_NAME"/><!--区域名称-->
+        <result property="inputArea" column="INPUT_AREA"/><!--区域标识-->
+        <result property="founderLevel" column="FOUNDER_LEVEL"/><!--发起人级别-->
+        <association property="activeCarReview" javaType="com.yqjr.fin.mkmm.sales.entity.ActiveCarReview">
+            <result property="id" column="CAR_ID"/><!--车ID-->
+            <result property="brandsCode" column="BRANDS_CODE"/><!--品牌编码-->
+            <result property="brandsName" column="BRANDS_NAME"/><!--品牌名字-->
+        </association>
+        <association property="activeAreaReview" javaType="com.yqjr.fin.mkmm.sales.entity.ActiveAreaReview">
+            <result property="id" column="AREA_ID"/><!--区域ID-->
+            <result property="areaCode" column="AREA_ACTIVE_CODE"/><!--区域代码-->
+            <result property="areaName" column="AREA_ACTIVE_NAME"/><!--区域名称-->
+        </association>
+        <association property="workFlow" javaType="com.yqjr.fin.mkmm.sales.entity.WorkFlow">
+            <result property="id" column="WORK_ID"/><!--工作流ID-->
+            <result property="reviewStatus" column="WORK_REVIEW_STATUS"/><!--工作流状态-->
+            <result property="reviewLevel" column="WORK_REVIEW_LEVEL"/><!--工作流级别-->
+            <result property="opinion" column="OPINION"/><!--审批意见-->
+            <result property="type" column="TYPE"/><!--类型-->
+            <result property="flowId" column="FLOW_ID"/>
+        </association>
+    </resultMap>
+
+    <select id="selectProcessReviewList" parameterType="com.yqjr.fin.mkmm.sales.condition.ActiveMainProcessCondition" resultMap="ActiveProcessReviewResultMap">
+        select
+        <include refid="Active_Process_List" />
+        from MKMM_ACTIVE_MAIN_REVIEW A
+        LEFT JOIN MKMM_ACTIVE_AREA_REVIEW D
+        ON A.ID = D.ACTIVE_REVIEW_ID
+        LEFT JOIN MKMM_ACTIVE_CAR_REVIEW E
+        ON A.ID = E.ACTIVE_REVIEW_ID
+        LEFT JOIN MKMM_WORK_FLOW B
+        ON A.ACTIVE_CODE = B.REVIEW_ID,
+        (SELECT REVIEW_ID,MAX(ID) AS MAX_ID FROM MKMM_WORK_FLOW GROUP BY REVIEW_ID) C
+        <where>
+            A.FLAG = '1'
+            AND B.ID=C.MAX_ID
+            <if test="creator != null and creator!=''">
+                AND A.CREATOR = #{creator,jdbcType=NUMERIC}
+            </if>
+            <if test="company != null and company!=''">
+                AND A.COMPANY = #{company,jdbcType=VARCHAR}
+            </if>
+            <if test="activeCode != null and activeCode!=''">
+                AND A.ACTIVE_CODE like concat(#{activeCode,jdbcType=VARCHAR},'%')
+            </if>
+            <if test="activeName != null and activeName!=''">
+                AND A.ACTIVE_NAME like concat(#{activeName,jdbcType=VARCHAR},'%')
+            </if>
+            <if test="areaCode != null and areaCode!=''">
+                AND A.AREA_CODE = #{areaCode,jdbcType=VARCHAR}
+            </if>
+            <if test="brandsCode != null and brandsCode!=''">
+                AND E.BRANDS_CODE = #{brandsCode,jdbcType=VARCHAR}
+            </if>
+        </where>
+        ORDER BY A.ID desc
+    </select>
+
+    <update id="updateFlagById" parameterType="java.lang.Long">
+        update <include refid="Base_Table_Name" />
+        SET FLAG = '0'
+        where ID = #{mid,jdbcType=NUMERIC}
+    </update>
+
+    <update id="updateStatusById">
+        update <include refid="Base_Table_Name" />
+        set REVIEW_STATUS = #{status,jdbcType=VARCHAR},
+        MODIFIER = #{modifier,jdbcType=NUMERIC}
+        where ID = #{id,jdbcType=NUMERIC}
+    </update>
+</mapper>
+

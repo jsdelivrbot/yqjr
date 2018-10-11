@@ -1,0 +1,92 @@
+package com.yqjr.fin.qcms.credit.entity;
+
+import com.yqjr.fin.common.base.starter.entity.FinBaseMapperEntity;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import org.apache.ibatis.type.JdbcType;
+import tk.mybatis.mapper.annotation.ColumnType;
+import tk.mybatis.mapper.annotation.KeySql;
+import tk.mybatis.mapper.code.ORDER;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+/**
+* 决策树模型轨迹表
+* @Author:         zxd
+* @CreateDate:     2018-08-27 10:30:40
+*/
+@EqualsAndHashCode(callSuper = true)
+@Data
+@Table(name = "qcms_decision_tree_model_his", schema = "QCMS")
+public class DecisionTreeModelHis extends FinBaseMapperEntity<Long> {
+
+    private static final long serialVersionUID = 1L;
+
+    /**
+     * 主键id
+     */
+	@Id
+	@KeySql(sql = "select SEQ_DECISION_TREE_MODEL_HIS.nextval from dual", order = ORDER.BEFORE)
+    private Long id;
+    /**
+     * 决策树模型id
+     */
+	@ColumnType(jdbcType = JdbcType.BIGINT)
+    private Long decisionTreeModelId;
+    /**
+     * 决策树模型名称
+     */
+	@ColumnType(jdbcType = JdbcType.VARCHAR)
+    private java.lang.String decisionTreeModelName;
+    /**
+     * 生效日期
+     */
+	@ColumnType(jdbcType = JdbcType.TIMESTAMP)
+    private java.util.Date effectiveDate;
+    /**
+     * 备注
+     */
+	@ColumnType(jdbcType = JdbcType.VARCHAR)
+    private java.lang.String remark;
+    /**
+     * 模型状态编码 5000、6000、7000
+     */
+	@ColumnType(jdbcType = JdbcType.BIGINT)
+    private java.lang.Long modelStatusCode;
+    /**
+     * 模型状态名称 待上架、已上架、已下架
+     */
+	@ColumnType(jdbcType = JdbcType.VARCHAR)
+    private java.lang.String modelStatusName;
+    /**
+     * 审核状态编码 1000、2000、3000、4000
+     */
+	@ColumnType(jdbcType = JdbcType.BIGINT)
+    private java.lang.Long examineStatusCode;
+    /**
+     * 审核状态名称 编辑、待审核、审核通过、驳回
+     */
+	@ColumnType(jdbcType = JdbcType.VARCHAR)
+    private java.lang.String examineStatusName;
+    /**
+     * 审核id
+     */
+	@ColumnType(jdbcType = JdbcType.BIGINT)
+    private Long examineId;
+    /**
+     * 公司
+     */
+	@ColumnType(jdbcType = JdbcType.BIGINT)
+    private java.lang.Long company;
+    /**
+     * 业务条线
+     */
+	@ColumnType(jdbcType = JdbcType.BIGINT)
+    private java.lang.Long businessLine;
+    /**
+     * 状态 0 正常状态 -1 删除
+     */
+	@ColumnType(jdbcType = JdbcType.INTEGER)
+    private Integer flag;
+
+}

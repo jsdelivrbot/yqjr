@@ -1,0 +1,39 @@
+/* eslint-disable quotes */
+import Vue from 'vue';
+import Vuex from 'vuex';
+
+import app from './modules/app';
+import user from './modules/user';
+import demo from './modules/demo';
+import warningList from "./modules/stat-warning/warning-targettype/warningTargettypeListStore";
+import warningAdd from "./modules/stat-warning/warning-targettype/warningTargettypeAddStore";
+import warningEdit from "./modules/stat-warning/warning-targettype/warningTargettypeEditStore";
+import comwarningList from "./modules/stat-warning/warning-comwarning/warningComwarningListStore";
+import comwarningTabList from "./modules/stat-warning/warning-comwarning/warningComwarningTabListStore";
+import interventionList from "./modules/stat-warning/warning-intervention/warningInterventionListStore";
+Vue.use(Vuex);
+
+const store = new Vuex.Store({
+    state: {
+        //
+    },
+    mutations: {
+        //
+    },
+    actions: {
+
+    },
+    modules: {
+        app,
+        user,
+        demo,
+        warningList,
+        warningAdd,
+        warningEdit,
+        comwarningList,
+        comwarningTabList,
+        interventionList
+    }
+});
+
+export default store;

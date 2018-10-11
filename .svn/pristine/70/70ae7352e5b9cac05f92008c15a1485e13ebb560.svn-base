@@ -1,0 +1,95 @@
+package com.yqjr.fin.mkmm.sales.services;
+
+import com.yqjr.fin.mkmm.sales.common.BeanUtil;
+import com.yqjr.fin.mkmm.sales.condition.CommodityBaseCondition;
+import com.yqjr.fin.mkmm.sales.entity.CommodityAcceptance;
+import com.yqjr.fin.mkmm.sales.entity.CommodityBaseHis;
+import com.yqjr.fin.mkmm.sales.rest.vo.SelectCodeVo;
+import com.yqjr.scfw.common.exception.ValidationException;
+import com.yqjr.scfw.common.service.BaseService;
+import com.yqjr.fin.mkmm.sales.entity.CommodityBase;
+import com.yqjr.fin.mkmm.sales.mapper.CommodityBaseMapper;
+import com.yqjr.scfw.common.session.SessionHolder;
+import com.yqjr.scfw.common.session.UserContext;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@Service
+@Transactional(readOnly = true)
+public class CommodityBaseService extends BaseService<CommodityBaseMapper, CommodityBase, Long> {
+
+    @Autowired
+    private CommodityAcceptanceService commodityAcceptanceService;
+    @Autowired
+    private CommodityBaseHisService commodityBaseHisService;
+
+    /**
+     * 物料添加
+     * create by fannaian on 20180903
+     * @param commodityBase
+     */
+    @Transactional
+    public void insertCommodity(CommodityBase commodityBase) {
+        UserContext userContext = SessionHolder.getUserContext();
+        commodityBase.setCompany(userContext.getComCode());
+        commodityBase.setAreaCode(userContext.getAreaCode());
+        commodityBase.setAreaName(userContext.getAreaName());
+
+        CommodityBaseCondition commodityBaseCondition = new CommodityBaseCondition();
+        commodityBaseCondition.setCommodityName(commodityBase.getCommodityName());
+        commodityBaseCondition.setCompany(commodityBase.getCompany());
+        commodityBaseCondition.setAreaCode(commodityBase.getAreaCode());
+        //校验物料名称是否重复
+        Long number =  this.selectCount(commodityBaseCondition);
+        if (number>0) {
+            throw new ValidationException("该物料已存在!");
+        }
+        this.insert(commodityBase);
+    }
+
+    /**
+     * 物料删除
+     * create by fannaian on 20180903
+     * @param commodityBase
+     */
+    @Transactional
+    public void deleteCommodity (CommodityBase commodityBase) {
+        //先校验物料是否被使用
+        Long number = commodityAcceptanceService.selectCommodityDataByName(commodityBase);
+        if (number>0) {
+            throw new ValidationException("该物料已入库，无法删除!");
+        }
+        //记录轨迹
+        CommodityBaseHis commodityBaseHis = new CommodityBaseHis();
+        BeanUtil.copyProperties(commodityBaseHis,commodityBase);
+        commodityBaseHisService.insert(commodityBaseHis);
+        this.delete(commodityBase);
+    }
+
+    /**
+     * 查询所有物料
+     * @return
+     */
+    public List<SelectCodeVo> selectCommodityBaseAll() {
+        UserContext userContext = SessionHolder.getUserContext();
+        CommodityBaseCondition commodityBaseCondition = new CommodityBaseCondition();
+        commodityBaseCondition.setCompany(userContext.getComCode());
+        commodityBaseCondition.setAreaCode(userContext.getAreaCode());
+        List<CommodityBase> commodityBases = this.selectList(commodityBaseCondition);
+
+        List<SelectCodeVo> selectCodeVos = new ArrayList<>();
+        SelectCodeVo selectCodeVo = new SelectCodeVo();
+
+        for(CommodityBase commodityBase : commodityBases) {
+            selectCodeVo.setHeadLetter("");
+            selectCodeVo.setLabel(commodityBase.getCommodityName());
+            selectCodeVo.setValue(commodityBase.getCommodityCode());
+            selectCodeVos.add(selectCodeVo);
+        }
+        return selectCodeVos;
+    }
+}

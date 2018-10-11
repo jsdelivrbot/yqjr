@@ -1,0 +1,284 @@
+<style lang="less">
+    @import '../../../styles/common.less';
+</style>
+<template>
+    <div>
+        <Form ref="formValidate" :rules="ruleValidate" :model="formValidate" :label-width="100">
+            <Card>
+                <p slot="title">
+                    <Icon type="search"></Icon>
+                    主信息
+                </p>
+                <Row>
+                    <Col span="8" offset="2" prop="typecode">
+                        <FormItem label="指标类型:">
+                            <Select v-model="formValidate.typecode" style="width:200px" @on-change="selINames()">
+                                <Option v-for="item in iTypes" :value="item.code" >{{ item.name}}</Option>
+                            </Select>
+                        </FormItem>
+                    </Col>
+                    <Col span="8" offset="2">
+                        <FormItem label="指标代码:" pop="indicatorcode">
+                            <Input placeholder="请输入指标代码" v-model="iCodes.indicatorcode"
+                                   style="width:200px"></Input>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span="8" offset="2">
+                        <FormItem label="是否预警:" prop="alertflag">
+                            <Select v-model="formValidate.alertflag" style="width:200px">
+                                <Option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.label
+                                    }}
+                                </Option>
+                            </Select>
+                        </FormItem>
+                    </Col>
+                    <Col span="8" offset="2">
+                        <FormItem label="指标名称:" prop="indicatorname" >
+                            <Select v-model="formValidate.id" style="width:200px"  @on-change="selCode()">
+                                <Option v-for="item in iNames" :value="item.id" >{{ item.indicatorname}}</Option>
+                            </Select>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span="8" offset="2">
+                        <FormItem label="上限:" pop="indicatorcaption">
+                            <Input placeholder="请输入指标上限" v-model="formValidate.topvalue"
+                                   style="width:200px"></Input>
+                        </FormItem>
+                    </Col>
+                    <Col span="8" offset="2">
+                        <FormItem label="下限:" pop="indicatorgroup">
+                            <Input placeholder="请输入指标下限" v-model="formValidate.lowervalue"
+                                   style="width:200px"></Input>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span="8" offset="2">
+                        <FormItem label="信号灯:" prop="signallamp">
+                            <Select v-model="formValidate.signallamp" style="width:200px">
+                                <Option v-for="item in cityList3" :value="item.value" :key="item.value" >
+                                    {{ item.label}}
+                                </Option>
+                            </Select>
+                        </FormItem>
+                    </Col>
+                    <Col span="8" offset="2">
+                        <FormItem label="区域范围:" prop="areatype">
+                            <Select v-model="formValidate.areatype" style="width:200px">
+                                <Option v-for="item in tD.AreaType" :value="item.areatype"  >{{ item.areatype
+                                    }}
+                                </Option>
+                            </Select>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span="8" offset="2">
+                        <FormItem label="区域:" prop="areacode">
+                            <Select v-model="formValidate.areacode" style="width:200px">
+                                <Option v-for="item in tD.AreaCode" :value="item.areacode"  >{{ item.areacode
+                                    }}
+                                </Option>
+                            </Select>
+                        </FormItem>
+                    </Col>
+                    <Col span="8" offset="2">
+                        <FormItem label="维度类别:" prop="dimtype">
+                            <Select v-model="formValidate.dimtype" style="width:200px">
+                                <Option v-for="item in tD.DimType" :value="item.dimtype"  >{{ item.dimtype
+                                    }}
+                                </Option>
+                            </Select>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span="8" offset="2">
+                        <FormItem label="维度代码:" prop="dimcode">
+                            <Select v-model="formValidate.dimcode" style="width:200px">
+                                <Option v-for="item in tD.DimCode" :value="item.imcode"  >{{ item.dimcode
+                                    }}
+                                </Option>
+                            </Select>
+                        </FormItem>
+                    </Col>
+                    <Col span="8" offset="2">
+                        <FormItem label="备注:" prop="remark">
+                            <Input placeholder="请输入备注" v-model="formValidate.remark" style="width:200px"></Input>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span="4" offset="9">
+                        <Button type="primary" icon="checkmark" @click="subAddToRev('formValidate')"
+                                :loading="loading">添加
+                        </Button>
+                    </Col>
+                    <Col span="4">
+                        <Button type="primary" icon="reply" @click.prevent="pageBack">返回</Button>
+                    </Col>
+                </Row>
+            </Card>
+        </Form>
+    </div>
+</template>
+<script>
+    import { mapActions, mapState } from 'vuex';
+    import {resetWorkHeight, getUserCookie} from '@/libs/util.js';
+    export default{
+        name: 'indicatorRangesAdd',
+        data () {
+            return {
+                cit: '',
+                cityList: [{
+                    value: '1',
+                    label: '是'
+                },
+                {
+                    value: '0',
+                    label: '否'
+                }],
+                cityList3: [{
+                    value: '0',
+                    label: '绿'
+                },
+                {
+                    value: '1',
+                    label: '黄'
+                },
+                {
+                    value: '2',
+                    label: '红'
+                }
+                ],
+                cityList1: [{
+                    value: '1',
+                    label: '1'
+                },
+                {
+                    value: '0',
+                    label: '0'
+                }],
+                cityList2: [{
+                    value: '1',
+                    label: '一汽金融公司'
+                },
+                {
+                    value: '0',
+                    label: '一汽财务公司'
+                }
+                ],
+                ruleValidate: {
+                    teamName: [
+                        { required: true, message: '请输入团队名称!', trigger: 'blur' }
+                    ],
+                    name: [
+                        { required: true, message: '请输入指标类型名称!', trigger: 'blur' }
+                    ],
+                    remark: [
+                        { required: true, message: '请输入备注信息!', trigger: 'blur' }
+                    ]
+                },
+                pinpai: [],
+                file: null,
+                loadingStatus: false,
+                formValidate: {
+                }
+            };
+        },
+        computed: {
+            ...mapState({
+                loading: ({indicatorRangesAdd}) => indicatorRangesAdd.loading,
+                teamEventAddData: ({indicatorRangesAdd}) => indicatorRangesAdd.teamEAddData,
+                teamNameList: ({indicatorRangesAdd}) => indicatorRangesAdd.searchTeamData,
+                isSuccess: ({indicatorRangesAdd}) => indicatorRangesAdd.isSuccess,
+                tD: ({indicatorRangesAdd}) => indicatorRangesAdd.tData,
+                iTypes: ({indicatorRangesAdd}) => indicatorRangesAdd.iTypes,
+                iNames: ({indicatorRangesAdd}) => indicatorRangesAdd.iNames,
+                iCodes: ({indicatorRangesAdd}) => indicatorRangesAdd.iCodes
+            })
+        },
+        methods: {
+            selINames () {
+                this.handelselNames(this.formValidate.typecode).then(res => {});
+                console.log(this.iNames);
+            },
+            selCode () {
+                console.log(this.formValidate.id);
+                this.handelselCode(this.formValidate.id).then(res => {});
+                console.log(this.iCodes);
+            },
+            ...mapActions([
+                'handleAdd1',
+                'handleQueryBySearchTeam',
+                'handelQueryTeamEvent',
+                'handleIT',
+                'handelselNames',
+                'handelselCode'
+            ]),
+            init () {
+                const user = getUserCookie();
+                this.formValidate.areaName = user.areaName;
+                this.formValidate.areaCode = user.areaCode;
+                this.formValidate.company = user.comCode;
+                this.queryTeamEventById2();
+                this.searchITypes();
+                resetWorkHeight();
+                console.log(this.tD);
+            },
+            queryTeamEventById2 () {
+                this.handelQueryTeamEvent().then(res => {});
+                console.log(this.tD);
+            },
+            searchITypes () {
+                this.handleIT().then(res => {
+                    resetWorkHeight();
+                    this.$Message.info('查询成功!');
+                });
+            },
+            subAddToRev (name) {
+                this.$refs[name].validate((valid) => {
+                    if (valid) {
+                        console.log(this.formValidate);// 此数据提交
+                        const user = getUserCookie();
+                        this.formValidate.createName = user.name;
+                        this.formValidate.indId = this.formValidate.id;
+                        this.handleAdd1(this.formValidate).then(res => {
+                            if (this.isSuccess) {
+                                this.$Modal.success({
+                                    title: '提交成功',
+                                    content: this.teamEventAddData,
+                                    onOk: () => {
+                                        this.$router.push({name: 'indicatorRangesList'});
+                                    }
+                                });
+                            } else {
+                                this.$Modal.error({
+                                    title: '提示',
+                                    content: this.teamEventAddData
+                                });
+                            }
+                            resetWorkHeight();
+                        });
+                    } else {
+                        this.$Message.error('验证错误!');
+                    }
+                });
+            },
+            pageBack () {
+                this.$router.push({name: 'indicatorRangesList'});
+            },
+            searchTeam (query) {
+                this.handleQueryBySearchTeam(query);
+            }
+        },
+        mounted () {
+            this.init();
+        }
+    };
+</script>
+

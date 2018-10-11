@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta http-equiv="Expires" content="0">
+	<meta http-equiv="Cache-Control" content="no-cache">
+	<meta http-equiv="Cache-Control" content="no-store">
+	<meta HTTP-EQUIV="Pragma" CONTENT="no-cache">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+	<title>UI 异常</title>
+	<script src="/ui/js/include/head.js"></script>
+</head>
+<body class="no-skin">
+	<div class="page-content" id="mainContent">
+		<div class="error-container">
+			<div class="well">
+				<h1 class="grey lighter smaller">
+					<span class="blue bigger-125">
+						<i class="ace-icon fa fa-random"></i>
+						系统异常...
+					</span>
+				</h1>
+				<hr />
+				<h3 class="lighter smaller">
+					请联系系统管理员
+					<i class="ace-icon fa fa-wrench icon-animated-wrench bigger-125"></i>
+					修复!
+					<div>
+						<span th:text="${timestamp}"></span>&nbsp;<span th:text="${url}"></span>
+					</div>
+					<div th:text="${exception}"></div>
+					<div th:each="stackTraceElement: ${exception.stackTrace}">
+						<span th:text="${stackTraceElement}"></span>
+					</div>
+				</h3>
+				<hr />
+				<div class="space"></div>
+				<div>
+					<h4 class="lighter smaller">同时, 尝试以下解决办法：</h4>
+					<ul class="list-unstyled spaced inline bigger-110 margin-15">
+						<li>
+							<i class="ace-icon fa fa-hand-o-right blue"></i>
+							阅读FAQ
+						</li>
+						<li>
+							<i class="ace-icon fa fa-hand-o-right blue"></i>
+							给我们更多的信息描述异常如何发生。
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>

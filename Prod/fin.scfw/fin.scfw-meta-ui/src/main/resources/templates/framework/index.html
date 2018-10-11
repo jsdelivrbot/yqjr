@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta http-equiv="Expires" content="0">
+<meta http-equiv="Cache-Control" content="no-cache">
+<meta http-equiv="Cache-Control" content="no-store">
+<meta HTTP-EQUIV="Pragma" CONTENT="no-cache">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+<script src="/ui/js/include/head.js"></script>
+<script src="/ui/js/upload/base-modal.js"></script>
+<script src="/ui/js/include/attach.js"></script>
+<script type="text/javascript" src="/ui/js/jquery.cookie.js"></script>
+<meta charset="UTF-8">
+<title>一汽金融开发平台</title>
+</head>
+<body class="no-skin">
+	<div id="navbar" class="navbar navbar-default          ace-save-state">
+		<div class="navbar-container ace-save-state" id="navbar-container">
+			<button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler" data-target="#sidebar">
+				<span class="sr-only">Toggle sidebar</span>
+
+				<span class="icon-bar"></span>
+
+				<span class="icon-bar"></span>
+
+				<span class="icon-bar"></span>
+			</button>
+
+			<div class="navbar-header pull-left">
+				<a href="#" class="navbar-brand">
+					<img src="/ui/images/logo_yqjr.png">
+					<small>
+					</small>
+				</a>
+			</div>
+			<nav role="navigation" class="navbar-menu pull-left collapse navbar-collapse">
+				<ul class="nav navbar-nav">
+ 
+				</ul>
+			</nav>
+			<div class="navbar-buttons navbar-header pull-right" role="navigation">
+				<ul class="nav ace-nav">
+					
+					<li class="light-blue">
+						<a data-toggle="dropdown" href="#" class="dropdown-toggle" id="loginUser">
+							<i class="ace-icon fa fa-user"></i>
+							<i class="ace-icon fa fa-caret-down"></i>
+						</a>
+
+						<ul id="topUL" class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+							<li>
+								<a href="#" id="today">
+									<i class="ace-icon fa fa-clock-o"></i>
+								</a>
+							</li>
+
+							<li class="divider"></li>
+
+                            <li>
+                                <a id="person" target="mainFrame">
+                                    <i class="ace-icon fa fa-cog"></i>
+                                    个人信息
+                                </a>
+                            </li>
+
+							<li>
+								<a id="mpwd" target="mainFrame">
+									<i class="ace-icon fa fa-user"></i>
+									修改密码
+								</a>
+							</li>
+
+							<!--<li>
+								<a href="/ui/user/myMenu" target="mainFrame">
+									<i class="ace-icon fa fa-star"></i>
+									常用菜单
+								</a>
+							</li>-->
+
+							<li class="divider"></li>
+
+							<li>
+								<a href="#" onclick="logout()">
+									<i class="ace-icon fa fa-power-off"></i>
+									退出登录
+								</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="main-container ace-save-state" id="main-container">
+		<script type="text/javascript">
+            try {
+                ace.settings.loadState('main-container')
+            } catch (e) {
+            }
+		</script>
+		<div id="sidebar" class="sidebar responsive ace-save-state">
+			<script type="text/javascript">
+                try {
+                    ace.settings.loadState('sidebar')
+                } catch (e) {
+                }
+			</script>
+			<div class="sidebar-shortcuts" id="sidebar-shortcuts">
+				<div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
+					<!-- <button class="btn btn-warning" onclick="showMenuById('menuTree')">
+                        <i class="ace-icon fa fa-bars"></i> 所有菜单
+                    </button> -->
+					<button class="btn btn-info">
+						<i class="ace-icon fa fa-cog"></i> 预留功能
+					</button>
+					<button class="btn btn-success">
+						<i class="ace-icon fa fa-star"></i> 预留功能
+					</button>
+					<!-- <div class="nav-search" id="nav-search">
+                        <span class="input-icon">
+                            <input type="text" placeholder="快捷交易码" class="nav-search-input" id="tradeCode"  name="tradeCode" autocomplete="off" />
+                            <i class="ace-icon fa fa-search nav-search-icon"></i>
+                        </span>
+                    </div> -->
+				</div>
+				<div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
+					<span class="btn btn-info"></span> <span class="btn btn-success"></span>
+				</div>
+			</div>
+			<ul class="nav nav-list" id="framework_menu_tree">
+			</ul>
+			<div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
+				<i id="sidebar-toggle-icon"
+				   class="ace-icon fa fa-angle-double-left ace-save-state"
+				   data-icon1="ace-icon fa fa-angle-double-left"
+				   data-icon2="ace-icon fa fa-angle-double-right"></i>
+			</div>
+		</div>
+
+		<div class="main-content">
+			<div class="main-content-inner">
+				<div class="breadcrumbs ace-save-state" id="breadcrumbs">
+					<ul class="breadcrumb" id="breadCrumb">
+						<li>
+							<i class="ace-icon fa fa-home home-icon"></i>
+							<a href="index">首页</a>
+						</li>
+					</ul>
+					<div class="nav-search pull-right" id="nav-search">
+						<form class="form-search" id="searchTradeForm">
+								<span class="input-icon">
+									<input type="text" placeholder="快捷交易码" class="nav-search-input" id="tradeCode"  name="tradeCode" autocomplete="off"/>
+									<input type="hidden" name="tradeCode1">
+									<input type="hidden" name="tradeCode2">
+									<i class="ace-icon fa fa-keyboard-o nav-search-icon"></i>
+								</span>
+						</form>
+					</div>
+				</div>
+				<div id="loading">
+					<div class="ajax-loading-overlay">
+						<div style="margin-top: 15%;" class="center"><i class="ace-icon fa fa-spinner fa-spin orange" style="font-size: 575% "></i></div>
+					</div>
+				</div>
+				<iframe id="mainFrame" name="mainFrame" onreadystatechange='stateChangeIE(this)'  onload='stateChangeFirefox(this)' scrolling="no" frameborder="no" width="100%" height="1000" ></iframe>
+			</div>
+		</div>
+		<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+			<i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+		</a>
+	</div>
+	<script type="text/javascript">
+        $(function() {
+        	getUserCookie();
+        	$("#framework_menu_tree").frameworkMenu({url : "/meta/menus/allShow?systemId=0"});
+        	menu();
+            $("#loading").hide();
+            $.ajax('/meta/users/getUser', {
+                method: 'get',
+                dataType: 'json',
+                success: function(obj) {
+                    var html="";
+                    var result = obj.result;
+                    html+='<i class="ace-icon fa fa-user"></i>您好，'+result.loginName+'<i class="ace-icon fa fa-caret-down"></i>';
+                    $("#loginUser").html(html);
+
+                    function p(s) {
+                        return s < 10 ? '0' + s: s;
+                    }
+                    var myDate = new Date();
+                    var year=myDate.getFullYear();
+                    var month=myDate.getMonth()+1;
+                    var date=myDate.getDate();
+                    var now=year+'-'+p(month)+"-"+p(date);
+                    var dateHtml="";
+                    dateHtml+='<i class="ace-icon fa fa-clock-o"></i>'+now;
+                    $("#today").html(dateHtml);
+                    var sysIdlist  =obj.result.roleSystemIdList;
+                    var sysNamelist= obj.result.roleSystemNameList;
+                    var sysName="";
+                    for(var i=0;i<sysNamelist.length;i++){
+                    	sysName+='<li><a href="#" onclick="showMenuById('+sysIdlist[i]+')">'+sysNamelist[i]+'</a></li>';
+                    }
+                    $(".navbar-nav").html(sysName);  
+                    $("#mpwd").attr("href","/ui/user/modifyPwd?loginName="+result.loginName);
+                    $("#person").attr("href","/ui/user/info?loginName="+result.loginName+"&id="+result.id);
+                }
+            });
+        });
+        function logout() {
+        	$.cookie("user",null, {expires: -1,path: '/' });
+        	$.cookie("token",null, {expires: -1,path: '/' });
+        	$.cookie("refreshToken",null, {expires: -1,path: '/' });
+        	var storage=window.localStorage;
+        	storage.clear();
+            $.ajax('/meta/users/logout', {
+                method: 'post',
+                dataType: 'json',
+                success: function() {
+                    window.location.href = '/ui/comm/login';
+                    
+                }
+            });
+        }
+        function showMenuById(systemId){
+        	$("#framework_menu_tree").html("");
+       $("#framework_menu_tree").frameworkMenu({url : "/meta/menus/allShow?systemId="+systemId});
+       menu();
+        }
+              function menu(){          
+                    $(".nav-list a").click(function() {
+                        var url = $(this).attr("href");
+                        var menuName = $(this).attr("menu-name");
+                        var isMini =  $(this).attr("isMini");
+                        var menuId = $(this).attr("menuId");
+                        //异步加载
+                        if (url != '#') {
+                            //iframe
+                            //window.open(url, "mainFrame");
+                            //var $overlay = $('<div class="ajax-loading-overlay"><i class="ajax-loading-icon fa fa-spin fa-spinner fa-2x orange"></i></div>');
+                            if(url.indexOf("?") >= 0 ){
+                                url = url + "&portalTime=" + new Date().getTime();
+                            }else{
+                                url = url + "?portalTime=" + new Date().getTime();
+                            }
+                            $("#loading").show();
+                            $("#mainFrame").attr("src",url);
+                            $("#helpButton").attr("menuId",menuId);
+                            //$("#mainFrame").hide();
+                            //配置显示迷你菜单时，自动切换
+                            if(isMini == "1"){
+                                if(!$("#sidebar").hasClass("menu-min")){
+                                    $("#sidebar-toggle-icon").click();
+                                }
+                            }else{
+                                if($("#sidebar").hasClass("menu-min")){
+                                    $("#sidebar-toggle-icon").click();
+                                }
+                            }
+
+                            //设置面包屑
+                            $("#breadCrumb").html("");
+                            $(this).parents().each(function(obj) {
+                                if ($(this).get(0).tagName == "LI") {
+                                    $("#breadCrumb").prepend("<li>"+ $(this).children().attr("menu-name")+"</li>");
+                                }
+                            });
+                            $("#breadCrumb").prepend("<li><i class=\"ace-icon fa fa-home home-icon\"></i> <a href=\"/ui/comm/index\">首页</a></li>");
+                            var $overlay = $('<div class="ajax-loading-overlay"><i class="ajax-loading-icon fa fa-spin fa-spinner fa-2x orange"></i></div>');
+                            //清楚menuTree选中样式
+                            $(".nav-list li").each(function(index) {
+                                if ($(this).hasClass("open")) {
+                                    $(this).removeClass("open");
+                                }
+                                if ($(this).hasClass("active")) {
+                                    $(this).removeClass("active");
+                                }
+                            });
+                            //收起所有打开的ul下的li标签
+                            $(".nav-list ul").each(function(index) {
+                                $(this).css("display", "none");
+                            });
+                            //选中的li添加样式
+                            var $li = $(this).parent();
+                            $li.addClass("active");
+                            $(this).parents().each(function(obj) {
+                                if ($(this).eq(0).tagName = "UL") {
+                                    //打开当前ul下的li标签
+                                    $(this).css("display","block");
+                                }
+                                if ($(this).eq(0).tagName == "LI") {
+                                    $(this).addClass("active").addClass("open");
+                                }
+                            });
+                            return false;
+                        };
+                    });
+
+              }
+			</script>
+</body>
+</html>

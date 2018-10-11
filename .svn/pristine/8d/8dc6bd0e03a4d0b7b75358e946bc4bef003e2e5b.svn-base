@@ -1,0 +1,21 @@
+server:
+  port: 50206
+spring:
+  application:
+    name: fin-risk-stat
+  cloud:
+    config:
+      name: config
+      discovery:
+        enabled: true
+        service-id: fin-scfw-config
+eureka:
+  instance:
+    lease-expiration-duration-in-seconds: 15
+    lease-renewal-interval-in-seconds: 5
+    prefer-ip-address: true
+  client:
+    initial-instance-info-replication-interval-seconds: 5
+    registry-fetch-interval-seconds: 5
+    serviceUrl:
+      defaultZone: http://10.20.133.87:50101/eureka

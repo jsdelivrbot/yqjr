@@ -1,0 +1,728 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yqjr.fin.risk.stat.mapper.ScheduleJobMapper">
+
+    <!-- region BaseMapper DO NOT MODIFY!!!  -->
+
+    <sql id="Base_Table_Name">
+        P_SCHEDULE_JOB
+    </sql>
+
+
+
+    <!-- region BaseResultMap  -->
+    <resultMap id="BaseResultMap" type="com.yqjr.fin.risk.stat.entity.ScheduleJob">
+        <result property="id" column="ID"/><!--任务id-->
+        <result property="beanName" column="BEAN_NAME"/><!--bean名称-->
+        <result property="methodName" column="METHOD_NAME"/><!--方法名称-->
+        <result property="params" column="PARAMS"/><!--参数-->
+        <result property="cronExpression" column="CRON_EXPRESSION"/><!--cron表达式-->
+        <result property="status" column="STATUS"/><!--任务状态  0：正常  1：暂停-->
+        <result property="remark" column="REMARK"/><!--备注-->
+        <result property="creator" column="CREATOR"/><!--创建人-->
+        <result property="createTime" column="CREATE_TIME"/><!--创建时间-->
+        <result property="modifier" column="MODIFIER"/><!--最后更新人-->
+        <result property="modifyTime" column="MODIFY_TIME"/><!--最后更新时间-->
+        <result property="executionTime" column="EXECUTION_TIME"/><!--执行时间-->
+    </resultMap>
+    <!-- endregion -->
+
+    <!-- region Base_Column_List  -->
+    <sql id="Base_Column_List">
+    ID,BEAN_NAME,METHOD_NAME,PARAMS,CRON_EXPRESSION,STATUS,REMARK,CREATOR,CREATE_TIME,MODIFIER,MODIFY_TIME,EXECUTION_TIME
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_List_Selective  -->
+    <sql id="Base_Column_List_Selective">
+        <trim suffixOverrides=",">
+            <if test="id != null">
+                ID,
+            </if>
+            <if test="beanName != null">
+                BEAN_NAME,
+            </if>
+            <if test="methodName != null">
+                METHOD_NAME,
+            </if>
+            <if test="params != null">
+                PARAMS,
+            </if>
+            <if test="cronExpression != null">
+                CRON_EXPRESSION,
+            </if>
+            <if test="status != null">
+                STATUS,
+            </if>
+            <if test="remark != null">
+                REMARK,
+            </if>
+            <if test="creator != null">
+                CREATOR,
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME,
+            </if>
+            <if test="modifier != null">
+                MODIFIER,
+            </if>
+            <if test="modifyTime != null">
+                MODIFY_TIME,
+            </if>
+            <if test="executionTime != null">
+                EXECUTION_TIME
+            </if>
+        </trim>
+    </sql>
+    <!-- endregion -->
+
+    <sql id="Base_Column_List_Selective_null1">
+        <trim suffixOverrides=",">
+            ID,
+            <if test="beanName != null">
+                BEAN_NAME,
+            </if>
+            <if test="methodName != null">
+                METHOD_NAME,
+            </if>
+            <if test="params != null">
+                PARAMS,
+            </if>
+            <if test="cronExpression != null">
+                CRON_EXPRESSION,
+            </if>
+            <if test="status != null">
+                STATUS,
+            </if>
+            <if test="remark != null">
+                REMARK,
+            </if>
+            <if test="creator != null">
+                CREATOR,
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME,
+            </if>
+            <if test="modifier != null">
+                MODIFIER,
+            </if>
+            <if test="modifyTime != null">
+                MODIFY_TIME,
+            </if>
+            <if test="executionTime != null">
+                EXECUTION_TIME
+            </if>
+        </trim>
+    </sql>
+
+    <!-- region Base_Column_Values  -->
+    <sql id="Base_Column_Values">
+    p_schedule_job_seq.nextval,
+    #{beanName,jdbcType=VARCHAR},
+    #{methodName,jdbcType=VARCHAR},
+    #{params,jdbcType=VARCHAR},
+    #{cronExpression,jdbcType=VARCHAR},
+    #{status,jdbcType=NUMERIC},
+    #{remark,jdbcType=VARCHAR},
+    #{creator,jdbcType=NUMERIC},
+    #{createTime,jdbcType=DATE},
+    #{modifier,jdbcType=NUMERIC},
+    #{modifyTime,jdbcType=DATE},
+    #{executionTime,jdbcType=VARCHAR}
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Values_Selective  -->
+    <sql id="Base_Column_Values_Selective">
+        <trim suffixOverrides=",">
+            <if test="id != null">
+                #{id},
+            </if>
+            <if test="beanName != null">
+                #{beanName,jdbcType=VARCHAR},
+            </if>
+            <if test="methodName != null">
+                #{methodName,jdbcType=VARCHAR},
+            </if>
+            <if test="params != null">
+                #{params,jdbcType=VARCHAR},
+            </if>
+            <if test="cronExpression != null">
+                #{cronExpression,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=NUMERIC},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="creator != null">
+                #{creator,jdbcType=NUMERIC},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=DATE},
+            </if>
+            <if test="modifier != null">
+                #{modifier,jdbcType=NUMERIC},
+            </if>
+            <if test="modifyTime != null">
+                #{modifyTime,jdbcType=DATE},
+            </if>
+            <if test="executionTime != null">
+                #{executionTime,jdbcType=VARCHAR}
+            </if>
+        </trim>
+    </sql>
+    <!-- endregion -->
+
+    <sql id="Base_Column_List_Selective_null">
+        <trim suffixOverrides=",">
+            p_schedule_job_seq.nextval,
+            <if test="beanName != null">
+                #{beanName,jdbcType=VARCHAR},
+            </if>
+            <if test="methodName != null">
+                #{methodName,jdbcType=VARCHAR},
+            </if>
+            <if test="params != null">
+                #{params,jdbcType=VARCHAR},
+            </if>
+            <if test="cronExpression != null">
+                #{cronExpression,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=NUMERIC},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="creator != null">
+                #{creator,jdbcType=NUMERIC},
+            </if>
+            <if test="createTime != null">
+                #{createTime},
+            </if>
+            <if test="modifier != null">
+                #{modifier,jdbcType=NUMERIC},
+            </if>
+            <if test="modifyTime != null">
+                #{modifyTime},
+            </if>
+            <if test="executionTime != null">
+                #{executionTime,jdbcType=VARCHAR}
+            </if>
+        </trim>
+    </sql>
+
+    <!-- region Base_Column_Set_Values  -->
+    <sql id="Base_Column_Set_Values">
+    ID = #{id,jdbcType=NUMERIC},
+    BEAN_NAME = #{beanName,jdbcType=VARCHAR},
+    METHOD_NAME = #{methodName,jdbcType=VARCHAR},
+    PARAMS = #{params,jdbcType=VARCHAR},
+    CRON_EXPRESSION = #{cronExpression,jdbcType=VARCHAR},
+    STATUS = #{status,jdbcType=NUMERIC},
+    REMARK = #{remark,jdbcType=VARCHAR},
+    CREATOR = #{creator,jdbcType=NUMERIC},
+    CREATE_TIME = #{createTime,jdbcType=DATE},
+    MODIFIER = #{modifier,jdbcType=NUMERIC},
+    MODIFY_TIME = #{modifyTime,jdbcType=DATE},
+    EXECUTION_TIME = #{executionTime,jdbcType=VARCHAR}
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Set_Values_Selective  -->
+    <sql id="Base_Column_Set_Values_Selective">
+        <if test="beanName != null">
+            BEAN_NAME = #{beanName,jdbcType=VARCHAR},
+        </if>
+        <if test="methodName != null">
+            METHOD_NAME = #{methodName,jdbcType=VARCHAR},
+        </if>
+        <if test="params != null">
+            PARAMS = #{params,jdbcType=VARCHAR},
+        </if>
+        <if test="cronExpression != null">
+            CRON_EXPRESSION = #{cronExpression,jdbcType=VARCHAR},
+        </if>
+        <if test="status != null">
+            STATUS = #{status,jdbcType=NUMERIC},
+        </if>
+        <if test="remark != null">
+            REMARK = #{remark,jdbcType=VARCHAR},
+        </if>
+        <if test="creator != null">
+            CREATOR = #{creator,jdbcType=NUMERIC},
+        </if>
+        <if test="createTime != null">
+            CREATE_TIME = #{createTime},
+        </if>
+        <if test="modifier != null">
+            MODIFIER = #{modifier,jdbcType=NUMERIC},
+        </if>
+        <if test="modifyTime != null">
+            MODIFY_TIME = #{modifyTime},
+        </if>
+        <if test="executionTime != null">
+            EXECUTION_TIME = #{executionTime,jdbcType=VARCHAR}
+        </if>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Where_Selective  -->
+    <sql id="Base_Column_Where_Selective">
+        <if test="id != null">
+            and ID = #{id}
+        </if>
+        <if test="beanName != null">
+            and BEAN_NAME = #{beanName}
+        </if>
+        <if test="methodName != null">
+            and METHOD_NAME = #{methodName}
+        </if>
+        <if test="params != null">
+            and PARAMS = #{params}
+        </if>
+        <if test="cronExpression != null">
+            and CRON_EXPRESSION = #{cronExpression}
+        </if>
+        <if test="status != null">
+            and STATUS = #{status}
+        </if>
+        <if test="remark != null">
+            and REMARK = #{remark}
+        </if>
+        <if test="creator != null">
+            and CREATOR = #{creator}
+        </if>
+        <if test="createTime != null">
+            and CREATE_TIME = #{createTime}
+        </if>
+        <if test="modifier != null">
+            and MODIFIER = #{modifier}
+        </if>
+        <if test="modifyTime != null">
+            and MODIFY_TIME = #{modifyTime}
+        </if>
+        <if test="executionTime != null">
+            and EXECUTION_TIME = #{executionTime}
+        </if>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Where_Selective_Param1  -->
+    <sql id="Base_Column_Where_Selective_Param1">
+        <if test="param1.id != null">
+            and ID = #{param1.id}
+        </if>
+        <if test="param1.beanName != null">
+            and BEAN_NAME = #{param1.beanName}
+        </if>
+        <if test="param1.methodName != null">
+            and METHOD_NAME = #{param1.methodName}
+        </if>
+        <if test="param1.params != null">
+            and PARAMS = #{param1.params}
+        </if>
+        <if test="param1.cronExpression != null">
+            and CRON_EXPRESSION = #{param1.cronExpression}
+        </if>
+        <if test="param1.status != null">
+            and STATUS = #{param1.status}
+        </if>
+        <if test="param1.remark != null">
+            and REMARK = #{param1.remark}
+        </if>
+        <if test="param1.creator != null">
+            and CREATOR = #{param1.creator}
+        </if>
+        <if test="param1.createTime != null">
+            and CREATE_TIME = #{param1.createTime}
+        </if>
+        <if test="param1.modifier != null">
+            and MODIFIER = #{param1.modifier}
+        </if>
+        <if test="param1.modifyTime != null">
+            and MODIFY_TIME = #{param1.modifyTime}
+        </if>
+        <if test="param1.executionTime != null">
+            and EXECUTION_TIME = #{param1.executionTime}
+        </if>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Order_By  -->
+    <sql id="Base_Order_By">
+        <bind name="propName" value="sortField"></bind>
+        ORDER BY <include refid="Base_Column_Name" />
+        <choose>
+            <when test="isAscend">
+                ASC
+            </when>
+            <otherwise>
+                DESC
+            </otherwise>
+        </choose>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Name  -->
+    <sql id="Base_Column_Name">
+        <if test='"id" == propName'>
+            ID
+        </if>
+        <if test='"beanName" == propName'>
+            BEAN_NAME
+        </if>
+        <if test='"methodName" == propName'>
+            METHOD_NAME
+        </if>
+        <if test='"params" == propName'>
+            PARAMS
+        </if>
+        <if test='"cronExpression" == propName'>
+            CRON_EXPRESSION
+        </if>
+        <if test='"status" == propName'>
+            STATUS
+        </if>
+        <if test='"remark" == propName'>
+            REMARK
+        </if>
+        <if test='"creator" == propName'>
+            CREATOR
+        </if>
+        <if test='"createTime" == propName'>
+            CREATE_TIME
+        </if>
+        <if test='"modifier" == propName'>
+            MODIFIER
+        </if>
+        <if test='"modifyTime" == propName'>
+            MODIFY_TIME
+        </if>
+        <if test='"executionTime" == propName'>
+            EXECUTION_TIME
+        </if>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Id_Array  -->
+    <sql id="Base_Id_Array">
+        <foreach collection="array" open="(" close=")" separator="," item="id">
+            #{id,jdbcType=NUMERIC}
+        </foreach>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Id_List  -->
+    <sql id="Base_Id_List">
+        <foreach collection="list" open="(" close=")" separator="," item="id">
+            #{id,jdbcType=NUMERIC}
+        </foreach>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Select_All  -->
+    <sql id="Base_Select_All">
+        select
+        <include refid="Base_Column_List" />
+        from <include refid="Base_Table_Name" />
+    </sql>
+    <!-- endregion -->
+
+    <!-- region selectById  -->
+    <select id="selectById" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        where ID = #{id}
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectByIds  -->
+    <select id="selectByIds" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        where ID in
+        <include refid="Base_Id_List" />
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectAll  -->
+    <select id="selectAll" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectCount  -->
+    <select id="selectCount" resultType="int">
+        select count(*)
+        from <include refid="Base_Table_Name" />
+        <where>
+            <include refid="Base_Column_Where_Selective" />
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region select  -->
+    <select id="select" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Where_Selective" />
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectOne  -->
+    <select id="selectOne" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Where_Selective" />
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectOrderBy  -->
+    <select id="selectOrderBy" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Where_Selective_Param1" />
+        </where>
+        <include refid="Base_Order_By" />
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectByProperty  -->
+    <select id="selectByProperty" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Name" /> = #{propValue}
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectByPropertyIn  -->
+    <select id="selectByPropertyIn" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Name" /> IN
+            <foreach collection="propValues" open="(" close=")" separator="," item="propValue">
+                #{propValue}
+            </foreach>
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region delete  -->
+    <delete id="delete">
+        delete
+        from <include refid="Base_Table_Name" />
+        <where>
+            <include refid="Base_Column_Where_Selective" />
+        </where>
+    </delete>
+    <!-- endregion -->
+
+    <!-- region deleteById  -->
+    <delete id="deleteById">
+        delete
+        from <include refid="Base_Table_Name" />
+        where ID = #{id,jdbcType=NUMERIC}
+    </delete>
+    <!-- endregion -->
+
+    <!-- region deleteByIds  -->
+    <delete id="deleteByIds">
+        delete
+        from <include refid="Base_Table_Name" />
+        where ID in
+        <include refid="Base_Id_List" />
+    </delete>
+    <!-- endregion -->
+
+    <!-- region insert  -->
+    <insert id="insert" parameterType="com.yqjr.fin.risk.stat.entity.ScheduleJob">
+        <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER">
+            SELECT  p_schedule_job_seq.nextval from dual
+        </selectKey>
+        insert into <include refid="Base_Table_Name" /> (
+        <include refid="Base_Column_List_Selective_null1" />
+        )
+        values (
+        <include refid="Base_Column_List_Selective_null" />
+        )
+    </insert>
+    <!-- endregion -->
+
+    <!-- region updateById  -->
+    <update id="updateById" parameterType="com.yqjr.fin.risk.stat.entity.ScheduleJob">
+        update <include refid="Base_Table_Name" />
+        <set>
+            <include refid="Base_Column_Set_Values" />
+        </set>
+        where ID = #{id,jdbcType=NUMERIC}
+    </update>
+    <!-- endregion -->
+
+    <!-- region patchById  -->
+    <update id="patchById" parameterType="com.yqjr.fin.risk.stat.entity.ScheduleJob">
+        update <include refid="Base_Table_Name" />
+        <set>
+            <include refid="Base_Column_Set_Values_Selective" />
+        </set>
+        where ID = #{id,jdbcType=NUMERIC}
+    </update>
+    <!-- endregion -->
+
+    <!-- endregion BaseMapper -->
+
+    <!-- region generated by CodeRobot  -->
+
+    <!-- region 结果集映射  -->
+    <resultMap id="ScheduleJobResult" type="com.yqjr.fin.risk.stat.entity.ScheduleJob">
+        <result property="id" column="ID"/><!--任务id-->
+        <result property="beanName" column="BEAN_NAME"/><!--bean名称-->
+        <result property="methodName" column="METHOD_NAME"/><!--方法名称-->
+        <result property="params" column="PARAMS"/><!--参数-->
+        <result property="cronExpression" column="CRON_EXPRESSION"/><!--cron表达式-->
+        <result property="status" column="STATUS"/><!--任务状态  0：正常  1：暂停-->
+        <result property="remark" column="REMARK"/><!--备注-->
+        <result property="creator" column="CREATOR"/><!--创建人-->
+        <result property="createTime" column="CREATE_TIME"/><!--创建时间-->
+        <result property="modifier" column="MODIFIER"/><!--最后更新人-->
+        <result property="modifyTime" column="MODIFY_TIME"/><!--最后更新时间-->
+        <result property="executionTime" column="EXECUTION_TIME"/><!--执行时间-->
+    </resultMap>
+    <!-- endregion -->
+
+    <!-- 查询条件判断 入参为对象 条件为模糊-->
+    <sql id="queryLikeScheduleJob">
+        <if test="scheduleJob!=null">
+            <if test="id!=null and id!=''">
+                AND ID LIKE CONCAT('%'#{id}'%')<!--任务id-->
+            </if>
+            <if test="beanName!=null and beanName!=''">
+                AND BEAN_NAME LIKE CONCAT('%'#{beanName}'%')<!--bean名称-->
+            </if>
+            <if test="methodName!=null and methodName!=''">
+                AND METHOD_NAME LIKE CONCAT('%'#{methodName}'%')<!--方法名称-->
+            </if>
+            <if test="params!=null and params!=''">
+                AND PARAMS LIKE CONCAT('%'#{params}'%')<!--参数-->
+            </if>
+            <if test="cronExpression!=null and cronExpression!=''">
+                AND CRON_EXPRESSION LIKE CONCAT('%'#{cronExpression}'%')<!--cron表达式-->
+            </if>
+            <if test="status!=null and status!=''">
+                AND STATUS LIKE CONCAT('%'#{status}'%')<!--任务状态  0：正常  1：暂停-->
+            </if>
+            <if test="remark!=null and remark!=''">
+                AND REMARK LIKE CONCAT('%'#{remark}'%')<!--备注-->
+            </if>
+            <if test="creator!=null and creator!=''">
+                AND CREATOR LIKE CONCAT('%'#{creator}'%')<!--创建人-->
+            </if>
+            <if test="createTime!=null and createTime!=''">
+                AND CREATE_TIME LIKE CONCAT('%'#{createTime}'%')<!--创建时间-->
+            </if>
+            <if test="modifier!=null and modifier!=''">
+                AND MODIFIER LIKE CONCAT('%'#{modifier}'%')<!--最后更新人-->
+            </if>
+            <if test="modifyTime!=null and modifyTime!=''">
+                AND MODIFY_TIME LIKE CONCAT('%'#{modifyTime}'%')<!--最后更新时间-->
+            </if>
+            <if test="executionTime!=null and executionTime!=''">
+                EXECUTION_TIME LIKE CONCAT('%'#{executionTime}'%')<!--执行时间-->
+            </if>
+        </if>
+    </sql>
+
+    <!-- 按条件模糊查询所有 -->
+    <select id="queryScheduleJobList" parameterType="com.yqjr.fin.risk.stat.entity.ScheduleJob"
+            resultMap="ScheduleJobResult">
+        SELECT
+        ID,<!--任务id-->
+        BEAN_NAME,<!--bean名称-->
+        METHOD_NAME,<!--方法名称-->
+        PARAMS,<!--参数-->
+        CRON_EXPRESSION,<!--cron表达式-->
+        STATUS,<!--任务状态  0：正常  1：暂停-->
+        REMARK,<!--备注-->
+        CREATOR,<!--创建人-->
+        CREATE_TIME,<!--创建时间-->
+        MODIFIER,<!--最后更新人-->
+        MODIFY_TIME,<!--最后更新时间-->
+        EXECUTION_TIME<!--执行时间-->
+        FROM P_SCHEDULE_JOB
+        <where>
+            <include refid="queryLikeScheduleJob"/>
+        </where>
+    </select>
+
+    <!-- 按条件模糊统计所有条数 -->
+    <select id="queryScheduleJobCount" parameterType="com.yqjr.fin.risk.stat.entity.ScheduleJob" resultType="int">
+        SELECT
+        count (id)
+        FROM P_SCHEDULE_JOB
+        <where>
+            <include refid="queryLikeScheduleJob"/>
+        </where>
+    </select>
+
+    <!-- 批量删除，入参为数组  -->
+    <delete id="dynamicDelete">
+        delete from P_SCHEDULE_JOB where id in
+        <foreach collection="array" open="(" close=")" separator="," item="arr">
+            #{arr}
+        </foreach>
+    </delete>
+
+    <!-- 批量删除，入参为list  -->
+    <delete id="dynamicDeleteList">
+        delete from P_SCHEDULE_JOB where id in
+        <foreach collection="list" open="(" close=")" separator="," item="ids">
+            #{ids}
+        </foreach>
+    </delete>
+
+    <!-- 批量插入 -->
+    <insert id="insertBatch" parameterType="java.util.List">
+        <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into P_SCHEDULE_JOB
+        (
+        <include refid="Base_Column_List" />
+        )
+        values
+        <foreach collection="list" item="scheduleJob" index="index" separator=",">
+            (
+            <include refid="Base_Column_Values" />
+            )
+        </foreach>
+    </insert>
+
+    <!-- 插入单条数据，并返回主键ID -->
+    <insert id="saveObj" useGeneratedKeys="true" keyProperty="id"
+            parameterType="com.yqjr.fin.risk.stat.entity.ScheduleJob">
+        insert into P_SCHEDULE_JOB
+        (
+        <include refid="Base_Column_List" />
+        )
+        values
+        (
+        <include refid="Base_Column_Values" />
+        )
+    </insert>
+
+
+    <update id="updateBatch">
+        update <include refid="Base_Table_Name" />
+        <set>
+            STATUS = #{status,jdbcType=NUMERIC}
+        </set>
+        where ID in (${ids})
+    </update>
+
+
+</mapper>
+

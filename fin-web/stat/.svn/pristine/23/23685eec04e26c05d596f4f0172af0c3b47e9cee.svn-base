@@ -1,0 +1,256 @@
+<style lang="less">
+    @import '../../../styles/common.less';
+</style>
+<template>
+    <div>
+        <Row>
+            <Card>
+                <p slot="title">
+                    <Icon type="search"></Icon>
+                    查询
+                </p>
+                <Form ref="formValidate" :model="searchFormDate" :label-width="100">
+                    <Row v-show="showFlag.areaFlag">
+                        <Col span="8" offset="2">
+                            <FormItem label="指标类型代码:" >
+                                <Input v-model="searchFormDate.code" placeholder="请输入指标类型代码"></Input>
+                            </FormItem>
+                        </Col>
+                        <Col span="8" offset="2">
+                            <FormItem label="指标类型名称:">
+                                <Input v-model="searchFormDate.name" placeholder="请输入指标类型名称"></Input>
+                            </FormItem>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col span="4" offset="9">
+                            <Button type="primary" icon="search" @click="searchData">查询</Button>
+                        </Col>
+                        <Col span="4">
+                            <Button icon="close" @click="cleanData">重置</Button>
+                        </Col>
+                    </Row>
+                </Form>
+            </Card>
+        </Row>
+        <Row class="margin-top-10">
+            <Card>
+                <p slot="title">
+                    <Icon type="search"></Icon>
+                    表格数据
+                </p>
+                <!--<a href="#" slot="extra" @click.prevent="exportExcel">-->
+                    <!--<Icon type="ios-cloud-download"></Icon>-->
+                    <!--导出数据-->
+                <!--</a>-->
+                <Row type="flex" justify="end" :gutter="8" >
+                    <Col>
+                        <Button icon="android-add" type="success" @click="addData">新增</Button>
+
+                    </Col>
+                    <Col>
+                        <Button icon="android-close" type="error" @click="deletWarningData">删除</Button>
+                    </Col>
+                    <!--<Col>-->
+                        <!--<Button icon="edit" type="warning" @click="editData">修改</Button>-->
+                    <!--</Col>-->
+                    <!--<Col>-->
+                        <!--<Button icon="android-close" type="info" @click="viewData">查看</Button>-->
+                    <!--</Col>-->
+                </Row>
+                <Table :data="tableData" @on-selection-change='selectionClick' :columns="tableColumns"  :loading="loading" ref="tableExcel" class="margin-top-10"></Table>
+                <div style="margin: 10px;overflow: hidden">
+                    <div style="float: right;">
+                        <Page :total="total" :current="pageNo" :page-size="pageSize" size="small" @on-change="changePage" @on-page-size-change="pageSizeChange" show-total show-sizer></Page>
+                    </div>
+                </div>
+            </Card>
+        </Row>
+        <a id="hrefToExportTable" style="postion: absolute;left: -10px;top: -10px;width: 0px;height: 0px;"></a>
+    </div>
+</template>
+
+<script>
+import table2excel from '@/libs/table2excel.js';
+import {resetWorkHeight, isEmpty, getUserCookie} from '@/libs/util.js';
+import { mapActions, mapState } from 'vuex';
+export default{
+    name: 'teamList',
+    data () {
+        return {
+            searchFormDate: {
+                areaCode: '',
+                areaName: '',
+                teamCode: '',
+                teamName: '',
+                pageInfo: {
+                    pageSize: '10',
+                    pageNo: '1'
+                }
+            },
+            showFlag: {
+                areaFlag: false
+            },
+            tableColumns: [
+                {
+                    type: 'selection',
+                    width: 60,
+                    align: 'center'
+                },
+                {
+                    title: '指标类型代码',
+                    key: 'code',
+                    align: 'center',
+                    sortable: true
+                }, {
+                    title: '指标类型名称',
+                    align: 'center',
+                    key: 'name'
+                }, {
+                    title: '备注信息',
+                    align: 'center',
+                    key: 'remark'
+                },
+                {
+                    title: '操作',
+                    align: 'center',
+                    render: (h, params) => {
+                        return h('div', [
+                            h('Button', {
+                                props: {
+                                    type: 'warning',
+                                    size: 'small'
+                                },
+                                on: {
+                                    click: () => {
+                                        let routerParam = {id: params.row.id};
+                                        this.$router.push({
+                                            name: 'warningTargettypeEdit',
+                                            query: routerParam
+                                        });
+                                    }
+                                }
+                            }, '修改')
+                        ]);
+                    }
+                }
+            ],
+            excelFileName: 'data',
+            idArr: []
+        };
+    },
+    computed: {
+        ...mapState({
+            loading: ({warningList}) => warningList.loading,
+            tableData: ({warningList}) => warningList.warningList,
+            pageNo: ({warningList}) => warningList.pageNo,
+            pageSize: ({warningList}) => warningList.pageSize,
+            total: ({warningList}) => warningList.total,
+            pages: ({warningList}) => warningList.pages,
+            msgs: ({warningList}) => warningList.msg
+        })
+    },
+    methods: {
+        ...mapActions([
+            'warningDeleteSto',
+            'aTargettypeList'
+        ]),
+        /**
+         * 初始化
+         */
+        init () {
+            const user = getUserCookie();
+            const roleCode = user.roleCodeList;
+            if (roleCode.indexOf('0000') >= 0 || roleCode.indexOf('0001') >= 0 || roleCode.indexOf('0002') >= 0) {
+                this.showFlag.areaFlag = true;
+            } else {
+                this.showFlag.areaFlag = false;
+            }
+            this.chuShi();
+        },
+        chuShi () {
+            this.aTargettypeList(this.searchFormDate).then(res => {
+            });
+        },
+        /**
+         * 点击查询按钮执行查询操作
+         */
+        searchData () {
+            this.aTargettypeList(this.searchFormDate).then(res => {
+                this.$Message.info('查询成功!');
+            });
+        },
+        /**
+         * 页面改变
+         */
+        changePage (index) {
+            this.searchFormDate.pageInfo.pageNo = index;
+            this.aTargettypeList(this.searchFormDate).then(res => {
+                resetWorkHeight();
+                this.$Message.info('查询成功!');
+                this.searchFormDate.pageInfo.pageNo = 1;
+            });
+        },
+        /**
+         * 切换每页条数
+         */
+        pageSizeChange (newPageSize) {
+            this.searchFormDate.pageInfo.pageSize = newPageSize;
+            this.handleTeamList(this.searchFormDate).then(res => {
+                resetWorkHeight();
+            });
+        },
+        /**
+         * 重置按钮
+         */
+        cleanData () {
+            window.location.reload();
+        },
+        /**
+         * 导出execl
+         */
+        exportExcel () {
+            table2excel.transform(this.$refs.tableExcel, 'hrefToExportTable', this.excelFileName);
+        },
+        /**
+         * 添加数据
+         */
+        addData () {
+            this.$router.push({name: 'warningTargettypeAdd'});
+        },
+        /**
+         * 删除数据
+         */
+        deletWarningData () {
+            if (isEmpty(this.idArr)) {
+                this.$Message.info('请先选择一条数据再进行删除!');
+            } else {
+                this.$Modal.confirm({
+                    title: '删除',
+                    content: '<p>您确定要删除这条数据吗?</p>',
+                    onOk: () => {
+                        this.warningDeleteSto(this.idArr).then(res => {
+                            this.$Message.info(this.msgs);
+                            this.searchData();
+                        });
+                    },
+                    onCancel: () => {
+                    }
+                });
+            }
+        },
+        selectionClick: function (arr) {
+            var idArr = [];
+            if (!isEmpty(arr)) {
+                for (var i = 0; i < arr.length; i++) {
+                    idArr.push(arr[i].id);
+                }
+            }
+            this.idArr = idArr;
+        }
+    },
+    mounted () {
+        this.init();
+    }
+};
+</script>

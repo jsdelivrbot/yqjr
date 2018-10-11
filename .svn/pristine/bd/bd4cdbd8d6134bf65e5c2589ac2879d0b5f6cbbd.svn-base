@@ -1,0 +1,998 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yqjr.fin.mkmm.sales.mapper.PersonPlanMapper">
+
+    <!-- region BaseMapper DO NOT MODIFY!!!  -->
+
+    <sql id="Base_Table_Name">
+        MKMM_PERSON_PLAN
+    </sql>
+
+
+
+    <!-- region BaseResultMap  -->
+    <resultMap id="BaseResultMap" type="com.yqjr.fin.mkmm.sales.entity.PersonPlan">
+        <result property="id" column="ID"/><!--序列-->
+        <result property="personCode" column="PERSON_CODE"/><!--人员编号-->
+        <result property="personName" column="PERSON_NAME"/><!--人员姓名-->
+        <result property="brands" column="BRANDS"/><!--品牌-->
+        <result property="year" column="YEAR"/><!--年度-->
+        <result property="month" column="MONTH"/><!--月-->
+        <result property="amount" column="AMOUNT"/><!--数量-->
+        <result property="createTime" column="CREATE_TIME"/><!--创建时间-->
+        <result property="modifyTime" column="MODIFY_TIME"/><!--修改时间-->
+        <result property="creator" column="CREATOR"/><!--创建人-->
+        <result property="modifier" column="MODIFIER"/><!--修改人-->
+        <result property="company" column="COMPANY"/><!--所属公司-->
+        <result property="expectednumber" column="EXPECTEDNUMBER"/><!--预计数量-->
+        <result property="differentCode" column="DIFFERENT_CODE"/><!--导入识别码-->
+    </resultMap>
+    <!-- endregion -->
+
+    <!-- region Base_Column_List  -->
+    <sql id="Base_Column_List">
+    ID,PERSON_CODE,PERSON_NAME,BRANDS,YEAR,MONTH,AMOUNT,CREATE_TIME,MODIFY_TIME,CREATOR,MODIFIER,COMPANY,EXPECTEDNUMBER,DIFFERENT_CODE
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_List_Selective  -->
+    <sql id="Base_Column_List_Selective">
+        <trim suffixOverrides=",">
+            <if test="id != null">
+            ID,
+            </if>
+            <if test="personCode != null">
+            PERSON_CODE,
+            </if>
+            <if test="personName != null">
+            PERSON_NAME,
+            </if>
+            <if test="brands != null">
+            BRANDS,
+            </if>
+            <if test="year != null">
+            YEAR,
+            </if>
+            <if test="month != null">
+            MONTH,
+            </if>
+            <if test="amount != null">
+            AMOUNT,
+            </if>
+            <if test="createTime != null">
+            CREATE_TIME,
+            </if>
+            <if test="modifyTime != null">
+            MODIFY_TIME,
+            </if>
+            <if test="creator != null">
+            CREATOR,
+            </if>
+            <if test="modifier != null">
+            MODIFIER,
+            </if>
+            <if test="company != null">
+            COMPANY,
+            </if>
+            <if test="expectednumber != null">
+            EXPECTEDNUMBER,
+            </if>
+            <if test="differentCode != null">
+            DIFFERENT_CODE
+            </if>
+        </trim>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Values  -->
+    <sql id="Base_Column_Values">
+    SEQ_MKMM_PERSON_PLAN.NEXTVAL,
+    #{personCode,jdbcType=VARCHAR},
+    #{personName,jdbcType=VARCHAR},
+    #{brands,jdbcType=VARCHAR},
+    #{year,jdbcType=VARCHAR},
+    #{month,jdbcType=VARCHAR},
+    #{amount,jdbcType=INTEGER},
+    #{createTime,jdbcType=TIMESTAMP},
+    #{modifyTime,jdbcType=TIMESTAMP},
+    #{creator,jdbcType=INTEGER},
+    #{modifier,jdbcType=INTEGER},
+    #{company,jdbcType=VARCHAR},
+    #{expectednumber,jdbcType=INTEGER},
+    #{differentCode,jdbcType=INTEGER}
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Values_Selective  -->
+    <sql id="Base_Column_Values_Selective">
+        <trim suffixOverrides=",">
+            <if test="id != null">
+            #{id},
+            </if>
+            <if test="personCode != null">
+            #{personCode},
+            </if>
+            <if test="personName != null">
+            #{personName},
+            </if>
+            <if test="brands != null">
+            #{brands},
+            </if>
+            <if test="year != null">
+            #{year},
+            </if>
+            <if test="month != null">
+            #{month},
+            </if>
+            <if test="amount != null">
+            #{amount},
+            </if>
+            <if test="createTime != null">
+            #{createTime},
+            </if>
+            <if test="modifyTime != null">
+            #{modifyTime},
+            </if>
+            <if test="creator != null">
+            #{creator},
+            </if>
+            <if test="modifier != null">
+            #{modifier},
+            </if>
+            <if test="company != null">
+            #{company},
+            </if>
+            <if test="expectednumber != null">
+            #{expectednumber},
+            </if>
+            <if test="differentCode != null">
+            #{differentCode}
+            </if>
+        </trim>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Set_Values  -->
+    <sql id="Base_Column_Set_Values">
+    ID = #{id},
+    PERSON_CODE = #{personCode},
+    PERSON_NAME = #{personName},
+    BRANDS = #{brands},
+    YEAR = #{year},
+    MONTH = #{month},
+    AMOUNT = #{amount},
+    CREATE_TIME = #{createTime},
+    MODIFY_TIME = #{modifyTime},
+    CREATOR = #{creator},
+    MODIFIER = #{modifier},
+    COMPANY = #{company},
+    EXPECTEDNUMBER = #{expectednumber},
+    DIFFERENT_CODE = #{differentCode}
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Set_Values_Selective  -->
+    <sql id="Base_Column_Set_Values_Selective">
+        <if test="id != null">
+        ID = #{id},
+        </if>
+        <if test="personCode != null">
+        PERSON_CODE = #{personCode},
+        </if>
+        <if test="personName != null">
+        PERSON_NAME = #{personName},
+        </if>
+        <if test="brands != null">
+        BRANDS = #{brands},
+        </if>
+        <if test="year != null">
+        YEAR = #{year},
+        </if>
+        <if test="month != null">
+        MONTH = #{month},
+        </if>
+        <if test="amount != null">
+        AMOUNT = #{amount},
+        </if>
+        <if test="createTime != null">
+        CREATE_TIME = #{createTime},
+        </if>
+        <if test="modifyTime != null">
+        MODIFY_TIME = #{modifyTime},
+        </if>
+        <if test="creator != null">
+        CREATOR = #{creator},
+        </if>
+        <if test="modifier != null">
+        MODIFIER = #{modifier},
+        </if>
+        <if test="company != null">
+        COMPANY = #{company},
+        </if>
+        <if test="expectednumber != null">
+        EXPECTEDNUMBER = #{expectednumber},
+        </if>
+        <if test="differentCode != null">
+        DIFFERENT_CODE = #{differentCode}
+        </if>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Where_Selective  -->
+    <sql id="Base_Column_Where_Selective">
+        <if test="id != null">
+            and ID = #{id}
+        </if>
+        <if test="personCode != null">
+            and PERSON_CODE = #{personCode}
+        </if>
+        <if test="personName != null">
+            and PERSON_NAME = #{personName}
+        </if>
+        <if test="brands != null">
+            and BRANDS = #{brands}
+        </if>
+        <if test="year != null">
+            and YEAR = #{year}
+        </if>
+        <if test="month != null">
+            and MONTH = #{month}
+        </if>
+        <if test="amount != null">
+            and AMOUNT = #{amount}
+        </if>
+        <if test="createTime != null">
+            and CREATE_TIME = #{createTime}
+        </if>
+        <if test="modifyTime != null">
+            and MODIFY_TIME = #{modifyTime}
+        </if>
+        <if test="creator != null">
+            and CREATOR = #{creator}
+        </if>
+        <if test="modifier != null">
+            and MODIFIER = #{modifier}
+        </if>
+        <if test="company != null">
+            and COMPANY = #{company}
+        </if>
+        <if test="expectednumber != null">
+            and EXPECTEDNUMBER = #{expectednumber}
+        </if>
+        <if test="differentCode != null">
+            and DIFFERENT_CODE = #{differentCode}
+        </if>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Where_Selective_Param1  -->
+    <sql id="Base_Column_Where_Selective_Param1">
+        <if test="param1.id != null">
+            and ID = #{param1.id}
+        </if>
+        <if test="param1.personCode != null">
+            and PERSON_CODE = #{param1.personCode}
+        </if>
+        <if test="param1.personName != null">
+            and PERSON_NAME = #{param1.personName}
+        </if>
+        <if test="param1.brands != null">
+            and BRANDS = #{param1.brands}
+        </if>
+        <if test="param1.year != null">
+            and YEAR = #{param1.year}
+        </if>
+        <if test="param1.month != null">
+            and MONTH = #{param1.month}
+        </if>
+        <if test="param1.amount != null">
+            and AMOUNT = #{param1.amount}
+        </if>
+        <if test="param1.createTime != null">
+            and CREATE_TIME = #{param1.createTime}
+        </if>
+        <if test="param1.modifyTime != null">
+            and MODIFY_TIME = #{param1.modifyTime}
+        </if>
+        <if test="param1.creator != null">
+            and CREATOR = #{param1.creator}
+        </if>
+        <if test="param1.modifier != null">
+            and MODIFIER = #{param1.modifier}
+        </if>
+        <if test="param1.company != null">
+            and COMPANY = #{param1.company}
+        </if>
+        <if test="param1.expectednumber != null">
+            and EXPECTEDNUMBER = #{param1.expectednumber}
+        </if>
+        <if test="param1.differentCode != null">
+            and DIFFERENT_CODE = #{param1.differentCode}
+        </if>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Order_By  -->
+    <sql id="Base_Order_By">
+        <bind name="propName" value="sortField"></bind>
+        ORDER BY <include refid="Base_Column_Name" />
+        <choose>
+            <when test="isAscend">
+                ASC
+            </when>
+            <otherwise>
+                DESC
+            </otherwise>
+        </choose>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Name  -->
+    <sql id="Base_Column_Name">
+        <if test='"id" == propName'>
+        ID
+        </if>
+        <if test='"personCode" == propName'>
+        PERSON_CODE
+        </if>
+        <if test='"personName" == propName'>
+        PERSON_NAME
+        </if>
+        <if test='"brands" == propName'>
+        BRANDS
+        </if>
+        <if test='"year" == propName'>
+        YEAR
+        </if>
+        <if test='"month" == propName'>
+        MONTH
+        </if>
+        <if test='"amount" == propName'>
+        AMOUNT
+        </if>
+        <if test='"createTime" == propName'>
+        CREATE_TIME
+        </if>
+        <if test='"modifyTime" == propName'>
+        MODIFY_TIME
+        </if>
+        <if test='"creator" == propName'>
+        CREATOR
+        </if>
+        <if test='"modifier" == propName'>
+        MODIFIER
+        </if>
+        <if test='"company" == propName'>
+        COMPANY
+        </if>
+        <if test='"expectednumber" == propName'>
+        EXPECTEDNUMBER
+        </if>
+        <if test='"differentCode" == propName'>
+        DIFFERENT_CODE
+        </if>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Id_Array  -->
+    <sql id="Base_Id_Array">
+        <foreach collection="array" open="(" close=")" separator="," item="id">
+        #{id}
+        </foreach>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Id_List  -->
+    <sql id="Base_Id_List">
+        <foreach collection="list" open="(" close=")" separator="," item="id">
+        #{id}
+        </foreach>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Select_All  -->
+    <sql id="Base_Select_All">
+        select
+        <include refid="Base_Column_List" />
+        from <include refid="Base_Table_Name" />
+    </sql>
+    <!-- endregion -->
+
+    <!-- region selectById  -->
+    <select id="selectById" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        where ID = #{id}
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectByIds  -->
+    <select id="selectByIds" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        where ID in
+        <include refid="Base_Id_List" />
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectAll  -->
+    <select id="selectAll" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectCount  -->
+    <select id="selectCount" resultType="int">
+        select count(*)
+        from <include refid="Base_Table_Name" />
+        <where>
+            <include refid="Base_Column_Where_Selective" />
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region select  -->
+    <select id="select" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Where_Selective" />
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectOne  -->
+    <select id="selectOne" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Where_Selective" />
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectOrderBy  -->
+    <select id="selectOrderBy" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Where_Selective_Param1" />
+        </where>
+        <include refid="Base_Order_By" />
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectByProperty  -->
+    <select id="selectByProperty" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Name" /> = #{propValue}
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectByPropertyIn  -->
+    <select id="selectByPropertyIn" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Name" /> IN
+            <foreach collection="propValues" open="(" close=")" separator="," item="propValue">
+            #{propValue}
+            </foreach>
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region delete  -->
+    <delete id="delete">
+        delete
+        from <include refid="Base_Table_Name" />
+        <where>
+            <include refid="Base_Column_Where_Selective" />
+        </where>
+    </delete>
+    <!-- endregion -->
+
+    <!-- region deleteById  -->
+    <delete id="deleteById">
+        delete
+        from <include refid="Base_Table_Name" />
+        where ID = #{id}
+    </delete>
+    <!-- endregion -->
+
+    <!-- region deleteByIds  -->
+    <delete id="deleteByIds">
+        delete
+        from <include refid="Base_Table_Name" />
+        where ID in
+        <include refid="Base_Id_List" />
+    </delete>
+    <!-- endregion -->
+
+    <!-- region insert  -->
+    <insert id="insert" parameterType="com.yqjr.fin.mkmm.sales.entity.PersonPlan">
+        insert into <include refid="Base_Table_Name" /> (
+        <include refid="Base_Column_List" />
+        )
+        values (
+        <include refid="Base_Column_Values" />
+        )
+    </insert>
+    <!-- endregion -->
+
+    <!-- region updateById  -->
+    <update id="updateById" parameterType="com.yqjr.fin.mkmm.sales.entity.PersonPlan">
+        update <include refid="Base_Table_Name" />
+        <set>
+            <include refid="Base_Column_Set_Values" />
+        </set>
+        where ID = #{id}
+    </update>
+    <!-- endregion -->
+
+    <!-- region patchById  -->
+    <update id="patchById" parameterType="com.yqjr.fin.mkmm.sales.entity.PersonPlan">
+        update <include refid="Base_Table_Name" />
+        <set>
+            <include refid="Base_Column_Set_Values_Selective" />
+        </set>
+        where ID = #{id}
+    </update>
+    <!-- endregion -->
+
+    <!-- endregion BaseMapper -->
+
+    <!-- region generated by CodeRobot  -->
+
+    <!-- region 结果集映射  -->
+    <resultMap id="PersonPlanResult" type="com.yqjr.fin.mkmm.sales.entity.PersonPlan">
+        <result property="id" column="ID"/><!--序列-->
+        <result property="personCode" column="PERSON_CODE"/><!--人员编号-->
+        <result property="personName" column="PERSON_NAME"/><!--人员姓名-->
+        <result property="brands" column="BRANDS"/><!--品牌-->
+        <result property="year" column="YEAR"/><!--年度-->
+        <result property="month" column="MONTH"/><!--月-->
+        <result property="amount" column="AMOUNT"/><!--数量-->
+        <result property="createTime" column="CREATE_TIME"/><!--创建时间-->
+        <result property="modifyTime" column="MODIFY_TIME"/><!--修改时间-->
+        <result property="creator" column="CREATOR"/><!--创建人-->
+        <result property="modifier" column="MODIFIER"/><!--修改人-->
+        <result property="company" column="COMPANY"/><!--所属公司-->
+        <result property="expectednumber" column="EXPECTEDNUMBER"/><!--预计数量-->
+        <result property="differentCode" column="DIFFERENT_CODE"/><!--导入识别码-->
+    </resultMap>
+    <!-- endregion -->
+
+    <!-- 查询条件判断 入参为对象 条件为模糊-->
+    <sql id="queryLikePersonPlan">
+        <if test="personPlan!=null">
+            <if test="id!=null and id!=''">
+                AND ID LIKE CONCAT('%'#{id}'%')<!--序列-->
+            </if>
+            <if test="personCode!=null and personCode!=''">
+                AND PERSON_CODE LIKE CONCAT('%'#{personCode}'%')<!--人员编号-->
+            </if>
+            <if test="personName!=null and personName!=''">
+                AND PERSON_NAME LIKE CONCAT('%'#{personName}'%')<!--人员姓名-->
+            </if>
+            <if test="brands!=null and brands!=''">
+                AND BRANDS LIKE CONCAT('%'#{brands}'%')<!--品牌-->
+            </if>
+            <if test="year!=null and year!=''">
+                AND YEAR LIKE CONCAT('%'#{year}'%')<!--年度-->
+            </if>
+            <if test="month!=null and month!=''">
+                AND MONTH LIKE CONCAT('%'#{month}'%')<!--月-->
+            </if>
+            <if test="amount!=null and amount!=''">
+                AND AMOUNT LIKE CONCAT('%'#{amount}'%')<!--数量-->
+            </if>
+            <if test="createTime!=null and createTime!=''">
+                AND CREATE_TIME LIKE CONCAT('%'#{createTime}'%')<!--创建时间-->
+            </if>
+            <if test="modifyTime!=null and modifyTime!=''">
+                AND MODIFY_TIME LIKE CONCAT('%'#{modifyTime}'%')<!--修改时间-->
+            </if>
+            <if test="creator!=null and creator!=''">
+                AND CREATOR LIKE CONCAT('%'#{creator}'%')<!--创建人-->
+            </if>
+            <if test="modifier!=null and modifier!=''">
+                AND MODIFIER LIKE CONCAT('%'#{modifier}'%')<!--修改人-->
+            </if>
+            <if test="company!=null and company!=''">
+                AND COMPANY LIKE CONCAT('%'#{company}'%')<!--所属公司-->
+            </if>
+            <if test="expectednumber!=null and expectednumber!=''">
+                AND EXPECTEDNUMBER LIKE CONCAT('%'#{expectednumber}'%')<!--预计数量-->
+            </if>
+            <if test="differentCode!=null and differentCode!=''">
+                DIFFERENT_CODE LIKE CONCAT('%'#{differentCode}'%')<!--导入识别码-->
+            </if>
+        </if>
+    </sql>
+
+    <!-- 按条件模糊查询所有 -->
+    <select id="queryPersonPlanList" parameterType="com.yqjr.fin.mkmm.sales.entity.PersonPlan"
+            resultMap="PersonPlanResult">
+        SELECT
+        ID,<!--序列-->
+        PERSON_CODE,<!--人员编号-->
+        PERSON_NAME,<!--人员姓名-->
+        BRANDS,<!--品牌-->
+        YEAR,<!--年度-->
+        MONTH,<!--月-->
+        AMOUNT,<!--数量-->
+        CREATE_TIME,<!--创建时间-->
+        MODIFY_TIME,<!--修改时间-->
+        CREATOR,<!--创建人-->
+        MODIFIER,<!--修改人-->
+        COMPANY,<!--所属公司-->
+        EXPECTEDNUMBER,<!--预计数量-->
+        DIFFERENT_CODE<!--导入识别码-->
+        FROM MKMM_PERSON_PLAN
+        <where>
+            <include refid="queryLikePersonPlan"/>
+        </where>
+    </select>
+
+    <!-- 按条件模糊统计所有条数 -->
+    <select id="queryPersonPlanCount" parameterType="com.yqjr.fin.mkmm.sales.entity.PersonPlan" resultType="int">
+        SELECT
+        count (id)
+        FROM MKMM_PERSON_PLAN
+        <where>
+            <include refid="queryLikePersonPlan"/>
+        </where>
+    </select>
+
+    <!-- 批量删除，入参为数组  -->
+    <delete id="dynamicDelete">
+        delete from MKMM_PERSON_PLAN where id in
+        <foreach collection="array" open="(" close=")" separator="," item="arr">
+            #{arr}
+        </foreach>
+    </delete>
+
+    <!-- 批量删除，入参为list  -->
+    <delete id="dynamicDeleteList">
+        delete from MKMM_PERSON_PLAN where id in
+        <foreach collection="list" open="(" close=")" separator="," item="ids">
+            #{ids}
+        </foreach>
+    </delete>
+
+    <!-- 批量插入 -->
+    <insert id="insertBatch" parameterType="java.util.List">
+        <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into MKMM_PERSON_PLAN
+        (
+        <include refid="Base_Column_List" />
+        )
+        values
+        <foreach collection="list" item="personPlan" index="index" separator=",">
+            (
+            <include refid="Base_Column_Values" />
+            )
+        </foreach>
+    </insert>
+
+    <!-- 插入单条数据，并返回主键ID -->
+    <insert id="saveObj" useGeneratedKeys="true" keyProperty="id"
+            parameterType="com.yqjr.fin.mkmm.sales.entity.PersonPlan">
+        insert into MKMM_PERSON_PLAN
+        (
+        <include refid="Base_Column_List" />
+        )
+        values
+        (
+        <include refid="Base_Column_Values" />
+        )
+    </insert>
+
+
+    <!-- **********************************************************************-->
+    <!-- ************* 在此下方为一对一、一对多查询方式 仅供参考***************-->
+    <!-- **********************************************************************-->
+    <!-- 一个博客（BlogInfo） 属于一个作者（Author） ，一个作者（Author） 有多篇文章（Post） -->
+    <!--
+  <resultMap type="com.foo.bean.BlogInfo" id="BlogInfo">
+      <id column="blog_id" property="blogId" />
+      <result column="title" property="title" />
+      <association property="author" column="blog_author_id"
+          javaType="com.foo.bean.Author" select="com.foo.bean.AuthorMapper.selectByPrimaryKey">
+      </association>
+      <collection property="posts" column="blog_id" ofType="com.foo.bean.Post"
+          select="com.foo.bean.PostMapper.selectByBlogId">
+      </collection>
+  </resultMap>
+
+  <select id="queryBlogInfoById" resultMap="BlogInfo" parameterType="java.math.BigDecimal">
+      SELECT
+      B.BLOG_ID,
+      B.TITLE,
+      B.AUTHOR_ID AS BLOG_AUTHOR_ID
+      FROM BLOG B
+      where B.BLOG_ID = 博客ID
+  </select>
+
+          上述方法存在N+1问题
+      它的弊端也比较明显：即所谓的N+1问题。关联的嵌套查询显示得到一个结果集，然后根据这个结果集的每一条记录进行关联查询。
+      现在假设嵌套查询就一个（即resultMap 内部就一个association标签），现查询的结果集返回条数为N，那么关联查询语句将会被执行N次，加上自身返回结果集查询1次，共需要访问数据库N+1次。如果N比较大的话，这样的数据库访问消耗是非常大的！所以使用这种嵌套语句查询的使用者一定要考虑慎重考虑，确保N值不会很大。
+      以上面的例子为例，select 语句本身会返回com.foo.bean.BlogMapper.queryBlogInfoById 条数为1 的结果集，由于它有两条关联的语句查询，它需要共访问数据库 1*（1+1）=3次数据库。
+
+
+       <resultMap type="com.foo.bean.BlogInfo" id="BlogInfo">
+      <id column="blog_id" property="blogId"/>
+      <result column="title" property="title"/>
+      <association property="author" column="blog_author_id" javaType="com.foo.bean.Author">
+          <id column="author_id" property="authorId"/>
+          <result column="user_name" property="userName"/>
+          <result column="password" property="password"/>
+          <result column="email" property="email"/>
+          <result column="biography" property="biography"/>
+      </association>
+      <collection property="posts" column="blog_post_id" ofType="com.foo.bean.Post">
+          <id column="post_id" property="postId"/>
+          <result column="blog_id" property="blogId"/>
+          <result column="create_time" property="createTime"/>
+          <result column="subject" property="subject"/>
+          <result column="body" property="body"/>
+          <result column="draft" property="draft"/>
+      </collection>
+      </resultMap>
+
+
+      <select id="queryAllBlogInfo" resultMap="BlogInfo">
+          SELECT
+           B.BLOG_ID,
+           B.TITLE,
+           B.AUTHOR_ID AS BLOG_AUTHOR_ID,
+           A.AUTHOR_ID,
+           A.USER_NAME,
+           A.PASSWORD,
+           A.EMAIL,
+           A.BIOGRAPHY,
+           P.POST_ID,
+           P.BLOG_ID AS BLOG_POST_ID ,
+             P.CREATE_TIME,
+           P.SUBJECT,
+           P.BODY,
+           P.DRAFT
+      FROM BLOG B
+      LEFT OUTER JOIN AUTHOR A
+        ON B.AUTHOR_ID = A.AUTHOR_ID
+      LEFT OUTER JOIN POST P
+        ON P.BLOG_ID = B.BLOG_ID
+      </select>
+      -->
+
+    <!-- **********************************************************************-->
+    <!-- ************* 此线上方代码自动生成，在此下方编写自定义代码。***************-->
+    <!-- **********************************************************************-->
+
+    <!-- endregion -->
+
+    <!-- 判断是否已存在记录 -->
+    <select id="selectPersonPlanByYear" resultMap="BaseResultMap" parameterType="String">
+        select
+            <include refid="Base_Column_List" />
+        from <include refid="Base_Table_Name" />
+        where YEAR = #{arg0}
+        and  COMPANY =#{arg1}
+    </select>
+
+    <!-- 将当前月到12月的数据查出 -->
+    <select id="queryPersonPlanByYear" resultMap="BaseResultMap" >
+        select
+        <include refid="Base_Column_List" />
+        from <include refid="Base_Table_Name" />
+        where YEAR = #{arg0}
+        and COMPANY =#{arg1}
+        and to_number (month)
+        between #{arg2} and 12
+    </select>
+
+    <!-- 删除将当前月到12月的数据 -->
+    <delete id="deletePersonPlanByYear">
+        delete
+        from <include refid="Base_Table_Name" />
+        where YEAR = #{arg0}
+        and COMPANY =#{arg1}
+        and to_number (month)
+        between #{arg2} and 12
+    </delete>
+
+    <!-- 查一共有多少人 -->
+    <select id="selectPersonPlan" resultMap="BaseResultMap" >
+        select rownum pid, aa.PERSON_CODE, aa.person_Name, aa.company
+        from (
+            (select distinct PERSON_CODE, person_Name ,company
+            from MKMM_PERSON_PLAN
+            <where>
+                    <if test="year != null and year != ''">
+                        and YEAR = #{year}
+                    </if>
+                    <if test="brands != null and brands != ''">
+                        and BRANDS = #{brands}
+                    </if>
+                    <if test="company != null and company != ''">
+                        and company = #{company}
+                    </if>
+                </where>) aa
+            )
+        order by pid
+    </select>
+
+    <!-- 查每个人的12个月计划-->
+    <select id="selectPersonMonthPlan" resultMap="BaseResultMap">
+        select
+            ID,PERSON_CODE,PERSON_NAME,BRANDS,YEAR,MONTH,AMOUNT,CREATE_TIME,MODIFY_TIME,CREATOR,MODIFIER,COMPANY
+        from MKMM_PERSON_PLAN
+        <where>
+            <if test="personCode != null and personCode != ''">
+                and PERSON_CODE = #{personCode}
+            </if>
+            <if test="brands != null and brands != ''">
+                and BRANDS = #{brands}
+            </if>
+            <if test="year != null and year != ''">
+                and YEAR = #{year}
+            </if>
+            <if test="month != null and month != ''">
+                and MONTH = #{month}
+            </if>
+            <if test="company != null and company != ''">
+                and COMPANY = #{company}
+            </if>
+        </where>
+        order by cast(month as int)
+    </select>
+
+
+    <!-- 查人的月计划合计-->
+    <select id="selectPlanByMonth" resultType="long">
+        select sum(amount)
+    from <include refid="Base_Table_Name" />
+    <where>
+        <include refid="Base_Column_Where_Selective" />
+    </where>
+</select>
+
+    <!-- 查询每个人的计划-->
+    <select id="queryOldPersonPlan" resultType="long">
+        select sum(amount)
+        from MKMM_PERSON_PLAN
+        <where>
+            <include refid="Base_Column_Where_Selective" />
+        </where>
+    </select>
+
+
+    <!-- 查人的集合  -->
+    <select id="selectPlans" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Where_Selective" />
+        </where>
+    </select>
+
+    <resultMap id="PlanTrackResultMap" type="com.yqjr.fin.mkmm.sales.entity.PlanTrack">
+        <result property="id" column="ID"/><!--ID-->
+        <result property="year" column="YEAR"/><!--年份-->
+        <result property="month" column="MONTH"/><!--月份-->
+        <result property="areaCode" column="AREA_CODE"/><!--区域代码-->
+        <result property="areaName" column="AREA_NAME"/><!--区域名称-->
+        <result property="teamCode" column="TEAM_CODE"/><!--团队代码-->
+        <result property="teamName" column="TEAM_NAME"/><!--团队名称-->
+        <result property="cityCode" column="CITY_CODE"/><!--下辖区域代码-->
+        <result property="cityName" column="CITY_NAME"/><!--下辖区域名称-->
+        <result property="personCode" column="PERSON_CODE"/><!--人员代码-->
+        <result property="personName" column="PERSON_NAME"/><!--人员名称-->
+        <result property="personType" column="PERSON_TYPE"/><!--人员类别-->
+        <result property="brands" column="BRANDS"/><!--品牌-->
+        <result property="brandType" column="BRAND_TYPE"/><!--品牌类别-->
+        <result property="monthActualNum" column="MONTH_ACTUAL_NUM"/><!--月实际台数达成量-->
+        <result property="monthPlanNum" column="MONTH_PLAN_NUM"/><!--月台数预算-->
+        <result property="monthPlanRate" column="MONTH_PLAN_RATE"/><!--月台数预算达成率-->
+        <result property="monthRate" column="MONTH_RATE"/><!--月序时进度-->
+        <result property="monthRateCal" column="MONTH_RATE_CAL"/><!--月达成率与序时进度差值-->
+        <result property="yearActualNum" column="YEAR_ACTUAL_NUM"/><!--年台数实际达成量-->
+        <result property="yearPlanNum" column="YEAR_PLAN_NUM"/><!--年台数预算数-->
+        <result property="yearPlanRate" column="YEAR_PLAN_RATE"/><!--年台数预算数达成率-->
+        <result property="yearRate" column="YEAR_RATE"/><!--年序时进度-->
+        <result property="yearRateCal" column="YEAR_RATE_CAL"/><!--年达成率与序时进度差值-->
+        <result property="createTime" column="CREATE_TIME"/><!--创建时间-->
+        <result property="modifyTime" column="MODIFY_TIME"/><!--修改时间-->
+        <result property="transcode1" column="TRANSCODE1"/><!--备用1-->
+        <result property="transcode2" column="TRANSCODE2"/><!--备用2-->
+        <result property="transcode3" column="TRANSCODE3"/><!--备用3-->
+        <result property="transcode4" column="TRANSCODE4"/><!--备用4-->
+        <result property="creator" column="CREATOR"/><!--创建人-->
+        <result property="startTime" column="START_TIME"/><!--生效时间-->
+        <result property="modifier" column="MODIFIER"/><!--修改人-->
+        <result property="flag" column="FLAG"/><!--最新标识-->
+        <result property="differentCode" column="DIFFERENT_CODE"/><!--导入识别码-->
+    </resultMap>
+    <!-- 查询月跟踪表中当月数据  -->
+    <select id="selectMonthPlanTrack" resultMap="PlanTrackResultMap">
+        select ID,YEAR,MONTH,AREA_CODE,AREA_NAME,TEAM_CODE,TEAM_NAME,CITY_CODE,CITY_NAME,PERSON_CODE,PERSON_NAME,PERSON_TYPE,BRANDS,BRAND_TYPE,MONTH_ACTUAL_NUM,MONTH_PLAN_NUM,MONTH_PLAN_RATE,MONTH_RATE,MONTH_RATE_CAL,YEAR_ACTUAL_NUM,YEAR_PLAN_NUM,YEAR_PLAN_RATE,YEAR_RATE,YEAR_RATE_CAL,CREATE_TIME,MODIFY_TIME,TRANSCODE1,TRANSCODE2,TRANSCODE3,TRANSCODE4,CREATOR,START_TIME,MODIFIER,FLAG,DIFFERENT_CODE
+        from MKMM_PLAN_TRACK
+        where year = #{arg0}
+        and month = #{arg1}
+        and COMPANY =#{arg2}
+    </select>
+
+    <!-- 删除当月数据  -->
+    <delete id="deletePlanTrack">
+        delete
+        from MKMM_PLAN_TRACK
+        where year = #{arg0}
+        and month = #{arg1}
+        and COMPANY =#{arg2}
+    </delete>
+
+    <!-- 查人 -->
+    <select id="selectPersonByYear" resultType="String" >
+        select distinct person_code
+        from mkmm_person_sale
+        where year = #{arg0}
+        and COMPANY =#{arg1}
+    </select>
+
+
+    <!-- 每个人/每个品牌的年实际达成合计数 -->
+    <select id="sumPersonSales" resultType="long" >
+        select sum(amount)
+        from mkmm_person_sale
+        where year = #{arg0}
+        and person_Code = #{arg1}
+        and brands = #{arg2}
+         and COMPANY =#{arg3}
+
+    </select>
+
+    <!-- 每个人/每个品牌的年计划合计数 -->
+    <select id="sumPersonPlan" resultType="long" >
+        select sum(amount)
+        from mkmm_person_plan
+        where year = #{arg0}
+        and person_Code = #{arg1}
+        and brands = #{arg2}
+         and COMPANY =#{arg3}
+    </select>
+
+    <resultMap id="PersonTeamResultMap" type="com.yqjr.fin.mkmm.sales.entity.PersonTeam">
+        <result property="id" column="ID"/><!--序列-->
+        <result property="personCode" column="PERSON_CODE"/><!--人员代码-->
+        <result property="company" column="COMPANY"/><!--公司代码-->
+        <result property="teamCode" column="TEAM_CODE"/><!--团队代码-->
+        <result property="personNature" column="PERSON_NATURE"/><!--人员性质（0团队负责人，1销售经理）-->
+        <result property="personLevel" column="PERSON_LEVEL"/><!--人员级别-->
+        <result property="personStatus" column="PERSON_STATUS"/><!--人员状态(0 无效,1 有效，2 注销)-->
+        <result property="personCheckStart" column="PERSON_CHECK_START"/><!--考核开始时间-->
+        <result property="personUptime" column="PERSON_UPTIME"/><!--上岗时间-->
+        <result property="personCorrectime" column="PERSON_CORRECTIME"/><!--转正时间-->
+        <result property="personTryStartime" column="PERSON_TRY_STARTIME"/><!--试用期开始时间-->
+        <result property="personTryEndtime" column="PERSON_TRY_ENDTIME"/><!--试用期结束时间-->
+        <result property="personJointime" column="PERSON_JOINTIME"/><!--加入我司时间-->
+        <result property="remark" column="REMARK"/><!--备注-->
+        <result property="startTime" column="START_TIME"/><!--生效时间-->
+        <result property="createTime" column="CREATE_TIME"/><!--创建时间-->
+        <result property="modifyTime" column="MODIFY_TIME"/><!--修改时间-->
+        <result property="creator" column="CREATOR"/><!--创建人-->
+        <result property="modifier" column="MODIFIER"/><!--修改人-->
+        <result property="areaCode" column="AREA_CODE"/><!--区域代码-->
+        <result property="areaName" column="AREA_NAME"/><!--区域名称-->
+        <result property="teamName" column="TEAM_NAME"/><!--团队名称-->
+    </resultMap>
+    <!-- 查这个人的性质和区域 -->
+    <select id="selectPersonTeam" resultMap="PersonTeamResultMap" >
+        select
+            ID,PERSON_CODE,COMPANY_CODE,TEAM_CODE,PERSON_NATURE,PERSON_LEVEL,PERSON_STATUS,PERSON_CHECK_START,PERSON_UPTIME,PERSON_CORRECTIME,PERSON_TRY_STARTIME,PERSON_TRY_ENDTIME,PERSON_JOINTIME,REMARK,START_TIME,CREATE_TIME,MODIFY_TIME,CREATOR,MODIFIER,AREA_CODE,AREA_NAME,TEAM_NAME
+        from mkmm_person_team
+        where person_Code = #{arg0}
+        and COMPANY = #{arg1}
+    </select>
+
+
+</mapper>
+

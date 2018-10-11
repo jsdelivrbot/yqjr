@@ -1,0 +1,97 @@
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" onclick="closeUploader()" aria-hidden="true">
+        <li class="fa fa-remove"></li>
+    </button>
+    <h5 class="modal-title"></h5>
+</div>
+
+<div class="modal-body" data-margin="top" >
+    <form name="file_form" id="file_form" enctype="multipart/form-data">
+        <input type="file"  name="file" id="filecontainer" class="file-loading" >
+        <div id="errorBlock" class="help-block"></div>
+        <input type="hidden"  id="sysfileIds">
+    </form>
+
+</div>
+<script>
+    //来自调用页面的配置，通过spring参数跳转获取参数 因为get方式传输 所以参数长度有限，可以使用data("file")获取对象
+    //config.winId=fileObj.options.winId   config.callback/config.fileIds 获取不到 得用fileObj.options.fileIds
+    //var config =_$$$self?_$$$self:document.getElementById("mainFrame").contentWindow._$$$self;
+    var config =document.getElementById("mainFrame").contentWindow._$$$self;
+    console.log(config);
+//    var fileObj=_$$$attach?_$$$attach:document.getElementById("mainFrame").contentWindow._$$$attach;
+    var fileObj=document.getElementById("mainFrame").contentWindow._$$$attach;
+    $(function () {
+        //多文件上传
+        if(config.multiple)
+            $("#filecontainer").attr("multiple", "multiple");
+        //因为dailog共享父页面，所以也可以
+        //fileObj=$("#"+config.container).data("attach");
+        //config.container错误
+        if(!fileObj){
+            modals.error(config.container+"配置错误，请检查");
+            return;
+        }
+        //预览回填
+        var preview=[];
+        var previewConfig=[];
+        if(fileObj.options.fileIds){
+            $("#sysfileIds").val(fileObj.options.fileIds);
+            var result=fileObj.getFileResult(fileObj.options.fileIds);
+            preview=result.initialPreview;
+            previewConfig=result.initialPreviewConfig;
+        }
+
+        //参数明细配置 参照api http://plugins.krajee.com/file-input#ajax-uploads
+        $("#filecontainer").fileinput($.extend({
+            initialPreview:preview,
+            initialPreviewConfig:previewConfig,
+            previewFileIconSettings:fileObj.previewFileIconSettings
+        },fileObj.getFileInputConfig())).on("fileuploaded",function (event,data,previewId,index) {
+        	//console.log("fileuploaded:"+data.response.fileIds);
+            addFileId(data.response.fileIds);
+            //绑定下载按钮事件
+            //fileObj.downloadHandler(this);
+        }).on("filebatchuploadsuccess",function (event,data,previewId,index) {
+        	//console.log("filebatchuploadsuccess:"+data.response.fileIds);
+            //console.log(data.response);
+            //批量文件上传成功事件
+            addFileId(data.response.fileIds);
+            //fileObj.downloadHandler(this);
+            //上传成功关闭本窗体
+            //modals.hideWin(fileObj.options.winId);
+            //并执行回调函数
+            //closeUploader();
+        }).on("filedeleted",function (event,key) {
+        	//console.log("filedeleted:"+key);
+            deleteFileId(key);
+        });
+        //初始化页面绑定下载事件
+        //fileObj.downloadHandler($("#filecontainer"));
+        //以下方法放在$(funtion(){})中是控制方法的作用域
+        //在隐藏域中增加文件id
+        function addFileId(fileIds){
+            var newIds=fileObj.addFileIds(fileIds,$("#sysfileIds").val());
+            $("#sysfileIds").val(newIds);
+        }
+
+        function deleteFileId(fileIds){
+            var newIds=fileObj.deleteFileIds(fileIds,$("#sysfileIds").val());
+            $("#sysfileIds").val(newIds);
+        }
+    })
+
+
+    function closeUploader() {
+        //wyhtml5也有modal样式，所以需要手动加上两句
+        $(document.body).removeClass('modal-open');
+        $(document.body).css("padding-right","0px");
+        var fileIds=$("#sysfileIds").val();
+        fileObj.callbackHandler(fileIds);
+    }
+  
+
+
+
+
+</script>

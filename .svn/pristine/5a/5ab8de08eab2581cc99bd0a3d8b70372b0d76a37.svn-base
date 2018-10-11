@@ -1,0 +1,227 @@
+<style lang="less">
+    @import '../../../styles/common.less';
+</style>
+<template>
+    <div>
+        <Form :label-width="100">
+            <Card>
+                <p slot="title">
+                    <Icon type="search"></Icon>
+                    团队审核查看
+                </p>
+                <Row>
+                    <Col span="8" offset="2">
+                        <FormItem label="区域名称：" >
+                            <Input v-model="teamReviewViewData.areaName" disabled ></Input>
+                        </FormItem>
+                    </Col>
+                    <Col span="8" offset="2">
+                        <FormItem label="区域代码：" >
+                            <Input v-model="teamReviewViewData.areaCode" disabled ></Input>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span="8" offset="2">
+                        <FormItem label="团队名称：" >
+                            <Input v-model="teamReviewViewData.teamName"  disabled ></Input>
+                        </FormItem>
+                    </Col>
+                    <Col span="8" offset="2">
+                        <FormItem label="团队代码：" >
+                            <Input v-model="teamReviewViewData.teamCode" disabled ></Input>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span="8" offset="2">
+                        <FormItem label="团队等级：" >
+                            <Select v-model="teamReviewViewData.teamLevel" style="width:100%" disabled>
+                                <Option v-for="item in teamLevelList" :value="item.value" :key="item.value">{{ item.label }}</Option>
+                            </Select>
+                        </FormItem>
+                    </Col>
+                    <Col span="8" offset="2">
+                        <FormItem label="团队类别：" >
+                            <Select v-model="teamReviewViewData.teamType" style="width:100%" disabled>
+                                <Option v-for="item in teamTypeList" :value="item.value" :key="item.value">{{ item.label }}</Option>
+                            </Select>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span="8" offset="2">
+                        <FormItem label="团队状态：" >
+                            <Select v-model="teamReviewViewData.teamStatus" style="width:100%" disabled>
+                                <Option v-for="item in teamStatusList" :value="item.value" :key="item.value">{{ item.label }}</Option>
+                            </Select>
+                        </FormItem>
+                    </Col>
+                    <Col span="8" offset="2">
+                        <FormItem label="团队电话：" >
+                            <Input v-model="teamReviewViewData.teamPhone" disabled ></Input>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span="8" offset="2">
+                        <FormItem label="邮编：" >
+                            <Input v-model="teamReviewViewData.teamZip" disabled ></Input>
+                        </FormItem>
+                    </Col>
+                    <Col span="8" offset="2">
+                        <FormItem label="传真：" >
+                            <Input v-model="teamReviewViewData.teamFax" disabled ></Input>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span="8" offset="2">
+                        <FormItem label="生效时间：" >
+                            <Input v-model="teamReviewViewData.startTime" disabled ></Input>
+                        </FormItem>
+                    </Col>
+                    <Col span="8" offset="2">
+                        <FormItem label="创建时间：" >
+                            <Input v-model="teamReviewViewData.createTime" disabled ></Input>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span="18" offset="2">
+                        <FormItem label="团队地址：" >
+                            <Input v-model="teamReviewViewData.teamAddress" disabled ></Input>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span="18" offset="2">
+                        <FormItem label="备注：">
+                            <Input v-model="teamReviewViewData.remark" type="textarea" disabled style="width: 100%" :rows="4" :autosize="{minRows: 2,maxRows: 6}"></Input>
+                        </FormItem>
+                    </Col>
+                </Row>
+            </Card>
+            <Card class="margin-top-10">
+                <p slot="title">
+                    <Icon type="search"></Icon>
+                    审核进度
+                </p>
+                <Table :data="teamReviewViewResult" :columns="tableColumns"  :loading="loading" ref="tableExcel" class="margin-top-10"></Table>
+                <Row>
+                    <Col span="4" offset="9">
+                        <Button type="primary" icon="reply" @click.prevent="pageBack">返回</Button>
+                    </Col>
+                </Row>
+            </Card>
+        </Form>
+    </div>
+</template>
+<script>
+import { mapActions, mapState } from 'vuex';
+import {resetWorkHeight, formatDate} from '@/libs/util.js';
+export default{
+    name: 'teamReviewView',
+    data () {
+        return {
+            teamLevelList: [{
+                value: '01',
+                label: '一级'
+            }, {
+                value: '02',
+                label: '二级'
+            }, {
+                value: '03',
+                label: '三级'
+            }],
+            teamTypeList: [{
+                value: '01',
+                label: '普通'
+            }],
+            teamStatusList: [{
+                value: '1',
+                label: '有效'
+            }, {
+                value: '0',
+                label: '无效'
+            }],
+            tableColumns: [
+                {
+                    title: '审批意见',
+                    align: 'center',
+                    key: 'opinion'
+                }, {
+                    title: '审批结果',
+                    key: 'reviewStatus',
+                    align: 'center',
+                    render: (h, params) => {
+                        const row = params.row;
+                        return h('div', [
+                            h('div', row.reviewStatus === '04' ? '通过' : '驳回')
+                        ]);
+                    }
+                }, {
+                    title: '审核级别',
+                    key: 'reviewLevel',
+                    align: 'center',
+                    render: (h, params) => {
+                        const row = params.row;
+                        return h('div', [
+                            h('div', row.reviewLevel === '1' ? '一级' : '二级')
+                        ]);
+                    }
+                }, {
+                    title: '审核时间',
+                    key: 'modifyTime',
+                    align: 'center',
+                    render: (h, params) => {
+                        const row = params.row;
+                        return h('div', [
+                            h('div', formatDate(row.modifyTime, 'yyyy-MM-dd hh:mm:ss'))
+                        ]);
+                    }
+                }
+            ]
+        };
+    },
+    computed: {
+        ...mapState({
+            loading: ({teamReviewView}) => teamReviewView.loading,
+            teamReviewViewData: ({teamReviewView}) => teamReviewView.teamReviewViewData,
+            teamReviewViewResult: ({teamReviewView}) => teamReviewView.teamReviewViewResult
+        })
+    },
+    methods: {
+        ...mapActions([
+            'handelQueryTeamReviewViewById',
+            'handelQueryTeamReviewEditWork'
+        ]),
+        init () {
+            this.queryTeamReviewById(this.$route.query);
+            this.queryTeamReviewWork(this.$route.query.teamCode);
+            resetWorkHeight();
+        },
+        queryTeamReviewById (data) {
+            // console.log(data)
+            this.handelQueryTeamReviewViewById(data).then(res => {
+                resetWorkHeight();
+            });
+        },
+        /**
+         * 查审核信息
+         */
+        queryTeamReviewWork (code) {
+            console.log(code)
+            this.handelQueryTeamReviewEditWork(code).then(res => {
+                resetWorkHeight();
+            });
+        },
+        pageBack () {
+            this.$router.push({name: 'teamReviewList'});
+        }
+    },
+    mounted () {
+        this.init();
+    }
+};
+</script>

@@ -1,0 +1,299 @@
+<style lang="less">
+    @import '../../../styles/common.less';
+</style>
+<style>
+    .demo-tabs-style1 > .ivu-tabs-card > .ivu-tabs-content {
+        height: 100%;
+        margin-top: -16px;
+    }
+
+    .demo-tabs-style1 > .ivu-tabs-card > .ivu-tabs-content > .ivu-tabs-tabpane {
+        background: #fff;
+        padding: 16px;
+    }
+
+    .demo-tabs-style1 > .ivu-tabs.ivu-tabs-card > .ivu-tabs-bar .ivu-tabs-tab {
+        border-color: transparent;
+    }
+
+    .demo-tabs-style1 > .ivu-tabs-card > .ivu-tabs-bar .ivu-tabs-tab-active {
+        border-color: #fff;
+    }
+</style>
+<template>
+    <div>
+        <Row :gutter="4">
+            <Form :label-width="100" >
+                <Card>
+                    <p slot="title">
+                        <Icon type="search"></Icon>
+                        预警审查
+
+                    </p>
+                    <Row>
+                        <Col span="12" class="demo-tabs-style1" style=" background: #e3e8ee;padding:16px; width: 100%">
+                            <Tabs type="card" :animated="false">
+                                <TabPane label="预警详情">
+                                    <Table stripe  :data="teamMainQueryPersonList" :columns="personTableColumns"  :loading="loading" ref="tableExcel" class="margin-top-10"></Table>
+                                    <Table stripe  :data="teamMainQueryPersonList" :columns="xinxiList"  :loading="loading" ref="tableExcel" class="margin-top-10"></Table>
+                                    <Table stripe  :data="teamMainQueryPersonList" :columns="calformulaList"  :loading="loading" ref="tableExcel" class="margin-top-10"></Table>
+                                    <p style="text-align: center;font-size: 14px; font-family:'微软雅黑';font-weight: bold">
+                                        干预记录
+                                    </p>
+                                    <Table stripe  :data="IndicatorLogsTabList" @on-row-click="chaKanXiangQing(IndicatorLogsTabList,$event)" :columns="IndicatorLogsList"  :loading="loading" ref="tableExcel" class="margin-top-10"></Table>
+                                    <Row class="margin-top-20">
+                                        <Col span="4" offset="9">
+                                            <Button type="primary" icon="ios-search" @click.prevent="modal3 = true" style="margin-right: 70px">干预反馈</Button>
+                                            <Modal ref="rr" v-model="modal3" :mask-closable="false">
+                                                <div slot="header" style="font-size: 14px ;font-weight: bold">
+                                                    <span>原因</span>
+                                                </div>
+                                                <Form ref='indicatorLogss'  :model='indicatorLogss'  :label-width='100'>
+                                                    <FormItem prop="reason">
+                                                        <textarea v-model="indicatorLogss.asstest"  autoFocus style="overflow:auto;width: 125%; resize: none;margin-left:-100px ;height:200px"></textarea>
+                                                    </FormItem>
+                                                </Form>
+                                                <div slot="footer" style="font-size: 14px ;font-weight: bold">
+                                                    <Button type="ghost" size="large"  @click="cancleSubmit()" style="margin-right: 40px">取消</Button>
+                                                    <Button type="primary" size="large"   @click.prevent="queren()"style="margin-right: 40px">确认</Button>
+                                                </div>
+                                            </Modal>
+                                        </Col>
+                                        <Col span="6" >
+                                            <Button type="info" icon="reply" @click.prevent="pageBack" >返回</Button>
+                                            <Modal ref="rr" v-model="modal4" :mask-closable="false">
+                                                <div slot="header" style="font-size: 14px ;font-weight: bold">
+                                                    <span>内容详情</span>
+                                                </div>
+                                                <Form ref='indicatorLogss'  :model='indicatorLogss'  :label-width='100'>
+                                                <textarea v-model="indicatorLogss.xiangqing"  autoFocus style="overflow:auto;width: 100%; resize: none;margin-left:0px ;height:200px;"></textarea>
+                                                </Form>
+                                                <div slot="footer" style="font-size: 14px ;font-weight: bold">
+                                                    <Row  >
+                                                        <Col span="8" offset="2" v-show="showFlag.areaFlag">
+                                                            <Button type="primary" size="large"  @click.prevent="xiugai()" style="margin-right: 40px">确认修改</Button>
+                                                        </Col>
+                                                         <Col span="8" offset="2">
+                                                    <Button type="ghost" size="large"  @click="cancleSubmit1()" style="margin-right: 40px">返回</Button>
+                                                        </Col>
+                                                    </Row>
+                                                </div>
+                                            </Modal>
+                                        </Col>
+                                    </Row>
+                                </TabPane>
+                            </Tabs>
+                        </Col>
+                    </Row>
+                </Card>
+            </Form>
+        </Row>
+    </div>
+</template>
+<script>
+    import {resetWorkHeight, getUserCookie} from '@/libs/util.js';
+    import { mapActions, mapState } from 'vuex';
+    export default{
+        name: 'teamMainTabList',
+        data () {
+            return {
+                modal_loading: false,
+                modal3: false,
+                modal4: false,
+                indicatorLogss: {
+                    reason: '',
+                    indId: ''
+                },
+                showFlag: {
+                    areaFlag: false
+                },
+                personTableColumns: [
+                    {
+                        title: '指标代码',
+                        key: 'indicatorcode',
+                        align: 'center',
+                        render: (h, params) => {
+                            const row = params.row;
+                            this.indicatorLogss.indId = row.indicators.id;
+                            this.indicatorLogss.factdate = row.alerttime;
+                            return h('div', [
+                                h('div', row.indicators.indicatorcode)
+                            ]);
+                        }
+                    }, {
+                        title: '指标名称',
+                        align: 'center',
+                        key: 'indicatorname',
+                        render: (h, params) => {
+                            const row = params.row;
+                            return h('div', [
+                                h('div', row.indicators.indicatorname)
+                            ]);
+                        }
+                    }, {
+                        title: '客户名称',
+                        align: 'center',
+                        key: 'customname'
+                    }, {
+                        title: '任务状态',
+                        align: 'center',
+                        key: 'eventstate',
+                        render: (h, params) => {
+                            const row = params.row;
+                            return h('div', [
+                                h('div', row.eventstate === '0' ? '待处理任务' : '已处理任务')
+                            ]);
+                        }
+                    }
+                ],
+                xinxiList: [{
+                    title: '信息说明',
+                    align: 'center',
+                    key: 'remark'
+                }],
+                calformulaList: [{
+                    title: '公式及说明',
+                    align: 'center',
+                    key: 'calformula',
+                    render: (h, params) => {
+                        const row = params.row;
+                        return h('div', [
+                            h('div', row.indicators.calformula)
+                        ]);
+                    }
+                }],
+                IndicatorLogsList: [{
+                    title: '干预时间',
+                    align: 'center',
+                    key: 'operationdate',
+                    render: (h, params) => {
+                        const row = params.row;
+                        return h('div', new Date(row.operationdate).getFullYear() + '-' + (new Date(row.operationdate).getMonth() + 1) + '-' + new Date(row.operationdate).getDate() + ' ' + new Date(row.operationdate).getHours() + ':' + new Date(row.operationdate).getMinutes() + ':' + new Date(row.operationdate).getSeconds());
+                    }
+                }, {
+                    title: '操作类型',
+                    align: 'center',
+                    key: 'operationtype',
+                    render: (h, params) => {
+                        const row = params.row;
+                        return h('div', [
+                            h('div', row.operationtype === '1' ? '审查反馈' : row.operationtype === '2' ? '干预反馈' : row.operationtype === '3' ? '沟通反馈' : row.operationtype === '4' ? '回复反馈' : row.operationtype === '5' ? '提交经理反馈' : row.operationtype === '6' ? '审核结果反馈' : row.operationtype === '0' ? '取消反馈' : row.operationtype === '7' ? '撤回反馈' : '')
+                        ]);
+                    }
+                }, {
+                    title: '操作者',
+                    align: 'center',
+                    key: 'operationname'
+                }, {
+                    title: '内容',
+                    align: 'center',
+                    key: 'asstest'
+                }
+                ]
+            };
+        },
+        computed: {
+            ...mapState({
+                loading: ({comwarningTabList}) => comwarningTabList.loading,
+                teamMainQueryPersonList: ({comwarningTabList}) => comwarningTabList.comwarningTabList,
+                IndicatorLogsTabList: ({comwarningTabList}) => comwarningTabList.IndicatorLogsTabList
+            })
+        },
+        methods: {
+            ...mapActions([
+                'querycomwarningByEventidSto',
+                'comwarningIndicatorLogss',
+                'queryIndicatorLogsByEventidSto',
+                'updateIndicatorLogss'
+            ]),
+            /**
+             * 初始化
+             */
+            init () {
+                this.querycomwarningByEventid(this.$route.query.eventid);
+                this.queryIndicatorLogsByEventid(this.$route.query.eventid);
+            },
+            /**
+             * 查团队下的人
+             */
+            querycomwarningByEventid (eventid) {
+                // console.log(code)
+                this.querycomwarningByEventidSto(eventid).then(res => {
+                    resetWorkHeight();
+                });
+            },
+            /**
+             * 页面改变
+             */
+            changePage (index) {
+                this.searchFormDate.pageInfo.pageNo = index;
+                this.handleTeamMainQueryPerson().then(res => {
+                    resetWorkHeight();
+                    this.$Message.info('查询成功!');
+                    this.searchFormDate.pageInfo.pageNo = 1;
+                });
+            },
+            /**
+             * 切换每页条数
+             */
+            pageSizeChange (newPageSize) {
+                this.searchFormDate.pageInfo.pageSize = newPageSize;
+                this.handleTeamMainQueryPerson().then(res => {
+                    resetWorkHeight();
+                    this.$Message.info('查询成功!');
+                });
+            },
+            cancleSubmit () {
+                this.modal3 = false;
+            },
+            cancleSubmit1 () {
+                this.modal4 = false;
+            },
+            queren () {
+                const user = getUserCookie();
+                this.indicatorLogss.operationname = user.name;
+                this.indicatorLogss.operationid = user.id;
+                this.indicatorLogss.creator = user.id;
+                this.indicatorLogss.operationtype = 2;
+                this.indicatorLogss.eventid = this.$route.query.eventid;
+                this.comwarningIndicatorLogss(this.indicatorLogss).then(res => {
+                    resetWorkHeight();
+                    this.modal3 = false;
+                    this.$Message.info('反馈成功!');
+                    this.init();
+                });
+            },
+            xiugai(){
+                alert("a");
+                this.updateIndicatorLogss(this.indicatorLogss).then(res => {
+                    resetWorkHeight();
+                    this.modal4 = false;
+                    this.$Message.info('修改成功!');
+                    this.init();
+                });
+            },
+            queryIndicatorLogsByEventid (eventid) {
+                // console.log(code)
+                this.queryIndicatorLogsByEventidSto(eventid).then(res => {
+                    resetWorkHeight();
+                });
+            },
+            chaKanXiangQing (data, event) {
+                this.indicatorLogss.xiangqing = event.asstest;
+                this.indicatorLogss.id = event.id;
+                if (event.operationtype == 5) {
+                    this.showFlag.areaFlag = true;
+                } else {
+                    this.showFlag.areaFlag = false;
+                }
+                this.modal4 = true;
+            },
+            pageBack () {
+                this.$router.push({name: 'warningInterventionList'});
+            }
+        },
+        mounted () {
+            this.init();
+        }
+    };
+</script>

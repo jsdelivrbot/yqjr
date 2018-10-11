@@ -1,0 +1,43 @@
+package com.yqjr.fin.mkmm.sales.services;
+
+import com.yqjr.fin.mkmm.sales.common.BeanUtil;
+import com.yqjr.fin.mkmm.sales.rest.vo.DealerAreaVo;
+import com.yqjr.scfw.common.service.BaseService;
+import com.yqjr.fin.mkmm.sales.entity.DealerArea;
+import com.yqjr.fin.mkmm.sales.mapper.DealerAreaMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+
+@Service
+@Transactional(readOnly = true)
+public class DealerAreaService extends BaseService<DealerAreaMapper, DealerArea, Long> {
+
+    @Autowired
+    DealerAreaMapper dealerAreaMapper;
+
+    /**
+     * 将查询到的业务存入对应的表中
+     */
+    @Transactional(rollbackFor = {Exception.class})
+    public void traverseInformation(){
+        List<DealerAreaVo> dealerAreaVos =  dealerAreaMapper.traverseInformation();
+        DealerAreaVo dealerAreaVo = null;
+        DealerArea dealerArea = new DealerArea();
+        for(int i=0;i<dealerAreaVos.size();i++){
+            dealerAreaVo = dealerAreaVos.get(i);
+            BeanUtil.copyProperties(dealerArea,dealerAreaVo);
+            this.insert(dealerArea);
+        }
+    }
+
+    /**
+     * 清除全部数据
+     */
+    @Transactional(rollbackFor = {Exception.class})
+    public void cleanTable(){
+        dealerAreaMapper.deleteAll();
+    }
+}

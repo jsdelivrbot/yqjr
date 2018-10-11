@@ -1,0 +1,135 @@
+ 
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta http-equiv="Expires" content="0">
+<meta http-equiv="Cache-Control" content="no-cache">
+<meta http-equiv="Cache-Control" content="no-store">
+<meta HTTP-EQUIV="Pragma" CONTENT="no-cache">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+<script src="/ui/js/include/head.js"></script>
+<title>一汽金融开发平台</title>
+</head>
+<body class="no-skin">
+	<div class="page-content" id="mainContent">
+	<div class="widget-box transparent ui-sortable-handle" id="widget-box-search">
+		<div class="widget-header">
+			<h3 class="widget-title smaller lighter">&nbsp;新增</h3>
+		</div>
+		<div class="widget-body">
+			<div class="widget-main padding-6 no-padding-left no-padding-right">
+				<div class="space-6"></div>
+				<form id="inputForm" action="/mkmm/sales/activeMarketings" method="post" class="form-horizontal" >
+					<input type="hidden" value="id"/>
+					
+					<div class="row">
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">序列：</label>
+							<div class="col-sm-3">
+								<input name="id"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">活动_ID：</label>
+							<div class="col-sm-3">
+								<input name="activeId"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+					</div>
+					<div class="space-4"></div>
+					<div class="row">
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">活动编号：</label>
+							<div class="col-sm-3">
+								<input name="activeCode"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">营销活动产品编码：</label>
+							<div class="col-sm-3">
+								<input name="marketingCode"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+					</div>
+					<div class="space-4"></div>
+					<div class="row">
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">营销活动产品名称：</label>
+							<div class="col-sm-3">
+								<input name="marketingName"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">生效时间：</label>
+							<div class="col-sm-3">
+								<input name="startTime"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+					</div>
+					<div class="space-4"></div>
+					<div class="row">
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">创建时间：</label>
+							<div class="col-sm-3">
+								<input name="createTime"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">修改时间：</label>
+							<div class="col-sm-3">
+								<input name="modifyTime"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+					</div>
+					<div class="space-4"></div>
+					<div class="row">
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">创建人：</label>
+							<div class="col-sm-3">
+								<input name="creator"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">修改人：</label>
+							<div class="col-sm-3">
+								<input name="modifier"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+					</div>
+					<div class="space-4"></div>
+					<div class="row">
+						<div class="form-group-2">
+							<label class="col-sm-2 control-label no-padding-right">所属公司：</label>
+							<div class="col-sm-3">
+								<input name="company"  maxlength="50" class="form-control required" />
+							</div>
+						</div>
+					</div>
+					<div class="space-4"></div>
+										
+					<div class="space-4"></div>
+					
+					<div class="clearfix form-actions">
+						<div class="col-md-offset-4 col-md-8">
+							<button id="btnSubmit" class="btn btn-info" type="button">
+								<i class="ace-icon fa fa-check bigger-110"></i>
+								保存
+							</button>
+								&nbsp; &nbsp; &nbsp;
+							<button class="btn" type="button" onclick="history.go(-1)">
+								<i class="ace-icon fa fa-undo bigger-110"></i>
+								返回
+							</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	</div>
+</body>
+<script src="/mkmm/ui/js/activemarketing/activeMarketingCommon.js"></script>
+<script src="/mkmm/ui/js/activemarketing/activeMarketingForm.js"></script>
+</html>

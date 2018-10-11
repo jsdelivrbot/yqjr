@@ -1,0 +1,368 @@
+<style lang="less">
+    @import '../../../styles/common.less';
+</style>
+<template>
+    <div>
+        <Row>
+            <Card>
+                <p slot="title">
+                    <Icon type="search"></Icon>
+                    查询
+                </p>
+                <Form ref="formValidate" :model="searchFormDate" :label-width="100">
+                    <Row>
+                        <Col span="6" offset="2">
+                            <FormItem label="指标类型:">
+                                <Select v-model="searchFormDate.typecode" style="width:200px">
+                                    <Option v-for="item in indicatorTypes" :value="item.code" :key="item.value">{{ item.name}}</Option>
+                                </Select>
+                            </FormItem>
+                        </Col>
+                        <Col span="6" offset="2">
+                            <FormItem label="指标代码:">
+                                <Input  placeholder="请输入指标代码" v-model="searchFormDate.indicatorcode" style="width:200px" ></Input>
+                            </FormItem>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col span="6" offset="2">
+                            <FormItem label="是否预警:">
+                                <Select v-model="searchFormDate.alertflag" style="width:200px">
+                                    <Option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.label }}</Option>
+                                </Select>
+                            </FormItem>
+                        </Col>
+                        <Col span="6" offset="2">
+                            <FormItem label="指标名称:">
+                                <Input  placeholder="请输入指标名称" v-model="searchFormDate.indicatorname" style="width:200px" ></Input>
+                            </FormItem>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col span="6" offset="2">
+                            <FormItem label="是否启用:">
+                                <Select v-model="searchFormDate.enabledflag" style="width:200px">
+                                    <Option v-for="item in cityList1" :value="item.value" :key="item.value">{{ item.label }}</Option>
+                                </Select>
+                            </FormItem>
+                        </Col>
+                        <Col span="6" offset="2">
+                            <FormItem label="归属公司:">
+                                <Select v-model="searchFormDate.comcode" style="width:200px">
+                                    <Option v-for="item in cityList2" :value="item.label" :key="item.value">{{ item.label }}</Option>
+                                </Select>
+                            </FormItem>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col span="3" offset="9">
+                            <Button type="primary" icon="search" @click="searchData">查询</Button>
+                        </Col>
+                        <Col span="3">
+                            <Button icon="close" @click="cleanData">重置</Button>
+                        </Col>
+                    </Row>
+                </Form>
+            </Card>
+        </Row>
+        <Row class="margin-top-10">
+            <Card>
+                <p slot="title">
+                    <Icon type="search"></Icon>
+                    表格数据
+                </p>
+                <Row type="flex" justify="end" :gutter="8" >
+                    <Col>
+                        <Button icon="android-add"  type="success" @click="addData">添加</Button>
+                    </Col>
+                    <Col>
+                        <Button icon="android-close" type="error" @click="delData">删除</Button>
+                    </Col>
+                </Row>
+                <Table :data="tableData" @on-selection-change='selectionClick' :columns="tableColumns"  :loading="loading" ref="tableExcel" class="margin-top-10"></Table>
+                <div style="margin: 10px;overflow: hidden;height:135px">
+                    <div style="float: right;">
+                        <Page :total="total" :current="pageNo" :page-size="pageSize" size="small" @on-change="changePage" @on-page-size-change="pageSizeChange" show-total show-sizer></Page>
+                    </div>
+                </div>
+            </Card>
+        </Row>
+        <a id="hrefToExportTable" style="postion: absolute;left: -10px;top: -10px;width: 0px;height: 0px;"></a>
+    </div>
+</template>
+
+<script>
+    import table2excel from '@/libs/table2excel.js';
+    import {resetWorkHeight, getUserCookie, isEmpty} from '@/libs/util.js';
+    import { mapActions, mapState } from 'vuex';
+    export default{
+        name: 'indicatorList',
+        data () {
+            return {
+                cityList: [{
+                    value: '1',
+                    label: '是'
+                },
+                {
+                    value: '0',
+                    label: '否'
+                }],
+                cityList1: [{
+                    value: 1,
+                    label: '是'
+                },
+                {
+                    value: 0,
+                    label: '否'
+                }],
+                cityList2: [{
+                    value: '1',
+                    label: '一汽金融公司'
+                },
+                {
+                    value: '0',
+                    label: '一汽财务公司'
+                }],
+                searchFormDate: {
+                    pageInfo: {
+                        pageSize: '10',
+                        pageNo: '1'
+                    }
+                },
+                showFlag: {
+                    areaFlag: false
+                },
+                tableColumns: [
+                    {
+                        type: 'selection',
+                        width: 60,
+                        align: 'center'
+                    },
+                    {
+                        title: '指标代码',
+                        key: 'indicatorcode',
+                        align: 'center'
+                    }, {
+                        title: '指标类型',
+                        align: 'center',
+                        sortable: true,
+                        render: (h, params) => {
+                            const row = params.row;
+                            return h('div', [
+                                h('div', row.indicatorTypes.name)
+                            ]);
+                        }
+                    },
+                    {
+                        title: '指标名称',
+                        align: 'center',
+                        key: 'indicatorname'
+                    }, {
+                        title: '是否预警',
+                        align: 'center',
+                        key: 'alertflag',
+                        render: (h, params) => {
+                            const row = params.row;
+                            return h('div', [
+                                h('div', row.alertflag === '0' ? '否' : row.alertflag === '1' ? '是' : '其他')
+                            ]);
+                        }
+                    }, {
+                        title: '是否启用',
+                        align: 'center',
+                        key: 'enabledflag',
+                        render: (h, params) => {
+                            const row = params.row;
+                            return h('div', [
+                                h('div', row.enabledflag === 0 ? '否' : row.enabledflag === 1 ? '是' : '其他')
+                            ]);
+                        }
+                    }, {
+                        title: '归属公司',
+                        align: 'center',
+                        key: 'comcode'
+                    }, {
+                        title: '上级指标',
+                        align: 'center',
+                        key: 'parentindicatorcode'
+                    }, {
+                        title: '操作',
+                        align: 'center',
+                        render: (h, params) => {
+                            return h('div', [
+                                h('Button', {
+                                    props: {
+                                        type: 'primary',
+                                        size: 'small'
+                                    },
+                                    style: {
+                                        marginRight: '6px'
+                                    },
+                                    on: {
+                                        click: () => {
+                                            let routerParam = {id: params.row.id};
+                                            this.$router.push({
+                                                name: 'indicatorView',
+                                                query: routerParam
+                                            });
+                                        }
+                                    }
+                                }, '查看'),
+                                h('Button', {
+                                    props: {
+                                        type: 'warning',
+                                        size: 'small'
+                                    },
+                                    on: {
+                                        click: () => {
+                                            let routerParam = {id: params.row.id};
+                                            this.$router.push({
+                                                name: 'indicatorEdit',
+                                                query: routerParam
+                                            });
+                                        }
+                                    }
+                                }, '修改')
+                            ]);
+                        }
+                    }
+                ],
+                idArr: [],
+                excelFileName: 'data'
+            };
+        },
+        computed: {
+            ...mapState({
+                loading: ({indicatorsList}) => indicatorsList.loading,
+                tableData: ({indicatorsList}) => indicatorsList.teamList,
+                pageNo: ({indicatorsList}) => indicatorsList.pageNo,
+                pageSize: ({indicatorsList}) => indicatorsList.pageSize,
+                total: ({indicatorsList}) => indicatorsList.total,
+                pages: ({indicatorsList}) => indicatorsList.pages,
+                indicatorTypes: ({indicatorsList}) => indicatorsList.indicatorTypes
+            })
+        },
+        methods: {
+            ...mapActions([
+                'handleTeamList', 'handleDelTeamList', 'handleIndicatorTypes'
+            ]),
+            /**
+             * 初始化
+             */
+            init () {
+                const user = getUserCookie();
+                const roleCode = user.roleCodeList;
+                if (roleCode.indexOf('0000') >= 0 || roleCode.indexOf('0001') >= 0 || roleCode.indexOf('0002') >= 0) {
+                    this.showFlag.areaFlag = true;
+                } else {
+                    this.showFlag.areaFlag = false;
+                }
+                this.searchData();
+                this.searchIndicatorTypes();
+                console.log(this.total);
+                console.log(this.indicatorTypes);
+            },
+            /**
+             * 点击查询按钮执行查询指标类型名
+             */
+            searchIndicatorTypes () {
+                this.handleIndicatorTypes(this.searchFormDate).then(res => {
+                    resetWorkHeight();
+                    this.$Message.info('查询成功!');
+                });
+            },
+            /**
+             * 点击查询按钮执行查询操作
+             */
+            searchData () {
+                this.handleTeamList(this.searchFormDate).then(res => {
+                    resetWorkHeight();
+                    this.$Message.info('查询成功!');
+                });
+            },
+            /**
+             * 页面改变
+             */
+            changePage (index) {
+                this.searchFormDate.pageInfo.pageNo = index;
+                this.handleTeamList(this.searchFormDate).then(res => {
+                    resetWorkHeight();
+                    this.$Message.info('查询成功!');
+                    this.searchFormDate.pageInfo.pageNo = 1;
+                });
+            },
+            /**
+             * 切换每页条数
+             */
+            pageSizeChange (newPageSize) {
+                this.searchFormDate.pageInfo.pageSize = newPageSize;
+                this.handleTeamList(this.searchFormDate).then(res => {
+                    resetWorkHeight();
+                    this.$Message.info('查询成功!');
+                });
+                console.log(this.total);
+            },
+            /**
+             * 重置按钮
+             */
+            cleanData () {
+                window.location.reload();
+            },
+            /**
+             * 导出execl
+             */
+            exportExcel () {
+                table2excel.transform(this.$refs.tableExcel, 'hrefToExportTable', this.excelFileName);
+            },
+            /**
+             * 添加数据
+             */
+            addData () {
+                this.$router.push({name: 'indicatorAdd'});
+            },
+            delData () {
+                if (isEmpty(this.idArr)) {
+                    this.$Message.info('请先选择一条数据再进行删除!');
+                } else {
+                    this.$Modal.confirm({
+                        title: '删除',
+                        content: '<p>您确定要删除这条数据吗?</p>',
+                        onOk: () => {
+                            this.handleDelTeamList(this.idArr).then(res => {
+                                this.$Message.info('删除成功!');
+                                this.searchData();
+                            });
+                        },
+                        onCancel: () => {
+                        }
+                    });
+                }
+            },
+            selectionClick: function (arr) {
+                var idArr = [];
+                if (!isEmpty(arr)) {
+                    for (var i = 0; i < arr.length; i++) {
+                        idArr.push(arr[i].id);
+                    }
+                }
+                this.idArr = idArr;
+                console.log(idArr);
+            },
+            /**
+             * 修改数据
+             */
+            editData () {
+                this.$router.push({name: 'indicatorEdit'});
+            },
+            /**
+             * 查看数据
+             */
+            viewData () {
+                this.$router.push({name: 'indicatorView'});
+            }
+        },
+        mounted () {
+            this.init();
+        }
+    };
+</script>

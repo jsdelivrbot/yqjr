@@ -1,0 +1,214 @@
+import {demoList} from "../mock/demo";
+import indicatorEdit from "../store/modules/stat-warning/warning-indicators/indicatorEditStore";
+
+export const page404 = {
+    path: '/*',
+    name: 'error-404',
+    meta: {
+        title: '404-页面不存在'
+    },
+    component: () => import('@/views/error-page/404.vue')
+};
+
+export const page403 = {
+    path: '/403',
+    meta: {
+        title: '403-权限不足'
+    },
+    name: 'error-403',
+    component: () => import('@//views/error-page/403.vue')
+};
+
+export const page500 = {
+    path: '/500',
+    meta: {
+        title: '500-服务端错误'
+    },
+    name: 'error-500',
+    component: () => import('@/views/error-page/500.vue')
+};
+
+
+
+export const warningRouter = [{
+    path: '/warningTargettypeList',
+    meta: {
+        title: '指标类型列表'
+    },
+    name: 'warningTargettypeList',
+    component: () => import('@/views/stat-warning/warning-targettype/warningTargettypeList.vue')
+},{
+    path: '/warningTargettypeAdd',
+    meta: {
+        title: '销售团队新增'
+    },
+    name: 'warningTargettypeAdd',
+    component: () => import('@/views/stat-warning/warning-targettype/warningTargettypeAdd.vue')
+},{
+    path: '/warningTargettypeEdit',
+    meta: {
+        title: '销售团队修改'
+    },
+    name: 'warningTargettypeEdit',
+    component: () => import('@/views/stat-warning/warning-targettype/warningTargettypeEdit.vue')
+}];
+
+
+export const comwarningRouter = [{
+    path: '/warningComwarningList',
+    meta: {
+        title: '预警审查列表'
+    },
+    name: 'warningComwarningList',
+    component: () => import('@/views/stat-warning/warning-comwarning/warningComwarningList.vue')
+},{
+    path: '/warningComwarningTabList',
+    meta: {
+        title: '信号灯查看'
+    },
+    name: 'warningComwarningTabList',
+    component: () => import('@/views/stat-warning/warning-comwarning/warningComwarningTabList.vue')
+}]
+export const interventionRouter = [{
+    path: '/warningInterventionList',
+    meta: {
+        title: '预警干预列表'
+    },
+    name: 'warningInterventionList',
+    component: () => import('@/views/stat-warning/warning-intervention/warningInterventionList.vue')
+},{
+    path: '/warningInterventionList',
+    meta: {
+        title: '预警干预列表'
+    },
+    name: 'warningInterventionList',
+    component: () => import('@/views/stat-warning/warning-intervention/warningInterventionList.vue')
+},{
+    path: '/warningInterventionList',
+    meta: {
+        title: '预警干预列表'
+    },
+    name: 'warningInterventionList',
+    component: () => import('@/views/stat-warning/warning-intervention/warningInterventionList.vue')
+},{
+    path: '/warningInterventionTabList',
+    meta: {
+        title: '点击信号灯'
+    },
+    name: 'warningInterventionTabList',
+    component: () => import('@/views/stat-warning/warning-intervention/warningInterventionTabList.vue')
+}
+]
+
+
+
+export const indicatorsRouter = [{
+    path: '/indicatorList',
+    meta: {
+        title: '指标列表'
+    },
+    name: 'indicatorList',
+    component: () => import('@/views/stat-warning/warning-indicators/indicatorList.vue')
+},{
+    path: '/indicatorAdd',
+    meta: {
+        title: '指标添加列表'
+    },
+    name: 'indicatorAdd',
+    component: () => import('@/views/stat-warning/warning-indicators/indicatorAdd.vue')
+},{
+    path: '/indicatorEdit',
+    meta: {
+        title: '指标编辑列表'
+    },
+    name: 'indicatorEdit',
+    component: () => import('@/views/stat-warning/warning-indicators/indicatorEdit.vue')
+},{
+    path: '/indicatorView',
+    meta: {
+        title: '指标查看列表'
+    },
+    name: 'indicatorView',
+    component: () => import('@/views/stat-warning/warning-indicators/indicatorView.vue')
+}
+]
+export const indicatorRangesRouter = [{
+    path: '/indicatorRangesList',
+    meta: {
+        title: '指标预警列表'
+    },
+    name: 'indicatorRangesList',
+    component: () => import('@/views/stat-warning/warning-indicatorRanges/indicatorRangesList.vue')
+}
+,{
+    path: '/indicatorRangesAdd',
+    meta: {
+        title: '指标预警添加列表'
+    },
+    name: 'indicatorRangesAdd',
+    component: () => import('@/views/stat-warning/warning-indicatorRanges/indicatorRangesAdd.vue')
+},
+{
+    path: '/indicatorRangesEdit',
+    meta: {
+        title: '指标预警编辑列表'
+    },
+    name: 'indicatorRangesEdit',
+    component: () => import('@/views/stat-warning/warning-indicatorRanges/indicatorRangesEdit.vue')
+},
+{
+    path: '/indicatorRangesView',
+    meta: {
+        title: '指标预警查看列表'
+    },
+    name: 'indicatorRangesView',
+    component: () => import('@/views/stat-warning/warning-indicatorRanges/indicatorRangesView.vue')
+}
+]
+export const warningAuditingListRouter = [{
+    path: '/warningAuditingList',
+    meta: {
+        title: '预警审核列表'
+    },
+    name: 'warningAuditingList',
+    component: () => import('@/views/stat-warning/warning-warningAuditing/warningAuditingList.vue')
+}
+,{
+    path: '/warningAuditingTabList',
+    meta: {
+        title: '预警审核查看列表'
+    },
+    name: 'warningAuditingTabList',
+    component: () => import('@/views/stat-warning/warning-warningAuditing/warningAuditingTabList.vue')
+}
+]
+export const warningInterveneNewsListRouter = [{
+    path: '/warningInterveneNewsList',
+    meta: {
+        title: '预警干预查询菜单列表'
+    },
+    name: 'warningInterveneNewsList',
+    component: () => import('@/views/stat-warning/warning-warningInterveneNewsList/warningInterveneNewsList.vue')
+}
+,{
+    path: '/warningInterveneNewsTabList',
+    meta: {
+        title: '预警干预查询任务明细列表'
+    },
+    name: 'warningInterveneNewsTabList',
+    component: () => import('@/views/stat-warning/warning-warningInterveneNewsList/warningInterveneNewsTabList.vue')
+}
+]
+// 所有上面定义的路由都要写在下面的routers里
+export const routers = [
+        ...warningRouter,
+        ...comwarningRouter,
+        ...interventionRouter,
+        ...indicatorsRouter,
+        ...indicatorRangesRouter,
+        ...warningAuditingListRouter,
+        ...warningInterveneNewsListRouter,
+           page500,
+           page403,
+           page404,
+];

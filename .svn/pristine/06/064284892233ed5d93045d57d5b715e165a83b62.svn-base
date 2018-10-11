@@ -1,0 +1,1997 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yqjr.fin.mkmm.sales.mapper.BasicBussinessMapper">
+
+    <!-- region BaseMapper DO NOT MODIFY!!!  -->
+
+    <sql id="Base_Table_Name">
+        MKMM_BASIC_BUSSINESS
+    </sql>
+
+
+
+    <!-- region BaseResultMap  -->
+    <resultMap id="BaseResultMap" type="com.yqjr.fin.mkmm.sales.entity.BasicBussiness">
+        <result property="id" column="ID"/><!--ID-->
+        <result property="businessid" column="BUSINESSID"/><!--业务明细表主键ID-->
+        <result property="applyid" column="APPLYID"/><!--申请ID（业务数据唯一标识）-->
+        <result property="billNo" column="BILL_NO"/><!--结算单号-->
+        <result property="contractNo" column="CONTRACT_NO"/><!--业务明细单号（合同号）-->
+        <result property="loanNo" column="LOAN_NO"/><!--借据号-->
+        <result property="customCode" column="CUSTOM_CODE"/><!--客户ID-->
+        <result property="customName" column="CUSTOM_NAME"/><!--客户名称-->
+        <result property="customIdType" column="CUSTOM_ID_TYPE"/><!--证件类型-->
+        <result property="customIdCard" column="CUSTOM_ID_CARD"/><!--证件号-->
+        <result property="company" column="COMPANY"/><!--所属公司-->
+        <result property="brandsCode" column="BRANDS_CODE"/><!--品牌编码-->
+        <result property="brandsName" column="BRANDS_NAME"/><!--品牌名称-->
+        <result property="seriesCode" column="SERIES_CODE"/><!--车系代码-->
+        <result property="seriesName" column="SERIES_NAME"/><!--车系名称-->
+        <result property="carBrandType" column="CAR_BRAND_TYPE"/><!--车型-->
+        <result property="carBrandTypeName" column="CAR_BRAND_TYPE_NAME"/><!--车型名称-->
+        <result property="carPrice" column="CAR_PRICE"/><!--净车价-->
+        <result property="carMortgagerName" column="CAR_MORTGAGER_NAME"/><!--车籍-->
+        <result property="nactivitiesId" column="NACTIVITIES_ID"/><!--营销活动（车贷金融产品id）-->
+        <result property="nactivitiesName" column="NACTIVITIES_NAME"/><!--营销活动名称（车贷金融产品id）-->
+        <result property="necactivitiesId" column="NECACTIVITIES_ID"/><!--附加费金融产品id-->
+        <result property="necactivitiesName" column="NECACTIVITIES_NAME"/><!--附加费金融产品名称-->
+        <result property="nbizType" column="NBIZ_TYPE"/><!--业务类型Code-->
+        <result property="nbizTypeName" column="NBIZ_TYPE_NAME"/><!--业务类型名称-->
+        <result property="ngetinterestType" column="NGETINTEREST_TYPE"/><!--信贷产品Code-->
+        <result property="ngetinterestTypeName" column="NGETINTEREST_TYPE_NAME"/><!--信贷产品名称-->
+        <result property="ndlrbizType" column="NDLRBIZ_TYPE"/><!--金融产品(服务产品Code)-->
+        <result property="ndlrbizTypeName" column="NDLRBIZ_TYPE_NAME"/><!--金融产品(服务产品名称)-->
+        <result property="nloanMoney" column="NLOAN_MONEY"/><!--贷款金额-->
+        <result property="timeLimit" column="TIME_LIMIT"/><!--贷款期限-->
+        <result property="dapplyDate" column="DAPPLY_DATE"/><!--申请日期-->
+        <result property="dfactstartDate" column="DFACTSTART_DATE"/><!--放款日期-->
+        <result property="necloanMoney" column="NECLOAN_MONEY"/><!--附加贷金额-->
+        <result property="firstRatio" column="FIRST_RATIO"/><!--首付比例-->
+        <result property="largeAreaCode" column="LARGE_AREA_CODE"/><!--大区代码-->
+        <result property="largeAreaName" column="LARGE_AREA_NAME"/><!--大区名称-->
+        <result property="zoneTwoCode" column="ZONE_TWO_CODE"/><!--二区代码-->
+        <result property="zoneTwoName" column="ZONE_TWO_NAME"/><!--二区名称-->
+        <result property="distributorCode" column="DISTRIBUTOR_CODE"/><!--经销商代码-->
+        <result property="distributorName" column="DISTRIBUTOR_NAME"/><!--经销商名称-->
+        <result property="salesPersonCode" column="SALES_PERSON_CODE"/><!--销售顾问代码-->
+        <result property="salesPersonName" column="SALES_PERSON_NAME"/><!--销售顾问名称-->
+        <result property="provinceCode" column="PROVINCE_CODE"/><!--省份代码-->
+        <result property="provinceName" column="PROVINCE_NAME"/><!--省份名称-->
+        <result property="cityCode" column="CITY_CODE"/><!--城市代码-->
+        <result property="cityName" column="CITY_NAME"/><!--城市名称-->
+        <result property="remark" column="REMARK"/><!--备注-->
+        <result property="createTime" column="CREATE_TIME"/><!--创建时间(数据提取时间)-->
+        <result property="modifyTime" column="MODIFY_TIME"/><!--修改时间-->
+        <result property="startTime" column="START_TIME"/><!--生效时间-->
+        <result property="creator" column="CREATOR"/><!--创建人-->
+        <result property="modifier" column="MODIFIER"/><!--修改人-->
+        <result property="activematchflag" column="ACTIVEMATCHFLAG"/><!--活动统计标识（01-未统计 02-已统计）-->
+        <result property="planmatchflag" column="PLANMATCHFLAG"/><!--计划跟踪标识（01-未统计 02-已统计）-->
+        <result property="flag" column="FLAG"/><!--有效标识（如表记录不删除，以此区分,0无效，1有效）-->
+        <result property="personCode" column="PERSON_CODE"/><!--人员编号-->
+        <result property="personName" column="PERSON_NAME"/><!--人员姓名-->
+        <result property="teamName" column="TEAM_NAME"/><!--团队名称-->
+        <result property="teamCode" column="TEAM_CODE"/><!--团队编号-->
+    </resultMap>
+    <!-- endregion -->
+
+    <!-- region Base_Column_List  -->
+    <sql id="Base_Column_List">
+    ID,BUSINESSID,APPLYID,BILL_NO,CONTRACT_NO,LOAN_NO,CUSTOM_CODE,CUSTOM_NAME,CUSTOM_ID_TYPE,CUSTOM_ID_CARD,COMPANY,BRANDS_CODE,BRANDS_NAME,SERIES_CODE,SERIES_NAME,CAR_BRAND_TYPE,CAR_BRAND_TYPE_NAME,CAR_PRICE,CAR_MORTGAGER_NAME,NACTIVITIES_ID,NACTIVITIES_NAME,NECACTIVITIES_ID,NECACTIVITIES_NAME,NBIZ_TYPE,NBIZ_TYPE_NAME,NGETINTEREST_TYPE,NGETINTEREST_TYPE_NAME,NDLRBIZ_TYPE,NDLRBIZ_TYPE_NAME,NLOAN_MONEY,TIME_LIMIT,DAPPLY_DATE,DFACTSTART_DATE,NECLOAN_MONEY,FIRST_RATIO,LARGE_AREA_CODE,LARGE_AREA_NAME,ZONE_TWO_CODE,ZONE_TWO_NAME,DISTRIBUTOR_CODE,DISTRIBUTOR_NAME,SALES_PERSON_CODE,SALES_PERSON_NAME,PROVINCE_CODE,PROVINCE_NAME,CITY_CODE,CITY_NAME,REMARK,CREATE_TIME,MODIFY_TIME,START_TIME,CREATOR,MODIFIER,ACTIVEMATCHFLAG,PLANMATCHFLAG,FLAG,PERSON_CODE,PERSON_NAME,TEAM_NAME,TEAM_CODE
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_List_Selective  -->
+    <sql id="Base_Column_List_Selective">
+        <trim suffixOverrides=",">
+            <if test="id != null">
+            ID,
+            </if>
+            <if test="businessid != null">
+            BUSINESSID,
+            </if>
+            <if test="applyid != null">
+            APPLYID,
+            </if>
+            <if test="billNo != null">
+            BILL_NO,
+            </if>
+            <if test="contractNo != null">
+            CONTRACT_NO,
+            </if>
+            <if test="loanNo != null">
+            LOAN_NO,
+            </if>
+            <if test="customCode != null">
+            CUSTOM_CODE,
+            </if>
+            <if test="customName != null">
+            CUSTOM_NAME,
+            </if>
+            <if test="customIdType != null">
+            CUSTOM_ID_TYPE,
+            </if>
+            <if test="customIdCard != null">
+            CUSTOM_ID_CARD,
+            </if>
+            <if test="company != null">
+            COMPANY,
+            </if>
+            <if test="brandsCode != null">
+            BRANDS_CODE,
+            </if>
+            <if test="brandsName != null">
+            BRANDS_NAME,
+            </if>
+            <if test="seriesCode != null">
+            SERIES_CODE,
+            </if>
+            <if test="seriesName != null">
+            SERIES_NAME,
+            </if>
+            <if test="carBrandType != null">
+            CAR_BRAND_TYPE,
+            </if>
+            <if test="carBrandTypeName != null">
+            CAR_BRAND_TYPE_NAME,
+            </if>
+            <if test="carPrice != null">
+            CAR_PRICE,
+            </if>
+            <if test="carMortgagerName != null">
+            CAR_MORTGAGER_NAME,
+            </if>
+            <if test="nactivitiesId != null">
+            NACTIVITIES_ID,
+            </if>
+            <if test="nactivitiesName != null">
+            NACTIVITIES_NAME,
+            </if>
+            <if test="necactivitiesId != null">
+            NECACTIVITIES_ID,
+            </if>
+            <if test="necactivitiesName != null">
+            NECACTIVITIES_NAME,
+            </if>
+            <if test="nbizType != null">
+            NBIZ_TYPE,
+            </if>
+            <if test="nbizTypeName != null">
+            NBIZ_TYPE_NAME,
+            </if>
+            <if test="ngetinterestType != null">
+            NGETINTEREST_TYPE,
+            </if>
+            <if test="ngetinterestTypeName != null">
+            NGETINTEREST_TYPE_NAME,
+            </if>
+            <if test="ndlrbizType != null">
+            NDLRBIZ_TYPE,
+            </if>
+            <if test="ndlrbizTypeName != null">
+            NDLRBIZ_TYPE_NAME,
+            </if>
+            <if test="nloanMoney != null">
+            NLOAN_MONEY,
+            </if>
+            <if test="timeLimit != null">
+            TIME_LIMIT,
+            </if>
+            <if test="dapplyDate != null">
+            DAPPLY_DATE,
+            </if>
+            <if test="dfactstartDate != null">
+            DFACTSTART_DATE,
+            </if>
+            <if test="necloanMoney != null">
+            NECLOAN_MONEY,
+            </if>
+            <if test="firstRatio != null">
+            FIRST_RATIO,
+            </if>
+            <if test="largeAreaCode != null">
+            LARGE_AREA_CODE,
+            </if>
+            <if test="largeAreaName != null">
+            LARGE_AREA_NAME,
+            </if>
+            <if test="zoneTwoCode != null">
+            ZONE_TWO_CODE,
+            </if>
+            <if test="zoneTwoName != null">
+            ZONE_TWO_NAME,
+            </if>
+            <if test="distributorCode != null">
+            DISTRIBUTOR_CODE,
+            </if>
+            <if test="distributorName != null">
+            DISTRIBUTOR_NAME,
+            </if>
+            <if test="salesPersonCode != null">
+            SALES_PERSON_CODE,
+            </if>
+            <if test="salesPersonName != null">
+            SALES_PERSON_NAME,
+            </if>
+            <if test="provinceCode != null">
+            PROVINCE_CODE,
+            </if>
+            <if test="provinceName != null">
+            PROVINCE_NAME,
+            </if>
+            <if test="cityCode != null">
+            CITY_CODE,
+            </if>
+            <if test="cityName != null">
+            CITY_NAME,
+            </if>
+            <if test="remark != null">
+            REMARK,
+            </if>
+            <if test="createTime != null">
+            CREATE_TIME,
+            </if>
+            <if test="modifyTime != null">
+            MODIFY_TIME,
+            </if>
+            <if test="startTime != null">
+            START_TIME,
+            </if>
+            <if test="creator != null">
+            CREATOR,
+            </if>
+            <if test="modifier != null">
+            MODIFIER,
+            </if>
+            <if test="activematchflag != null">
+            ACTIVEMATCHFLAG,
+            </if>
+            <if test="planmatchflag != null">
+            PLANMATCHFLAG,
+            </if>
+            <if test="flag != null">
+            FLAG,
+            </if>
+            <if test="personCode != null">
+            PERSON_CODE,
+            </if>
+            <if test="personName != null">
+            PERSON_NAME,
+            </if>
+            <if test="teamName != null">
+            TEAM_NAME,
+            </if>
+            <if test="teamCode != null">
+            TEAM_CODE
+            </if>
+        </trim>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Values  -->
+    <sql id="Base_Column_Values">
+    SEQ_MKMM_BASIC_BUSSINESS.nextval,
+   #{businessid,jdbcType=INTEGER},
+    #{applyid,jdbcType=VARCHAR},
+    #{billNo,jdbcType=VARCHAR},
+    #{contractNo,jdbcType=VARCHAR},
+    #{loanNo,jdbcType=VARCHAR},
+    #{customCode,jdbcType=VARCHAR},
+    #{customName,jdbcType=VARCHAR},
+    #{customIdType,jdbcType=VARCHAR},
+    #{customIdCard,jdbcType=VARCHAR},
+    #{company,jdbcType=VARCHAR},
+    #{brandsCode,jdbcType=VARCHAR},
+    #{brandsName,jdbcType=VARCHAR},
+    #{seriesCode,jdbcType=VARCHAR},
+    #{seriesName,jdbcType=VARCHAR},
+    #{carBrandType,jdbcType=VARCHAR},
+    #{carBrandTypeName,jdbcType=VARCHAR},
+    #{carPrice,jdbcType=DECIMAL},
+    #{carMortgagerName,jdbcType=VARCHAR},
+    #{nactivitiesId,jdbcType=VARCHAR},
+    #{nactivitiesName,jdbcType=VARCHAR},
+    #{necactivitiesId,jdbcType=VARCHAR},
+    #{necactivitiesName,jdbcType=VARCHAR},
+    #{nbizType,jdbcType=VARCHAR},
+    #{nbizTypeName,jdbcType=VARCHAR},
+    #{ngetinterestType,jdbcType=VARCHAR},
+    #{ngetinterestTypeName,jdbcType=VARCHAR},
+    #{ndlrbizType,jdbcType=VARCHAR},
+    #{ndlrbizTypeName,jdbcType=VARCHAR},
+    #{nloanMoney,jdbcType=DECIMAL},
+    #{timeLimit,jdbcType=VARCHAR},
+    #{dapplyDate,jdbcType=TIMESTAMP},
+    #{dfactstartDate,jdbcType=TIMESTAMP},
+    #{necloanMoney,jdbcType=DECIMAL},
+    #{firstRatio,jdbcType=DECIMAL},
+    #{largeAreaCode,jdbcType=VARCHAR},
+    #{largeAreaName,jdbcType=VARCHAR},
+    #{zoneTwoCode,jdbcType=VARCHAR},
+    #{zoneTwoName,jdbcType=VARCHAR},
+    #{distributorCode,jdbcType=VARCHAR},
+    #{distributorName,jdbcType=VARCHAR},
+    #{salesPersonCode,jdbcType=VARCHAR},
+    #{salesPersonName,jdbcType=VARCHAR},
+    #{provinceCode,jdbcType=VARCHAR},
+    #{provinceName,jdbcType=VARCHAR},
+    #{cityCode,jdbcType=VARCHAR},
+    #{cityName,jdbcType=VARCHAR},
+    #{remark,jdbcType=VARCHAR},
+    #{createTime,jdbcType=TIMESTAMP},
+    #{modifyTime,jdbcType=TIMESTAMP},
+    #{startTime,jdbcType=TIMESTAMP},
+    #{creator,jdbcType=INTEGER},
+    #{modifier,jdbcType=INTEGER},
+    #{activematchflag,jdbcType=VARCHAR},
+    #{planmatchflag,jdbcType=VARCHAR},
+    #{flag,jdbcType=VARCHAR},
+    #{personCode,jdbcType=VARCHAR},
+    #{personName,jdbcType=VARCHAR},
+    #{teamName,jdbcType=VARCHAR},
+    #{teamCode,jdbcType=VARCHAR}
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Values_Selective  -->
+    <sql id="Base_Column_Values_Selective">
+        <trim suffixOverrides=",">
+            <if test="id != null">
+            #{id},
+            </if>
+            <if test="businessid != null">
+            #{businessid},
+            </if>
+            <if test="applyid != null">
+            #{applyid},
+            </if>
+            <if test="billNo != null">
+            #{billNo},
+            </if>
+            <if test="contractNo != null">
+            #{contractNo},
+            </if>
+            <if test="loanNo != null">
+            #{loanNo},
+            </if>
+            <if test="customCode != null">
+            #{customCode},
+            </if>
+            <if test="customName != null">
+            #{customName},
+            </if>
+            <if test="customIdType != null">
+            #{customIdType},
+            </if>
+            <if test="customIdCard != null">
+            #{customIdCard},
+            </if>
+            <if test="company != null">
+            #{company},
+            </if>
+            <if test="brandsCode != null">
+            #{brandsCode},
+            </if>
+            <if test="brandsName != null">
+            #{brandsName},
+            </if>
+            <if test="seriesCode != null">
+            #{seriesCode},
+            </if>
+            <if test="seriesName != null">
+            #{seriesName},
+            </if>
+            <if test="carBrandType != null">
+            #{carBrandType},
+            </if>
+            <if test="carBrandTypeName != null">
+            #{carBrandTypeName},
+            </if>
+            <if test="carPrice != null">
+            #{carPrice},
+            </if>
+            <if test="carMortgagerName != null">
+            #{carMortgagerName},
+            </if>
+            <if test="nactivitiesId != null">
+            #{nactivitiesId},
+            </if>
+            <if test="nactivitiesName != null">
+            #{nactivitiesName},
+            </if>
+            <if test="necactivitiesId != null">
+            #{necactivitiesId},
+            </if>
+            <if test="necactivitiesName != null">
+            #{necactivitiesName},
+            </if>
+            <if test="nbizType != null">
+            #{nbizType},
+            </if>
+            <if test="nbizTypeName != null">
+            #{nbizTypeName},
+            </if>
+            <if test="ngetinterestType != null">
+            #{ngetinterestType},
+            </if>
+            <if test="ngetinterestTypeName != null">
+            #{ngetinterestTypeName},
+            </if>
+            <if test="ndlrbizType != null">
+            #{ndlrbizType},
+            </if>
+            <if test="ndlrbizTypeName != null">
+            #{ndlrbizTypeName},
+            </if>
+            <if test="nloanMoney != null">
+            #{nloanMoney},
+            </if>
+            <if test="timeLimit != null">
+            #{timeLimit},
+            </if>
+            <if test="dapplyDate != null">
+            #{dapplyDate},
+            </if>
+            <if test="dfactstartDate != null">
+            #{dfactstartDate},
+            </if>
+            <if test="necloanMoney != null">
+            #{necloanMoney},
+            </if>
+            <if test="firstRatio != null">
+            #{firstRatio},
+            </if>
+            <if test="largeAreaCode != null">
+            #{largeAreaCode},
+            </if>
+            <if test="largeAreaName != null">
+            #{largeAreaName},
+            </if>
+            <if test="zoneTwoCode != null">
+            #{zoneTwoCode},
+            </if>
+            <if test="zoneTwoName != null">
+            #{zoneTwoName},
+            </if>
+            <if test="distributorCode != null">
+            #{distributorCode},
+            </if>
+            <if test="distributorName != null">
+            #{distributorName},
+            </if>
+            <if test="salesPersonCode != null">
+            #{salesPersonCode},
+            </if>
+            <if test="salesPersonName != null">
+            #{salesPersonName},
+            </if>
+            <if test="provinceCode != null">
+            #{provinceCode},
+            </if>
+            <if test="provinceName != null">
+            #{provinceName},
+            </if>
+            <if test="cityCode != null">
+            #{cityCode},
+            </if>
+            <if test="cityName != null">
+            #{cityName},
+            </if>
+            <if test="remark != null">
+            #{remark},
+            </if>
+            <if test="createTime != null">
+            #{createTime},
+            </if>
+            <if test="modifyTime != null">
+            #{modifyTime},
+            </if>
+            <if test="startTime != null">
+            #{startTime},
+            </if>
+            <if test="creator != null">
+            #{creator},
+            </if>
+            <if test="modifier != null">
+            #{modifier},
+            </if>
+            <if test="activematchflag != null">
+            #{activematchflag},
+            </if>
+            <if test="planmatchflag != null">
+            #{planmatchflag},
+            </if>
+            <if test="flag != null">
+            #{flag},
+            </if>
+            <if test="personCode != null">
+            #{personCode},
+            </if>
+            <if test="personName != null">
+            #{personName},
+            </if>
+            <if test="teamName != null">
+            #{teamName},
+            </if>
+            <if test="teamCode != null">
+            #{teamCode}
+            </if>
+        </trim>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Set_Values  -->
+    <sql id="Base_Column_Set_Values">
+    ID = #{id},
+    BUSINESSID = #{businessid},
+    APPLYID = #{applyid},
+    BILL_NO = #{billNo},
+    CONTRACT_NO = #{contractNo},
+    LOAN_NO = #{loanNo},
+    CUSTOM_CODE = #{customCode},
+    CUSTOM_NAME = #{customName},
+    CUSTOM_ID_TYPE = #{customIdType},
+    CUSTOM_ID_CARD = #{customIdCard},
+    COMPANY = #{company},
+    BRANDS_CODE = #{brandsCode},
+    BRANDS_NAME = #{brandsName},
+    SERIES_CODE = #{seriesCode},
+    SERIES_NAME = #{seriesName},
+    CAR_BRAND_TYPE = #{carBrandType},
+    CAR_BRAND_TYPE_NAME = #{carBrandTypeName},
+    CAR_PRICE = #{carPrice},
+    CAR_MORTGAGER_NAME = #{carMortgagerName},
+    NACTIVITIES_ID = #{nactivitiesId},
+    NACTIVITIES_NAME = #{nactivitiesName},
+    NECACTIVITIES_ID = #{necactivitiesId},
+    NECACTIVITIES_NAME = #{necactivitiesName},
+    NBIZ_TYPE = #{nbizType},
+    NBIZ_TYPE_NAME = #{nbizTypeName},
+    NGETINTEREST_TYPE = #{ngetinterestType},
+    NGETINTEREST_TYPE_NAME = #{ngetinterestTypeName},
+    NDLRBIZ_TYPE = #{ndlrbizType},
+    NDLRBIZ_TYPE_NAME = #{ndlrbizTypeName},
+    NLOAN_MONEY = #{nloanMoney},
+    TIME_LIMIT = #{timeLimit},
+    DAPPLY_DATE = #{dapplyDate},
+    DFACTSTART_DATE = #{dfactstartDate},
+    NECLOAN_MONEY = #{necloanMoney},
+    FIRST_RATIO = #{firstRatio},
+    LARGE_AREA_CODE = #{largeAreaCode},
+    LARGE_AREA_NAME = #{largeAreaName},
+    ZONE_TWO_CODE = #{zoneTwoCode},
+    ZONE_TWO_NAME = #{zoneTwoName},
+    DISTRIBUTOR_CODE = #{distributorCode},
+    DISTRIBUTOR_NAME = #{distributorName},
+    SALES_PERSON_CODE = #{salesPersonCode},
+    SALES_PERSON_NAME = #{salesPersonName},
+    PROVINCE_CODE = #{provinceCode},
+    PROVINCE_NAME = #{provinceName},
+    CITY_CODE = #{cityCode},
+    CITY_NAME = #{cityName},
+    REMARK = #{remark},
+    CREATE_TIME = #{createTime},
+    MODIFY_TIME = #{modifyTime},
+    START_TIME = #{startTime},
+    CREATOR = #{creator},
+    MODIFIER = #{modifier},
+    ACTIVEMATCHFLAG = #{activematchflag},
+    PLANMATCHFLAG = #{planmatchflag},
+    FLAG = #{flag},
+    PERSON_CODE = #{personCode},
+    PERSON_NAME = #{personName},
+    TEAM_NAME = #{teamName},
+    TEAM_CODE = #{teamCode}
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Set_Values_Selective  -->
+    <sql id="Base_Column_Set_Values_Selective">
+        <if test="id != null">
+        ID = #{id},
+        </if>
+        <if test="businessid != null">
+        BUSINESSID = #{businessid},
+        </if>
+        <if test="applyid != null">
+        APPLYID = #{applyid},
+        </if>
+        <if test="billNo != null">
+        BILL_NO = #{billNo},
+        </if>
+        <if test="contractNo != null">
+        CONTRACT_NO = #{contractNo},
+        </if>
+        <if test="loanNo != null">
+        LOAN_NO = #{loanNo},
+        </if>
+        <if test="customCode != null">
+        CUSTOM_CODE = #{customCode},
+        </if>
+        <if test="customName != null">
+        CUSTOM_NAME = #{customName},
+        </if>
+        <if test="customIdType != null">
+        CUSTOM_ID_TYPE = #{customIdType},
+        </if>
+        <if test="customIdCard != null">
+        CUSTOM_ID_CARD = #{customIdCard},
+        </if>
+        <if test="company != null">
+        COMPANY = #{company},
+        </if>
+        <if test="brandsCode != null">
+        BRANDS_CODE = #{brandsCode},
+        </if>
+        <if test="brandsName != null">
+        BRANDS_NAME = #{brandsName},
+        </if>
+        <if test="seriesCode != null">
+        SERIES_CODE = #{seriesCode},
+        </if>
+        <if test="seriesName != null">
+        SERIES_NAME = #{seriesName},
+        </if>
+        <if test="carBrandType != null">
+        CAR_BRAND_TYPE = #{carBrandType},
+        </if>
+        <if test="carBrandTypeName != null">
+        CAR_BRAND_TYPE_NAME = #{carBrandTypeName},
+        </if>
+        <if test="carPrice != null">
+        CAR_PRICE = #{carPrice},
+        </if>
+        <if test="carMortgagerName != null">
+        CAR_MORTGAGER_NAME = #{carMortgagerName},
+        </if>
+        <if test="nactivitiesId != null">
+        NACTIVITIES_ID = #{nactivitiesId},
+        </if>
+        <if test="nactivitiesName != null">
+        NACTIVITIES_NAME = #{nactivitiesName},
+        </if>
+        <if test="necactivitiesId != null">
+        NECACTIVITIES_ID = #{necactivitiesId},
+        </if>
+        <if test="necactivitiesName != null">
+        NECACTIVITIES_NAME = #{necactivitiesName},
+        </if>
+        <if test="nbizType != null">
+        NBIZ_TYPE = #{nbizType},
+        </if>
+        <if test="nbizTypeName != null">
+        NBIZ_TYPE_NAME = #{nbizTypeName},
+        </if>
+        <if test="ngetinterestType != null">
+        NGETINTEREST_TYPE = #{ngetinterestType},
+        </if>
+        <if test="ngetinterestTypeName != null">
+        NGETINTEREST_TYPE_NAME = #{ngetinterestTypeName},
+        </if>
+        <if test="ndlrbizType != null">
+        NDLRBIZ_TYPE = #{ndlrbizType},
+        </if>
+        <if test="ndlrbizTypeName != null">
+        NDLRBIZ_TYPE_NAME = #{ndlrbizTypeName},
+        </if>
+        <if test="nloanMoney != null">
+        NLOAN_MONEY = #{nloanMoney},
+        </if>
+        <if test="timeLimit != null">
+        TIME_LIMIT = #{timeLimit},
+        </if>
+        <if test="dapplyDate != null">
+            DAPPLY_DATE = to_date(#{dapplyDate,jdbcType=TIMESTAMP},'YYYY-MM-DD'),
+        </if>
+        <if test="dfactstartDate != null">
+            DFACTSTART_DATE = to_date(#{dfactstartDate,jdbcType=TIMESTAMP},'YYYY-MM-DD'),
+        </if>
+        <if test="necloanMoney != null">
+        NECLOAN_MONEY = #{necloanMoney},
+        </if>
+        <if test="firstRatio != null">
+        FIRST_RATIO = #{firstRatio},
+        </if>
+        <if test="largeAreaCode != null">
+        LARGE_AREA_CODE = #{largeAreaCode},
+        </if>
+        <if test="largeAreaName != null">
+        LARGE_AREA_NAME = #{largeAreaName},
+        </if>
+        <if test="zoneTwoCode != null">
+        ZONE_TWO_CODE = #{zoneTwoCode},
+        </if>
+        <if test="zoneTwoName != null">
+        ZONE_TWO_NAME = #{zoneTwoName},
+        </if>
+        <if test="distributorCode != null">
+        DISTRIBUTOR_CODE = #{distributorCode},
+        </if>
+        <if test="distributorName != null">
+        DISTRIBUTOR_NAME = #{distributorName},
+        </if>
+        <if test="salesPersonCode != null">
+        SALES_PERSON_CODE = #{salesPersonCode},
+        </if>
+        <if test="salesPersonName != null">
+        SALES_PERSON_NAME = #{salesPersonName},
+        </if>
+        <if test="provinceCode != null">
+        PROVINCE_CODE = #{provinceCode},
+        </if>
+        <if test="provinceName != null">
+        PROVINCE_NAME = #{provinceName},
+        </if>
+        <if test="cityCode != null">
+        CITY_CODE = #{cityCode},
+        </if>
+        <if test="cityName != null">
+        CITY_NAME = #{cityName},
+        </if>
+        <if test="remark != null">
+        REMARK = #{remark},
+        </if>
+        <if test="createTime != null">
+            CREATE_TIME = to_date(#{createTime,jdbcType=TIMESTAMP},'YYYY-MM-DD HH24:mi:ss'),
+        </if>
+        <if test="modifyTime != null">
+            MODIFY_TIME = to_date(#{modifyTime,jdbcType=TIMESTAMP},'YYYY-MM-DD HH24:mi:ss'),
+        </if>
+        <if test="startTime != null">
+            START_TIME = to_date(#{startTime,jdbcType=TIMESTAMP},'YYYY-MM-DD HH24:mi:ss'),
+        </if>
+        <if test="creator != null">
+        CREATOR = #{creator},
+        </if>
+        <if test="modifier != null">
+        MODIFIER = #{modifier},
+        </if>
+        <if test="activematchflag != null">
+        ACTIVEMATCHFLAG = #{activematchflag},
+        </if>
+        <if test="planmatchflag != null">
+        PLANMATCHFLAG = #{planmatchflag},
+        </if>
+        <if test="flag != null">
+        FLAG = #{flag},
+        </if>
+        <if test="personCode != null">
+        PERSON_CODE = #{personCode},
+        </if>
+        <if test="personName != null">
+        PERSON_NAME = #{personName},
+        </if>
+        <if test="teamName != null">
+        TEAM_NAME = #{teamName},
+        </if>
+        <if test="teamCode != null">
+        TEAM_CODE = #{teamCode}
+        </if>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Where_Selective  -->
+    <sql id="Base_Column_Where_Selective">
+        <if test="id != null">
+            and ID = #{id}
+        </if>
+        <if test="businessid != null">
+            and BUSINESSID = #{businessid}
+        </if>
+        <if test="applyid != null">
+            and APPLYID = #{applyid}
+        </if>
+        <if test="billNo != null">
+            and BILL_NO = #{billNo}
+        </if>
+        <if test="contractNo != null">
+            and CONTRACT_NO = #{contractNo}
+        </if>
+        <if test="loanNo != null">
+            and LOAN_NO = #{loanNo}
+        </if>
+        <if test="customCode != null">
+            and CUSTOM_CODE = #{customCode}
+        </if>
+        <if test="customName != null">
+            and CUSTOM_NAME = #{customName}
+        </if>
+        <if test="customIdType != null">
+            and CUSTOM_ID_TYPE = #{customIdType}
+        </if>
+        <if test="customIdCard != null">
+            and CUSTOM_ID_CARD = #{customIdCard}
+        </if>
+        <if test="company != null">
+            and COMPANY = #{company}
+        </if>
+        <if test="brandsCode != null">
+            and BRANDS_CODE = #{brandsCode}
+        </if>
+        <if test="brandsName != null">
+            and BRANDS_NAME = #{brandsName}
+        </if>
+        <if test="seriesCode != null">
+            and SERIES_CODE = #{seriesCode}
+        </if>
+        <if test="seriesName != null">
+            and SERIES_NAME = #{seriesName}
+        </if>
+        <if test="carBrandType != null">
+            and CAR_BRAND_TYPE = #{carBrandType}
+        </if>
+        <if test="carBrandTypeName != null">
+            and CAR_BRAND_TYPE_NAME = #{carBrandTypeName}
+        </if>
+        <if test="carPrice != null">
+            and CAR_PRICE = #{carPrice}
+        </if>
+        <if test="carMortgagerName != null">
+            and CAR_MORTGAGER_NAME = #{carMortgagerName}
+        </if>
+        <if test="nactivitiesId != null">
+            and NACTIVITIES_ID = #{nactivitiesId}
+        </if>
+        <if test="nactivitiesName != null">
+            and NACTIVITIES_NAME = #{nactivitiesName}
+        </if>
+        <if test="necactivitiesId != null">
+            and NECACTIVITIES_ID = #{necactivitiesId}
+        </if>
+        <if test="necactivitiesName != null">
+            and NECACTIVITIES_NAME = #{necactivitiesName}
+        </if>
+        <if test="nbizType != null">
+            and NBIZ_TYPE = #{nbizType}
+        </if>
+        <if test="nbizTypeName != null">
+            and NBIZ_TYPE_NAME = #{nbizTypeName}
+        </if>
+        <if test="ngetinterestType != null">
+            and NGETINTEREST_TYPE = #{ngetinterestType}
+        </if>
+        <if test="ngetinterestTypeName != null">
+            and NGETINTEREST_TYPE_NAME = #{ngetinterestTypeName}
+        </if>
+        <if test="ndlrbizType != null">
+            and NDLRBIZ_TYPE = #{ndlrbizType}
+        </if>
+        <if test="ndlrbizTypeName != null">
+            and NDLRBIZ_TYPE_NAME = #{ndlrbizTypeName}
+        </if>
+        <if test="nloanMoney != null">
+            and NLOAN_MONEY = #{nloanMoney}
+        </if>
+        <if test="timeLimit != null">
+            and TIME_LIMIT = #{timeLimit}
+        </if>
+        <if test="dapplyDate != null">
+            and DAPPLY_DATE = #{dapplyDate}
+        </if>
+        <if test="dfactstartDate != null">
+            and DFACTSTART_DATE = #{dfactstartDate}
+        </if>
+        <if test="necloanMoney != null">
+            and NECLOAN_MONEY = #{necloanMoney}
+        </if>
+        <if test="firstRatio != null">
+            and FIRST_RATIO = #{firstRatio}
+        </if>
+        <if test="largeAreaCode != null">
+            and LARGE_AREA_CODE = #{largeAreaCode}
+        </if>
+        <if test="largeAreaName != null">
+            and LARGE_AREA_NAME = #{largeAreaName}
+        </if>
+        <if test="zoneTwoCode != null">
+            and ZONE_TWO_CODE = #{zoneTwoCode}
+        </if>
+        <if test="zoneTwoName != null">
+            and ZONE_TWO_NAME = #{zoneTwoName}
+        </if>
+        <if test="distributorCode != null">
+            and DISTRIBUTOR_CODE = #{distributorCode}
+        </if>
+        <if test="distributorName != null">
+            and DISTRIBUTOR_NAME = #{distributorName}
+        </if>
+        <if test="salesPersonCode != null">
+            and SALES_PERSON_CODE = #{salesPersonCode}
+        </if>
+        <if test="salesPersonName != null">
+            and SALES_PERSON_NAME = #{salesPersonName}
+        </if>
+        <if test="provinceCode != null">
+            and PROVINCE_CODE = #{provinceCode}
+        </if>
+        <if test="provinceName != null">
+            and PROVINCE_NAME = #{provinceName}
+        </if>
+        <if test="cityCode != null">
+            and CITY_CODE = #{cityCode}
+        </if>
+        <if test="cityName != null">
+            and CITY_NAME = #{cityName}
+        </if>
+        <if test="remark != null">
+            and REMARK = #{remark}
+        </if>
+        <if test="createTime != null">
+            and CREATE_TIME = #{createTime}
+        </if>
+        <if test="modifyTime != null">
+            and MODIFY_TIME = #{modifyTime}
+        </if>
+        <if test="startTime != null">
+            and START_TIME = #{startTime}
+        </if>
+        <if test="creator != null">
+            and CREATOR = #{creator}
+        </if>
+        <if test="modifier != null">
+            and MODIFIER = #{modifier}
+        </if>
+        <if test="activematchflag != null">
+            and ACTIVEMATCHFLAG = #{activematchflag}
+        </if>
+        <if test="planmatchflag != null">
+            and PLANMATCHFLAG = #{planmatchflag}
+        </if>
+        <if test="flag != null">
+            and FLAG = #{flag}
+        </if>
+        <if test="personCode != null">
+            and PERSON_CODE = #{personCode}
+        </if>
+        <if test="personName != null">
+            and PERSON_NAME = #{personName}
+        </if>
+        <if test="teamName != null">
+            and TEAM_NAME = #{teamName}
+        </if>
+        <if test="teamCode != null">
+            and TEAM_CODE = #{teamCode}
+        </if>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Where_Selective_Param1  -->
+    <sql id="Base_Column_Where_Selective_Param1">
+        <if test="param1.id != null">
+            and ID = #{param1.id}
+        </if>
+        <if test="param1.businessid != null">
+            and BUSINESSID = #{param1.businessid}
+        </if>
+        <if test="param1.applyid != null">
+            and APPLYID = #{param1.applyid}
+        </if>
+        <if test="param1.billNo != null">
+            and BILL_NO = #{param1.billNo}
+        </if>
+        <if test="param1.contractNo != null">
+            and CONTRACT_NO = #{param1.contractNo}
+        </if>
+        <if test="param1.loanNo != null">
+            and LOAN_NO = #{param1.loanNo}
+        </if>
+        <if test="param1.customCode != null">
+            and CUSTOM_CODE = #{param1.customCode}
+        </if>
+        <if test="param1.customName != null">
+            and CUSTOM_NAME = #{param1.customName}
+        </if>
+        <if test="param1.customIdType != null">
+            and CUSTOM_ID_TYPE = #{param1.customIdType}
+        </if>
+        <if test="param1.customIdCard != null">
+            and CUSTOM_ID_CARD = #{param1.customIdCard}
+        </if>
+        <if test="param1.company != null">
+            and COMPANY = #{param1.company}
+        </if>
+        <if test="param1.brandsCode != null">
+            and BRANDS_CODE = #{param1.brandsCode}
+        </if>
+        <if test="param1.brandsName != null">
+            and BRANDS_NAME = #{param1.brandsName}
+        </if>
+        <if test="param1.seriesCode != null">
+            and SERIES_CODE = #{param1.seriesCode}
+        </if>
+        <if test="param1.seriesName != null">
+            and SERIES_NAME = #{param1.seriesName}
+        </if>
+        <if test="param1.carBrandType != null">
+            and CAR_BRAND_TYPE = #{param1.carBrandType}
+        </if>
+        <if test="param1.carBrandTypeName != null">
+            and CAR_BRAND_TYPE_NAME = #{param1.carBrandTypeName}
+        </if>
+        <if test="param1.carPrice != null">
+            and CAR_PRICE = #{param1.carPrice}
+        </if>
+        <if test="param1.carMortgagerName != null">
+            and CAR_MORTGAGER_NAME = #{param1.carMortgagerName}
+        </if>
+        <if test="param1.nactivitiesId != null">
+            and NACTIVITIES_ID = #{param1.nactivitiesId}
+        </if>
+        <if test="param1.nactivitiesName != null">
+            and NACTIVITIES_NAME = #{param1.nactivitiesName}
+        </if>
+        <if test="param1.necactivitiesId != null">
+            and NECACTIVITIES_ID = #{param1.necactivitiesId}
+        </if>
+        <if test="param1.necactivitiesName != null">
+            and NECACTIVITIES_NAME = #{param1.necactivitiesName}
+        </if>
+        <if test="param1.nbizType != null">
+            and NBIZ_TYPE = #{param1.nbizType}
+        </if>
+        <if test="param1.nbizTypeName != null">
+            and NBIZ_TYPE_NAME = #{param1.nbizTypeName}
+        </if>
+        <if test="param1.ngetinterestType != null">
+            and NGETINTEREST_TYPE = #{param1.ngetinterestType}
+        </if>
+        <if test="param1.ngetinterestTypeName != null">
+            and NGETINTEREST_TYPE_NAME = #{param1.ngetinterestTypeName}
+        </if>
+        <if test="param1.ndlrbizType != null">
+            and NDLRBIZ_TYPE = #{param1.ndlrbizType}
+        </if>
+        <if test="param1.ndlrbizTypeName != null">
+            and NDLRBIZ_TYPE_NAME = #{param1.ndlrbizTypeName}
+        </if>
+        <if test="param1.nloanMoney != null">
+            and NLOAN_MONEY = #{param1.nloanMoney}
+        </if>
+        <if test="param1.timeLimit != null">
+            and TIME_LIMIT = #{param1.timeLimit}
+        </if>
+        <if test="param1.dapplyDate != null">
+            and DAPPLY_DATE = #{param1.dapplyDate}
+        </if>
+        <if test="param1.dfactstartDate != null">
+            and DFACTSTART_DATE = #{param1.dfactstartDate}
+        </if>
+        <if test="param1.necloanMoney != null">
+            and NECLOAN_MONEY = #{param1.necloanMoney}
+        </if>
+        <if test="param1.firstRatio != null">
+            and FIRST_RATIO = #{param1.firstRatio}
+        </if>
+        <if test="param1.largeAreaCode != null">
+            and LARGE_AREA_CODE = #{param1.largeAreaCode}
+        </if>
+        <if test="param1.largeAreaName != null">
+            and LARGE_AREA_NAME = #{param1.largeAreaName}
+        </if>
+        <if test="param1.zoneTwoCode != null">
+            and ZONE_TWO_CODE = #{param1.zoneTwoCode}
+        </if>
+        <if test="param1.zoneTwoName != null">
+            and ZONE_TWO_NAME = #{param1.zoneTwoName}
+        </if>
+        <if test="param1.distributorCode != null">
+            and DISTRIBUTOR_CODE = #{param1.distributorCode}
+        </if>
+        <if test="param1.distributorName != null">
+            and DISTRIBUTOR_NAME = #{param1.distributorName}
+        </if>
+        <if test="param1.salesPersonCode != null">
+            and SALES_PERSON_CODE = #{param1.salesPersonCode}
+        </if>
+        <if test="param1.salesPersonName != null">
+            and SALES_PERSON_NAME = #{param1.salesPersonName}
+        </if>
+        <if test="param1.provinceCode != null">
+            and PROVINCE_CODE = #{param1.provinceCode}
+        </if>
+        <if test="param1.provinceName != null">
+            and PROVINCE_NAME = #{param1.provinceName}
+        </if>
+        <if test="param1.cityCode != null">
+            and CITY_CODE = #{param1.cityCode}
+        </if>
+        <if test="param1.cityName != null">
+            and CITY_NAME = #{param1.cityName}
+        </if>
+        <if test="param1.remark != null">
+            and REMARK = #{param1.remark}
+        </if>
+        <if test="param1.createTime != null">
+            and CREATE_TIME = #{param1.createTime}
+        </if>
+        <if test="param1.modifyTime != null">
+            and MODIFY_TIME = #{param1.modifyTime}
+        </if>
+        <if test="param1.startTime != null">
+            and START_TIME = #{param1.startTime}
+        </if>
+        <if test="param1.creator != null">
+            and CREATOR = #{param1.creator}
+        </if>
+        <if test="param1.modifier != null">
+            and MODIFIER = #{param1.modifier}
+        </if>
+        <if test="param1.activematchflag != null">
+            and ACTIVEMATCHFLAG = #{param1.activematchflag}
+        </if>
+        <if test="param1.planmatchflag != null">
+            and PLANMATCHFLAG = #{param1.planmatchflag}
+        </if>
+        <if test="param1.flag != null">
+            and FLAG = #{param1.flag}
+        </if>
+        <if test="param1.personCode != null">
+            and PERSON_CODE = #{param1.personCode}
+        </if>
+        <if test="param1.personName != null">
+            and PERSON_NAME = #{param1.personName}
+        </if>
+        <if test="param1.teamName != null">
+            and TEAM_NAME = #{param1.teamName}
+        </if>
+        <if test="param1.teamCode != null">
+            and TEAM_CODE = #{param1.teamCode}
+        </if>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Order_By  -->
+    <sql id="Base_Order_By">
+        <bind name="propName" value="sortField"></bind>
+        ORDER BY <include refid="Base_Column_Name" />
+        <choose>
+            <when test="isAscend">
+                ASC
+            </when>
+            <otherwise>
+                DESC
+            </otherwise>
+        </choose>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Name  -->
+    <sql id="Base_Column_Name">
+        <if test='"id" == propName'>
+        ID
+        </if>
+        <if test='"businessid" == propName'>
+        BUSINESSID
+        </if>
+        <if test='"applyid" == propName'>
+        APPLYID
+        </if>
+        <if test='"billNo" == propName'>
+        BILL_NO
+        </if>
+        <if test='"contractNo" == propName'>
+        CONTRACT_NO
+        </if>
+        <if test='"loanNo" == propName'>
+        LOAN_NO
+        </if>
+        <if test='"customCode" == propName'>
+        CUSTOM_CODE
+        </if>
+        <if test='"customName" == propName'>
+        CUSTOM_NAME
+        </if>
+        <if test='"customIdType" == propName'>
+        CUSTOM_ID_TYPE
+        </if>
+        <if test='"customIdCard" == propName'>
+        CUSTOM_ID_CARD
+        </if>
+        <if test='"company" == propName'>
+        COMPANY
+        </if>
+        <if test='"brandsCode" == propName'>
+        BRANDS_CODE
+        </if>
+        <if test='"brandsName" == propName'>
+        BRANDS_NAME
+        </if>
+        <if test='"seriesCode" == propName'>
+        SERIES_CODE
+        </if>
+        <if test='"seriesName" == propName'>
+        SERIES_NAME
+        </if>
+        <if test='"carBrandType" == propName'>
+        CAR_BRAND_TYPE
+        </if>
+        <if test='"carBrandTypeName" == propName'>
+        CAR_BRAND_TYPE_NAME
+        </if>
+        <if test='"carPrice" == propName'>
+        CAR_PRICE
+        </if>
+        <if test='"carMortgagerName" == propName'>
+        CAR_MORTGAGER_NAME
+        </if>
+        <if test='"nactivitiesId" == propName'>
+        NACTIVITIES_ID
+        </if>
+        <if test='"nactivitiesName" == propName'>
+        NACTIVITIES_NAME
+        </if>
+        <if test='"necactivitiesId" == propName'>
+        NECACTIVITIES_ID
+        </if>
+        <if test='"necactivitiesName" == propName'>
+        NECACTIVITIES_NAME
+        </if>
+        <if test='"nbizType" == propName'>
+        NBIZ_TYPE
+        </if>
+        <if test='"nbizTypeName" == propName'>
+        NBIZ_TYPE_NAME
+        </if>
+        <if test='"ngetinterestType" == propName'>
+        NGETINTEREST_TYPE
+        </if>
+        <if test='"ngetinterestTypeName" == propName'>
+        NGETINTEREST_TYPE_NAME
+        </if>
+        <if test='"ndlrbizType" == propName'>
+        NDLRBIZ_TYPE
+        </if>
+        <if test='"ndlrbizTypeName" == propName'>
+        NDLRBIZ_TYPE_NAME
+        </if>
+        <if test='"nloanMoney" == propName'>
+        NLOAN_MONEY
+        </if>
+        <if test='"timeLimit" == propName'>
+        TIME_LIMIT
+        </if>
+        <if test='"dapplyDate" == propName'>
+        DAPPLY_DATE
+        </if>
+        <if test='"dfactstartDate" == propName'>
+        DFACTSTART_DATE
+        </if>
+        <if test='"necloanMoney" == propName'>
+        NECLOAN_MONEY
+        </if>
+        <if test='"firstRatio" == propName'>
+        FIRST_RATIO
+        </if>
+        <if test='"largeAreaCode" == propName'>
+        LARGE_AREA_CODE
+        </if>
+        <if test='"largeAreaName" == propName'>
+        LARGE_AREA_NAME
+        </if>
+        <if test='"zoneTwoCode" == propName'>
+        ZONE_TWO_CODE
+        </if>
+        <if test='"zoneTwoName" == propName'>
+        ZONE_TWO_NAME
+        </if>
+        <if test='"distributorCode" == propName'>
+        DISTRIBUTOR_CODE
+        </if>
+        <if test='"distributorName" == propName'>
+        DISTRIBUTOR_NAME
+        </if>
+        <if test='"salesPersonCode" == propName'>
+        SALES_PERSON_CODE
+        </if>
+        <if test='"salesPersonName" == propName'>
+        SALES_PERSON_NAME
+        </if>
+        <if test='"provinceCode" == propName'>
+        PROVINCE_CODE
+        </if>
+        <if test='"provinceName" == propName'>
+        PROVINCE_NAME
+        </if>
+        <if test='"cityCode" == propName'>
+        CITY_CODE
+        </if>
+        <if test='"cityName" == propName'>
+        CITY_NAME
+        </if>
+        <if test='"remark" == propName'>
+        REMARK
+        </if>
+        <if test='"createTime" == propName'>
+        CREATE_TIME
+        </if>
+        <if test='"modifyTime" == propName'>
+        MODIFY_TIME
+        </if>
+        <if test='"startTime" == propName'>
+        START_TIME
+        </if>
+        <if test='"creator" == propName'>
+        CREATOR
+        </if>
+        <if test='"modifier" == propName'>
+        MODIFIER
+        </if>
+        <if test='"activematchflag" == propName'>
+        ACTIVEMATCHFLAG
+        </if>
+        <if test='"planmatchflag" == propName'>
+        PLANMATCHFLAG
+        </if>
+        <if test='"flag" == propName'>
+        FLAG
+        </if>
+        <if test='"personCode" == propName'>
+        PERSON_CODE
+        </if>
+        <if test='"personName" == propName'>
+        PERSON_NAME
+        </if>
+        <if test='"teamName" == propName'>
+        TEAM_NAME
+        </if>
+        <if test='"teamCode" == propName'>
+        TEAM_CODE
+        </if>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Id_Array  -->
+    <sql id="Base_Id_Array">
+        <foreach collection="array" open="(" close=")" separator="," item="id">
+        #{id}
+        </foreach>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Id_List  -->
+    <sql id="Base_Id_List">
+        <foreach collection="list" open="(" close=")" separator="," item="id">
+        #{id}
+        </foreach>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Select_All  -->
+    <sql id="Base_Select_All">
+        select
+        <include refid="Base_Column_List" />
+        from <include refid="Base_Table_Name" />
+    </sql>
+    <!-- endregion -->
+
+    <!-- region selectById  -->
+    <select id="selectById" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        where ID = #{id}
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectByIds  -->
+    <select id="selectByIds" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        where ID in
+        <include refid="Base_Id_List" />
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectAll  -->
+    <select id="selectAll" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectCount  -->
+    <select id="selectCount" resultType="int">
+        select count(*)
+        from <include refid="Base_Table_Name" />
+        <where>
+            <include refid="Base_Column_Where_Selective" />
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region select  -->
+    <select id="select" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Where_Selective" />
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectOne  -->
+    <select id="selectOne" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Where_Selective" />
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectOrderBy  -->
+    <select id="selectOrderBy" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Where_Selective_Param1" />
+        </where>
+        <include refid="Base_Order_By" />
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectByProperty  -->
+    <select id="selectByProperty" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Name" /> = #{propValue}
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectByPropertyIn  -->
+    <select id="selectByPropertyIn" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Name" /> IN
+            <foreach collection="propValues" open="(" close=")" separator="," item="propValue">
+            #{propValue}
+            </foreach>
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region delete  -->
+    <delete id="delete">
+        delete
+        from <include refid="Base_Table_Name" />
+        <where>
+            <include refid="Base_Column_Where_Selective" />
+        </where>
+    </delete>
+    <!-- endregion -->
+
+    <!-- region deleteById  -->
+    <delete id="deleteById">
+        delete
+        from <include refid="Base_Table_Name" />
+        where ID = #{id}
+    </delete>
+    <!-- endregion -->
+
+    <!-- region deleteByIds  -->
+    <delete id="deleteByIds">
+        delete
+        from <include refid="Base_Table_Name" />
+        where ID in
+        <include refid="Base_Id_List" />
+    </delete>
+    <!-- endregion -->
+
+    <!-- region insert  -->
+    <insert id="insert" parameterType="com.yqjr.fin.mkmm.sales.entity.BasicBussiness">
+        insert into <include refid="Base_Table_Name" /> (
+        <include refid="Base_Column_List" />
+        )
+        values (
+        <include refid="Base_Column_Values" />
+        )
+    </insert>
+    <!-- endregion -->
+
+    <!-- region updateById  -->
+    <update id="updateById" parameterType="com.yqjr.fin.mkmm.sales.entity.BasicBussiness">
+        update <include refid="Base_Table_Name" />
+        <set>
+            <include refid="Base_Column_Set_Values" />
+        </set>
+        where ID = #{id}
+    </update>
+    <!-- endregion -->
+
+    <!-- region patchById  -->
+    <update id="patchById" parameterType="com.yqjr.fin.mkmm.sales.entity.BasicBussiness">
+        update <include refid="Base_Table_Name" />
+        <set>
+            <include refid="Base_Column_Set_Values_Selective" />
+        </set>
+        where ID = #{id}
+    </update>
+    <!-- endregion -->
+
+    <!-- endregion BaseMapper -->
+
+    <!-- region generated by CodeRobot  -->
+
+    <!-- region 结果集映射  -->
+    <resultMap id="BasicBussinessResult" type="com.yqjr.fin.mkmm.sales.entity.BasicBussiness">
+        <result property="id" column="ID"/><!--ID-->
+        <result property="businessid" column="BUSINESSID"/><!--业务明细表主键ID-->
+        <result property="applyid" column="APPLYID"/><!--申请ID（业务数据唯一标识）-->
+        <result property="billNo" column="BILL_NO"/><!--结算单号-->
+        <result property="contractNo" column="CONTRACT_NO"/><!--业务明细单号（合同号）-->
+        <result property="loanNo" column="LOAN_NO"/><!--借据号-->
+        <result property="customCode" column="CUSTOM_CODE"/><!--客户ID-->
+        <result property="customName" column="CUSTOM_NAME"/><!--客户名称-->
+        <result property="customIdType" column="CUSTOM_ID_TYPE"/><!--证件类型-->
+        <result property="customIdCard" column="CUSTOM_ID_CARD"/><!--证件号-->
+        <result property="company" column="COMPANY"/><!--所属公司-->
+        <result property="brandsCode" column="BRANDS_CODE"/><!--品牌编码-->
+        <result property="brandsName" column="BRANDS_NAME"/><!--品牌名称-->
+        <result property="seriesCode" column="SERIES_CODE"/><!--车系代码-->
+        <result property="seriesName" column="SERIES_NAME"/><!--车系名称-->
+        <result property="carBrandType" column="CAR_BRAND_TYPE"/><!--车型-->
+        <result property="carBrandTypeName" column="CAR_BRAND_TYPE_NAME"/><!--车型名称-->
+        <result property="carPrice" column="CAR_PRICE"/><!--净车价-->
+        <result property="carMortgagerName" column="CAR_MORTGAGER_NAME"/><!--车籍-->
+        <result property="nactivitiesId" column="NACTIVITIES_ID"/><!--营销活动（车贷金融产品id）-->
+        <result property="nactivitiesName" column="NACTIVITIES_NAME"/><!--营销活动名称（车贷金融产品id）-->
+        <result property="necactivitiesId" column="NECACTIVITIES_ID"/><!--附加费金融产品id-->
+        <result property="necactivitiesName" column="NECACTIVITIES_NAME"/><!--附加费金融产品名称-->
+        <result property="nbizType" column="NBIZ_TYPE"/><!--业务类型Code-->
+        <result property="nbizTypeName" column="NBIZ_TYPE_NAME"/><!--业务类型名称-->
+        <result property="ngetinterestType" column="NGETINTEREST_TYPE"/><!--信贷产品Code-->
+        <result property="ngetinterestTypeName" column="NGETINTEREST_TYPE_NAME"/><!--信贷产品名称-->
+        <result property="ndlrbizType" column="NDLRBIZ_TYPE"/><!--金融产品(服务产品Code)-->
+        <result property="ndlrbizTypeName" column="NDLRBIZ_TYPE_NAME"/><!--金融产品(服务产品名称)-->
+        <result property="nloanMoney" column="NLOAN_MONEY"/><!--贷款金额-->
+        <result property="timeLimit" column="TIME_LIMIT"/><!--贷款期限-->
+        <result property="dapplyDate" column="DAPPLY_DATE"/><!--申请日期-->
+        <result property="dfactstartDate" column="DFACTSTART_DATE"/><!--放款日期-->
+        <result property="necloanMoney" column="NECLOAN_MONEY"/><!--附加贷金额-->
+        <result property="firstRatio" column="FIRST_RATIO"/><!--首付比例-->
+        <result property="largeAreaCode" column="LARGE_AREA_CODE"/><!--大区代码-->
+        <result property="largeAreaName" column="LARGE_AREA_NAME"/><!--大区名称-->
+        <result property="zoneTwoCode" column="ZONE_TWO_CODE"/><!--二区代码-->
+        <result property="zoneTwoName" column="ZONE_TWO_NAME"/><!--二区名称-->
+        <result property="distributorCode" column="DISTRIBUTOR_CODE"/><!--经销商代码-->
+        <result property="distributorName" column="DISTRIBUTOR_NAME"/><!--经销商名称-->
+        <result property="salesPersonCode" column="SALES_PERSON_CODE"/><!--销售顾问代码-->
+        <result property="salesPersonName" column="SALES_PERSON_NAME"/><!--销售顾问名称-->
+        <result property="provinceCode" column="PROVINCE_CODE"/><!--省份代码-->
+        <result property="provinceName" column="PROVINCE_NAME"/><!--省份名称-->
+        <result property="cityCode" column="CITY_CODE"/><!--城市代码-->
+        <result property="cityName" column="CITY_NAME"/><!--城市名称-->
+        <result property="remark" column="REMARK"/><!--备注-->
+        <result property="createTime" column="CREATE_TIME"/><!--创建时间(数据提取时间)-->
+        <result property="modifyTime" column="MODIFY_TIME"/><!--修改时间-->
+        <result property="startTime" column="START_TIME"/><!--生效时间-->
+        <result property="creator" column="CREATOR"/><!--创建人-->
+        <result property="modifier" column="MODIFIER"/><!--修改人-->
+        <result property="activematchflag" column="ACTIVEMATCHFLAG"/><!--活动统计标识（01-未统计 02-已统计）-->
+        <result property="planmatchflag" column="PLANMATCHFLAG"/><!--计划跟踪标识（01-未统计 02-已统计）-->
+        <result property="flag" column="FLAG"/><!--有效标识（如表记录不删除，以此区分,0无效，1有效）-->
+        <result property="personCode" column="PERSON_CODE"/><!--人员编号-->
+        <result property="personName" column="PERSON_NAME"/><!--人员姓名-->
+        <result property="teamName" column="TEAM_NAME"/><!--团队名称-->
+        <result property="teamCode" column="TEAM_CODE"/><!--团队编号-->
+    </resultMap>
+    <!-- endregion -->
+
+    <!-- 查询条件判断 入参为对象 条件为模糊-->
+    <sql id="queryLikeBasicBussiness">
+        <if test="basicBussiness!=null">
+            <if test="id!=null and id!=''">
+                AND ID LIKE CONCAT('%'#{id}'%')<!--ID-->
+            </if>
+            <if test="businessid!=null and businessid!=''">
+                AND BUSINESSID LIKE CONCAT('%'#{businessid}'%')<!--业务明细表主键ID-->
+            </if>
+            <if test="applyid!=null and applyid!=''">
+                AND APPLYID LIKE CONCAT('%'#{applyid}'%')<!--申请ID（业务数据唯一标识）-->
+            </if>
+            <if test="billNo!=null and billNo!=''">
+                AND BILL_NO LIKE CONCAT('%'#{billNo}'%')<!--结算单号-->
+            </if>
+            <if test="contractNo!=null and contractNo!=''">
+                AND CONTRACT_NO LIKE CONCAT('%'#{contractNo}'%')<!--业务明细单号（合同号）-->
+            </if>
+            <if test="loanNo!=null and loanNo!=''">
+                AND LOAN_NO LIKE CONCAT('%'#{loanNo}'%')<!--借据号-->
+            </if>
+            <if test="customCode!=null and customCode!=''">
+                AND CUSTOM_CODE LIKE CONCAT('%'#{customCode}'%')<!--客户ID-->
+            </if>
+            <if test="customName!=null and customName!=''">
+                AND CUSTOM_NAME LIKE CONCAT('%'#{customName}'%')<!--客户名称-->
+            </if>
+            <if test="customIdType!=null and customIdType!=''">
+                AND CUSTOM_ID_TYPE LIKE CONCAT('%'#{customIdType}'%')<!--证件类型-->
+            </if>
+            <if test="customIdCard!=null and customIdCard!=''">
+                AND CUSTOM_ID_CARD LIKE CONCAT('%'#{customIdCard}'%')<!--证件号-->
+            </if>
+            <if test="company!=null and company!=''">
+                AND COMPANY LIKE CONCAT('%'#{company}'%')<!--所属公司-->
+            </if>
+            <if test="brandsCode!=null and brandsCode!=''">
+                AND BRANDS_CODE LIKE CONCAT('%'#{brandsCode}'%')<!--品牌编码-->
+            </if>
+            <if test="brandsName!=null and brandsName!=''">
+                AND BRANDS_NAME LIKE CONCAT('%'#{brandsName}'%')<!--品牌名称-->
+            </if>
+            <if test="seriesCode!=null and seriesCode!=''">
+                AND SERIES_CODE LIKE CONCAT('%'#{seriesCode}'%')<!--车系代码-->
+            </if>
+            <if test="seriesName!=null and seriesName!=''">
+                AND SERIES_NAME LIKE CONCAT('%'#{seriesName}'%')<!--车系名称-->
+            </if>
+            <if test="carBrandType!=null and carBrandType!=''">
+                AND CAR_BRAND_TYPE LIKE CONCAT('%'#{carBrandType}'%')<!--车型-->
+            </if>
+            <if test="carBrandTypeName!=null and carBrandTypeName!=''">
+                AND CAR_BRAND_TYPE_NAME LIKE CONCAT('%'#{carBrandTypeName}'%')<!--车型名称-->
+            </if>
+            <if test="carPrice!=null and carPrice!=''">
+                AND CAR_PRICE LIKE CONCAT('%'#{carPrice}'%')<!--净车价-->
+            </if>
+            <if test="carMortgagerName!=null and carMortgagerName!=''">
+                AND CAR_MORTGAGER_NAME LIKE CONCAT('%'#{carMortgagerName}'%')<!--车籍-->
+            </if>
+            <if test="nactivitiesId!=null and nactivitiesId!=''">
+                AND NACTIVITIES_ID LIKE CONCAT('%'#{nactivitiesId}'%')<!--营销活动（车贷金融产品id）-->
+            </if>
+            <if test="nactivitiesName!=null and nactivitiesName!=''">
+                AND NACTIVITIES_NAME LIKE CONCAT('%'#{nactivitiesName}'%')<!--营销活动名称（车贷金融产品id）-->
+            </if>
+            <if test="necactivitiesId!=null and necactivitiesId!=''">
+                AND NECACTIVITIES_ID LIKE CONCAT('%'#{necactivitiesId}'%')<!--附加费金融产品id-->
+            </if>
+            <if test="necactivitiesName!=null and necactivitiesName!=''">
+                AND NECACTIVITIES_NAME LIKE CONCAT('%'#{necactivitiesName}'%')<!--附加费金融产品名称-->
+            </if>
+            <if test="nbizType!=null and nbizType!=''">
+                AND NBIZ_TYPE LIKE CONCAT('%'#{nbizType}'%')<!--业务类型Code-->
+            </if>
+            <if test="nbizTypeName!=null and nbizTypeName!=''">
+                AND NBIZ_TYPE_NAME LIKE CONCAT('%'#{nbizTypeName}'%')<!--业务类型名称-->
+            </if>
+            <if test="ngetinterestType!=null and ngetinterestType!=''">
+                AND NGETINTEREST_TYPE LIKE CONCAT('%'#{ngetinterestType}'%')<!--信贷产品Code-->
+            </if>
+            <if test="ngetinterestTypeName!=null and ngetinterestTypeName!=''">
+                AND NGETINTEREST_TYPE_NAME LIKE CONCAT('%'#{ngetinterestTypeName}'%')<!--信贷产品名称-->
+            </if>
+            <if test="ndlrbizType!=null and ndlrbizType!=''">
+                AND NDLRBIZ_TYPE LIKE CONCAT('%'#{ndlrbizType}'%')<!--金融产品(服务产品Code)-->
+            </if>
+            <if test="ndlrbizTypeName!=null and ndlrbizTypeName!=''">
+                AND NDLRBIZ_TYPE_NAME LIKE CONCAT('%'#{ndlrbizTypeName}'%')<!--金融产品(服务产品名称)-->
+            </if>
+            <if test="nloanMoney!=null and nloanMoney!=''">
+                AND NLOAN_MONEY LIKE CONCAT('%'#{nloanMoney}'%')<!--贷款金额-->
+            </if>
+            <if test="timeLimit!=null and timeLimit!=''">
+                AND TIME_LIMIT LIKE CONCAT('%'#{timeLimit}'%')<!--贷款期限-->
+            </if>
+            <if test="dapplyDate!=null and dapplyDate!=''">
+                AND DAPPLY_DATE LIKE CONCAT('%'#{dapplyDate}'%')<!--申请日期-->
+            </if>
+            <if test="dfactstartDate!=null and dfactstartDate!=''">
+                AND DFACTSTART_DATE LIKE CONCAT('%'#{dfactstartDate}'%')<!--放款日期-->
+            </if>
+            <if test="necloanMoney!=null and necloanMoney!=''">
+                AND NECLOAN_MONEY LIKE CONCAT('%'#{necloanMoney}'%')<!--附加贷金额-->
+            </if>
+            <if test="firstRatio!=null and firstRatio!=''">
+                AND FIRST_RATIO LIKE CONCAT('%'#{firstRatio}'%')<!--首付比例-->
+            </if>
+            <if test="largeAreaCode!=null and largeAreaCode!=''">
+                AND LARGE_AREA_CODE LIKE CONCAT('%'#{largeAreaCode}'%')<!--大区代码-->
+            </if>
+            <if test="largeAreaName!=null and largeAreaName!=''">
+                AND LARGE_AREA_NAME LIKE CONCAT('%'#{largeAreaName}'%')<!--大区名称-->
+            </if>
+            <if test="zoneTwoCode!=null and zoneTwoCode!=''">
+                AND ZONE_TWO_CODE LIKE CONCAT('%'#{zoneTwoCode}'%')<!--二区代码-->
+            </if>
+            <if test="zoneTwoName!=null and zoneTwoName!=''">
+                AND ZONE_TWO_NAME LIKE CONCAT('%'#{zoneTwoName}'%')<!--二区名称-->
+            </if>
+            <if test="distributorCode!=null and distributorCode!=''">
+                AND DISTRIBUTOR_CODE LIKE CONCAT('%'#{distributorCode}'%')<!--经销商代码-->
+            </if>
+            <if test="distributorName!=null and distributorName!=''">
+                AND DISTRIBUTOR_NAME LIKE CONCAT('%'#{distributorName}'%')<!--经销商名称-->
+            </if>
+            <if test="salesPersonCode!=null and salesPersonCode!=''">
+                AND SALES_PERSON_CODE LIKE CONCAT('%'#{salesPersonCode}'%')<!--销售顾问代码-->
+            </if>
+            <if test="salesPersonName!=null and salesPersonName!=''">
+                AND SALES_PERSON_NAME LIKE CONCAT('%'#{salesPersonName}'%')<!--销售顾问名称-->
+            </if>
+            <if test="provinceCode!=null and provinceCode!=''">
+                AND PROVINCE_CODE LIKE CONCAT('%'#{provinceCode}'%')<!--省份代码-->
+            </if>
+            <if test="provinceName!=null and provinceName!=''">
+                AND PROVINCE_NAME LIKE CONCAT('%'#{provinceName}'%')<!--省份名称-->
+            </if>
+            <if test="cityCode!=null and cityCode!=''">
+                AND CITY_CODE LIKE CONCAT('%'#{cityCode}'%')<!--城市代码-->
+            </if>
+            <if test="cityName!=null and cityName!=''">
+                AND CITY_NAME LIKE CONCAT('%'#{cityName}'%')<!--城市名称-->
+            </if>
+            <if test="remark!=null and remark!=''">
+                AND REMARK LIKE CONCAT('%'#{remark}'%')<!--备注-->
+            </if>
+            <if test="createTime!=null and createTime!=''">
+                AND CREATE_TIME LIKE CONCAT('%'#{createTime}'%')<!--创建时间(数据提取时间)-->
+            </if>
+            <if test="modifyTime!=null and modifyTime!=''">
+                AND MODIFY_TIME LIKE CONCAT('%'#{modifyTime}'%')<!--修改时间-->
+            </if>
+            <if test="startTime!=null and startTime!=''">
+                AND START_TIME LIKE CONCAT('%'#{startTime}'%')<!--生效时间-->
+            </if>
+            <if test="creator!=null and creator!=''">
+                AND CREATOR LIKE CONCAT('%'#{creator}'%')<!--创建人-->
+            </if>
+            <if test="modifier!=null and modifier!=''">
+                AND MODIFIER LIKE CONCAT('%'#{modifier}'%')<!--修改人-->
+            </if>
+            <if test="activematchflag!=null and activematchflag!=''">
+                AND ACTIVEMATCHFLAG LIKE CONCAT('%'#{activematchflag}'%')<!--活动统计标识（01-未统计 02-已统计）-->
+            </if>
+            <if test="planmatchflag!=null and planmatchflag!=''">
+                AND PLANMATCHFLAG LIKE CONCAT('%'#{planmatchflag}'%')<!--计划跟踪标识（01-未统计 02-已统计）-->
+            </if>
+            <if test="flag!=null and flag!=''">
+                AND FLAG LIKE CONCAT('%'#{flag}'%')<!--有效标识（如表记录不删除，以此区分,0无效，1有效）-->
+            </if>
+            <if test="personCode!=null and personCode!=''">
+                AND PERSON_CODE LIKE CONCAT('%'#{personCode}'%')<!--人员编号-->
+            </if>
+            <if test="personName!=null and personName!=''">
+                AND PERSON_NAME LIKE CONCAT('%'#{personName}'%')<!--人员姓名-->
+            </if>
+            <if test="teamName!=null and teamName!=''">
+                AND TEAM_NAME LIKE CONCAT('%'#{teamName}'%')<!--团队名称-->
+            </if>
+            <if test="teamCode!=null and teamCode!=''">
+                TEAM_CODE LIKE CONCAT('%'#{teamCode}'%')<!--团队编号-->
+            </if>
+        </if>
+    </sql>
+
+    <!-- 按条件模糊查询所有 -->
+    <select id="queryBasicBussinessList" parameterType="com.yqjr.fin.mkmm.sales.entity.BasicBussiness"
+            resultMap="BasicBussinessResult">
+        SELECT
+        ID,<!--ID-->
+        BUSINESSID,<!--业务明细表主键ID-->
+        APPLYID,<!--申请ID（业务数据唯一标识）-->
+        BILL_NO,<!--结算单号-->
+        CONTRACT_NO,<!--业务明细单号（合同号）-->
+        LOAN_NO,<!--借据号-->
+        CUSTOM_CODE,<!--客户ID-->
+        CUSTOM_NAME,<!--客户名称-->
+        CUSTOM_ID_TYPE,<!--证件类型-->
+        CUSTOM_ID_CARD,<!--证件号-->
+        COMPANY,<!--所属公司-->
+        BRANDS_CODE,<!--品牌编码-->
+        BRANDS_NAME,<!--品牌名称-->
+        SERIES_CODE,<!--车系代码-->
+        SERIES_NAME,<!--车系名称-->
+        CAR_BRAND_TYPE,<!--车型-->
+        CAR_BRAND_TYPE_NAME,<!--车型名称-->
+        CAR_PRICE,<!--净车价-->
+        CAR_MORTGAGER_NAME,<!--车籍-->
+        NACTIVITIES_ID,<!--营销活动（车贷金融产品id）-->
+        NACTIVITIES_NAME,<!--营销活动名称（车贷金融产品id）-->
+        NECACTIVITIES_ID,<!--附加费金融产品id-->
+        NECACTIVITIES_NAME,<!--附加费金融产品名称-->
+        NBIZ_TYPE,<!--业务类型Code-->
+        NBIZ_TYPE_NAME,<!--业务类型名称-->
+        NGETINTEREST_TYPE,<!--信贷产品Code-->
+        NGETINTEREST_TYPE_NAME,<!--信贷产品名称-->
+        NDLRBIZ_TYPE,<!--金融产品(服务产品Code)-->
+        NDLRBIZ_TYPE_NAME,<!--金融产品(服务产品名称)-->
+        NLOAN_MONEY,<!--贷款金额-->
+        TIME_LIMIT,<!--贷款期限-->
+        DAPPLY_DATE,<!--申请日期-->
+        DFACTSTART_DATE,<!--放款日期-->
+        NECLOAN_MONEY,<!--附加贷金额-->
+        FIRST_RATIO,<!--首付比例-->
+        LARGE_AREA_CODE,<!--大区代码-->
+        LARGE_AREA_NAME,<!--大区名称-->
+        ZONE_TWO_CODE,<!--二区代码-->
+        ZONE_TWO_NAME,<!--二区名称-->
+        DISTRIBUTOR_CODE,<!--经销商代码-->
+        DISTRIBUTOR_NAME,<!--经销商名称-->
+        SALES_PERSON_CODE,<!--销售顾问代码-->
+        SALES_PERSON_NAME,<!--销售顾问名称-->
+        PROVINCE_CODE,<!--省份代码-->
+        PROVINCE_NAME,<!--省份名称-->
+        CITY_CODE,<!--城市代码-->
+        CITY_NAME,<!--城市名称-->
+        REMARK,<!--备注-->
+        CREATE_TIME,<!--创建时间(数据提取时间)-->
+        MODIFY_TIME,<!--修改时间-->
+        START_TIME,<!--生效时间-->
+        CREATOR,<!--创建人-->
+        MODIFIER,<!--修改人-->
+        ACTIVEMATCHFLAG,<!--活动统计标识（01-未统计 02-已统计）-->
+        PLANMATCHFLAG,<!--计划跟踪标识（01-未统计 02-已统计）-->
+        FLAG,<!--有效标识（如表记录不删除，以此区分,0无效，1有效）-->
+        PERSON_CODE,<!--人员编号-->
+        PERSON_NAME,<!--人员姓名-->
+        TEAM_NAME,<!--团队名称-->
+        TEAM_CODE<!--团队编号-->
+        FROM MKMM_BASIC_BUSSINESS
+        <where>
+            <include refid="queryLikeBasicBussiness"/>
+        </where>
+    </select>
+
+    <!-- 按条件模糊统计所有条数 -->
+    <select id="queryBasicBussinessCount" parameterType="com.yqjr.fin.mkmm.sales.entity.BasicBussiness" resultType="int">
+        SELECT
+        count (id)
+        FROM MKMM_BASIC_BUSSINESS
+        <where>
+            <include refid="queryLikeBasicBussiness"/>
+        </where>
+    </select>
+
+    <!-- 批量删除，入参为数组  -->
+    <delete id="dynamicDelete">
+        delete from MKMM_BASIC_BUSSINESS where id in
+        <foreach collection="array" open="(" close=")" separator="," item="arr">
+            #{arr}
+        </foreach>
+    </delete>
+
+    <!-- 批量删除，入参为list  -->
+    <delete id="dynamicDeleteList">
+        delete from MKMM_BASIC_BUSSINESS where id in
+        <foreach collection="list" open="(" close=")" separator="," item="ids">
+            #{ids}
+        </foreach>
+    </delete>
+
+    <!-- 批量插入 -->
+    <insert id="insertBatch" parameterType="java.util.List">
+        <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into MKMM_BASIC_BUSSINESS
+        (
+        <include refid="Base_Column_List" />
+        )
+        values
+        <foreach collection="list" item="basicBussiness" index="index" separator=",">
+            (
+            <include refid="Base_Column_Values" />
+            )
+        </foreach>
+    </insert>
+
+    <!-- 插入单条数据，并返回主键ID -->
+    <insert id="saveObj" useGeneratedKeys="true" keyProperty="id"
+            parameterType="com.yqjr.fin.mkmm.sales.entity.BasicBussiness">
+        insert into MKMM_BASIC_BUSSINESS
+        (
+        <include refid="Base_Column_List" />
+        )
+        values
+        (
+        <include refid="Base_Column_Values" />
+        )
+    </insert>
+
+    <select id="selectByDfactatartDate" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        where to_char(DFACTSTART_DATE,'yyyy-mm-dd') &lt;= #{dfactstartDate}
+    </select>
+
+    <select id="selectByPlanInfo"  resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        where to_char(DFACTSTART_DATE,'yyyy-MM') = #{dfactstartDate} AND PERSON_CODE = #{personCode} AND BRANDS_CODE = #{brandsCode} AND COMPANY = #{company}
+    </select>
+
+    <select id="selectPersonByDealer" resultType="map" parameterType="map">
+        select * from mkmm_dealer_person
+        where  DEALER_CODE = #{dealerCode} AND COMPANY = #{company}
+    </select>
+
+    <select id="selectSaleViewByDate" resultMap="BaseResultMap">
+        select *
+        from VIEW_SALE_DATA
+        where
+        DFACTSTART_DATE =  #{date}
+    </select>
+
+
+
+
+
+    <!-- **********************************************************************-->
+    <!-- ************* 在此下方为一对一、一对多查询方式 仅供参考***************-->
+    <!-- **********************************************************************-->
+    <!-- 一个博客（BlogInfo） 属于一个作者（Author） ，一个作者（Author） 有多篇文章（Post） -->
+    <!--
+  <resultMap type="com.foo.bean.BlogInfo" id="BlogInfo">
+      <id column="blog_id" property="blogId" />
+      <result column="title" property="title" />
+      <association property="author" column="blog_author_id"
+          javaType="com.foo.bean.Author" select="com.foo.bean.AuthorMapper.selectByPrimaryKey">
+      </association>
+      <collection property="posts" column="blog_id" ofType="com.foo.bean.Post"
+          select="com.foo.bean.PostMapper.selectByBlogId">
+      </collection>
+  </resultMap>
+
+  <select id="queryBlogInfoById" resultMap="BlogInfo" parameterType="java.math.BigDecimal">
+      SELECT
+      B.BLOG_ID,
+      B.TITLE,
+      B.AUTHOR_ID AS BLOG_AUTHOR_ID
+      FROM BLOG B
+      where B.BLOG_ID = 博客ID
+  </select>
+
+          上述方法存在N+1问题
+      它的弊端也比较明显：即所谓的N+1问题。关联的嵌套查询显示得到一个结果集，然后根据这个结果集的每一条记录进行关联查询。
+      现在假设嵌套查询就一个（即resultMap 内部就一个association标签），现查询的结果集返回条数为N，那么关联查询语句将会被执行N次，加上自身返回结果集查询1次，共需要访问数据库N+1次。如果N比较大的话，这样的数据库访问消耗是非常大的！所以使用这种嵌套语句查询的使用者一定要考虑慎重考虑，确保N值不会很大。
+      以上面的例子为例，select 语句本身会返回com.foo.bean.BlogMapper.queryBlogInfoById 条数为1 的结果集，由于它有两条关联的语句查询，它需要共访问数据库 1*（1+1）=3次数据库。
+
+
+       <resultMap type="com.foo.bean.BlogInfo" id="BlogInfo">
+      <id column="blog_id" property="blogId"/>
+      <result column="title" property="title"/>
+      <association property="author" column="blog_author_id" javaType="com.foo.bean.Author">
+          <id column="author_id" property="authorId"/>
+          <result column="user_name" property="userName"/>
+          <result column="password" property="password"/>
+          <result column="email" property="email"/>
+          <result column="biography" property="biography"/>
+      </association>
+      <collection property="posts" column="blog_post_id" ofType="com.foo.bean.Post">
+          <id column="post_id" property="postId"/>
+          <result column="blog_id" property="blogId"/>
+          <result column="create_time" property="createTime"/>
+          <result column="subject" property="subject"/>
+          <result column="body" property="body"/>
+          <result column="draft" property="draft"/>
+      </collection>
+      </resultMap>
+
+
+      <select id="queryAllBlogInfo" resultMap="BlogInfo">
+          SELECT
+           B.BLOG_ID,
+           B.TITLE,
+           B.AUTHOR_ID AS BLOG_AUTHOR_ID,
+           A.AUTHOR_ID,
+           A.USER_NAME,
+           A.PASSWORD,
+           A.EMAIL,
+           A.BIOGRAPHY,
+           P.POST_ID,
+           P.BLOG_ID AS BLOG_POST_ID ,
+             P.CREATE_TIME,
+           P.SUBJECT,
+           P.BODY,
+           P.DRAFT
+      FROM BLOG B
+      LEFT OUTER JOIN AUTHOR A
+        ON B.AUTHOR_ID = A.AUTHOR_ID
+      LEFT OUTER JOIN POST P
+        ON P.BLOG_ID = B.BLOG_ID
+      </select>
+      -->
+
+    <!-- **********************************************************************-->
+    <!-- ************* 此线上方代码自动生成，在此下方编写自定义代码。***************-->
+    <!-- **********************************************************************-->
+
+    <!-- endregion -->
+
+
+</mapper>
+

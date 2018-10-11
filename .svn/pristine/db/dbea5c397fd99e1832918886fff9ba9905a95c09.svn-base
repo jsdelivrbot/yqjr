@@ -1,0 +1,1083 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" readonly="true" id="96af8f81-506c-4511-9f04-71a433b0b1d6" name="Default" comment="" />
+    <ignored path="$PROJECT_DIR$/fin.mkmm-sales-ui/target/" />
+    <ignored path="$PROJECT_DIR$/fin.scfw-common/target/" />
+    <ignored path="$PROJECT_DIR$/fin.scfw-zuul/target/" />
+    <ignored path="$PROJECT_DIR$/fin.scfw-meta-ui/target/" />
+    <ignored path="$PROJECT_DIR$/target/" />
+    <ignored path="$PROJECT_DIR$/fin.mkmm-sales/target/" />
+    <ignored path="$PROJECT_DIR$/fin.scfw-meta-model/target/" />
+    <ignored path="$PROJECT_DIR$/fin.mkmm-sales-model/target/" />
+    <ignored path="$PROJECT_DIR$/fin.scfw-meta/target/" />
+    <ignored path="$PROJECT_DIR$/fin.scfw-eureka/target/" />
+    <ignored path="$PROJECT_DIR$/fin.scfw-auth/target/" />
+    <ignored path="$PROJECT_DIR$/fin.scfw-config/target/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="TeamMainMapper.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/fin.mkmm-sales/src/main/resources/mapper/TeamMainMapper.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1010">
+              <caret line="675" column="23" selection-start-line="675" selection-start-column="23" selection-end-line="675" selection-end-column="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TeamMainMapper.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/fin.mkmm-sales/src/main/java/com/yqjr/fin/mkmm/sales/mapper/TeamMainMapper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="342">
+              <caret line="22" column="79" selection-start-line="22" selection-start-column="79" selection-end-line="22" selection-end-column="79" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="teamMainList.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/fin.mkmm-sales-ui/src/main/resources/templates/framework/system/teammainattach/teamMainList.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2068">
+              <caret line="94" column="50" selection-start-line="94" selection-start-column="50" selection-end-line="94" selection-end-column="50" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="teamMainModify.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/fin.mkmm-sales-ui/src/main/resources/templates/framework/system/teammainattach/teamMainModify.html">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name="teamMainList.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/fin.mkmm-sales-ui/src/main/resources/templates/framework/system/teammain/teamMainList.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="44">
+              <caret line="2" column="6" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
+              <folding>
+                <element signature="n#style#0;n#span#0;n#i#0;n#a#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TeamMainRest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/fin.mkmm-sales/src/main/java/com/yqjr/fin/mkmm/sales/rest/TeamMainRest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="152">
+              <caret line="93" column="15" selection-start-line="93" selection-start-column="15" selection-end-line="93" selection-end-column="15" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#4698#4704#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TeamMainService.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/fin.mkmm-sales/src/main/java/com/yqjr/fin/mkmm/sales/services/TeamMainService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="286">
+              <caret line="21" selection-start-line="21" selection-end-line="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PersonMainCondition.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/fin.mkmm-sales/src/main/java/com/yqjr/fin/mkmm/sales/condition/PersonMainCondition.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="242">
+              <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TeamMainCondition.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/fin.mkmm-sales/src/main/java/com/yqjr/fin/mkmm/sales/condition/TeamMainCondition.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3828">
+              <caret line="212" column="27" selection-start-line="212" selection-start-column="27" selection-end-line="212" selection-end-column="27" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/fin.scfw-eureka/src/main/java/com/yqjr/fin/scfw/eureka/Application.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/fin.mkmm-sales-ui/src/main/resources/templates/framework/system/teammain/teamMainForm.html" />
+        <option value="$PROJECT_DIR$/fin.mkmm-sales/src/main/resources/application.yml" />
+        <option value="$PROJECT_DIR$/fin.mkmm-sales-ui/src/main/resources/static/js/teammain/teamMainForm.js" />
+        <option value="$PROJECT_DIR$/fin.mkmm-sales-ui/src/main/resources/templates/framework/system/teammain/teamMainList.html" />
+        <option value="$PROJECT_DIR$/fin.mkmm-sales-ui/src/main/resources/static/js/teammain/teamMainList.js" />
+        <option value="$PROJECT_DIR$/fin.mkmm-sales-ui/src/main/resources/static/js/teammainattach/teamMainList.js" />
+        <option value="$PROJECT_DIR$/fin.mkmm-sales-ui/src/main/resources/static/common/yqjr.js" />
+        <option value="$PROJECT_DIR$/fin.mkmm-sales/src/main/java/com/yqjr/fin/mkmm/sales/vo/ResultDto.java" />
+        <option value="$PROJECT_DIR$/fin.mkmm-sales/src/main/java/com/yqjr/fin/mkmm/sales/vo/dto/ResultDto.java" />
+        <option value="$PROJECT_DIR$/fin.mkmm-sales/src/main/java/com/yqjr/fin/mkmm/sales/vo/list/TeamMainRes.java" />
+        <option value="$PROJECT_DIR$/fin.mkmm-sales/src/main/resources/mapper/TeamMainMapper.xml" />
+        <option value="$PROJECT_DIR$/fin.mkmm-sales/src/main/java/com/yqjr/fin/mkmm/sales/rest/TeamMainRest.java" />
+        <option value="$PROJECT_DIR$/fin.mkmm-sales/src/main/java/com/yqjr/fin/mkmm/sales/mapper/TeamMainMapper.java" />
+        <option value="$PROJECT_DIR$/fin.mkmm-sales/src/main/java/com/yqjr/fin/mkmm/sales/services/TeamMainService.java" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="finscfw" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="finscfw" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Lifecycle" type="58874e2:MavenProjectsStructure$LifecycleNode" />
+        </path>
+      </expand>
+      <select />
+    </treeState>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-20" />
+    <option name="width" value="1940" />
+    <option name="height" value="1040" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="AndroidView" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="fin.scfw" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fin.scfw" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="fin.scfw" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fin.scfw" type="462c0819:PsiDirectoryNode" />
+              <item name="fin.mkmm-sales" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="fin.scfw" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fin.scfw" type="462c0819:PsiDirectoryNode" />
+              <item name="fin.mkmm-sales" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="fin.scfw" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fin.scfw" type="462c0819:PsiDirectoryNode" />
+              <item name="fin.mkmm-sales" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="fin.scfw" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fin.scfw" type="462c0819:PsiDirectoryNode" />
+              <item name="fin.mkmm-sales" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="fin.scfw" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fin.scfw" type="462c0819:PsiDirectoryNode" />
+              <item name="fin.mkmm-sales" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="sales" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="fin.scfw" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fin.scfw" type="462c0819:PsiDirectoryNode" />
+              <item name="fin.mkmm-sales" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="sales" type="462c0819:PsiDirectoryNode" />
+              <item name="condition" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="fin.scfw" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fin.scfw" type="462c0819:PsiDirectoryNode" />
+              <item name="fin.mkmm-sales" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="sales" type="462c0819:PsiDirectoryNode" />
+              <item name="entity" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="fin.scfw" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fin.scfw" type="462c0819:PsiDirectoryNode" />
+              <item name="fin.mkmm-sales" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="sales" type="462c0819:PsiDirectoryNode" />
+              <item name="mapper" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="fin.scfw" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fin.scfw" type="462c0819:PsiDirectoryNode" />
+              <item name="fin.mkmm-sales" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="sales" type="462c0819:PsiDirectoryNode" />
+              <item name="rest" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="fin.scfw" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fin.scfw" type="462c0819:PsiDirectoryNode" />
+              <item name="fin.mkmm-sales" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="sales" type="462c0819:PsiDirectoryNode" />
+              <item name="services" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="fin.scfw" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fin.scfw" type="462c0819:PsiDirectoryNode" />
+              <item name="fin.mkmm-sales" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="sales" type="462c0819:PsiDirectoryNode" />
+              <item name="vo" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="fin.scfw" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fin.scfw" type="462c0819:PsiDirectoryNode" />
+              <item name="fin.mkmm-sales" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="sales" type="462c0819:PsiDirectoryNode" />
+              <item name="vo" type="462c0819:PsiDirectoryNode" />
+              <item name="dto" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="fin.scfw" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fin.scfw" type="462c0819:PsiDirectoryNode" />
+              <item name="fin.mkmm-sales" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="fin.scfw" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fin.scfw" type="462c0819:PsiDirectoryNode" />
+              <item name="fin.mkmm-sales" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="mapper" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="fin.scfw" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fin.scfw" type="462c0819:PsiDirectoryNode" />
+              <item name="fin.mkmm-sales" type="462c0819:PsiDirectoryNode" />
+              <item name="target" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="fin.scfw" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fin.scfw" type="462c0819:PsiDirectoryNode" />
+              <item name="fin.mkmm-sales-ui" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="fin.scfw" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fin.scfw" type="462c0819:PsiDirectoryNode" />
+              <item name="fin.mkmm-sales-ui" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="fin.scfw" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fin.scfw" type="462c0819:PsiDirectoryNode" />
+              <item name="fin.mkmm-sales-ui" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="fin.scfw" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fin.scfw" type="462c0819:PsiDirectoryNode" />
+              <item name="fin.mkmm-sales-ui" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="fin.scfw" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fin.scfw" type="462c0819:PsiDirectoryNode" />
+              <item name="fin.mkmm-sales-ui" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="ui" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="fin.scfw" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fin.scfw" type="462c0819:PsiDirectoryNode" />
+              <item name="fin.mkmm-sales-ui" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="ui" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="fin.scfw" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fin.scfw" type="462c0819:PsiDirectoryNode" />
+              <item name="fin.mkmm-sales-ui" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="fin.scfw" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fin.scfw" type="462c0819:PsiDirectoryNode" />
+              <item name="fin.mkmm-sales-ui" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="fin.scfw" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fin.scfw" type="462c0819:PsiDirectoryNode" />
+              <item name="fin.mkmm-sales-ui" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="fin.scfw" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fin.scfw" type="462c0819:PsiDirectoryNode" />
+              <item name="fin.mkmm-sales-ui" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+              <item name="teammain" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="fin.scfw" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fin.scfw" type="462c0819:PsiDirectoryNode" />
+              <item name="fin.mkmm-sales-ui" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="framework" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="fin.scfw" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fin.scfw" type="462c0819:PsiDirectoryNode" />
+              <item name="fin.mkmm-sales-ui" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="framework" type="462c0819:PsiDirectoryNode" />
+              <item name="system" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="fin.scfw" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fin.scfw" type="462c0819:PsiDirectoryNode" />
+              <item name="fin.mkmm-sales-ui" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="framework" type="462c0819:PsiDirectoryNode" />
+              <item name="system" type="462c0819:PsiDirectoryNode" />
+              <item name="teammain" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="fin.scfw" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fin.scfw" type="462c0819:PsiDirectoryNode" />
+              <item name="fin.mkmm-sales-ui" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="framework" type="462c0819:PsiDirectoryNode" />
+              <item name="system" type="462c0819:PsiDirectoryNode" />
+              <item name="teammainattach" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="fin.scfw" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fin.scfw" type="462c0819:PsiDirectoryNode" />
+              <item name="fin.mkmm-sales-ui" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="fin.scfw" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fin.scfw" type="462c0819:PsiDirectoryNode" />
+              <item name="fin.scfw-zuul" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="fin.scfw" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fin.scfw" type="462c0819:PsiDirectoryNode" />
+              <item name="fin.scfw-zuul" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="fin.scfw" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fin.scfw" type="462c0819:PsiDirectoryNode" />
+              <item name="fin.scfw-zuul" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="fin.scfw" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fin.scfw" type="462c0819:PsiDirectoryNode" />
+              <item name="fin.scfw-zuul" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="fin.scfw" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fin.scfw" type="462c0819:PsiDirectoryNode" />
+              <item name="fin.scfw-zuul" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="zuul" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelOrder2" value="2" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RequestMappingsPanelWidth2" value="75" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\SVN\fin\fin.scfw\fin.mkmm-sales\src\main\java\com\yqjr\fin\mkmm\sales\vo\list" />
+      <recent name="E:\SVN\fin\fin.scfw\fin.mkmm-sales\src\main\java\com\yqjr\fin\mkmm\sales\vo\dto" />
+      <recent name="E:\SVN\fin\fin.scfw\fin.mkmm-sales\src\main\resources\mapper" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.ui">
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
+    </configuration>
+    <configuration name="Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="fin.scfw-eureka" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.yqjr.fin.scfw.eureka.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.yqjr.fin.scfw.eureka.Application" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+    </configuration>
+    <configuration name="Application4" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="fin.scfw-common" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.yqjr.scfw.Application" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+    </configuration>
+    <configuration name="Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="fin.scfw-eureka" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.yqjr.fin.scfw.eureka.Application" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+    </configuration>
+    <configuration name="config" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="fin.scfw-config" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.yqjr.fin.scfw.config.Application" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+    </configuration>
+    <configuration name="sales" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="fin.mkmm-sales" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.yqjr.fin.mkmm.sales.Application" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+    </configuration>
+    <configuration name="ui" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="fin.mkmm-sales-ui" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.yqjr.fin.mkmm.sales.ui.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.yqjr.fin.mkmm.sales.ui.Application" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+    </configuration>
+    <configuration name="zuul" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="fin.scfw-zuul" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.yqjr.fin.scfw.zuul.Application" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+    </configuration>
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <properties />
+      <listeners />
+    </configuration>
+    <list>
+      <item itemvalue="Spring Boot.Application" />
+      <item itemvalue="Spring Boot.ui" />
+      <item itemvalue="Spring Boot.Application4" />
+      <item itemvalue="Spring Boot.zuul" />
+      <item itemvalue="Spring Boot.sales" />
+      <item itemvalue="Spring Boot.config" />
+    </list>
+  </component>
+  <component name="SvnConfiguration" cleanupOnStartRun="true">
+    <configuration>C:\Users\汪汪亭\AppData\Roaming\Subversion</configuration>
+    <supportedVersion>125</supportedVersion>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="96af8f81-506c-4511-9f04-71a433b0b1d6" name="Default" comment="" />
+      <created>1524884400714</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1524884400714</updated>
+      <workItem from="1524884402302" duration="1212000" />
+      <workItem from="1524886088490" duration="11575000" />
+      <workItem from="1525150477450" duration="5440000" />
+      <workItem from="1525161498633" duration="4448000" />
+      <workItem from="1525219339445" duration="17585000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="40260000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
+      <window_info anchor="right" id="Maven Projects" order="3" weight="0.3299866" />
+      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
+      <window_info id="Capture Tool" order="2" />
+      <window_info id="Designer" order="2" />
+      <window_info anchor="right" id="Database" order="3" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info id="UI Designer" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32768363" />
+      <window_info anchor="bottom" id="Messages" order="7" weight="0.32905984" />
+      <window_info anchor="right" id="Palette&#9;" order="3" />
+      <window_info id="Image Layers" order="2" />
+      <window_info anchor="bottom" id="Java Enterprise" order="7" weight="0.32905984" />
+      <window_info anchor="right" id="Capture Analysis" order="3" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.2542373" />
+      <window_info anchor="bottom" id="Spring" order="7" weight="0.32905984" />
+      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20509383" />
+      <window_info anchor="right" id="Bean Validation" order="3" />
+      <window_info id="Web" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="right" id="Theme Preview" order="3" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+    <layout-to-restore>
+      <window_info id="Designer" order="2" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="bottom" id="Spring" order="7" weight="0.32905984" />
+      <window_info id="Image Layers" order="3" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.0" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Favorites" order="5" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info id="Capture Tool" order="6" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.32905984" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32905984" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Java Enterprise" order="11" weight="0.32905984" />
+      <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="13" />
+      <window_info anchor="right" id="Maven Projects" order="5" weight="0.3299866" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25301206" />
+      <window_info anchor="right" id="Database" order="6" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info id="Web" order="7" side_tool="true" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Theme Preview" order="8" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="right" id="Bean Validation" order="9" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/fin.mkmm-sales/src/main/java/com/yqjr/fin/mkmm/sales/services/TeamMainService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="638">
+          <caret line="29" selection-start-line="29" selection-end-line="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.mkmm-sales-ui/src/main/java/com/yqjr/fin/mkmm/sales/ui/Application.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="506">
+          <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.mkmm-sales/src/main/resources/mapper/TeamMainMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19514">
+          <caret line="887" column="47" selection-start-line="887" selection-start-column="47" selection-end-line="887" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.mkmm-sales-ui/src/main/java/com/yqjr/fin/mkmm/sales/ui/controller/TeamAfterController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.mkmm-sales-ui/src/main/java/com/yqjr/fin/mkmm/sales/ui/controller/TeamTaskController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.mkmm-sales-ui/src/main/java/com/yqjr/fin/mkmm/sales/ui/controller/TeamMainController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.mkmm-sales-ui/src/main/resources/static/js/teammain/teamMainList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1716">
+          <caret line="78" column="8" selection-start-line="78" selection-start-column="8" selection-end-line="78" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.mkmm-sales-ui/src/main/resources/templates/framework/system/teammain/teamMainForm.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3696">
+          <caret line="168" selection-start-line="168" selection-end-line="168" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.mkmm-sales/src/main/resources/application.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="9" column="24" selection-start-line="9" selection-start-column="24" selection-end-line="9" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.scfw-eureka/src/main/java/com/yqjr/fin/scfw/eureka/Application.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="12" column="24" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.scfw-config/src/main/java/com/yqjr/fin/scfw/config/Application.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="13" column="22" lean-forward="true" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.scfw-eureka/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="10" column="16" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4048">
+          <caret line="184" selection-start-line="184" selection-end-line="184" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.scfw-eureka/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="10" column="16" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4048">
+          <caret line="184" selection-start-line="184" selection-end-line="184" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.scfw-config/src/main/java/com/yqjr/fin/scfw/config/Application.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="14" column="17" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.scfw-zuul/src/main/java/com/yqjr/fin/scfw/zuul/Application.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="73">
+          <caret line="27" column="19" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.mkmm-sales/src/main/java/com/yqjr/fin/mkmm/sales/Application.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="18" column="53" selection-start-line="18" selection-start-column="53" selection-end-line="18" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.mkmm-sales-ui/src/main/resources/templates/framework/system/teammain/teamMainForm.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3696">
+          <caret line="168" selection-start-line="168" selection-end-line="168" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.mkmm-sales-ui/src/main/java/com/yqjr/fin/mkmm/sales/ui/Application.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.scfw-eureka/src/main/java/com/yqjr/fin/scfw/eureka/Application.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="10" column="19" lean-forward="true" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.mkmm-sales-ui/src/main/java/com/yqjr/fin/mkmm/sales/ui/controller/TeamTaskController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.mkmm-sales-ui/src/main/java/com/yqjr/fin/mkmm/sales/ui/controller/TeamAfterController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.mkmm-sales-ui/src/main/resources/static/js/teammain/teamMainModify.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.mkmm-sales-ui/src/main/resources/static/js/teammain/teamMainCommon.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.mkmm-sales-ui/src/main/resources/templates/framework/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2904" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.mkmm-sales-ui/src/main/resources/static/js/teammain/teamMainForm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="910">
+          <caret line="43" column="19" selection-start-line="43" selection-start-column="19" selection-end-line="43" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.mkmm-sales/src/main/resources/application.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="7" column="41" selection-start-line="7" selection-start-column="41" selection-end-line="7" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.mkmm-sales-ui/src/main/resources/static/css/less/widget.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4">
+          <caret line="267" column="5" lean-forward="true" selection-start-line="267" selection-start-column="5" selection-end-line="267" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.mkmm-sales-ui/src/main/resources/static/css/ace.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="186">
+          <caret line="10907" column="1" selection-start-line="10907" selection-start-column="1" selection-end-line="10907" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.mkmm-sales-ui/src/main/resources/static/js/jquery.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="8489" column="4" selection-start-line="8489" selection-start-column="4" selection-end-line="8489" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.mkmm-sales-ui/src/main/resources/static/common/yqjr.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="393">
+          <caret line="302" column="34" lean-forward="true" selection-start-line="302" selection-start-column="34" selection-end-line="302" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.mkmm-sales-ui/src/main/resources/static/js/jqGrid/jquery.jqGrid.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="3626" column="11" lean-forward="true" selection-start-line="3626" selection-start-column="11" selection-end-line="3626" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.mkmm-sales-ui/src/main/resources/static/js/teammainattach/teamMainList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="16" column="50" selection-start-line="16" selection-start-column="50" selection-end-line="16" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.mkmm-sales-ui/src/main/java/com/yqjr/fin/mkmm/sales/ui/controller/TeamMainController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="7" column="30" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.mkmm-sales/src/main/java/com/yqjr/fin/mkmm/sales/mapper/TeamBeforeMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.mkmm-sales-ui/src/main/resources/static/js/teammain/teamMainList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1542">
+          <caret line="2" column="32" selection-start-line="2" selection-start-column="32" selection-end-line="2" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.mkmm-sales/src/main/java/com/yqjr/fin/mkmm/sales/vo/dto/ResultDto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="3" column="8" lean-forward="true" selection-start-line="3" selection-start-column="8" selection-end-line="3" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.mkmm-sales/src/main/java/com/yqjr/fin/mkmm/sales/entity/TeamMain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-440">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.mkmm-sales/src/main/java/com/yqjr/fin/mkmm/sales/vo/list/TeamMainRes.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="8" column="30" lean-forward="true" selection-start-line="8" selection-start-column="30" selection-end-line="8" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.mkmm-sales/src/main/java/com/yqjr/fin/mkmm/sales/condition/TeamMainCondition.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3828">
+          <caret line="212" column="27" selection-start-line="212" selection-start-column="27" selection-end-line="212" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.mkmm-sales/src/main/java/com/yqjr/fin/mkmm/sales/condition/PersonMainCondition.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.mkmm-sales/src/main/resources/mapper/PersonMainMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="528">
+          <caret line="987" column="48" selection-start-line="987" selection-start-column="48" selection-end-line="987" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.mkmm-sales/src/main/resources/mapper/TeamMainMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1010">
+          <caret line="675" column="23" selection-start-line="675" selection-start-column="23" selection-end-line="675" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.mkmm-sales-ui/src/main/resources/templates/framework/system/teammainattach/teamMainModify.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.mkmm-sales-ui/src/main/resources/templates/framework/system/teammainattach/teamMainList.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2068">
+          <caret line="94" column="50" selection-start-line="94" selection-start-column="50" selection-end-line="94" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.mkmm-sales-ui/src/main/resources/templates/framework/system/teammain/teamMainList.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" column="6" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
+          <folding>
+            <element signature="n#style#0;n#span#0;n#i#0;n#a#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.mkmm-sales/src/main/java/com/yqjr/fin/mkmm/sales/services/PersonMainService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.mkmm-sales/src/main/java/com/yqjr/fin/mkmm/sales/rest/TeamMainRest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="93" column="15" selection-start-line="93" selection-start-column="15" selection-end-line="93" selection-end-column="15" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#4698#4704#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.mkmm-sales/src/main/java/com/yqjr/fin/mkmm/sales/mapper/TeamMainMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="22" column="79" selection-start-line="22" selection-start-column="79" selection-end-line="22" selection-end-column="79" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.mkmm-sales/src/main/java/com/yqjr/fin/mkmm/sales/services/TeamMainService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="21" selection-start-line="21" selection-end-line="21" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

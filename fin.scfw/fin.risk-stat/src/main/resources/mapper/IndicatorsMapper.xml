@@ -1,0 +1,1429 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yqjr.fin.risk.stat.mapper.IndicatorsMapper">
+
+
+    <sql id="Base_Table_Name">
+        P_INDICATORS
+    </sql>
+
+
+
+    <resultMap id="BaseResultMap" type="com.yqjr.fin.risk.stat.entity.Indicators">
+        <result property="id" column="ID"/>
+        <result property="typecode" column="TYPECODE"/>
+        <result property="indicatorcode" column="INDICATORCODE"/>
+        <result property="indicatorname" column="INDICATORNAME"/>
+        <result property="indicatortarget" column="INDICATORTARGET"/>
+        <result property="indicatordesc" column="INDICATORDESC"/>
+        <result property="indicatorcaption" column="INDICATORCAPTION"/>
+        <result property="indicatorgroup" column="INDICATORGROUP"/>
+        <result property="calformula" column="CALFORMULA"/>
+        <result property="displayorder" column="DISPLAYORDER"/>
+        <result property="alertflag" column="ALERTFLAG"/>
+        <result property="alertcycle" column="ALERTCYCLE"/>
+        <result property="parentindicatorid" column="PARENTINDICATORID"/>
+        <result property="remark" column="REMARK"/>
+        <result property="enabledflag" column="ENABLEDFLAG"/>
+        <result property="parentindicatorcode" column="PARENTINDICATORCODE"/>
+        <result property="indlevel" column="INDLEVEL"/>
+        <result property="cycCounttype" column="CYC_COUNTTYPE"/>
+        <result property="hasbudget" column="HASBUDGET"/>
+        <result property="sourcefrom" column="SOURCEFROM"/>
+        <result property="valuetype" column="VALUETYPE"/>
+        <result property="countcycle" column="COUNTCYCLE"/>
+        <result property="valuemapping" column="VALUEMAPPING"/>
+        <result property="ctcode" column="CTCODE"/>
+        <result property="indicatordetail" column="INDICATORDETAIL"/>
+        <result property="coutorder" column="COUTORDER"/>
+        <result property="alerttype" column="ALERTTYPE"/>
+        <result property="comcode" column="COMCODE"/>
+        <result property="creator" column="CREATOR"/><!--创建人-->
+        <result property="createTime" column="CREATE_TIME"/><!--创建时间-->
+        <result property="modifier" column="MODIFIER"/><!--最后更新人-->
+        <result property="modifyTime" column="MODIFY_TIME"/><!--最后更新时间-->
+    </resultMap>
+    <sql id="Base_Column_List">
+    ID,TYPECODE,INDICATORCODE,INDICATORNAME,INDICATORTARGET,INDICATORDESC,INDICATORCAPTION,INDICATORGROUP,CALFORMULA,DISPLAYORDER,ALERTFLAG,ALERTCYCLE,PARENTINDICATORID,REMARK,ENABLEDFLAG,PARENTINDICATORCODE,INDLEVEL,CYC_COUNTTYPE,HASBUDGET,SOURCEFROM,VALUETYPE,COUNTCYCLE,VALUEMAPPING,CTCODE,INDICATORDETAIL,COUTORDER,ALERTTYPE,COMCODE
+    </sql>
+    <sql id="Base_Column_List_Selective">
+        <trim suffixOverrides=",">
+            ID,
+            <if test="typecode != null">
+                TYPECODE,
+            </if>
+            <if test="indicatorcode != null">
+                INDICATORCODE,
+            </if>
+            <if test="indicatorname != null">
+                INDICATORNAME,
+            </if>
+            <if test="indicatortarget != null">
+                INDICATORTARGET,
+            </if>
+            <if test="indicatordesc != null">
+                INDICATORDESC,
+            </if>
+            <if test="indicatorcaption != null">
+                INDICATORCAPTION,
+            </if>
+            <if test="indicatorgroup != null">
+                INDICATORGROUP,
+            </if>
+            <if test="calformula != null">
+                CALFORMULA,
+            </if>
+            <if test="displayorder != null">
+                DISPLAYORDER,
+            </if>
+            <if test="alertflag != null">
+                ALERTFLAG,
+            </if>
+            <if test="alertcycle != null">
+                ALERTCYCLE,
+            </if>
+            <if test="parentindicatorid != null">
+                PARENTINDICATORID,
+            </if>
+            <if test="remark != null">
+                REMARK,
+            </if>
+            <if test="enabledflag != null">
+                ENABLEDFLAG,
+            </if>
+            <if test="parentindicatorcode != null">
+                PARENTINDICATORCODE,
+            </if>
+            <if test="indlevel != null">
+                INDLEVEL,
+            </if>
+            <if test="cycCounttype != null">
+                CYC_COUNTTYPE,
+            </if>
+            <if test="hasbudget != null">
+                HASBUDGET,
+            </if>
+            <if test="sourcefrom != null">
+                SOURCEFROM,
+            </if>
+            <if test="valuetype != null">
+                VALUETYPE,
+            </if>
+            <if test="countcycle != null">
+                COUNTCYCLE,
+            </if>
+            <if test="valuemapping != null">
+                VALUEMAPPING,
+            </if>
+            <if test="ctcode != null">
+                CTCODE,
+            </if>
+            <if test="indicatordetail != null">
+                INDICATORDETAIL,
+            </if>
+            <if test="coutorder != null">
+                COUTORDER,
+            </if>
+            <if test="alerttype != null">
+                ALERTTYPE,
+            </if>
+            <if test="comcode != null">
+                COMCODE
+            </if>
+        </trim>
+    </sql>
+    <sql id="Base_Column_Values_selective">
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            P_INDICATORS_SEQ.nextval,
+            <if test="typecode != null">
+                #{TYPECODE},
+            </if>
+            <if test="indicatorcode != null">
+                #{INDICATORCODE},
+            </if>
+            <if test="indicatorname != null">
+                #{INDICATORNAME},
+            </if>
+            <if test="indicatortarget != null">
+                #{INDICATORTARGET},
+            </if>
+            <if test="indicatordesc != null">
+                #{INDICATORDESC},
+            </if>
+            <if test="indicatorcaption != null">
+                #{INDICATORCAPTION},
+            </if>
+            <if test="indicatorgroup != null">
+                #{INDICATORGROUP},
+            </if>
+            <if test="calformula != null">
+                #{CALFORMULA},
+            </if>
+            <if test="displayorder != null">
+                #{DISPLAYORDER},
+            </if>
+            <if test="alertflag != null">
+                #{ALERTFLAG},
+            </if>
+            <if test="alertcycle != null">
+                #{ALERTCYCLE},
+            </if>
+            <if test="parentindicatorid != null">
+                #{PARENTINDICATORID},
+            </if>
+            <if test="remark != null">
+                #{REMARK},
+            </if>
+            <if test="enabledflag != null">
+                #{ENABLEDFLAG},
+            </if>
+            <if test="parentindicatorcode != null">
+                #{PARENTINDICATORCODE},
+            </if>
+            <if test="indlevel != null">
+                #{INDLEVEL},
+            </if>
+            <if test="cycCounttype != null">
+                #{CYC_COUNTTYPE},
+            </if>
+            <if test="hasbudget != null">
+                #{HASBUDGET},
+            </if>
+            <if test="sourcefrom != null">
+                #{SOURCEFROM},
+            </if>
+            <if test="valuetype != null">
+                #{VALUETYPE},
+            </if>
+            <if test="countcycle != null">
+                #{COUNTCYCLE},
+            </if>
+            <if test="valuemapping != null">
+                #{VALUEMAPPING},
+            </if>
+            <if test="ctcode != null">
+                #{CTCODE},
+            </if>
+            <if test="indicatordetail != null">
+                #{INDICATORDETAIL},
+            </if>
+            <if test="coutorder != null">
+                #{COUTORDER},
+            </if>
+            <if test="alerttype != null">
+                #{ALERTTYPE},
+            </if>
+            <if test="comcode != null">
+                #{COMCODE}
+            </if>
+        </trim>
+    </sql>
+    <sql id="Base_Column_Values">
+    P_INDICATORS_SEQ.nextval,
+    #{typecode,jdbcType=VARCHAR},
+    #{indicatorcode,jdbcType=VARCHAR},
+    #{indicatorname,jdbcType=VARCHAR},
+    #{indicatortarget,jdbcType=VARCHAR},
+    #{indicatordesc,jdbcType=VARCHAR},
+    #{indicatorcaption,jdbcType=VARCHAR},
+    #{indicatorgroup,jdbcType=VARCHAR},
+    #{calformula,jdbcType=VARCHAR},
+    #{displayorder,jdbcType=BIGINT},
+    #{alertflag,jdbcType=VARCHAR},
+    #{alertcycle,jdbcType=VARCHAR},
+    #{parentindicatorid,jdbcType=VARCHAR},
+    #{remark,jdbcType=VARCHAR},
+    #{enabledflag,jdbcType=BIGINT},
+    #{parentindicatorcode,jdbcType=VARCHAR},
+    #{indlevel,jdbcType=BIGINT},
+    #{cycCounttype,jdbcType=VARCHAR},
+    #{hasbudget,jdbcType=VARCHAR},
+    #{sourcefrom,jdbcType=VARCHAR},
+    #{valuetype,jdbcType=VARCHAR},
+    #{countcycle,jdbcType=VARCHAR},
+    #{valuemapping,jdbcType=VARCHAR},
+    #{ctcode,jdbcType=VARCHAR},
+    #{indicatordetail,jdbcType=VARCHAR},
+    #{coutorder,jdbcType=VARCHAR},
+    #{alerttype,jdbcType=BIGINT},
+    #{comcode,jdbcType=VARCHAR}
+    </sql>
+    <sql id="Base_Column_Values_Selective">
+        <trim suffixOverrides=",">
+            <if test="id != null">
+                #{id},
+            </if>
+            <if test="typecode != null">
+                #{typecode},
+            </if>
+            <if test="indicatorcode != null">
+                #{indicatorcode},
+            </if>
+            <if test="indicatorname != null">
+                #{indicatorname},
+            </if>
+            <if test="indicatortarget != null">
+                #{indicatortarget},
+            </if>
+            <if test="indicatordesc != null">
+                #{indicatordesc},
+            </if>
+            <if test="indicatorcaption != null">
+                #{indicatorcaption},
+            </if>
+            <if test="indicatorgroup != null">
+                #{indicatorgroup},
+            </if>
+            <if test="calformula != null">
+                #{calformula},
+            </if>
+            <if test="displayorder != null">
+                #{displayorder},
+            </if>
+            <if test="alertflag != null">
+                #{alertflag},
+            </if>
+            <if test="alertcycle != null">
+                #{alertcycle},
+            </if>
+            <if test="parentindicatorid != null">
+                #{parentindicatorid},
+            </if>
+            <if test="remark != null">
+                #{remark},
+            </if>
+            <if test="enabledflag != null">
+                #{enabledflag},
+            </if>
+            <if test="parentindicatorcode != null">
+                #{parentindicatorcode},
+            </if>
+            <if test="indlevel != null">
+                #{indlevel},
+            </if>
+            <if test="cycCounttype != null">
+                #{cycCounttype},
+            </if>
+            <if test="hasbudget != null">
+                #{hasbudget},
+            </if>
+            <if test="sourcefrom != null">
+                #{sourcefrom},
+            </if>
+            <if test="valuetype != null">
+                #{valuetype},
+            </if>
+            <if test="countcycle != null">
+                #{countcycle},
+            </if>
+            <if test="valuemapping != null">
+                #{valuemapping},
+            </if>
+            <if test="ctcode != null">
+                #{ctcode},
+            </if>
+            <if test="indicatordetail != null">
+                #{indicatordetail},
+            </if>
+            <if test="coutorder != null">
+                #{coutorder},
+            </if>
+            <if test="alerttype != null">
+                #{alerttype},
+            </if>
+            <if test="comcode != null">
+                #{comcode}
+            </if>
+        </trim>
+    </sql>
+    <sql id="Base_Column_Set_Values">
+    ID = #{id},
+    TYPECODE = #{typecode},
+    INDICATORCODE = #{indicatorcode},
+    INDICATORNAME = #{indicatorname},
+    INDICATORTARGET = #{indicatortarget},
+    INDICATORDESC = #{indicatordesc},
+    INDICATORCAPTION = #{indicatorcaption},
+    INDICATORGROUP = #{indicatorgroup},
+    CALFORMULA = #{calformula},
+    DISPLAYORDER = #{displayorder},
+    ALERTFLAG = #{alertflag},
+    ALERTCYCLE = #{alertcycle},
+    PARENTINDICATORID = #{parentindicatorid},
+    REMARK = #{remark},
+    ENABLEDFLAG = #{enabledflag},
+    PARENTINDICATORCODE = #{parentindicatorcode},
+    INDLEVEL = #{indlevel},
+    CYC_COUNTTYPE = #{cycCounttype},
+    HASBUDGET = #{hasbudget},
+    SOURCEFROM = #{sourcefrom},
+    VALUETYPE = #{valuetype},
+    COUNTCYCLE = #{countcycle},
+    VALUEMAPPING = #{valuemapping},
+    CTCODE = #{ctcode},
+    INDICATORDETAIL = #{indicatordetail},
+    COUTORDER = #{coutorder},
+    ALERTTYPE = #{alerttype},
+    COMCODE = #{comcode}
+    </sql>
+    <sql id="Base_Column_Set_Values_Selective">
+        <if test="id != null">
+            ID = #{id,jdbcType=BIGINT},
+        </if>
+        <if test="typecode != null">
+            TYPECODE = #{typecode,jdbcType=VARCHAR},
+        </if>
+        <if test="indicatorcode != null">
+            INDICATORCODE = #{indicatorcode,jdbcType=VARCHAR},
+        </if>
+        <if test="indicatorname != null">
+            INDICATORNAME = #{indicatorname,jdbcType=VARCHAR},
+        </if>
+            INDICATORTARGET = #{indicatortarget,jdbcType=VARCHAR},
+            INDICATORDESC = #{indicatordesc,jdbcType=VARCHAR},
+            INDICATORCAPTION = #{indicatorcaption,jdbcType=VARCHAR},
+            INDICATORGROUP = #{indicatorgroup,jdbcType=VARCHAR},
+            CALFORMULA = #{calformula,jdbcType=VARCHAR},
+            DISPLAYORDER = #{displayorder,jdbcType=NUMERIC},
+            ALERTFLAG = #{alertflag,jdbcType=VARCHAR},
+            ALERTCYCLE = #{alertcycle,jdbcType=VARCHAR},
+            PARENTINDICATORID = #{parentindicatorid,jdbcType=NUMERIC},
+            REMARK = #{remark,jdbcType=VARCHAR},
+            ENABLEDFLAG = #{enabledflag,jdbcType=NUMERIC},
+            PARENTINDICATORCODE = #{parentindicatorcode,jdbcType=VARCHAR},
+            INDLEVEL = #{indlevel,jdbcType=NUMERIC},
+            CYC_COUNTTYPE = #{cycCounttype,jdbcType=VARCHAR},
+            HASBUDGET = #{hasbudget,jdbcType=VARCHAR},
+            SOURCEFROM = #{sourcefrom,jdbcType=VARCHAR},
+            VALUETYPE = #{valuetype,jdbcType=VARCHAR},
+            COUNTCYCLE = #{countcycle,jdbcType=VARCHAR},
+            VALUEMAPPING = #{valuemapping,jdbcType=VARCHAR},
+            CTCODE = #{ctcode,jdbcType=VARCHAR},
+            INDICATORDETAIL = #{indicatordetail,jdbcType=VARCHAR},
+            COUTORDER = #{coutorder,jdbcType=VARCHAR},
+            ALERTTYPE = #{alerttype,jdbcType=NUMERIC},
+            COMCODE = #{comcode,jdbcType=VARCHAR},
+        <if test="creator != null">
+            CREATOR = #{creator,jdbcType=NUMERIC},
+        </if>
+        <if test="createTime != null">
+            CREATE_TIME = #{createTime,jdbcType=DATE},
+        </if>
+        <if test="modifier != null">
+            MODIFIER = #{modifier,jdbcType=NUMERIC},
+        </if>
+        <if test="modifyTime != null">
+            MODIFY_TIME = #{modifyTime,jdbcType=DATE}
+        </if>
+    </sql>
+    <sql id="Base_Column_Where_Selective">
+        <if test="id != null">
+            and ID = #{id}
+        </if>
+        <if test="typecode != null">
+            and TYPECODE = #{typecode}
+        </if>
+        <if test="indicatorcode != null">
+            and INDICATORCODE = #{indicatorcode}
+        </if>
+        <if test="indicatorname != null">
+            and INDICATORNAME = #{indicatorname}
+        </if>
+        <if test="indicatortarget != null">
+            and INDICATORTARGET = #{indicatortarget}
+        </if>
+        <if test="indicatordesc != null">
+            and INDICATORDESC = #{indicatordesc}
+        </if>
+        <if test="indicatorcaption != null">
+            and INDICATORCAPTION = #{indicatorcaption}
+        </if>
+        <if test="indicatorgroup != null">
+            and INDICATORGROUP = #{indicatorgroup}
+        </if>
+        <if test="calformula != null">
+            and CALFORMULA = #{calformula}
+        </if>
+        <if test="displayorder != null">
+            and DISPLAYORDER = #{displayorder}
+        </if>
+        <if test="alertflag != null">
+            and ALERTFLAG = #{alertflag}
+        </if>
+        <if test="alertcycle != null">
+            and ALERTCYCLE = #{alertcycle}
+        </if>
+        <if test="parentindicatorid != null">
+            and PARENTINDICATORID = #{parentindicatorid}
+        </if>
+        <if test="remark != null">
+            and REMARK = #{remark}
+        </if>
+        <if test="enabledflag != null">
+            and ENABLEDFLAG = #{enabledflag}
+        </if>
+        <if test="parentindicatorcode != null">
+            and PARENTINDICATORCODE = #{parentindicatorcode}
+        </if>
+        <if test="indlevel != null">
+            and INDLEVEL = #{indlevel}
+        </if>
+        <if test="cycCounttype != null">
+            and CYC_COUNTTYPE = #{cycCounttype}
+        </if>
+        <if test="hasbudget != null">
+            and HASBUDGET = #{hasbudget}
+        </if>
+        <if test="sourcefrom != null">
+            and SOURCEFROM = #{sourcefrom}
+        </if>
+        <if test="valuetype != null">
+            and VALUETYPE = #{valuetype}
+        </if>
+        <if test="countcycle != null">
+            and COUNTCYCLE = #{countcycle}
+        </if>
+        <if test="valuemapping != null">
+            and VALUEMAPPING = #{valuemapping}
+        </if>
+        <if test="ctcode != null">
+            and CTCODE = #{ctcode}
+        </if>
+        <if test="indicatordetail != null">
+            and INDICATORDETAIL = #{indicatordetail}
+        </if>
+        <if test="coutorder != null">
+            and COUTORDER = #{coutorder}
+        </if>
+        <if test="alerttype != null">
+            and ALERTTYPE = #{alerttype}
+        </if>
+        <if test="comcode != null">
+            and COMCODE = #{comcode}
+        </if>
+    </sql>
+    <sql id="Base_Column_Where_Selective_Param1">
+        <if test="param1.id != null">
+            and ID = #{param1.id}
+        </if>
+        <if test="param1.typecode != null">
+            and TYPECODE = #{param1.typecode}
+        </if>
+        <if test="param1.indicatorcode != null">
+            and INDICATORCODE = #{param1.indicatorcode}
+        </if>
+        <if test="param1.indicatorname != null">
+            and INDICATORNAME = #{param1.indicatorname}
+        </if>
+        <if test="param1.indicatortarget != null">
+            and INDICATORTARGET = #{param1.indicatortarget}
+        </if>
+        <if test="param1.indicatordesc != null">
+            and INDICATORDESC = #{param1.indicatordesc}
+        </if>
+        <if test="param1.indicatorcaption != null">
+            and INDICATORCAPTION = #{param1.indicatorcaption}
+        </if>
+        <if test="param1.indicatorgroup != null">
+            and INDICATORGROUP = #{param1.indicatorgroup}
+        </if>
+        <if test="param1.calformula != null">
+            and CALFORMULA = #{param1.calformula}
+        </if>
+        <if test="param1.displayorder != null">
+            and DISPLAYORDER = #{param1.displayorder}
+        </if>
+        <if test="param1.alertflag != null">
+            and ALERTFLAG = #{param1.alertflag}
+        </if>
+        <if test="param1.alertcycle != null">
+            and ALERTCYCLE = #{param1.alertcycle}
+        </if>
+        <if test="param1.parentindicatorid != null">
+            and PARENTINDICATORID = #{param1.parentindicatorid}
+        </if>
+        <if test="param1.remark != null">
+            and REMARK = #{param1.remark}
+        </if>
+        <if test="param1.enabledflag != null">
+            and ENABLEDFLAG = #{param1.enabledflag}
+        </if>
+        <if test="param1.parentindicatorcode != null">
+            and PARENTINDICATORCODE = #{param1.parentindicatorcode}
+        </if>
+        <if test="param1.indlevel != null">
+            and INDLEVEL = #{param1.indlevel}
+        </if>
+        <if test="param1.cycCounttype != null">
+            and CYC_COUNTTYPE = #{param1.cycCounttype}
+        </if>
+        <if test="param1.hasbudget != null">
+            and HASBUDGET = #{param1.hasbudget}
+        </if>
+        <if test="param1.sourcefrom != null">
+            and SOURCEFROM = #{param1.sourcefrom}
+        </if>
+        <if test="param1.valuetype != null">
+            and VALUETYPE = #{param1.valuetype}
+        </if>
+        <if test="param1.countcycle != null">
+            and COUNTCYCLE = #{param1.countcycle}
+        </if>
+        <if test="param1.valuemapping != null">
+            and VALUEMAPPING = #{param1.valuemapping}
+        </if>
+        <if test="param1.ctcode != null">
+            and CTCODE = #{param1.ctcode}
+        </if>
+        <if test="param1.indicatordetail != null">
+            and INDICATORDETAIL = #{param1.indicatordetail}
+        </if>
+        <if test="param1.coutorder != null">
+            and COUTORDER = #{param1.coutorder}
+        </if>
+        <if test="param1.alerttype != null">
+            and ALERTTYPE = #{param1.alerttype}
+        </if>
+        <if test="param1.comcode != null">
+            and COMCODE = #{param1.comcode}
+        </if>
+    </sql>
+    <sql id="Base_Order_By">
+        <bind name="propName" value="sortField"></bind>
+        ORDER BY <include refid="Base_Column_Name" />
+        <choose>
+            <when test="isAscend">
+                ASC
+            </when>
+            <otherwise>
+                DESC
+            </otherwise>
+        </choose>
+    </sql>
+    <sql id="Base_Column_Name">
+        <if test='"id" == propName'>
+            ID
+        </if>
+        <if test='"typecode" == propName'>
+            TYPECODE
+        </if>
+        <if test='"indicatorcode" == propName'>
+            INDICATORCODE
+        </if>
+        <if test='"indicatorname" == propName'>
+            INDICATORNAME
+        </if>
+        <if test='"indicatortarget" == propName'>
+            INDICATORTARGET
+        </if>
+        <if test='"indicatordesc" == propName'>
+            INDICATORDESC
+        </if>
+        <if test='"indicatorcaption" == propName'>
+            INDICATORCAPTION
+        </if>
+        <if test='"indicatorgroup" == propName'>
+            INDICATORGROUP
+        </if>
+        <if test='"calformula" == propName'>
+            CALFORMULA
+        </if>
+        <if test='"displayorder" == propName'>
+            DISPLAYORDER
+        </if>
+        <if test='"alertflag" == propName'>
+            ALERTFLAG
+        </if>
+        <if test='"alertcycle" == propName'>
+            ALERTCYCLE
+        </if>
+        <if test='"parentindicatorid" == propName'>
+            PARENTINDICATORID
+        </if>
+        <if test='"remark" == propName'>
+            REMARK
+        </if>
+        <if test='"enabledflag" == propName'>
+            ENABLEDFLAG
+        </if>
+        <if test='"parentindicatorcode" == propName'>
+            PARENTINDICATORCODE
+        </if>
+        <if test='"indlevel" == propName'>
+            INDLEVEL
+        </if>
+        <if test='"cycCounttype" == propName'>
+            CYC_COUNTTYPE
+        </if>
+        <if test='"hasbudget" == propName'>
+            HASBUDGET
+        </if>
+        <if test='"sourcefrom" == propName'>
+            SOURCEFROM
+        </if>
+        <if test='"valuetype" == propName'>
+            VALUETYPE
+        </if>
+        <if test='"countcycle" == propName'>
+            COUNTCYCLE
+        </if>
+        <if test='"valuemapping" == propName'>
+            VALUEMAPPING
+        </if>
+        <if test='"ctcode" == propName'>
+            CTCODE
+        </if>
+        <if test='"indicatordetail" == propName'>
+            INDICATORDETAIL
+        </if>
+        <if test='"coutorder" == propName'>
+            COUTORDER
+        </if>
+        <if test='"alerttype" == propName'>
+            ALERTTYPE
+        </if>
+        <if test='"comcode" == propName'>
+            COMCODE
+        </if>
+    </sql>
+    <sql id="Base_Id_Array">
+        <foreach collection="array" open="(" close=")" separator="," item="id">
+            #{id}
+        </foreach>
+    </sql>
+    <sql id="Base_Id_List">
+        <foreach collection="list" open="(" close=")" separator="," item="id">
+            #{id}
+        </foreach>
+    </sql>
+    <sql id="Base_Select_All">
+        select
+        <include refid="Base_Column_List" />
+        from <include refid="Base_Table_Name" />
+    </sql>
+    <select id="selectById" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        where ID = #{id}
+    </select>
+    <select id="selectById2" parameterType="com.yqjr.fin.risk.stat.condition.IndicatorsCondition"
+            resultMap="Ind">
+        select
+        rownum rn,
+        P_INDICATORS.ID,
+        P_INDICATORS.TYPECODE,
+        P_INDICATORS.INDICATORCODE,
+        P_INDICATORS.INDICATORNAME,
+        P_INDICATORS.INDICATORTARGET,
+        P_INDICATORS.INDICATORDESC,
+        P_INDICATORS.INDICATORCAPTION,
+        P_INDICATORS.INDICATORGROUP,
+        P_INDICATORS.CALFORMULA,
+        P_INDICATORS.DISPLAYORDER,
+        P_INDICATORS.ALERTFLAG,
+        P_INDICATORS.ALERTCYCLE,
+        P_INDICATORS.PARENTINDICATORID,
+        P_INDICATORS.REMARK,
+        P_INDICATORS.ENABLEDFLAG,
+        P_INDICATORS.PARENTINDICATORCODE,
+        P_INDICATORS.INDLEVEL,
+        P_INDICATORS.CYC_COUNTTYPE,
+        P_INDICATORS.HASBUDGET,
+        P_INDICATORS.SOURCEFROM,
+        P_INDICATORS.VALUETYPE,
+        P_INDICATORS.COUNTCYCLE,
+        P_INDICATORS.VALUEMAPPING,
+        P_INDICATORS.CTCODE,
+        P_INDICATORS.INDICATORDETAIL,
+        P_INDICATORS.COUTORDER,
+        P_INDICATORS.ALERTTYPE,
+        P_INDICATORS.COMCODE,
+        P_INDICATORS.CREATOR,
+        P_INDICATORS.CREATE_TIME,
+        P_INDICATORS.MODIFIER,
+        P_INDICATORS.MODIFY_TIME,
+        P_INDICATOR_TYPES.NAME
+        from P_INDICATORS left join P_INDICATOR_TYPES on  P_INDICATORS.TYPECODE=P_INDICATOR_TYPES.CODE
+        where P_INDICATORS.ID = #{id}
+    </select>
+    <select id="selectByIds" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        where ID in
+        <include refid="Base_Id_List" />
+    </select>
+    <select id="selectAll" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+    </select>
+    <select id="selectCount" resultType="int">
+        select count(*)
+        from <include refid="Base_Table_Name" />
+        <where>
+            <include refid="Base_Column_Where_Selective" />
+        </where>
+    </select>
+    <select id="select" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Where_Selective" />
+        </where>
+    </select>
+    <select id="selectOne" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Where_Selective" />
+        </where>
+    </select>
+    <select id="selectOrderBy" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Where_Selective_Param1" />
+        </where>
+        <include refid="Base_Order_By" />
+    </select>
+    <select id="selectByProperty" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Name" /> = #{propValue}
+        </where>
+    </select>
+    <select id="selectByPropertyIn" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Name" /> IN
+            <foreach collection="propValues" open="(" close=")" separator="," item="propValue">
+                #{propValue}
+            </foreach>
+        </where>
+    </select>
+    <delete id="delete">
+        delete
+        from <include refid="Base_Table_Name" />
+        <where>
+            <include refid="Base_Column_Where_Selective" />
+        </where>
+    </delete>
+    <delete id="deleteById">
+        delete
+        from <include refid="Base_Table_Name" />
+        where ID = #{id}
+    </delete>
+    <delete id="deleteByIds">
+        delete
+        from <include refid="Base_Table_Name" />
+        where ID in
+        <include refid="Base_Id_List" />
+    </delete>
+    <sql id="Base_Column_List_Selective_null1">
+        <trim suffixOverrides=",">
+            ID,
+            <if test="typecode != null and typecode !=''">
+                TYPECODE,
+            </if>
+            <if test="indicatorcode != null and indicatorcode !=''">
+                INDICATORCODE,
+            </if>
+            <if test="indicatorname != null and indicatorname !=''">
+                INDICATORNAME,
+            </if>
+            <if test="indicatortarget != null and indicatortarget !=''">
+                INDICATORTARGET,
+            </if>
+            <if test="indicatordesc != null and indicatordesc !=''">
+                INDICATORDESC,
+            </if>
+            <if test="indicatorcaption != null and indicatorcaption !=''">
+                INDICATORCAPTION,
+            </if>
+            <if test="indicatorgroup != null and indicatorgroup !=''">
+                INDICATORGROUP,
+            </if>
+            <if test="calformula != null and calformula !=''">
+                CALFORMULA,
+            </if>
+            <if test="displayorder != null and displayorder !=''">
+                DISPLAYORDER,
+            </if>
+            <if test="alertflag != null and alertflag !=''">
+                ALERTFLAG,
+            </if>
+            <if test="alertcycle != null and alertcycle !=''">
+                ALERTCYCLE,
+            </if>
+            <if test="parentindicatorid != null and parentindicatorid !=''">
+                PARENTINDICATORID,
+            </if>
+            <if test="remark != null and remark !=''">
+                REMARK,
+            </if>
+            <if test="enabledflag != null and enabledflag !=''">
+                ENABLEDFLAG,
+            </if>
+            <if test="parentindicatorcode != null and parentindicatorcode !=''">
+                PARENTINDICATORCODE,
+            </if>
+            <if test="indlevel != null and indlevel !=''">
+                INDLEVEL,
+            </if>
+            <if test="cycCounttype != null and cycCounttype !=''">
+                CYC_COUNTTYPE,
+            </if>
+            <if test="hasbudget != null and hasbudget !=''">
+                HASBUDGET,
+            </if>
+            <if test="sourcefrom != null and sourcefrom !=''">
+                SOURCEFROM,
+            </if>
+            <if test="valuetype != null and valuetype !=''">
+                VALUETYPE,
+            </if>
+            <if test="countcycle != null and countcycle !=''">
+                COUNTCYCLE,
+            </if>
+            <if test="valuemapping != null and valuemapping !=''">
+                VALUEMAPPING,
+            </if>
+            <if test="ctcode != null and ctcode !=''">
+                CTCODE,
+            </if>
+            <if test="indicatordetail != null and indicatordetail !=''">
+                INDICATORDETAIL,
+            </if>
+            <if test="coutorder != null and coutorder !=''">
+                COUTORDER,
+            </if>
+            <if test="alerttype != null and alerttype !=''">
+                ALERTTYPE,
+            </if>
+            <if test="comcode != null and comcode !=''">
+                COMCODE,
+            </if>
+            <if test="creator != null and creator !=''">
+                CREATOR,
+            </if>
+            <if test="createTime != null ">
+                CREATE_TIME,
+            </if>
+            <if test="modifier != null and modifier !=''">
+                MODIFIER,
+            </if>
+            <if test="modifyTime != null ">
+                MODIFY_TIME
+            </if>
+        </trim>
+    </sql>
+    <sql id="Base_Column_List_Selective_null">
+        <trim suffixOverrides=",">
+            P_INDICATORS_SEQ.nextval,
+            <if test="typecode != null and typecode !=''">
+                #{typecode,jdbcType=VARCHAR},
+            </if>
+            <if test="indicatorcode != null and indicatorcode !=''">
+                #{indicatorcode,jdbcType=VARCHAR},
+            </if>
+            <if test="indicatorname != null and indicatorname !=''">
+                #{indicatorname,jdbcType=VARCHAR},
+            </if>
+            <if test="indicatortarget != null and indicatortarget !=''">
+                #{indicatortarget,jdbcType=VARCHAR},
+            </if>
+            <if test="indicatordesc != null and indicatordesc !=''">
+                #{indicatordesc,jdbcType=VARCHAR},
+            </if>
+            <if test="indicatorcaption != null and indicatorcaption !=''">
+                #{indicatorcaption,jdbcType=VARCHAR},
+            </if>
+            <if test="indicatorgroup != null and indicatorgroup !=''">
+                #{indicatorgroup,jdbcType=VARCHAR},
+            </if>
+            <if test="calformula != null and calformula !=''">
+                #{calformula,jdbcType=VARCHAR},
+            </if>
+            <if test="displayorder != null and displayorder !=''">
+                #{displayorder,jdbcType=NUMERIC},
+            </if>
+            <if test="alertflag != null and alertflag !=''">
+                #{alertflag,jdbcType=VARCHAR},
+            </if>
+            <if test="alertcycle != null and alertcycle !=''">
+                #{alertcycle,jdbcType=VARCHAR},
+            </if>
+            <if test="parentindicatorid != null and parentindicatorid !=''">
+                #{parentindicatorid,jdbcType=NUMERIC},
+            </if>
+            <if test="remark != null and remark !=''">
+                #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="enabledflag != null and enabledflag !=''">
+                #{enabledflag,jdbcType=NUMERIC},
+            </if>
+            <if test="parentindicatorcode != null and parentindicatorcode !=''">
+                #{parentindicatorcode,jdbcType=VARCHAR},
+            </if>
+            <if test="indlevel != null and indlevel !=''">
+                #{indlevel,jdbcType=NUMERIC},
+            </if>
+            <if test="cycCounttype != null and cycCounttype !=''">
+                #{cycCounttype,jdbcType=VARCHAR},
+            </if>
+            <if test="hasbudget != null and hasbudget !=''">
+                #{hasbudget,jdbcType=VARCHAR},
+            </if>
+            <if test="sourcefrom != null and sourcefrom !=''">
+                #{sourcefrom,jdbcType=VARCHAR},
+            </if>
+            <if test="valuetype != null and valuetype !=''">
+                #{valuetype,jdbcType=VARCHAR},
+            </if>
+            <if test="countcycle != null and countcycle !=''">
+                #{countcycle,jdbcType=VARCHAR},
+            </if>
+            <if test="valuemapping != null and valuemapping !=''">
+                #{valuemapping,jdbcType=VARCHAR},
+            </if>
+            <if test="ctcode != null and ctcode !=''">
+                #{ctcode,jdbcType=VARCHAR},
+            </if>
+            <if test="indicatordetail != null and indicatordetail !=''">
+                #{indicatordetail,jdbcType=VARCHAR},
+            </if>
+            <if test="coutorder != null and coutorder !=''">
+                #{coutorder,jdbcType=VARCHAR},
+            </if>
+            <if test="alerttype != null and alerttype !=''">
+                #{alerttype,jdbcType=NUMERIC},
+            </if>
+            <if test="comcode != null and comcode !=''">
+                #{comcode,jdbcType=VARCHAR},
+            </if>
+            <if test="creator != null and creator !=''">
+                #{creator,jdbcType=NUMERIC},
+            </if>
+            <if test="createTime != null ">
+                #{createTime,jdbcType=DATE},
+            </if>
+            <if test="modifier != null and modifier !=''">
+                #{modifier,jdbcType=NUMERIC},
+            </if>
+            <if test="modifyTime != null ">
+                #{modifyTime,jdbcType=DATE}
+            </if>
+        </trim>
+    </sql>
+    <insert id="insert" parameterType="com.yqjr.fin.risk.stat.entity.Indicators">
+        <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER">
+            SELECT P_INDICATORS_SEQ.nextval from dual
+        </selectKey>
+        insert into <include refid="Base_Table_Name" /> (
+        <include refid="Base_Column_List_Selective_null1" />
+        )
+        values (
+        <include refid="Base_Column_List_Selective_null" />
+        )
+    </insert>
+    <!--<insert id="insert" parameterType="com.yqjr.fin.risk.stat.entity.Indicators">-->
+    <!--<selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER">-->
+    <!--SELECT P_INDICATORS_SEQ.nextval from dual-->
+    <!--</selectKey>-->
+    <!--insert into  <include refid="Base_Table_Name" />-->
+    <!--(-->
+    <!--<include refid="Base_Column_List" />-->
+    <!--)-->
+    <!--values (-->
+    <!--<include refid="Base_Column_Values" />-->
+    <!--)-->
+    <!--</insert>-->
+    <update id="updateById" parameterType="com.yqjr.fin.risk.stat.entity.Indicators">
+        update <include refid="Base_Table_Name" />
+        <set>
+            <include refid="Base_Column_Set_Values" />
+        </set>
+        where ID = #{id}
+    </update>
+    <update id="patchById" parameterType="com.yqjr.fin.risk.stat.condition.IndicatorsCondition">
+        update <include refid="Base_Table_Name" />
+        <set>
+            <include refid="Base_Column_Set_Values_Selective" />
+        </set>
+        where ID = #{id,jdbcType=BIGINT}
+    </update>
+    <resultMap id="IndicatorsResult" type="com.yqjr.fin.risk.stat.entity.Indicators">
+        <result property="id" column="ID"/>
+        <result property="typecode" column="TYPECODE"/>
+        <result property="indicatorcode" column="INDICATORCODE"/>
+        <result property="indicatorname" column="INDICATORNAME"/>
+        <result property="indicatortarget" column="INDICATORTARGET"/>
+        <result property="indicatordesc" column="INDICATORDESC"/>
+        <result property="indicatorcaption" column="INDICATORCAPTION"/>
+        <result property="indicatorgroup" column="INDICATORGROUP"/>
+        <result property="calformula" column="CALFORMULA"/>
+        <result property="displayorder" column="DISPLAYORDER"/>
+        <result property="alertflag" column="ALERTFLAG"/>
+        <result property="alertcycle" column="ALERTCYCLE"/>
+        <result property="parentindicatorid" column="PARENTINDICATORID"/>
+        <result property="remark" column="REMARK"/>
+        <result property="enabledflag" column="ENABLEDFLAG"/>
+        <result property="parentindicatorcode" column="PARENTINDICATORCODE"/>
+        <result property="indlevel" column="INDLEVEL"/>
+        <result property="cycCounttype" column="CYC_COUNTTYPE"/>
+        <result property="hasbudget" column="HASBUDGET"/>
+        <result property="sourcefrom" column="SOURCEFROM"/>
+        <result property="valuetype" column="VALUETYPE"/>
+        <result property="countcycle" column="COUNTCYCLE"/>
+        <result property="valuemapping" column="VALUEMAPPING"/>
+        <result property="ctcode" column="CTCODE"/>
+        <result property="indicatordetail" column="INDICATORDETAIL"/>
+        <result property="coutorder" column="COUTORDER"/>
+        <result property="alerttype" column="ALERTTYPE"/>
+        <result property="comcode" column="COMCODE"/>
+    </resultMap>
+
+    <sql id="queryLikeIndicators">
+        <if test="indicators!=null">
+            <if test="id!=null and id!=''">
+                AND ID LIKE CONCAT('%'#{id}'%')
+            </if>
+            <if test="typecode!=null and typecode!=''">
+                AND TYPECODE LIKE CONCAT('%'#{typecode}'%')
+            </if>
+            <if test="indicatorcode!=null and indicatorcode!=''">
+                AND INDICATORCODE LIKE CONCAT('%'#{indicatorcode}'%')
+            </if>
+            <if test="indicatorname!=null and indicatorname!=''">
+                AND INDICATORNAME LIKE CONCAT('%'#{indicatorname}'%')
+            </if>
+            <if test="indicatortarget!=null and indicatortarget!=''">
+                AND INDICATORTARGET LIKE CONCAT('%'#{indicatortarget}'%')
+            </if>
+            <if test="indicatordesc!=null and indicatordesc!=''">
+                AND INDICATORDESC LIKE CONCAT('%'#{indicatordesc}'%')
+            </if>
+            <if test="indicatorcaption!=null and indicatorcaption!=''">
+                AND INDICATORCAPTION LIKE CONCAT('%'#{indicatorcaption}'%')
+            </if>
+            <if test="indicatorgroup!=null and indicatorgroup!=''">
+                AND INDICATORGROUP LIKE CONCAT('%'#{indicatorgroup}'%')
+            </if>
+            <if test="calformula!=null and calformula!=''">
+                AND CALFORMULA LIKE CONCAT('%'#{calformula}'%')
+            </if>
+            <if test="displayorder!=null and displayorder!=''">
+                AND DISPLAYORDER LIKE CONCAT('%'#{displayorder}'%')
+            </if>
+            <if test="alertflag!=null and alertflag!=''">
+                AND ALERTFLAG LIKE CONCAT('%'#{alertflag}'%')
+            </if>
+            <if test="alertcycle!=null and alertcycle!=''">
+                AND ALERTCYCLE LIKE CONCAT('%'#{alertcycle}'%')
+            </if>
+            <if test="parentindicatorid!=null and parentindicatorid!=''">
+                AND PARENTINDICATORID LIKE CONCAT('%'#{parentindicatorid}'%')
+            </if>
+            <if test="remark!=null and remark!=''">
+                AND REMARK LIKE CONCAT('%'#{remark}'%')
+            </if>
+            <if test="enabledflag!=null and enabledflag!=''">
+                AND ENABLEDFLAG LIKE CONCAT('%'#{enabledflag}'%')
+            </if>
+            <if test="parentindicatorcode!=null and parentindicatorcode!=''">
+                AND PARENTINDICATORCODE LIKE CONCAT('%'#{parentindicatorcode}'%')
+            </if>
+            <if test="indlevel!=null and indlevel!=''">
+                AND INDLEVEL LIKE CONCAT('%'#{indlevel}'%')
+            </if>
+            <if test="cycCounttype!=null and cycCounttype!=''">
+                AND CYC_COUNTTYPE LIKE CONCAT('%'#{cycCounttype}'%')
+            </if>
+            <if test="hasbudget!=null and hasbudget!=''">
+                AND HASBUDGET LIKE CONCAT('%'#{hasbudget}'%')
+            </if>
+            <if test="sourcefrom!=null and sourcefrom!=''">
+                AND SOURCEFROM LIKE CONCAT('%'#{sourcefrom}'%')
+            </if>
+            <if test="valuetype!=null and valuetype!=''">
+                AND VALUETYPE LIKE CONCAT('%'#{valuetype}'%')
+            </if>
+            <if test="countcycle!=null and countcycle!=''">
+                AND COUNTCYCLE LIKE CONCAT('%'#{countcycle}'%')
+            </if>
+            <if test="valuemapping!=null and valuemapping!=''">
+                AND VALUEMAPPING LIKE CONCAT('%'#{valuemapping}'%')
+            </if>
+            <if test="ctcode!=null and ctcode!=''">
+                AND CTCODE LIKE CONCAT('%'#{ctcode}'%')
+            </if>
+            <if test="indicatordetail!=null and indicatordetail!=''">
+                AND INDICATORDETAIL LIKE CONCAT('%'#{indicatordetail}'%')
+            </if>
+            <if test="coutorder!=null and coutorder!=''">
+                AND COUTORDER LIKE CONCAT('%'#{coutorder}'%')
+            </if>
+            <if test="alerttype!=null and alerttype!=''">
+                AND ALERTTYPE LIKE CONCAT('%'#{alerttype}'%')
+            </if>
+            <if test="comcode!=null and comcode!=''">
+                COMCODE LIKE CONCAT('%'#{comcode}'%')
+            </if>
+        </if>
+    </sql>
+
+    <select id="queryIndicatorsList" parameterType="com.yqjr.fin.risk.stat.entity.Indicators"
+            resultMap="IndicatorsResult">
+        SELECT
+        ID,
+        TYPECODE,
+        INDICATORCODE,
+        INDICATORNAME,
+        INDICATORTARGET,
+        INDICATORDESC,
+        INDICATORCAPTION,
+        INDICATORGROUP,
+        CALFORMULA,
+        DISPLAYORDER,
+        ALERTFLAG,
+        ALERTCYCLE,
+        PARENTINDICATORID,
+        REMARK,
+        ENABLEDFLAG,
+        PARENTINDICATORCODE,
+        INDLEVEL,
+        CYC_COUNTTYPE,
+        HASBUDGET,
+        SOURCEFROM,
+        VALUETYPE,
+        COUNTCYCLE,
+        VALUEMAPPING,
+        CTCODE,
+        INDICATORDETAIL,
+        COUTORDER,
+        ALERTTYPE,
+        COMCODE
+        FROM P_INDICATORS
+        <where>
+            <include refid="queryLikeIndicators"/>
+        </where>
+    </select>
+
+    <select id="queryIndicatorsCount" parameterType="com.yqjr.fin.risk.stat.entity.Indicators" resultType="int">
+        SELECT
+        count (id)
+        FROM P_INDICATORS
+        <where>
+            <include refid="queryLikeIndicators"/>
+        </where>
+    </select>
+
+    <delete id="dynamicDelete">
+        delete from P_INDICATORS where id in
+        <foreach collection="array" open="(" close=")" separator="," item="arr">
+            #{arr}
+        </foreach>
+    </delete>
+    <delete id="dynamicDeleteList">
+        delete from P_INDICATORS where id in
+        <foreach collection="list" open="(" close=")" separator="," item="ids">
+            #{ids}
+        </foreach>
+    </delete>
+
+    <insert id="insertBatch" parameterType="java.util.List">
+        <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into P_INDICATORS
+        (
+        <include refid="Base_Column_List" />
+        )
+        values
+        <foreach collection="list" item="indicators" index="index" separator=",">
+            (
+            <include refid="Base_Column_Values" />
+            )
+        </foreach>
+    </insert>
+
+    <insert id="saveObj" useGeneratedKeys="true" keyProperty="id"
+            parameterType="com.yqjr.fin.risk.stat.entity.Indicators">
+        insert into P_INDICATORS
+        (
+        <include refid="Base_Column_List" />
+        )
+        values
+        (
+        <include refid="Base_Column_Values" />
+        )
+    </insert>
+
+
+    <select id="selByIndicatorTypes" parameterType="String" resultType="map">
+        SELECT
+        INDICATORNAME
+        FROM P_INDICATORS
+        <where>
+            TYPECODE=#{typecode}
+        </where>
+    </select>
+    <select id="selByIndicatorsName" parameterType="String" resultType="String">
+        SELECT
+        INDICATORCODE
+        FROM P_INDICATORS
+        <where>
+            INDICATORNAME=#{indicatorname}
+        </where>
+    </select>
+
+    <resultMap id="Ind" type="com.yqjr.fin.risk.stat.entity.Indicators">
+        <result property="id" column="ID"/>
+        <result property="typecode" column="TYPECODE"/>
+        <result property="indicatorcode" column="INDICATORCODE"/>
+        <result property="indicatorname" column="INDICATORNAME"/>
+        <result property="indicatortarget" column="INDICATORTARGET"/>
+        <result property="indicatordesc" column="INDICATORDESC"/>
+        <result property="indicatorcaption" column="INDICATORCAPTION"/>
+        <result property="indicatorgroup" column="INDICATORGROUP"/>
+        <result property="calformula" column="CALFORMULA"/>
+        <result property="displayorder" column="DISPLAYORDER"/>
+        <result property="alertflag" column="ALERTFLAG"/>
+        <result property="alertcycle" column="ALERTCYCLE"/>
+        <result property="parentindicatorid" column="PARENTINDICATORID"/>
+        <result property="remark" column="REMARK"/>
+        <result property="enabledflag" column="ENABLEDFLAG"/>
+        <result property="parentindicatorcode" column="PARENTINDICATORCODE"/>
+        <result property="indlevel" column="INDLEVEL"/>
+        <result property="cycCounttype" column="CYC_COUNTTYPE"/>
+        <result property="hasbudget" column="HASBUDGET"/>
+        <result property="sourcefrom" column="SOURCEFROM"/>
+        <result property="valuetype" column="VALUETYPE"/>
+        <result property="countcycle" column="COUNTCYCLE"/>
+        <result property="valuemapping" column="VALUEMAPPING"/>
+        <result property="ctcode" column="CTCODE"/>
+        <result property="indicatordetail" column="INDICATORDETAIL"/>
+        <result property="coutorder" column="COUTORDER"/>
+        <result property="alerttype" column="ALERTTYPE"/>
+        <result property="comcode" column="COMCODE"/>
+        <result property="creator" column="CREATOR"/><!--创建人-->
+        <result property="createTime" column="CREATE_TIME"/><!--创建时间-->
+        <result property="modifier" column="MODIFIER"/><!--最后更新人-->
+        <result property="modifyTime" column="MODIFY_TIME"/><!--最后更新时间-->
+        <association property="indicatorTypes" resultMap="BaseResultMap2"/>
+    </resultMap>
+    <resultMap id="BaseResultMap2" type="com.yqjr.fin.risk.stat.entity.IndicatorTypes">
+        <id property="id" column="ID"/><!--序列号-->
+        <result property="code" column="CODE"/><!--指标类型-->
+        <result property="name" column="NAME"/><!--指标类型代码-->
+        <result property="remark" column="REMARK"/><!--备注-->
+        <result property="creator" column="CREATOR"/><!--创建人-->
+        <result property="createTime" column="CREATE_TIME"/><!--创建时间-->
+        <result property="modifier" column="MODIFIER"/><!--最后更新人-->
+        <result property="modifyTime" column="MODIFY_TIME"/><!--最后更新时间-->
+    </resultMap>
+    <select id="selectLikeByNameAndCode" parameterType="com.yqjr.fin.risk.stat.condition.IndicatorsCondition"
+            resultMap="Ind">
+        select
+        P_INDICATORS.ID,
+        P_INDICATORS.TYPECODE,
+        P_INDICATORS.INDICATORCODE,
+        P_INDICATORS.INDICATORNAME,
+        P_INDICATORS.INDICATORTARGET,
+        P_INDICATORS.INDICATORDESC,
+        P_INDICATORS.INDICATORCAPTION,
+        P_INDICATORS.INDICATORGROUP,
+        P_INDICATORS.CALFORMULA,
+        P_INDICATORS.DISPLAYORDER,
+        P_INDICATORS.ALERTFLAG,
+        P_INDICATORS.ALERTCYCLE,
+        P_INDICATORS.PARENTINDICATORID,
+        P_INDICATORS.REMARK,
+        P_INDICATORS.ENABLEDFLAG,
+        P_INDICATORS.PARENTINDICATORCODE,
+        P_INDICATORS.INDLEVEL,
+        P_INDICATORS.CYC_COUNTTYPE,
+        P_INDICATORS.HASBUDGET,
+        P_INDICATORS.SOURCEFROM,
+        P_INDICATORS.VALUETYPE,
+        P_INDICATORS.COUNTCYCLE,
+        P_INDICATORS.VALUEMAPPING,
+        P_INDICATORS.CTCODE,
+        P_INDICATORS.INDICATORDETAIL,
+        P_INDICATORS.COUTORDER,
+        P_INDICATORS.ALERTTYPE,
+        P_INDICATORS.COMCODE,
+        P_INDICATOR_TYPES.NAME
+        from P_INDICATORS left join P_INDICATOR_TYPES on  P_INDICATORS.TYPECODE=P_INDICATOR_TYPES.CODE
+        <trim prefix="where"  prefixOverrides="AND"  >
+            <if test="typecode!=null and typecode!=''">
+                AND P_INDICATORS.TYPECODE like concat(concat('%',#{typecode,jdbcType=VARCHAR}),'%')
+            </if>
+            <if test="indicatorcode!=null and indicatorcode!=''">
+                AND P_INDICATORS.INDICATORCODE LIKE  concat(concat('%',#{indicatorcode,jdbcType=VARCHAR}),'%')
+            </if>
+            <if test="alertcycle!=null and alertcycle!=''">
+                AND P_INDICATORS.ALERTCYCLE = #{alertcycle,jdbcType=VARCHAR}
+            </if>
+            <if test="alertflag!=null and alertflag!=''">
+                AND P_INDICATORS.ALERTFLAG = #{alertflag,jdbcType=VARCHAR}
+            </if>
+            <if test="indicatorname!=null and indicatorname!=''">
+                AND P_INDICATORS.INDICATORNAME LIKE  concat(concat('%',#{indicatorname,jdbcType=VARCHAR}),'%')
+            </if>
+            <if test="enabledflag!=null ">
+                AND P_INDICATORS.ENABLEDFLAG = #{enabledflag,jdbcType=BIGINT}
+            </if>
+            <if test="comcode!=null and comcode!=''">
+                AND P_INDICATORS.COMCODE LIKE  concat(concat('%',#{comcode,jdbcType=VARCHAR}),'%')
+            </if>
+            <if test="id!=null and id!=''">
+                AND  P_INDICATORS.ID = #{id}
+            </if>
+            <if test="indlevel!=null">
+                AND  P_INDICATORS.INDLEVEL = #{indlevel}
+            </if>
+        </trim>
+    </select>
+
+
+
+
+    <select id="selelctBy" resultMap="BaseResultMap"  parameterType="com.yqjr.fin.risk.stat.entity.Indicators">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Where_Selective" />
+        </where>
+    </select>
+    <select id="selectByIndicatorcode" resultMap="BaseResultMap"  parameterType="com.yqjr.fin.risk.stat.entity.Indicators">
+        <include refid="Base_Select_All" /> where indicatorcode like  concat(concat('%',#{indicatorcode,jdbcType=VARCHAR}),'%')
+    </select>
+    <select id="selIName" resultMap="BaseResultMap" parameterType="com.yqjr.fin.risk.stat.entity.Indicators">
+        select ID,INDICATORNAME from P_INDICATORS
+        <trim prefix="where"  prefixOverrides="AND"  >
+        <if test="typecode!=null and typecode!=''">
+             TYPECODE=#{typecode,jdbcType=VARCHAR}
+        </if>
+        </trim>
+    </select>
+    <select id="selICode" resultMap="BaseResultMap" parameterType="com.yqjr.fin.risk.stat.entity.Indicators">
+        select ID,INDICATORCODE,ALERTFLAG from P_INDICATORS where ID=#{id,jdbcType=NUMERIC}
+    </select>
+    <select id="selIndlevel" resultMap="BaseResultMap">
+        select distinct
+        INDLEVEL from P_INDICATORS
+        where INDLEVEL is not null
+        order by INDLEVEL
+    </select>
+    <select id="selectByIndicatorname" resultMap="BaseResultMap"  parameterType="com.yqjr.fin.risk.stat.entity.Indicators">
+        <include refid="Base_Select_All" />
+        <if test="indicatorname!=null and indicatorname!=''">
+            where indicatorname like  concat(concat('%',#{indicatorname,jdbcType=VARCHAR}),'%')
+        </if>
+    </select>
+    <select id="selMycode" parameterType="java.lang.String"
+            resultType="java.lang.Integer">
+    select  count(1)
+    from P_INDICATORS
+    where INDICATORCODE =#{indicatorcode,jdbcType=VARCHAR}
+    </select>
+    <select id="selByUpd" parameterType="com.yqjr.fin.risk.stat.entity.Indicators"
+            resultType="java.lang.Integer">
+    select count(1) from (select INDICATORCODE from p_indicators where INDICATORCODE =#{indicatorcode,jdbcType=VARCHAR} and ID !=#{id}) t
+    </select>
+</mapper>
+

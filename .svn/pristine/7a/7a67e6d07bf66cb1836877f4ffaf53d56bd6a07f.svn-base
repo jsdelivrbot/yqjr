@@ -1,0 +1,1088 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yqjr.fin.mkmm.sales.mapper.FeeMainHisMapper">
+
+    <!-- region BaseMapper DO NOT MODIFY!!!  -->
+
+    <sql id="Base_Table_Name">
+        MKMM_FEE_MAIN_HIS
+    </sql>
+
+
+
+    <!-- region BaseResultMap  -->
+    <resultMap id="BaseResultMap" type="com.yqjr.fin.mkmm.sales.entity.FeeMainHis">
+        <result property="id" column="ID"/><!--ID-->
+        <result property="billno" column="BILLNO"/><!--结算单号-->
+        <result property="feeType" column="FEE_TYPE"/><!--费用类型 (01-活动费用)-->
+        <result property="feeSource" column="FEE_SOURCE"/><!--费用来源（01-正常渠道计算，02-费用追加）-->
+        <result property="businessCode" column="BUSINESS_CODE"/><!--业务代码-->
+        <result property="businessName" column="BUSINESS_NAME"/><!--业务名称-->
+        <result property="company" column="COMPANY"/><!--所属公司-->
+        <result property="billStatus" column="BILL_STATUS"/><!--结算状态（00-初始，01-未动支，02-动支中，03-已动支）-->
+        <result property="isSendGx" column="IS_SEND_GX"/><!--是否送共享(01-未送共享，02-已送共享，99-未知状态)-->
+        <result property="validStatus" column="VALID_STATUS"/><!--有效状态-->
+        <result property="maxBillFee" column="MAX_BILL_FEE"/><!--结算单上限金额-->
+        <result property="billFee" column="BILL_FEE"/><!--结算单金额-->
+        <result property="settleTimes" column="SETTLE_TIMES"/><!--结算次数-->
+        <result property="actualTurnoverCount" column="ACTUAL_TURNOVER_COUNT"/><!--实际活动成交数量-->
+        <result property="estimateTurnoverCount" column="ESTIMATE_TURNOVER_COUNT"/><!--预计活动成交数量-->
+        <result property="feeMainReviewId" column="FEE_MAIN_REVIEW_ID"/><!--审核表ID-->
+        <result property="feeowner" column="FEEOWNER"/><!--费用申请归属部门-->
+        <result property="remark" column="REMARK"/><!--备注-->
+        <result property="createTime" column="CREATE_TIME"/><!--创建时间-->
+        <result property="modifyTime" column="MODIFY_TIME"/><!--修改时间-->
+        <result property="startTime" column="START_TIME"/><!--生效时间-->
+        <result property="creator" column="CREATOR"/><!--创建人-->
+        <result property="modifier" column="MODIFIER"/><!--修改人-->
+        <result property="flag" column="FLAG"/><!--有效标识（如表记录不删除，以此区分,0无效，1有效）-->
+        <result property="historyId" column="HISTORY_ID"/><!--原始ID-->
+        <result property="serialNumber" column="SERIAL_NUMBER"/><!--请求共享平台流水号-->
+    </resultMap>
+    <!-- endregion -->
+
+    <!-- region Base_Column_List  -->
+    <sql id="Base_Column_List">
+    ID,BILLNO,FEE_TYPE,FEE_SOURCE,BUSINESS_CODE,BUSINESS_NAME,COMPANY,BILL_STATUS,IS_SEND_GX,VALID_STATUS,MAX_BILL_FEE,BILL_FEE,SETTLE_TIMES,ACTUAL_TURNOVER_COUNT,ESTIMATE_TURNOVER_COUNT,FEE_MAIN_REVIEW_ID,FEEOWNER,REMARK,CREATE_TIME,MODIFY_TIME,START_TIME,CREATOR,MODIFIER,FLAG,HISTORY_ID,SERIAL_NUMBER
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_List_Selective  -->
+    <sql id="Base_Column_List_Selective">
+        <trim suffixOverrides=",">
+            <if test="id != null">
+            ID,
+            </if>
+            <if test="billno != null">
+            BILLNO,
+            </if>
+            <if test="feeType != null">
+            FEE_TYPE,
+            </if>
+            <if test="feeSource != null">
+            FEE_SOURCE,
+            </if>
+            <if test="businessCode != null">
+            BUSINESS_CODE,
+            </if>
+            <if test="businessName != null">
+            BUSINESS_NAME,
+            </if>
+            <if test="company != null">
+            COMPANY,
+            </if>
+            <if test="billStatus != null">
+            BILL_STATUS,
+            </if>
+            <if test="isSendGx != null">
+            IS_SEND_GX,
+            </if>
+            <if test="validStatus != null">
+            VALID_STATUS,
+            </if>
+            <if test="maxBillFee != null">
+            MAX_BILL_FEE,
+            </if>
+            <if test="billFee != null">
+            BILL_FEE,
+            </if>
+            <if test="settleTimes != null">
+            SETTLE_TIMES,
+            </if>
+            <if test="actualTurnoverCount != null">
+            ACTUAL_TURNOVER_COUNT,
+            </if>
+            <if test="estimateTurnoverCount != null">
+            ESTIMATE_TURNOVER_COUNT,
+            </if>
+            <if test="feeMainReviewId != null">
+            FEE_MAIN_REVIEW_ID,
+            </if>
+            <if test="feeowner != null">
+            FEEOWNER,
+            </if>
+            <if test="remark != null">
+            REMARK,
+            </if>
+            <if test="createTime != null">
+            CREATE_TIME,
+            </if>
+            <if test="modifyTime != null">
+            MODIFY_TIME,
+            </if>
+            <if test="startTime != null">
+            START_TIME,
+            </if>
+            <if test="creator != null">
+            CREATOR,
+            </if>
+            <if test="modifier != null">
+            MODIFIER,
+            </if>
+            <if test="flag != null">
+            FLAG,
+            </if>
+            <if test="historyId != null">
+            HISTORY_ID,
+            </if>
+            <if test="serialNumber != null">
+                SERIAL_NUMBER
+            </if>
+        </trim>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Values  -->
+    <sql id="Base_Column_Values">
+    SEQ_MKMM_FEE_MAIN_HIS.nextval,
+    #{billno,jdbcType=VARCHAR},
+    #{feeType,jdbcType=VARCHAR},
+    #{feeSource,jdbcType=VARCHAR},
+    #{businessCode,jdbcType=VARCHAR},
+    #{businessName,jdbcType=VARCHAR},
+    #{company,jdbcType=VARCHAR},
+    #{billStatus,jdbcType=VARCHAR},
+    #{isSendGx,jdbcType=VARCHAR},
+    #{validStatus,jdbcType=VARCHAR},
+    #{maxBillFee,jdbcType=DECIMAL},
+    #{billFee,jdbcType=DECIMAL},
+    #{settleTimes,jdbcType=INTEGER},
+    #{actualTurnoverCount,jdbcType=INTEGER},
+    #{estimateTurnoverCount,jdbcType=INTEGER},
+    #{feeMainReviewId,jdbcType=INTEGER},
+    #{feeowner,jdbcType=VARCHAR},
+    #{remark,jdbcType=VARCHAR},
+    #{createTime,jdbcType=TIMESTAMP},
+    #{modifyTime,jdbcType=TIMESTAMP},
+    #{startTime,jdbcType=TIMESTAMP},
+    #{creator,jdbcType=INTEGER},
+    #{modifier,jdbcType=INTEGER},
+    #{flag,jdbcType=VARCHAR},
+    #{historyId,jdbcType=INTEGER},
+    #{serialNumber,jdbcType=VARCHAR}
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Values_Selective  -->
+    <sql id="Base_Column_Values_Selective">
+        <trim suffixOverrides=",">
+            <if test="id != null">
+            #{id},
+            </if>
+            <if test="billno != null">
+            #{billno},
+            </if>
+            <if test="feeType != null">
+            #{feeType},
+            </if>
+            <if test="feeSource != null">
+            #{feeSource},
+            </if>
+            <if test="businessCode != null">
+            #{businessCode},
+            </if>
+            <if test="businessName != null">
+            #{businessName},
+            </if>
+            <if test="company != null">
+            #{company},
+            </if>
+            <if test="billStatus != null">
+            #{billStatus},
+            </if>
+            <if test="isSendGx != null">
+            #{isSendGx},
+            </if>
+            <if test="validStatus != null">
+            #{validStatus},
+            </if>
+            <if test="maxBillFee != null">
+            #{maxBillFee},
+            </if>
+            <if test="billFee != null">
+            #{billFee},
+            </if>
+            <if test="settleTimes != null">
+            #{settleTimes},
+            </if>
+            <if test="actualTurnoverCount != null">
+            #{actualTurnoverCount},
+            </if>
+            <if test="estimateTurnoverCount != null">
+            #{estimateTurnoverCount},
+            </if>
+            <if test="feeMainReviewId != null">
+            #{feeMainReviewId},
+            </if>
+            <if test="feeowner != null">
+            #{feeowner},
+            </if>
+            <if test="remark != null">
+            #{remark},
+            </if>
+            <if test="createTime != null">
+            #{createTime},
+            </if>
+            <if test="modifyTime != null">
+            #{modifyTime},
+            </if>
+            <if test="startTime != null">
+            #{startTime},
+            </if>
+            <if test="creator != null">
+            #{creator},
+            </if>
+            <if test="modifier != null">
+            #{modifier},
+            </if>
+            <if test="flag != null">
+            #{flag},
+            </if>
+            <if test="historyId != null">
+            #{historyId},
+            </if>
+            <if test="serialNumber != null">
+                #{serialNumber}
+            </if>
+        </trim>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Set_Values  -->
+    <sql id="Base_Column_Set_Values">
+    ID = #{id},
+    BILLNO = #{billno},
+    FEE_TYPE = #{feeType},
+    FEE_SOURCE = #{feeSource},
+    BUSINESS_CODE = #{businessCode},
+    BUSINESS_NAME = #{businessName},
+    COMPANY = #{company},
+    BILL_STATUS = #{billStatus},
+    IS_SEND_GX = #{isSendGx},
+    VALID_STATUS = #{validStatus},
+    MAX_BILL_FEE = #{maxBillFee},
+    BILL_FEE = #{billFee},
+    SETTLE_TIMES = #{settleTimes},
+    ACTUAL_TURNOVER_COUNT = #{actualTurnoverCount},
+    ESTIMATE_TURNOVER_COUNT = #{estimateTurnoverCount},
+    FEE_MAIN_REVIEW_ID = #{feeMainReviewId},
+    FEEOWNER = #{feeowner},
+    REMARK = #{remark},
+    CREATE_TIME = #{createTime},
+    MODIFY_TIME = #{modifyTime},
+    START_TIME = #{startTime},
+    CREATOR = #{creator},
+    MODIFIER = #{modifier},
+    FLAG = #{flag},
+    HISTORY_ID = #{historyId},
+    SERIAL_NUMBER = #{serialNumber}
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Set_Values_Selective  -->
+    <sql id="Base_Column_Set_Values_Selective">
+        <if test="id != null">
+        ID = #{id},
+        </if>
+        <if test="billno != null">
+        BILLNO = #{billno},
+        </if>
+        <if test="feeType != null">
+        FEE_TYPE = #{feeType},
+        </if>
+        <if test="feeSource != null">
+        FEE_SOURCE = #{feeSource},
+        </if>
+        <if test="businessCode != null">
+        BUSINESS_CODE = #{businessCode},
+        </if>
+        <if test="businessName != null">
+        BUSINESS_NAME = #{businessName},
+        </if>
+        <if test="company != null">
+        COMPANY = #{company},
+        </if>
+        <if test="billStatus != null">
+        BILL_STATUS = #{billStatus},
+        </if>
+        <if test="isSendGx != null">
+        IS_SEND_GX = #{isSendGx},
+        </if>
+        <if test="validStatus != null">
+        VALID_STATUS = #{validStatus},
+        </if>
+        <if test="maxBillFee != null">
+        MAX_BILL_FEE = #{maxBillFee},
+        </if>
+        <if test="billFee != null">
+        BILL_FEE = #{billFee},
+        </if>
+        <if test="settleTimes != null">
+        SETTLE_TIMES = #{settleTimes},
+        </if>
+        <if test="actualTurnoverCount != null">
+        ACTUAL_TURNOVER_COUNT = #{actualTurnoverCount},
+        </if>
+        <if test="estimateTurnoverCount != null">
+        ESTIMATE_TURNOVER_COUNT = #{estimateTurnoverCount},
+        </if>
+        <if test="feeMainReviewId != null">
+        FEE_MAIN_REVIEW_ID = #{feeMainReviewId},
+        </if>
+        <if test="feeowner != null">
+        FEEOWNER = #{feeowner},
+        </if>
+        <if test="remark != null">
+        REMARK = #{remark},
+        </if>
+        <if test="createTime != null">
+        CREATE_TIME = to_date(#{createTime,jdbcType=TIMESTAMP},'YYYY-MM-DD HH24:mi:ss'),
+        </if>
+        <if test="modifyTime != null">
+        MODIFY_TIME = to_date(#{modifyTime,jdbcType=TIMESTAMP},'YYYY-MM-DD HH24:mi:ss'),
+        </if>
+        <if test="startTime != null">
+        START_TIME = to_date(#{startTime,jdbcType=TIMESTAMP},'YYYY-MM-DD HH24:mi:ss'),
+        </if>
+        <if test="creator != null">
+        CREATOR = #{creator},
+        </if>
+        <if test="modifier != null">
+        MODIFIER = #{modifier},
+        </if>
+        <if test="flag != null">
+        FLAG = #{flag},
+        </if>
+        <if test="historyId != null">
+        HISTORY_ID = #{historyId},
+        </if>
+        <if test="serialNumber != null">
+            SERIAL_NUMBER = #{serialNumber}
+        </if>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Where_Selective  -->
+    <sql id="Base_Column_Where_Selective">
+        <if test="id != null">
+            and ID = #{id}
+        </if>
+        <if test="billno != null">
+            and BILLNO = #{billno}
+        </if>
+        <if test="feeType != null">
+            and FEE_TYPE = #{feeType}
+        </if>
+        <if test="feeSource != null">
+            and FEE_SOURCE = #{feeSource}
+        </if>
+        <if test="businessCode != null">
+            and BUSINESS_CODE = #{businessCode}
+        </if>
+        <if test="businessName != null">
+            and BUSINESS_NAME = #{businessName}
+        </if>
+        <if test="company != null">
+            and COMPANY = #{company}
+        </if>
+        <if test="billStatus != null">
+            and BILL_STATUS = #{billStatus}
+        </if>
+        <if test="isSendGx != null">
+            and IS_SEND_GX = #{isSendGx}
+        </if>
+        <if test="validStatus != null">
+            and VALID_STATUS = #{validStatus}
+        </if>
+        <if test="maxBillFee != null">
+            and MAX_BILL_FEE = #{maxBillFee}
+        </if>
+        <if test="billFee != null">
+            and BILL_FEE = #{billFee}
+        </if>
+        <if test="settleTimes != null">
+            and SETTLE_TIMES = #{settleTimes}
+        </if>
+        <if test="actualTurnoverCount != null">
+            and ACTUAL_TURNOVER_COUNT = #{actualTurnoverCount}
+        </if>
+        <if test="estimateTurnoverCount != null">
+            and ESTIMATE_TURNOVER_COUNT = #{estimateTurnoverCount}
+        </if>
+        <if test="feeMainReviewId != null">
+            and FEE_MAIN_REVIEW_ID = #{feeMainReviewId}
+        </if>
+        <if test="feeowner != null">
+            and FEEOWNER = #{feeowner}
+        </if>
+        <if test="remark != null">
+            and REMARK = #{remark}
+        </if>
+        <if test="createTime != null">
+            and CREATE_TIME = #{createTime}
+        </if>
+        <if test="modifyTime != null">
+            and MODIFY_TIME = #{modifyTime}
+        </if>
+        <if test="startTime != null">
+            and START_TIME = #{startTime}
+        </if>
+        <if test="creator != null">
+            and CREATOR = #{creator}
+        </if>
+        <if test="modifier != null">
+            and MODIFIER = #{modifier}
+        </if>
+        <if test="flag != null">
+            and FLAG = #{flag}
+        </if>
+        <if test="historyId != null">
+            and HISTORY_ID = #{historyId}
+        </if>
+        <if test="serialNumber != null">
+            and SERIAL_NUMBER = #{serialNumber}
+        </if>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Where_Selective_Param1  -->
+    <sql id="Base_Column_Where_Selective_Param1">
+        <if test="param1.id != null">
+            and ID = #{param1.id}
+        </if>
+        <if test="param1.billno != null">
+            and BILLNO = #{param1.billno}
+        </if>
+        <if test="param1.feeType != null">
+            and FEE_TYPE = #{param1.feeType}
+        </if>
+        <if test="param1.feeSource != null">
+            and FEE_SOURCE = #{param1.feeSource}
+        </if>
+        <if test="param1.businessCode != null">
+            and BUSINESS_CODE = #{param1.businessCode}
+        </if>
+        <if test="param1.businessName != null">
+            and BUSINESS_NAME = #{param1.businessName}
+        </if>
+        <if test="param1.company != null">
+            and COMPANY = #{param1.company}
+        </if>
+        <if test="param1.billStatus != null">
+            and BILL_STATUS = #{param1.billStatus}
+        </if>
+        <if test="param1.isSendGx != null">
+            and IS_SEND_GX = #{param1.isSendGx}
+        </if>
+        <if test="param1.validStatus != null">
+            and VALID_STATUS = #{param1.validStatus}
+        </if>
+        <if test="param1.maxBillFee != null">
+            and MAX_BILL_FEE = #{param1.maxBillFee}
+        </if>
+        <if test="param1.billFee != null">
+            and BILL_FEE = #{param1.billFee}
+        </if>
+        <if test="param1.settleTimes != null">
+            and SETTLE_TIMES = #{param1.settleTimes}
+        </if>
+        <if test="param1.actualTurnoverCount != null">
+            and ACTUAL_TURNOVER_COUNT = #{param1.actualTurnoverCount}
+        </if>
+        <if test="param1.estimateTurnoverCount != null">
+            and ESTIMATE_TURNOVER_COUNT = #{param1.estimateTurnoverCount}
+        </if>
+        <if test="param1.feeMainReviewId != null">
+            and FEE_MAIN_REVIEW_ID = #{param1.feeMainReviewId}
+        </if>
+        <if test="param1.feeowner != null">
+            and FEEOWNER = #{param1.feeowner}
+        </if>
+        <if test="param1.remark != null">
+            and REMARK = #{param1.remark}
+        </if>
+        <if test="param1.createTime != null">
+            and CREATE_TIME = #{param1.createTime}
+        </if>
+        <if test="param1.modifyTime != null">
+            and MODIFY_TIME = #{param1.modifyTime}
+        </if>
+        <if test="param1.startTime != null">
+            and START_TIME = #{param1.startTime}
+        </if>
+        <if test="param1.creator != null">
+            and CREATOR = #{param1.creator}
+        </if>
+        <if test="param1.modifier != null">
+            and MODIFIER = #{param1.modifier}
+        </if>
+        <if test="param1.flag != null">
+            and FLAG = #{param1.flag}
+        </if>
+        <if test="param1.historyId != null">
+            and HISTORY_ID = #{param1.historyId}
+        </if>
+        <if test="param1.serialNumber != null">
+            and SERIAL_NUMBER = #{param1.serialNumber}
+        </if>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Order_By  -->
+    <sql id="Base_Order_By">
+        <bind name="propName" value="sortField"></bind>
+        ORDER BY <include refid="Base_Column_Name" />
+        <choose>
+            <when test="isAscend">
+                ASC
+            </when>
+            <otherwise>
+                DESC
+            </otherwise>
+        </choose>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Name  -->
+    <sql id="Base_Column_Name">
+        <if test='"id" == propName'>
+        ID
+        </if>
+        <if test='"billno" == propName'>
+        BILLNO
+        </if>
+        <if test='"feeType" == propName'>
+        FEE_TYPE
+        </if>
+        <if test='"feeSource" == propName'>
+        FEE_SOURCE
+        </if>
+        <if test='"businessCode" == propName'>
+        BUSINESS_CODE
+        </if>
+        <if test='"businessName" == propName'>
+        BUSINESS_NAME
+        </if>
+        <if test='"company" == propName'>
+        COMPANY
+        </if>
+        <if test='"billStatus" == propName'>
+        BILL_STATUS
+        </if>
+        <if test='"isSendGx" == propName'>
+        IS_SEND_GX
+        </if>
+        <if test='"validStatus" == propName'>
+        VALID_STATUS
+        </if>
+        <if test='"maxBillFee" == propName'>
+        MAX_BILL_FEE
+        </if>
+        <if test='"billFee" == propName'>
+        BILL_FEE
+        </if>
+        <if test='"settleTimes" == propName'>
+        SETTLE_TIMES
+        </if>
+        <if test='"actualTurnoverCount" == propName'>
+        ACTUAL_TURNOVER_COUNT
+        </if>
+        <if test='"estimateTurnoverCount" == propName'>
+        ESTIMATE_TURNOVER_COUNT
+        </if>
+        <if test='"feeMainReviewId" == propName'>
+        FEE_MAIN_REVIEW_ID
+        </if>
+        <if test='"feeowner" == propName'>
+        FEEOWNER
+        </if>
+        <if test='"remark" == propName'>
+        REMARK
+        </if>
+        <if test='"createTime" == propName'>
+        CREATE_TIME
+        </if>
+        <if test='"modifyTime" == propName'>
+        MODIFY_TIME
+        </if>
+        <if test='"startTime" == propName'>
+        START_TIME
+        </if>
+        <if test='"creator" == propName'>
+        CREATOR
+        </if>
+        <if test='"modifier" == propName'>
+        MODIFIER
+        </if>
+        <if test='"flag" == propName'>
+        FLAG
+        </if>
+        <if test='"historyId" == propName'>
+        HISTORY_ID
+        </if>
+        <if test='"serialNumber" == propName'>
+            SERIAL_NUMBER
+        </if>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Id_Array  -->
+    <sql id="Base_Id_Array">
+        <foreach collection="array" open="(" close=")" separator="," item="id">
+        #{id}
+        </foreach>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Id_List  -->
+    <sql id="Base_Id_List">
+        <foreach collection="list" open="(" close=")" separator="," item="id">
+        #{id}
+        </foreach>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Select_All  -->
+    <sql id="Base_Select_All">
+        select
+        <include refid="Base_Column_List" />
+        from <include refid="Base_Table_Name" />
+    </sql>
+    <!-- endregion -->
+
+    <!-- region selectById  -->
+    <select id="selectById" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        where ID = #{id}
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectByIds  -->
+    <select id="selectByIds" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        where ID in
+        <include refid="Base_Id_List" />
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectAll  -->
+    <select id="selectAll" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectCount  -->
+    <select id="selectCount" resultType="int">
+        select count(*)
+        from <include refid="Base_Table_Name" />
+        <where>
+            <include refid="Base_Column_Where_Selective" />
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region select  -->
+    <select id="select" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Where_Selective" />
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectOne  -->
+    <select id="selectOne" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Where_Selective" />
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectOrderBy  -->
+    <select id="selectOrderBy" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Where_Selective_Param1" />
+        </where>
+        <include refid="Base_Order_By" />
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectByProperty  -->
+    <select id="selectByProperty" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Name" /> = #{propValue}
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectByPropertyIn  -->
+    <select id="selectByPropertyIn" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Name" /> IN
+            <foreach collection="propValues" open="(" close=")" separator="," item="propValue">
+            #{propValue}
+            </foreach>
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region delete  -->
+    <delete id="delete">
+        delete
+        from <include refid="Base_Table_Name" />
+        <where>
+            <include refid="Base_Column_Where_Selective" />
+        </where>
+    </delete>
+    <!-- endregion -->
+
+    <!-- region deleteById  -->
+    <delete id="deleteById">
+        delete
+        from <include refid="Base_Table_Name" />
+        where ID = #{id}
+    </delete>
+    <!-- endregion -->
+
+    <!-- region deleteByIds  -->
+    <delete id="deleteByIds">
+        delete
+        from <include refid="Base_Table_Name" />
+        where ID in
+        <include refid="Base_Id_List" />
+    </delete>
+    <!-- endregion -->
+
+    <!-- region insert  -->
+    <insert id="insert" parameterType="com.yqjr.fin.mkmm.sales.entity.FeeMainHis">
+        insert into <include refid="Base_Table_Name" /> (
+        <include refid="Base_Column_List" />
+        )
+        values (
+        <include refid="Base_Column_Values" />
+        )
+    </insert>
+    <!-- endregion -->
+
+    <!-- region updateById  -->
+    <update id="updateById" parameterType="com.yqjr.fin.mkmm.sales.entity.FeeMainHis">
+        update <include refid="Base_Table_Name" />
+        <set>
+            <include refid="Base_Column_Set_Values" />
+        </set>
+        where ID = #{id}
+    </update>
+    <!-- endregion -->
+
+    <!-- region patchById  -->
+    <update id="patchById" parameterType="com.yqjr.fin.mkmm.sales.entity.FeeMainHis">
+        update <include refid="Base_Table_Name" />
+        <set>
+            <include refid="Base_Column_Set_Values_Selective" />
+        </set>
+        where ID = #{id}
+    </update>
+    <!-- endregion -->
+
+    <!-- endregion BaseMapper -->
+
+    <!-- region generated by CodeRobot  -->
+
+    <!-- region 结果集映射  -->
+    <resultMap id="FeeMainHisResult" type="com.yqjr.fin.mkmm.sales.entity.FeeMainHis">
+        <result property="id" column="ID"/><!--ID-->
+        <result property="billno" column="BILLNO"/><!--结算单号-->
+        <result property="feeType" column="FEE_TYPE"/><!--费用类型 (01-活动费用)-->
+        <result property="feeSource" column="FEE_SOURCE"/><!--费用来源（01-正常渠道计算，02-费用追加）-->
+        <result property="businessCode" column="BUSINESS_CODE"/><!--业务代码-->
+        <result property="businessName" column="BUSINESS_NAME"/><!--业务名称-->
+        <result property="company" column="COMPANY"/><!--所属公司-->
+        <result property="billStatus" column="BILL_STATUS"/><!--结算状态（00-初始，01-未动支，02-动支中，03-已动支）-->
+        <result property="isSendGx" column="IS_SEND_GX"/><!--是否送共享(01-未送共享，02-已送共享，99-未知状态)-->
+        <result property="validStatus" column="VALID_STATUS"/><!--有效状态-->
+        <result property="maxBillFee" column="MAX_BILL_FEE"/><!--结算单上限金额-->
+        <result property="billFee" column="BILL_FEE"/><!--结算单金额-->
+        <result property="settleTimes" column="SETTLE_TIMES"/><!--结算次数-->
+        <result property="actualTurnoverCount" column="ACTUAL_TURNOVER_COUNT"/><!--实际活动成交数量-->
+        <result property="estimateTurnoverCount" column="ESTIMATE_TURNOVER_COUNT"/><!--预计活动成交数量-->
+        <result property="feeMainReviewId" column="FEE_MAIN_REVIEW_ID"/><!--审核表ID-->
+        <result property="feeowner" column="FEEOWNER"/><!--费用申请归属部门-->
+        <result property="remark" column="REMARK"/><!--备注-->
+        <result property="createTime" column="CREATE_TIME"/><!--创建时间-->
+        <result property="modifyTime" column="MODIFY_TIME"/><!--修改时间-->
+        <result property="startTime" column="START_TIME"/><!--生效时间-->
+        <result property="creator" column="CREATOR"/><!--创建人-->
+        <result property="modifier" column="MODIFIER"/><!--修改人-->
+        <result property="flag" column="FLAG"/><!--有效标识（如表记录不删除，以此区分,0无效，1有效）-->
+        <result property="historyId" column="HISTORY_ID"/><!--原始ID-->
+        <result property="serialNumber" column="SERIAL_NUMBER"/><!--请求共享平台流水号-->
+    </resultMap>
+    <!-- endregion -->
+
+    <!-- 查询条件判断 入参为对象 条件为模糊-->
+    <sql id="queryLikeFeeMainHis">
+        <if test="feeMainHis!=null">
+            <if test="id!=null and id!=''">
+                AND ID LIKE CONCAT('%'#{id}'%')<!--ID-->
+            </if>
+            <if test="billno!=null and billno!=''">
+                AND BILLNO LIKE CONCAT('%'#{billno}'%')<!--结算单号-->
+            </if>
+            <if test="feeType!=null and feeType!=''">
+                AND FEE_TYPE LIKE CONCAT('%'#{feeType}'%')<!--费用类型 (01-活动费用)-->
+            </if>
+            <if test="feeSource!=null and feeSource!=''">
+                AND FEE_SOURCE LIKE CONCAT('%'#{feeSource}'%')<!--费用来源（01-正常渠道计算，02-费用追加）-->
+            </if>
+            <if test="businessCode!=null and businessCode!=''">
+                AND BUSINESS_CODE LIKE CONCAT('%'#{businessCode}'%')<!--业务代码-->
+            </if>
+            <if test="businessName!=null and businessName!=''">
+                AND BUSINESS_NAME LIKE CONCAT('%'#{businessName}'%')<!--业务名称-->
+            </if>
+            <if test="company!=null and company!=''">
+                AND COMPANY LIKE CONCAT('%'#{company}'%')<!--所属公司-->
+            </if>
+            <if test="billStatus!=null and billStatus!=''">
+                AND BILL_STATUS LIKE CONCAT('%'#{billStatus}'%')<!--结算状态（00-初始，01-未动支，02-动支中，03-已动支）-->
+            </if>
+            <if test="isSendGx!=null and isSendGx!=''">
+                AND IS_SEND_GX LIKE CONCAT('%'#{isSendGx}'%')<!--是否送共享(01-未送共享，02-已送共享，99-未知状态)-->
+            </if>
+            <if test="validStatus!=null and validStatus!=''">
+                AND VALID_STATUS LIKE CONCAT('%'#{validStatus}'%')<!--有效状态-->
+            </if>
+            <if test="maxBillFee!=null and maxBillFee!=''">
+                AND MAX_BILL_FEE LIKE CONCAT('%'#{maxBillFee}'%')<!--结算单上限金额-->
+            </if>
+            <if test="billFee!=null and billFee!=''">
+                AND BILL_FEE LIKE CONCAT('%'#{billFee}'%')<!--结算单金额-->
+            </if>
+            <if test="settleTimes!=null and settleTimes!=''">
+                AND SETTLE_TIMES LIKE CONCAT('%'#{settleTimes}'%')<!--结算次数-->
+            </if>
+            <if test="actualTurnoverCount!=null and actualTurnoverCount!=''">
+                AND ACTUAL_TURNOVER_COUNT LIKE CONCAT('%'#{actualTurnoverCount}'%')<!--实际活动成交数量-->
+            </if>
+            <if test="estimateTurnoverCount!=null and estimateTurnoverCount!=''">
+                AND ESTIMATE_TURNOVER_COUNT LIKE CONCAT('%'#{estimateTurnoverCount}'%')<!--预计活动成交数量-->
+            </if>
+            <if test="feeMainReviewId!=null and feeMainReviewId!=''">
+                AND FEE_MAIN_REVIEW_ID LIKE CONCAT('%'#{feeMainReviewId}'%')<!--审核表ID-->
+            </if>
+            <if test="feeowner!=null and feeowner!=''">
+                AND FEEOWNER LIKE CONCAT('%'#{feeowner}'%')<!--费用申请归属部门-->
+            </if>
+            <if test="remark!=null and remark!=''">
+                AND REMARK LIKE CONCAT('%'#{remark}'%')<!--备注-->
+            </if>
+            <if test="createTime!=null and createTime!=''">
+                AND CREATE_TIME LIKE CONCAT('%'#{createTime}'%')<!--创建时间-->
+            </if>
+            <if test="modifyTime!=null and modifyTime!=''">
+                AND MODIFY_TIME LIKE CONCAT('%'#{modifyTime}'%')<!--修改时间-->
+            </if>
+            <if test="startTime!=null and startTime!=''">
+                AND START_TIME LIKE CONCAT('%'#{startTime}'%')<!--生效时间-->
+            </if>
+            <if test="creator!=null and creator!=''">
+                AND CREATOR LIKE CONCAT('%'#{creator}'%')<!--创建人-->
+            </if>
+            <if test="modifier!=null and modifier!=''">
+                AND MODIFIER LIKE CONCAT('%'#{modifier}'%')<!--修改人-->
+            </if>
+            <if test="flag!=null and flag!=''">
+                AND FLAG LIKE CONCAT('%'#{flag}'%')<!--有效标识（如表记录不删除，以此区分,0无效，1有效）-->
+            </if>
+            <if test="historyId!=null and historyId!=''">
+                HISTORY_ID LIKE CONCAT('%'#{historyId}'%')<!--原始ID-->
+            </if>
+            <if test="serialNumber!=null and serialNumber!=''">
+                SERIAL_NUMBER LIKE CONCAT('%'#{serialNumber}'%')<!--请求共享平台流水号-->
+            </if>
+        </if>
+    </sql>
+
+    <!-- 按条件模糊查询所有 -->
+    <select id="queryFeeMainHisList" parameterType="com.yqjr.fin.mkmm.sales.entity.FeeMainHis"
+            resultMap="FeeMainHisResult">
+        SELECT
+        ID,<!--ID-->
+        BILLNO,<!--结算单号-->
+        FEE_TYPE,<!--费用类型 (01-活动费用)-->
+        FEE_SOURCE,<!--费用来源（01-正常渠道计算，02-费用追加）-->
+        BUSINESS_CODE,<!--业务代码-->
+        BUSINESS_NAME,<!--业务名称-->
+        COMPANY,<!--所属公司-->
+        BILL_STATUS,<!--结算状态（00-初始，01-未动支，02-动支中，03-已动支）-->
+        IS_SEND_GX,<!--是否送共享(01-未送共享，02-已送共享，99-未知状态)-->
+        VALID_STATUS,<!--有效状态-->
+        MAX_BILL_FEE,<!--结算单上限金额-->
+        BILL_FEE,<!--结算单金额-->
+        SETTLE_TIMES,<!--结算次数-->
+        ACTUAL_TURNOVER_COUNT,<!--实际活动成交数量-->
+        ESTIMATE_TURNOVER_COUNT,<!--预计活动成交数量-->
+        FEE_MAIN_REVIEW_ID,<!--审核表ID-->
+        FEEOWNER,<!--费用申请归属部门-->
+        REMARK,<!--备注-->
+        CREATE_TIME,<!--创建时间-->
+        MODIFY_TIME,<!--修改时间-->
+        START_TIME,<!--生效时间-->
+        CREATOR,<!--创建人-->
+        MODIFIER,<!--修改人-->
+        FLAG,<!--有效标识（如表记录不删除，以此区分,0无效，1有效）-->
+        HISTORY_ID,<!--原始ID-->
+        SERIAL_NUMBER <!--请求共享平台流水号-->
+        FROM MKMM_FEE_MAIN_HIS
+        <where>
+            <include refid="queryLikeFeeMainHis"/>
+        </where>
+    </select>
+
+    <!-- 按条件模糊统计所有条数 -->
+    <select id="queryFeeMainHisCount" parameterType="com.yqjr.fin.mkmm.sales.entity.FeeMainHis" resultType="int">
+        SELECT
+        count (id)
+        FROM MKMM_FEE_MAIN_HIS
+        <where>
+            <include refid="queryLikeFeeMainHis"/>
+        </where>
+    </select>
+
+    <!-- 批量删除，入参为数组  -->
+    <delete id="dynamicDelete">
+        delete from MKMM_FEE_MAIN_HIS where id in
+        <foreach collection="array" open="(" close=")" separator="," item="arr">
+            #{arr}
+        </foreach>
+    </delete>
+
+    <!-- 批量删除，入参为list  -->
+    <delete id="dynamicDeleteList">
+        delete from MKMM_FEE_MAIN_HIS where id in
+        <foreach collection="list" open="(" close=")" separator="," item="ids">
+            #{ids}
+        </foreach>
+    </delete>
+
+    <!-- 批量插入 -->
+    <insert id="insertBatch" parameterType="java.util.List">
+        <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into MKMM_FEE_MAIN_HIS
+        (
+        <include refid="Base_Column_List" />
+        )
+        values
+        <foreach collection="list" item="feeMainHis" index="index" separator=",">
+            (
+            <include refid="Base_Column_Values" />
+            )
+        </foreach>
+    </insert>
+
+    <!-- 插入单条数据，并返回主键ID -->
+    <insert id="saveObj" useGeneratedKeys="true" keyProperty="id"
+            parameterType="com.yqjr.fin.mkmm.sales.entity.FeeMainHis">
+        insert into MKMM_FEE_MAIN_HIS
+        (
+        <include refid="Base_Column_List" />
+        )
+        values
+        (
+        <include refid="Base_Column_Values" />
+        )
+    </insert>
+
+
+    <!-- **********************************************************************-->
+    <!-- ************* 在此下方为一对一、一对多查询方式 仅供参考***************-->
+    <!-- **********************************************************************-->
+    <!-- 一个博客（BlogInfo） 属于一个作者（Author） ，一个作者（Author） 有多篇文章（Post） -->
+    <!--
+  <resultMap type="com.foo.bean.BlogInfo" id="BlogInfo">
+      <id column="blog_id" property="blogId" />
+      <result column="title" property="title" />
+      <association property="author" column="blog_author_id"
+          javaType="com.foo.bean.Author" select="com.foo.bean.AuthorMapper.selectByPrimaryKey">
+      </association>
+      <collection property="posts" column="blog_id" ofType="com.foo.bean.Post"
+          select="com.foo.bean.PostMapper.selectByBlogId">
+      </collection>
+  </resultMap>
+
+  <select id="queryBlogInfoById" resultMap="BlogInfo" parameterType="java.math.BigDecimal">
+      SELECT
+      B.BLOG_ID,
+      B.TITLE,
+      B.AUTHOR_ID AS BLOG_AUTHOR_ID
+      FROM BLOG B
+      where B.BLOG_ID = 博客ID
+  </select>
+
+          上述方法存在N+1问题
+      它的弊端也比较明显：即所谓的N+1问题。关联的嵌套查询显示得到一个结果集，然后根据这个结果集的每一条记录进行关联查询。
+      现在假设嵌套查询就一个（即resultMap 内部就一个association标签），现查询的结果集返回条数为N，那么关联查询语句将会被执行N次，加上自身返回结果集查询1次，共需要访问数据库N+1次。如果N比较大的话，这样的数据库访问消耗是非常大的！所以使用这种嵌套语句查询的使用者一定要考虑慎重考虑，确保N值不会很大。
+      以上面的例子为例，select 语句本身会返回com.foo.bean.BlogMapper.queryBlogInfoById 条数为1 的结果集，由于它有两条关联的语句查询，它需要共访问数据库 1*（1+1）=3次数据库。
+
+
+       <resultMap type="com.foo.bean.BlogInfo" id="BlogInfo">
+      <id column="blog_id" property="blogId"/>
+      <result column="title" property="title"/>
+      <association property="author" column="blog_author_id" javaType="com.foo.bean.Author">
+          <id column="author_id" property="authorId"/>
+          <result column="user_name" property="userName"/>
+          <result column="password" property="password"/>
+          <result column="email" property="email"/>
+          <result column="biography" property="biography"/>
+      </association>
+      <collection property="posts" column="blog_post_id" ofType="com.foo.bean.Post">
+          <id column="post_id" property="postId"/>
+          <result column="blog_id" property="blogId"/>
+          <result column="create_time" property="createTime"/>
+          <result column="subject" property="subject"/>
+          <result column="body" property="body"/>
+          <result column="draft" property="draft"/>
+      </collection>
+      </resultMap>
+
+
+      <select id="queryAllBlogInfo" resultMap="BlogInfo">
+          SELECT
+           B.BLOG_ID,
+           B.TITLE,
+           B.AUTHOR_ID AS BLOG_AUTHOR_ID,
+           A.AUTHOR_ID,
+           A.USER_NAME,
+           A.PASSWORD,
+           A.EMAIL,
+           A.BIOGRAPHY,
+           P.POST_ID,
+           P.BLOG_ID AS BLOG_POST_ID ,
+             P.CREATE_TIME,
+           P.SUBJECT,
+           P.BODY,
+           P.DRAFT
+      FROM BLOG B
+      LEFT OUTER JOIN AUTHOR A
+        ON B.AUTHOR_ID = A.AUTHOR_ID
+      LEFT OUTER JOIN POST P
+        ON P.BLOG_ID = B.BLOG_ID
+      </select>
+      -->
+
+    <!-- **********************************************************************-->
+    <!-- ************* 此线上方代码自动生成，在此下方编写自定义代码。***************-->
+    <!-- **********************************************************************-->
+
+    <!-- endregion -->
+
+
+</mapper>
+

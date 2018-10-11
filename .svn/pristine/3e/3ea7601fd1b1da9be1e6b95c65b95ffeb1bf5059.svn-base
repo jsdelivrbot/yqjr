@@ -1,0 +1,69 @@
+package com.yqjr.fin.qcms.credit.bizz;
+
+import com.yqjr.fin.common.base.starter.exception.BusinessException;
+import com.yqjr.fin.qcms.credit.dao.ShowScoreModelDao;
+import com.yqjr.fin.qcms.credit.dto.ScoreMajorTermDto;
+import com.yqjr.fin.qcms.credit.dto.ScoreSubitemDto;
+import com.yqjr.fin.qcms.credit.dto.ShowScoreModelDto;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+
+/**
+ * 1.	提交审核功能在工作流尾节点，提交审核时预览专案所有配置信息。
+ * 根据评分卡id查询返回评分大项/评分小项/特征值/调节系数
+ * 2.	提交审核时判定必须配置节点是否配置，未配置时提示“XX节点未配置，请配置后审核！”
+ * 根据评分卡id查询是否存在评分大项/评分小项/特征值/调节系数
+ * 3.	提交审核后，审核流中的记录只能查看不能做任何修改。
+ */
+@Service
+@Transactional(readOnly = true)
+public class ScoreModelSubmitBizz {
+    @Autowired
+    private ScoreMajorTermBizz scoreMajorTermBizz;
+    @Autowired
+    private ScoreSubitemBizz scoreSubitemBizz;
+    @Autowired
+    private EigenvalueBizz eigenvalueBizz;
+    @Autowired
+    private ShowScoreModelDao showScoreModelDao;
+
+    /**
+     * 查询出所有配置信息，然后返回一个map传到前台
+     */
+    public List<ShowScoreModelDto> showScoreModelAllConfig(Long scoreModelId) {
+        return showScoreModelDao.showScoreModel(scoreModelId);
+    }
+
+    /**
+     * 验证评分模型是否存在未设置的评分大项/评分子项/特征值
+     *
+     * @param scoreModelId ，然后根据id查询评分大项，遍历评分大项的
+     */
+    public int verifyScoreModelComplete(Long scoreModelId) {
+        int i=0;
+        List<ScoreMajorTermDto> scoreMajorTermDtos = scoreMajorTermBizz.selectScoreMajorTermDtoByScoreModelId(scoreModelId);
+        if (scoreMajorTermDtos.size() != 0) {
+            for (ScoreMajorTermDto MajorTermDto :
+                    scoreMajorTermDtos) {
+                //获取评分大项Id查询该评分大项下是否存在评分子项
+                List<ScoreSubitemDto> scoreSubitemDtos = scoreSubitemBizz.selectScoreSubitemByScoreMajorTermId(MajorTermDto.getId());
+                if (scoreSubitemDtos.size()!=0){
+                    for (ScoreSubitemDto subitemDto:
+                         scoreSubitemDtos) {
+                        System.out.println(subitemDto.getId());
+                    }
+                    i=1;
+                }else {
+                    throw new BusinessException("未设置评分子项");
+                }
+            }
+            i=1;
+        } else {
+            throw new BusinessException("未设置评分大项");
+        }
+        return i;
+    }
+}

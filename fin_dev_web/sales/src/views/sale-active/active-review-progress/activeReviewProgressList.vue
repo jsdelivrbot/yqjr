@@ -1,0 +1,285 @@
+<style lang="less">
+    @import '../../../styles/common.less';
+</style>
+<template>
+    <div>
+        <Row>
+            <Card>
+                <p slot="title">
+                    <Icon type="search"></Icon>
+                    查询
+                </p>
+                <Form ref="searchFormDate"  :model="searchFormDate" :label-width="100">
+                    <Row>
+                        <Col span="8" offset="2">
+                            <FormItem label="活动代码:">
+                                <Input  placeholder="请输入活动代码" v-model="searchFormDate.activeCode" ></Input>
+                            </FormItem>
+                        </Col>
+                        <Col span="8" offset="2">
+                            <FormItem label="活动名称:" >
+                                <Input placeholder="请输入活动名称" v-model="searchFormDate.activeName" ></Input>
+                            </FormItem>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col span="8" offset="2">
+                            <FormItem label="活动品牌:" >
+                                <Select v-model="searchFormDate.brandsCode" style="width:100%" placeholder = "全部">
+                                    <Option v-for="item in activeReviewProListBrandsListData" :value="item.value" :key="item.value">{{ item.label }}</Option>
+                                </Select>
+                            </FormItem>
+                        </Col>
+                        <Col span="8" offset="2" v-show="showFlag.areaFlag">
+                            <FormItem label="归属区域:">
+                                <Select v-model="searchFormDate.areaCode" style="width:100%" placeholder = "全部">
+                                    <Option v-for="item in activeReviewProListAreaListData" :value="item.value" :key="item.value">{{ item.label }}</Option>
+                                </Select>
+                            </FormItem>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col span="4" offset="9">
+                            <Button type="primary" icon="search" @click="searchData">查询</Button>
+                        </Col>
+                        <Col span="4">
+                            <Button icon="refresh" @click="cleanData">重置</Button>
+                        </Col>
+                    </Row>
+                </Form>
+            </Card>
+        </Row>
+        <Row class="margin-top-10">
+            <Card>
+                <p slot="title">
+                    <Icon type="search"></Icon>
+                    表格数据
+                </p>
+                <!--<a href="#" slot="extra" @click.prevent="exportExcel">-->
+                    <!--<Icon type="ios-cloud-download"></Icon>-->
+                    <!--导出数据-->
+                <!--</a>-->
+                <Table :data="activeReviewProListData" :columns="tableColumns"  :loading="loading" ref="tableExcel" class="margin-top-10"></Table>
+                <div style="margin: 10px;overflow: hidden" >
+                    <div style="float: right;" >
+                        <Page :total="total" :current="pageNo" :page-size="pageSize" size="small" @on-change="changePage" @on-page-size-change="pageSizeChange" show-total show-sizer :aria-disabled="true"></Page>
+                    </div>
+                </div>
+            </Card>
+        </Row>
+        <a id="hrefToExportTable" style="postion: absolute;left: -10px;top: -10px;width: 0px;height: 0px;"></a>
+    </div>
+</template>
+
+<script>
+import {resetWorkHeight, getUserCookie} from '@/libs/util.js';
+import { mapActions, mapState } from 'vuex';
+export default{
+    name: 'activeReviewProList',
+    data () {
+        return {
+            searchFormDate: {
+                activeCode: '',
+                activeName: '',
+                brandsCode: '',
+                areaCode: '',
+                pageInfo: {
+                    pageSize: '10',
+                    pageNo: '1'
+                }
+            },
+            showFlag: {
+                areaFlag: false
+            },
+            tableColumns: [
+                {
+                    title: '活动名称',
+                    align: 'center',
+                    key: 'activeName'
+                }, {
+                    title: '活动代码',
+                    align: 'center',
+                    key: 'activeCode'
+                }, {
+                    title: '归属区域',
+                    align: 'center',
+                    key: 'areaName'
+                }, {
+                    title: '活动品牌',
+                    align: 'center',
+                    render: (h, params) => {
+                        const row = params.row.activeCarReview.brandsName;
+                        return h('div', row);
+                    }
+                }, {
+                    title: '审核状态',
+                    align: 'center',
+                    key: 'reviewStatus',
+                    render: (h, params) => {
+                        const row = params.row;
+                        return h('div', [
+                            h('div', row.reviewStatus === '02' ? '待审核' : row.reviewStatus === '03' ? '审核中' : row.reviewStatus === '00' ? '驳回' : '')
+                        ]);
+                    }
+                }, {
+                    title: '操作',
+                    align: 'center',
+                    render: (h, params) => {
+                        const reviewStatus = params.row.reviewStatus;
+                        const flag = params.row.flag;
+                        const user = getUserCookie();
+                        const currentUser = user.id;
+                        const creator = params.row.creator;
+                        if (reviewStatus === '00' && flag === '1' && creator == currentUser) {
+                            return h('div', [
+                                h('Button', {
+                                    props: {
+                                        type: 'primary',
+                                        size: 'small'
+                                    },
+                                    style: {
+                                        marginRight: '6px'
+                                    },
+                                    on: {
+                                        click: () => {
+                                            let routerParam = {id: params.row.id, code: params.row.activeCode};
+                                            this.$router.push({
+                                                name: 'activeReviewProgressView',
+                                                query: routerParam
+                                            });
+                                        }
+                                    }
+                                }, '查看'),
+                                h('Button', {
+                                    props: {
+                                        type: 'warning',
+                                        size: 'small'
+                                    },
+                                    on: {
+                                        click: () => {
+                                            let routerParam = {id: params.row.id};
+                                            this.$router.push({
+                                                name: 'activeReviewProgressEdit',
+                                                query: routerParam
+                                            });
+                                        }
+                                    }
+                                }, '修改')
+                            ]);
+                        } else {
+                            return h('div', [
+                                h('Button', {
+                                    props: {
+                                        type: 'primary',
+                                        size: 'small'
+                                    },
+                                    style: {
+                                        marginRight: '6px'
+                                    },
+                                    on: {
+                                        click: () => {
+                                            let routerParam = {id: params.row.id, code: params.row.activeCode};
+                                            this.$router.push({
+                                                name: 'activeReviewProgressView',
+                                                query: routerParam
+                                            });
+                                        }
+                                    }
+                                }, '查看')
+                            ]);
+                        }
+                    }
+                }
+            ]
+        };
+    },
+    computed: {
+        ...mapState({
+            loading: ({activeReviewProList}) => activeReviewProList.loading,
+            pageNo: ({activeReviewProList}) => activeReviewProList.pageNo,
+            activeReviewProListData: ({activeReviewProList}) => activeReviewProList.activeReviewProListData,
+            activeReviewProListBrandsListData: ({activeReviewProList}) => activeReviewProList.activeReviewProListBrandsListData,
+            activeReviewProListAreaListData: ({activeReviewProList}) => activeReviewProList.activeReviewProListAreaListData,
+            pageSize: ({activeReviewProList}) => activeReviewProList.pageSize,
+            total: ({activeReviewProList}) => activeReviewProList.total,
+            pages: ({activeReviewProList}) => activeReviewProList.pages
+        })
+    },
+    methods: {
+        ...mapActions([
+            'handleQueryActiveReviewProList',
+            'handelActiveReviewProAreaList',
+            'handelActiveReviewProBrandsList'
+        ]),
+        /**
+         * 初始化
+         */
+        init () {
+            const user = getUserCookie();
+            const roleCode = user.roleCodeList;
+            if (roleCode.indexOf('0000') >= 0 || roleCode.indexOf('0001') >= 0 || roleCode.indexOf('0002') >= 0) {
+                this.showFlag.areaFlag = true;
+                this.queryActiveAreaList();
+            } else {
+                this.showFlag.areaFlag = false;
+            }
+            this.searchData();
+            this.queryActiveBrandsList();
+        },
+        /**
+         * 点击查询按钮执行查询操作
+         */
+        searchData () {
+            this.handleQueryActiveReviewProList(this.searchFormDate).then(res => {
+                resetWorkHeight();
+                // this.$Message.info('查询成功!');
+            });
+        },
+        /**
+         * 页面改变
+         */
+        changePage (index) {
+            this.searchFormDate.pageInfo.pageNo = index;
+            this.handleQueryActiveReviewProList(this.searchFormDate).then(res => {
+                resetWorkHeight();
+                // this.$Message.info('查询成功!');
+                this.searchFormDate.pageInfo.pageNo = 1;
+            });
+        },
+        /**
+         * 切换每页条数
+         */
+        pageSizeChange (newPageSize) {
+            this.searchFormDate.pageInfo.pageSize = newPageSize;
+            this.handleQueryActiveReviewProList(this.searchFormDate).then(res => {
+                resetWorkHeight();
+                // this.$Message.info('查询成功!');
+            });
+        },
+        /**
+         * 加载品牌
+         */
+        queryActiveBrandsList () {
+            this.handelActiveReviewProBrandsList().then(res => {
+            });
+        },
+        /**
+         * 初始化查询区域
+         * @param name
+         */
+        queryActiveAreaList () {
+            this.handelActiveReviewProAreaList().then(res => {
+            });
+        },
+        /**
+         * 重置按钮
+         */
+        cleanData () {
+            window.location.reload();
+        }
+    },
+    mounted () {
+        this.init();
+    }
+};
+</script>

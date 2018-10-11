@@ -1,0 +1,50 @@
+{
+  "code": "0000",
+  "isSuccess": true,
+  "pageResult": {
+    "endRow": 2,
+    "firstPage": 1,
+    "hasNextPage": false,
+    "hasPreviousPage": false,
+    "isFirstPage": true,
+    "isLastPage": true,
+    "lastPage": 1,
+    "list": [
+      {
+        "alerttype": 2,
+        "id": 8,
+        "indicatorcode": "1",
+        "indicatorname": "1",
+        "indicatortarget": "2",
+        "typecode": "1",
+        "valuemapping": "2"
+      },
+      {
+        "id": 4,
+        "indicatorcode": "11",
+        "indicatorname": "1",
+        "indicatortarget": "2",
+        "typecode": "2"
+      },
+      {
+        "id": 6,
+        "indicatorcode": "1",
+        "indicatorname": "1",
+        "indicatortarget": "2",
+        "typecode": "3"
+      }
+    ],
+    "navigatePages": 8,
+    "navigatepageNums": [
+      1
+    ],
+    "nextPage": 0,
+    "pageNum": 1,
+    "pageSize": 10,
+    "pages": 1,
+    "prePage": 0,
+    "size": 3,
+    "startRow": 0,
+    "total": 3
+  }
+}

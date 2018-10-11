@@ -1,0 +1,21 @@
+server:
+  port: 50121
+spring:
+  application:
+    name: scfw-zipkin
+zipkin:
+  collector:
+    rabbitmq:
+      addresses: 10.21.120.79:5672
+      virtualHost: scfw_host
+      username: scfw
+      password: scfw
+      queue: zipkin
+  storage:
+    type: elasticsearch
+    elasticsearch:
+      cluster: elasticsearch
+      hosts: 10.21.120.79:9200
+      index: zipkin
+      index-shards: 5
+      index-replicas: 1

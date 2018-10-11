@@ -1,0 +1,1226 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yqjr.fin.scfw.meta.mapper.UserMapper">
+
+    <!-- region BaseMapper DO NOT MODIFY!!!  -->
+
+    <sql id="Base_Table_Name">
+        SYS_USER
+    </sql>
+
+
+
+    <!-- region BaseResultMap  -->
+    <resultMap id="BaseResultMap" type="com.yqjr.fin.scfw.meta.entity.User">
+        <result property="id" column="ID"/><!--主键-->
+        <result property="loginName" column="LOGIN_NAME"/><!--登陆名，英文，唯一-->
+        <result property="loginPassword" column="LOGIN_PASSWORD"/><!--密码，md5加密后密文-->
+        <result property="userName" column="USER_NAME"/><!--用户名称，中文-->
+        <result property="oaFdno" column="OA_FDNO"/><!--OA员工编号-->
+        <result property="comCode" column="comCode"/><!--合同所属公司:见数据字典:comCode-->
+        <result property="organizationNo" column="ORGANIZATION_NO"/><!--所属机构-->
+        <result property="registDate" column="REGIST_DATE"/><!--首次登记日期-->
+        <result property="registUser" column="REGIST_USER"/><!--首次等级人登陆名-->
+        <result property="sex" column="SEX"/><!--性别:见数据字典:sex-->
+        <result property="mobile" column="MOBILE"/><!--手机-->
+        <result property="email" column="EMAIL"/><!--邮箱-->
+        <result property="wcOpenid" column="WC_OPENID"/><!--微信OPEN_ID-->
+        <result property="status" column="STATUS"/><!--‘0’ 无效 '1' 有效-->
+        <result property="passInvalidDate" column="PASS_INVALID_DATE"/><!--口令失效日期-->
+        <result property="dataAuthType" column="DATA_AUTH_TYPE"/><!--数据授权类型 ‘1’ 按地区,'2' 按经销商,'0',可看全部数据-->
+        <result property="creator" column="CREATOR"/><!--创建人-->
+        <result property="createTime" column="CREATE_TIME"/><!--创建时间-->
+        <result property="modifier" column="MODIFIER"/><!--最后更新人-->
+        <result property="modifyTime" column="MODIFY_TIME"/><!--最后更新时间-->
+        <result property="comName" column="comName"/><!--合同所属公司名字-->
+        <result property="idcard" column="IDCARD"/><!--身份证号-->
+        <result property="birthday" column="BIRTHDAY"/><!--出生日期-->
+        <result property="personethnic" column="PERSONETHNIC"/><!--民族-->
+        <result property="personmarr" column="PERSONMARR"/><!--婚姻状况-->
+        <result property="personschool" column="PERSONSCHOOL"/><!--毕业学校-->
+        <result property="personsubject" column="PERSONSUBJECT"/><!--专业-->
+        <result property="personedu" column="PERSONEDU"/><!--最高学历-->
+        <result property="personedulevel" column="PERSONEDULEVEL"/><!--学位-->
+        <result property="personjointime" column="PERSONJOINTIME"/><!--参加工作时间-->
+        <result property="personnature" column="PERSONNATURE"/><!--人员性质-->
+        <result property="personlevel" column="PERSONLEVEL"/><!--人员级别-->
+        <result property="areaCode" column="areaCode"/><!--参加工作时间-->
+        <result property="areaName" column="areaName"/><!--参加工作时间-->
+    </resultMap>
+
+        <resultMap id="BaseResultMap1" type="com.yqjr.fin.fcsw.meta.api.dto.UserDto">
+        <result property="id" column="ID"/><!--主键-->
+        <result property="loginName" column="LOGIN_NAME"/><!--登陆名，英文，唯一-->
+        <result property="userName" column="USER_NAME"/><!--用户名称，中文-->
+        <result property="oaFdno" column="OA_FDNO"/><!--OA员工编号-->
+        <result property="comCode" column="comCode"/><!--合同所属公司:见数据字典:comCode-->
+        <result property="organizationNo" column="ORGANIZATION_NO"/><!--所属机构-->
+        <result property="registDate" column="REGIST_DATE"/><!--首次登记日期-->
+        <result property="registUser" column="REGIST_USER"/><!--首次等级人登陆名-->
+        <result property="sex" column="SEX"/><!--性别:见数据字典:sex-->
+        <result property="mobile" column="MOBILE"/><!--手机-->
+        <result property="email" column="EMAIL"/><!--邮箱-->
+        <result property="wcOpenid" column="WC_OPENID"/><!--微信OPEN_ID-->
+        <result property="status" column="STATUS"/><!--‘0’ 无效 '1' 有效-->
+        <result property="passInvalidDate" column="PASS_INVALID_DATE"/><!--口令失效日期-->
+        <result property="dataAuthType" column="DATA_AUTH_TYPE"/><!--数据授权类型 ‘1’ 按地区,'2' 按经销商,'0',可看全部数据-->
+        <result property="comName" column="comName"/><!--合同所属公司名字-->
+        <result property="idcard" column="IDCARD"/><!--身份证号-->
+        <result property="birthday" column="BIRTHDAY"/><!--出生日期-->
+        <result property="personethnic" column="PERSONETHNIC"/><!--民族-->
+        <result property="personmarr" column="PERSONMARR"/><!--婚姻状况-->
+        <result property="personschool" column="PERSONSCHOOL"/><!--毕业学校-->
+        <result property="personsubject" column="PERSONSUBJECT"/><!--专业-->
+        <result property="personedu" column="PERSONEDU"/><!--最高学历-->
+        <result property="personedulevel" column="PERSONEDULEVEL"/><!--学位-->
+        <result property="personjointime" column="PERSONJOINTIME"/><!--参加工作时间-->
+        <result property="personnature" column="PERSONNATURE"/><!--人员性质-->
+        <result property="personlevel" column="PERSONLEVEL"/><!--人员级别-->
+        <result property="areaCode" column="areaCode"/><!--参加工作时间-->
+        <result property="areaName" column="areaName"/><!--参加工作时间-->
+    </resultMap>
+    <!-- endregion -->
+
+    <!-- region Base_Column_List  -->
+    <sql id="Base_Column_List">
+    ID,LOGIN_NAME,LOGIN_PASSWORD,USER_NAME,OA_FDNO,comCode,ORGANIZATION_NO,REGIST_DATE,REGIST_USER,SEX,MOBILE,EMAIL,WC_OPENID,STATUS,PASS_INVALID_DATE,DATA_AUTH_TYPE,CREATOR,CREATE_TIME,MODIFIER,MODIFY_TIME,comName,IDCARD,BIRTHDAY,PERSONETHNIC,PERSONMARR,PERSONSCHOOL,PERSONSUBJECT,PERSONEDU,PERSONEDULEVEL,PERSONJOINTIME,PERSONNATURE,PERSONLEVEL
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_List_Selective  -->
+    <sql id="Base_Column_List_Selective">
+        <trim suffixOverrides=",">
+            <if test="id != null">
+            ID,
+            </if>
+            <if test="loginName != null">
+            LOGIN_NAME,
+            </if>
+            <if test="loginPassword != null">
+            LOGIN_PASSWORD,
+            </if>
+            <if test="userName != null">
+            USER_NAME,
+            </if>
+            <if test="oaFdno != null">
+            OA_FDNO,
+            </if>
+            <if test="comCode != null">
+            comCode,
+            </if>
+            <if test="organizationNo != null">
+            ORGANIZATION_NO,
+            </if>
+            <if test="registDate != null">
+            REGIST_DATE,
+            </if>
+            <if test="registUser != null">
+            REGIST_USER,
+            </if>
+            <if test="sex != null">
+            SEX,
+            </if>
+            <if test="mobile != null">
+            MOBILE,
+            </if>
+            <if test="email != null">
+            EMAIL,
+            </if>
+            <if test="wcOpenid != null">
+            WC_OPENID,
+            </if>
+            <if test="status != null">
+            STATUS,
+            </if>
+            <if test="passInvalidDate != null">
+            PASS_INVALID_DATE,
+            </if>
+            <if test="dataAuthType != null">
+            DATA_AUTH_TYPE,
+            </if>
+            <if test="creator != null">
+            CREATOR,
+            </if>
+            <if test="createTime != null">
+            CREATE_TIME,
+            </if>
+            <if test="modifier != null">
+            MODIFIER,
+            </if>
+            <if test="modifyTime != null">
+            MODIFY_TIME,
+            </if>
+            <if test="comName != null">
+            comName,
+            </if>
+            <if test="idcard != null">
+            IDCARD,
+            </if>
+            <if test="birthday != null">
+            BIRTHDAY,
+            </if>
+            <if test="personethnic != null">
+            PERSONETHNIC,
+            </if>
+            <if test="personmarr != null">
+            PERSONMARR,
+            </if>
+            <if test="personschool != null">
+            PERSONSCHOOL,
+            </if>
+            <if test="personsubject != null">
+            PERSONSUBJECT,
+            </if>
+            <if test="personedu != null">
+            PERSONEDU,
+            </if>
+            <if test="personedulevel != null">
+            PERSONEDULEVEL,
+            </if>
+            <if test="personjointime != null">
+            PERSONJOINTIME,
+            </if>
+            <if test="personnature != null">
+            PERSONNATURE,
+            </if>
+            <if test="personlevel != null">
+            PERSONLEVEL
+            </if>
+        </trim>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Values  -->
+    <sql id="Base_Column_Values">
+    #{id},
+    #{loginName},
+    #{loginPassword},
+    #{userName},
+    #{oaFdno},
+    #{comCode},
+    #{organizationNo},
+    #{registDate},
+    #{registUser},
+    #{sex},
+    #{mobile},
+    #{email},
+    #{wcOpenid},
+    #{status},
+    #{passInvalidDate},
+    #{dataAuthType},
+    #{creator},
+    #{createTime},
+    #{modifier},
+    #{modifyTime},
+    #{comName},
+    #{idcard},
+    #{birthday},
+    #{personethnic},
+    #{personmarr},
+    #{personschool},
+    #{personsubject},
+    #{personedu},
+    #{personedulevel},
+    #{personjointime},
+    #{personnature},
+    #{personlevel}
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Values_Selective  -->
+    <sql id="Base_Column_Values_Selective">
+        <trim suffixOverrides=",">
+            <if test="id != null">
+            #{id},
+            </if>
+            <if test="loginName != null">
+            #{loginName},
+            </if>
+            <if test="loginPassword != null">
+            #{loginPassword},
+            </if>
+            <if test="userName != null">
+            #{userName},
+            </if>
+            <if test="oaFdno != null">
+            #{oaFdno},
+            </if>
+            <if test="comCode != null">
+            #{comCode},
+            </if>
+            <if test="organizationNo != null">
+            #{organizationNo},
+            </if>
+            <if test="registDate != null">
+            #{registDate},
+            </if>
+            <if test="registUser != null">
+            #{registUser},
+            </if>
+            <if test="sex != null">
+            #{sex},
+            </if>
+            <if test="mobile != null">
+            #{mobile},
+            </if>
+            <if test="email != null">
+            #{email},
+            </if>
+            <if test="wcOpenid != null">
+            #{wcOpenid},
+            </if>
+            <if test="status != null">
+            #{status},
+            </if>
+            <if test="passInvalidDate != null">
+            #{passInvalidDate},
+            </if>
+            <if test="dataAuthType != null">
+            #{dataAuthType},
+            </if>
+            <if test="creator != null">
+            #{creator},
+            </if>
+            <if test="createTime != null">
+            #{createTime},
+            </if>
+            <if test="modifier != null">
+            #{modifier},
+            </if>
+            <if test="modifyTime != null">
+            #{modifyTime},
+            </if>
+            <if test="comName != null">
+            #{comName},
+            </if>
+            <if test="idcard != null">
+            #{idcard},
+            </if>
+            <if test="birthday != null">
+            #{birthday},
+            </if>
+            <if test="personethnic != null">
+            #{personethnic},
+            </if>
+            <if test="personmarr != null">
+            #{personmarr},
+            </if>
+            <if test="personschool != null">
+            #{personschool},
+            </if>
+            <if test="personsubject != null">
+            #{personsubject},
+            </if>
+            <if test="personedu != null">
+            #{personedu},
+            </if>
+            <if test="personedulevel != null">
+            #{personedulevel},
+            </if>
+            <if test="personjointime != null">
+            #{personjointime},
+            </if>
+            <if test="personnature != null">
+            #{personnature},
+            </if>
+            <if test="personlevel != null">
+            #{personlevel}
+            </if>
+        </trim>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Set_Values  -->
+    <sql id="Base_Column_Set_Values">
+    ID = #{id},
+    LOGIN_NAME = #{loginName},
+    LOGIN_PASSWORD = #{loginPassword},
+    USER_NAME = #{userName},
+    OA_FDNO = #{oaFdno},
+    comCode = #{comCode},
+    ORGANIZATION_NO = #{organizationNo},
+    REGIST_DATE = #{registDate},
+    REGIST_USER = #{registUser},
+    SEX = #{sex},
+    MOBILE = #{mobile},
+    EMAIL = #{email},
+    WC_OPENID = #{wcOpenid},
+    STATUS = #{status},
+    PASS_INVALID_DATE = #{passInvalidDate},
+    DATA_AUTH_TYPE = #{dataAuthType},
+    CREATOR = #{creator},
+    CREATE_TIME = #{createTime},
+    MODIFIER = #{modifier},
+    MODIFY_TIME = #{modifyTime},
+    comName = #{comName},
+    IDCARD = #{idcard},
+    BIRTHDAY = #{birthday},
+    PERSONETHNIC = #{personethnic},
+    PERSONMARR = #{personmarr},
+    PERSONSCHOOL = #{personschool},
+    PERSONSUBJECT = #{personsubject},
+    PERSONEDU = #{personedu},
+    PERSONEDULEVEL = #{personedulevel},
+    PERSONJOINTIME = #{personjointime},
+    PERSONNATURE = #{personnature},
+    PERSONLEVEL = #{personlevel}
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Set_Values_Selective  -->
+    <sql id="Base_Column_Set_Values_Selective">
+        <if test="id != null">
+        ID = #{id},
+        </if>
+        <if test="loginName != null">
+        LOGIN_NAME = #{loginName},
+        </if>
+        <if test="loginPassword != null">
+        LOGIN_PASSWORD = #{loginPassword},
+        </if>
+        <if test="userName != null">
+        USER_NAME = #{userName},
+        </if>
+        <if test="oaFdno != null">
+        OA_FDNO = #{oaFdno},
+        </if>
+        <if test="comCode != null">
+        comCode = #{comCode},
+        </if>
+        <if test="organizationNo != null">
+        ORGANIZATION_NO = #{organizationNo},
+        </if>
+        <if test="registDate != null">
+        REGIST_DATE = #{registDate},
+        </if>
+        <if test="registUser != null">
+        REGIST_USER = #{registUser},
+        </if>
+        <if test="sex != null">
+        SEX = #{sex},
+        </if>
+        <if test="mobile != null">
+        MOBILE = #{mobile},
+        </if>
+        <if test="email != null">
+        EMAIL = #{email},
+        </if>
+        <if test="wcOpenid != null">
+        WC_OPENID = #{wcOpenid},
+        </if>
+        <if test="status != null">
+        STATUS = #{status},
+        </if>
+        <if test="passInvalidDate != null">
+        PASS_INVALID_DATE = #{passInvalidDate},
+        </if>
+        <if test="dataAuthType != null">
+        DATA_AUTH_TYPE = #{dataAuthType},
+        </if>
+        <if test="creator != null">
+        CREATOR = #{creator},
+        </if>
+        <if test="createTime != null">
+        CREATE_TIME = #{createTime},
+        </if>
+        <if test="modifier != null">
+        MODIFIER = #{modifier},
+        </if>
+        <if test="modifyTime != null">
+        MODIFY_TIME = #{modifyTime},
+        </if>
+        <if test="comName != null">
+        comName = #{comName},
+        </if>
+        <if test="idcard != null">
+        IDCARD = #{idcard},
+        </if>
+        <if test="birthday != null">
+        BIRTHDAY = #{birthday},
+        </if>
+        <if test="personethnic != null">
+        PERSONETHNIC = #{personethnic},
+        </if>
+        <if test="personmarr != null">
+        PERSONMARR = #{personmarr},
+        </if>
+        <if test="personschool != null">
+        PERSONSCHOOL = #{personschool},
+        </if>
+        <if test="personsubject != null">
+        PERSONSUBJECT = #{personsubject},
+        </if>
+        <if test="personedu != null">
+        PERSONEDU = #{personedu},
+        </if>
+        <if test="personedulevel != null">
+        PERSONEDULEVEL = #{personedulevel},
+        </if>
+        <if test="personjointime != null">
+        PERSONJOINTIME = #{personjointime},
+        </if>
+        <if test="personnature != null">
+        PERSONNATURE = #{personnature},
+        </if>
+        <if test="personlevel != null">
+        PERSONLEVEL = #{personlevel}
+        </if>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Where_Selective  -->
+    <sql id="Base_Column_Where_Selective">
+        <if test="id != null">
+            and ID = #{id}
+        </if>
+        <if test="loginName != null">
+            and LOGIN_NAME = #{loginName}
+        </if>
+        <if test="loginPassword != null">
+            and LOGIN_PASSWORD = #{loginPassword}
+        </if>
+        <if test="userName != null">
+            and USER_NAME = #{userName}
+        </if>
+        <if test="oaFdno != null">
+            and OA_FDNO = #{oaFdno}
+        </if>
+        <if test="comCode != null">
+            and comCode = #{comCode}
+        </if>
+        <if test="organizationNo != null">
+            and ORGANIZATION_NO = #{organizationNo}
+        </if>
+        <if test="registDate != null">
+            and REGIST_DATE = #{registDate}
+        </if>
+        <if test="registUser != null">
+            and REGIST_USER = #{registUser}
+        </if>
+        <if test="sex != null">
+            and SEX = #{sex}
+        </if>
+        <if test="mobile != null">
+            and MOBILE = #{mobile}
+        </if>
+        <if test="email != null">
+            and EMAIL = #{email}
+        </if>
+        <if test="wcOpenid != null">
+            and WC_OPENID = #{wcOpenid}
+        </if>
+        <if test="status != null">
+            and STATUS = #{status}
+        </if>
+        <if test="passInvalidDate != null">
+            and PASS_INVALID_DATE = #{passInvalidDate}
+        </if>
+        <if test="dataAuthType != null">
+            and DATA_AUTH_TYPE = #{dataAuthType}
+        </if>
+        <if test="creator != null">
+            and CREATOR = #{creator}
+        </if>
+        <if test="createTime != null">
+            and CREATE_TIME = #{createTime}
+        </if>
+        <if test="modifier != null">
+            and MODIFIER = #{modifier}
+        </if>
+        <if test="modifyTime != null">
+            and MODIFY_TIME = #{modifyTime}
+        </if>
+        <if test="comName != null">
+            and comName = #{comName}
+        </if>
+        <if test="idcard != null">
+            and IDCARD = #{idcard}
+        </if>
+        <if test="birthday != null">
+            and BIRTHDAY = #{birthday}
+        </if>
+        <if test="personethnic != null">
+            and PERSONETHNIC = #{personethnic}
+        </if>
+        <if test="personmarr != null">
+            and PERSONMARR = #{personmarr}
+        </if>
+        <if test="personschool != null">
+            and PERSONSCHOOL = #{personschool}
+        </if>
+        <if test="personsubject != null">
+            and PERSONSUBJECT = #{personsubject}
+        </if>
+        <if test="personedu != null">
+            and PERSONEDU = #{personedu}
+        </if>
+        <if test="personedulevel != null">
+            and PERSONEDULEVEL = #{personedulevel}
+        </if>
+        <if test="personjointime != null">
+            and PERSONJOINTIME = #{personjointime}
+        </if>
+        <if test="personnature != null">
+            and PERSONNATURE = #{personnature}
+        </if>
+        <if test="personlevel != null">
+            and PERSONLEVEL = #{personlevel}
+        </if>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Where_Selective_Param1  -->
+    <sql id="Base_Column_Where_Selective_Param1">
+        <if test="param1.id != null">
+            and ID = #{param1.id}
+        </if>
+        <if test="param1.loginName != null">
+            and LOGIN_NAME = #{param1.loginName}
+        </if>
+        <if test="param1.loginPassword != null">
+            and LOGIN_PASSWORD = #{param1.loginPassword}
+        </if>
+        <if test="param1.userName != null">
+            and USER_NAME = #{param1.userName}
+        </if>
+        <if test="param1.oaFdno != null">
+            and OA_FDNO = #{param1.oaFdno}
+        </if>
+        <if test="param1.comCode != null">
+            and comCode = #{param1.comCode}
+        </if>
+        <if test="param1.organizationNo != null">
+            and ORGANIZATION_NO = #{param1.organizationNo}
+        </if>
+        <if test="param1.registDate != null">
+            and REGIST_DATE = #{param1.registDate}
+        </if>
+        <if test="param1.registUser != null">
+            and REGIST_USER = #{param1.registUser}
+        </if>
+        <if test="param1.sex != null">
+            and SEX = #{param1.sex}
+        </if>
+        <if test="param1.mobile != null">
+            and MOBILE = #{param1.mobile}
+        </if>
+        <if test="param1.email != null">
+            and EMAIL = #{param1.email}
+        </if>
+        <if test="param1.wcOpenid != null">
+            and WC_OPENID = #{param1.wcOpenid}
+        </if>
+        <if test="param1.status != null">
+            and STATUS = #{param1.status}
+        </if>
+        <if test="param1.passInvalidDate != null">
+            and PASS_INVALID_DATE = #{param1.passInvalidDate}
+        </if>
+        <if test="param1.dataAuthType != null">
+            and DATA_AUTH_TYPE = #{param1.dataAuthType}
+        </if>
+        <if test="param1.creator != null">
+            and CREATOR = #{param1.creator}
+        </if>
+        <if test="param1.createTime != null">
+            and CREATE_TIME = #{param1.createTime}
+        </if>
+        <if test="param1.modifier != null">
+            and MODIFIER = #{param1.modifier}
+        </if>
+        <if test="param1.modifyTime != null">
+            and MODIFY_TIME = #{param1.modifyTime}
+        </if>
+        <if test="param1.comName != null">
+            and comName = #{param1.comName}
+        </if>
+        <if test="param1.idcard != null">
+            and IDCARD = #{param1.idcard}
+        </if>
+        <if test="param1.birthday != null">
+            and BIRTHDAY = #{param1.birthday}
+        </if>
+        <if test="param1.personethnic != null">
+            and PERSONETHNIC = #{param1.personethnic}
+        </if>
+        <if test="param1.personmarr != null">
+            and PERSONMARR = #{param1.personmarr}
+        </if>
+        <if test="param1.personschool != null">
+            and PERSONSCHOOL = #{param1.personschool}
+        </if>
+        <if test="param1.personsubject != null">
+            and PERSONSUBJECT = #{param1.personsubject}
+        </if>
+        <if test="param1.personedu != null">
+            and PERSONEDU = #{param1.personedu}
+        </if>
+        <if test="param1.personedulevel != null">
+            and PERSONEDULEVEL = #{param1.personedulevel}
+        </if>
+        <if test="param1.personjointime != null">
+            and PERSONJOINTIME = #{param1.personjointime}
+        </if>
+        <if test="param1.personnature != null">
+            and PERSONNATURE = #{param1.personnature}
+        </if>
+        <if test="param1.personlevel != null">
+            and PERSONLEVEL = #{param1.personlevel}
+        </if>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Order_By  -->
+    <sql id="Base_Order_By">
+        <bind name="propName" value="sortField"></bind>
+        ORDER BY <include refid="Base_Column_Name" />
+        <choose>
+            <when test="isAscend">
+                ASC
+            </when>
+            <otherwise>
+                DESC
+            </otherwise>
+        </choose>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Name  -->
+    <sql id="Base_Column_Name">
+        <if test='"id" == propName'>
+        ID
+        </if>
+        <if test='"loginName" == propName'>
+        LOGIN_NAME
+        </if>
+        <if test='"loginPassword" == propName'>
+        LOGIN_PASSWORD
+        </if>
+        <if test='"userName" == propName'>
+        USER_NAME
+        </if>
+        <if test='"oaFdno" == propName'>
+        OA_FDNO
+        </if>
+        <if test='"comCode" == propName'>
+        comCode
+        </if>
+        <if test='"organizationNo" == propName'>
+        ORGANIZATION_NO
+        </if>
+        <if test='"registDate" == propName'>
+        REGIST_DATE
+        </if>
+        <if test='"registUser" == propName'>
+        REGIST_USER
+        </if>
+        <if test='"sex" == propName'>
+        SEX
+        </if>
+        <if test='"mobile" == propName'>
+        MOBILE
+        </if>
+        <if test='"email" == propName'>
+        EMAIL
+        </if>
+        <if test='"wcOpenid" == propName'>
+        WC_OPENID
+        </if>
+        <if test='"status" == propName'>
+        STATUS
+        </if>
+        <if test='"passInvalidDate" == propName'>
+        PASS_INVALID_DATE
+        </if>
+        <if test='"dataAuthType" == propName'>
+        DATA_AUTH_TYPE
+        </if>
+        <if test='"creator" == propName'>
+        CREATOR
+        </if>
+        <if test='"createTime" == propName'>
+        CREATE_TIME
+        </if>
+        <if test='"modifier" == propName'>
+        MODIFIER
+        </if>
+        <if test='"modifyTime" == propName'>
+        MODIFY_TIME
+        </if>
+        <if test='"comName" == propName'>
+        comName
+        </if>
+        <if test='"idcard" == propName'>
+        IDCARD
+        </if>
+        <if test='"birthday" == propName'>
+        BIRTHDAY
+        </if>
+        <if test='"personethnic" == propName'>
+        PERSONETHNIC
+        </if>
+        <if test='"personmarr" == propName'>
+        PERSONMARR
+        </if>
+        <if test='"personschool" == propName'>
+        PERSONSCHOOL
+        </if>
+        <if test='"personsubject" == propName'>
+        PERSONSUBJECT
+        </if>
+        <if test='"personedu" == propName'>
+        PERSONEDU
+        </if>
+        <if test='"personedulevel" == propName'>
+        PERSONEDULEVEL
+        </if>
+        <if test='"personjointime" == propName'>
+        PERSONJOINTIME
+        </if>
+        <if test='"personnature" == propName'>
+        PERSONNATURE
+        </if>
+        <if test='"personlevel" == propName'>
+        PERSONLEVEL
+        </if>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Id_Array  -->
+    <sql id="Base_Id_Array">
+        <foreach collection="array" open="(" close=")" separator="," item="id">
+        #{id}
+        </foreach>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Id_List  -->
+    <sql id="Base_Id_List">
+        <foreach collection="list" open="(" close=")" separator="," item="id">
+        #{id}
+        </foreach>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Select_All  -->
+    <sql id="Base_Select_All">
+        select
+        <include refid="Base_Column_List" />
+        from <include refid="Base_Table_Name" />
+    </sql>
+    <!-- endregion -->
+
+    <!-- region selectById  -->
+    <select id="selectById" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        where ID = #{id}
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectByIds  -->
+    <select id="selectByIds" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        where ID in
+        <include refid="Base_Id_List" />
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectAll  -->
+    <select id="selectAll" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectCount  -->
+    <select id="selectCount" resultType="int">
+        select count(*)
+        from <include refid="Base_Table_Name" />
+        <where>
+            <include refid="Base_Column_Where_Selective" />
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region select  -->
+    <select id="select" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Where_Selective" />
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectOne  -->
+    <select id="selectOne" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Where_Selective" />
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectOrderBy  -->
+    <select id="selectOrderBy" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Where_Selective_Param1" />
+        </where>
+        <include refid="Base_Order_By" />
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectByProperty  -->
+    <select id="selectByProperty" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Name" /> = #{propValue}
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectByPropertyIn  -->
+    <select id="selectByPropertyIn" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Name" /> IN
+            <foreach collection="propValues" open="(" close=")" separator="," item="propValue">
+            #{propValue}
+            </foreach>
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region delete  -->
+    <delete id="delete">
+        delete
+        from <include refid="Base_Table_Name" />
+        <where>
+            <include refid="Base_Column_Where_Selective" />
+        </where>
+    </delete>
+    <!-- endregion -->
+
+    <!-- region deleteById  -->
+    <delete id="deleteById">
+        delete
+        from <include refid="Base_Table_Name" />
+        where ID = #{id}
+    </delete>
+    <!-- endregion -->
+
+    <!-- region deleteByIds  -->
+    <delete id="deleteByIds">
+        delete
+        from <include refid="Base_Table_Name" />
+        where ID in
+        <include refid="Base_Id_List" />
+    </delete>
+    <!-- endregion -->
+
+    <!-- region insert  -->
+    <insert id="insert" parameterType="com.yqjr.fin.scfw.meta.entity.User">
+        <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into <include refid="Base_Table_Name" /> (
+        <include refid="Base_Column_List" />
+        )
+        values (
+        <include refid="Base_Column_Values" />
+        )
+    </insert>
+    <!-- endregion -->
+
+    <!-- region updateById  -->
+    <update id="updateById" parameterType="com.yqjr.fin.scfw.meta.entity.User">
+        update <include refid="Base_Table_Name" />
+        <set>
+            <include refid="Base_Column_Set_Values" />
+        </set>
+        where ID = #{id}
+    </update>
+    <!-- endregion -->
+
+    <!-- region patchById  -->
+    <update id="patchById" parameterType="com.yqjr.fin.scfw.meta.entity.User">
+        update <include refid="Base_Table_Name" />
+        <set>
+            <include refid="Base_Column_Set_Values_Selective" />
+        </set>
+        where ID = #{id}
+    </update>
+    <!-- endregion -->
+
+    <!-- endregion BaseMapper -->
+
+    <!-- region generated by CodeRobot  -->
+
+    <!-- region 结果集映射  -->
+    <resultMap id="UserResult" type="com.yqjr.fin.scfw.meta.entity.User">
+        <result property="id" column="ID"/><!--主键-->
+        <result property="loginName" column="LOGIN_NAME"/><!--登陆名，英文，唯一-->
+        <result property="loginPassword" column="LOGIN_PASSWORD"/><!--密码，md5加密后密文-->
+        <result property="userName" column="USER_NAME"/><!--用户名称，中文-->
+        <result property="oaFdno" column="OA_FDNO"/><!--OA员工编号-->
+        <result property="comCode" column="comCode"/><!--合同所属公司:见数据字典:comCode-->
+        <result property="organizationNo" column="ORGANIZATION_NO"/><!--所属机构-->
+        <result property="registDate" column="REGIST_DATE"/><!--首次登记日期-->
+        <result property="registUser" column="REGIST_USER"/><!--首次等级人登陆名-->
+        <result property="sex" column="SEX"/><!--性别:见数据字典:sex-->
+        <result property="mobile" column="MOBILE"/><!--手机-->
+        <result property="email" column="EMAIL"/><!--邮箱-->
+        <result property="wcOpenid" column="WC_OPENID"/><!--微信OPEN_ID-->
+        <result property="status" column="STATUS"/><!--‘0’ 无效 '1' 有效-->
+        <result property="passInvalidDate" column="PASS_INVALID_DATE"/><!--口令失效日期-->
+        <result property="dataAuthType" column="DATA_AUTH_TYPE"/><!--数据授权类型 ‘1’ 按地区,'2' 按经销商,'0',可看全部数据-->
+        <result property="creator" column="CREATOR"/><!--创建人-->
+        <result property="createTime" column="CREATE_TIME"/><!--创建时间-->
+        <result property="modifier" column="MODIFIER"/><!--最后更新人-->
+        <result property="modifyTime" column="MODIFY_TIME"/><!--最后更新时间-->
+        <result property="comName" column="comName"/><!--合同所属公司名字-->
+        <result property="idcard" column="IDCARD"/><!--身份证号-->
+        <result property="birthday" column="BIRTHDAY"/><!--出生日期-->
+        <result property="personethnic" column="PERSONETHNIC"/><!--民族-->
+        <result property="personmarr" column="PERSONMARR"/><!--婚姻状况-->
+        <result property="personschool" column="PERSONSCHOOL"/><!--毕业学校-->
+        <result property="personsubject" column="PERSONSUBJECT"/><!--专业-->
+        <result property="personedu" column="PERSONEDU"/><!--最高学历-->
+        <result property="personedulevel" column="PERSONEDULEVEL"/><!--学位-->
+        <result property="personjointime" column="PERSONJOINTIME"/><!--参加工作时间-->
+        <result property="personnature" column="PERSONNATURE"/><!--人员性质-->
+        <result property="personlevel" column="PERSONLEVEL"/><!--人员级别-->
+    </resultMap>
+    <!-- endregion -->
+
+    <!-- 查询条件判断 入参为对象 条件为模糊-->
+    <sql id="queryLikeUser">
+        <if test="user!=null">
+            <if test="id!=null and id!=''">
+                AND ID LIKE CONCAT('%'#{id}'%')<!--主键-->
+            </if>
+            <if test="loginName!=null and loginName!=''">
+                AND LOGIN_NAME LIKE CONCAT('%'#{loginName}'%')<!--登陆名，英文，唯一-->
+            </if>
+            <if test="loginPassword!=null and loginPassword!=''">
+                AND LOGIN_PASSWORD LIKE CONCAT('%'#{loginPassword}'%')<!--密码，md5加密后密文-->
+            </if>
+            <if test="userName!=null and userName!=''">
+                AND USER_NAME LIKE CONCAT('%'#{userName}'%')<!--用户名称，中文-->
+            </if>
+            <if test="oaFdno!=null and oaFdno!=''">
+                AND OA_FDNO LIKE CONCAT('%'#{oaFdno}'%')<!--OA员工编号-->
+            </if>
+            <if test="comCode!=null and comCode!=''">
+                AND comCode LIKE CONCAT('%'#{comCode}'%')<!--合同所属公司:见数据字典:comCode-->
+            </if>
+            <if test="organizationNo!=null and organizationNo!=''">
+                AND ORGANIZATION_NO LIKE CONCAT('%'#{organizationNo}'%')<!--所属机构-->
+            </if>
+            <if test="registDate!=null and registDate!=''">
+                AND REGIST_DATE LIKE CONCAT('%'#{registDate}'%')<!--首次登记日期-->
+            </if>
+            <if test="registUser!=null and registUser!=''">
+                AND REGIST_USER LIKE CONCAT('%'#{registUser}'%')<!--首次等级人登陆名-->
+            </if>
+            <if test="sex!=null and sex!=''">
+                AND SEX LIKE CONCAT('%'#{sex}'%')<!--性别:见数据字典:sex-->
+            </if>
+            <if test="mobile!=null and mobile!=''">
+                AND MOBILE LIKE CONCAT('%'#{mobile}'%')<!--手机-->
+            </if>
+            <if test="email!=null and email!=''">
+                AND EMAIL LIKE CONCAT('%'#{email}'%')<!--邮箱-->
+            </if>
+            <if test="wcOpenid!=null and wcOpenid!=''">
+                AND WC_OPENID LIKE CONCAT('%'#{wcOpenid}'%')<!--微信OPEN_ID-->
+            </if>
+            <if test="status!=null and status!=''">
+                AND STATUS LIKE CONCAT('%'#{status}'%')<!--‘0’ 无效 '1' 有效-->
+            </if>
+            <if test="passInvalidDate!=null and passInvalidDate!=''">
+                AND PASS_INVALID_DATE LIKE CONCAT('%'#{passInvalidDate}'%')<!--口令失效日期-->
+            </if>
+            <if test="dataAuthType!=null and dataAuthType!=''">
+                AND DATA_AUTH_TYPE LIKE CONCAT('%'#{dataAuthType}'%')<!--数据授权类型 ‘1’ 按地区,'2' 按经销商,'0',可看全部数据-->
+            </if>
+            <if test="creator!=null and creator!=''">
+                AND CREATOR LIKE CONCAT('%'#{creator}'%')<!--创建人-->
+            </if>
+            <if test="createTime!=null and createTime!=''">
+                AND CREATE_TIME LIKE CONCAT('%'#{createTime}'%')<!--创建时间-->
+            </if>
+            <if test="modifier!=null and modifier!=''">
+                AND MODIFIER LIKE CONCAT('%'#{modifier}'%')<!--最后更新人-->
+            </if>
+            <if test="modifyTime!=null and modifyTime!=''">
+                AND MODIFY_TIME LIKE CONCAT('%'#{modifyTime}'%')<!--最后更新时间-->
+            </if>
+            <if test="comName!=null and comName!=''">
+                AND comName LIKE CONCAT('%'#{comName}'%')<!--合同所属公司名字-->
+            </if>
+            <if test="idcard!=null and idcard!=''">
+                AND IDCARD LIKE CONCAT('%'#{idcard}'%')<!--身份证号-->
+            </if>
+            <if test="birthday!=null and birthday!=''">
+                AND BIRTHDAY LIKE CONCAT('%'#{birthday}'%')<!--出生日期-->
+            </if>
+            <if test="personethnic!=null and personethnic!=''">
+                AND PERSONETHNIC LIKE CONCAT('%'#{personethnic}'%')<!--民族-->
+            </if>
+            <if test="personmarr!=null and personmarr!=''">
+                AND PERSONMARR LIKE CONCAT('%'#{personmarr}'%')<!--婚姻状况-->
+            </if>
+            <if test="personschool!=null and personschool!=''">
+                AND PERSONSCHOOL LIKE CONCAT('%'#{personschool}'%')<!--毕业学校-->
+            </if>
+            <if test="personsubject!=null and personsubject!=''">
+                AND PERSONSUBJECT LIKE CONCAT('%'#{personsubject}'%')<!--专业-->
+            </if>
+            <if test="personedu!=null and personedu!=''">
+                AND PERSONEDU LIKE CONCAT('%'#{personedu}'%')<!--最高学历-->
+            </if>
+            <if test="personedulevel!=null and personedulevel!=''">
+                AND PERSONEDULEVEL LIKE CONCAT('%'#{personedulevel}'%')<!--学位-->
+            </if>
+            <if test="personjointime!=null and personjointime!=''">
+                AND PERSONJOINTIME LIKE CONCAT('%'#{personjointime}'%')<!--参加工作时间-->
+            </if>
+            <if test="personnature!=null and personnature!=''">
+                AND PERSONNATURE LIKE CONCAT('%'#{personnature}'%')<!--人员性质-->
+            </if>
+            <if test="personlevel!=null and personlevel!=''">
+                PERSONLEVEL LIKE CONCAT('%'#{personlevel}'%')<!--人员级别-->
+            </if>
+        </if>
+    </sql>
+
+    <!-- 按条件模糊查询所有 -->
+    <select id="queryUserList" parameterType="com.yqjr.fin.scfw.meta.entity.User"
+            resultMap="UserResult">
+        SELECT
+        ID,<!--主键-->
+        LOGIN_NAME,<!--登陆名，英文，唯一-->
+        LOGIN_PASSWORD,<!--密码，md5加密后密文-->
+        USER_NAME,<!--用户名称，中文-->
+        OA_FDNO,<!--OA员工编号-->
+        comCode,<!--合同所属公司:见数据字典:comCode-->
+        ORGANIZATION_NO,<!--所属机构-->
+        REGIST_DATE,<!--首次登记日期-->
+        REGIST_USER,<!--首次等级人登陆名-->
+        SEX,<!--性别:见数据字典:sex-->
+        MOBILE,<!--手机-->
+        EMAIL,<!--邮箱-->
+        WC_OPENID,<!--微信OPEN_ID-->
+        STATUS,<!--‘0’ 无效 '1' 有效-->
+        PASS_INVALID_DATE,<!--口令失效日期-->
+        DATA_AUTH_TYPE,<!--数据授权类型 ‘1’ 按地区,'2' 按经销商,'0',可看全部数据-->
+        CREATOR,<!--创建人-->
+        CREATE_TIME,<!--创建时间-->
+        MODIFIER,<!--最后更新人-->
+        MODIFY_TIME,<!--最后更新时间-->
+        comName,<!--合同所属公司名字-->
+        IDCARD,<!--身份证号-->
+        BIRTHDAY,<!--出生日期-->
+        PERSONETHNIC,<!--民族-->
+        PERSONMARR,<!--婚姻状况-->
+        PERSONSCHOOL,<!--毕业学校-->
+        PERSONSUBJECT,<!--专业-->
+        PERSONEDU,<!--最高学历-->
+        PERSONEDULEVEL,<!--学位-->
+        PERSONJOINTIME,<!--参加工作时间-->
+        PERSONNATURE,<!--人员性质-->
+        PERSONLEVEL<!--人员级别-->
+        FROM SYS_USER
+        <where>
+            <include refid="queryLikeUser"/>
+        </where>
+    </select>
+
+    <!-- 按条件模糊统计所有条数 -->
+    <select id="queryUserCount" parameterType="com.yqjr.fin.scfw.meta.entity.User" resultType="int">
+        SELECT
+        count (id)
+        FROM SYS_USER
+        <where>
+            <include refid="queryLikeUser"/>
+        </where>
+    </select>
+
+    <!-- 批量删除，入参为数组  -->
+    <delete id="dynamicDelete">
+        delete from SYS_USER where id in
+        <foreach collection="array" open="(" close=")" separator="," item="arr">
+            #{arr}
+        </foreach>
+    </delete>
+
+    <!-- 批量删除，入参为list  -->
+    <delete id="dynamicDeleteList">
+        delete from SYS_USER where id in
+        <foreach collection="list" open="(" close=")" separator="," item="ids">
+            #{ids}
+        </foreach>
+    </delete>
+
+    <!-- 批量插入 -->
+    <insert id="insertBatch" parameterType="java.util.List">
+        <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into SYS_USER
+        (
+        <include refid="Base_Column_List" />
+        )
+        values
+        <foreach collection="list" item="user" index="index" separator=",">
+            (
+            <include refid="Base_Column_Values" />
+            )
+        </foreach>
+    </insert>
+
+    <!-- 插入单条数据，并返回主键ID -->
+    <insert id="saveObj" useGeneratedKeys="true" keyProperty="id"
+            parameterType="com.yqjr.fin.scfw.meta.entity.User">
+        insert into SYS_USER
+        (
+        <include refid="Base_Column_List" />
+        )
+        values
+        (
+        <include refid="Base_Column_Values" />
+        )
+    </insert>
+
+    <select id="selectByLoginName" parameterType="java.lang.String" resultMap="BaseResultMap">
+            select a.*,c.code as areaCode,c.name as areaName from sys_user a
+            join  sys_user_zone b  on b.user_id=a.id  
+            right join  sys_zone c   on b.zone_id=c.id
+            where a.login_name=#{loginName}
+            and a.status=1
+    </select>
+    
+    <select id="findUserLoginByName" parameterType="java.lang.String" resultMap="BaseResultMap1">
+            select a.*,c.code as areaCode,c.name as areaName from sys_user a
+            join  sys_user_zone b  on b.user_id=a.id  
+            right join  sys_zone c   on b.zone_id=c.id
+            where a.login_name=#{loginName}
+            <if test="areaCode !='R0000' ">
+             and  c.code =#{areaCode}
+             </if>
+             and  a.comCode =#{comCode}
+             and a.status=1
+    </select>
+
+    <select id="getUserByName" parameterType="java.lang.String" resultMap="BaseResultMap1">
+            select a.*,c.code as areaCode,c.name as areaName from sys_user a
+            join  sys_user_zone b  on b.user_id=a.id  
+            right join  sys_zone c   on b.zone_id=c.id
+              WHERE a.USER_NAME = '%${userName}%'
+              and a.status=1
+    </select>
+
+
+</mapper>
+

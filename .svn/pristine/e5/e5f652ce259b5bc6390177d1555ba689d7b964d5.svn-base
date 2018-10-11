@@ -1,0 +1,128 @@
+package com.yqjr.fin.fpms.product.entity;
+
+import com.ritoinfo.framework.evo.sp.base.starter.entity.BaseMapperEntity;
+import com.yqjr.fin.common.base.starter.entity.FinBaseMapperEntity;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import org.apache.ibatis.type.JdbcType;
+import tk.mybatis.mapper.annotation.ColumnType;
+import tk.mybatis.mapper.annotation.KeySql;
+import tk.mybatis.mapper.code.ORDER;
+
+import javax.persistence.*;
+import java.sql.Date;
+import java.sql.Timestamp;
+
+/**
+ * @description: 金融产品
+ * @author: lixue
+ * @date: 2018/08/21 15:39:21
+ **/
+@EqualsAndHashCode(callSuper = true)
+@Data
+@Table(name = "FPMS_PRODUCT", schema = "FPMS")
+public class ProductEntity extends FinBaseMapperEntity<Long> {
+    @Id
+    @KeySql(sql = "select SEQ_FPMS_PRODUCT.nextval from dual", order = ORDER.BEFORE)
+    private Long id;
+    @ColumnType(jdbcType = JdbcType.VARCHAR)
+    private String vname;
+    @ColumnType(jdbcType = JdbcType.TIMESTAMP)
+    private Date dvalidDate;
+    @ColumnType(jdbcType = JdbcType.TIMESTAMP)
+    private Date dexpireDate;
+
+    /**
+     * 状态 1 有效 0 无效
+     */
+    @Column(name = "FILE_CONFIG_CODE", length = 100)
+    @ColumnType(jdbcType = JdbcType.VARCHAR)
+    private String fileConfigCode;
+
+    /**
+     * 状态 1 有效 0 无效
+     */
+    @Column(name = "FILE_CONFIG_NAME",  length = 100)
+    @ColumnType(jdbcType = JdbcType.VARCHAR)
+    private String fileConfigName;
+
+    /**
+     * 状态 1 有效 0 无效
+     */
+    @ColumnType(jdbcType = JdbcType.VARCHAR)
+    private String attachmentId;
+
+    /**
+     * 状态 1 有效 0 无效
+     */
+    @ColumnType(jdbcType = JdbcType.VARCHAR)
+    private String remark;
+
+    /**
+     * 状态 1 有效 0 无效
+     */
+    @ColumnType(jdbcType = JdbcType.VARCHAR)
+    private String applyRemark;
+
+    /**
+     * 状态 1 有效 0 无效
+     */
+    @Column(name = "PRODUCT_STATUS_CODE")
+    @ColumnType(jdbcType = JdbcType.INTEGER)
+    private Integer productStatusCode;
+
+    /**
+     * 状态 1 有效 0 无效
+     */
+    @Column(name = "PRODUCT_STATUS_NAME" ,length = 50)
+    @ColumnType(jdbcType = JdbcType.VARCHAR)
+    private String productStatusName;
+
+    /**
+     * 状态 1 有效 0 无效
+     */
+    @Column(name = "EXAMINE_STATUS_CODE")
+    @ColumnType(jdbcType = JdbcType.INTEGER)
+    private Integer examineStatusCode;
+
+    /**
+     * 状态 1 有效 0 无效
+     */
+    @Column(name = "EXAMINE_STATUS_NAME", length = 50)
+    @ColumnType(jdbcType = JdbcType.VARCHAR)
+    private String examineStatusName;
+
+    /**
+     * 状态 1 有效 0 无效
+     */
+    @Column(name = "AUDIT_FLOW_ID")
+    @ColumnType(jdbcType = JdbcType.BIGINT)
+    private Long auditFlowId;
+
+    /**
+     * 公司 1 金融 2 租赁
+     */
+    @ColumnType(jdbcType = JdbcType.BIGINT)
+    private Long company;
+
+    /**
+     * 树节点id
+     */
+    @ColumnType(jdbcType = JdbcType.BIGINT)
+    private Long treeNodeId;
+
+    /**
+     * 业务条线 10 乘用车 20 商用车
+     */
+    @ColumnType(jdbcType = JdbcType.BIGINT)
+    private Long businessLine;
+
+    /**
+     *
+     *
+     * 状态 1 有效 0 无效
+     */
+    @ColumnType(jdbcType = JdbcType.BIGINT)
+    private Long flag;
+
+}

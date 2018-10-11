@@ -1,0 +1,127 @@
+<style lang="less">
+    @import '../../../styles/common.less';
+</style>
+<template>
+    <div>
+        <Form ref="teamEditData" :rules="ruleValidate" :model="teamEditData"  :label-width="100">
+            <Card>
+                <p slot="title">
+                    <Icon type="search"></Icon>
+                    修改指标类型
+                </p>
+                <Row>
+                    <Col span="8" offset="2">
+                        <FormItem label="指标类型代码：" prop="code">
+                            <Input v-model="teamEditData.code" disabled="true"></Input>
+                        </FormItem>
+                    </Col>
+                    <Col span="8" offset="2">
+                        <FormItem label="指标类型名称：" prop="name">
+                            <Input v-model="teamEditData.name" ></Input>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span="8" offset="2">
+                        <!--<FormItem label="备注信息：" prop="remark">-->
+                            <!--<Input v-model="teamEditData.remark"  ></Input>-->
+                        <!--</FormItem>-->
+                        <FormItem label="备注信息："  prop="remark">
+                            <!--<Input v-model="formValidate.remark" ></Input>-->
+                            <textarea  v-model="teamEditData.remark"  rows="3" cols="210" style="resize: none;"></textarea>
+                        </FormItem>
+                    </Col>
+
+                </Row>
+
+                <Row>
+                    <Col span="4" offset="9">
+                        <Button type="primary" icon="checkmark" @click="warningEditSubTosto('teamEditData')" :loading="loading">确认修改</Button>
+                    </Col>
+                    <Col span="4" >
+                        <Button type="primary" icon="reply" @click.prevent="pageBack">返回</Button>
+                    </Col>
+                </Row>
+            </Card>
+        </Form>
+    </div>
+</template>
+<script>
+    import { mapActions, mapState } from 'vuex';
+    import {resetWorkHeight, getUserCookie} from '@/libs/util.js';
+    export default{
+        name: 'teamEdit',
+        data () {
+            const validatePatmentEndCheck = (rule, value, callback) => {
+                if (value.length > 265) {
+                    callback(new Error('备注最大长度265!'));
+                }
+                callback();
+            };
+            return {
+                ruleValidate: {
+                    code: [
+                        { required: true, pattern:/^[\x00-\xff]{1,3}$/, message: '指标类型代码不能为汉字且长度小于3', trigger: 'blur' }
+                    ],
+                    name: [
+                        { required: true,pattern:/^.{1,50}$/, message: '指标名称长度应在1-50之间', trigger: 'blur' }
+                    ]
+                }
+            };
+        },
+        computed: {
+            ...mapState({
+                loading: ({warningEdit}) => warningEdit.loading,
+                teamEditData: ({warningEdit}) => warningEdit.warningEditData,
+                isSuccess: ({warningEdit}) => warningEdit.isSuccess,
+                teamEditMsg: ({warningEdit}) => warningEdit.warningEditMsg
+            })
+        },
+        methods: {
+            ...mapActions([
+                'QueryWarningById',
+                'WarningEditSubToSto'
+            ]),
+            init () {
+                this.querywarningById(this.$route.query.id);
+                resetWorkHeight();
+            },
+            querywarningById (id) {
+                this.QueryWarningById(id).then(res => {
+                });
+            },
+            warningEditSubTosto (name) { // 提交审核
+                this.$refs[name].validate((valid) => {
+                    if (valid) {
+                        const user = getUserCookie();
+                        this.teamEditData.createName = user.name;
+                        this.WarningEditSubToSto(this.teamEditData).then(res => {
+                            if (this.isSuccess) {
+                                this.$Modal.success({
+                                    title: '修改',
+                                    content: this.teamEditMsg,
+                                    onOk: () => {
+                                        this.$router.push({name: 'warningTargettypeList'});
+                                    }
+                                });
+                            } else {
+                                this.$Modal.error({
+                                    title: '提示',
+                                    content: this.teamEditMsg
+                                });
+                            }
+                        });
+                    } else {
+                        this.$Message.error('验证错误!');
+                    }
+                });
+            },
+            pageBack () {
+                this.$router.push({name: 'warningTargettypeList'});
+            }
+        },
+        mounted () {
+            this.init();
+        }
+    };
+</script>

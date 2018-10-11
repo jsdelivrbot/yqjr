@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yqjr.fin.rems.rule.dao.RuleFactorDao">
+
+    <sql id="Base_Table_Name">
+        REMS_RULE_FACTOR
+    </sql>
+
+    <resultMap id="BaseResultMap" type="com.yqjr.fin.rems.rule.dto.RuleFactorDto">
+        <result property="id" column="ID"/><!--主键id-->
+        <result property="factorName" column="FACTOR_NAME"/><!--规则因子名称-->
+        <result property="factorCode" column="FACTOR_CODE"/><!--规则因子编码-->
+        <result property="factorTypeId" column="FACTOR_TYPE_ID"/><!--规则因子类型id-->
+        <result property="factorTypeName" column="FACTOR_TYPE_NAME"/><!--规则因子类型名称-->
+        <result property="typeAttributeCode" column="TYPE_ATTRIBUTE_CODE"/><!--类型属性编码-->
+        <result property="typeAttributeName" column="TYPE_ATTRIBUTE_NAME"/><!--类型属性名称-->
+        <result property="dataTypeCode" column="DATA_TYPE_CODE"/><!--数据类型编码-->
+        <result property="dataTypeName" column="DATA_TYPE_NAME"/><!--数据类型名称-->
+        <result property="explain" column="EXPLAIN"/><!--备注-->
+        <result property="flag" column="FALG"/><!--状态-->
+        <result property="createBy" column="CREATE_BY"/><!--创建人id-->
+        <result property="createName" column="CREATE_NAME"/><!--创建人名称-->
+        <result property="updateBy" column="UPDATE_BY"/><!--修改人id-->
+        <result property="updateName" column="UPDATE_NAME"/><!--修改人名称-->
+        <result property="createTime" column="CREATE_TIME"/><!--创建时间-->
+        <result property="updateTime" column="UPDATE_TIME"/><!--修改时间-->
+    </resultMap>
+
+    <select id="selectByTypeAttribute"  parameterType="map" resultMap="BaseResultMap" >
+        SELECT * FROM
+        <include refid="Base_Table_Name"/>
+        WHERE FLAG = #{flag} AND TYPE_ATTRIBUTE_CODE IN
+        <foreach item="item" index="index" collection="typeAttributes"
+                 open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </select>
+
+</mapper>
+

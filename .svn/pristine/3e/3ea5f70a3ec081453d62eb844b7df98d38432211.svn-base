@@ -1,0 +1,121 @@
+package com.yqjr.fin.mkmm.sales.services;
+
+import com.yqjr.fin.mkmm.sales.common.BeanUtil;
+import com.yqjr.fin.mkmm.sales.condition.ProjectBaseCondition;
+import com.yqjr.fin.mkmm.sales.entity.CommodityAcceptance;
+import com.yqjr.fin.mkmm.sales.entity.CommodityReview;
+import com.yqjr.fin.mkmm.sales.entity.ProjectBase;
+import com.yqjr.fin.mkmm.sales.rest.vo.CommodityAcceptanceVo;
+import com.yqjr.fin.mkmm.sales.rest.vo.CommodityInVo;
+import com.yqjr.scfw.common.exception.ValidationException;
+import com.yqjr.scfw.common.service.BaseService;
+import com.yqjr.fin.mkmm.sales.entity.CommodityIn;
+import com.yqjr.fin.mkmm.sales.mapper.CommodityInMapper;
+import com.yqjr.scfw.common.session.SessionHolder;
+import com.yqjr.scfw.common.session.UserContext;
+import com.yqjr.scfw.common.utils.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+
+@Service
+@Transactional(readOnly = true)
+public class CommodityInService extends BaseService<CommodityInMapper, CommodityIn, Long> {
+
+    @Autowired
+    CommodityInMapper commodityInMapper;
+    @Autowired
+    private ProjectBaseService projectBaseService;
+    @Autowired
+    private CommodityReviewService commodityReviewService;
+    @Autowired
+    private CommodityAcceptanceService commodityAcceptanceService;
+
+
+    public List<CommodityIn> selectByProjectCode(String projectCode){
+        return commodityInMapper.selectByProjectCode(projectCode);
+    }
+
+    public List<CommodityIn> queryCommodityInList(String commodityName){
+        CommodityIn commodityIn = new CommodityIn();
+        commodityIn.setCommodityName(commodityName);
+        UserContext userContext = SessionHolder.getUserContext();
+        commodityIn.setCompany(userContext.getComCode());
+        commodityIn.setAreaCode(userContext.getAreaCode());
+        commodityIn.setAreaName(userContext.getAreaName());
+        return commodityInMapper.queryCommodityInList(commodityIn);
+    }
+
+
+    /**
+     * 物料入库登记
+     * @param commodityInVo
+     */
+    @Transactional
+    public void submit(CommodityInVo commodityInVo) {
+        UserContext userContext = SessionHolder.getUserContext();
+        //待入库物料集合
+        List<CommodityAcceptanceVo> commodityAcceptanceVos = commodityInVo.getCommodityAcceptanceVos();
+        //入库项目
+        String projectCode = commodityInVo.getProjectCode();
+        //入库项目名称
+        String projectName = getProjectName(projectCode).getProjectName();
+
+        CommodityAcceptance commodityAcceptance = new CommodityAcceptance();
+        commodityAcceptance.setAcceptanceStatus("1");//入库中
+
+        CommodityReview commodityReview = new CommodityReview();
+        commodityReview.setProjectCode(projectCode);
+        commodityReview.setProjectName(projectName);
+        commodityReview.setAreaCode(userContext.getAreaCode());
+        commodityReview.setAreaName(userContext.getAreaName());
+        commodityReview.setCompany(userContext.getComCode());
+        commodityReview.setType("1");//入库审核
+        commodityReview.setFlag("1");//有效
+        commodityReview.setCommodityStatus("02");//待审核
+        commodityReview.setCustodian(userContext.getName());
+        CommodityAcceptanceVo commodityAcceptanceVo = new CommodityAcceptanceVo();
+        for (int i=0; i<commodityAcceptanceVos.size(); i++) {
+            commodityAcceptanceVo = commodityAcceptanceVos.get(i);
+            commodityReview.setCommodityTypeCode(commodityAcceptanceVo.getCommodityTypeCode());
+            commodityReview.setCommodityTypeName(commodityAcceptanceVo.getCommodityTypeName());
+            commodityReview.setCommodityCode(commodityAcceptanceVo.getCommodityCode());
+            commodityReview.setCommodityName(commodityAcceptanceVo.getCommodityName());
+            commodityReview.setAcceptanceId(commodityAcceptanceVo.getId());
+            commodityReview.setAmount(commodityAcceptanceVo.getAmount());
+            commodityReview.setInNumber(commodityAcceptanceVo.getAcceptanceNumber());
+            commodityReview.setInUnivalent(commodityAcceptanceVo.getInUnivalent());
+            commodityReview.setProvideOrganization(commodityAcceptanceVo.getProvideOrganization());
+            commodityReview.setAcceptancePerson(commodityAcceptanceVo.getAcceptancePerson());
+            commodityReviewService.insert(commodityReview);
+            //更改验收物料状态为入库中
+            commodityAcceptance.setId(commodityAcceptanceVo.getId());
+            commodityAcceptanceService.updateById(commodityAcceptance);
+        }
+
+    }
+
+
+    /**
+     * 根据项目编码查询项目名称
+     * @param projectCode
+     * @return
+     */
+    public ProjectBase getProjectName(String projectCode){
+        UserContext userContext = SessionHolder.getUserContext();
+        ProjectBaseCondition projectBaseCondition = new ProjectBaseCondition();
+        projectBaseCondition.setCompany(userContext.getComCode());
+        projectBaseCondition.setAreaCode(userContext.getAreaCode());
+        projectBaseCondition.setProjectCode(projectCode);
+        List<ProjectBase> projectBases = projectBaseService.selectList(projectBaseCondition);
+        if (projectBases.size()<=0) {
+            throw new ValidationException("入库项目不存在！");
+        }
+        return projectBases.get(0);
+    }
+
+
+
+}

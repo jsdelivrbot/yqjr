@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-store">
+    <meta HTTP-EQUIV="Pragma" CONTENT="no-cache">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+    <script src="/mkmm/ui/js/include/head.js"></script>
+    <title>一汽金融开发平台</title>
+</head>
+<body class="no-skin">
+<div class="page-content" id="mainContent">
+    <div class="widget-box transparent ui-sortable-handle" id="widget-box-search">
+        <div class="widget-header">
+            <h3 class="widget-title smaller lighter">&nbsp;查看</h3>
+        </div>
+        <div class="widget-body">
+            <div class="widget-main padding-6 no-padding-left no-padding-right">
+                <div class="space-6"></div>
+                <form id="inputForm" action="/mkmm/sales/activeMainReviews" method="post" class="form-horizontal">
+                    <input type="hidden" id="id" name="id">
+                    <input type="hidden" id="workFlowId" name="workFlowId">
+                    <input type="hidden" id="additionalId" name="additionalId"/>
+                    <input type="hidden" id="areaMainCode" name="areaMainCode" value="01"/>
+                    <div class="space-4"></div>
+                    <div class="row">
+                        <div class="form-group-2">
+                            <label class="col-sm-2 control-label no-padding-right">归属区域名称：</label>
+                            <div class="col-sm-3">
+                                <input readonly="true" id="areaMainName" name="areaMainName" type="text" maxlength="50"
+                                       class="form-control" value="测试"/>
+                            </div>
+                        </div>
+                        <div class="form-group-2">
+                            <label class="col-sm-2 control-label no-padding-right">活动代码：</label>
+                            <div class="col-sm-3">
+                                <input readonly="true" id="activeCode" name="activeCode" type="text" maxlength="50"
+                                       class="form-control" value="测试编码"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="space-4"></div>
+                    <div class="row">
+                        <div class="form-group-2">
+                            <label class="col-sm-2 control-label no-padding-right">活动名称：</label>
+                            <div class="col-sm-3">
+                                <input readonly="true" name="activeName" id="activeName" maxlength="50"
+                                       class="form-control "/>
+                            </div>
+                        </div>
+                        <div class="form-group-2">
+                            <label class="col-sm-2 control-label no-padding-right">首付比例(%)：</label>
+                            <div class="col-sm-3">
+                                <div class="input-daterange input-group">
+                                    <input readonly="true" type="text" class="input-sm form-control" name="patmentBegin"
+                                           id="patmentBegin"/>
+                                    <span class="input-group-addon">
+										<i class="fa fa-minus"></i>
+									</span>
+                                    <input readonly="true" type="text" class="input-sm form-control" name="patmentEnd"
+                                           id="patmentEnd"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="space-4"></div>
+                    <div class="row">
+                        <div class="form-group-2">
+                            <label class="col-sm-2 control-label no-padding-right">贷款金额(元)：</label>
+                            <div class="col-sm-3">
+                                <div class="input-daterange input-group">
+                                    <input readonly="true" type="text" class="input-sm form-control" name="loanAmtBegin"
+                                           id="loanAmtBegin"/>
+                                    <span class="input-group-addon">
+										<i class="fa fa-minus"></i>
+									</span>
+                                    <input readonly="true" type="text" class="input-sm form-control" name="loanAmtEnd"
+                                           id="loanAmtEnd"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group-2">
+                            <label class="col-sm-2 control-label no-padding-right">贷款期限(月)：</label>
+                            <div class="col-sm-3">
+                                <div class="input-daterange input-group">
+                                    <input readonly="true" type="text" class="input-sm form-control"
+                                           name="loanTermBegin" id="loanTermBegin"/>
+                                    <span class="input-group-addon">
+										<i class="fa fa-minus"></i>
+									</span>
+                                    <input readonly="true" type="text" class="input-sm form-control" name="loanTermEnd"
+                                           id="loanTermEnd"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="space-4"></div>
+                    <div class="row">
+                        <div class="form-group-2">
+                            <label class="col-sm-2 control-label no-padding-right">受理开始日期：</label>
+                            <div class="col-sm-3">
+                                <div class="input-group">
+                                    <input disabled="true" type="text" id="activeStartime" name="activeStartime"
+                                           maxlength="50" class="form-control date-picker"/>
+                                    <span class="input-group-addon">
+										<i class="fa fa-calendar bigger-110"></i>
+									</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group-2">
+                            <label class="col-sm-2 control-label no-padding-right">受理截止日期：</label>
+                            <div class="col-sm-3">
+                                <div class="input-group">
+                                    <input disabled="true" class="form-control date-picker" name="activeEndtime"
+                                           id="activeEndtime" type="text" data-date-format="dd-mm-yyyy">
+                                    <span class="input-group-addon">
+										<i class="fa fa-calendar bigger-110"></i>
+									</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="space-4"></div>
+                    <div class="row">
+                        <div class="form-group-2">
+                            <label class="col-sm-2 control-label no-padding-right">放款开始日期：</label>
+                            <div class="col-sm-3">
+                                <div class="input-group">
+                                    <input disabled="true" class="form-control date-picker" name="loanStartime"
+                                           id="loanStartime" type="text" data-date-format="dd-mm-yyyy">
+                                    <span class="input-group-addon">
+										<i class="fa fa-calendar bigger-110"></i>
+									</span>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="form-group-2">
+                            <label class="col-sm-2 control-label no-padding-right">放款截止日期：</label>
+                            <div class="col-sm-3">
+                                <div class="input-group">
+                                    <input disabled="true" class="form-control date-picker" name="loanEndtime"
+                                           id="loanEndtime" type="text" data-date-format="yyyy-mm-dd">
+                                    <span class="input-group-addon">
+										<i class="fa fa-calendar bigger-110"></i>
+									</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="space-4"></div>
+                    <div class="row">
+                        <div class="form-group-2">
+                            <label class="col-sm-2 control-label no-padding-right">车籍：</label>
+                            <div class="col-sm-3">
+                                <select disabled="true" name="carReg" id="carReg" maxlength="50" class="form-control ">
+                                    <option value="00">全部</option>
+                                    <option value="01">法人</option>
+                                    <option value="02">自然人</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group-2">
+                            <label class="col-sm-2 control-label no-padding-right">促销活动激励标准：</label>
+                            <div class="col-sm-3">
+                                <input readonly="true" name="avtiveCriterion" id="avtiveCriterion" maxlength="50"
+                                       class="form-control"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="space-4"></div>
+                    <div class="row">
+                        <div class="form-group-2">
+                            <label class="col-sm-2 control-label no-padding-right">预计活动笔数：</label>
+                            <div class="col-sm-3">
+                                <input readonly="true" name="expectedCount" id="expectedCount" maxlength="50"
+                                       class="form-control"/>
+                            </div>
+                        </div>
+                        <div class="form-group-2">
+                            <label class="col-sm-2 control-label no-padding-right">经销商导入：</label>
+                            <div class="col-sm-3">
+                                <select disabled="true" name="inputDeale" id="inputDeale" class="form-control ">
+                                    <option value="1">是</option>
+                                    <option value="0">否</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="div_activeDeale">
+                        <h3 class="header smaller lighter blue">
+                            经销商信息
+                        </h3>
+                        <table id="activeDealeReviewTable" class="table  table-bordered table-hover"
+                               style="margin-left: 12px;margin-right: 12px">
+
+                        </table>
+                    </div>
+                    <div class="space-4"></div>
+                    <div id="div_area">
+                        <h3 class="header smaller lighter blue">
+                            区域信息
+                        </h3>
+                        <div class="row">
+                            <div class="form-group-2">
+                                <label class="col-sm-2 control-label no-padding-right">活动范围：</label>
+                                <div class="col-sm-3">
+                                    <select disabled name="inputArea" id="inputArea" class="form-control ">
+                                        <option value="1">区域</option>
+                                        <option value="0">省市</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="space-4"></div>
+                        <div id="areaDiv" class="row">
+                            <label class="col-sm-2 control-label no-padding-right">活动区域：</label>
+                            <div class="col-sm-8">
+                                <!--<input type="hidden" name="areaCode" id="areaCode"class="form-control">-->
+                                <textarea name="areaName" id="areaName" readonly="true" class="form-control"
+                                          style="resize: none;"></textarea>
+                            </div>
+                        </div>
+                        <div class="space-4"></div>
+                        <div id="cityDiv">
+                            <div class="row">
+                                <label class="col-sm-2 control-label no-padding-right">活动省份：</label>
+                                <div class="col-sm-8">
+                                    <!--<input type="hidden" name="provinceCode" id="provinceCode" class="form-control">-->
+                                    <textarea name="provinceName" id="provinceName" readonly="true" class="form-control"
+                                              style="resize: none;"></textarea>
+                                </div>
+                            </div>
+                            <div class="space-4"></div>
+                            <div class="row">
+                                <label class="col-sm-2 control-label no-padding-right">活动城市：</label>
+                                <div class="col-sm-8">
+                                    <!--<input type="hidden" name="cityCode" id="cityCode" class="form-control">-->
+                                    <textarea name="cityName" id="cityName" readonly="true" class="form-control"
+                                              style="resize: none;"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 class="header smaller lighter blue">
+                        品牌信息
+                    </h3>
+                    <div class="space-4"></div>
+                    <div class="row">
+                        <label class="col-sm-2 control-label no-padding-right">活动品牌：</label>
+                        <div class="col-sm-8">
+                            <!--<input type="hidden" name="brandsCode" id="brandsCode" class="form-control">-->
+                            <textarea name="brandsName" id="brandsName" readonly="true" class="form-control"
+                                      style="resize: none;"></textarea>
+                        </div>
+                    </div>
+                    <div class="space-4"></div>
+                    <div class="row">
+                        <label class="col-sm-2 control-label no-padding-right">活动子品牌：</label>
+                        <div class="col-sm-8">
+                            <!--<input type="hidden" name="seriesCode" id="seriesCode" class="form-control">-->
+                            <textarea name="seriesName" id="seriesName" readonly="true" class="form-control"
+                                      style="resize: none;"></textarea>
+                        </div>
+                    </div>
+                    <div class="space-4"></div>
+                    <div class="row">
+                        <label class="col-sm-2 control-label no-padding-right">活动车型：</label>
+                        <div class="col-sm-8">
+                            <!--<input type="hidden" name="moderCode" id="moderCode" class="form-control">-->
+                            <textarea name="moderName" id="moderName" readonly="true" class="form-control"
+                                      style="resize: none;"></textarea>
+                        </div>
+                    </div>
+                    <h3 class="header smaller lighter blue">
+                        产品信息
+                    </h3>
+                    <div class="space-4"></div>
+                    <div class="row">
+                        <label class="col-sm-2 control-label no-padding-right">金融产品：</label>
+                        <div class="col-sm-8">
+                            <select disabled="true" name="financeProdCode" id="financeProdCode" class="form-control"
+                                    multiple="multiple">
+                                <option value="00">金融产品1</option>
+                                <option value="01">金融产品2</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="space-4"></div>
+                    <div class="row">
+                        <label class="col-sm-2 control-label no-padding-right">业务模式：</label>
+                        <div class="col-sm-8">
+                            <select disabled="true" name="businessCode" id="businessCode" class="form-control"
+                                    multiple="multiple">
+                                <option value="0" selected>业务1</option>
+                                <option value="1" selected>业务2</option>
+                                <option value="2" selected>业务3</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="space-4"></div>
+                    <div class="row">
+                        <label class="col-sm-2 control-label no-padding-right">信贷产品：</label>
+                        <div class="col-sm-8">
+                            <select disabled="true" name="creditProdCode" id="creditProdCode" class="form-control"
+                                    multiple="multiple">
+                                <option value="00">信贷产品1</option>
+                                <option value="01">信贷产品2</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="space-4"></div>
+                    <div class="row">
+                        <label class="col-sm-2 control-label no-padding-right">营销活动：</label>
+                        <div class="col-sm-8">
+                            <select disabled="true" name="marketingCode" id="marketingCode" class="form-control"
+                                    multiple="multiple">
+                                <option value="00">营销活动1</option>
+                                <option value="01">营销活动2</option>
+                                <option value="02">营销活动3</option>
+                                <option value="03">营销活动4</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="space-4"></div>
+                    <div class="row">
+                        <label class="col-sm-2 control-label no-padding-right">附加贷：</label>
+                        <div class="col-sm-1">
+                            <div class="input-group">
+                                <select disabled="true" name="additionFlag" id="additionFlag" class="form-control">
+                                    <option value="0">否</option>
+                                    <option value="1">是</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div id="div_addition_amt">
+                            <div class="col-sm-2">
+                                <label class="col-sm-8 control-label no-padding-right">附加贷金额：</label>
+                            </div>
+                            <div class="col-sm-5">
+                                <div class="input-group input-daterange">
+                                    <input readonly="true" type="text" class="input-sm form-control"
+                                           id="additionAmtBegin" name="additionAmtBegin"/>
+                                    <span class="input-group-addon">
+										<i class="fa fa-minus"></i>
+									</span>
+                                    <input readonly="true" type="text" class="input-sm form-control" id="additionAmtEnd"
+                                           name="additionAmtEnd"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="space-4"></div>
+                    <div id="div_addition_list">
+                        <div class="row">
+                            <label class="col-sm-2 control-label no-padding-right">附加贷子项：</label>
+                            <div class="col-sm-8">
+                                <select disabled="true" name="additionalCode" id="additionalCode" class="form-control"
+                                        multiple="multiple">
+                                    <option value="00">附加贷子项0</option>
+                                    <option value="01">附加贷子项1</option>
+                                    <option value="02">附加贷子项2</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="space-4"></div>
+                    <h3 class="header smaller lighter blue">
+                        附件信息
+                    </h3>
+                    <div class="row">
+                        <label class="col-sm-2 control-label no-padding-right">附件列表：</label>
+                        <div class="col-sm-3">
+                            <button type="button" id="btn_add_appendix" class="btn btn-xs btn-success" >查看附件</button>
+                        </div>
+                    </div>
+                    <div class="space-4"></div>
+                    <div class="row">
+                        <label class="col-sm-2 control-label no-padding-right">备注：</label>
+                        <div class="col-sm-8">
+                            <textarea readonly style="height:100px;" name="remark" class="form-control" id="remark" maxlength="265"></textarea>
+                        </div>
+                    </div>
+                    <div class="space-4"></div>
+                    <div class="widget-header">
+                        <h3 class="widget-title smaller lighter">&nbsp;审核信息</h3>
+                    </div>
+                    <table id="activeWorkFlowTable"></table>
+                    <div id="pager"></div>
+                    <div class="space-4"></div>
+                    <div class="clearfix form-actions">
+                        <div class="col-md-offset-4 col-md-8">
+                            &nbsp; &nbsp; &nbsp;
+                            <button class="btn" type="button" onclick="history.go(-1)">
+                                <i class="ace-icon fa fa-undo bigger-110"></i>
+                                返回
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="/mkmm/ui/js/activemainreview/activeMainReviewCommon.js"></script>
+<script src="/mkmm/ui/js/activemainreview/activeMainReviewProcessView.js"></script>
+<script src="/mkmm/ui/js/util/util.js"></script>
+</html>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yqjr.fin.qcms.credit.dao.ShowScoreModelDao">
+    <resultMap id="scoreModelMap" type="com.yqjr.fin.qcms.credit.dto.ShowScoreModelDto">
+        <result column="SCORE_MAJOR_TERM_NAME" property="scoreModelMajorName" />
+        <result column="SCORE_SUBITEM_NAME" property="scoreSubitemName" />
+        <result column="RULE_FACTOR_NAME" property="ruleFactorName" />
+    </resultMap>
+    <select id="showScoreModel" resultMap="scoreModelMap" parameterType="java.lang.Long">
+    SELECT
+    sm.score_major_term_name,sub.score_subitem_name,eig.rule_factor_name
+    FROM
+    QCMS_SCORE_MODEL X ,QCMS_SCORE_MAJOR_TERM SM ,QCMS_SCORE_SUBITEM SUB,QCMS_EIGENVALUE EIG
+    WHERE
+    X.ID=#{scoreModelId}
+    AND
+    SM.SCORE_MODEL_ID=X.ID
+    AND
+    SUB.SCORE_MAJOR_TERM_ID=SM.ID
+    </select>
+</mapper>

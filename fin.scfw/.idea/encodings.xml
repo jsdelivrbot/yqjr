@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/fin.mkmm-sales" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/fin.mkmm-sales-model" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/fin.mkmm-sales-ui" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/fin.risk-stat" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/fin.risk-stat-model" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/fin.scfw-auth" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/fin.scfw-common" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/fin.scfw-config" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/fin.scfw-eureka" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/fin.scfw-isomer" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/fin.scfw-isomer-model" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/fin.scfw-meta" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/fin.scfw-meta-model" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/fin.scfw-meta-ui" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/fin.scfw-zuul" charset="UTF-8" />
+  </component>
+</project>

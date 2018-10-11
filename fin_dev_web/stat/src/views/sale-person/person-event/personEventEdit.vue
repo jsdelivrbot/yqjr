@@ -1,0 +1,142 @@
+<style lang="less">
+    @import '../../../styles/common.less';
+</style>
+<template>
+    <div>
+        <Form  ref="personEventEditData"  :rules="ruleValidate" :model="personEventEditData"  :label-width="100">
+            <Card>
+                <p slot="title">
+                    <Icon type="edit"></Icon>
+                    团队基本信息
+                </p>
+                <Row>
+                    <Col span="8" offset="2">
+                        <FormItem label="事项年度：" >
+                            <Input v-model="personEventEditData.eventYear" disabled ></Input>
+                        </FormItem>
+                    </Col>
+                    <Col span="8" offset="2">
+                        <FormItem label="处理单位" >
+                            <Input v-model="personEventEditData.eventApart" disabled ></Input>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span="8" offset="2">
+                        <FormItem label="事项分类：" >
+                            <Select v-model="personEventEditData.transcode1" style="width:100%" >
+                                <Option v-for="item in eventTypeList" :value="item.value" :key="item.value">{{ item.label }}</Option>
+                            </Select>
+                        </FormItem>
+                    </Col>
+                    <Col span="8" offset="2">
+                        <FormItem label="处理时间：" >
+                            <Input v-model="personEventEditData.createTime" disabled ></Input>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span="18" offset="2">
+                        <FormItem label="事项内容：" prop="brandsText">
+                            <Input v-model="personEventEditData.brandsText" type="textarea" style="width: 100%" :autosize="{minRows: 2,maxRows: 6}"></Input>
+                        </FormItem>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span="4" offset="9">
+                        <Button type="primary" icon="checkmark" @click="personEventEditSubToRev('personEventEditData')">提交</Button>
+                    </Col>
+                    <Col span="4" >
+                        <Button type="primary" icon="reply" @click.prevent="pageBack">返回</Button>
+                    </Col>
+                </Row>
+            </Card>
+        </Form>
+    </div>
+</template>
+<script>
+    import { mapActions, mapState } from 'vuex';
+    import {resetWorkHeight} from '@/libs/util.js';
+    export default{
+        name: 'personEventEdit',
+        data () {
+            const validateRemark = (rule, value, callback) => {
+                if (value.length > 265) {
+                    callback(new Error('事项内容最大长度265!'));
+                }
+                callback();
+            };
+            return {
+                ruleValidate: {
+                    brandsText: [
+                        { required: true, message: '请填写备注!', trigger: 'blur' },
+                        { validator: validateRemark }
+                    ]
+                },
+                eventTypeList: [{
+                    value: '0',
+                    label: '奖励'
+                }, {
+                    value: '1',
+                    label: '处罚'
+                }, {
+                    value: '2',
+                    label: '其他'
+                }]
+            };
+        },
+        computed: {
+            ...mapState({
+                loading: ({personEventEdit}) => personEventEdit.loading,
+                personEventEditData: ({personEventEdit}) => personEventEdit.personEventEditData,
+                msg: ({personEventEdit}) => personEventEdit.msg,
+                isSuccess: ({personEventEdit}) => personEventEdit.isSuccess
+
+            })
+        },
+        methods: {
+            ...mapActions([
+                'handelQueryPersonEventById',
+                'handlePersonEventEditSubToRev'
+            ]),
+            init () {
+                this.queryPersonEventEditById(this.$route.query.id);
+                resetWorkHeight();
+            },
+            queryPersonEventEditById (id) {
+                this.handelQueryPersonEventById(id);
+            },
+            personEventEditSubToRev (name) {
+                this.$refs[name].validate((valid) => {
+                    if (valid) {
+                        console.log(this.personEventEditData);// 此数据提交
+                        this.handlePersonEventEditSubToRev(this.personEventEditData).then(res => {
+                            if (this.isSuccess) {
+                                this.$Modal.success({
+                                    title: '消息',
+                                    content: this.msg,
+                                    onOk: () => {
+                                        this.$router.push({name: 'personEventList'});
+                                    }
+                                });
+                            } else {
+                                this.$Modal.error({
+                                    title: '消息',
+                                    content: this.msg
+                                });
+                            }
+                        });
+                    } else {
+                        this.$Message.error('验证错误!');
+                    }
+                });
+            },
+            pageBack () {
+                this.$router.push({name: 'personEventList'});
+            }
+        },
+        mounted () {
+            this.init();
+        }
+    };
+</script>

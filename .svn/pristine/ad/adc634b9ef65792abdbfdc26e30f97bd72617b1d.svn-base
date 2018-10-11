@@ -1,0 +1,63 @@
+<template>
+    <div>
+        <Row>
+            <iframe :src="src" id="show-iframe" frameborder="no" border="0"marginwidth="0" marginheight="0" width="100%" height="100%"></iframe>
+        </Row>
+    </div>
+</template>
+
+
+<script>
+    export default {
+        name: 'ifream',
+        data () {
+            return {
+                src:''
+            }
+        },
+        methods : {
+            showUrl(){
+                let pathName = this.$route.params.pathName;
+                this.$store.state.app.menuList.filter(item =>{
+                    if(item.children.length===1){
+                        this.src = item.path;
+                    }else{
+                        item.children.forEach(child => {
+                            if (child.name === pathName) {
+                            this.src = child.path;
+                            }
+                        });
+                    }
+                });
+            },
+            changeIfream(){
+                var oIframe = document.getElementById('show-iframe');
+                var deviceHeight = document.documentElement.clientHeight;
+                console.log("deviceHeight"+deviceHeight);
+                oIframe.style.height = (deviceHeight) + 'px';
+            },
+            init(){
+                this.showUrl();
+                this.changeIfream();
+            },
+            resize(e){
+                if (e.data.act == 'resize') {
+                    var oIframe = document.getElementById('show-iframe');
+                    oIframe.style.height = e.data.msg.size + 'px';
+                }
+            }
+        },
+        watch:{
+            '$route' (to) {
+                this.showUrl();
+            }
+        },
+        mounted () {
+            this.init();
+            window.addEventListener('message',this.resize)
+        },
+        dispatch () {
+            window.removeEventListener('message', this.resize);
+        }
+    };
+</script>

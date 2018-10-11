@@ -1,0 +1,19 @@
+management:
+  security:
+    enabled: false
+spring:
+  redis:
+    cluster:
+      nodes: 10.20.133.85:7000, 10.20.133.85:7002, 10.20.133.85:7003, 10.20.133.85:7004, 10.20.133.85:7005
+  sleuth:
+    sampler:
+      percentage: 1.0
+#  rabbitmq:
+#    host: 10.21.120.79
+#    port: 5678
+#    virtual-host: scfw_host
+#    username: scfw
+#    password: scfw
+#  zipkin:
+#    rabbitmq:
+#      queue: zipkin

@@ -1,0 +1,53 @@
+import {apiUpdatePersonStatus, apiPersonReviewToSubmit} from '../../../../api/sale-person/person-review/personReviewApi';
+const personReviewEdit = {
+    state: {
+        msg: '',
+        isSuccess: false,
+        loading: false
+    },
+    actions: {
+        handelUpdatePersonStatus ({ commit }, personCode) {
+            commit('sendin');
+            return new Promise((resolve, reject) => {
+                apiUpdatePersonStatus(personCode).then(res => {
+                    commit('setUpdatePersonStatus', res);
+                    commit('success');
+                    resolve();
+                }).catch(err => {
+                    commit('success');
+                    reject(err);
+                });
+            });
+        },
+        handelPersonReviewToSubmit ({ commit }, data) {
+            commit('sendin');
+            return new Promise((resolve, reject) => {
+                apiPersonReviewToSubmit(data).then(res => {
+                    commit('setPersonReviewToSubmit', res);
+                    commit('success');
+                    resolve();
+                }).catch(err => {
+                    commit('success');
+                    reject(err);
+                });
+            });
+        }
+    },
+    mutations: {
+        setUpdatePersonStatus (state, data) {
+            state.msg = data.msg;
+            state.isSuccess = data.isSuccess;
+        },
+        setPersonReviewToSubmit (state, data) {
+            state.msg = data.msg;
+            state.isSuccess = data.isSuccess;
+        },
+        sendin (state) {
+            state.loading = true;
+        },
+        success (state) {
+            state.loading = false;
+        }
+    }
+};
+export default personReviewEdit;

@@ -1,0 +1,1717 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" readonly="true" id="9a0e96ed-b40b-4e50-8ea3-5b064755aa2e" name="Default" comment="归属需求：风险预警指标需求&#10;提交内容：指标mapper&#10;提交人：邹运&#10;提交文件个数：1个  JAVA：">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fin.mkmm-sales/src/main/resources/application.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fin.mkmm-sales/src/main/resources/bootstrap.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fin.risk-stat/src/main/java/com/yqjr/fin/risk/stat/condition/FctAltCustomCondition.java" beforeDir="false" afterPath="$PROJECT_DIR$/fin.risk-stat/src/main/java/com/yqjr/fin/risk/stat/condition/FctAltCustomCondition.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fin.risk-stat/src/main/java/com/yqjr/fin/risk/stat/entity/Indicators.java" beforeDir="false" afterPath="$PROJECT_DIR$/fin.risk-stat/src/main/java/com/yqjr/fin/risk/stat/entity/Indicators.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fin.risk-stat/src/main/java/com/yqjr/fin/risk/stat/rest/IndicatorsRest.java" beforeDir="false" afterPath="$PROJECT_DIR$/fin.risk-stat/src/main/java/com/yqjr/fin/risk/stat/rest/IndicatorsRest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fin.risk-stat/src/main/resources/mapper/FctAltCustomMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/fin.risk-stat/src/main/resources/mapper/FctAltCustomMapper.xml" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/fin.scfw-auth/target/" />
+    <ignored path="$PROJECT_DIR$/fin.scfw-config/target/" />
+    <ignored path="$PROJECT_DIR$/fin.scfw-isomer/target/" />
+    <ignored path="$PROJECT_DIR$/fin.risk-stat-model/target/" />
+    <ignored path="$PROJECT_DIR$/fin.scfw-common/target/" />
+    <ignored path="$PROJECT_DIR$/fin.scfw-zuul/target/" />
+    <ignored path="$PROJECT_DIR$/fin.scfw-meta-model/target/" />
+    <ignored path="$PROJECT_DIR$/fin.mkmm-sales-model/target/" />
+    <ignored path="$PROJECT_DIR$/fin.scfw-meta/target/" />
+    <ignored path="$PROJECT_DIR$/target/" />
+    <ignored path="$PROJECT_DIR$/fin.mkmm-sales-ui/target/" />
+    <ignored path="$PROJECT_DIR$/fin.scfw-isomer-model/target/" />
+    <ignored path="$PROJECT_DIR$/fin.risk-stat/target/" />
+    <ignored path="$PROJECT_DIR$/fin.mkmm-sales/target/" />
+    <ignored path="$PROJECT_DIR$/fin.scfw-meta-ui/target/" />
+    <ignored path="$PROJECT_DIR$/fin.scfw-eureka/target/" />
+    <ignored path="$PROJECT_DIR$/.idea/httpRequests/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="fin.scfw" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="ScheduleJob.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/fin.risk-stat/src/main/java/com/yqjr/fin/risk/stat/entity/ScheduleJob.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1843">
+              <caret line="97" column="42" lean-forward="true" selection-start-line="97" selection-start-column="42" selection-end-line="97" selection-end-column="42" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IndicatorsRest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/fin.risk-stat/src/main/java/com/yqjr/fin/risk/stat/rest/IndicatorsRest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="798">
+              <caret line="63" selection-start-line="63" selection-end-line="63" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ScheduleJobRest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/fin.risk-stat/src/main/java/com/yqjr/fin/risk/stat/rest/ScheduleJobRest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="380">
+              <caret line="124" column="28" selection-start-line="124" selection-start-column="28" selection-end-line="124" selection-end-column="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ScheduleJobService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/fin.risk-stat/src/main/java/com/yqjr/fin/risk/stat/services/ScheduleJobService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="385">
+              <caret line="61" column="31" selection-start-line="61" selection-start-column="31" selection-end-line="61" selection-end-column="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ScheduleUtils.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/fin.risk-stat/src/main/java/com/yqjr/fin/risk/stat/utils/ScheduleUtils.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="290">
+              <caret line="148" column="44" lean-forward="true" selection-start-line="148" selection-start-column="44" selection-end-line="148" selection-end-column="44" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TimeSetting.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/fin.risk-stat/src/main/java/com/yqjr/fin/risk/stat/utils/TimeSetting.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="76">
+              <caret line="16" column="58" selection-start-line="16" selection-start-column="58" selection-end-line="16" selection-end-column="58" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IndicatorsService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/fin.risk-stat/src/main/java/com/yqjr/fin/risk/stat/services/IndicatorsService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="570">
+              <caret line="48" column="50" selection-start-line="48" selection-start-column="50" selection-end-line="48" selection-end-column="50" />
+              <folding>
+                <element signature="e#1802#1803#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IndicatorsMapper.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/fin.risk-stat/src/main/java/com/yqjr/fin/risk/stat/mapper/IndicatorsMapper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="285">
+              <caret line="22" column="25" selection-start-line="22" selection-start-column="16" selection-end-line="22" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BaseService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/fin.scfw-common/src/main/java/com/yqjr/scfw/common/service/BaseService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3743">
+              <caret line="224" selection-start-line="224" selection-end-line="224" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Indicators.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/fin.risk-stat/src/main/java/com/yqjr/fin/risk/stat/entity/Indicators.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3762">
+              <caret line="202" selection-start-line="202" selection-end-line="202" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>Base_Select_All</find>
+      <find>selectLikeByNameAndCode</find>
+      <find>selectBy</find>
+      <find>insert</find>
+      <find>selectById</find>
+      <find>BaseResultMap2</find>
+      <find>meta</find>
+      <find>common</find>
+      <find>scfw-common</find>
+      <find>SelectByName</find>
+      <find>model</find>
+      <find>selAll</find>
+      <find>Base_Column_Set_Values_Selective</find>
+      <find>selectById2</find>
+      <find>ueryLikeFctAltCustomTime</find>
+      <find>selA</find>
+      <find>SelectLikeByNameAndCode</find>
+      <find>modifiername</find>
+      <find>selectByEventid</find>
+      <find>selectFctAltCustomByEventid</find>
+      <find>Base_Column_List</find>
+      <find>/InsertIndicatorLogsRest</find>
+      <find>Base_Column_List_Selective</find>
+      <find>alerttime</find>
+      <find>updateHandlestateByEventid</find>
+      <find>selectFctAltCustomByChandlestate</find>
+      <find>queryLikeFctAltCustomTime1</find>
+      <find>chaXunFctAltCustomFenYe</find>
+      <find>comcode</find>
+      <find>queryLikeFctAltCustomTime</find>
+    </findStrings>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/fin.risk-stat/src/main/java/com/yqjr/fin/risk/stat/entity/BaseEntity.java" />
+        <option value="$PROJECT_DIR$/fin.scfw-zuul/src/main/resources.test/bootstrap.yml" />
+        <option value="$PROJECT_DIR$/fin.risk-stat/src/main/java/com/yqjr/fin/risk/stat/model/IndicatorsEx.java" />
+        <option value="$PROJECT_DIR$/fin.risk-stat/src/main/java/com/yqjr/fin/risk/stat/mapper/IndicatorTypesMapper.java" />
+        <option value="$PROJECT_DIR$/fin.risk-stat/src/main/java/com/yqjr/fin/risk/stat/services/IndicatorTypesService.java" />
+        <option value="$PROJECT_DIR$/fin.risk-stat/src/main/resources/mapper/IndicatorTypesMapper.xml" />
+        <option value="$PROJECT_DIR$/fin.risk-stat/src/main/java/com/yqjr/fin/risk/stat/mapper/FctAltCustomMapper.java" />
+        <option value="$PROJECT_DIR$/fin.risk-stat/src/main/resources/application.yml" />
+        <option value="$PROJECT_DIR$/fin.risk-stat/src/main/java/com/yqjr/fin/risk/stat/rest/IndicatorTypesRest.java" />
+        <option value="$PROJECT_DIR$/fin.risk-stat/src/main/java/com/yqjr/fin/risk/stat/condition/IndicatorsCondition.java" />
+        <option value="$PROJECT_DIR$/fin.risk-stat/src/main/java/com/yqjr/fin/risk/stat/entity/IndicatorRanges.java" />
+        <option value="$PROJECT_DIR$/fin.risk-stat/src/main/java/com/yqjr/fin/risk/stat/condition/IndicatorRangesCondition.java" />
+        <option value="$PROJECT_DIR$/fin.scfw-meta/src/main/java/com/yqjr/fin/scfw/meta/Application.java" />
+        <option value="$PROJECT_DIR$/fin.risk-stat/src/main/java/com/yqjr/fin/risk/stat/services/FctAltCustomService.java" />
+        <option value="$PROJECT_DIR$/fin.risk-stat/src/main/java/com/yqjr/fin/risk/stat/mapper/IndicatorRangesMapper.java" />
+        <option value="$PROJECT_DIR$/fin.risk-stat/src/main/java/com/yqjr/fin/risk/stat/services/IndicatorRangesService.java" />
+        <option value="$PROJECT_DIR$/fin.risk-stat/src/main/java/com/yqjr/fin/risk/stat/rest/IndicatorRangesRest.java" />
+        <option value="$PROJECT_DIR$/fin.risk-stat/src/main/java/com/yqjr/fin/risk/stat/mapper/IndicatorsMapper.java" />
+        <option value="$PROJECT_DIR$/fin.risk-stat/src/main/java/com/yqjr/fin/risk/stat/services/IndicatorsService.java" />
+        <option value="$PROJECT_DIR$/fin.risk-stat/src/main/resources/mapper/IndicatorsMapper.xml" />
+        <option value="$PROJECT_DIR$/fin.risk-stat/src/main/resources/mapper/IndicatorRangesMapper.xml" />
+        <option value="$PROJECT_DIR$/fin.risk-stat/src/main/java/com/yqjr/fin/risk/stat/rest/ScheduleJobRest.java" />
+        <option value="$PROJECT_DIR$/fin.risk-stat/pom.xml" />
+        <option value="$PROJECT_DIR$/fin.risk-stat/src/main/java/com/yqjr/fin/risk/stat/condition/ScheduleJobCondition.java" />
+        <option value="$PROJECT_DIR$/fin.risk-stat/src/main/java/com/yqjr/fin/risk/stat/rest/FctAltCustomRest.java" />
+        <option value="$PROJECT_DIR$/fin.risk-stat/src/main/resources/mapper/FctAltCustomMapper.xml" />
+        <option value="$PROJECT_DIR$/fin.risk-stat/src/main/java/com/yqjr/fin/risk/stat/condition/FctAltCustomCondition.java" />
+        <option value="$PROJECT_DIR$/fin.risk-stat/src/main/java/com/yqjr/fin/risk/stat/entity/Indicators.java" />
+        <option value="$PROJECT_DIR$/fin.risk-stat/src/main/java/com/yqjr/fin/risk/stat/rest/IndicatorsRest.java" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="E:\m2\repository" />
+        <option name="mavenHome" value="E:/apache-maven-3.5.4" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="fin.risk-stat" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="fin.risk-stat" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Plugins" type="7aea1407:MavenProjectsStructure$PluginsNode" />
+        </path>
+      </expand>
+      <select />
+    </treeState>
+  </component>
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths />
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="152" />
+    <option name="y" value="48" />
+    <option name="width" value="1939" />
+    <option name="height" value="1060" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="PackagesPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="fin.scfw" type="58d84e3e:PackageViewProjectNode" />
+              <item name="fin" type="eaaa3913:PackageViewModuleGroupNode" />
+            </path>
+            <path>
+              <item name="fin.scfw" type="58d84e3e:PackageViewProjectNode" />
+              <item name="fin" type="eaaa3913:PackageViewModuleGroupNode" />
+              <item name="fin.mkmm-sales" type="616d4139:PackageViewModuleNode" />
+            </path>
+            <path>
+              <item name="fin.scfw" type="58d84e3e:PackageViewProjectNode" />
+              <item name="fin" type="eaaa3913:PackageViewModuleGroupNode" />
+              <item name="fin.risk-stat" type="616d4139:PackageViewModuleNode" />
+            </path>
+            <path>
+              <item name="fin.scfw" type="58d84e3e:PackageViewProjectNode" />
+              <item name="fin" type="eaaa3913:PackageViewModuleGroupNode" />
+              <item name="fin.risk-stat" type="616d4139:PackageViewModuleNode" />
+              <item name="com.yqjr.fin.risk.stat" type="1f31426a:PackageElementNode" />
+            </path>
+            <path>
+              <item name="fin.scfw" type="58d84e3e:PackageViewProjectNode" />
+              <item name="fin" type="eaaa3913:PackageViewModuleGroupNode" />
+              <item name="fin.risk-stat" type="616d4139:PackageViewModuleNode" />
+              <item name="com.yqjr.fin.risk.stat" type="1f31426a:PackageElementNode" />
+              <item name="entity" type="1f31426a:PackageElementNode" />
+            </path>
+            <path>
+              <item name="fin.scfw" type="58d84e3e:PackageViewProjectNode" />
+              <item name="fin" type="eaaa3913:PackageViewModuleGroupNode" />
+              <item name="fin.risk-stat" type="616d4139:PackageViewModuleNode" />
+              <item name="com.yqjr.fin.risk.stat" type="1f31426a:PackageElementNode" />
+              <item name="mapper" type="1f31426a:PackageElementNode" />
+            </path>
+            <path>
+              <item name="fin.scfw" type="58d84e3e:PackageViewProjectNode" />
+              <item name="fin" type="eaaa3913:PackageViewModuleGroupNode" />
+              <item name="fin.risk-stat" type="616d4139:PackageViewModuleNode" />
+              <item name="com.yqjr.fin.risk.stat" type="1f31426a:PackageElementNode" />
+              <item name="rest" type="1f31426a:PackageElementNode" />
+            </path>
+            <path>
+              <item name="fin.scfw" type="58d84e3e:PackageViewProjectNode" />
+              <item name="fin" type="eaaa3913:PackageViewModuleGroupNode" />
+              <item name="fin.risk-stat" type="616d4139:PackageViewModuleNode" />
+              <item name="com.yqjr.fin.risk.stat" type="1f31426a:PackageElementNode" />
+              <item name="services" type="1f31426a:PackageElementNode" />
+            </path>
+            <path>
+              <item name="fin.scfw" type="58d84e3e:PackageViewProjectNode" />
+              <item name="fin" type="eaaa3913:PackageViewModuleGroupNode" />
+              <item name="fin.risk-stat" type="616d4139:PackageViewModuleNode" />
+              <item name="mapper" type="1f31426a:PackageElementNode" />
+            </path>
+            <path>
+              <item name="fin.scfw" type="58d84e3e:PackageViewProjectNode" />
+              <item name="fin" type="eaaa3913:PackageViewModuleGroupNode" />
+              <item name="fin.scfw-eureka" type="616d4139:PackageViewModuleNode" />
+            </path>
+            <path>
+              <item name="fin.scfw" type="58d84e3e:PackageViewProjectNode" />
+              <item name="fin" type="eaaa3913:PackageViewModuleGroupNode" />
+              <item name="fin.scfw-meta" type="616d4139:PackageViewModuleNode" />
+            </path>
+            <path>
+              <item name="fin.scfw" type="58d84e3e:PackageViewProjectNode" />
+              <item name="fin" type="eaaa3913:PackageViewModuleGroupNode" />
+              <item name="fin.scfw-meta" type="616d4139:PackageViewModuleNode" />
+              <item name="com.yqjr.fin.scfw.meta" type="1f31426a:PackageElementNode" />
+            </path>
+            <path>
+              <item name="fin.scfw" type="58d84e3e:PackageViewProjectNode" />
+              <item name="fin" type="eaaa3913:PackageViewModuleGroupNode" />
+              <item name="fin.scfw-zuul" type="616d4139:PackageViewModuleNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="AndroidView" />
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="fin.scfw" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fin.scfw" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="fin.scfw" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fin.scfw" type="462c0819:PsiDirectoryNode" />
+              <item name="fin.risk-stat" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="fin.scfw" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fin.scfw" type="462c0819:PsiDirectoryNode" />
+              <item name="fin.risk-stat" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="fin.scfw" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fin.scfw" type="462c0819:PsiDirectoryNode" />
+              <item name="fin.risk-stat" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="fin.scfw" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fin.scfw" type="462c0819:PsiDirectoryNode" />
+              <item name="fin.risk-stat" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="fin.scfw" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fin.scfw" type="462c0819:PsiDirectoryNode" />
+              <item name="fin.risk-stat" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="stat" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="fin.scfw" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fin.scfw" type="462c0819:PsiDirectoryNode" />
+              <item name="fin.risk-stat" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="stat" type="462c0819:PsiDirectoryNode" />
+              <item name="rest" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="fin.scfw" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fin.scfw" type="462c0819:PsiDirectoryNode" />
+              <item name="fin.scfw-common" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="fin.scfw" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fin.scfw" type="462c0819:PsiDirectoryNode" />
+              <item name="fin.scfw-common" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="fin.scfw" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fin.scfw" type="462c0819:PsiDirectoryNode" />
+              <item name="fin.scfw-common" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="fin.scfw" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fin.scfw" type="462c0819:PsiDirectoryNode" />
+              <item name="fin.scfw-common" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="fin.scfw" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fin.scfw" type="462c0819:PsiDirectoryNode" />
+              <item name="fin.scfw-common" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="scfw" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="fin.scfw" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fin.scfw" type="462c0819:PsiDirectoryNode" />
+              <item name="fin.scfw-common" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="scfw" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="fin.scfw" type="b2602c69:ProjectViewProjectNode" />
+              <item name="fin.scfw" type="462c0819:PsiDirectoryNode" />
+              <item name="fin.scfw-common" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="scfw" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelOrder2" value="2" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RequestMappingsPanelWidth2" value="75" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15039062" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="vcs.Subversion" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.yqjr.fin.risk.stat.entity" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\yqjr1\fin.scfw\fin.risk-stat\src\main\resources" />
+      <recent name="E:\yqjr1\fin.scfw\fin.risk-stat\src\main\resources\mapper" />
+    </key>
+  </component>
+  <component name="RestClientSettings">
+    <option name="REQUEST_HISTORY">
+      <list>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://localhost:50206/indicators/DeleteIndicatorsRest" />
+          <option name="urlPath" value="" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://localhost:50206/indicators/page" />
+          <option name="urlPath" value="" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://localhost:50201/indicatorss/InsertIndicatorsRest" />
+          <option name="urlPath" value="" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+      </list>
+    </option>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.Application (2)">
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+    </configuration>
+    <configuration name="All in fin.risk-stat" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="fin.risk-stat" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="package" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
+    </configuration>
+    <configuration name="Application (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="fin.scfw-zuul" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.yqjr.fin.scfw.zuul.Application" />
+    </configuration>
+    <configuration name="Application (2)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="fin.risk-stat" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.yqjr.fin.risk.stat.Application" />
+    </configuration>
+    <configuration name="Application (3)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="fin.scfw-eureka" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.yqjr.fin.scfw.eureka.Application" />
+    </configuration>
+    <configuration name="Application (4)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="fin.mkmm-sales" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.yqjr.fin.mkmm.sales.Application" />
+    </configuration>
+    <configuration name="Application (5)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="fin.scfw-common" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.yqjr.scfw.Application" />
+    </configuration>
+    <configuration name="Application (6)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="fin.scfw-auth" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.yqjr.fin.scfw.auth.Application" />
+    </configuration>
+    <configuration name="Application (7)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="fin.scfw-config" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.yqjr.fin.scfw.config.Application" />
+    </configuration>
+    <configuration name="Application (8)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="fin.scfw-isomer" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.yqjr.fin.scfw.isomer.Application" />
+    </configuration>
+    <configuration name="Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="fin.scfw-meta" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.yqjr.fin.scfw.meta.Application" />
+    </configuration>
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <properties />
+      <listeners />
+    </configuration>
+    <list>
+      <item itemvalue="Spring Boot.Application" />
+      <item itemvalue="Spring Boot.Application (1)" />
+      <item itemvalue="Spring Boot.Application (2)" />
+      <item itemvalue="Spring Boot.Application (3)" />
+      <item itemvalue="Spring Boot.Application (4)" />
+      <item itemvalue="Spring Boot.Application (5)" />
+      <item itemvalue="Spring Boot.Application (6)" />
+      <item itemvalue="Spring Boot.Application (7)" />
+      <item itemvalue="Spring Boot.Application (8)" />
+      <item itemvalue="JUnit.All in fin.risk-stat" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.All in fin.risk-stat" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration" cleanupOnStartRun="true">
+    <configuration>C:\Users\zouyun\AppData\Roaming\Subversion</configuration>
+    <supportedVersion>125</supportedVersion>
+  </component>
+  <component name="SvnFileUrlMappingImpl">
+    <option name="myMappingRoots">
+      <list>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="E:\yqjr1\fin.scfw" />
+          <option name="myCopyRoot" value="E:\yqjr1\fin.scfw" />
+        </SvnCopyRootSimple>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="E:\yqjr1\fin.scfw\fin.mkmm-sales-model" />
+          <option name="myCopyRoot" value="E:\yqjr1\fin.scfw\fin.mkmm-sales-model" />
+        </SvnCopyRootSimple>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="E:\yqjr1\fin.scfw\fin.risk-stat-model" />
+          <option name="myCopyRoot" value="E:\yqjr1\fin.scfw\fin.risk-stat-model" />
+        </SvnCopyRootSimple>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="E:\yqjr1\fin.scfw\fin.scfw-auth" />
+          <option name="myCopyRoot" value="E:\yqjr1\fin.scfw\fin.scfw-auth" />
+        </SvnCopyRootSimple>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="E:\yqjr1\fin.scfw\fin.scfw-common" />
+          <option name="myCopyRoot" value="E:\yqjr1\fin.scfw\fin.scfw-common" />
+        </SvnCopyRootSimple>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="E:\yqjr1\fin.scfw\fin.scfw-config" />
+          <option name="myCopyRoot" value="E:\yqjr1\fin.scfw\fin.scfw-config" />
+        </SvnCopyRootSimple>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="E:\yqjr1\fin.scfw\fin.scfw-isomer" />
+          <option name="myCopyRoot" value="E:\yqjr1\fin.scfw\fin.scfw-isomer" />
+        </SvnCopyRootSimple>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="E:\yqjr1\fin.scfw\fin.scfw-meta" />
+          <option name="myCopyRoot" value="E:\yqjr1\fin.scfw\fin.scfw-meta" />
+        </SvnCopyRootSimple>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="E:\yqjr1\fin.scfw\fin.scfw-meta-model" />
+          <option name="myCopyRoot" value="E:\yqjr1\fin.scfw\fin.scfw-meta-model" />
+        </SvnCopyRootSimple>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="E:\yqjr1\fin.scfw\fin.scfw-zuul" />
+          <option name="myCopyRoot" value="E:\yqjr1\fin.scfw\fin.scfw-zuul" />
+        </SvnCopyRootSimple>
+      </list>
+    </option>
+    <option name="myMoreRealMappingRoots">
+      <list>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="E:\yqjr1\fin.scfw" />
+          <option name="myCopyRoot" value="E:\yqjr1\fin.scfw" />
+        </SvnCopyRootSimple>
+      </list>
+    </option>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9a0e96ed-b40b-4e50-8ea3-5b064755aa2e" name="Default" comment="" />
+      <created>1533285320641</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1533285320641</updated>
+      <workItem from="1533285322039" duration="1041000" />
+      <workItem from="1533286700958" duration="595000" />
+      <workItem from="1533348115290" duration="47000" />
+      <workItem from="1533348188816" duration="7252000" />
+      <workItem from="1533362323995" duration="727000" />
+      <workItem from="1533363080692" duration="5815000" />
+      <workItem from="1533512222549" duration="1979000" />
+      <workItem from="1533514232378" duration="1150000" />
+      <workItem from="1533515409359" duration="18281000" />
+      <workItem from="1533598837135" duration="12891000" />
+      <workItem from="1533686240737" duration="587000" />
+      <workItem from="1533783429064" duration="14373000" />
+      <workItem from="1533858314542" duration="15085000" />
+      <workItem from="1534116806796" duration="2940000" />
+      <workItem from="1534121646790" duration="7978000" />
+      <workItem from="1534215079128" duration="16851000" />
+      <workItem from="1534290022646" duration="22702000" />
+      <workItem from="1534323402186" duration="3847000" />
+      <workItem from="1534375730428" duration="20368000" />
+      <workItem from="1534462539452" duration="23093000" />
+      <workItem from="1534721305945" duration="20470000" />
+      <workItem from="1534808119581" duration="13371000" />
+      <workItem from="1534842180133" duration="426000" />
+      <workItem from="1534896444595" duration="19475000" />
+      <workItem from="1534980422296" duration="14979000" />
+      <workItem from="1535067892869" duration="12301000" />
+      <workItem from="1535091107582" duration="2146000" />
+      <workItem from="1535327538535" duration="10183000" />
+      <workItem from="1535383556378" duration="607000" />
+      <workItem from="1535412839291" duration="2328000" />
+      <workItem from="1535501082689" duration="7047000" />
+      <workItem from="1535585827172" duration="7607000" />
+      <workItem from="1535673020848" duration="12093000" />
+      <workItem from="1535931529066" duration="17401000" />
+      <workItem from="1536019140075" duration="7434000" />
+      <workItem from="1536104741753" duration="12992000" />
+      <workItem from="1536131335383" duration="5139000" />
+      <workItem from="1536190450141" duration="15327000" />
+      <workItem from="1536277438376" duration="10136000" />
+      <workItem from="1536536931141" duration="19286000" />
+      <workItem from="1536623208758" duration="6567000" />
+      <workItem from="1536638124635" duration="3774000" />
+      <workItem from="1536651831831" duration="5132000" />
+      <workItem from="1536709690595" duration="20824000" />
+      <workItem from="1536796046766" duration="25365000" />
+      <workItem from="1536882963907" duration="6150000" />
+      <workItem from="1537141783456" duration="7032000" />
+      <workItem from="1537170782984" duration="577000" />
+      <workItem from="1537171440715" duration="3377000" />
+      <workItem from="1537228376924" duration="6422000" />
+      <workItem from="1537318329317" duration="1190000" />
+      <workItem from="1537319548982" duration="501000" />
+      <workItem from="1537320311614" duration="3331000" />
+      <workItem from="1537333584918" duration="4121000" />
+      <workItem from="1537405893739" duration="2686000" />
+      <workItem from="1537409948729" duration="4282000" />
+      <workItem from="1537430389410" duration="2182000" />
+      <workItem from="1538006994941" duration="2993000" />
+      <workItem from="1538122233719" duration="3918000" />
+      <workItem from="1538192099466" duration="7438000" />
+      <workItem from="1538957678169" duration="7621000" />
+      <workItem from="1539051032555" duration="8799000" />
+      <workItem from="1539131242307" duration="2093000" />
+      <workItem from="1539216062522" duration="2828000" />
+    </task>
+    <task id="LOCAL-00074" summary="rest">
+      <created>1534301340776</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1534301340776</updated>
+    </task>
+    <task id="LOCAL-00075" summary="rest">
+      <created>1534301687706</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1534301687706</updated>
+    </task>
+    <task id="LOCAL-00076" summary="邹运 代码提交一个">
+      <created>1534303369409</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1534303369409</updated>
+    </task>
+    <task id="LOCAL-00077" summary="rest">
+      <created>1534313362125</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1534313362125</updated>
+    </task>
+    <task id="LOCAL-00078" summary="归属需求：风险预警系统指标需求&#10;提交内容：指标mapper&#10;提交人：邹运&#10;提交文件个数：1个  JAVA">
+      <created>1534313460743</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1534313460743</updated>
+    </task>
+    <task id="LOCAL-00079" summary="归属需求：风险预警指标需求&#10;提交内容：指标mapper&#10;提交人：邹运&#10;提交文件个数：1个  JAVA：">
+      <created>1534313556278</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1534313556278</updated>
+    </task>
+    <task id="LOCAL-00080" summary="归属需求：风险预警指标需求&#10;提交内容：指标预警实体&#10;提交人：邹运&#10;提交文件个数：1个  JAVA：">
+      <created>1534315077781</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1534315077781</updated>
+    </task>
+    <task id="LOCAL-00081" summary="归属需求：风险预警指标需求&#10;提交内容：指标mapper&#10;提交人：邹运&#10;提交文件个数：1个  JAVA：">
+      <created>1534317108055</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1534317108055</updated>
+    </task>
+    <task id="LOCAL-00082" summary="归属需求：风险预警指标需求&#10;提交内容：指标mapper&#10;提交人：邹运&#10;提交文件个数：1个  JAVA：">
+      <created>1534322561726</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1534322561727</updated>
+    </task>
+    <task id="LOCAL-00083" summary="归属需求：风险预警指标需求&#10;提交内容：指标mapper&#10;提交人：邹运&#10;提交文件个数：1个  JAVA：">
+      <created>1534322589144</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1534322589144</updated>
+    </task>
+    <task id="LOCAL-00084" summary="归属需求：风险预警指标需求&#10;提交内容：指标service&#10;提交人：邹运&#10;提交文件个数：1个  JAVA：">
+      <created>1534322611357</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1534322611357</updated>
+    </task>
+    <task id="LOCAL-00085" summary="归属需求：风险预警指标需求&#10;提交内容：指标rest&#10;提交人：邹运&#10;提交文件个数：1个  JAVA：">
+      <created>1534322630101</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1534322630101</updated>
+    </task>
+    <task id="LOCAL-00086" summary="归属需求：风险预警指标类型需求&#10;提交内容：指标类型mapper&#10;提交人：邹运&#10;提交文件个数：1个  JAVA：">
+      <created>1534469358950</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1534469358950</updated>
+    </task>
+    <task id="LOCAL-00087" summary="归属需求：风险预警指标类型需求&#10;提交内容：指标类型mapper&#10;提交人：邹运&#10;提交文件个数：1个  JAVA：">
+      <created>1534469378901</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1534469378901</updated>
+    </task>
+    <task id="LOCAL-00088" summary="归属需求：风险预警指标类型需求&#10;提交内容：指标类型&#10;提交人：邹运&#10;提交文件个数：1个  JAVA：">
+      <created>1534469401649</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1534469401649</updated>
+    </task>
+    <task id="LOCAL-00089" summary="归属需求：风险预警指标类型需求&#10;提交内容：指标类型&#10;提交人：邹运&#10;提交文件个数：1个  JAVA：">
+      <created>1534469429221</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1534469429221</updated>
+    </task>
+    <task id="LOCAL-00090" summary="归属需求：风险预警指标需求&#10;提交内容：指标&#10;提交人：邹运&#10;提交文件个数：4个  JAVA：&#10;apiTeamEventList">
+      <created>1534470356890</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1534470356890</updated>
+    </task>
+    <task id="LOCAL-00091" summary="归属需求：风险预警指标需求&#10;提交内容：指标mapper&#10;提交人：邹运&#10;提交文件个数：1个  JAVA：&#10;apiTeamEventList">
+      <created>1534471996552</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1534471996552</updated>
+    </task>
+    <task id="LOCAL-00092" summary="归属需求：风险预警指标需求&#10;提交内容：指标&#10;提交人：邹运&#10;提交文件个数：2个 &#10;apiTeamEventList">
+      <created>1534496731159</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1534496731159</updated>
+    </task>
+    <task id="LOCAL-00093" summary="归属需求：风险预警指标需求&#10;提交内容：指标&#10;提交人：邹运&#10;提交文件个数：2个">
+      <created>1534496765677</created>
+      <option name="number" value="00093" />
+      <option name="presentableId" value="LOCAL-00093" />
+      <option name="project" value="LOCAL" />
+      <updated>1534496765677</updated>
+    </task>
+    <task id="LOCAL-00094" summary="归属需求：风险预警指标需求&#10;提交内容：指标&#10;提交人：邹运&#10;提交文件个数：2个">
+      <created>1534496782437</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1534496782438</updated>
+    </task>
+    <task id="LOCAL-00095" summary="归属需求：风险预警指标需求&#10;提交内容：指标&#10;提交人：邹运&#10;提交文件个数：2个">
+      <created>1534496793062</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1534496793062</updated>
+    </task>
+    <task id="LOCAL-00096" summary="归属需求：风险预警指标需求&#10;提交内容：指标预警&#10;提交人：邹运&#10;提交文件个数：5个">
+      <created>1534725148980</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1534725148981</updated>
+    </task>
+    <task id="LOCAL-00097" summary="归属需求：风险预警指标需求&#10;提交内容：指标预警&#10;提交人：邹运&#10;提交文件个数：8个">
+      <created>1534736729681</created>
+      <option name="number" value="00097" />
+      <option name="presentableId" value="LOCAL-00097" />
+      <option name="project" value="LOCAL" />
+      <updated>1534736729681</updated>
+    </task>
+    <task id="LOCAL-00098" summary="归属需求：风险预警指标需求&#10;提交内容：指标预警&#10;提交人：邹运&#10;提交文件个数：4个">
+      <created>1534837306243</created>
+      <option name="number" value="00098" />
+      <option name="presentableId" value="LOCAL-00098" />
+      <option name="project" value="LOCAL" />
+      <updated>1534837306244</updated>
+    </task>
+    <task id="LOCAL-00099" summary="归属需求：风险预警指标需求&#10;提交内容：指标mapper&#10;提交人：邹运&#10;提交文件个数：1个">
+      <created>1534907977260</created>
+      <option name="number" value="00099" />
+      <option name="presentableId" value="LOCAL-00099" />
+      <option name="project" value="LOCAL" />
+      <updated>1534907977261</updated>
+    </task>
+    <task id="LOCAL-00100" summary="归属需求：风险预警指标需求&#10;提交内容：指标预警/干预预警&#10;提交人：邹运&#10;提交文件个数：6个">
+      <created>1535077830429</created>
+      <option name="number" value="00100" />
+      <option name="presentableId" value="LOCAL-00100" />
+      <option name="project" value="LOCAL" />
+      <updated>1535077830430</updated>
+    </task>
+    <task id="LOCAL-00101" summary="归属需求：风险预警指标需求&#10;提交内容：数据库配置&#10;提交人：邹运&#10;提交文件个数：1个">
+      <created>1535077867490</created>
+      <option name="number" value="00101" />
+      <option name="presentableId" value="LOCAL-00101" />
+      <option name="project" value="LOCAL" />
+      <updated>1535077867490</updated>
+    </task>
+    <task id="LOCAL-00102" summary="归属需求：风险预警指标需求&#10;提交内容：指标&#10;提交人：邹运&#10;提交文件个数：2个">
+      <created>1535090825637</created>
+      <option name="number" value="00102" />
+      <option name="presentableId" value="LOCAL-00102" />
+      <option name="project" value="LOCAL" />
+      <updated>1535090825637</updated>
+    </task>
+    <task id="LOCAL-00103" summary="归属需求：风险预警指标需求&#10;提交内容：指标预警&#10;提交人：邹运&#10;提交文件个数：2个">
+      <created>1535341639375</created>
+      <option name="number" value="00103" />
+      <option name="presentableId" value="LOCAL-00103" />
+      <option name="project" value="LOCAL" />
+      <updated>1535341639376</updated>
+    </task>
+    <task id="LOCAL-00104" summary="归属需求：风险预警指标需求&#10;提交内容：指标mapper&#10;提交人：邹运&#10;提交文件个数：1个">
+      <created>1535532019936</created>
+      <option name="number" value="00104" />
+      <option name="presentableId" value="LOCAL-00104" />
+      <option name="project" value="LOCAL" />
+      <updated>1535532019938</updated>
+    </task>
+    <task id="LOCAL-00105" summary="归属需求：风险预警指标需求&#10;提交内容：指标预警&#10;提交人：邹运&#10;提交文件个数：1个">
+      <created>1535533458177</created>
+      <option name="number" value="00105" />
+      <option name="presentableId" value="LOCAL-00105" />
+      <option name="project" value="LOCAL" />
+      <updated>1535533458177</updated>
+    </task>
+    <task id="LOCAL-00106" summary="归属需求：风险预警指标需求&#10;提交内容：指标&#10;提交人：邹运&#10;提交文件个数：1个">
+      <created>1535938969178</created>
+      <option name="number" value="00106" />
+      <option name="presentableId" value="LOCAL-00106" />
+      <option name="project" value="LOCAL" />
+      <updated>1535938969180</updated>
+    </task>
+    <task id="LOCAL-00107" summary="归属需求：风险预警指标需求&#10;提交内容：指标&#10;提交人：邹运&#10;提交文件个数：3个  JAVA：">
+      <created>1535944204713</created>
+      <option name="number" value="00107" />
+      <option name="presentableId" value="LOCAL-00107" />
+      <option name="project" value="LOCAL" />
+      <updated>1535944204713</updated>
+    </task>
+    <task id="LOCAL-00108" summary="归属需求：风险预警指标需求&#10;提交内容：指标&#10;提交人：邹运&#10;提交文件个数：4个">
+      <created>1536050638436</created>
+      <option name="number" value="00108" />
+      <option name="presentableId" value="LOCAL-00108" />
+      <option name="project" value="LOCAL" />
+      <updated>1536050638436</updated>
+    </task>
+    <task id="LOCAL-00109" summary="归属需求：风险预警指标需求&#10;提交内容：指标&#10;提交人：邹运&#10;提交文件个数：6个">
+      <created>1536129583028</created>
+      <option name="number" value="00109" />
+      <option name="presentableId" value="LOCAL-00109" />
+      <option name="project" value="LOCAL" />
+      <updated>1536129583029</updated>
+    </task>
+    <task id="LOCAL-00110" summary="归属需求：风险预警指标需求&#10;提交内容：指标&#10;提交人：邹运&#10;提交文件个数：1个  JAVA：">
+      <created>1536133698457</created>
+      <option name="number" value="00110" />
+      <option name="presentableId" value="LOCAL-00110" />
+      <option name="project" value="LOCAL" />
+      <updated>1536133698458</updated>
+    </task>
+    <task id="LOCAL-00111" summary="归属需求：风险预警指标需求&#10;提交内容：指标&#10;提交人：邹运&#10;提交文件个数：4个">
+      <created>1536194556076</created>
+      <option name="number" value="00111" />
+      <option name="presentableId" value="LOCAL-00111" />
+      <option name="project" value="LOCAL" />
+      <updated>1536194556076</updated>
+    </task>
+    <task id="LOCAL-00112" summary="归属需求：风险预警指标需求&#10;提交内容：指标&#10;提交人：邹运&#10;提交文件个数：5个">
+      <created>1536225574804</created>
+      <option name="number" value="00112" />
+      <option name="presentableId" value="LOCAL-00112" />
+      <option name="project" value="LOCAL" />
+      <updated>1536225574804</updated>
+    </task>
+    <task id="LOCAL-00113" summary="归属需求：风险预警指标需求&#10;提交内容：指标&#10;提交人：邹运&#10;提交文件个数：1个  JAVA：">
+      <created>1536556499448</created>
+      <option name="number" value="00113" />
+      <option name="presentableId" value="LOCAL-00113" />
+      <option name="project" value="LOCAL" />
+      <updated>1536556499448</updated>
+    </task>
+    <task id="LOCAL-00114" summary="归属需求：风险预警指标需求&#10;提交内容：指标&#10;提交人：邹运&#10;提交文件个数：3个">
+      <created>1536623268636</created>
+      <option name="number" value="00114" />
+      <option name="presentableId" value="LOCAL-00114" />
+      <option name="project" value="LOCAL" />
+      <updated>1536623268636</updated>
+    </task>
+    <task id="LOCAL-00115" summary="归属需求：风险预警指标需求&#10;提交内容：指标&#10;提交人：邹运&#10;提交文件个数：4个  JAVA：">
+      <created>1536710262067</created>
+      <option name="number" value="00115" />
+      <option name="presentableId" value="LOCAL-00115" />
+      <option name="project" value="LOCAL" />
+      <updated>1536710262067</updated>
+    </task>
+    <task id="LOCAL-00116" summary="归属需求：风险预警指标需求&#10;提交内容：指标&#10;提交人：邹运&#10;提交文件个数：4个  JAVA：">
+      <created>1536710513563</created>
+      <option name="number" value="00116" />
+      <option name="presentableId" value="LOCAL-00116" />
+      <option name="project" value="LOCAL" />
+      <updated>1536710513563</updated>
+    </task>
+    <task id="LOCAL-00117" summary="归属需求：风险预警指标需求&#10;提交内容：指标mapper001&#10;提交人：邹运&#10;提交文件个数：4个  JAVA：">
+      <created>1536724860064</created>
+      <option name="number" value="00117" />
+      <option name="presentableId" value="LOCAL-00117" />
+      <option name="project" value="LOCAL" />
+      <updated>1536724860064</updated>
+    </task>
+    <task id="LOCAL-00118" summary="归属需求：风险预警指标需求&#10;提交内容：指标&#10;提交人：邹运&#10;提交文件个数：5个  JAVA：">
+      <created>1536804666111</created>
+      <option name="number" value="00118" />
+      <option name="presentableId" value="LOCAL-00118" />
+      <option name="project" value="LOCAL" />
+      <updated>1536804666111</updated>
+    </task>
+    <task id="LOCAL-00119" summary="归属需求：风险预警指标需求&#10;提交内容：指标mapper&#10;提交人：邹运&#10;提交文件个数：1个  JAVA：">
+      <created>1536806090744</created>
+      <option name="number" value="00119" />
+      <option name="presentableId" value="LOCAL-00119" />
+      <option name="project" value="LOCAL" />
+      <updated>1536806090744</updated>
+    </task>
+    <task id="LOCAL-00120" summary="归属需求：风险预警指标需求&#10;提交内容：指标mapper&#10;提交人：邹运&#10;提交文件个数：4个  JAVA：">
+      <created>1537156619113</created>
+      <option name="number" value="00120" />
+      <option name="presentableId" value="LOCAL-00120" />
+      <option name="project" value="LOCAL" />
+      <updated>1537156619113</updated>
+    </task>
+    <task id="LOCAL-00121" summary="归属需求：风险预警指标需求&#10;                提交内容：指标mapper&#10;                提交人：邹运&#10;                提交文件个数：5个  JAVA：">
+      <created>1537161296969</created>
+      <option name="number" value="00121" />
+      <option name="presentableId" value="LOCAL-00121" />
+      <option name="project" value="LOCAL" />
+      <updated>1537161296969</updated>
+    </task>
+    <task id="LOCAL-00122" summary="归属需求：风险预警指标需求&#10;提交内容：指标mapper&#10;提交人：邹运&#10;提交文件个数：2个  JAVA：">
+      <created>1537173802076</created>
+      <option name="number" value="00122" />
+      <option name="presentableId" value="LOCAL-00122" />
+      <option name="project" value="LOCAL" />
+      <updated>1537173802086</updated>
+    </task>
+    <option name="localTasksCounter" value="123" />
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="527553000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="122" y="39" width="1551" height="848" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50067025" side_tool="true" weight="0.30932203" />
+      <window_info anchor="right" id="Maven Projects" order="3" weight="0.3657845" />
+      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
+      <window_info id="Capture Tool" order="1" />
+      <window_info id="Designer" order="2" />
+      <window_info anchor="right" id="Database" order="3" weight="0.44793537" />
+      <window_info id="Structure" order="5" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.28150135" />
+      <window_info id="UI Designer" order="3" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.49932975" visible="true" weight="0.20473538" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.2980226" />
+      <window_info anchor="right" id="Palette&#9;" order="3" />
+      <window_info id="Image Layers" order="0" />
+      <window_info anchor="bottom" id="Java Enterprise" order="10" weight="0.3283582" />
+      <window_info anchor="right" id="Capture Analysis" order="3" />
+      <window_info anchor="bottom" id="Version Control" order="9" weight="0.32732734" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.2495238" />
+      <window_info anchor="bottom" id="Spring" order="13" weight="0.32909605" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.13841808" />
+      <window_info content_ui="combo" id="Project" order="6" sideWeight="0.8791594" visible="true" weight="0.2625586" />
+      <window_info anchor="right" id="Bean Validation" order="4" />
+      <window_info id="Web" order="2" side_tool="true" />
+      <window_info anchor="right" id="Theme Preview" order="3" />
+      <window_info id="Favorites" order="4" sideWeight="0.12084063" side_tool="true" visible="true" weight="0.2625586" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" />
+    </layout>
+    <layout-to-restore>
+      <window_info id="Designer" order="2" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="bottom" id="Spring" order="13" weight="0.32909605" />
+      <window_info id="Image Layers" order="0" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3671275" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.28186715" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Favorites" order="5" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.32819724" />
+      <window_info id="Capture Tool" order="1" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.30161944" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Java Enterprise" order="10" weight="0.3299595" />
+      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="9" weight="0.32872504" />
+      <window_info anchor="right" id="Maven Projects" order="5" visible="true" weight="0.033213645" />
+      <window_info content_ui="combo" id="Project" order="7" visible="true" weight="0.34649912" />
+      <window_info anchor="right" id="Database" order="6" weight="0.44793537" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info id="Web" order="3" side_tool="true" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Theme Preview" order="8" />
+      <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="right" id="Bean Validation" order="9" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.2777778" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="归属需求：风险预警指标需求&#10;提交内容：指标预警&#10;提交人：邹运&#10;提交文件个数：5个" />
+    <MESSAGE value="归属需求：风险预警指标需求&#10;提交内容：指标预警&#10;提交人：邹运&#10;提交文件个数：8个" />
+    <MESSAGE value="归属需求：风险预警指标需求&#10;提交内容：指标预警&#10;提交人：邹运&#10;提交文件个数：4个" />
+    <MESSAGE value="归属需求：风险预警指标需求&#10;提交内容：指标预警/干预预警&#10;提交人：邹运&#10;提交文件个数：6个" />
+    <MESSAGE value="归属需求：风险预警指标需求&#10;提交内容：数据库配置&#10;提交人：邹运&#10;提交文件个数：1个" />
+    <MESSAGE value="归属需求：风险预警指标需求&#10;提交内容：指标&#10;提交人：邹运&#10;提交文件个数：2个" />
+    <MESSAGE value="归属需求：风险预警指标需求&#10;提交内容：指标预警&#10;提交人：邹运&#10;提交文件个数：2个" />
+    <MESSAGE value="归属需求：风险预警指标需求&#10;提交内容：指标mapper&#10;提交人：邹运&#10;提交文件个数：1个" />
+    <MESSAGE value="归属需求：风险预警指标需求&#10;提交内容：指标预警&#10;提交人：邹运&#10;提交文件个数：1个" />
+    <MESSAGE value="归属需求：风险预警指标需求&#10;提交内容：指标&#10;提交人：邹运&#10;提交文件个数：1个" />
+    <MESSAGE value="归属需求：风险预警指标需求&#10;提交内容：指标&#10;提交人：邹运&#10;提交文件个数：3个  JAVA：" />
+    <MESSAGE value="归属需求：风险预警指标需求&#10;提交内容：指标&#10;提交人：邹运&#10;提交文件个数：6个" />
+    <MESSAGE value="归属需求：风险预警指标需求&#10;提交内容：指标&#10;提交人：邹运&#10;提交文件个数：4个" />
+    <MESSAGE value="归属需求：风险预警指标需求&#10;提交内容：指标&#10;提交人：邹运&#10;提交文件个数：5个" />
+    <MESSAGE value="归属需求：风险预警指标需求&#10;提交内容：指标&#10;提交人：邹运&#10;提交文件个数：1个  JAVA：" />
+    <MESSAGE value="归属需求：风险预警指标需求&#10;提交内容：指标&#10;提交人：邹运&#10;提交文件个数：3个" />
+    <MESSAGE value="归属需求：风险预警指标需求&#10;提交内容：指标mapper&#10;提交人：邹运&#10;提交文件个数：8个  JAVA：" />
+    <MESSAGE value="归属需求：风险预警指标需求&#10;提交内容：指标&#10;提交人：邹运&#10;提交文件个数：8个  JAVA：" />
+    <MESSAGE value="归属需求：风险预警指标需求&#10;提交内容：指标&#10;提交人：邹运&#10;提交文件个数：4个  JAVA：" />
+    <MESSAGE value="归属需求：风险预警指标需求&#10;提交内容：指标mapper001&#10;提交人：邹运&#10;提交文件个数：4个  JAVA：" />
+    <MESSAGE value="归属需求：风险预警指标需求&#10;提交内容：指标&#10;提交人：邹运&#10;提交文件个数：5个  JAVA：" />
+    <MESSAGE value="归属需求：风险预警指标需求&#10;提交内容：指标mapper&#10;提交人：邹运&#10;提交文件个数：1个  JAVA：" />
+    <MESSAGE value="归属需求：风险预警指标需求&#10;提交内容：指标mapper&#10;提交人：邹运&#10;提交文件个数：4个  JAVA：" />
+    <MESSAGE value="归属需求：风险预警指标需求&#10;                提交内容：指标mapper&#10;                提交人：邹运&#10;                提交文件个数：5个  JAVA：" />
+    <MESSAGE value="归属需求：风险预警指标需求&#10;提交内容：指标mapper&#10;提交人：邹运&#10;提交文件个数：2个  JAVA：" />
+    <option name="LAST_COMMIT_MESSAGE" value="归属需求：风险预警指标需求&#10;提交内容：指标mapper&#10;提交人：邹运&#10;提交文件个数：2个  JAVA：" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/fin.risk-stat/src/main/java/com/yqjr/fin/risk/stat/rest/IndicatorTypesRest.java</url>
+          <line>78</line>
+          <properties />
+          <option name="timeStamp" value="32" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/fin.risk-stat/src/main/java/com/yqjr/fin/risk/stat/rest/IndicatorRangesRest.java</url>
+          <line>129</line>
+          <properties />
+          <option name="timeStamp" value="172" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/fin.risk-stat/src/main/java/com/yqjr/fin/risk/stat/rest/FctAltCustomRest.java</url>
+          <line>179</line>
+          <properties />
+          <option name="timeStamp" value="213" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/fin.risk-stat/src/main/java/com/yqjr/fin/risk/stat/services/FctAltCustomService.java</url>
+          <line>141</line>
+          <properties />
+          <option name="timeStamp" value="214" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="216" />
+    </breakpoint-manager>
+  </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="jar://$MAVEN_REPOSITORY$/ch/qos/logback/logback-classic/1.1.11/logback-classic-1.1.11-sources.jar!/ch/qos/logback/classic/Logger.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="117">
+          <caret line="618" selection-start-line="618" selection-end-line="618" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-core/4.3.13.RELEASE/spring-core-4.3.13.RELEASE.jar!/org/springframework/cglib/proxy/MethodProxy.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="105" selection-start-line="105" selection-end-line="105" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-aop/4.3.13.RELEASE/spring-aop-4.3.13.RELEASE-sources.jar!/org/springframework/aop/framework/CglibAopProxy.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="643" selection-start-line="643" selection-end-line="643" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/4.3.13.RELEASE/spring-web-4.3.13.RELEASE-sources.jar!/org/springframework/web/method/support/InvocableHandlerMethod.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="166">
+          <caret line="215" selection-start-line="215" selection-end-line="215" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.3.13.RELEASE/spring-webmvc-4.3.13.RELEASE-sources.jar!/org/springframework/web/servlet/DispatcherServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="166">
+          <caret line="906" selection-start-line="906" selection-end-line="906" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.3.13.RELEASE/spring-webmvc-4.3.13.RELEASE-sources.jar!/org/springframework/web/servlet/mvc/method/annotation/RequestMappingHandlerAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="109">
+          <caret line="834" selection-start-line="834" selection-end-line="834" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.risk-stat/src/main/java/com/yqjr/fin/risk/stat/task/Mapper/TaskMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.risk-stat/src/main/java/com/yqjr/fin/risk/stat/task/TestTask.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="21" column="34" selection-start-line="21" selection-start-column="23" selection-end-line="21" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.risk-stat/src/main/java/com/yqjr/fin/risk/stat/services/ScheduleLogService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.risk-stat/src/main/java/com/yqjr/fin/risk/stat/mapper/ScheduleLogMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.risk-stat/src/main/java/com/yqjr/fin/risk/stat/mapper/ScheduleJobMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.risk-stat/src/main/java/com/yqjr/fin/risk/stat/config/ScheduleConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="43" column="40" selection-start-line="43" selection-start-column="40" selection-end-line="43" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.risk-stat/src/main/resources/bootstrap.yml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.risk-stat/src/main/resources/application.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="21" column="19" selection-start-line="21" selection-start-column="19" selection-end-line="21" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.risk-stat/src/main/java/com/yqjr/fin/risk/stat/task/AutomaticTask.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="19" column="32" selection-start-line="19" selection-start-column="32" selection-end-line="19" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.risk-stat/src/main/java/com/yqjr/fin/risk/stat/task/Mapper/AutomaticTaskMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="13" column="4" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.risk-stat/src/main/resources/mapper/TaskMapper.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.risk-stat/src/main/resources/mapper/ScheduleLogMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="599">
+          <caret line="246" column="26" selection-start-line="246" selection-start-column="26" selection-end-line="246" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.risk-stat/src/main/resources/mapper/IndicatorLogsMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="25">
+          <caret line="39" column="42" selection-start-line="39" selection-start-column="16" selection-end-line="39" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.risk-stat/src/main/java/com/yqjr/fin/risk/stat/rest/IndicatorLogsRest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1097">
+          <caret line="33" column="13" selection-start-line="33" selection-start-column="13" selection-end-line="33" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.risk-stat/src/main/java/com/yqjr/fin/risk/stat/services/FctAltCustomService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="55" column="45" selection-start-line="55" selection-start-column="45" selection-end-line="55" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.risk-stat/src/main/java/com/yqjr/fin/risk/stat/mapper/FctAltCustomMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="158">
+          <caret line="19" column="53" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.3.13.RELEASE/spring-webmvc-4.3.13.RELEASE-sources.jar!/org/springframework/web/servlet/FrameworkServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="981" selection-start-line="981" selection-end-line="981" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.risk-stat/src/main/java/com/yqjr/fin/risk/stat/condition/FctAltCustomCondition.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4465">
+          <caret line="271" column="26" lean-forward="true" selection-start-line="271" selection-start-column="26" selection-end-line="271" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.risk-stat/src/main/resources/mapper/FctAltCustomMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="505">
+          <caret line="1421" column="25" lean-forward="true" selection-start-line="1421" selection-start-column="25" selection-end-line="1421" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.risk-stat/src/main/java/com/yqjr/fin/risk/stat/entity/IndicatorTypes.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="5" column="27" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.risk-stat/src/main/java/com/yqjr/fin/risk/stat/entity/IndicatorRanges.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.risk-stat/src/main/java/com/yqjr/fin/risk/stat/entity/FctAltCustom.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6346">
+          <caret line="363" selection-start-line="363" selection-end-line="363" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.risk-stat/src/main/java/com/yqjr/fin/risk/stat/entity/IndicatorLogs.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.scfw-meta/src/main/resources.test/bootstrap.yml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.risk-stat/src/main/java/com/yqjr/fin/risk/stat/entity/ScheduleLog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.risk-stat/src/main/resources.test/bootstrap.yml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.risk-stat/src/main/resources.test/application.yml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.scfw-meta/src/main/resources.test/application.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="22" column="10" selection-start-line="22" selection-start-column="10" selection-end-line="22" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.risk-stat/src/main/java/com/yqjr/fin/risk/stat/Application.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.risk-stat/src/main/java/com/yqjr/fin/risk/stat/rest/FctAltCustomRest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="167">
+          <caret line="197" column="35" selection-start-line="197" selection-start-column="35" selection-end-line="197" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.risk-stat/src/main/java/com/yqjr/fin/risk/stat/common/UserRoleHelp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="874">
+          <caret line="47" column="26" selection-start-line="47" selection-start-column="26" selection-end-line="47" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.risk-stat/src/main/java/com/yqjr/fin/risk/stat/common/ResultMsg.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="15" column="11" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.risk-stat/src/main/java/com/yqjr/fin/risk/stat/rest/IndicatorRangesRest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="31" column="13" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.risk-stat/src/main/java/com/yqjr/fin/risk/stat/rest/IndicatorTypesRest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1767">
+          <caret line="126" column="35" selection-start-line="126" selection-start-column="24" selection-end-line="126" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.scfw-common/src/main/java/com/yqjr/scfw/common/mapper/mapperhelper/EntityHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="251">
+          <caret line="552" column="23" selection-start-line="552" selection-start-column="23" selection-end-line="552" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.scfw-common/src/main/java/com/yqjr/scfw/common/service/BaseService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3743">
+          <caret line="224" selection-start-line="224" selection-end-line="224" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.risk-stat/src/main/java/com/yqjr/fin/risk/stat/mapper/IndicatorsMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="22" column="25" selection-start-line="22" selection-start-column="16" selection-end-line="22" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.risk-stat/src/main/java/com/yqjr/fin/risk/stat/services/IndicatorsService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="48" column="50" selection-start-line="48" selection-start-column="50" selection-end-line="48" selection-end-column="50" />
+          <folding>
+            <element signature="e#1802#1803#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.risk-stat/src/main/java/com/yqjr/fin/risk/stat/entity/Indicators.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3762">
+          <caret line="202" selection-start-line="202" selection-end-line="202" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.risk-stat/src/main/java/com/yqjr/fin/risk/stat/rest/IndicatorsRest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="798">
+          <caret line="63" selection-start-line="63" selection-end-line="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.risk-stat/src/main/java/com/yqjr/fin/risk/stat/utils/TimeSetting.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="16" column="58" selection-start-line="16" selection-start-column="58" selection-end-line="16" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.risk-stat/src/main/java/com/yqjr/fin/risk/stat/entity/ScheduleJob.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1843">
+          <caret line="97" column="42" lean-forward="true" selection-start-line="97" selection-start-column="42" selection-end-line="97" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.risk-stat/src/main/java/com/yqjr/fin/risk/stat/rest/ScheduleJobRest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="124" column="28" selection-start-line="124" selection-start-column="28" selection-end-line="124" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.risk-stat/src/main/java/com/yqjr/fin/risk/stat/services/ScheduleJobService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="385">
+          <caret line="61" column="31" selection-start-line="61" selection-start-column="31" selection-end-line="61" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fin.risk-stat/src/main/java/com/yqjr/fin/risk/stat/utils/ScheduleUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="290">
+          <caret line="148" column="44" lean-forward="true" selection-start-line="148" selection-start-column="44" selection-end-line="148" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>Spring</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>scfw-eureka|fin</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.6" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>Maven: antlr:antlr:2.7.7</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

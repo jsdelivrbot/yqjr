@@ -1,0 +1,1145 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yqjr.fin.mkmm.sales.mapper.DealerSaleMapper">
+
+    <!-- region BaseMapper DO NOT MODIFY!!!  -->
+
+    <sql id="Base_Table_Name">
+        MKMM_DEALER_SALE
+    </sql>
+
+
+
+    <!-- region BaseResultMap  -->
+    <resultMap id="BaseResultMap" type="com.yqjr.fin.mkmm.sales.entity.DealerSale">
+        <result property="id" column="ID"/><!--序列-->
+        <result property="superorganizationno" column="SUPERORGANIZATIONNO"/><!--大区代码-->
+        <result property="vsuperorganizationno" column="VSUPERORGANIZATIONNO"/><!--二区代码-->
+        <result property="vorganizationno" column="VORGANIZATIONNO"/><!--经销商代码-->
+        <result property="ndealerworkerid" column="NDEALERWORKERID"/><!--销售顾问代码-->
+        <result property="provinceid" column="PROVINCEID"/><!--省份-->
+        <result property="cityid" column="CITYID"/><!--城市-->
+        <result property="vbargainno" column="VBARGAINNO"/><!--合同号-->
+        <result property="vbargain" column="VBARGAIN"/><!--借据号-->
+        <result property="name" column="NAME"/><!--客户名称-->
+        <result property="identityno" column="IDENTITYNO"/><!--证件号-->
+        <result property="ncarbrandid" column="NCARBRANDID"/><!--大品牌-->
+        <result property="ncarsubbrandid" column="NCARSUBBRANDID"/><!--子品牌-->
+        <result property="ncarbrandtype" column="NCARBRANDTYPE"/><!--车型-->
+        <result property="ncarprice" column="NCARPRICE"/><!--净车价-->
+        <result property="vmortgagername" column="VMORTGAGERNAME"/><!--车籍-->
+        <result property="nactivitiesid" column="NACTIVITIESID"/><!--车贷金融产品id  营销活动-->
+        <result property="necactivitiesid" column="NECACTIVITIESID"/><!--附加费金融产品id-->
+        <result property="nbiztype" column="NBIZTYPE"/><!--业务类型Code-->
+        <result property="ngetinteresttype" column="NGETINTERESTTYPE"/><!--信贷产品Code  -->
+        <result property="ndlrbiztype" column="NDLRBIZTYPE"/><!--服务产品Code  金融产品-->
+        <result property="company" column="COMPANY"/><!--所属公司-->
+        <result property="nloanmoney" column="NLOANMONEY"/><!--贷款金额-->
+        <result property="ntimelimit" column="NTIMELIMIT"/><!--贷款期限-->
+        <result property="dapplydate" column="DAPPLYDATE"/><!--申请日期-->
+        <result property="dfactstartdate" column="DFACTSTARTDATE"/><!--放款日期-->
+        <result property="necloanmoney" column="NECLOANMONEY"/><!--附加贷金额-->
+        <result property="firstpay" column="FIRSTPAY"/><!--首付比例-->
+    </resultMap>
+    <!-- endregion -->
+
+    <!-- region Base_Column_List  -->
+    <sql id="Base_Column_List">
+    ID,SUPERORGANIZATIONNO,VSUPERORGANIZATIONNO,VORGANIZATIONNO,NDEALERWORKERID,PROVINCEID,CITYID,VBARGAINNO,VBARGAIN,NAME,IDENTITYNO,NCARBRANDID,NCARSUBBRANDID,NCARBRANDTYPE,NCARPRICE,VMORTGAGERNAME,NACTIVITIESID,NECACTIVITIESID,NBIZTYPE,NGETINTERESTTYPE,NDLRBIZTYPE,COMPANY,NLOANMONEY,NTIMELIMIT,DAPPLYDATE,DFACTSTARTDATE,NECLOANMONEY,FIRSTPAY
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_List_Selective  -->
+    <sql id="Base_Column_List_Selective">
+        <trim suffixOverrides=",">
+            <if test="id != null">
+            ID,
+            </if>
+            <if test="superorganizationno != null">
+            SUPERORGANIZATIONNO,
+            </if>
+            <if test="vsuperorganizationno != null">
+            VSUPERORGANIZATIONNO,
+            </if>
+            <if test="vorganizationno != null">
+            VORGANIZATIONNO,
+            </if>
+            <if test="ndealerworkerid != null">
+            NDEALERWORKERID,
+            </if>
+            <if test="provinceid != null">
+            PROVINCEID,
+            </if>
+            <if test="cityid != null">
+            CITYID,
+            </if>
+            <if test="vbargainno != null">
+            VBARGAINNO,
+            </if>
+            <if test="vbargain != null">
+            VBARGAIN,
+            </if>
+            <if test="name != null">
+            NAME,
+            </if>
+            <if test="identityno != null">
+            IDENTITYNO,
+            </if>
+            <if test="ncarbrandid != null">
+            NCARBRANDID,
+            </if>
+            <if test="ncarsubbrandid != null">
+            NCARSUBBRANDID,
+            </if>
+            <if test="ncarbrandtype != null">
+            NCARBRANDTYPE,
+            </if>
+            <if test="ncarprice != null">
+            NCARPRICE,
+            </if>
+            <if test="vmortgagername != null">
+            VMORTGAGERNAME,
+            </if>
+            <if test="nactivitiesid != null">
+            NACTIVITIESID,
+            </if>
+            <if test="necactivitiesid != null">
+            NECACTIVITIESID,
+            </if>
+            <if test="nbiztype != null">
+            NBIZTYPE,
+            </if>
+            <if test="ngetinteresttype != null">
+            NGETINTERESTTYPE,
+            </if>
+            <if test="ndlrbiztype != null">
+            NDLRBIZTYPE,
+            </if>
+            <if test="company != null">
+            COMPANY,
+            </if>
+            <if test="nloanmoney != null">
+            NLOANMONEY,
+            </if>
+            <if test="ntimelimit != null">
+            NTIMELIMIT,
+            </if>
+            <if test="dapplydate != null">
+            DAPPLYDATE,
+            </if>
+            <if test="dfactstartdate != null">
+            DFACTSTARTDATE,
+            </if>
+            <if test="necloanmoney != null">
+            NECLOANMONEY,
+            </if>
+            <if test="firstpay != null">
+            FIRSTPAY
+            </if>
+        </trim>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Values  -->
+    <sql id="Base_Column_Values">
+    seq_mkmm_dealer_sale.nextval,
+    #{superorganizationno,jdbcType=VARCHAR},
+    #{vsuperorganizationno,jdbcType=VARCHAR},
+    #{vorganizationno,jdbcType=VARCHAR},
+    #{ndealerworkerid,jdbcType=INTEGER},
+    #{provinceid,jdbcType=VARCHAR},
+    #{cityid,jdbcType=VARCHAR},
+    #{vbargainno,jdbcType=VARCHAR},
+    #{vbargain,jdbcType=VARCHAR},
+    #{name,jdbcType=VARCHAR},
+    #{identityno,jdbcType=VARCHAR},
+    #{ncarbrandid,jdbcType=INTEGER},
+    #{ncarsubbrandid,jdbcType=INTEGER},
+    #{ncarbrandtype,jdbcType=INTEGER},
+    #{ncarprice,jdbcType=INTEGER},
+    #{vmortgagername,jdbcType=VARCHAR},
+    #{nactivitiesid,jdbcType=INTEGER},
+    #{necactivitiesid,jdbcType=INTEGER},
+    #{nbiztype,jdbcType=INTEGER},
+    #{ngetinteresttype,jdbcType=INTEGER},
+    #{ndlrbiztype,jdbcType=INTEGER},
+    #{company,jdbcType=INTEGER},
+    #{nloanmoney,jdbcType=INTEGER},
+    #{ntimelimit,jdbcType=INTEGER},
+    #{dapplydate,jdbcType=DATE},
+    #{dfactstartdate,jdbcType=DATE},
+    #{necloanmoney,jdbcType=INTEGER},
+    #{firstpay,jdbcType=INTEGER}
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Values_Selective  -->
+    <sql id="Base_Column_Values_Selective">
+        <trim suffixOverrides=",">
+            <if test="id != null">
+            #{id},
+            </if>
+            <if test="superorganizationno != null">
+            #{superorganizationno},
+            </if>
+            <if test="vsuperorganizationno != null">
+            #{vsuperorganizationno},
+            </if>
+            <if test="vorganizationno != null">
+            #{vorganizationno},
+            </if>
+            <if test="ndealerworkerid != null">
+            #{ndealerworkerid},
+            </if>
+            <if test="provinceid != null">
+            #{provinceid},
+            </if>
+            <if test="cityid != null">
+            #{cityid},
+            </if>
+            <if test="vbargainno != null">
+            #{vbargainno},
+            </if>
+            <if test="vbargain != null">
+            #{vbargain},
+            </if>
+            <if test="name != null">
+            #{name},
+            </if>
+            <if test="identityno != null">
+            #{identityno},
+            </if>
+            <if test="ncarbrandid != null">
+            #{ncarbrandid},
+            </if>
+            <if test="ncarsubbrandid != null">
+            #{ncarsubbrandid},
+            </if>
+            <if test="ncarbrandtype != null">
+            #{ncarbrandtype},
+            </if>
+            <if test="ncarprice != null">
+            #{ncarprice},
+            </if>
+            <if test="vmortgagername != null">
+            #{vmortgagername},
+            </if>
+            <if test="nactivitiesid != null">
+            #{nactivitiesid},
+            </if>
+            <if test="necactivitiesid != null">
+            #{necactivitiesid},
+            </if>
+            <if test="nbiztype != null">
+            #{nbiztype},
+            </if>
+            <if test="ngetinteresttype != null">
+            #{ngetinteresttype},
+            </if>
+            <if test="ndlrbiztype != null">
+            #{ndlrbiztype},
+            </if>
+            <if test="company != null">
+            #{company},
+            </if>
+            <if test="nloanmoney != null">
+            #{nloanmoney},
+            </if>
+            <if test="ntimelimit != null">
+            #{ntimelimit},
+            </if>
+            <if test="dapplydate != null">
+            #{dapplydate},
+            </if>
+            <if test="dfactstartdate != null">
+            #{dfactstartdate},
+            </if>
+            <if test="necloanmoney != null">
+            #{necloanmoney},
+            </if>
+            <if test="firstpay != null">
+            #{firstpay}
+            </if>
+        </trim>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Set_Values  -->
+    <sql id="Base_Column_Set_Values">
+    ID = #{id},
+    SUPERORGANIZATIONNO = #{superorganizationno},
+    VSUPERORGANIZATIONNO = #{vsuperorganizationno},
+    VORGANIZATIONNO = #{vorganizationno},
+    NDEALERWORKERID = #{ndealerworkerid},
+    PROVINCEID = #{provinceid},
+    CITYID = #{cityid},
+    VBARGAINNO = #{vbargainno},
+    VBARGAIN = #{vbargain},
+    NAME = #{name},
+    IDENTITYNO = #{identityno},
+    NCARBRANDID = #{ncarbrandid},
+    NCARSUBBRANDID = #{ncarsubbrandid},
+    NCARBRANDTYPE = #{ncarbrandtype},
+    NCARPRICE = #{ncarprice},
+    VMORTGAGERNAME = #{vmortgagername},
+    NACTIVITIESID = #{nactivitiesid},
+    NECACTIVITIESID = #{necactivitiesid},
+    NBIZTYPE = #{nbiztype},
+    NGETINTERESTTYPE = #{ngetinteresttype},
+    NDLRBIZTYPE = #{ndlrbiztype},
+    COMPANY = #{company},
+    NLOANMONEY = #{nloanmoney},
+    NTIMELIMIT = #{ntimelimit},
+    DAPPLYDATE = #{dapplydate},
+    DFACTSTARTDATE = #{dfactstartdate},
+    NECLOANMONEY = #{necloanmoney},
+    FIRSTPAY = #{firstpay}
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Set_Values_Selective  -->
+    <sql id="Base_Column_Set_Values_Selective">
+        <if test="id != null">
+        ID = #{id},
+        </if>
+        <if test="superorganizationno != null">
+        SUPERORGANIZATIONNO = #{superorganizationno},
+        </if>
+        <if test="vsuperorganizationno != null">
+        VSUPERORGANIZATIONNO = #{vsuperorganizationno},
+        </if>
+        <if test="vorganizationno != null">
+        VORGANIZATIONNO = #{vorganizationno},
+        </if>
+        <if test="ndealerworkerid != null">
+        NDEALERWORKERID = #{ndealerworkerid},
+        </if>
+        <if test="provinceid != null">
+        PROVINCEID = #{provinceid},
+        </if>
+        <if test="cityid != null">
+        CITYID = #{cityid},
+        </if>
+        <if test="vbargainno != null">
+        VBARGAINNO = #{vbargainno},
+        </if>
+        <if test="vbargain != null">
+        VBARGAIN = #{vbargain},
+        </if>
+        <if test="name != null">
+        NAME = #{name},
+        </if>
+        <if test="identityno != null">
+        IDENTITYNO = #{identityno},
+        </if>
+        <if test="ncarbrandid != null">
+        NCARBRANDID = #{ncarbrandid},
+        </if>
+        <if test="ncarsubbrandid != null">
+        NCARSUBBRANDID = #{ncarsubbrandid},
+        </if>
+        <if test="ncarbrandtype != null">
+        NCARBRANDTYPE = #{ncarbrandtype},
+        </if>
+        <if test="ncarprice != null">
+        NCARPRICE = #{ncarprice},
+        </if>
+        <if test="vmortgagername != null">
+        VMORTGAGERNAME = #{vmortgagername},
+        </if>
+        <if test="nactivitiesid != null">
+        NACTIVITIESID = #{nactivitiesid},
+        </if>
+        <if test="necactivitiesid != null">
+        NECACTIVITIESID = #{necactivitiesid},
+        </if>
+        <if test="nbiztype != null">
+        NBIZTYPE = #{nbiztype},
+        </if>
+        <if test="ngetinteresttype != null">
+        NGETINTERESTTYPE = #{ngetinteresttype},
+        </if>
+        <if test="ndlrbiztype != null">
+        NDLRBIZTYPE = #{ndlrbiztype},
+        </if>
+        <if test="company != null">
+        COMPANY = #{company},
+        </if>
+        <if test="nloanmoney != null">
+        NLOANMONEY = #{nloanmoney},
+        </if>
+        <if test="ntimelimit != null">
+        NTIMELIMIT = #{ntimelimit},
+        </if>
+        <if test="dapplydate != null">
+        DAPPLYDATE = #{dapplydate},
+        </if>
+        <if test="dfactstartdate != null">
+        DFACTSTARTDATE = #{dfactstartdate},
+        </if>
+        <if test="necloanmoney != null">
+        NECLOANMONEY = #{necloanmoney},
+        </if>
+        <if test="firstpay != null">
+        FIRSTPAY = #{firstpay}
+        </if>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Where_Selective  -->
+    <sql id="Base_Column_Where_Selective">
+        <if test="id != null">
+            and ID = #{id}
+        </if>
+        <if test="superorganizationno != null">
+            and SUPERORGANIZATIONNO = #{superorganizationno}
+        </if>
+        <if test="vsuperorganizationno != null">
+            and VSUPERORGANIZATIONNO = #{vsuperorganizationno}
+        </if>
+        <if test="vorganizationno != null">
+            and VORGANIZATIONNO = #{vorganizationno}
+        </if>
+        <if test="ndealerworkerid != null">
+            and NDEALERWORKERID = #{ndealerworkerid}
+        </if>
+        <if test="provinceid != null">
+            and PROVINCEID = #{provinceid}
+        </if>
+        <if test="cityid != null">
+            and CITYID = #{cityid}
+        </if>
+        <if test="vbargainno != null">
+            and VBARGAINNO = #{vbargainno}
+        </if>
+        <if test="vbargain != null">
+            and VBARGAIN = #{vbargain}
+        </if>
+        <if test="name != null">
+            and NAME = #{name}
+        </if>
+        <if test="identityno != null">
+            and IDENTITYNO = #{identityno}
+        </if>
+        <if test="ncarbrandid != null">
+            and NCARBRANDID = #{ncarbrandid}
+        </if>
+        <if test="ncarsubbrandid != null">
+            and NCARSUBBRANDID = #{ncarsubbrandid}
+        </if>
+        <if test="ncarbrandtype != null">
+            and NCARBRANDTYPE = #{ncarbrandtype}
+        </if>
+        <if test="ncarprice != null">
+            and NCARPRICE = #{ncarprice}
+        </if>
+        <if test="vmortgagername != null">
+            and VMORTGAGERNAME = #{vmortgagername}
+        </if>
+        <if test="nactivitiesid != null">
+            and NACTIVITIESID = #{nactivitiesid}
+        </if>
+        <if test="necactivitiesid != null">
+            and NECACTIVITIESID = #{necactivitiesid}
+        </if>
+        <if test="nbiztype != null">
+            and NBIZTYPE = #{nbiztype}
+        </if>
+        <if test="ngetinteresttype != null">
+            and NGETINTERESTTYPE = #{ngetinteresttype}
+        </if>
+        <if test="ndlrbiztype != null">
+            and NDLRBIZTYPE = #{ndlrbiztype}
+        </if>
+        <if test="company != null">
+            and COMPANY = #{company}
+        </if>
+        <if test="nloanmoney != null">
+            and NLOANMONEY = #{nloanmoney}
+        </if>
+        <if test="ntimelimit != null">
+            and NTIMELIMIT = #{ntimelimit}
+        </if>
+        <if test="dapplydate != null">
+            and DAPPLYDATE = #{dapplydate}
+        </if>
+        <if test="dfactstartdate != null">
+            and DFACTSTARTDATE = #{dfactstartdate}
+        </if>
+        <if test="necloanmoney != null">
+            and NECLOANMONEY = #{necloanmoney}
+        </if>
+        <if test="firstpay != null">
+            and FIRSTPAY = #{firstpay}
+        </if>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Where_Selective_Param1  -->
+    <sql id="Base_Column_Where_Selective_Param1">
+        <if test="param1.id != null">
+            and ID = #{param1.id}
+        </if>
+        <if test="param1.superorganizationno != null">
+            and SUPERORGANIZATIONNO = #{param1.superorganizationno}
+        </if>
+        <if test="param1.vsuperorganizationno != null">
+            and VSUPERORGANIZATIONNO = #{param1.vsuperorganizationno}
+        </if>
+        <if test="param1.vorganizationno != null">
+            and VORGANIZATIONNO = #{param1.vorganizationno}
+        </if>
+        <if test="param1.ndealerworkerid != null">
+            and NDEALERWORKERID = #{param1.ndealerworkerid}
+        </if>
+        <if test="param1.provinceid != null">
+            and PROVINCEID = #{param1.provinceid}
+        </if>
+        <if test="param1.cityid != null">
+            and CITYID = #{param1.cityid}
+        </if>
+        <if test="param1.vbargainno != null">
+            and VBARGAINNO = #{param1.vbargainno}
+        </if>
+        <if test="param1.vbargain != null">
+            and VBARGAIN = #{param1.vbargain}
+        </if>
+        <if test="param1.name != null">
+            and NAME = #{param1.name}
+        </if>
+        <if test="param1.identityno != null">
+            and IDENTITYNO = #{param1.identityno}
+        </if>
+        <if test="param1.ncarbrandid != null">
+            and NCARBRANDID = #{param1.ncarbrandid}
+        </if>
+        <if test="param1.ncarsubbrandid != null">
+            and NCARSUBBRANDID = #{param1.ncarsubbrandid}
+        </if>
+        <if test="param1.ncarbrandtype != null">
+            and NCARBRANDTYPE = #{param1.ncarbrandtype}
+        </if>
+        <if test="param1.ncarprice != null">
+            and NCARPRICE = #{param1.ncarprice}
+        </if>
+        <if test="param1.vmortgagername != null">
+            and VMORTGAGERNAME = #{param1.vmortgagername}
+        </if>
+        <if test="param1.nactivitiesid != null">
+            and NACTIVITIESID = #{param1.nactivitiesid}
+        </if>
+        <if test="param1.necactivitiesid != null">
+            and NECACTIVITIESID = #{param1.necactivitiesid}
+        </if>
+        <if test="param1.nbiztype != null">
+            and NBIZTYPE = #{param1.nbiztype}
+        </if>
+        <if test="param1.ngetinteresttype != null">
+            and NGETINTERESTTYPE = #{param1.ngetinteresttype}
+        </if>
+        <if test="param1.ndlrbiztype != null">
+            and NDLRBIZTYPE = #{param1.ndlrbiztype}
+        </if>
+        <if test="param1.company != null">
+            and COMPANY = #{param1.company}
+        </if>
+        <if test="param1.nloanmoney != null">
+            and NLOANMONEY = #{param1.nloanmoney}
+        </if>
+        <if test="param1.ntimelimit != null">
+            and NTIMELIMIT = #{param1.ntimelimit}
+        </if>
+        <if test="param1.dapplydate != null">
+            and DAPPLYDATE = #{param1.dapplydate}
+        </if>
+        <if test="param1.dfactstartdate != null">
+            and DFACTSTARTDATE = #{param1.dfactstartdate}
+        </if>
+        <if test="param1.necloanmoney != null">
+            and NECLOANMONEY = #{param1.necloanmoney}
+        </if>
+        <if test="param1.firstpay != null">
+            and FIRSTPAY = #{param1.firstpay}
+        </if>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Order_By  -->
+    <sql id="Base_Order_By">
+        <bind name="propName" value="sortField"></bind>
+        ORDER BY <include refid="Base_Column_Name" />
+        <choose>
+            <when test="isAscend">
+                ASC
+            </when>
+            <otherwise>
+                DESC
+            </otherwise>
+        </choose>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Name  -->
+    <sql id="Base_Column_Name">
+        <if test='"id" == propName'>
+        ID
+        </if>
+        <if test='"superorganizationno" == propName'>
+        SUPERORGANIZATIONNO
+        </if>
+        <if test='"vsuperorganizationno" == propName'>
+        VSUPERORGANIZATIONNO
+        </if>
+        <if test='"vorganizationno" == propName'>
+        VORGANIZATIONNO
+        </if>
+        <if test='"ndealerworkerid" == propName'>
+        NDEALERWORKERID
+        </if>
+        <if test='"provinceid" == propName'>
+        PROVINCEID
+        </if>
+        <if test='"cityid" == propName'>
+        CITYID
+        </if>
+        <if test='"vbargainno" == propName'>
+        VBARGAINNO
+        </if>
+        <if test='"vbargain" == propName'>
+        VBARGAIN
+        </if>
+        <if test='"name" == propName'>
+        NAME
+        </if>
+        <if test='"identityno" == propName'>
+        IDENTITYNO
+        </if>
+        <if test='"ncarbrandid" == propName'>
+        NCARBRANDID
+        </if>
+        <if test='"ncarsubbrandid" == propName'>
+        NCARSUBBRANDID
+        </if>
+        <if test='"ncarbrandtype" == propName'>
+        NCARBRANDTYPE
+        </if>
+        <if test='"ncarprice" == propName'>
+        NCARPRICE
+        </if>
+        <if test='"vmortgagername" == propName'>
+        VMORTGAGERNAME
+        </if>
+        <if test='"nactivitiesid" == propName'>
+        NACTIVITIESID
+        </if>
+        <if test='"necactivitiesid" == propName'>
+        NECACTIVITIESID
+        </if>
+        <if test='"nbiztype" == propName'>
+        NBIZTYPE
+        </if>
+        <if test='"ngetinteresttype" == propName'>
+        NGETINTERESTTYPE
+        </if>
+        <if test='"ndlrbiztype" == propName'>
+        NDLRBIZTYPE
+        </if>
+        <if test='"company" == propName'>
+        COMPANY
+        </if>
+        <if test='"nloanmoney" == propName'>
+        NLOANMONEY
+        </if>
+        <if test='"ntimelimit" == propName'>
+        NTIMELIMIT
+        </if>
+        <if test='"dapplydate" == propName'>
+        DAPPLYDATE
+        </if>
+        <if test='"dfactstartdate" == propName'>
+        DFACTSTARTDATE
+        </if>
+        <if test='"necloanmoney" == propName'>
+        NECLOANMONEY
+        </if>
+        <if test='"firstpay" == propName'>
+        FIRSTPAY
+        </if>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Id_Array  -->
+    <sql id="Base_Id_Array">
+        <foreach collection="array" open="(" close=")" separator="," item="id">
+        #{id}
+        </foreach>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Id_List  -->
+    <sql id="Base_Id_List">
+        <foreach collection="list" open="(" close=")" separator="," item="id">
+        #{id}
+        </foreach>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Select_All  -->
+    <sql id="Base_Select_All">
+        select
+        <include refid="Base_Column_List" />
+        from <include refid="Base_Table_Name" />
+    </sql>
+    <!-- endregion -->
+
+    <!-- region selectById  -->
+    <select id="selectById" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        where ID = #{id}
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectByIds  -->
+    <select id="selectByIds" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        where ID in
+        <include refid="Base_Id_List" />
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectAll  -->
+    <select id="selectAll" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectCount  -->
+    <select id="selectCount" resultType="int">
+        select count(*)
+        from <include refid="Base_Table_Name" />
+        <where>
+            <include refid="Base_Column_Where_Selective" />
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region select  -->
+    <select id="select" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Where_Selective" />
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectOne  -->
+    <select id="selectOne" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Where_Selective" />
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectOrderBy  -->
+    <select id="selectOrderBy" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Where_Selective_Param1" />
+        </where>
+        <include refid="Base_Order_By" />
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectByProperty  -->
+    <select id="selectByProperty" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Name" /> = #{propValue}
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectByPropertyIn  -->
+    <select id="selectByPropertyIn" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Name" /> IN
+            <foreach collection="propValues" open="(" close=")" separator="," item="propValue">
+            #{propValue}
+            </foreach>
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region delete  -->
+    <delete id="delete">
+        delete
+        from <include refid="Base_Table_Name" />
+        <where>
+            <include refid="Base_Column_Where_Selective" />
+        </where>
+    </delete>
+    <!-- endregion -->
+
+    <!-- region deleteById  -->
+    <delete id="deleteById">
+        delete
+        from <include refid="Base_Table_Name" />
+        where ID = #{id}
+    </delete>
+    <!-- endregion -->
+
+    <!-- region deleteByIds  -->
+    <delete id="deleteByIds">
+        delete
+        from <include refid="Base_Table_Name" />
+        where ID in
+        <include refid="Base_Id_List" />
+    </delete>
+    <!-- endregion -->
+
+    <!-- region insert  -->
+    <insert id="insert" parameterType="com.yqjr.fin.mkmm.sales.entity.DealerSale">
+        insert into <include refid="Base_Table_Name" /> (
+        <include refid="Base_Column_List" />
+        )
+        values (
+        <include refid="Base_Column_Values" />
+        )
+    </insert>
+    <!-- endregion -->
+
+    <!-- region updateById  -->
+    <update id="updateById" parameterType="com.yqjr.fin.mkmm.sales.entity.DealerSale">
+        update <include refid="Base_Table_Name" />
+        <set>
+            <include refid="Base_Column_Set_Values" />
+        </set>
+        where ID = #{id}
+    </update>
+    <!-- endregion -->
+
+    <!-- region patchById  -->
+    <update id="patchById" parameterType="com.yqjr.fin.mkmm.sales.entity.DealerSale">
+        update <include refid="Base_Table_Name" />
+        <set>
+            <include refid="Base_Column_Set_Values_Selective" />
+        </set>
+        where ID = #{id}
+    </update>
+    <!-- endregion -->
+
+    <!-- endregion BaseMapper -->
+
+    <!-- region generated by CodeRobot  -->
+
+    <!-- region 结果集映射  -->
+    <resultMap id="DealerSaleResult" type="com.yqjr.fin.mkmm.sales.entity.DealerSale">
+        <result property="id" column="ID"/><!--序列-->
+        <result property="superorganizationno" column="SUPERORGANIZATIONNO"/><!--大区代码-->
+        <result property="vsuperorganizationno" column="VSUPERORGANIZATIONNO"/><!--二区代码-->
+        <result property="vorganizationno" column="VORGANIZATIONNO"/><!--经销商代码-->
+        <result property="ndealerworkerid" column="NDEALERWORKERID"/><!--销售顾问代码-->
+        <result property="provinceid" column="PROVINCEID"/><!--省份-->
+        <result property="cityid" column="CITYID"/><!--城市-->
+        <result property="vbargainno" column="VBARGAINNO"/><!--合同号-->
+        <result property="vbargain" column="VBARGAIN"/><!--借据号-->
+        <result property="name" column="NAME"/><!--客户名称-->
+        <result property="identityno" column="IDENTITYNO"/><!--证件号-->
+        <result property="ncarbrandid" column="NCARBRANDID"/><!--大品牌-->
+        <result property="ncarsubbrandid" column="NCARSUBBRANDID"/><!--子品牌-->
+        <result property="ncarbrandtype" column="NCARBRANDTYPE"/><!--车型-->
+        <result property="ncarprice" column="NCARPRICE"/><!--净车价-->
+        <result property="vmortgagername" column="VMORTGAGERNAME"/><!--车籍-->
+        <result property="nactivitiesid" column="NACTIVITIESID"/><!--车贷金融产品id  营销活动-->
+        <result property="necactivitiesid" column="NECACTIVITIESID"/><!--附加费金融产品id-->
+        <result property="nbiztype" column="NBIZTYPE"/><!--业务类型Code-->
+        <result property="ngetinteresttype" column="NGETINTERESTTYPE"/><!--信贷产品Code  -->
+        <result property="ndlrbiztype" column="NDLRBIZTYPE"/><!--服务产品Code  金融产品-->
+        <result property="company" column="COMPANY"/><!--所属公司-->
+        <result property="nloanmoney" column="NLOANMONEY"/><!--贷款金额-->
+        <result property="ntimelimit" column="NTIMELIMIT"/><!--贷款期限-->
+        <result property="dapplydate" column="DAPPLYDATE"/><!--申请日期-->
+        <result property="dfactstartdate" column="DFACTSTARTDATE"/><!--放款日期-->
+        <result property="necloanmoney" column="NECLOANMONEY"/><!--附加贷金额-->
+        <result property="firstpay" column="FIRSTPAY"/><!--首付比例-->
+    </resultMap>
+    <!-- endregion -->
+
+    <!-- 查询条件判断 入参为对象 条件为模糊-->
+    <sql id="queryLikeDealerSale">
+        <if test="dealerSale!=null">
+            <if test="id!=null and id!=''">
+                AND ID LIKE CONCAT('%'#{id}'%')<!--序列-->
+            </if>
+            <if test="superorganizationno!=null and superorganizationno!=''">
+                AND SUPERORGANIZATIONNO LIKE CONCAT('%'#{superorganizationno}'%')<!--大区代码-->
+            </if>
+            <if test="vsuperorganizationno!=null and vsuperorganizationno!=''">
+                AND VSUPERORGANIZATIONNO LIKE CONCAT('%'#{vsuperorganizationno}'%')<!--二区代码-->
+            </if>
+            <if test="vorganizationno!=null and vorganizationno!=''">
+                AND VORGANIZATIONNO LIKE CONCAT('%'#{vorganizationno}'%')<!--经销商代码-->
+            </if>
+            <if test="ndealerworkerid!=null and ndealerworkerid!=''">
+                AND NDEALERWORKERID LIKE CONCAT('%'#{ndealerworkerid}'%')<!--销售顾问代码-->
+            </if>
+            <if test="provinceid!=null and provinceid!=''">
+                AND PROVINCEID LIKE CONCAT('%'#{provinceid}'%')<!--省份-->
+            </if>
+            <if test="cityid!=null and cityid!=''">
+                AND CITYID LIKE CONCAT('%'#{cityid}'%')<!--城市-->
+            </if>
+            <if test="vbargainno!=null and vbargainno!=''">
+                AND VBARGAINNO LIKE CONCAT('%'#{vbargainno}'%')<!--合同号-->
+            </if>
+            <if test="vbargain!=null and vbargain!=''">
+                AND VBARGAIN LIKE CONCAT('%'#{vbargain}'%')<!--借据号-->
+            </if>
+            <if test="name!=null and name!=''">
+                AND NAME LIKE CONCAT('%'#{name}'%')<!--客户名称-->
+            </if>
+            <if test="identityno!=null and identityno!=''">
+                AND IDENTITYNO LIKE CONCAT('%'#{identityno}'%')<!--证件号-->
+            </if>
+            <if test="ncarbrandid!=null and ncarbrandid!=''">
+                AND NCARBRANDID LIKE CONCAT('%'#{ncarbrandid}'%')<!--大品牌-->
+            </if>
+            <if test="ncarsubbrandid!=null and ncarsubbrandid!=''">
+                AND NCARSUBBRANDID LIKE CONCAT('%'#{ncarsubbrandid}'%')<!--子品牌-->
+            </if>
+            <if test="ncarbrandtype!=null and ncarbrandtype!=''">
+                AND NCARBRANDTYPE LIKE CONCAT('%'#{ncarbrandtype}'%')<!--车型-->
+            </if>
+            <if test="ncarprice!=null and ncarprice!=''">
+                AND NCARPRICE LIKE CONCAT('%'#{ncarprice}'%')<!--净车价-->
+            </if>
+            <if test="vmortgagername!=null and vmortgagername!=''">
+                AND VMORTGAGERNAME LIKE CONCAT('%'#{vmortgagername}'%')<!--车籍-->
+            </if>
+            <if test="nactivitiesid!=null and nactivitiesid!=''">
+                AND NACTIVITIESID LIKE CONCAT('%'#{nactivitiesid}'%')<!--车贷金融产品id  营销活动-->
+            </if>
+            <if test="necactivitiesid!=null and necactivitiesid!=''">
+                AND NECACTIVITIESID LIKE CONCAT('%'#{necactivitiesid}'%')<!--附加费金融产品id-->
+            </if>
+            <if test="nbiztype!=null and nbiztype!=''">
+                AND NBIZTYPE LIKE CONCAT('%'#{nbiztype}'%')<!--业务类型Code-->
+            </if>
+            <if test="ngetinteresttype!=null and ngetinteresttype!=''">
+                AND NGETINTERESTTYPE LIKE CONCAT('%'#{ngetinteresttype}'%')<!--信贷产品Code  -->
+            </if>
+            <if test="ndlrbiztype!=null and ndlrbiztype!=''">
+                AND NDLRBIZTYPE LIKE CONCAT('%'#{ndlrbiztype}'%')<!--服务产品Code  金融产品-->
+            </if>
+            <if test="company!=null and company!=''">
+                AND COMPANY LIKE CONCAT('%'#{company}'%')<!--所属公司-->
+            </if>
+            <if test="nloanmoney!=null and nloanmoney!=''">
+                AND NLOANMONEY LIKE CONCAT('%'#{nloanmoney}'%')<!--贷款金额-->
+            </if>
+            <if test="ntimelimit!=null and ntimelimit!=''">
+                AND NTIMELIMIT LIKE CONCAT('%'#{ntimelimit}'%')<!--贷款期限-->
+            </if>
+            <if test="dapplydate!=null and dapplydate!=''">
+                AND DAPPLYDATE LIKE CONCAT('%'#{dapplydate}'%')<!--申请日期-->
+            </if>
+            <if test="dfactstartdate!=null and dfactstartdate!=''">
+                AND DFACTSTARTDATE LIKE CONCAT('%'#{dfactstartdate}'%')<!--放款日期-->
+            </if>
+            <if test="necloanmoney!=null and necloanmoney!=''">
+                AND NECLOANMONEY LIKE CONCAT('%'#{necloanmoney}'%')<!--附加贷金额-->
+            </if>
+            <if test="firstpay!=null and firstpay!=''">
+                FIRSTPAY LIKE CONCAT('%'#{firstpay}'%')<!--首付比例-->
+            </if>
+        </if>
+    </sql>
+
+    <!-- 按条件模糊查询所有 -->
+    <select id="queryDealerSaleList" parameterType="com.yqjr.fin.mkmm.sales.entity.DealerSale"
+            resultMap="DealerSaleResult">
+        SELECT
+        ID,<!--序列-->
+        SUPERORGANIZATIONNO,<!--大区代码-->
+        VSUPERORGANIZATIONNO,<!--二区代码-->
+        VORGANIZATIONNO,<!--经销商代码-->
+        NDEALERWORKERID,<!--销售顾问代码-->
+        PROVINCEID,<!--省份-->
+        CITYID,<!--城市-->
+        VBARGAINNO,<!--合同号-->
+        VBARGAIN,<!--借据号-->
+        NAME,<!--客户名称-->
+        IDENTITYNO,<!--证件号-->
+        NCARBRANDID,<!--大品牌-->
+        NCARSUBBRANDID,<!--子品牌-->
+        NCARBRANDTYPE,<!--车型-->
+        NCARPRICE,<!--净车价-->
+        VMORTGAGERNAME,<!--车籍-->
+        NACTIVITIESID,<!--车贷金融产品id  营销活动-->
+        NECACTIVITIESID,<!--附加费金融产品id-->
+        NBIZTYPE,<!--业务类型Code-->
+        NGETINTERESTTYPE,<!--信贷产品Code  -->
+        NDLRBIZTYPE,<!--服务产品Code  金融产品-->
+        COMPANY,<!--所属公司-->
+        NLOANMONEY,<!--贷款金额-->
+        NTIMELIMIT,<!--贷款期限-->
+        DAPPLYDATE,<!--申请日期-->
+        DFACTSTARTDATE,<!--放款日期-->
+        NECLOANMONEY,<!--附加贷金额-->
+        FIRSTPAY<!--首付比例-->
+        FROM MKMM_DEALER_SALE
+        <where>
+            <include refid="queryLikeDealerSale"/>
+        </where>
+    </select>
+
+    <!-- 按条件模糊统计所有条数 -->
+    <select id="queryDealerSaleCount" parameterType="com.yqjr.fin.mkmm.sales.entity.DealerSale" resultType="int">
+        SELECT
+        count (id)
+        FROM MKMM_DEALER_SALE
+        <where>
+            <include refid="queryLikeDealerSale"/>
+        </where>
+    </select>
+
+    <!-- 批量删除，入参为数组  -->
+    <delete id="dynamicDelete">
+        delete from MKMM_DEALER_SALE where id in
+        <foreach collection="array" open="(" close=")" separator="," item="arr">
+            #{arr}
+        </foreach>
+    </delete>
+
+    <!-- 批量删除，入参为list  -->
+    <delete id="dynamicDeleteList">
+        delete from MKMM_DEALER_SALE where id in
+        <foreach collection="list" open="(" close=")" separator="," item="ids">
+            #{ids}
+        </foreach>
+    </delete>
+
+    <!-- 批量插入 -->
+    <insert id="insertBatch" parameterType="java.util.List">
+        <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into MKMM_DEALER_SALE
+        (
+        <include refid="Base_Column_List" />
+        )
+        values
+        <foreach collection="list" item="dealerSale" index="index" separator=",">
+            (
+            <include refid="Base_Column_Values" />
+            )
+        </foreach>
+    </insert>
+
+    <!-- 插入单条数据，并返回主键ID -->
+    <insert id="saveObj" useGeneratedKeys="true" keyProperty="id"
+            parameterType="com.yqjr.fin.mkmm.sales.entity.DealerSale">
+        insert into MKMM_DEALER_SALE
+        (
+        <include refid="Base_Column_List" />
+        )
+        values
+        (
+        <include refid="Base_Column_Values" />
+        )
+    </insert>
+
+
+    <!-- **********************************************************************-->
+    <!-- ************* 在此下方为一对一、一对多查询方式 仅供参考***************-->
+    <!-- **********************************************************************-->
+    <!-- 一个博客（BlogInfo） 属于一个作者（Author） ，一个作者（Author） 有多篇文章（Post） -->
+    <!--
+  <resultMap type="com.foo.bean.BlogInfo" id="BlogInfo">
+      <id column="blog_id" property="blogId" />
+      <result column="title" property="title" />
+      <association property="author" column="blog_author_id"
+          javaType="com.foo.bean.Author" select="com.foo.bean.AuthorMapper.selectByPrimaryKey">
+      </association>
+      <collection property="posts" column="blog_id" ofType="com.foo.bean.Post"
+          select="com.foo.bean.PostMapper.selectByBlogId">
+      </collection>
+  </resultMap>
+
+  <select id="queryBlogInfoById" resultMap="BlogInfo" parameterType="java.math.BigDecimal">
+      SELECT
+      B.BLOG_ID,
+      B.TITLE,
+      B.AUTHOR_ID AS BLOG_AUTHOR_ID
+      FROM BLOG B
+      where B.BLOG_ID = 博客ID
+  </select>
+
+          上述方法存在N+1问题
+      它的弊端也比较明显：即所谓的N+1问题。关联的嵌套查询显示得到一个结果集，然后根据这个结果集的每一条记录进行关联查询。
+      现在假设嵌套查询就一个（即resultMap 内部就一个association标签），现查询的结果集返回条数为N，那么关联查询语句将会被执行N次，加上自身返回结果集查询1次，共需要访问数据库N+1次。如果N比较大的话，这样的数据库访问消耗是非常大的！所以使用这种嵌套语句查询的使用者一定要考虑慎重考虑，确保N值不会很大。
+      以上面的例子为例，select 语句本身会返回com.foo.bean.BlogMapper.queryBlogInfoById 条数为1 的结果集，由于它有两条关联的语句查询，它需要共访问数据库 1*（1+1）=3次数据库。
+
+
+       <resultMap type="com.foo.bean.BlogInfo" id="BlogInfo">
+      <id column="blog_id" property="blogId"/>
+      <result column="title" property="title"/>
+      <association property="author" column="blog_author_id" javaType="com.foo.bean.Author">
+          <id column="author_id" property="authorId"/>
+          <result column="user_name" property="userName"/>
+          <result column="password" property="password"/>
+          <result column="email" property="email"/>
+          <result column="biography" property="biography"/>
+      </association>
+      <collection property="posts" column="blog_post_id" ofType="com.foo.bean.Post">
+          <id column="post_id" property="postId"/>
+          <result column="blog_id" property="blogId"/>
+          <result column="create_time" property="createTime"/>
+          <result column="subject" property="subject"/>
+          <result column="body" property="body"/>
+          <result column="draft" property="draft"/>
+      </collection>
+      </resultMap>
+
+
+      <select id="queryAllBlogInfo" resultMap="BlogInfo">
+          SELECT
+           B.BLOG_ID,
+           B.TITLE,
+           B.AUTHOR_ID AS BLOG_AUTHOR_ID,
+           A.AUTHOR_ID,
+           A.USER_NAME,
+           A.PASSWORD,
+           A.EMAIL,
+           A.BIOGRAPHY,
+           P.POST_ID,
+           P.BLOG_ID AS BLOG_POST_ID ,
+             P.CREATE_TIME,
+           P.SUBJECT,
+           P.BODY,
+           P.DRAFT
+      FROM BLOG B
+      LEFT OUTER JOIN AUTHOR A
+        ON B.AUTHOR_ID = A.AUTHOR_ID
+      LEFT OUTER JOIN POST P
+        ON P.BLOG_ID = B.BLOG_ID
+      </select>
+      -->
+
+    <!-- **********************************************************************-->
+    <!-- ************* 此线上方代码自动生成，在此下方编写自定义代码。***************-->
+    <!-- **********************************************************************-->
+
+    <!-- endregion -->
+
+    <!-- 根据日期查找每天经销商的数据-->
+    <select id="selectDataByDate" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        where DFACTSTARTDATE = #{dfactstartdate}
+  </select>
+
+</mapper>
+

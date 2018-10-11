@@ -1,0 +1,63 @@
+package com.yqjr.fin.rems.rule.entity;
+
+import com.ritoinfo.framework.evo.sp.base.starter.entity.BaseMapperEntity;
+import com.yqjr.fin.common.base.starter.entity.FinBaseMapperEntity;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import org.apache.ibatis.type.JdbcType;
+import tk.mybatis.mapper.annotation.ColumnType;
+import tk.mybatis.mapper.annotation.KeySql;
+import tk.mybatis.mapper.code.ORDER;
+
+import javax.persistence.*;
+import java.sql.Timestamp;
+import java.util.Objects;
+
+/**
+ * @description: 规则因子类型
+ * @author: lixue
+ * @date: 2018/08/23 13:41:05
+ **/
+@EqualsAndHashCode(callSuper = true)
+@Data
+@Table(name = "REMS_RULE_FACTOR_TYPE", schema = "REMS")
+public class RuleFactorTypeEntity extends FinBaseMapperEntity<Long> {
+
+    /**
+     *主键id
+     */
+    @Id
+    @KeySql(sql = "select SEQ_REMS_RULE_FACTOR_TYPE.nextval from dual", order = ORDER.BEFORE)
+    private Long id;
+
+    /**
+     *规则因子类型名称
+     */
+    @ColumnType(jdbcType = JdbcType.VARCHAR)
+    private String typeName;
+
+    /**
+     *类型属性编码
+     */
+    @ColumnType(jdbcType = JdbcType.VARCHAR)
+    private String typeAttributeCode;
+
+    /**
+     *类型属性名称
+     */
+    @ColumnType(jdbcType = JdbcType.VARCHAR)
+    private String typeAttributeName;
+
+    /**
+     *说明
+     */
+    @ColumnType(jdbcType = JdbcType.VARCHAR)
+    private String explain;
+
+    /**
+     *状态 1 有效 0 无效
+     */
+    private Long flag;
+
+
+}

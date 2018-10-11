@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.yqjr</groupId>
+    <artifactId>fin.pvc</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    
+<!--    <parent>
+		<groupId>com.ritoinfo.framework</groupId>
+		<artifactId>evo</artifactId>
+		<version>2.5.0-SNAPSHOT</version>
+	</parent>-->
+    <modules>
+        <module>fin.cvc-core</module>
+        <module>fin.cvc-core-model</module>
+        <module>fin.cvc-core-api</module>
+    </modules>
+
+    <packaging>pom</packaging>
+    <name>fin_pvc</name>
+
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+
+        <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
+        <maven-antrun-plugin.version>1.8</maven-antrun-plugin.version>
+        <buildnumber-maven-plugin.version>1.4</buildnumber-maven-plugin.version>
+        <spring-boot-maven-plugin.version>2.0.0.M7</spring-boot-maven-plugin.version>
+        <maven-jar-plugin.version>3.1.0</maven-jar-plugin.version>
+        <svnkit.version>1.9.0</svnkit.version>
+        <servlet-api.version>3.1.0</servlet-api.version>
+
+        <lombok.version>1.16.16</lombok.version>
+        <commons-lang3.version>3.7</commons-lang3.version>
+        <commons-pool2.version>2.5.0</commons-pool2.version>
+        <joda-time.version>2.9.9</joda-time.version>
+        <jackson-databind.version>2.9.3</jackson-databind.version>
+        <h2.version>1.4.196</h2.version>
+        <jjwt.version>0.9.0</jjwt.version>
+        <validation-api.version>2.0.1.Final</validation-api.version>
+
+        <spring-boot-admin-starter-server.version>2.0.0</spring-boot-admin-starter-server.version>
+        <spring-boot-admin-starter-client.version>2.0.0</spring-boot-admin-starter-client.version>
+        <logstash-logback-encoder.version>5.1</logstash-logback-encoder.version>
+        <swagger2.version>2.8.0</swagger2.version>
+        <swagger-ui.version>2.8.0</swagger-ui.version>
+        <activiti-spring-boot-starter-basic.version>5.22.0</activiti-spring-boot-starter-basic.version>
+        <activiti-spring-boot-starter-jpa.version>5.22.0</activiti-spring-boot-starter-jpa.version>
+
+        <mybatis-spring-boot-starter.version>1.3.1</mybatis-spring-boot-starter.version>
+        <druid.version>1.1.6</druid.version>
+        <mysql-connector-java.version>5.1.24</mysql-connector-java.version>
+
+        <evo-data-redis.version>1.0.0-SNAPSHOT</evo-data-redis.version>
+
+        <evo-common.version>1.0.0-SNAPSHOT</evo-common.version>
+        <evo-common-password.version>1.0.0-SNAPSHOT</evo-common-password.version>
+        <evo-common-jwt.version>1.0.0-SNAPSHOT</evo-common-jwt.version>
+        <evo-sp-auth-assist.version>1.0.0-SNAPSHOT</evo-sp-auth-assist.version>
+        <evo-sp-base.version>1.0.0-SNAPSHOT</evo-sp-base.version>
+        <evo-sp-base-starter.version>1.0.0-SNAPSHOT</evo-sp-base-starter.version>
+        <evo-sp-base-starter-validate.version>1.0.0-SNAPSHOT</evo-sp-base-starter-validate.version>
+        <evo-sp-base-starter-model.version>1.0.0-SNAPSHOT</evo-sp-base-starter-model.version>
+        <evo-sp-base-starter-mybatis-xml.version>1.0.0-SNAPSHOT</evo-sp-base-starter-mybatis-xml.version>
+
+        <evo-sp-activiti-model.version>1.0.0-SNAPSHOT</evo-sp-activiti-model.version>
+        <evo-sp-auth-common-model.version>1.0.0-SNAPSHOT</evo-sp-auth-common-model.version>
+        <evo-sp-auth-pc-model.version>1.0.0-SNAPSHOT</evo-sp-auth-pc-model.version>
+        <evo-sp-auth-mobile-model.version>1.0.0-SNAPSHOT</evo-sp-auth-mobile-model.version>
+        <evo-sp-datadict-model.version>1.0.0-SNAPSHOT</evo-sp-datadict-model.version>
+        <evo-sp-sms-model.version>1.0.0-SNAPSHOT</evo-sp-sms-model.version>
+        <evo-sp-sys-model.version>1.0.0-SNAPSHOT</evo-sp-sys-model.version>
+
+        <evo-activiti-api.version>1.0.0-SNAPSHOT</evo-activiti-api.version>
+        <evo-sp-datadict-api.version>1.0.0-SNAPSHOT</evo-sp-datadict-api.version>
+        <evo-sp-auth-common-api.version>1.0.0-SNAPSHOT</evo-sp-auth-common-api.version>
+        <evo-sp-sms-api.version>1.0.0-SNAPSHOT</evo-sp-sms-api.version>
+        <evo-sp-sys-api.version>1.0.0-SNAPSHOT</evo-sp-sys-api.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>2.0.2.RELEASE</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>Finchley.RC1</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>buildnumber-maven-plugin</artifactId>
+                <version>${buildnumber-maven-plugin.version}</version>
+                <configuration>
+                    <timestampFormat>yyyy-MM-dd HH:mm:ss</timestampFormat>
+                    <timezone>GMT+8</timezone>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>create-timestamp</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>${maven-jar-plugin.version}</version>
+                <configuration>
+                    <archive>
+                        <manifestEntries>
+                            <Build-Timestamp>${timestamp}</Build-Timestamp>
+                        </manifestEntries>
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <repositories>
+        <repository>
+            <id>spring-milestones</id>
+            <name>Spring Milestones</name>
+            <url>https://repo.spring.io/libs-milestone</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>apache-maven-https</id>
+            <name>Apache Maven Https</name>
+            <url>https://repo.maven.apache.org/maven2/</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>yqjr-public</id>
+            <name>Yqjr Public</name>
+            <url>http://10.21.111.31:8081/nexus/content/groups/public/</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>spring-snapshots</id>
+            <name>Spring Snapshots</name>
+            <url>https://repo.spring.io/snapshot</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </pluginRepository>
+        <pluginRepository>
+            <id>spring-milestones</id>
+            <name>Spring Milestones</name>
+            <url>https://repo.spring.io/milestone</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
+
+    <distributionManagement>
+        <repository>
+            <id>nexus-releases</id>
+            <name>Nexus Release Repository</name>
+            <url>http://10.21.111.31:8081/nexus/content/repositories/releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>nexus-snapshots</id>
+            <name>Nexus Snapshot Repository</name>
+            <url>http://10.21.111.31:8081/nexus/content/repositories/snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+
+</project>

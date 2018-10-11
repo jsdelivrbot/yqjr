@@ -1,0 +1,66 @@
+package com.yqjr.fin.mkmm.sales.services;
+
+import com.yqjr.fin.mkmm.sales.condition.MaterialBaseCondition;
+import com.yqjr.fin.mkmm.sales.condition.ProjectBaseCondition;
+import com.yqjr.fin.mkmm.sales.entity.MaterialBase;
+import com.yqjr.fin.mkmm.sales.entity.PersonBrandHis;
+import com.yqjr.fin.mkmm.sales.entity.ProjectBaseHis;
+import com.yqjr.fin.mkmm.sales.mapper.ProjectBaseHisMapper;
+import com.yqjr.fin.mkmm.sales.rest.vo.SelectCodeVo;
+import com.yqjr.scfw.common.service.BaseService;
+import com.yqjr.fin.mkmm.sales.entity.ProjectBase;
+import com.yqjr.fin.mkmm.sales.mapper.ProjectBaseMapper;
+import com.yqjr.scfw.common.session.SessionHolder;
+import com.yqjr.scfw.common.session.UserContext;
+import com.yqjr.scfw.common.utils.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@Service
+@Transactional(readOnly = true)
+public class ProjectBaseService extends BaseService<ProjectBaseMapper, ProjectBase, Long> {
+
+    @Autowired
+    ProjectBaseMapper projectBaseMapper;
+    @Autowired
+    ProjectBaseHisMapper projectBaseHisMapper;
+
+    public ProjectBase selectByProjectName(ProjectBase projectBase){
+        return projectBaseMapper.selectByProjectName(projectBase);
+    }
+    @Transactional(rollbackFor = { Exception.class })
+    public void insertToHis(Long id){
+        ProjectBase projectBase = this.selectById(id);
+        ProjectBaseHis projectBaseHis = new ProjectBaseHis();
+        BeanUtils.copyProperties(projectBaseHis,projectBase);
+        projectBaseHisMapper.insert(projectBaseHis);
+    }
+
+
+    /**
+     * 查询所有项目
+     * @return
+     */
+    public List<SelectCodeVo> selectProjectBaseAll() {
+        UserContext userContext = SessionHolder.getUserContext();
+        ProjectBaseCondition projectBaseCondition = new ProjectBaseCondition();
+        projectBaseCondition.setAreaCode(userContext.getAreaCode());
+        projectBaseCondition.setCompany(userContext.getComCode());
+        List<ProjectBase> projectBases = this.selectList(projectBaseCondition);
+
+        List<SelectCodeVo> selectCodeVos = new ArrayList<>();
+        SelectCodeVo selectCodeVo = new SelectCodeVo();
+
+        for(ProjectBase projectBase : projectBases) {
+            selectCodeVo.setHeadLetter("");
+            selectCodeVo.setLabel(projectBase.getProjectName());
+            selectCodeVo.setValue(projectBase.getProjectCode());
+            selectCodeVos.add(selectCodeVo);
+        }
+        return selectCodeVos;
+    }
+}

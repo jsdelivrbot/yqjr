@@ -1,0 +1,362 @@
+<style lang="less">
+    @import '../../../styles/common.less';
+</style>
+<template>
+    <div>
+        <Row>
+            <Card>
+                <p slot="title">
+                    <Icon type="search"></Icon>
+                    查询
+                </p>
+                <Form ref="formValidate" :model="searchFormDate" :label-width="100">
+                    <Row >
+                        <Col span="8" offset="2">
+                            <FormItem label="预警开始时间：">
+                                <DatePicker type="date" :value="searchFormDate.starDate" style="width: 100%"
+                                            format="yyyy-MM-dd"
+                                            @on-change="changestarDate" clearable="true"
+                                            placeholder="请输入预警开始时间"></DatePicker>
+                            </FormItem>
+                        </Col>
+                        <Col span="8" offset="2">
+                            <FormItem label="止：">
+                                <DatePicker type="date"  :value="searchFormDate.endDate" style="width: 100%"
+                                            @on-change="changeendDate" clearable="true"
+                                            format="yyyy-MM-dd" placeholder="请输入预警结束时间"></DatePicker>
+                            </FormItem>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col span="8" offset="2">
+                            <FormItem label="预警信号:">
+                                <Select v-model="searchFormDate.signallamp" style="width:100%" placeholder="全部">
+                                    <Option value="" selected>全部</Option>
+                                    <Option value="B">蓝</Option>
+                                    <Option value="G">绿</Option>
+                                    <Option value="Y">黄</Option>
+                                    <Option value="R">红</Option>
+                                </Select>
+                            </FormItem>
+                        </Col>
+                        <Col span="8" offset="2">
+                            <FormItem label="指标名称：" >
+                                <Select  :label-in-value="true" clearable="true"  v-model="searchFormDate.indId" filterable remote :remote-method="searchName"   :loading="loading" placeholder="请输入指标名称|自动搜索" >
+                                    <Option v-for="item in zhiBiaoQueryList"  :value="item.id" :key="item.id" :label="item.indicatorname" >{{item.indicatorname}}</Option>
+                                </Select>
+                            </FormItem>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col span="8" offset="2">
+                            <FormItem label="客户名称:">
+                                <Input v-model="searchFormDate.customname" placeholder="请输入客户名称"></Input>
+                            </FormItem>
+                        </Col>
+                        <Col span="8" offset="2">
+                            <FormItem label="任务状态:">
+                                <Select v-model="searchFormDate.eventstate" style="width:100%" placeholder="全部">
+                                    <Option value="">全部</Option>
+                                    <Option value="0">待处理任务</Option>
+                                    <Option value="1">已处理任务</Option>
+                                </Select>
+                            </FormItem>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col span="8" offset="2">
+                            <FormItem label="管理中心:">
+                                <Select v-model="searchFormDate.areacode" style="width:100%"  >
+                                    <Option v-for="item in quHuaQueryList" :value="item.value" :key="item.value">
+                                        {{item.name }}
+                                    </Option>
+                                </Select>
+                            </FormItem>
+                        </Col>
+                        <Col span="8" offset="2">
+                            <FormItem label="操作人:">
+                                <Input v-model="searchFormDate.creator" placeholder="操作人"></Input>
+                            </FormItem>
+                        </Col>
+
+                    </Row>
+                    <Row>
+                        <Col span="4" offset="9">
+                            <Button type="primary" icon="search" @click="chaXUN">查询</Button>
+                        </Col>
+                        <Col span="4">
+                            <Button icon="close" @click="cleanData">重置</Button>
+                        </Col>
+                    </Row>
+                </Form>
+            </Card>
+        </Row>
+        <Row class="margin-top-10">
+
+        </Row>
+        <Row class="margin-top-10">
+            <Card>
+                <p slot="title">
+                    <Icon type="search"></Icon>
+                    表格数据
+                </p>
+                <a href="#" slot="extra" @click.prevent="exportExcel()">
+                    <Icon type="ios-cloud-download"></Icon>
+                    导出数据
+                </a>
+                <Table :data="tableData" :columns="tableColumns" :loading="loading" ref="tableExcel"
+                       class="margin-top-10"></Table>
+                <div style="margin: 10px;overflow: hidden">
+                    <div style="float: right;">
+                        <Page :total="total" :current="pageNo" :page-size="pageSize" size="small"
+                              @on-change="changePage" @on-page-size-change="pageSizeChange" show-total
+                              show-sizer></Page>
+                    </div>
+                </div>
+            </Card>
+        </Row>
+        <a id="hrefToExportTable" style="postion: absolute;left: -10px;top: -10px;width: 0px;height: 0px;"></a>
+    </div>
+</template>
+
+<script>
+    import {resetWorkHeight, getUserCookie} from '@/libs/util.js';
+    import {mapActions, mapState} from 'vuex';
+    import table2excel from '@/libs/table2excel.js';
+    export default {
+        name: 'warningInterveneNewsList',
+        data () {
+            return {
+                searchFormDate: {
+                    areaCode: '',
+                    areaName: '',
+                    teamCode: '',
+                    teamName: '',
+                    teamLevel: '',
+                    teamStatus: '',
+                    pageInfo: {
+                        pageSize: '10',
+                        pageNo: '1'
+                    }
+                },
+                showFlag: {
+                    areaFlag: false
+                },
+                excelFileName: '预警干预查询',
+                tableColumns: [
+                    {
+                        title: '指标名称',
+                        align: 'center',
+                        render: (h, params) => {
+                            const row = params.row;
+                            return h('div', [
+                                h('div', row.indicators.indicatorname)
+                            ]);
+                        }
+                    }, {
+                        title: '指标日期',
+                        key: 'bizdate',
+                        align: 'center',
+                        sortable: true
+                    }, {
+                        title: '预警日期',
+                        align: 'center',
+                        render: (h, params) => {
+                            return h('div', new Date(params.row.alerttime).getFullYear() + '-' + (new Date(params.row.alerttime).getMonth() + 1) + '-' + new Date(params.row.alerttime).getDate());
+                        }
+                    }, {
+                        title: '客户名称',
+                        align: 'center',
+                        key: 'customname'
+                    }, {
+                        title: '管理中心',
+                        align: 'center',
+                        key: 'provname'
+                    }, {
+                        title: '区域名称',
+                        align: 'center',
+                        key: 'areaname'
+                    }, {
+                        title: '预警信号',
+                        align: 'center',
+                        render: (h, params) => {
+                            const row = params.row;
+                            const type = row.signallamp === 'B' ? 'primary' : row.signallamp === 'G' ? 'success' : row.signallamp === 'Y' ? 'warning' : row.signallamp === 'R' ? 'error' : '';
+                            const text = row.signallamp === 'B' ? '蓝' : row.signallamp === 'G' ? '绿' : row.signallamp === 'Y' ? '黄' : row.signallamp === 'R' ? '红' : '';
+                            return h('Button', {
+                                props: {
+                                    type: type
+                                },
+                                on: {
+                                    click: () => {
+                                        let routerParam = {eventid: params.row.eventid};
+                                        this.$router.push({
+                                            name: 'warningInterveneNewsTabList',
+                                            query: routerParam
+                                        });
+                                    }
+                                }
+                            }, text);
+                        }
+                    }, {
+                        title: '操作人',
+                        align: 'center',
+                        key: 'creator'
+                    }, {
+                        title: '操作时间',
+                        align: 'center',
+                        render: (h, params) => {
+                            return h('div', new Date(params.row.createTime).getFullYear() + '-' + (new Date(params.row.createTime).getMonth() + 1) + '-' + new Date(params.row.createTime).getDate());
+                        }
+                    }, {
+                        title: '当前状态',
+                        align: 'center',
+                        render: (h, params) => {
+                            const row = params.row;
+                            return h('div', [
+                                h('div', row.handlestate === '0' ? '初始状态' : row.handlestate === '1' ? '已提交区域' : row.handlestate === '2' ? '区域已审核' : row.handlestate === '3' ? '取消预警' : row.handlestate === '4' ? '确认预警' : row.handlestate === '5' ? '已提交审核' : row.handlestate === '6' ? '经理已审核' : '')
+                            ]);
+                        }
+                    }
+                ]
+            };
+        },
+        computed: {
+            ...mapState({
+                loading: ({warningInterveneNewsList}) => warningInterveneNewsList.loading,
+                tableData: ({warningInterveneNewsList}) => warningInterveneNewsList.teamMainQueryList,
+                pageNo: ({warningInterveneNewsList}) => warningInterveneNewsList.pageNo,
+                pageSize: ({warningInterveneNewsList}) => warningInterveneNewsList.pageSize,
+                total: ({warningInterveneNewsList}) => warningInterveneNewsList.total,
+                pages: ({warningInterveneNewsList}) => warningInterveneNewsList.pages,
+                zhiBiaoQueryList: ({comwarningList}) => comwarningList.zhiBiaoQueryList,
+                iName: ({warningInterveneNewsList}) => warningInterveneNewsList.iName,
+                manyData: ({warningInterveneNewsList}) => warningInterveneNewsList.manyData,
+                quHuaQueryList: ({interventionList}) => interventionList.quHuaQueryList
+            })
+        },
+        methods: {
+            ...mapActions([
+                'handleTeamMainQueryList',
+                'genJuZhiBiaoChaMingZi',
+                'chaXunButten',
+                'handleIName',
+                'handleMany',
+                'handleExcel',
+                'chaXunQuHuaSto',
+                'selectByIndicatorname'
+            ]),
+            /**
+             * 初始化
+             */
+            init () {
+                const user = getUserCookie();
+                const roleCode = user.roleCodeList;
+                if (roleCode.indexOf('0000') >= 0 || roleCode.indexOf('0001') >= 0 || roleCode.indexOf('0002') >= 0) {
+                    this.showFlag.areaFlag = true;
+                } else {
+                    this.showFlag.areaFlag = false;
+                }
+                this.handleTeamMainQueryList(this.searchFormDate).then(res => {
+                    resetWorkHeight();
+                });
+                this.searchIName();
+                this.searchMany();
+                this.chaXunQuHua();
+            },
+            chaXunQuHua () {
+                this.chaXunQuHuaSto(this.searchFormDate).then(res => {
+                    resetWorkHeight();
+                });
+            },
+            searchName(name){
+                this.searchFormDate.indicatorname=name;
+                this.selectByIndicatorname(this.searchFormDate.indicatorname).then(res => {
+                    resetWorkHeight();
+                });
+            },
+            searchData () {
+                this.handleTeamMainQueryList(this.searchFormDate).then(res => {
+                    resetWorkHeight();
+                    this.$Message.info('查询成功!');
+                });
+            }, /**
+             * 点击查询按钮执行查询操作
+             */
+            searchIName () {
+                this.handleIName().then(res => {
+                    resetWorkHeight();
+                });
+            },
+            searchMany () {
+                this.handleMany().then(res => {
+                    resetWorkHeight();
+                });
+            },
+            chaXUN () {
+                this.chaXunButten(this.searchFormDate).then(res => {
+                    resetWorkHeight();
+                    this.$Message.info('查询成功!');
+                });
+            }, /**
+             * 改变开始时间格式
+             */
+            changestarDate (dateA) {
+                const dateee = new Date(dateA).toJSON();
+
+                const date = new Date(+new Date(dateee) + 8 * 3600 * 1000).toISOString().replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '');
+                this.searchFormDate.starDate = date;
+            }, /**
+             * 改变结束时间格式
+             */
+            changeendDate (dateA) {
+                const dateee = new Date(dateA).toJSON();
+                const date = new Date(+new Date(dateee) + 8 * 3600 * 1000).toISOString().replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '');
+                this.searchFormDate.endDate = date;
+            },
+            /**
+             * 页面改变
+             */
+            changePage (index) {
+                this.searchFormDate.pageInfo.pageNo = index;
+                this.handleTeamMainQueryList(this.searchFormDate).then(res => {
+                    resetWorkHeight();
+                    this.searchFormDate.pageInfo.pageNo = 1;
+                });
+            },
+            /**
+             * 切换每页条数
+             */
+            pageSizeChange (newPageSize) {
+                this.searchFormDate.pageInfo.pageSize = newPageSize;
+                this.handleTeamMainQueryList(this.searchFormDate).then(res => {
+                    resetWorkHeight();
+                });
+            },
+            /**
+             * 重置按钮
+             */
+            cleanData () {
+                window.location.reload();
+            },
+            /**
+             * 指标代码失去焦点进行查询
+             */
+            souSuoZhiBiaoMingCheng () {
+                this.genJuZhiBiaoChaMingZi(this.searchFormDate.indicatorcode).then(res => {
+                    resetWorkHeight();
+                    this.$Message.info('指标名称查询成功!');
+                });
+            },
+            exportExcel () {
+                table2excel.transform(this.$refs.tableExcel, 'hrefToExportTable', this.excelFileName);
+            }
+        },
+        mounted () {
+            this.init();
+        }
+    }
+    ;
+</script>
+
+

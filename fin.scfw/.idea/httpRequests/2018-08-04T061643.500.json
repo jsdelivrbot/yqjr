@@ -1,0 +1,8 @@
+{
+  "timestamp": 1533377803865,
+  "status": 500,
+  "error": "Internal Server Error",
+  "exception": "org.springframework.jdbc.BadSqlGrammarException",
+  "message": "\r\n### Error updating database.  Cause: java.sql.SQLSyntaxErrorException: ORA-00928: ç¼ºå¤± SELECT å³é®å­\n\r\n### The error may involve com.yqjr.fin.risk.stat.mapper.IndicatorsMapper.insert-Inline\r\n### The error occurred while setting parameters\r\n### SQL: insert into           P_INDICATORS       (                                    )         values (                    P_INDICATORS_SEQ.nextval                )\r\n### Cause: java.sql.SQLSyntaxErrorException: ORA-00928: ç¼ºå¤± SELECT å³é®å­\n\n; bad SQL grammar []; nested exception is java.sql.SQLSyntaxErrorException: ORA-00928: ç¼ºå¤± SELECT å³é®å­\n",
+  "path": "/indicatorss/InsertIndicatorsRest"
+}

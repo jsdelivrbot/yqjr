@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-store">
+    <meta HTTP-EQUIV="Pragma" CONTENT="no-cache">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <script src="/ui/js/include/head.js"></script>
+    <link rel="stylesheet" href="/ui/js/ztree/css/metroStyle/metroStyle.css" type="text/css">
+    <script type="text/javascript" src="/ui/js/ztree/jquery.ztree.core.js"></script>
+    <script type="text/javascript" src="/ui/js/ztree/jquery.ztree.excheck.js"></script>
+    <title>一汽金融开发平台</title>
+</head>
+<body class="no-skin">
+<div class="page-content" id="mainContent">
+    <div class="widget-box transparent ui-sortable-handle" id="widget-box-search">
+        <div class="widget-header">
+            <h3 class="widget-title smaller lighter">&nbsp;角色新增</h3>
+
+            <div class="widget-toolbar no-border">
+            </div>
+        </div>
+        <div class="widget-body">
+            <div class="widget-main padding-6 no-padding-left no-padding-right">
+                <div class="space-6"></div>
+                <form id="inputForm" action="/base/role/save" method="post" class="form-horizontal" >
+                    <hidden name="id" id="id"/>
+                    <div class="row">
+                        <div class="form-group-2">
+                            <label class="col-sm-2 control-label no-padding-right"><span style="color:red;font-size:16px;">*</span>角色名称：</label>
+                            <div class="col-sm-3">
+                                <input id="oldName" name="oldName" type="hidden" value="${roleModel.name}">
+                                <input name="name" maxlength="50" class="form-control required" /><!-- readonly="${not empty roleModel.id}" -->
+                            </div>
+                        </div>
+                        <div class="form-group-2">
+                            <label class="col-sm-2 control-label no-padding-right"><span style="color:red;font-size:16px;">*</span>角色标识：</label>
+                            <div class="col-sm-3">
+                                <input id="oldEnName" name="oldEnName" type="hidden" value="${roleModel.enName}">
+                                <input name="enName" maxlength="50" class="form-control required"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="space-4"></div>
+                    <div class="row">
+                        <div class="form-group-2">
+                            <label class="col-sm-2 control-label no-padding-right"><span style="color:red;font-size:16px;">*</span>角色类型：</label>
+                            <div class="col-sm-3" id="roleTypeDict">
+                                <select name="roleType" class="form-control required">
+                                    <option value="">请选择...</option>
+                                    <option value="0">test</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group-2">
+                            <label class="col-sm-2 control-label no-padding-right"><span style="color:red;font-size:16px;">*</span>数据范围：</label>
+                            <div class="col-sm-3" id="dataScopeDict">
+                                <select name="dataScope" class="form-control required">
+                                    <option value="">请选择...</option>
+                                    <option value="0">test</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="space-4"></div>
+                    <div class="row">
+                        <div class="form-group-2">
+                            <label class="col-sm-2 control-label no-padding-right"><span style="color:red;font-size:16px;">*</span>是否系统角色：</label>
+                            <div class="col-sm-3" id="isSysDict">
+                                <select name="isSys" class="form-control required">
+                                    <option value="">请选择...</option>
+                                    <option value="0">test</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="space-4"></div>
+                    <div class="row">
+                        <div class="form-group-2">
+                            <label class="col-sm-2 control-label no-padding-right">所属权限：</label>
+                            <div class="col-sm-8">
+                                <ul id="tree" class="ztree"></ul>
+                            </div>
+                            <div id="hideBox"></div>
+                        </div>
+                    </div>
+                    <div class="space-4"></div>
+                    <div class="clearfix form-actions">
+                        <div class="col-md-offset-4 col-md-8">
+                            <button id="btnSubmit" class="btn btn-info" type="button" >
+                                <i class="ace-icon fa fa-check bigger-110"></i>
+                                保存
+                            </button>
+                            &nbsp; &nbsp; &nbsp;
+                            <button class="btn" type="button" onclick="history.go(-1)">
+                                <i class="ace-icon fa fa-undo bigger-110"></i>
+                                返回
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script type="text/javascript">
+    $(function() {
+        $("#inputForm").frameworkValid({
+            messages : {
+                name: {remote: "角色名已存在"},
+                enName: {remote: "英文名已存在"}
+            },//自定义错误提示信息
+            rules : {
+                name: {
+                    remote: {
+                        url: "/base/role/checkName",
+                        type: "GET",
+                        dataType: "json",
+                        data: {
+                            name: $("#name").val()
+                        }
+                    }
+                },
+                enName: {
+                    remote: {
+                        url: "/base/role/checkEnName",
+                        type: "GET",
+                        dataType: "json",
+                        data: {
+                            enName: $("#enName").val()
+                        }
+                    }
+                }
+            }
+        });
+        setHash();
+        $.ajax({
+            async : false,
+            type : 'GET',
+            url : "/base/menu/allToZTree",
+            data: {},
+            dataType : 'json',
+            success : function(obj) {
+                // 查询失败
+                if(!obj.isSuccess){
+                    layer.alert(obj.msg);
+                    return;
+                }
+                var result = obj.result;
+                if(result<=0){
+                    layer.alert("暂无菜单数据！");
+                    return;
+                }
+                var setting = {
+                    check: {
+                        enable: true
+                    },
+                    data: {
+                        simpleData: {
+                            enable: true
+                        }
+                    },
+                    callback: {
+                        onCollapse: onCollapse,
+                        onExpand: onExpand
+                    }
+                };
+                function onCollapse(event, treeId, treeNode) {
+                    setHash();
+                }
+                function onExpand(event, treeId, treeNode) {
+                    setHash();
+                }
+                $.fn.zTree.init($("#tree"), setting, result);
+            }
+        });
+        $.ajax({
+            async : false,
+            type : 'GET',
+            url : "/base/dict/getOneDictListByRedis",
+            data: {"type":"ROLE_TYPE"},
+            dataType : 'json',
+            success : function(obj) {
+                // 查询失败
+                if(!obj.isSuccess){
+                    layer.alert(obj.msg);
+                    return;
+                }
+                var result = obj.result;
+                var html="";
+                html+='<select name="roleType" id="roleType" class="form-control required"><option value="">请选择...</option>'
+                for(var i=0;i<result.length;i++){
+                    var dict=result[i];
+                    html+='<option value="'+dict.value+'" class="required">'+dict.label+'</option>';
+                }
+                html+='</select>'
+                $("#roleTypeDict").html(html);
+            }
+        });
+        $.ajax({
+            async : false,
+            type : 'GET',
+            url : "/base/dict/getOneDictListByRedis",
+            data: {"type":"DATA_SCOPE"},
+            dataType : 'json',
+            success : function(obj) {
+                // 查询失败
+                if(!obj.isSuccess){
+                    layer.alert(obj.msg);
+                    return;
+                }
+                var result = obj.result;
+                var html="";
+                html+='<select name="dataScope" id="dataScope" class="form-control required"><option value="">请选择...</option>'
+                for(var i=0;i<result.length;i++){
+                    var dict=result[i];
+                    html+='<option value="'+dict.value+'" class="required">'+dict.label+'</option>';
+                }
+                html+='</select>'
+                $("#dataScopeDict").html(html);
+            }
+        });
+        $.ajax({
+            async : false,
+            type : 'GET',
+            url : "/base/dict/getOneDictListByRedis",
+            data: {"type":"YES_OR_NO"},
+            dataType : 'json',
+            success : function(obj) {
+                // 查询失败
+                if(!obj.isSuccess){
+                    layer.alert(obj.msg);
+                    return;
+                }
+                var result = obj.result;
+                var html="";
+                html+='<select name="isSys" id="isSys" class="form-control required"><option value="">请选择...</option>'
+                for(var i=0;i<result.length;i++){
+                    var dict=result[i];
+                    html+='<option value="'+dict.value+'" class="required">'+dict.label+'</option>';
+                }
+                html+='</select>'
+                $("#isSysDict").html(html);
+            }
+        });
+        setHash();
+    });
+    $("#btnSubmit").on("click",function(){
+        var flag = $("#inputForm").valid();
+        if(!flag){
+            //没有通过验证
+            return;
+        }else{
+            var treeObj = $.fn.zTree.getZTreeObj("tree");
+            var nodes = treeObj.getCheckedNodes(true);
+            if(nodes!="[]"){
+                var hideHtml="";
+                for(var i=0;i<nodes.length;i++){
+                    var mid=nodes[i].id;
+                    hideHtml+='<input type="hidden" name="menuId" value="'+mid+'"> ';
+                }
+            }
+            $("#hideBox").html(hideHtml);
+            $("button").attr("disabled",true);
+            $("#inputForm").ajaxSubmit({
+                dataType:"json",
+                success:function( obj ){
+                    // 保存失败
+                    if(!obj.isSuccess){
+                        layer.alert(obj.msg);
+                        return;
+                    }
+                    layer.alert(obj.msg);
+                    $("#inputForm").resetForm();
+                    treeObj.checkAllNodes(false);
+                    $("button").attr("disabled",false);
+                }
+            });
+        }
+    });
+</script>
+</html>

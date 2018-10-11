@@ -1,0 +1,805 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yqjr.fin.mkmm.sales.mapper.UserRelationMapper">
+
+    <!-- region BaseMapper DO NOT MODIFY!!!  -->
+
+    <sql id="Base_Table_Name">
+        MKMM_USER_RELATION
+    </sql>
+
+
+
+    <!-- region BaseResultMap  -->
+    <resultMap id="BaseResultMap" type="com.yqjr.fin.mkmm.sales.entity.UserRelation">
+        <result property="id" column="ID"/><!--主键id-->
+        <result property="userName" column="USER_NAME"/><!--人员名称-->
+        <result property="psUserCode" column="PS_USER_CODE"/><!--共享系统人员编码-->
+        <result property="psDepartmentCode" column="PS_DEPARTMENT_CODE"/><!--共享系统人部门编码-->
+        <result property="psDepartmentName" column="PS_DEPARTMENT_NAME"/><!--共享系统人部门名称-->
+        <result property="plarformUserId" column="PLARFORM_USER_ID"/><!--平台人员id-->
+        <result property="plarformUserName" column="PLARFORM_USER_NAME"/><!--平台人员名称-->
+        <result property="company" column="COMPANY"/><!--所属公司类型 0 汽车金融 1 租赁公司-->
+        <result property="companyName" column="COMPANY_NAME"/><!--所属公司名称-->
+        <result property="remark" column="REMARK"/><!--备注-->
+        <result property="createTime" column="CREATE_TIME"/><!--创建时间-->
+        <result property="updateTime" column="UPDATE_TIME"/><!--更新时间-->
+        <result property="creator" column="CREATOR"/><!--创建人-->
+        <result property="modifier" column="MODIFIER"/><!--修改人-->
+        <result property="flag" column="FLAG"/><!--有效标识（如表记录不删除，以此区分,0无效，1有效）-->
+    </resultMap>
+    <!-- endregion -->
+
+    <!-- region Base_Column_List  -->
+    <sql id="Base_Column_List">
+    ID,USER_NAME,PS_USER_CODE,PS_DEPARTMENT_CODE,PS_DEPARTMENT_NAME,PLARFORM_USER_ID,PLARFORM_USER_NAME,COMPANY,COMPANY_NAME,REMARK,CREATE_TIME,UPDATE_TIME,CREATOR,MODIFIER,FLAG
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_List_Selective  -->
+    <sql id="Base_Column_List_Selective">
+        <trim suffixOverrides=",">
+            <if test="id != null">
+            ID,
+            </if>
+            <if test="userName != null">
+            USER_NAME,
+            </if>
+            <if test="psUserCode != null">
+            PS_USER_CODE,
+            </if>
+            <if test="psDepartmentCode != null">
+            PS_DEPARTMENT_CODE,
+            </if>
+            <if test="psDepartmentName != null">
+            PS_DEPARTMENT_NAME,
+            </if>
+            <if test="plarformUserId != null">
+            PLARFORM_USER_ID,
+            </if>
+            <if test="plarformUserName != null">
+            PLARFORM_USER_NAME,
+            </if>
+            <if test="company != null">
+            COMPANY,
+            </if>
+            <if test="companyName != null">
+            COMPANY_NAME,
+            </if>
+            <if test="remark != null">
+            REMARK,
+            </if>
+            <if test="createTime != null">
+            CREATE_TIME,
+            </if>
+            <if test="updateTime != null">
+            UPDATE_TIME,
+            </if>
+            <if test="creator != null">
+            CREATOR,
+            </if>
+            <if test="modifier != null">
+            MODIFIER,
+            </if>
+            <if test="flag != null">
+            FLAG
+            </if>
+        </trim>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Values  -->
+    <sql id="Base_Column_Values">
+    #{id},
+    #{userName},
+    #{psUserCode},
+    #{psDepartmentCode},
+    #{psDepartmentName},
+    #{plarformUserId},
+    #{plarformUserName},
+    #{company},
+    #{companyName},
+    #{remark},
+    #{createTime},
+    #{updateTime},
+    #{creator},
+    #{modifier},
+    #{flag}
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Values_Selective  -->
+    <sql id="Base_Column_Values_Selective">
+        <trim suffixOverrides=",">
+            <if test="id != null">
+            #{id},
+            </if>
+            <if test="userName != null">
+            #{userName},
+            </if>
+            <if test="psUserCode != null">
+            #{psUserCode},
+            </if>
+            <if test="psDepartmentCode != null">
+            #{psDepartmentCode},
+            </if>
+            <if test="psDepartmentName != null">
+            #{psDepartmentName},
+            </if>
+            <if test="plarformUserId != null">
+            #{plarformUserId},
+            </if>
+            <if test="plarformUserName != null">
+            #{plarformUserName},
+            </if>
+            <if test="company != null">
+            #{company},
+            </if>
+            <if test="companyName != null">
+            #{companyName},
+            </if>
+            <if test="remark != null">
+            #{remark},
+            </if>
+            <if test="createTime != null">
+            #{createTime},
+            </if>
+            <if test="updateTime != null">
+            #{updateTime},
+            </if>
+            <if test="creator != null">
+            #{creator},
+            </if>
+            <if test="modifier != null">
+            #{modifier},
+            </if>
+            <if test="flag != null">
+            #{flag}
+            </if>
+        </trim>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Set_Values  -->
+    <sql id="Base_Column_Set_Values">
+    ID = #{id},
+    USER_NAME = #{userName},
+    PS_USER_CODE = #{psUserCode},
+    PS_DEPARTMENT_CODE = #{psDepartmentCode},
+    PS_DEPARTMENT_NAME = #{psDepartmentName},
+    PLARFORM_USER_ID = #{plarformUserId},
+    PLARFORM_USER_NAME = #{plarformUserName},
+    COMPANY = #{company},
+    COMPANY_NAME = #{companyName},
+    REMARK = #{remark},
+    CREATE_TIME = #{createTime},
+    UPDATE_TIME = #{updateTime},
+    CREATOR = #{creator},
+    MODIFIER = #{modifier},
+    FLAG = #{flag}
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Set_Values_Selective  -->
+    <sql id="Base_Column_Set_Values_Selective">
+        <if test="id != null">
+        ID = #{id},
+        </if>
+        <if test="userName != null">
+        USER_NAME = #{userName},
+        </if>
+        <if test="psUserCode != null">
+        PS_USER_CODE = #{psUserCode},
+        </if>
+        <if test="psDepartmentCode != null">
+        PS_DEPARTMENT_CODE = #{psDepartmentCode},
+        </if>
+        <if test="psDepartmentName != null">
+        PS_DEPARTMENT_NAME = #{psDepartmentName},
+        </if>
+        <if test="plarformUserId != null">
+        PLARFORM_USER_ID = #{plarformUserId},
+        </if>
+        <if test="plarformUserName != null">
+        PLARFORM_USER_NAME = #{plarformUserName},
+        </if>
+        <if test="company != null">
+        COMPANY = #{company},
+        </if>
+        <if test="companyName != null">
+        COMPANY_NAME = #{companyName},
+        </if>
+        <if test="remark != null">
+        REMARK = #{remark},
+        </if>
+        <if test="createTime != null">
+        CREATE_TIME = #{createTime},
+        </if>
+        <if test="updateTime != null">
+        UPDATE_TIME = #{updateTime},
+        </if>
+        <if test="creator != null">
+        CREATOR = #{creator},
+        </if>
+        <if test="modifier != null">
+        MODIFIER = #{modifier},
+        </if>
+        <if test="flag != null">
+        FLAG = #{flag}
+        </if>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Where_Selective  -->
+    <sql id="Base_Column_Where_Selective">
+        <if test="id != null">
+            and ID = #{id}
+        </if>
+        <if test="userName != null">
+            and USER_NAME = #{userName}
+        </if>
+        <if test="psUserCode != null">
+            and PS_USER_CODE = #{psUserCode}
+        </if>
+        <if test="psDepartmentCode != null">
+            and PS_DEPARTMENT_CODE = #{psDepartmentCode}
+        </if>
+        <if test="psDepartmentName != null">
+            and PS_DEPARTMENT_NAME = #{psDepartmentName}
+        </if>
+        <if test="plarformUserId != null">
+            and PLARFORM_USER_ID = #{plarformUserId}
+        </if>
+        <if test="plarformUserName != null">
+            and PLARFORM_USER_NAME = #{plarformUserName}
+        </if>
+        <if test="company != null">
+            and COMPANY = #{company}
+        </if>
+        <if test="companyName != null">
+            and COMPANY_NAME = #{companyName}
+        </if>
+        <if test="remark != null">
+            and REMARK = #{remark}
+        </if>
+        <if test="createTime != null">
+            and CREATE_TIME = #{createTime}
+        </if>
+        <if test="updateTime != null">
+            and UPDATE_TIME = #{updateTime}
+        </if>
+        <if test="creator != null">
+            and CREATOR = #{creator}
+        </if>
+        <if test="modifier != null">
+            and MODIFIER = #{modifier}
+        </if>
+        <if test="flag != null">
+            and FLAG = #{flag}
+        </if>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Where_Selective_Param1  -->
+    <sql id="Base_Column_Where_Selective_Param1">
+        <if test="param1.id != null">
+            and ID = #{param1.id}
+        </if>
+        <if test="param1.userName != null">
+            and USER_NAME = #{param1.userName}
+        </if>
+        <if test="param1.psUserCode != null">
+            and PS_USER_CODE = #{param1.psUserCode}
+        </if>
+        <if test="param1.psDepartmentCode != null">
+            and PS_DEPARTMENT_CODE = #{param1.psDepartmentCode}
+        </if>
+        <if test="param1.psDepartmentName != null">
+            and PS_DEPARTMENT_NAME = #{param1.psDepartmentName}
+        </if>
+        <if test="param1.plarformUserId != null">
+            and PLARFORM_USER_ID = #{param1.plarformUserId}
+        </if>
+        <if test="param1.plarformUserName != null">
+            and PLARFORM_USER_NAME = #{param1.plarformUserName}
+        </if>
+        <if test="param1.company != null">
+            and COMPANY = #{param1.company}
+        </if>
+        <if test="param1.companyName != null">
+            and COMPANY_NAME = #{param1.companyName}
+        </if>
+        <if test="param1.remark != null">
+            and REMARK = #{param1.remark}
+        </if>
+        <if test="param1.createTime != null">
+            and CREATE_TIME = #{param1.createTime}
+        </if>
+        <if test="param1.updateTime != null">
+            and UPDATE_TIME = #{param1.updateTime}
+        </if>
+        <if test="param1.creator != null">
+            and CREATOR = #{param1.creator}
+        </if>
+        <if test="param1.modifier != null">
+            and MODIFIER = #{param1.modifier}
+        </if>
+        <if test="param1.flag != null">
+            and FLAG = #{param1.flag}
+        </if>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Order_By  -->
+    <sql id="Base_Order_By">
+        <bind name="propName" value="sortField"></bind>
+        ORDER BY <include refid="Base_Column_Name" />
+        <choose>
+            <when test="isAscend">
+                ASC
+            </when>
+            <otherwise>
+                DESC
+            </otherwise>
+        </choose>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Name  -->
+    <sql id="Base_Column_Name">
+        <if test='"id" == propName'>
+        ID
+        </if>
+        <if test='"userName" == propName'>
+        USER_NAME
+        </if>
+        <if test='"psUserCode" == propName'>
+        PS_USER_CODE
+        </if>
+        <if test='"psDepartmentCode" == propName'>
+        PS_DEPARTMENT_CODE
+        </if>
+        <if test='"psDepartmentName" == propName'>
+        PS_DEPARTMENT_NAME
+        </if>
+        <if test='"plarformUserId" == propName'>
+        PLARFORM_USER_ID
+        </if>
+        <if test='"plarformUserName" == propName'>
+        PLARFORM_USER_NAME
+        </if>
+        <if test='"company" == propName'>
+        COMPANY
+        </if>
+        <if test='"companyName" == propName'>
+        COMPANY_NAME
+        </if>
+        <if test='"remark" == propName'>
+        REMARK
+        </if>
+        <if test='"createTime" == propName'>
+        CREATE_TIME
+        </if>
+        <if test='"updateTime" == propName'>
+        UPDATE_TIME
+        </if>
+        <if test='"creator" == propName'>
+        CREATOR
+        </if>
+        <if test='"modifier" == propName'>
+        MODIFIER
+        </if>
+        <if test='"flag" == propName'>
+        FLAG
+        </if>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Id_Array  -->
+    <sql id="Base_Id_Array">
+        <foreach collection="array" open="(" close=")" separator="," item="id">
+        #{id}
+        </foreach>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Id_List  -->
+    <sql id="Base_Id_List">
+        <foreach collection="list" open="(" close=")" separator="," item="id">
+        #{id}
+        </foreach>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Select_All  -->
+    <sql id="Base_Select_All">
+        select
+        <include refid="Base_Column_List" />
+        from <include refid="Base_Table_Name" />
+    </sql>
+    <!-- endregion -->
+
+    <!-- region selectById  -->
+    <select id="selectById" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        where ID = #{id}
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectByIds  -->
+    <select id="selectByIds" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        where ID in
+        <include refid="Base_Id_List" />
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectAll  -->
+    <select id="selectAll" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectCount  -->
+    <select id="selectCount" resultType="int">
+        select count(*)
+        from <include refid="Base_Table_Name" />
+        <where>
+            <include refid="Base_Column_Where_Selective" />
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region select  -->
+    <select id="select" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Where_Selective" />
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectOne  -->
+    <select id="selectOne" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Where_Selective" />
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectOrderBy  -->
+    <select id="selectOrderBy" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Where_Selective_Param1" />
+        </where>
+        <include refid="Base_Order_By" />
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectByProperty  -->
+    <select id="selectByProperty" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Name" /> = #{propValue}
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectByPropertyIn  -->
+    <select id="selectByPropertyIn" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Name" /> IN
+            <foreach collection="propValues" open="(" close=")" separator="," item="propValue">
+            #{propValue}
+            </foreach>
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region delete  -->
+    <delete id="delete">
+        delete
+        from <include refid="Base_Table_Name" />
+        <where>
+            <include refid="Base_Column_Where_Selective" />
+        </where>
+    </delete>
+    <!-- endregion -->
+
+    <!-- region deleteById  -->
+    <delete id="deleteById">
+        delete
+        from <include refid="Base_Table_Name" />
+        where ID = #{id}
+    </delete>
+    <!-- endregion -->
+
+    <!-- region deleteByIds  -->
+    <delete id="deleteByIds">
+        delete
+        from <include refid="Base_Table_Name" />
+        where ID in
+        <include refid="Base_Id_List" />
+    </delete>
+    <!-- endregion -->
+
+    <!-- region insert  -->
+    <insert id="insert" parameterType="com.yqjr.fin.mkmm.sales.entity.UserRelation">
+        <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into <include refid="Base_Table_Name" /> (
+        <include refid="Base_Column_List" />
+        )
+        values (
+        <include refid="Base_Column_Values" />
+        )
+    </insert>
+    <!-- endregion -->
+
+    <!-- region updateById  -->
+    <update id="updateById" parameterType="com.yqjr.fin.mkmm.sales.entity.UserRelation">
+        update <include refid="Base_Table_Name" />
+        <set>
+            <include refid="Base_Column_Set_Values" />
+        </set>
+        where ID = #{id}
+    </update>
+    <!-- endregion -->
+
+    <!-- region patchById  -->
+    <update id="patchById" parameterType="com.yqjr.fin.mkmm.sales.entity.UserRelation">
+        update <include refid="Base_Table_Name" />
+        <set>
+            <include refid="Base_Column_Set_Values_Selective" />
+        </set>
+        where ID = #{id}
+    </update>
+    <!-- endregion -->
+
+    <!-- endregion BaseMapper -->
+
+    <!-- region generated by CodeRobot  -->
+
+    <!-- region 结果集映射  -->
+    <resultMap id="UserRelationResult" type="com.yqjr.fin.mkmm.sales.entity.UserRelation">
+        <result property="id" column="ID"/><!--主键id-->
+        <result property="userName" column="USER_NAME"/><!--人员名称-->
+        <result property="psUserCode" column="PS_USER_CODE"/><!--共享系统人员编码-->
+        <result property="psDepartmentCode" column="PS_DEPARTMENT_CODE"/><!--共享系统人部门编码-->
+        <result property="psDepartmentName" column="PS_DEPARTMENT_NAME"/><!--共享系统人部门名称-->
+        <result property="plarformUserId" column="PLARFORM_USER_ID"/><!--平台人员id-->
+        <result property="plarformUserName" column="PLARFORM_USER_NAME"/><!--平台人员名称-->
+        <result property="company" column="COMPANY"/><!--所属公司类型 0 汽车金融 1 租赁公司-->
+        <result property="companyName" column="COMPANY_NAME"/><!--所属公司名称-->
+        <result property="remark" column="REMARK"/><!--备注-->
+        <result property="createTime" column="CREATE_TIME"/><!--创建时间-->
+        <result property="updateTime" column="UPDATE_TIME"/><!--更新时间-->
+        <result property="creator" column="CREATOR"/><!--创建人-->
+        <result property="modifier" column="MODIFIER"/><!--修改人-->
+        <result property="flag" column="FLAG"/><!--有效标识（如表记录不删除，以此区分,0无效，1有效）-->
+    </resultMap>
+    <!-- endregion -->
+
+    <!-- 查询条件判断 入参为对象 条件为模糊-->
+    <sql id="queryLikeUserRelation">
+        <if test="userRelation!=null">
+            <if test="id!=null and id!=''">
+                AND ID LIKE CONCAT('%'#{id}'%')<!--主键id-->
+            </if>
+            <if test="userName!=null and userName!=''">
+                AND USER_NAME LIKE CONCAT('%'#{userName}'%')<!--人员名称-->
+            </if>
+            <if test="psUserCode!=null and psUserCode!=''">
+                AND PS_USER_CODE LIKE CONCAT('%'#{psUserCode}'%')<!--共享系统人员编码-->
+            </if>
+            <if test="psDepartmentCode!=null and psDepartmentCode!=''">
+                AND PS_DEPARTMENT_CODE LIKE CONCAT('%'#{psDepartmentCode}'%')<!--共享系统人部门编码-->
+            </if>
+            <if test="psDepartmentName!=null and psDepartmentName!=''">
+                AND PS_DEPARTMENT_NAME LIKE CONCAT('%'#{psDepartmentName}'%')<!--共享系统人部门名称-->
+            </if>
+            <if test="plarformUserId!=null and plarformUserId!=''">
+                AND PLARFORM_USER_ID LIKE CONCAT('%'#{plarformUserId}'%')<!--平台人员id-->
+            </if>
+            <if test="plarformUserName!=null and plarformUserName!=''">
+                AND PLARFORM_USER_NAME LIKE CONCAT('%'#{plarformUserName}'%')<!--平台人员名称-->
+            </if>
+            <if test="company!=null and company!=''">
+                AND COMPANY LIKE CONCAT('%'#{company}'%')<!--所属公司类型 0 汽车金融 1 租赁公司-->
+            </if>
+            <if test="companyName!=null and companyName!=''">
+                AND COMPANY_NAME LIKE CONCAT('%'#{companyName}'%')<!--所属公司名称-->
+            </if>
+            <if test="remark!=null and remark!=''">
+                AND REMARK LIKE CONCAT('%'#{remark}'%')<!--备注-->
+            </if>
+            <if test="createTime!=null and createTime!=''">
+                AND CREATE_TIME LIKE CONCAT('%'#{createTime}'%')<!--创建时间-->
+            </if>
+            <if test="updateTime!=null and updateTime!=''">
+                AND UPDATE_TIME LIKE CONCAT('%'#{updateTime}'%')<!--更新时间-->
+            </if>
+            <if test="creator!=null and creator!=''">
+                AND CREATOR LIKE CONCAT('%'#{creator}'%')<!--创建人-->
+            </if>
+            <if test="modifier!=null and modifier!=''">
+                AND MODIFIER LIKE CONCAT('%'#{modifier}'%')<!--修改人-->
+            </if>
+            <if test="flag!=null and flag!=''">
+                FLAG LIKE CONCAT('%'#{flag}'%')<!--有效标识（如表记录不删除，以此区分,0无效，1有效）-->
+            </if>
+        </if>
+    </sql>
+
+    <!-- 按条件模糊查询所有 -->
+    <select id="queryUserRelationList" parameterType="com.yqjr.fin.mkmm.sales.entity.UserRelation"
+            resultMap="UserRelationResult">
+        SELECT
+        ID,<!--主键id-->
+        USER_NAME,<!--人员名称-->
+        PS_USER_CODE,<!--共享系统人员编码-->
+        PS_DEPARTMENT_CODE,<!--共享系统人部门编码-->
+        PS_DEPARTMENT_NAME,<!--共享系统人部门名称-->
+        PLARFORM_USER_ID,<!--平台人员id-->
+        PLARFORM_USER_NAME,<!--平台人员名称-->
+        COMPANY,<!--所属公司类型 0 汽车金融 1 租赁公司-->
+        COMPANY_NAME,<!--所属公司名称-->
+        REMARK,<!--备注-->
+        CREATE_TIME,<!--创建时间-->
+        UPDATE_TIME,<!--更新时间-->
+        CREATOR,<!--创建人-->
+        MODIFIER,<!--修改人-->
+        FLAG<!--有效标识（如表记录不删除，以此区分,0无效，1有效）-->
+        FROM MKMM_USER_RELATION
+        <where>
+            <include refid="queryLikeUserRelation"/>
+        </where>
+    </select>
+
+    <!-- 按条件模糊统计所有条数 -->
+    <select id="queryUserRelationCount" parameterType="com.yqjr.fin.mkmm.sales.entity.UserRelation" resultType="int">
+        SELECT
+        count (id)
+        FROM MKMM_USER_RELATION
+        <where>
+            <include refid="queryLikeUserRelation"/>
+        </where>
+    </select>
+
+    <!-- 批量删除，入参为数组  -->
+    <delete id="dynamicDelete">
+        delete from MKMM_USER_RELATION where id in
+        <foreach collection="array" open="(" close=")" separator="," item="arr">
+            #{arr}
+        </foreach>
+    </delete>
+
+    <!-- 批量删除，入参为list  -->
+    <delete id="dynamicDeleteList">
+        delete from MKMM_USER_RELATION where id in
+        <foreach collection="list" open="(" close=")" separator="," item="ids">
+            #{ids}
+        </foreach>
+    </delete>
+
+    <!-- 批量插入 -->
+    <insert id="insertBatch" parameterType="java.util.List">
+        <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into MKMM_USER_RELATION
+        (
+        <include refid="Base_Column_List" />
+        )
+        values
+        <foreach collection="list" item="userRelation" index="index" separator=",">
+            (
+            <include refid="Base_Column_Values" />
+            )
+        </foreach>
+    </insert>
+
+    <!-- 插入单条数据，并返回主键ID -->
+    <insert id="saveObj" useGeneratedKeys="true" keyProperty="id"
+            parameterType="com.yqjr.fin.mkmm.sales.entity.UserRelation">
+        insert into MKMM_USER_RELATION
+        (
+        <include refid="Base_Column_List" />
+        )
+        values
+        (
+        <include refid="Base_Column_Values" />
+        )
+    </insert>
+
+
+    <!-- **********************************************************************-->
+    <!-- ************* 在此下方为一对一、一对多查询方式 仅供参考***************-->
+    <!-- **********************************************************************-->
+    <!-- 一个博客（BlogInfo） 属于一个作者（Author） ，一个作者（Author） 有多篇文章（Post） -->
+    <!--
+  <resultMap type="com.foo.bean.BlogInfo" id="BlogInfo">
+      <id column="blog_id" property="blogId" />
+      <result column="title" property="title" />
+      <association property="author" column="blog_author_id"
+          javaType="com.foo.bean.Author" select="com.foo.bean.AuthorMapper.selectByPrimaryKey">
+      </association>
+      <collection property="posts" column="blog_id" ofType="com.foo.bean.Post"
+          select="com.foo.bean.PostMapper.selectByBlogId">
+      </collection>
+  </resultMap>
+
+  <select id="queryBlogInfoById" resultMap="BlogInfo" parameterType="java.math.BigDecimal">
+      SELECT
+      B.BLOG_ID,
+      B.TITLE,
+      B.AUTHOR_ID AS BLOG_AUTHOR_ID
+      FROM BLOG B
+      where B.BLOG_ID = 博客ID
+  </select>
+
+          上述方法存在N+1问题
+      它的弊端也比较明显：即所谓的N+1问题。关联的嵌套查询显示得到一个结果集，然后根据这个结果集的每一条记录进行关联查询。
+      现在假设嵌套查询就一个（即resultMap 内部就一个association标签），现查询的结果集返回条数为N，那么关联查询语句将会被执行N次，加上自身返回结果集查询1次，共需要访问数据库N+1次。如果N比较大的话，这样的数据库访问消耗是非常大的！所以使用这种嵌套语句查询的使用者一定要考虑慎重考虑，确保N值不会很大。
+      以上面的例子为例，select 语句本身会返回com.foo.bean.BlogMapper.queryBlogInfoById 条数为1 的结果集，由于它有两条关联的语句查询，它需要共访问数据库 1*（1+1）=3次数据库。
+
+
+       <resultMap type="com.foo.bean.BlogInfo" id="BlogInfo">
+      <id column="blog_id" property="blogId"/>
+      <result column="title" property="title"/>
+      <association property="author" column="blog_author_id" javaType="com.foo.bean.Author">
+          <id column="author_id" property="authorId"/>
+          <result column="user_name" property="userName"/>
+          <result column="password" property="password"/>
+          <result column="email" property="email"/>
+          <result column="biography" property="biography"/>
+      </association>
+      <collection property="posts" column="blog_post_id" ofType="com.foo.bean.Post">
+          <id column="post_id" property="postId"/>
+          <result column="blog_id" property="blogId"/>
+          <result column="create_time" property="createTime"/>
+          <result column="subject" property="subject"/>
+          <result column="body" property="body"/>
+          <result column="draft" property="draft"/>
+      </collection>
+      </resultMap>
+
+
+      <select id="queryAllBlogInfo" resultMap="BlogInfo">
+          SELECT
+           B.BLOG_ID,
+           B.TITLE,
+           B.AUTHOR_ID AS BLOG_AUTHOR_ID,
+           A.AUTHOR_ID,
+           A.USER_NAME,
+           A.PASSWORD,
+           A.EMAIL,
+           A.BIOGRAPHY,
+           P.POST_ID,
+           P.BLOG_ID AS BLOG_POST_ID ,
+             P.CREATE_TIME,
+           P.SUBJECT,
+           P.BODY,
+           P.DRAFT
+      FROM BLOG B
+      LEFT OUTER JOIN AUTHOR A
+        ON B.AUTHOR_ID = A.AUTHOR_ID
+      LEFT OUTER JOIN POST P
+        ON P.BLOG_ID = B.BLOG_ID
+      </select>
+      -->
+
+    <!-- **********************************************************************-->
+    <!-- ************* 此线上方代码自动生成，在此下方编写自定义代码。***************-->
+    <!-- **********************************************************************-->
+
+    <!-- endregion -->
+
+
+</mapper>
+

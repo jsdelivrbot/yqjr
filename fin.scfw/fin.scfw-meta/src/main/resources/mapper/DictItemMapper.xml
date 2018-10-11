@@ -1,0 +1,662 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yqjr.fin.scfw.meta.mapper.DictItemMapper">
+
+    <!-- region BaseMapper DO NOT MODIFY!!!  -->
+
+    <sql id="Base_Table_Name">
+        BD_DICT_ITEM
+    </sql>
+
+
+
+    <!-- region BaseResultMap  -->
+    <resultMap id="BaseResultMap" type="com.yqjr.fin.scfw.meta.entity.DictItem">
+        <result property="id" column="ID"/><!--主键-->
+        <result property="name" column="NAME"/><!--字典项名称-->
+        <result property="value" column="VALUE"/><!--字典项值-->
+        <result property="status" column="STATUS"/><!--状态-->
+        <result property="gradation" column="GRADATION"/><!--顺序-->
+        <result property="dictId" column="DICT_ID"/><!--字典表ID-->
+        <result property="parentId" column="PARENT_ID"/><!--父ID，对应本表父字典项ID-->
+        <result property="creator" column="CREATOR"/><!--创建人-->
+        <result property="createTime" column="CREATE_TIME"/><!--创建时间-->
+        <result property="modifier" column="MODIFIER"/><!--最后更新人-->
+        <result property="modifyTime" column="MODIFY_TIME"/><!--最后更新时间-->
+        <result property="simpleName" column="SIMPLENAME"/>
+    </resultMap>
+    <!-- endregion -->
+
+    <!-- region Base_Column_List  -->
+    <sql id="Base_Column_List">
+    ID,NAME,VALUE,STATUS,GRADATION,DICT_ID,PARENT_ID,CREATOR,CREATE_TIME,MODIFIER,MODIFY_TIME,SIMPLENAME
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_List_Selective  -->
+    <sql id="Base_Column_List_Selective">
+        <trim suffixOverrides=",">
+            <if test="id != null">
+            ID,
+            </if>
+            <if test="name != null">
+            NAME,
+            </if>
+            <if test="value != null">
+            VALUE,
+            </if>
+            <if test="status != null">
+            STATUS,
+            </if>
+            <if test="gradation != null">
+            GRADATION,
+            </if>
+            <if test="dictId != null">
+            DICT_ID,
+            </if>
+            <if test="parentId != null">
+            PARENT_ID,
+            </if>
+            <if test="creator != null">
+            CREATOR,
+            </if>
+            <if test="createTime != null">
+            CREATE_TIME,
+            </if>
+            <if test="modifier != null">
+            MODIFIER,
+            </if>
+            <if test="modifyTime != null">
+            MODIFY_TIME,
+            </if>
+            <if test="simpleName != null">
+                SIMPLENAME
+            </if>
+        </trim>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Values  -->
+    <sql id="Base_Column_Values">
+    #{id},
+    #{name},
+    #{value},
+    #{status},
+    #{gradation},
+    #{dictId},
+    #{parentId},
+    #{creator},
+    #{createTime},
+    #{modifier},
+    #{modifyTime},
+    #{simpleName}
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Values_Selective  -->
+    <sql id="Base_Column_Values_Selective">
+        <trim suffixOverrides=",">
+            <if test="id != null">
+            #{id},
+            </if>
+            <if test="name != null">
+            #{name},
+            </if>
+            <if test="value != null">
+            #{value},
+            </if>
+            <if test="status != null">
+            #{status},
+            </if>
+            <if test="gradation != null">
+            #{gradation},
+            </if>
+            <if test="dictId != null">
+            #{dictId},
+            </if>
+            <if test="parentId != null">
+            #{parentId},
+            </if>
+            <if test="creator != null">
+            #{creator},
+            </if>
+            <if test="createTime != null">
+            #{createTime},
+            </if>
+            <if test="modifier != null">
+            #{modifier},
+            </if>
+            <if test="modifyTime != null">
+            #{modifyTime},
+            </if>
+            <if test="simpleName != null">
+                #{simpleName}
+            </if>
+        </trim>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Set_Values  -->
+    <sql id="Base_Column_Set_Values">
+    ID = #{id},
+    NAME = #{name},
+    VALUE = #{value},
+    STATUS = #{status},
+    GRADATION = #{gradation},
+    DICT_ID = #{dictId},
+    PARENT_ID = #{parentId},
+    CREATOR = #{creator},
+    CREATE_TIME = #{createTime},
+    MODIFIER = #{modifier},
+    MODIFY_TIME = #{modifyTime},
+    SIMPLENAME = #{simpleName}
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Set_Values_Selective  -->
+    <sql id="Base_Column_Set_Values_Selective">
+        <if test="id != null">
+        ID = #{id},
+        </if>
+        <if test="name != null">
+        NAME = #{name},
+        </if>
+        <if test="value != null">
+        VALUE = #{value},
+        </if>
+        <if test="status != null">
+        STATUS = #{status},
+        </if>
+        <if test="gradation != null">
+        GRADATION = #{gradation},
+        </if>
+        <if test="dictId != null">
+        DICT_ID = #{dictId},
+        </if>
+        <if test="parentId != null">
+        PARENT_ID = #{parentId},
+        </if>
+        <if test="creator != null">
+        CREATOR = #{creator},
+        </if>
+        <if test="createTime != null">
+        CREATE_TIME = #{createTime},
+        </if>
+        <if test="modifier != null">
+        MODIFIER = #{modifier},
+        </if>
+        <if test="modifyTime != null">
+        MODIFY_TIME = #{modifyTime},
+        </if>
+        <if test="simpleName != null">
+            SIMPLENAME = #{simpleName}
+        </if>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Where_Selective  -->
+    <sql id="Base_Column_Where_Selective">
+        <if test="id != null">
+            and ID = #{id}
+        </if>
+        <if test="name != null">
+            and NAME = #{name}
+        </if>
+        <if test="value != null">
+            and VALUE = #{value}
+        </if>
+        <if test="status != null">
+            and STATUS = #{status}
+        </if>
+        <if test="gradation != null">
+            and GRADATION = #{gradation}
+        </if>
+        <if test="dictId != null">
+            and DICT_ID = #{dictId}
+        </if>
+        <if test="parentId != null">
+            and PARENT_ID = #{parentId}
+        </if>
+        <if test="creator != null">
+            and CREATOR = #{creator}
+        </if>
+        <if test="createTime != null">
+            and CREATE_TIME = #{createTime}
+        </if>
+        <if test="modifier != null">
+            and MODIFIER = #{modifier}
+        </if>
+        <if test="modifyTime != null">
+            and MODIFY_TIME = #{modifyTime}
+        </if>
+        <if test="simpleName != null">
+            and SIMPLENAME = #{simpleName}
+        </if>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Where_Selective_Param1  -->
+    <sql id="Base_Column_Where_Selective_Param1">
+        <if test="param1.id != null">
+            and ID = #{param1.id}
+        </if>
+        <if test="param1.name != null">
+            and NAME = #{param1.name}
+        </if>
+        <if test="param1.value != null">
+            and VALUE = #{param1.value}
+        </if>
+        <if test="param1.status != null">
+            and STATUS = #{param1.status}
+        </if>
+        <if test="param1.gradation != null">
+            and GRADATION = #{param1.gradation}
+        </if>
+        <if test="param1.dictId != null">
+            and DICT_ID = #{param1.dictId}
+        </if>
+        <if test="param1.parentId != null">
+            and PARENT_ID = #{param1.parentId}
+        </if>
+        <if test="param1.creator != null">
+            and CREATOR = #{param1.creator}
+        </if>
+        <if test="param1.createTime != null">
+            and CREATE_TIME = #{param1.createTime}
+        </if>
+        <if test="param1.modifier != null">
+            and MODIFIER = #{param1.modifier}
+        </if>
+        <if test="param1.modifyTime != null">
+            and MODIFY_TIME = #{param1.modifyTime}
+        </if>
+        <if test="param1.simpleName != null">
+            and SIMPLENAME = #{param1.simpleName}
+        </if>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Order_By  -->
+    <sql id="Base_Order_By">
+        <bind name="propName" value="sortField"></bind>
+        ORDER BY <include refid="Base_Column_Name" />
+        <choose>
+            <when test="isAscend">
+                ASC
+            </when>
+            <otherwise>
+                DESC
+            </otherwise>
+        </choose>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Column_Name  -->
+    <sql id="Base_Column_Name">
+        <if test='"id" == propName'>
+        ID
+        </if>
+        <if test='"name" == propName'>
+        NAME
+        </if>
+        <if test='"value" == propName'>
+        VALUE
+        </if>
+        <if test='"status" == propName'>
+        STATUS
+        </if>
+        <if test='"gradation" == propName'>
+        GRADATION
+        </if>
+        <if test='"dictId" == propName'>
+        DICT_ID
+        </if>
+        <if test='"parentId" == propName'>
+        PARENT_ID
+        </if>
+        <if test='"creator" == propName'>
+        CREATOR
+        </if>
+        <if test='"createTime" == propName'>
+        CREATE_TIME
+        </if>
+        <if test='"modifier" == propName'>
+        MODIFIER
+        </if>
+        <if test='"modifyTime" == propName'>
+        MODIFY_TIME
+        </if>
+        <if test='"simpleName" == propName'>
+        SIMPLENAME
+        </if>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Id_Array  -->
+    <sql id="Base_Id_Array">
+        <foreach collection="array" open="(" close=")" separator="," item="id">
+        #{id}
+        </foreach>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Id_List  -->
+    <sql id="Base_Id_List">
+        <foreach collection="list" open="(" close=")" separator="," item="id">
+        #{id}
+        </foreach>
+    </sql>
+    <!-- endregion -->
+
+    <!-- region Base_Select_All  -->
+    <sql id="Base_Select_All">
+        select
+        <include refid="Base_Column_List" />
+        from <include refid="Base_Table_Name" />
+    </sql>
+    <!-- endregion -->
+
+    <!-- region selectById  -->
+    <select id="selectById" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        where ID = #{id}
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectByIds  -->
+    <select id="selectByIds" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        where ID in
+        <include refid="Base_Id_List" />
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectAll  -->
+    <select id="selectAll" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectCount  -->
+    <select id="selectCount" resultType="int">
+        select count(*)
+        from <include refid="Base_Table_Name" />
+        <where>
+            <include refid="Base_Column_Where_Selective" />
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region select  -->
+    <select id="select" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Where_Selective" />
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectOne  -->
+    <select id="selectOne" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Where_Selective" />
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectOrderBy  -->
+    <select id="selectOrderBy" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Where_Selective_Param1" />
+        </where>
+        <include refid="Base_Order_By" />
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectByProperty  -->
+    <select id="selectByProperty" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Name" /> = #{propValue}
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region selectByPropertyIn  -->
+    <select id="selectByPropertyIn" resultMap="BaseResultMap">
+        <include refid="Base_Select_All" />
+        <where>
+            <include refid="Base_Column_Name" /> IN
+            <foreach collection="propValues" open="(" close=")" separator="," item="propValue">
+            #{propValue}
+            </foreach>
+        </where>
+    </select>
+    <!-- endregion -->
+
+    <!-- region delete  -->
+    <delete id="delete">
+        delete
+        from <include refid="Base_Table_Name" />
+        <where>
+            <include refid="Base_Column_Where_Selective" />
+        </where>
+    </delete>
+    <!-- endregion -->
+
+    <!-- region deleteById  -->
+    <delete id="deleteById">
+        delete
+        from <include refid="Base_Table_Name" />
+        where ID = #{id}
+    </delete>
+    <!-- endregion -->
+
+    <!-- region deleteByIds  -->
+    <delete id="deleteByIds">
+        delete
+        from <include refid="Base_Table_Name" />
+        where ID in
+        <include refid="Base_Id_List" />
+    </delete>
+    <!-- endregion -->
+
+    <!-- region insert  -->
+    <insert id="insert" parameterType="com.yqjr.fin.scfw.meta.entity.DictItem">
+        <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into <include refid="Base_Table_Name" /> (
+        <include refid="Base_Column_List" />
+        )
+        values (
+        <include refid="Base_Column_Values" />
+        )
+    </insert>
+    <!-- endregion -->
+
+    <!-- region updateById  -->
+    <update id="updateById" parameterType="com.yqjr.fin.scfw.meta.entity.DictItem">
+        update <include refid="Base_Table_Name" />
+        <set>
+            <include refid="Base_Column_Set_Values" />
+        </set>
+        where ID = #{id}
+    </update>
+    <!-- endregion -->
+
+    <!-- region patchById  -->
+    <update id="patchById" parameterType="com.yqjr.fin.scfw.meta.entity.DictItem">
+        update <include refid="Base_Table_Name" />
+        <set>
+            <include refid="Base_Column_Set_Values_Selective" />
+        </set>
+        where ID = #{id}
+    </update>
+    <!-- endregion -->
+
+    <!-- endregion BaseMapper -->
+
+    <!-- region generated by CodeRobot  -->
+
+    <!-- region 结果集映射  -->
+    <resultMap id="DictItemResult" type="com.yqjr.fin.scfw.meta.entity.DictItem">
+        <result property="id" column="ID"/><!--主键-->
+        <result property="name" column="NAME"/><!--字典项名称-->
+        <result property="value" column="VALUE"/><!--字典项值-->
+        <result property="status" column="STATUS"/><!--状态-->
+        <result property="gradation" column="GRADATION"/><!--顺序-->
+        <result property="dictId" column="DICT_ID"/><!--字典表ID-->
+        <result property="parentId" column="PARENT_ID"/><!--父ID，对应本表父字典项ID-->
+        <result property="creator" column="CREATOR"/><!--创建人-->
+        <result property="createTime" column="CREATE_TIME"/><!--创建时间-->
+        <result property="modifier" column="MODIFIER"/><!--最后更新人-->
+        <result property="modifyTime" column="MODIFY_TIME"/><!--最后更新时间-->
+        <result property="simpleName" column="SIMPLENAME"/>
+    </resultMap>
+    <!-- endregion -->
+
+    <!-- 查询条件判断 入参为对象 条件为模糊-->
+    <sql id="queryLikeDictItem">
+        <if test="dictItem!=null">
+            <if test="id!=null and id!=''">
+                AND ID LIKE CONCAT('%'#{id}'%')<!--主键-->
+            </if>
+            <if test="name!=null and name!=''">
+                AND NAME LIKE CONCAT('%'#{name}'%')<!--字典项名称-->
+            </if>
+            <if test="value!=null and value!=''">
+                AND VALUE LIKE CONCAT('%'#{value}'%')<!--字典项值-->
+            </if>
+            <if test="status!=null and status!=''">
+                AND STATUS LIKE CONCAT('%'#{status}'%')<!--状态-->
+            </if>
+            <if test="gradation!=null and gradation!=''">
+                AND GRADATION LIKE CONCAT('%'#{gradation}'%')<!--顺序-->
+            </if>
+            <if test="dictId!=null and dictId!=''">
+                AND DICT_ID LIKE CONCAT('%'#{dictId}'%')<!--字典表ID-->
+            </if>
+            <if test="parentId!=null and parentId!=''">
+                AND PARENT_ID LIKE CONCAT('%'#{parentId}'%')<!--父ID，对应本表父字典项ID-->
+            </if>
+            <if test="creator!=null and creator!=''">
+                AND CREATOR LIKE CONCAT('%'#{creator}'%')<!--创建人-->
+            </if>
+            <if test="createTime!=null and createTime!=''">
+                AND CREATE_TIME LIKE CONCAT('%'#{createTime}'%')<!--创建时间-->
+            </if>
+            <if test="modifier!=null and modifier!=''">
+                AND MODIFIER LIKE CONCAT('%'#{modifier}'%')<!--最后更新人-->
+            </if>
+            <if test="modifyTime!=null and modifyTime!=''">
+                MODIFY_TIME LIKE CONCAT('%'#{modifyTime}'%')<!--最后更新时间-->
+            </if>
+            <if test="simpleName!=null and simpleName!=''">
+                SIMPLENAME LIKE CONCAT('%'#{simpleName}'%')<!--最后更新时间-->
+            </if>
+        </if>
+    </sql>
+
+    <!-- 按条件模糊查询所有 -->
+    <select id="queryDictItemList" parameterType="com.yqjr.fin.scfw.meta.entity.DictItem"
+            resultMap="DictItemResult">
+        SELECT
+        ID,<!--主键-->
+        NAME,<!--字典项名称-->
+        VALUE,<!--字典项值-->
+        STATUS,<!--状态-->
+        GRADATION,<!--顺序-->
+        DICT_ID,<!--字典表ID-->
+        PARENT_ID,<!--父ID，对应本表父字典项ID-->
+        CREATOR,<!--创建人-->
+        CREATE_TIME,<!--创建时间-->
+        MODIFIER,<!--最后更新人-->
+        MODIFY_TIME,<!--最后更新时间-->
+        SIMPLENAME
+        FROM BD_DICT_ITEM
+        <where>
+            <include refid="queryLikeDictItem"/>
+        </where>
+    </select>
+
+    <!-- 按条件模糊统计所有条数 -->
+    <select id="queryDictItemCount" parameterType="com.yqjr.fin.scfw.meta.entity.DictItem" resultType="int">
+        SELECT
+        count (id)
+        FROM BD_DICT_ITEM
+        <where>
+            <include refid="queryLikeDictItem"/>
+        </where>
+    </select>
+
+    <!-- 批量删除，入参为数组  -->
+    <delete id="dynamicDelete">
+        delete from BD_DICT_ITEM where id in
+        <foreach collection="array" open="(" close=")" separator="," item="arr">
+            #{arr}
+        </foreach>
+    </delete>
+
+    <!-- 批量删除，入参为list  -->
+    <delete id="dynamicDeleteList">
+        delete from BD_DICT_ITEM where id in
+        <foreach collection="list" open="(" close=")" separator="," item="ids">
+            #{ids}
+        </foreach>
+    </delete>
+
+    <!-- 批量插入 -->
+    <insert id="insertBatch" parameterType="java.util.List">
+        <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into BD_DICT_ITEM
+        (
+        <include refid="Base_Column_List" />
+        )
+        values
+        <foreach collection="list" item="dictItem" index="index" separator=",">
+            (
+            <include refid="Base_Column_Values" />
+            )
+        </foreach>
+    </insert>
+
+    <!-- 插入单条数据，并返回主键ID -->
+    <insert id="saveObj" useGeneratedKeys="true" keyProperty="id"
+            parameterType="com.yqjr.fin.scfw.meta.entity.DictItem">
+        insert into BD_DICT_ITEM
+        (
+        <include refid="Base_Column_List" />
+        )
+        values
+        (
+        <include refid="Base_Column_Values" />
+        )
+    </insert>
+
+    <select id="selectItemListbyCode" resultType="com.yqjr.fin.fcsw.meta.api.dto.DictItemDto">
+          select item.name,item.value,item.simpleName from  bd_dict_item item
+          join bd_dict dict on item.dict_id =dict.id and item.status='1'
+           where  dict.code=#{code}
+           <if test="flag != 0">
+	           and item.parent_id in (select c.id from bd_dict_item c where
+	           c.value in (${value}))
+           </if>
+           order by item.id asc
+	</select>
+	
+	<select id="getNameByvalue" resultType="com.yqjr.fin.fcsw.meta.api.dto.DictItemDto">
+	      select item.name,item.value,item.simpleName from  bd_dict_item item
+          join bd_dict dict on item.dict_id =dict.id and item.status='1'
+           where  dict.code=#{code}
+           and item.value in(${value})           
+           order by item.id asc
+	</select>
+
+</mapper>
+

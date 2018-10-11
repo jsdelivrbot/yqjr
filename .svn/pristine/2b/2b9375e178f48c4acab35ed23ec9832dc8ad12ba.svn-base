@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<parent>
+		<groupId>com.ritoinfo.framework</groupId>
+		<artifactId>evo</artifactId>
+		<version>2.5.0-SNAPSHOT</version>
+	</parent>
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<artifactId>fin.qcms-credit</artifactId>
+
+	<groupId>com.yqjr</groupId>
+	<version>1.0.0-SNAPSHOT</version>
+
+	<packaging>pom</packaging>
+
+	<properties>
+		<fin.qcms-credit-model.version>1.0.0-SNAPSHOT</fin.qcms-credit-model.version>
+		<springfox-swagger-ui.version>2.9.2</springfox-swagger-ui.version>
+		<springfox-swagger2.version>2.9.2</springfox-swagger2.version>
+	</properties>
+
+  <modules>
+    <module>fin.qcms-credit-api</module>
+    <module>fin.qcms-credit-core</module>
+    <module>fin.qcms-credit-model</module>
+  </modules>
+	<dependencies>
+		<dependency>
+			<groupId>com.yqjr</groupId>
+			<artifactId>fin.common</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
+</project>
